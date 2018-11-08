@@ -1,5 +1,5 @@
 {
-  "name": "buidler",
+  "name": "buidler transformer",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,5 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^7.0.1",
+    "mongodb": "^3.1.9",
+    "sanitize-filename": "^1.6.1"
+  }
 }

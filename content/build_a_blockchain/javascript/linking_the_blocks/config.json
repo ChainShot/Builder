@@ -1,0 +1,20 @@
+{
+  "_id": "5b3fa85ad9f997a550e7ca2b",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5b3afe0cd9f99763e5c4b503",
+    "5b3bad27d9f997b30859bb75",
+    "5b3faf99d9f997a550e7ca2e"
+  ],
+  "completion_message": "## Awesome!\n\nNow our blocks are inextricably linked. Now we'll write a function to validate a blockchain. Combine the concept of a valid blockchain with linked blocks and we'll be able to look at just the most recent hash to see if two blocks are equal.",
+  "container_id": "5b3afd70d9f99763e5c4b4fe",
+  "details": "## Why do we need to link blocks? \n\nLet's say that each block contains a list of transactions instead of our `data` property (for most blockchains this is the case). \n\nIf the first block contains a transaction that says I sent you $10 and this is the only block on our blockchain, then it would be pretty easy to change it. \n\nHowever, if that transaction was on the first block of 100 blocks, it would be much more difficult. You would need to change all 100 blocks. The first block's transaction would change, which would change it's hash, which would need to change the hash the block in front of it points to. \n\nIn a future challenge we'll add **difficulty** to this blockchain implementation through a concept called Proof Of Work. By making each block more difficult to create, it becomes exponentially harder to change data that is further entrenched in the blockchain.",
+  "language": "javascript",
+  "language_version": "8.x/babel",
+  "position": 4,
+  "task": "## Linking The Blocks\n\nThis could arguably be the most important step in creating a blockchain implementation. We need to include the `previousHash` of each block in it's current `hash`. By doing so we create a link from the very genesis block all the way to the most recent block. The [Details](?tab=details) tab explains this further. \n\nTo pass this step we simply need to make sure to include that `previousHash` in the `hash` calculation step in our `Block` class.",
+  "test_framework": "mocha_bdd",
+  "title": "Linking The Blocks",
+  "updated_at": "2018-10-16T01:50:10.678Z",
+  "created_at": "2018-10-16T01:50:10.678Z"
+}

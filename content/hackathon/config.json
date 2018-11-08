@@ -1,0 +1,15 @@
+{
+  "_id": "5bcdf0c31cf372e860c8b8be",
+  "title": "Hackathon",
+  "description": "Determine the winner from a list of rated projects!",
+  "badge_type_ids": [
+    "5b515cbde6b0b0453b4e9e3d",
+    "5b515cf6e6b0b0453b4e9e3e",
+    "5b515d23e6b0b0453b4e9e3f"
+  ],
+  "updated_at": "2018-10-22T15:46:11.505Z",
+  "created_at": "2018-10-22T15:46:11.505Z",
+  "container_type": "Challenge",
+  "preface": "This challenge requires you to sort through structs and find the top rated project by its average rating.",
+  "production_ready": true
+}

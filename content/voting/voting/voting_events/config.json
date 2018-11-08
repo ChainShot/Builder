@@ -1,0 +1,55 @@
+{
+  "_id": "5b5e727ed9f9972276897e4b",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5b58fffbd9f997399b71e44a",
+    "5b5e799dd9f9972276897e4e",
+    "5b69fdfbd9f9970c8b2af0e3"
+  ],
+  "completion_message": "## Nice!\n\nWe have one final step on our Solidity contract: integrate the Aragon Core! ",
+  "container_id": "5b58fc40d9f997399b71e3fd",
+  "details": "## Aragon JS\n\nThe Aragon JS library helps provide the glue between your smart contract and what is used by the front-end. Part of that process is to pass any Solidity events and their respective arguments through a state reducer. \n\nWe'll be going through the Aragon JS library further and writing the state update functions on a later step. \n\n## Solidity Events \n\nSolidity events are useful for logging as well as indicating to the front-end that some particular change in the smart contract's state has just occurred. \n\nTake for instance if someone's balance for a smart contract changed, we might create an event:\n\n```\nevent BalanceUpdate(address user)\n```\n\nThis might tell our front-end that a user's balance has changed, which could let it know to reload the balance from the smart contract state.\n\nWe can broadcast this event from within a function with an address:\n\n```\nBalanceUpdate(msg.sender);\n```\n\nFor more information on Solidity Events check out the [Solidity Documentation](http://solidity.readthedocs.io/en/v0.4.18/contracts.html#events).\n\n## Truffle Event Bug\n\nIf you happen to run into an issue while running your tests:\n\n```\nTypeError: Cannot read property 'constructor' of undefined\n```\n\nThis is a known Truffle issue and we're waiting for a resolution. \n\nYou're likely running into this because you did not give your event variable a name:\n\n```\nevent DoSomething(uint);\n```\n\nInstead of:\n\n```\nevent DoSomething(uint variableName);\n```",
+  "language": "solidity",
+  "language_version": "0.4.18",
+  "position": 3,
+  "task": "## Voting Events\n\nThe [Aragon Client library](?tab=details&scroll=Aragon%20JS) will be hooked up to listen to events from your Solidity smart contract, so our next step is to make some events to let the front-end know something has changed! \n\nLet's create two [solidity events](?tab=details&scroll=Solidity%20Events):\n\n1. `VoteCreated` - Lets the front-end know when a vote has been created and a `uint256` which is the votes index in the votes array.\n2. `VoteCast` - Lets the front-end know when a vote has been cast and, just like `VoteCreated`, it passes a `uint256` that is the vote index. \n\nWhen our front-end receives these events it will know that the particular vote has been created or updated so it can look up its current state.",
+  "test_framework": "truffle_with_mocha",
+  "title": "Voting Events",
+  "validated_contract": "Voting",
+  "updated_at": "2018-11-08T02:51:28.901Z",
+  "created_at": "2018-10-16T01:50:10.712Z",
+  "abi_validations": [
+    {
+      "_id": "5b735726d9f9970a465ebd05",
+      "constant": "nil",
+      "payable": "nil",
+      "error": null,
+      "task_display": "Create a VoteCreated event",
+      "name": "VoteCreated",
+      "type": "event",
+      "inputs": [
+        {
+          "_id": "5b735726d9f9970a465ebd06",
+          "name": null,
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "_id": "5b735726d9f9970a465ebd07",
+      "constant": "nil",
+      "payable": "nil",
+      "error": null,
+      "task_display": "Create a VoteCast event",
+      "name": "VoteCast",
+      "type": "event",
+      "inputs": [
+        {
+          "_id": "5b735726d9f9970a465ebd08",
+          "name": null,
+          "type": "uint256"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "_id": "5bd3dc83e6b0b047781712d8",
+  "_type": "CodeStage",
+  "completion_message": "## Fantastic.\n\nNow an owner can create their transactions and eat it too. Or have their cake and confirm it as well? \n\nGet excited, it's time to fund our wallet!",
+  "container_id": "5bce5e20e6b0b012e91da44b",
+  "details": "",
+  "language": "solidity",
+  "language_version": "0.4.19",
+  "position": 5,
+  "task": "## Submit Transactions\n\nLet's create a new public facing function that will allow a user to create a transaction and immediately confirm it. \n\nDefine a `submitTransaction` function with a destination `address` and a `uint` value as it's arguments.",
+  "test_framework": "truffle_with_mocha",
+  "title": "Submit Transaction",
+  "validated_contract": "MultiSig",
+  "updated_at": "2018-11-08T02:51:28.494Z",
+  "created_at": "2018-10-28T17:41:09.083Z",
+  "abi_validations": [
+    {
+      "_id": "5bd79388626daf74460af379",
+      "constant": "false",
+      "payable": "false",
+      "error": null,
+      "task_display": "Define a submitTransaction function",
+      "name": "submitTransaction",
+      "type": "function",
+      "inputs": [
+        {
+          "_id": "5bd79388626daf74460af37a",
+          "name": null,
+          "type": "address"
+        },
+        {
+          "_id": "5bd79388626daf74460af37b",
+          "name": null,
+          "type": "uint256"
+        }
+      ]
+    }
+  ],
+  "code_file_ids": [
+    "5bcfc074e6b0b0328e69567a",
+    "5bd3db9be6b0b047781712d7"
+  ]
+}

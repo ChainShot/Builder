@@ -1,0 +1,54 @@
+{
+  "_id": "5ba1c57de6b0b01133b453b3",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5ba1c61fe6b0b01133b453b7",
+    "5ba1c6a9e6b0b01133b453b8",
+    "5ba1cb5ee6b0b01133b453bf",
+    "5ba26428e6b0b064157b65c5",
+    "5ba2645ce6b0b064157b65c6",
+    "5ba2648de6b0b064157b65c7"
+  ],
+  "completion_message": "",
+  "container_id": "5ba1c494e6b0b01133b453b2",
+  "details": "## ERC-721\n\nERC-721 is a free, open standard that describes how to build non-fungible tokens on the Ethereum blockchain. While most tokens are fungible, ERC-721 tokens are all unique.\n\nA good article explaining the standard can be found [here](https://medium.com/crypto-currently/the-anatomy-of-erc721-e9db77abfc24).\n\n## Non-Fungible Token\n\nAn asset that is non-fungible simply means that asset A does not necessarily have the same value as asset B. These assets have unique properties which allow their value to be determined by the market. Do you remember Pokemon cards? A Charizard had a much higher value than a Pidgey and was quite difficult to get your hands on. \n\nOn the other hand, the US dollar is a fungible asset. Trading $20 with your friend for $20 leaves neither party in a more advantageous situation since the values are intrinsic to the asset itself and each $20 bill's value is determined at the time it is minted.",
+  "language": "solidity",
+  "language_version": "0.4.18",
+  "position": 0,
+  "task": "Implement the [ERC-721](?tab=details&scroll=ERC-721) standard to create a [Non-Fungible Token](?tab=details&scroll=Non-Fungible%20Token) (NFT) contract where:\n\n- The owner of the contract can create a game item and assign the item to an address\n- The created game items are stored in a data structure called `gameItems` which associates an `itemId` to the respective `GameItem`\n- The assigned owners of the game items can trade their items\n\nImport the ERC-721 contract, setup Marketplace to inherit its functions and use the appropriate ERC721 functions to pass the tests.\n\n> Tip: `ERC721.sol` sits at the same directory level as `Marketplace.sol`\n",
+  "test_framework": "truffle_with_mocha",
+  "title": "Crafting in Process",
+  "validated_contract": "Marketplace",
+  "updated_at": "2018-11-08T02:51:28.346Z",
+  "created_at": "2018-10-16T01:50:10.356Z",
+  "abi_validations": [
+    {
+      "_id": "5ba3c8cad9f997459c1b2c1d",
+      "constant": "true",
+      "payable": "nil",
+      "error": null,
+      "task_display": "Create a public gameItems data structure which associates an itemId to a GameItem",
+      "name": "gameItems",
+      "type": "function",
+      "outputs": [
+        {
+          "_id": "5ba3c8cad9f997459c1b2c1e",
+          "name": null,
+          "type": "string"
+        },
+        {
+          "_id": "5ba3c8cad9f997459c1b2c1f",
+          "name": null,
+          "type": "uint256"
+        }
+      ],
+      "inputs": [
+        {
+          "_id": "5ba3c8cad9f997459c1b2c20",
+          "name": null,
+          "type": "uint256"
+        }
+      ]
+    }
+  ]
+}

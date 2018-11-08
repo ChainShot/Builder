@@ -1,0 +1,15 @@
+{
+  "_id": "5bb626c3929d2472822d18f9",
+  "_type": "Challenge",
+  "badge_type_ids": [
+    "5bb6a588e6b0b05579436d8a"
+  ],
+  "description": "Create a Voting Contract with a single owner who can register users and allow them to vote.",
+  "intro": "### Hello ETH SF Challengers!\n\nExcited to share with you this Solidity Smart Contract challenge! This one will test your ability to work with Solidity mappings/arrays, addresses and security.\n\n### Prizes\n\nIf you complete this challenge during the hours of the ETH SF hackathon you'll be awarded a special badge. If you're one of the first ten winners you can come claim a limited edition ChainShot shirt from us!\n\nBest of luck, hack away! ",
+  "production_ready": false,
+  "title": "ETH SF Challenge: Voting",
+  "updated_at": "2018-10-23T22:59:23.145Z",
+  "created_at": "2018-10-16T01:50:09.783Z",
+  "stage_container_group_id": "5bcdf0c31cf372e860c8b8bc",
+  "version": "Solidity v0.4.19"
+}

@@ -1,0 +1,17 @@
+{
+  "_id": "5bc74dce1cf372ed6d4125aa",
+  "_type": "Challenge",
+  "badge_type_ids": [
+    "5b515cbde6b0b0453b4e9e3d",
+    "5b515cf6e6b0b0453b4e9e3e",
+    "5b515d23e6b0b0453b4e9e3f"
+  ],
+  "title": "Voting",
+  "description": "Create a Voting Contract with a single owner who can register users and allow them to vote.",
+  "production_ready": true,
+  "intro": "### Voting Contract\n\nHey there! This is a Solidity Smart Contract Challenge where you will create a Voting Smart Contract that will allow a single person to register voters, allow those voters to express their approval/disapproval for the vote, and add a helper function to lookup a vote for a particular voter. \n\n### Challenge Skills\n\nBy completing this challenge you demonstrate your ability to work with Solidity mappings/arrays, addresses and security error handling.",
+  "updated_at": "2018-10-28T15:58:47.139Z",
+  "created_at": "2018-10-17T14:57:18.055Z",
+  "stage_container_group_id": "5bcdf0c31cf372e860c8b8c5",
+  "version": "Solidity v0.4.19"
+}

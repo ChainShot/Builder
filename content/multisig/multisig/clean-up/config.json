@@ -1,0 +1,20 @@
+{
+  "_id": "5bd50827e6b0b0406ab27856",
+  "_type": "CodeStage",
+  "completion_message": "## Clean-Up Complete\n\nLet Mr. Clean know his services are no longer needed. \n\nNext we'll add some getters for our front-end applications. ",
+  "container_id": "5bce5e20e6b0b012e91da44b",
+  "details": "",
+  "language": "solidity",
+  "language_version": "0.4.19",
+  "position": 8,
+  "task": "## Housekeeping\n\nAt this point the core of our Mulit-Sig wallet is complete! Below we clean-up our code to better the flow of adding, confirming, and executing a transaction.\n\n1. Invoke `executeTransaction` within `confirmTransaction`\n\nOnce the multi-sig has been confirmed by enough owners to meet the requirement, invoke the execution. This saves the owner from having to manually invoke the execution.\n\n2. Change `addTransaction` function visibility from `public` to `internal`\n\nAn `internal` function can only be called from within a Solidity contract. Since we built a `submitTransaction` function to handle the creation and confirmation of a `Transaction` we no longer have the need for `addTransaction` to be called externally.",
+  "test_framework": "truffle_with_mocha",
+  "title": "Clean-up",
+  "validated_contract": "MultiSig",
+  "updated_at": "2018-10-30T00:21:34.230Z",
+  "created_at": "2018-10-28T17:41:09.711Z",
+  "code_file_ids": [
+    "5bcfc074e6b0b0328e69567a",
+    "5bd50893e6b0b0406ab27857"
+  ]
+}

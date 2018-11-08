@@ -1,0 +1,39 @@
+{
+  "_id": "5bb6280f929d2472822d18fe",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5bb627dc929d2472822d18fd",
+    "5bb6271f929d2472822d18fb",
+    "5bb6285d929d2472822d18ff"
+  ],
+  "completion_message": "## Count it up \n\nYou did it. One last task to go! \n\nNext we'll let voters lookup their `vote`. ",
+  "container_id": "5bb626c3929d2472822d18f9",
+  "details": "",
+  "language": "solidity",
+  "language_version": "0.4.19",
+  "position": 1,
+  "task": "## Count up the Votes!\n\nNow your task is to create a function called `numberVotes` which will return the number of total votes registered. \n\nKeep in mind that users can be registered without having voted yet! ",
+  "test_framework": "truffle_with_mocha",
+  "title": "Counting Votes",
+  "validated_contract": "Voting",
+  "updated_at": "2018-11-08T02:51:28.372Z",
+  "created_at": "2018-10-16T01:50:10.383Z",
+  "abi_validations": [
+    {
+      "_id": "5bb6cfc5e6b0b01777099397",
+      "constant": "true",
+      "payable": "false",
+      "error": null,
+      "task_display": "Create a numberVotes function",
+      "name": "numberVotes",
+      "type": "function",
+      "outputs": [
+        {
+          "_id": "5bb6cfc5e6b0b01777099398",
+          "name": null,
+          "type": "uint256"
+        }
+      ]
+    }
+  ]
+}

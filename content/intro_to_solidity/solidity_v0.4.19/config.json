@@ -1,0 +1,12 @@
+{
+  "_id": "5b8dfa4dd9f9970e1be08638",
+  "_type": "Lesson",
+  "description": "An intro for someone new to the Solidity Programming Language",
+  "intro": "## Intro To Solidity\n\nThis lesson walks through the Solidity Basics",
+  "production_ready": false,
+  "title": "Intro To Solidity",
+  "updated_at": "2018-10-25T15:40:56.115Z",
+  "created_at": "2018-10-16T01:50:10.022Z",
+  "stage_container_group_id": "5bcdf0c31cf372e860c8b8b9",
+  "version": "Solidity v0.4.19"
+}

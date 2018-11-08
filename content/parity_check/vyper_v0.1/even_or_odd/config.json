@@ -1,0 +1,39 @@
+{
+  "_id": "5bd4f411626daf1162be4c21",
+  "_type": "CodeStage",
+  "container_id": "5bd4f492626daf1162be4c27",
+  "title": "Even or Odd",
+  "position": 0,
+  "task": "## Check Function\n\nCreate a `public` function called `check` which takes in a [left-padded](?tab=details&scroll=Left%20Padded%20Bytes32%20Array) `bytes32` array and converts it to an unsigned integer. \n\n## Emit Events\n\nOnce you have the unsigned integer you'll need to check whether it is even or odd. If it is even, [emit an event](https://vyper.readthedocs.io/en/latest/logging.html) called `Even` with no arguments. Likewise, if it is odd, emit an event called `Odd` with no arguments.",
+  "details": "## Left Padded Bytes32 Array\n\nThe left-padded `bytes32` array will contain some integer value padded on its left by a string of zeroes for every unused bit. For instance the value `15` would be:\n\nIn Hexidecimal:\n```\n000000000000000000000000000000000000000000000000000000000000000f\n```\n\nIn Binary:\n```\n0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111\n```\n\n> Vyper has built-in [explicit conversion](https://vyper.readthedocs.io/en/latest/built-in-functions.html?highlight=convert#convert) that will be useful for this challenge. ",
+  "validated_contract": "Parity",
+  "language_version": "0.1.0b3",
+  "language": "vyper",
+  "test_framework": "truffle_with_mocha",
+  "updated_at": "2018-11-08T02:51:29.028Z",
+  "created_at": "2018-10-27T23:26:09.944Z",
+  "abi_validations": [
+    {
+      "_id": "5bd612f41cf3720793cf1328",
+      "constant": "false",
+      "payable": "false",
+      "error": null,
+      "task_display": "Create a public function 'check' with a bytes32 argument",
+      "name": "check",
+      "type": "function",
+      "inputs": [
+        {
+          "_id": "5bd612f41cf3720793cf1329",
+          "name": null,
+          "type": "bytes32"
+        }
+      ]
+    }
+  ],
+  "code_file_ids": [
+    "5bd4f51f626daf1162be4c2b",
+    "5bd4f56b626daf1162be4c2c",
+    "5bd4f43e626daf1162be4c24"
+  ],
+  "completion_message": ""
+}

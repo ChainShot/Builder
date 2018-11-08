@@ -1,0 +1,12 @@
+{
+  "_id": "5bb2c8ded9f99705a60c62d3",
+  "_type": "Lesson",
+  "description": "Learn the basics of the EVM programming language Vyper! ",
+  "intro": "## Intro to Vyper\n\nHey there! Welcome to this Vyper programming introduction. \n\n### What is Vyper? \n\nVyper is a programming language with python syntax that can be compiled and executed on the Ethereum Virtual Machine. \n\nIn this regard, it is similar to [Solidity](http://solidity.readthedocs.io) which has had the most adoption for Ethereum Smart Contract development to this point. \n\nVyper, however, seeks to distinguish itself by focusing on three particular goals **Security**, **Language Simplicity** and **Auditability**. \n\nAs we move along this coding tutorial we'll seek to illustrate these principles in action. In the meantime, you can read more about Vyper's goals and features in its [documentation](https://vyper.readthedocs.io/en/latest/).\n\n### What does this Intro teach?\n\nThis intro will dive into some of the fundamentals of Vyper by helping you create your own simple token implementation. Among these fundamentals are:\n\n1. **Value Types** - Specifically `uint256`, `bytes` and `address`\n2. **Mappings** - Key-value stores that can associate values for later lookup/modification\n3. **Contract State** - State variables: how to create getters as well as how to update\n4. **Functions** - Including constructors and state changing functions \n\nExcited? Let's get started!",
+  "production_ready": false,
+  "title": "Intro To Vyper",
+  "updated_at": "2018-10-25T15:40:24.949Z",
+  "created_at": "2018-10-16T01:50:10.000Z",
+  "stage_container_group_id": "5bcdf0c31cf372e860c8b8c6",
+  "version": "Vyper v0.1"
+}

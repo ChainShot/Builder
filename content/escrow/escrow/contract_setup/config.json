@@ -1,0 +1,70 @@
+{
+  "_id": "5b0495e6e6b0b023751f9442",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5adab204929d249e5faefb55",
+    "5b0814eee6b0b05154025862"
+  ],
+  "completion_message": "# We Knew You Could Do It\n\nThey say the first step is always the hardest (or is it the last step?). \n\nEither way you have begun your journey towards creating a decentralized application. Congratulations :)",
+  "container_id": "5adab204929d249e5faefb4c",
+  "details": "## Smart Contracts\n\nSmart contracts are the backbone of the Ethereum network, written in the Solidity language, and are what allow developers to interact with the Ethereum blockchain. When building an application that interacts with Ethereum, start with building and deploying a smart contract.\n\n## Solidity Pragma\n\nA Solidity Pragma tells the compiler what version of Solidity you want to compile your code against. This lesson uses the solidity version **0.4.19**. We suggest you check the most current version by visiting the [Solidity GitHub](https://github.com/ethereum/solidity/releases) page. The version pragma should be the first line of code in the smart contract and is used as follows:\n\n```\npragma solidity ^0.4.19;\n```\n\nNotice the carrot ```^``` used directly before the version. The carrot allows the compiler to compile in any solidity version up to the version we stated in our contract. This will prevent the compiler from using an updated version of solidity which might include breaking changes to your application.\n\n## Contract Object\n\nDefine an `EscrowContract` contract object using the following syntax:\n\n```\ncontract ContractName {\n\n  // Contract code and data here\n\n}\n```\nWithin this contract object we can define the specific functions and state of our smart contract that live at a specific address on the Ethereum blockchain.\n\n## Address Member Variables\n\nWithin the contract object, lets define 3 address member variables: ```depositor```, ```beneficiary```, and ```arbiter```. \n\nIt should be noted that Solidity is a **statically typed language**. Therefore, when you define any variable in Solidity, the type of the variable must be associated to the variable definition. For the 3 parties described above, this can be accomplished with the following syntax:\n\n```\naddress public variableName;\n```\n> Here, **address** is the variable type. The keyword **public** is a visibility specifier. More detail around visibility specifiers is provided on the next stage.\n\nThese definitions will inform the smart contract that these variables are in fact Ethereum addresses on the blockchain and enable those addresses to interact with the smart contract based on the constraints we program into the contract.\n\nFor more information on variable types, check out the [types](http://solidity.readthedocs.io/en/v0.4.19/types.html) section within the Solidity documentation.",
+  "language": "solidity",
+  "language_version": "0.4.19",
+  "position": 0,
+  "task": "## Getting Setup\nHey there, welcome to the Escrow Contract module!\n\nIn this **Task** section you'll find what you need to pass this step. For a more in-depth view switch to the **Details** pane.\n\nYou can also look at your `testContract.js` to see the exact tests you need to pass. Once you feel confident in your code, click \"Run Tests\" to try and pass this stage!\n\n1. Declare a [Solidity Pragma 0.4.19](?tab=details&scroll=Solidity%20Pragma)\n2. Create [three public addresses](?tab=details&scroll=Address%20Member%20Variables) for the `arbiter`, `beneficiary`, and `depositor`\n\n> These addresses will need to be public and use these exact variable names in order for your tests to pass.\n",
+  "test_framework": "truffle_with_mocha",
+  "title": "Contract Setup",
+  "validated_contract": "EscrowContract",
+  "updated_at": "2018-11-08T02:51:28.248Z",
+  "created_at": "2018-10-16T01:50:10.275Z",
+  "abi_validations": [
+    {
+      "_id": "5b6f5a7cd9f9974bb8518d1d",
+      "constant": "true",
+      "payable": "nil",
+      "error": "We could not find a public depositor address on your EscrowContract (don't forget the public keyword)!",
+      "task_display": "Declare a Public Member depositor Address",
+      "name": "depositor",
+      "type": "function",
+      "outputs": [
+        {
+          "_id": "5b6f5a7cd9f9974bb8518d1e",
+          "name": "",
+          "type": "address"
+        }
+      ]
+    },
+    {
+      "_id": "5b6f5a7cd9f9974bb8518d1f",
+      "constant": "true",
+      "payable": "nil",
+      "error": "We could not find a public beneficiary address on your EscrowContract (don't forget the public keyword)!",
+      "task_display": "Declare a Public Member beneficiary Address",
+      "name": "beneficiary",
+      "type": "function",
+      "outputs": [
+        {
+          "_id": "5b6f5a7cd9f9974bb8518d20",
+          "name": null,
+          "type": "address"
+        }
+      ]
+    },
+    {
+      "_id": "5b6f5a7cd9f9974bb8518d21",
+      "constant": "true",
+      "payable": "nil",
+      "error": "We could not find a public arbiter address on your EscrowContract (don't forget the public keyword)!",
+      "task_display": "Declare a Public Member arbiter Address",
+      "name": "arbiter",
+      "type": "function",
+      "outputs": [
+        {
+          "_id": "5b6f5a7cd9f9974bb8518d22",
+          "name": null,
+          "type": "address"
+        }
+      ]
+    }
+  ]
+}

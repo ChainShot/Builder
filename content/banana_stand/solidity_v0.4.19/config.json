@@ -1,0 +1,17 @@
+{
+  "_id": "5b8332b6d9f99799d09d5bdf",
+  "_type": "Challenge",
+  "badge_type_ids": [
+    "5b515cf6e6b0b0453b4e9e3e",
+    "5b515d23e6b0b0453b4e9e3f",
+    "5b515cbde6b0b0453b4e9e3d"
+  ],
+  "description": "Let's use our math skills and create a decentralized banana stand! ",
+  "intro": "## Banana Stand \n\nThis is a Solidity Smart Contract challenge where you will need to create a contract that adds and removes from a count of bananas. \n\n### Challenge Skills\n\nBy completing this challenge you show that you have a good understand of integer overflow and underflow. It's important to understand the memory allocation options available and how to use them responsibly in Solidity. ",
+  "production_ready": true,
+  "title": "Banana Stand",
+  "updated_at": "2018-10-23T22:59:57.147Z",
+  "created_at": "2018-10-16T01:50:09.796Z",
+  "stage_container_group_id": "5bcdf0c31cf372e860c8b8bd",
+  "version": "Solidity v0.4.19"
+}

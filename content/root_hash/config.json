@@ -1,0 +1,14 @@
+{
+  "_id": "5be1864d626daf0f9392cf37",
+  "badge_type_ids": [
+    "5b515cbde6b0b0453b4e9e3d",
+    "5b515cf6e6b0b0453b4e9e3e",
+    "5b515d23e6b0b0453b4e9e3f"
+  ],
+  "title": "Root Hash",
+  "description": "Split a byte array into chunks of size 32 and hash them together to form a root hash.",
+  "production_ready": true,
+  "updated_at": "2018-11-07T18:22:10.519Z",
+  "created_at": "2018-11-06T12:17:17.262Z",
+  "container_type": "Challenge"
+}

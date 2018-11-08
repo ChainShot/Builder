@@ -1,0 +1,13 @@
+{
+  "_id": "5bcdf0c31cf372e860c8b8bc",
+  "title": "ETH SF Challenge: Voting",
+  "description": "Create a Voting Contract with a single owner who can register users and allow them to vote.",
+  "badge_type_ids": [
+    "5bb6a588e6b0b05579436d8a"
+  ],
+  "updated_at": "2018-10-22T15:46:11.464Z",
+  "created_at": "2018-10-22T15:46:11.464Z",
+  "container_type": "Challenge",
+  "preface": "Hello ETH SF Challengers! This challenge will test your Solidity skills, hope you were paying close attention! ",
+  "production_ready": false
+}

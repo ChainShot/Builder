@@ -1,0 +1,20 @@
+{
+  "_id": "5ba15710d9f997cd2e33ebae",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5ba1572dd9f997cd2e33ebaf",
+    "5ba15643d9f997cd2e33ebaa",
+    "5ba1562ad9f997cd2e33eba9"
+  ],
+  "completion_message": "## Mod Two Equals One and You Are Done\n\nYou've figured out how to build the Merkle Tree and determine the root. Well done! \n\nNow it's time to pull only relevant data to prove that a particular hash belongs in the merkle tree. ",
+  "container_id": "5ba1558bd9f997cd2e33eba7",
+  "details": "## Other Odd Trees\n\nThe rule for odd trees is always to use up everything towards the left side before filling out the right side of the tree. \n \n### Five Leaf Tree\n\nWith five leaves, we use the first four as the left side and bring the fifth hash all the way up until the last combination. \n\n```\n      Root\n     /    \\\n    ABCD   E\n    / \\    |\n   AB  CD  E\n  / \\  / \\ |\n  A B  C D E\n```\n\n### Seven Leaf Tree\n\nWith seven leaves, the last three hashes work similar to a three leaf tree to build up the `EFG`  combination and then combines with the first four hashes.\n\n```\n        Root\n       /    \\\n    ABCD     EFG\n    / \\      / \\\n   AB  CD   EF  G\n  / \\  / \\  / \\ |\n  A B  C D  E F G\n```",
+  "language": "javascript",
+  "language_version": "8.x/babel",
+  "position": 2,
+  "task": "## Odd Leaves\n\nGreat! Now we can build large merkle trees. But, can we build them with an odd number of leaves?\n\n### Three Leaf Tree\n\nNow let's consider what happens in the case of an odd number of leaves in a tree. Any time that there is no right side of the particular branch, we're just going to want to carry the hash one layer up:\n\n```\n    Root\n    / \\ \n   AB  C\n  / \\  |\n  A B  C\n```\n\nIn this case we don't use the `C` hash until we hash it together with `AB` to create the Merkle Root. Let's handle this in our test cases. \n\nCheck out configurations for [Other Odd Trees](?tab=details&scroll=Other%20Odd%20Trees).",
+  "test_framework": "mocha_bdd",
+  "title": "Odd Leaves",
+  "updated_at": "2018-10-16T01:50:10.370Z",
+  "created_at": "2018-10-16T01:50:10.370Z"
+}

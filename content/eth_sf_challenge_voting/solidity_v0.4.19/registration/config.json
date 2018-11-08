@@ -1,0 +1,64 @@
+{
+  "_id": "5bb626e7929d2472822d18fa",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5bb6271f929d2472822d18fb",
+    "5bb627ac929d2472822d18fc",
+    "5bb627dc929d2472822d18fd"
+  ],
+  "completion_message": "## Registration Complete.\n\nThe votes are in, you did it! \n\nNext step is to return the number of votes.",
+  "container_id": "5bb626c3929d2472822d18f9",
+  "details": "",
+  "language": "solidity",
+  "language_version": "0.4.19",
+  "position": 0,
+  "task": "## Registration Begins!\n\nHey there! It's time to register some voters. Your task is to create three functions on the smart contract that will allow a single owner to register new voters and allow the registered voters to vote.\n\n## Constructor Owner\n\nFirst create a constructor that will register the `owner` as the person who deploys the smart contract. Only the 'owner' will be allowed to `register` new voters. \n\n## Register Voters \n\nCreate a function called `register` that will take an `address` and register that voter.\n\n## Vote \n\nCreate a function `vote` that will capture a registered voter's vote. \n\nThis function will take in a `bool` that indicates whether or not the voter supports the vote. You can store the vote any way you wish for now. \n\nEnsure that if a non-registered voter calls this function, it will `revert`. ",
+  "test_framework": "truffle_with_mocha",
+  "title": "Registration",
+  "validated_contract": "Voting",
+  "updated_at": "2018-11-08T02:51:28.678Z",
+  "created_at": "2018-10-16T01:50:10.508Z",
+  "abi_validations": [
+    {
+      "_id": "5bb6a69ce6b0b05579436d8f",
+      "constant": "nil",
+      "payable": "nil",
+      "error": null,
+      "task_display": "Create a constructor function",
+      "name": "Voting",
+      "type": "constructor"
+    },
+    {
+      "_id": "5bb6a69ce6b0b05579436d90",
+      "constant": "nil",
+      "payable": "nil",
+      "error": null,
+      "task_display": "Create a register function",
+      "name": "register",
+      "type": "function",
+      "inputs": [
+        {
+          "_id": "5bb6a69ce6b0b05579436d91",
+          "name": null,
+          "type": "address"
+        }
+      ]
+    },
+    {
+      "_id": "5bb6a69ce6b0b05579436d92",
+      "constant": "nil",
+      "payable": "nil",
+      "error": null,
+      "task_display": "Create a vote function",
+      "name": "vote",
+      "type": "function",
+      "inputs": [
+        {
+          "_id": "5bb6a69ce6b0b05579436d93",
+          "name": null,
+          "type": "bool"
+        }
+      ]
+    }
+  ]
+}

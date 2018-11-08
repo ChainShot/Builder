@@ -1,0 +1,59 @@
+{
+  "_id": "5b90c5def1d76e2d5c6c719c",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5b90c5f6f1d76e2d5c6c719d",
+    "5b8dfd0bd9f9970e1be0863e"
+  ],
+  "completion_message": "",
+  "container_id": "5b8dfa4dd9f9970e1be08638",
+  "details": "",
+  "language": "solidity",
+  "language_version": "0.4.19",
+  "position": 4,
+  "task": "## Intro To Mapping\n\nLet's assign some judges to our projects, we'll use a mapping.\n\n1. Create an `assignJudge` function which will be used to assign a judge's `address` to a team by its index.\n2. Add a lookup function `projectByJudge` so we can find a projects title by the judges address.",
+  "test_framework": "truffle_with_mocha",
+  "title": "Intro to Mapping",
+  "validated_contract": "Hackathon",
+  "updated_at": "2018-11-08T02:51:28.450Z",
+  "created_at": "2018-10-16T01:50:10.417Z",
+  "abi_validations": [
+    {
+      "_id": "5b922e8ef1d76e2d5c6c726e",
+      "constant": "false",
+      "payable": "nil",
+      "error": null,
+      "task_display": "Create an assignJudge function.",
+      "name": "assignJudge",
+      "type": "function",
+      "inputs": [
+        {
+          "_id": "5b922e8ef1d76e2d5c6c726f",
+          "name": null,
+          "type": "address"
+        },
+        {
+          "_id": "5b922e8ef1d76e2d5c6c7270",
+          "name": null,
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "_id": "5b922e8ef1d76e2d5c6c7271",
+      "constant": "true",
+      "payable": "nil",
+      "error": null,
+      "task_display": "Create a projectByJudge function",
+      "name": "projectByJudge",
+      "type": "function",
+      "outputs": [
+        {
+          "_id": "5b922e8ef1d76e2d5c6c7272",
+          "name": null,
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}

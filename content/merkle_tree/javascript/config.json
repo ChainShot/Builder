@@ -1,0 +1,15 @@
+{
+  "_id": "5ba1558bd9f997cd2e33eba7",
+  "_type": "Lesson",
+  "badge_type_ids": [
+    "5ba980ba929d249ffe9529eb"
+  ],
+  "description": "Build your own Merkle Tree and learn how to get to the root of its optimization powers! ",
+  "intro": "## Merkle Trees\n\nMerkle Trees are awesome! They allow us to verify one piece of data is part of a large data structure, without having all of its parts. This means they can be used to check for inconsistencies in all kinds of distributed systems!\n\nFor Blockchain, storing transactions as Merkle Trees allows us to look at a block and verify that a transaction was part of that block by only having part of the data set (average case `log(n)` where `n` is the number of leaf nodes).\n\nLet's take a look at an example: \n\n\n### ABCDEFGHIJ Merkle Tree \n\nIn this tree each letter represents a hash, and combining letters represents concatenating hashes and hashing those together. \n\n```\n          Root \n        /      \\\n    ABCD        EFGHIJ\n     |          /    \\\n    ABCD     EFGH     IJ\n    / \\      /   \\     |\n   AB  CD   EF   GH   IJ\n  / \\  / \\  / \\  / \\  / \\      \n  A B  C D  E F  G H  I J\n```\n\nTo prove that the hash `A` is a part of the Merkle Root we don't need to know Hash `C` or `D`, we just need to know Hash `CD`. The necessary proof for `A` is:\n\n```\nHash(Hash(Hash(A + B) + CD) + EFGHIJ)\n```\nWhere we only need to know the hashes `B`, `CD`, and `EFGHIJ` to prove that `A` is in the merkle root. \n\nIf you don't understand all of this, don't worry! That's what this lesson is for. You will understand soon and we'll come back to this over the coming stages.\n ",
+  "production_ready": true,
+  "title": "Merkle Tree",
+  "updated_at": "2018-10-25T15:40:49.974Z",
+  "created_at": "2018-10-16T01:50:09.985Z",
+  "stage_container_group_id": "5bcdf0c31cf372e860c8b8c2",
+  "version": "JavaScript"
+}

@@ -1,0 +1,50 @@
+{
+  "_id": "5bd22b07e6b0b0477817127f",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5bcfc074e6b0b0328e69567a",
+    "5bd22bcde6b0b04778171280"
+  ],
+  "completion_message": "## Good, Good.\n\nWhat are the chances someone gets that zero address? \n\nOnto confirmations!",
+  "container_id": "5bce5e20e6b0b012e91da44b",
+  "details": "",
+  "language": "solidity",
+  "language_version": "0.4.19",
+  "position": 2,
+  "task": "\n## Add Transaction Function\n\nLet's add some transactions to our wallet!\n\nDefine an `addTransaction` public function with a destination `address` and `uint256` value as parameters. \n\nThis function should create a new transaction struct and return it's `uint256` id. \n\nYou can determine the id by the total number of transactions at the time the transaction is created. For example, if there are 3 transactions, the next transaction id is 3.\n\n## Safety Check  \n\nRevert the `addTransaction` function if the destination `address` is the zero-account (`address(0)` in solidity). ",
+  "test_framework": "truffle_with_mocha",
+  "title": "Add Transactions",
+  "validated_contract": "MultiSig",
+  "updated_at": "2018-11-08T02:51:29.166Z",
+  "created_at": "2018-10-28T17:41:09.726Z",
+  "abi_validations": [
+    {
+      "_id": "5bd76db2626daf74460af2fd",
+      "constant": "false",
+      "payable": "false",
+      "error": null,
+      "task_display": "Define an addTransaction function",
+      "name": "addTransaction",
+      "type": "function",
+      "outputs": [
+        {
+          "_id": "5bd76db2626daf74460af2fe",
+          "name": null,
+          "type": "uint256"
+        }
+      ],
+      "inputs": [
+        {
+          "_id": "5bd76db2626daf74460af2ff",
+          "name": null,
+          "type": "address"
+        },
+        {
+          "_id": "5bd76db2626daf74460af300",
+          "name": null,
+          "type": "uint256"
+        }
+      ]
+    }
+  ]
+}

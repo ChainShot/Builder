@@ -1,0 +1,40 @@
+{
+  "_id": "5adab204929d249e5faefb53",
+  "_type": "DownloadStage",
+  "completion_message": "",
+  "container_id": "5adab204929d249e5faefb4c",
+  "details": "## Time For Download!\n\nDownload your decentralized application in a framework of your choice. The application will include all of the code you wrote during this tutorial.\n\nIf you're looking for a different framework than is available here, let us know! \n\nThis will be a great starting point to start building a usable application as you see fit. Please visit our demo page to check out applications built by other users.\n\nBe sure to check out the `README.md` for more instructions on how to get started and for all the pre-requisite information.\n\nAnd jump in our [Slack Channel](https://join.slack.com/t/chainshotnodes/shared_invite/enQtMzU3ODc5NTM3MTI3LTFlZTY1YzcwM2QzYWI0ODY2ZDczMmYzOTVlYWQwZjkyZDFlYzUxZWM4NDNlNjk3N2EyNGMwOGQ0ZTVkZjQyNjE) to ask any questions or discuss where to go from here! ",
+  "position": 10,
+  "task": "",
+  "title": "Download",
+  "updated_at": "2018-11-08T02:51:28.065Z",
+  "created_at": "2018-10-16T01:50:10.122Z",
+  "project_skeletons": [
+    {
+      "_id": "5bd1d391626daf1162be4b7d",
+      "folder": "escrow/react",
+      "title": "React Application",
+      "description": "A React Application built from the create-react-app generator, Bootstrap CSS and your code.",
+      "zip_name": "react-escrow",
+      "thumbnail": {
+        "_id": "5bd1d391626daf1162be4b7e",
+        "width": 384,
+        "height": 384,
+        "secure_url": "https://res.cloudinary.com/divzjiip8/image/upload/v1533497946/xlzxc3vxvffd16ur7f4k.png"
+      }
+    },
+    {
+      "_id": "5bd1d391626daf1162be4b7f",
+      "folder": "escrow/jquery",
+      "title": "JQuery Application",
+      "description": "A simple JQuery application created with parcel and your code.",
+      "zip_name": "react-jquery",
+      "thumbnail": {
+        "_id": "5bd1d391626daf1162be4b80",
+        "width": 1000,
+        "height": 963,
+        "secure_url": "https://res.cloudinary.com/divzjiip8/image/upload/v1539310543/i6pb4whihnecsqwuzc1w.png"
+      }
+    }
+  ]
+}

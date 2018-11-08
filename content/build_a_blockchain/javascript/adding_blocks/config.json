@@ -1,0 +1,20 @@
+{
+  "_id": "5b3bb08bd9f997b30859bb7a",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5b3bb392d9f997b30859bb7d",
+    "5b3bad27d9f997b30859bb75",
+    "5b3afe0cd9f99763e5c4b503"
+  ],
+  "completion_message": "## Sweet gravy, it's a chain of blocks!\n\nNow that we have multiple blocks we need a way to make the hash of each block affected by the block before it. ",
+  "container_id": "5b3afd70d9f99763e5c4b4fe",
+  "details": "## Storing a Previous Hash\n\nIt's interesting that each block only stores a hash that references the previous block and it's data (by virtue of the hash). This is different from your typical LinkedList data structure which generally uses pointers that link towards the next block (it can point both ways in some cases). \n\nMore importantly, the fact that the reference is a `hash` is a crucial aspect that gives Blockchain it's unique characteristics. This will become more apparent in the the following two stages.",
+  "language": "javascript",
+  "language_version": "8.x/babel",
+  "position": 3,
+  "task": "## Add Block\n\nLet's create an `addBlock` function on our `Blockchain` class. \n\nThis function should take in a new block and add it to the `chain` array. \n\nEach new block should store a reference to the previous block on the chain. Let's add a property `previousHash` to each block, which stores the hash of the block before it. \n\n[Consider why](?tab=details) each block stores a `previousHash`.",
+  "test_framework": "mocha_bdd",
+  "title": "Adding Blocks",
+  "updated_at": "2018-10-16T01:50:10.292Z",
+  "created_at": "2018-10-16T01:50:10.292Z"
+}

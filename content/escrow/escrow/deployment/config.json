@@ -1,0 +1,21 @@
+{
+  "_id": "5adab204929d249e5faefb50",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5adab204929d249e5faefb54",
+    "5adab204929d249e5faefb5c",
+    "5adab205929d249e5faefb5e",
+    "5b3ae6a9d9f99763e5c4b4cc"
+  ],
+  "completion_message": "### Are you pumped? \n\nWe're pumped. You've created the Escrow Contract *and* the code you need to deploy it! Awesome.  \n\nNext, let's party on the TestNet.\n",
+  "container_id": "5adab204929d249e5faefb4c",
+  "details": "## Web3 Instance\n\nBefore we move on to writing the deploy function, **create a new web3 contract instance**. This instance should take the abi data as an argument and be assigned to a variable called EscrowContract. The syntax for creating a new web3 instance (JavaScript) is as follows:\n\n```\nnew web3.eth.Contract(abi);\n```\n\n## Deploy Function Overview\n\nYou will help complete a `deploy` function that takes an amount in ether and the 3 escrow party addresses as arguments. It will return a promise using the estimated gas of the deployed contract. \n\nTo do this we'll have to find the estimated gas of the contract. This can be accomplished by calling the web3 function ```deploy``` on the contract instance and then invoking the web3 function ```estimateGas``` on the return value of deployed contract. The returned gas value can then be passed into the promise.\n\nThe promise will perform two tasks:\n\n- Deploy the contract using the ```deploy``` function (again)\n- ```send``` the return value of the deployed contract to the blockchain\n\n## Web3 functions\n\nThe ```deploy``` function takes two parameters as an object of key-value pairs:\n\n-  **data:** the compiled contract bytecode\n-  **arguments** (*optional*): if the smart contract constructor receives any arguments, they are passed in here\n\n```\ncontractName.deploy({\n  arguments: [address1, address2, …], \n  data: bytecode,\n})\n```\n\nThe ```send``` function will take three parameters as an object of key-value pairs:\n\n- **from:** the address the transaction should be sent from\n- **gas:** the maximum gas to use for this transaction (estimated gas)\n- **value** (*optional*): send some ether in the transaction (measured in Wei)\n",
+  "language": "javascript",
+  "language_version": "6.x/babel",
+  "position": 7,
+  "task": "> **Note:** *The remainder of this block will be using JavaScript.*\n\n## Deploy your Contract!\n\nUsing the web3 JavaScript library, we're going to deploy our contract. Let's write a function ```deploy``` that will do exactly that!\n\n1) Create a new [web3 contract instance](?tab=details&scroll=Web3%20Instance).\n\n2) Estimate the amount of gas it will cost to deploy the contract given the its arguments (`arbiterAddress` and `beneficiaryAddress`) and its `bytecode`.\n\n3) Use the gas estimate to deploy the contract  and `send` it from the `depositorAddress`.",
+  "test_framework": "mocha_bdd",
+  "title": "Deployment",
+  "updated_at": "2018-10-16T01:50:10.834Z",
+  "created_at": "2018-10-16T01:50:10.834Z"
+}
