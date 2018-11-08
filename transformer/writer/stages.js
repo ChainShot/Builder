@@ -10,6 +10,14 @@ const create = async(db, folder, container_id) => {
       const newFolder = path.join(folder, toFolderName(doc.title));
       const file = path.join(newFolder, 'config.json');
       await fs.outputFile(file, json);
+      if(doc.language === 'solidity' || doc.language === 'vyper') {
+          await ['truffle.js', 'truffle-config.js'].map(async (x) => {
+            const configFile = path.join(newFolder, x);
+            await fs.outputFile(configFile, `module.exports = {}`);
+          });
+          // ensure the migrations folder is committed to github
+          await fs.outputFile(path.join(newFolder, 'migrations', '.gitignore'), '*\n!.gitignore')
+      }
       await createCodeFiles(db, newFolder, doc._id);
   }
 }
