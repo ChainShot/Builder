@@ -1,0 +1,15 @@
+{
+  "_id": "5b85cb10d9f9972c8de2f03b",
+  "_type": "Challenge",
+  "badge_type_ids": [
+    "5b85d0bee6b0b077f1482ffd"
+  ],
+  "description": "Determine the winning project of the hackathon from a list of rated projects!",
+  "intro": "![Voting Dapp](http://res.cloudinary.com/divzjiip8/image/upload/v1535498775/ETHBerlin-logo-inline-for-website2_ernr2y.png \"ETH Berlin\")\n\n### Hello ETH Berliners! \n\nExcited to share with you this Solidity Smart Contract challenge! Since this is a special ETH Berlin challenge we've themed it as a hackathon challenge. This one will test your ability to work with Solidity structs and arrays to find the winning project in a hackathon.\n\n### Prizes\n\nIf you complete this challenge during the hours of the ETH Berlin hackathon you'll be awarded a special badge. If you're one of the first ten winners you can come claim a limited edition ChainShot shirt from us!\n\nBest of luck, hack away! ",
+  "production_ready": false,
+  "title": "ETH Berlin Hackathon",
+  "updated_at": "2018-10-23T22:59:49.483Z",
+  "created_at": "2018-10-16T01:50:09.923Z",
+  "stage_container_group_id": "5bcdf0c31cf372e860c8b8c1",
+  "version": "Solidity v0.4.19"
+}

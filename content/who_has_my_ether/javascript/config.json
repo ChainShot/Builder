@@ -1,0 +1,17 @@
+{
+  "_id": "5b45277dd9f997416b4b0413",
+  "_type": "Challenge",
+  "badge_type_ids": [
+    "5b515d23e6b0b0453b4e9e3f",
+    "5b515cf6e6b0b0453b4e9e3e",
+    "5b515cbde6b0b0453b4e9e3d"
+  ],
+  "description": "Given an account address on the Ethereum blockchain find all the addresses that were sent Ether from that address.",
+  "intro": "## Who Has My Ether?\n\nThe goal of this challenge is to find all of the addresses that have been sent ether from a single address over the life of the blockchain. \n\nKeep in mind that each Block is a list of transactions:\n\n### Block 1\n\n| To        | From           | Wei  |\n|:------------- |:-------------| -----:|\n| 0xcea0...      | 0xdead... | 100 |\n| 0xcea0...      | 0xcafe...      |   205 |\n| 0xbeef...  | 0xcea0...       |    24 |\n\n\n### Block 2\n\n| To        | From           | Wei  |\n|:------------- |:-------------| -----:|\n| 0xcafe...      | 0xdead... | 15 |\n| 0xbabe...      | 0xcafe...      |   222 |\n| 0xbeef...  | 0x09cd...       |    30 |\n\nWhere any of the **From** addresses can be the address that we are tracking for this challenge.",
+  "production_ready": true,
+  "title": "Who has my Ether?",
+  "updated_at": "2018-10-23T23:00:05.507Z",
+  "created_at": "2018-10-16T01:50:09.884Z",
+  "stage_container_group_id": "5bcdf0c31cf372e860c8b8c0",
+  "version": "JavaScript"
+}

@@ -1,0 +1,17 @@
+{
+  "_id": "5bb406cad9f997a89a01f6eb",
+  "_type": "Challenge",
+  "badge_type_ids": [
+    "5b515cbde6b0b0453b4e9e3d",
+    "5b515cf6e6b0b0453b4e9e3e",
+    "5b515d23e6b0b0453b4e9e3f"
+  ],
+  "description": "Determine the winner from a list of rated projects!",
+  "intro": "## Hackathon Challenge\n\nThis is a Solidity Smart Contract challenge where you will need to create a function on a Hackathon contract to sort through a list of projects and find which one is the top-rated from a list of it's ratings.\n\n### Challenge Skills\n\nBy completing this challenge you demonstrate your ability to sort with structs and arrays in Solidity. ",
+  "production_ready": true,
+  "title": "Hackathon",
+  "updated_at": "2018-10-23T22:59:28.155Z",
+  "created_at": "2018-10-16T01:50:09.814Z",
+  "stage_container_group_id": "5bcdf0c31cf372e860c8b8be",
+  "version": "Solidity v0.4.19"
+}

@@ -1,0 +1,61 @@
+{
+  "_id": "5bd36edee6b0b047781712a8",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5bcfc074e6b0b0328e69567a",
+    "5bd3d0d1e6b0b047781712d0"
+  ],
+  "completion_message": "## Thank Jupiter, such security. \n\nYou've done a great job! Now our MultiSig confirmation function is secure.\n\nOnto more exciting stuff. ",
+  "container_id": "5bce5e20e6b0b012e91da44b",
+  "details": "",
+  "language": "solidity",
+  "language_version": "0.4.19",
+  "position": 4,
+  "task": "## Confirmation Security\n\nLet's create a few assertions to be sure the `confirmTransaction` function is not misused. \n\n## Valid Owners\n\nFirst let's ensure that `confirmTransaction` can only be called by the `owners` stored in the constructor. \n\nIf anyone else calls this function, let's revert. \n\n## Existing Transaction\n\nNext, we'll want to be sure the function is called only on an existing transaction. If the transaction does not exist, we'll revert. \n\nIn order to check for transaction existence, we can check that a valid destination `address` exists within that `struct`. If not it will be set to the zero-account `address(0)`.\n\n## Already Confirmed\n\nFinally, we should revert if an owner is trying to confirm a transaction they already have confirmed. \n",
+  "test_framework": "truffle_with_mocha",
+  "title": "Confirm Security",
+  "validated_contract": "MultiSig",
+  "updated_at": "2018-11-08T02:51:28.595Z",
+  "created_at": "2018-10-28T17:41:09.176Z",
+  "abi_validations": [
+    {
+      "_id": "5bd789bb626daf74460af34b",
+      "constant": "false",
+      "payable": "false",
+      "error": null,
+      "task_display": "Define a confirmTransaction function",
+      "name": "confirmTransaction",
+      "type": "function",
+      "inputs": [
+        {
+          "_id": "5bd789bb626daf74460af34c",
+          "name": null,
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "_id": "5bd789bb626daf74460af34d",
+      "constant": "true",
+      "payable": "false",
+      "error": null,
+      "task_display": "Define a validOwners mapping",
+      "name": "validOwners",
+      "type": "function",
+      "outputs": [
+        {
+          "_id": "5bd789bb626daf74460af34e",
+          "name": null,
+          "type": "bool"
+        }
+      ],
+      "inputs": [
+        {
+          "_id": "5bd789bb626daf74460af34f",
+          "name": null,
+          "type": "address"
+        }
+      ]
+    }
+  ]
+}

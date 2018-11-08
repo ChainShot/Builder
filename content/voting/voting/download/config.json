@@ -1,0 +1,27 @@
+{
+  "_id": "5b669177d9f997c86fe755d5",
+  "_type": "DownloadStage",
+  "completion_message": "",
+  "container_id": "5b58fc40d9f997399b71e3fd",
+  "details": "## Congratulations!!\n\nYou did it! But your journey does not end here. \n\nDownload all the code you've written in the Aragon React framework and you'll be able to continue to build on what you've created. \n\nThis framework is based off of the Aragon React boilerplate, if you're looking to build on another kit let us know! \n\nBe sure to check out the `README.md` for more instructions on how to get started and for all the pre-requisite information.\n\nAnd jump in our [Slack Channel](https://join.slack.com/t/chainshotnodes/shared_invite/enQtMzU3ODc5NTM3MTI3LTFlZTY1YzcwM2QzYWI0ODY2ZDczMmYzOTVlYWQwZjkyZDFlYzUxZWM4NDNlNjk3N2EyNGMwOGQ0ZTVkZjQyNjE) to ask any questions or discuss where to go from here! ",
+  "position": 8,
+  "task": "",
+  "title": "Download",
+  "updated_at": "2018-11-08T02:51:28.721Z",
+  "created_at": "2018-10-16T01:50:10.550Z",
+  "project_skeletons": [
+    {
+      "_id": "5bd1d383626daf1162be4b7b",
+      "folder": "aragon",
+      "title": "React Aragon",
+      "description": "An Aragon application built using the react framework and your code!",
+      "zip_name": "react-aragon",
+      "thumbnail": {
+        "_id": "5bd1d383626daf1162be4b7c",
+        "width": 300,
+        "height": 274,
+        "secure_url": "https://res.cloudinary.com/divzjiip8/image/upload/v1533497293/iomus59bzzevabacgzj2.png"
+      }
+    }
+  ]
+}

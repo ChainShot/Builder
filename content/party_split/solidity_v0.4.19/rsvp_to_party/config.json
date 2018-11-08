@@ -1,0 +1,63 @@
+{
+  "_id": "5bcfef901cf372e300ff2b7a",
+  "_type": "CodeStage",
+  "container_id": "5bcf95321cf372448c2e26af",
+  "title": "RSVP to Party",
+  "position": 0,
+  "validated_contract": "Party",
+  "language_version": "0.4.19",
+  "language": "solidity",
+  "test_framework": "truffle_with_mocha",
+  "updated_at": "2018-11-08T02:51:29.058Z",
+  "created_at": "2018-10-24T04:05:36.699Z",
+  "code_file_ids": [
+    "5bcfefd61cf372e300ff2b7c",
+    "5bcfef2f1cf372e300ff2b79"
+  ],
+  "abi_validations": [
+    {
+      "_id": "5bd099031cf372e300ff2bfe",
+      "constant": "false",
+      "payable": "false",
+      "error": null,
+      "task_display": "Create a constructor function",
+      "name": null,
+      "type": "constructor",
+      "inputs": [
+        {
+          "_id": "5bd099031cf372e300ff2bff",
+          "name": null,
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "_id": "5bd099031cf372e300ff2c00",
+      "constant": "false",
+      "payable": "true",
+      "error": null,
+      "task_display": "Create a public rsvp function",
+      "name": "rsvp",
+      "type": "function"
+    },
+    {
+      "_id": "5bd099031cf372e300ff2c01",
+      "constant": "false",
+      "payable": "false",
+      "error": null,
+      "task_display": "Create a public payBill function",
+      "name": "payBill",
+      "type": "function",
+      "inputs": [
+        {
+          "_id": "5bd099031cf372e300ff2c02",
+          "name": null,
+          "type": "uint256"
+        }
+      ]
+    }
+  ],
+  "task": "## Let's Start a Party!\n\nThis challenge is all about creating a party with your friends and splitting a shared expense.\n\n### Constructor Function\n\nThe first thing you'll need to do is create a constructor function which will set the minimum amount it will cost someone to RSVP for the party.\n\nThe constructor function will take in a `uint256` minimum amount. Store this for later. It must be paid by the participants, or they cannot join the party!\n\n### RSVP Function\n\nCreate a public function called `rsvp` that will allow your friends to join the party. \n\nIn order to `rsvp` each friend needs to send the minimum amount of ether established in the constructor. Be sure to make the `rsvp` function `payable`! \n\nIf they do not send this amount of ether, then send them their money back and do not include them. \n\nIf they send more than this amount of ether, refund them the difference and let them join the party. \n\n### Pay Bill\n\nOnce the party's over, it's time to pay the shared expenses! \n\nWe made sure that the minimum threshold we set in the constructor was enough to **at least** cover all the expenses.\n\nIt's possible that the total party expenses will come out to be less than the total amount paid. In that case, we'll want to refund everyone accordingly.\n\nCreate a function `payBill` that will accept one argument: a `uint256` amount which is the final bill. This function will ensure that if there is any remaining funds it is refunded evenly.",
+  "completion_message": "",
+  "details": ""
+}

@@ -1,0 +1,15 @@
+{
+  "_id": "5bcdf0c31cf372e860c8b8b6",
+  "title": "Deny my Service",
+  "description": "Identify and fix the denial of service vulnerabilities within the smart contract.",
+  "badge_type_ids": [
+    "5b515cbde6b0b0453b4e9e3d",
+    "5b515cf6e6b0b0453b4e9e3e",
+    "5b515d23e6b0b0453b4e9e3f"
+  ],
+  "updated_at": "2018-10-22T15:46:11.332Z",
+  "created_at": "2018-10-22T15:46:11.332Z",
+  "container_type": "Challenge",
+  "preface": "Challenge that covers multiple denial of service attacks on smart contracts and the related preventative techniques.",
+  "production_ready": true
+}

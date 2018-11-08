@@ -1,0 +1,12 @@
+{
+  "_id": "5bcdf0c31cf372e860c8b8c6",
+  "title": "Intro To Vyper",
+  "description": "Learn the basics of the EVM programming language Vyper! ",
+  "badge_type_ids": [
+    "5bd1edef626daf1162be4bc4"
+  ],
+  "updated_at": "2018-10-25T16:26:48.066Z",
+  "created_at": "2018-10-22T15:46:11.663Z",
+  "container_type": "Lesson",
+  "production_ready": true
+}

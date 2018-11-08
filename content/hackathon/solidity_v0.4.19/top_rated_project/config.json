@@ -1,0 +1,38 @@
+{
+  "_id": "5bb4072bd9f997a89a01f6ec",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5bb40b70d9f997a89a01f6f1",
+    "5bb40bcdd9f997a89a01f6f2"
+  ],
+  "completion_message": "",
+  "container_id": "5bb406cad9f997a89a01f6eb",
+  "details": "## Contract Setup\n\nThe `Hackathon.sol` contract is partially setup. We have the `Project` struct: \n\n```\nstruct Project {\n    string title;\n    uint[] ratings;\n}\n```\n\nIt stores the `title` of the project and an array of unsigned integer ratings. The higher the integer, the higher the rating. For the purposes of this challenge, the project with the highest average rating is the winner. \n\nWe can always look up the projects using the `projects` array, which is populated through the `newProject` function. This function takes a string and uses that to initialize the project's `title`. It also initializes the project's ratings to an empty uint array.\n\nFinally we have a `rate` function which allows us to rate a particular project. It does this by taking an index to identify a project and a rating to be push on the projects ratings array.  ",
+  "language": "solidity",
+  "language_version": "0.4.19",
+  "position": 0,
+  "task": "## Search for the Top Rated Project\n\nHey there! As you can see the `Hackathon.sol` contract is [partially setup](?tab=details&scroll=Contract%20Setup) already. \n\nTo complete this challenge we need to write a function that will help us find the winning project of the hackathon. The winning project will be determined by the **average score** of all of its ratings. \n\n### Find Winner Function\n\nYour task is to create the function `findWinner`. \n\nIt should use the public member array of `projects` and determine the project that has the highest average rating amongst its array of `ratings`. \n\nUpon finding the highest average, it should return the projects `title`. ",
+  "test_framework": "truffle_with_mocha",
+  "title": "Top Rated Project",
+  "validated_contract": "Hackathon",
+  "updated_at": "2018-11-08T02:51:28.804Z",
+  "created_at": "2018-10-16T01:50:10.623Z",
+  "abi_validations": [
+    {
+      "_id": "5bb4e9cdd9f997a89a01f72f",
+      "constant": "nil",
+      "payable": "nil",
+      "error": null,
+      "task_display": "Create the findWinner function",
+      "name": "findWinner",
+      "type": "function",
+      "outputs": [
+        {
+          "_id": "5bb4e9cdd9f997a89a01f730",
+          "name": null,
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}

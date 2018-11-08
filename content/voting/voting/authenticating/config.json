@@ -1,0 +1,55 @@
+{
+  "_id": "5b593f53d9f997399b71e491",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5b5946c8d9f997399b71e492",
+    "5b594718d9f997399b71e493",
+    "5b58fffbd9f997399b71e44a"
+  ],
+  "completion_message": "## Super\n\nYou did it! Now our Voting app has governance and upgradeability built in. This will make it much easier to build on top of when we want to add more complex logic to our application. \n\nNext step: The Front-End. ",
+  "container_id": "5b58fc40d9f997399b71e3fd",
+  "details": "## Aragon OS\n\nA series of smart contracts put out by the Aragon team that allows us to bake in upgradeability and governance into our smart contracts. \n\nLearn more about Aragon OS [here](https://hack.aragon.org/docs/aragonos-ref.html)\n\n## Imports\n\nWith Solidity the simplest type of import is the full import: \n\n```\nimport \"contracts/contract.sol\";\n```\n\nThere are other syntaxes and forms of imports that can be found [here](http://solidity.readthedocs.io/en/v0.4.19/layout-of-source-files.html#importing-other-source-files)\n\n## Inheritance\n\nTo inherit code from a contract, you can simply use the `is` keyword as shown here:\n\n```\ncontract Tiger is Animal {\n\n}\n```\n\nWhere `Tiger` will inherit methods from the `Animal` base contract. You can learn more about inheritance from the [Solidity Documentation](http://solidity.readthedocs.io/en/v0.4.18/contracts.html#inheritance)\n\n## Roles \n\nAragon OS allows us to create new roles for particular addresses, which can restrict/allow their ability to do certain actions. Thankfully creating new roles with Aragon OS is easy! \n\nFirst let's consider a role for ordering pizzas:\n\n```\nbytes32 constant public ORDERING_PIZZA_ROLE = keccak256(\"ORDERING_PIZZA_ROLE\");\n```\n\nWhat's happening here? We're storing a 32 byte (or 256 bit) hash that will represent our ordering pizza role. Since this is a unique hash we'll be able to use this hash as our lookup any time we want to see if someone is authorized to order pizzas. \n\n## Auth \n\nTo use a role on a method, we can simply use the aragonOS `auth` modifier with our 256 bit hash. So to keep with the pizza role example from above:\n\n```\nfunction orderPizza() auth(ORDER_PIZZA_ROLE) external {\n\n}\n```\n\nAnyone who wants to use this method will have to first be authorized to do so, and these roles can be shared across methods as needed. ",
+  "language": "solidity",
+  "language_version": "0.4.18",
+  "position": 4,
+  "task": "## Integrating Aragon OS\n\nYes! Now it's time to add in [Aragon OS](?tab=details&scroll=Aragon%20OS) for governance and upgradeability. We'll need to take four steps in order to do this:\n\n1. [Import](?tab=details&scroll=Imports) AragonApp \n    * The path to the solidity file is: `@aragon/os/contracts/apps/AragonApp.sol` \n2. [Inherit](?tab=details&scroll=Inheritance) from AragonApp\n    * The `Voting` Contract should derive from `AragonApp`\n3. Add [two new Aragon Roles](?tab=details&scroll=Roles)\n    * Create the `CREATE_VOTES_ROLE`  \n    * Create the `CAST_VOTES_ROLE`\n4. Setup [authentication](?tab=details&scroll=Auth) for the two functions\n    * Authenticate `CREATE_VOTES_ROLE` on `newVote`\n    * Authenticate `CAST_VOTES_ROLE` on `castVote`",
+  "test_framework": "truffle_with_mocha",
+  "title": "Authenticating",
+  "validated_contract": "Voting",
+  "updated_at": "2018-11-08T02:51:29.009Z",
+  "created_at": "2018-10-16T01:50:10.755Z",
+  "abi_validations": [
+    {
+      "_id": "5b6f50f4d9f997b326486f2a",
+      "constant": "true",
+      "payable": "nil",
+      "error": null,
+      "task_display": "Create a CREATE_VOTES_ROLE bytes32 constant",
+      "name": "CREATE_VOTES_ROLE",
+      "type": "function",
+      "outputs": [
+        {
+          "_id": "5b6f50f4d9f997b326486f2b",
+          "name": null,
+          "type": "bytes32"
+        }
+      ]
+    },
+    {
+      "_id": "5b6f50f4d9f997b326486f2c",
+      "constant": "true",
+      "payable": "nil",
+      "error": null,
+      "task_display": "Create a CAST_VOTES_ROLE bytes32 constant",
+      "name": "CAST_VOTES_ROLE",
+      "type": "function",
+      "outputs": [
+        {
+          "_id": "5b6f50f4d9f997b326486f2d",
+          "name": null,
+          "type": "bytes32"
+        }
+      ]
+    }
+  ]
+}

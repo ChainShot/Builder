@@ -1,0 +1,54 @@
+{
+  "_id": "5bb2d684d9f99705a60c6307",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5bb2d834d9f99705a60c6308",
+    "5bc8aeec626daf9c54d61298"
+  ],
+  "completion_message": "## Supplies Supplies\n\nAwesome! You created a token `supply`. Now we can keep track of how many tokens there are total.\n\nNext let's give it a name! ",
+  "container_id": "5bb2c8ded9f99705a60c62d3",
+  "details": "## State Variables\n\nState Variables are variables that persist data on the blockchain. This means that the value stored in these variables can be accessed and updated across transactions. \n\nAs such, we define them on the contract itself rather than inside of a function: \n\n```\nmyVariable: uint256\n```\n\nThis variable should be declared on the top-level, outside of any function. Any function within the contract can access it with `self.myVariable`. \n\n## Public State Variables\n\nYou can use the `public` function for a variable to automatically create a getter that can be used to retrieve the state externally:\n\n```\nmyVariable: public(uint256)\n```\n\nThis will automatically create a getter function that can be called externally (i.e. `contract.myVariable()`).\n\n> The use of lower camelCase may be surprising here to those familiar with the python language. This is used instead of snake_case as a result of interoperability across Ethereum languages where the casing of a function name changes the compressed function signature. See more discussion about the Vyper style guide [here](https://github.com/ethereum/vyper/issues/905).\n\n## Unsigned Integers\n\nAn unsigned integer means that there is no \"sign\" or indication of positive/negative numbers. Instead, the possible values start at zero and move to increasingly larger values. \n\nAn unsigned integer in Vyper can be declared with `uint256` where the values that can be stored range from `0` to `2^256 - 1`.\n\n## Constructors\n\nFor Smart Contracts, a special function can be defined that is called when it is first deployed to the blockchain. This function is called its constructor. \n\nIn Vyper specifically the constructor is defined with the name `__init__`. It can take in arguments like any other function: \n\n```\nmyVariable: public(uint256)\n\n@public\ndef __init__(_myVariable: uint256):\n    self.myVariable = _myVariable\n```\n\nNotice the use of `self` here inside of our constructor. In order to refer to a state variable from within our functions, we need to use this keyword. \n\n> The underscore prefacing the argument name can be used to indicate that this is a private variable. This is *recommended* style in order to avoid name clashing with global variables, which would fail to compile.",
+  "language": "vyper",
+  "language_version": "0.1.0b3",
+  "position": 0,
+  "task": "## It's Vyper Time\n\nLet's do something exciting and create our own simple token implementation!  \n\n### Create a Supply for our Token\n\nTo start, let's create a [state variable](?tab=details&scroll=State%20Variables) called `supply` that is an  [unsigned integer](?tab=details&scroll=Unsigned%20Integers) and  [public](?tab=details&scroll=Public%20State%20Variables). This value will be the total number of tokens created. \n\nOnce you have added this state variable, you should notice your first validation is complete for creating a `supply` getter. \n\n> If the `supply` validation isn't passing and your compilation is not failing, check to make sure you made `supply` [public](?tab=details&scroll=Public%20State%20Variables).\n\n### Create the Constructor\n\nNext we'll need to create a [constructor](?tab=details&scroll=Constructors), which will be called when the contract is deployed. This constructor should take in a `uint256` and store it in our contract's `supply` state variable.",
+  "test_framework": "truffle_with_mocha",
+  "title": "Define the Supply",
+  "updated_at": "2018-11-08T02:51:28.708Z",
+  "created_at": "2018-10-16T01:50:10.535Z",
+  "validated_contract": "Token",
+  "abi_validations": [
+    {
+      "_id": "5bd1efdf626daf1162be4bca",
+      "constant": "false",
+      "payable": "false",
+      "error": null,
+      "task_display": "Create a public constructor function",
+      "name": "__init__",
+      "type": "constructor",
+      "inputs": [
+        {
+          "_id": "5bd1efdf626daf1162be4bcb",
+          "name": null,
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "_id": "5bd1efdf626daf1162be4bcc",
+      "constant": "true",
+      "payable": "false",
+      "error": null,
+      "task_display": "Create a public 'supply' getter ",
+      "name": "supply",
+      "type": "function",
+      "outputs": [
+        {
+          "_id": "5bd1efdf626daf1162be4bcd",
+          "name": null,
+          "type": "uint256"
+        }
+      ]
+    }
+  ]
+}

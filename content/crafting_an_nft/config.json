@@ -1,0 +1,15 @@
+{
+  "_id": "5bcdf0c31cf372e860c8b8b5",
+  "title": "Crafting an NFT",
+  "description": "Create a basic Non-Fungible Token (NFT) with trading functionality using the ERC721 standard",
+  "badge_type_ids": [
+    "5b515cf6e6b0b0453b4e9e3e",
+    "5b515d23e6b0b0453b4e9e3f",
+    "5b515cbde6b0b0453b4e9e3d"
+  ],
+  "updated_at": "2018-10-22T15:46:11.264Z",
+  "created_at": "2018-10-22T15:46:11.264Z",
+  "container_type": "Challenge",
+  "preface": "This challenge focuses on interacting with other contract functions.",
+  "production_ready": true
+}

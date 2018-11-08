@@ -1,0 +1,31 @@
+{
+  "_id": "5adab204929d249e5faefb4f",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5adab204929d249e5faefb55",
+    "5adab204929d249e5faefb5b"
+  ],
+  "completion_message": "## Yes. Well Done. \n\nThe funds can now be successfully moved from the `depositor` to the `beneficiary`. \n\nThis is a working escrow contract on the blockchain, very exciting!",
+  "container_id": "5adab204929d249e5faefb4c",
+  "details": "## Approval Function\n\nNow that our contract is created and funded, the next step in the escrow process is for the arbiter to approve the transfer of funds from the contract address to the beneficiary address.\n\n## Transfer Balance\n\nLet's implement the balance transfer to the beneficiary. This can be accomplished through the use of two globally available functions, ```transfer``` and ```balance```. The syntax for both are as follows:\n\n```\naddress.balance;\naddress.transfer(uint256 amount);\n```\n> ***address.balance*** will return an integer of type uint256 in units of Wei. Make sure to convert from Wei to Ether if needed (not required for this contract)\n\nWe can use the keyword ```this``` to refer to the contract instance, or in this case the contract address.\n\n>  Interacting with `this` is similar to interacting with any `address`. The same properties and methods are available (i.e. `balance`, `transfer`).\n",
+  "language": "solidity",
+  "language_version": "0.4.19",
+  "position": 3,
+  "task": "## Arbiter Approval\n\nNow we're going to need to make something so a third party (the `arbiter`) can approve the transfer of funds. \n\nThe `arbiter` will be responsible to validate the transaction and move the funds from the `depositor` to the `beneficiary`.\n\n1. Create the [`approve`](?tab=details) function\n2. Transfer the contract balance to the beneficiary\n\n",
+  "test_framework": "truffle_with_mocha",
+  "title": "Approval",
+  "validated_contract": "EscrowContract",
+  "updated_at": "2018-11-08T02:51:28.648Z",
+  "created_at": "2018-10-16T01:50:10.493Z",
+  "abi_validations": [
+    {
+      "_id": "5b6f5a8ad9f9974bb8518d23",
+      "constant": "false",
+      "payable": "nil",
+      "error": "Expected to see an approve function on your EscrowContract",
+      "task_display": "Create an approve Function",
+      "name": "approve",
+      "type": "function"
+    }
+  ]
+}

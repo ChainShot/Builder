@@ -1,0 +1,24 @@
+{
+  "_id": "5b63cb8bd9f997c86fe75414",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5b5f8c47d9f997cca33a51f7",
+    "5b5f8c92d9f997cca33a51f8",
+    "5b5f8cc3d9f997cca33a51f9",
+    "5b63a32ad9f997cca33a5244",
+    "5b63aad6d9f997cca33a5247",
+    "5b63cc29d9f997c86fe75415",
+    "5b5f8c20d9f997cca33a51f6"
+  ],
+  "completion_message": "## YOU DID IT.\n\nYou've created an Aragon Voting application. \n\nNow, download the code and build on the work you've done! ",
+  "container_id": "5b58fc40d9f997399b71e3fd",
+  "details": "## Update our Vote\n\nKeep in mind that if a vote is already cast we should already have it in our state from a `VoteCreated` event.\n\nTo uniquely identify a vote, we can use the `id` property. ",
+  "language": "javascript",
+  "language_version": "8.x/babel",
+  "position": 7,
+  "task": "## Vote Cast\n\nOur final task is to update when a voter casts their vote. We'll need to make sure to find that vote and reload it from our smart contract state. ",
+  "test_framework": "mocha_bdd",
+  "title": "Vote Cast Event",
+  "updated_at": "2018-10-16T01:50:10.819Z",
+  "created_at": "2018-10-16T01:50:10.819Z"
+}

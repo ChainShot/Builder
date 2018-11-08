@@ -1,0 +1,15 @@
+{
+  "_id": "5bcdf0c31cf372e860c8b8b8",
+  "title": "Countdown",
+  "description": "Create a smart contract which initiates a countdown, the last person to call the tick function gets the prize! ",
+  "badge_type_ids": [
+    "5b515cf6e6b0b0453b4e9e3e",
+    "5b515cbde6b0b0453b4e9e3d",
+    "5b515d23e6b0b0453b4e9e3f"
+  ],
+  "updated_at": "2018-10-22T15:46:11.396Z",
+  "created_at": "2018-10-22T15:46:11.396Z",
+  "container_type": "Challenge",
+  "preface": "This is a Vyper challenge which requires the use of constructors, uint, payable functions and conditional branching. ",
+  "production_ready": true
+}

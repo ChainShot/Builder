@@ -1,0 +1,13 @@
+{
+  "_id": "5bcdf0c31cf372e860c8b8c1",
+  "title": "ETH Berlin Hackathon",
+  "description": "Determine the winning project of the hackathon from a list of rated projects!",
+  "badge_type_ids": [
+    "5b85d0bee6b0b077f1482ffd"
+  ],
+  "updated_at": "2018-10-22T15:46:11.576Z",
+  "created_at": "2018-10-22T15:46:11.576Z",
+  "container_type": "Challenge",
+  "preface": "Hello ETH Berliners! This challenge requires you to sort through structs and find the top rated project, step right up and test your Solidity skills! ",
+  "production_ready": false
+}

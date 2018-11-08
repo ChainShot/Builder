@@ -1,0 +1,24 @@
+{
+  "_id": "5b63a1e4d9f997cca33a5243",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5b63a32ad9f997cca33a5244",
+    "5b5f8c20d9f997cca33a51f6",
+    "5b5f8c47d9f997cca33a51f7",
+    "5b5f8c92d9f997cca33a51f8",
+    "5b5f8cc3d9f997cca33a51f9",
+    "5b63aaa6d9f997cca33a5246",
+    "5b63aad6d9f997cca33a5247"
+  ],
+  "completion_message": "## A Promising Observation\n\nOur promising observation is that you passed the stage. Way to go! \n\nFinal stage ahead, we're going to modify our `stateUpdate` function to also handle when voters cast their vote.",
+  "container_id": "5b58fc40d9f997399b71e3fd",
+  "details": "## Store Reducer\n\nThe Aragon store reducer is very similar to a pattern you may come to expect with libraries such as redux. If you haven’t worked with redux before don’t worry! Essentially a reducer is a function that takes in a `state` (or a bunch of properties) and determines how that `state` is modified for a particular `event`.\n\nEvery time an `event` is broadcasted from our solidity contract this function will be called and we can choose how we would like to modify our application's `state` accordingly. \n\nTo learn more about the `store` function, visit the [Aragon JS Documentation](https://hack.aragon.org/docs/aragonjs-ref.html#store)\n\n## Observable to Promise\n\nWe've written a utility in `toPromiseFunction.js` that takes a function returning an observable and turns it into a function returning a promise. This is helpful to simplify things in this example because we're only expecting one value back from our `loadVote`. An `observable` is more useful in cases where multiple values are expected back. \n\nBy turning this into a promise function we can simply call `await` to get the resolved value: \n\n```\nlet vote = await votePromiseFn(0); \n```",
+  "language": "javascript",
+  "language_version": "8.x/babel",
+  "position": 6,
+  "task": "## State Update\n\nNow we're going to working on `stateUpdate.js`. We will use this function for our Aragon [store reducer](?tab=details&scroll=Store%20Reducer) to listen to events from our `Voting` contract and update our `state` accordingly.\n\n### Creating our Initial State\n\nOur `state` should store an array of `votes`. If the `state` passed into the `stateUpdate` is `null` we should make sure to give it an initial value of `{ votes: [] } `.\n\n>  NOTE: the initial state is always `null`, not `undefined`, because of JSONRPC limitations. Keep in mind that JavaScript default parameters will only work with `undefined`.\n\n### Updating the State\n\nNext we'll take a look at our `data` parameter. It will contain two properties `event` and `returnValues`. The `event` property will be a string telling us the name of the `event` and the `returnValues` will be an array that will contain the value sent from our smart contract events (the vote id).\n\nIf the `event` is `VoteCreated` then we should load the vote that was created. To do so we'll take the id from our `returnValues` and pass it `loadVotePromise` created by our [toPromiseFunction](?tab=details&scroll=Observable%20to%20Promise) utility. This function will return a promise that will resolve with our vote that we can add to our current state. \n\nIf the event is not `VoteCreated`, we should just return the `state` without any changes.",
+  "test_framework": "mocha_bdd",
+  "title": "Vote Created Event",
+  "updated_at": "2018-10-16T01:50:10.726Z",
+  "created_at": "2018-10-16T01:50:10.726Z"
+}

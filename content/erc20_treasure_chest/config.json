@@ -1,0 +1,15 @@
+{
+  "_id": "5bcdf0c31cf372e860c8b8b7",
+  "title": "ERC20 Treasure Chest",
+  "description": "Create an ERC20 Treasure Chest which allows us to store and withdraw ERC20 tokens at the address.",
+  "badge_type_ids": [
+    "5b515cf6e6b0b0453b4e9e3e",
+    "5b515d23e6b0b0453b4e9e3f",
+    "5b515cbde6b0b0453b4e9e3d"
+  ],
+  "updated_at": "2018-10-22T15:46:11.361Z",
+  "created_at": "2018-10-22T15:46:11.361Z",
+  "container_type": "Challenge",
+  "preface": "Test your ability to transfer ERC20 balances from within a Solidity smart contract! ",
+  "production_ready": true
+}

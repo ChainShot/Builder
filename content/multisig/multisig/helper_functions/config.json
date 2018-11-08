@@ -1,0 +1,94 @@
+{
+  "_id": "5bd50cd2e6b0b0406ab2785b",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5bcfc074e6b0b0328e69567a",
+    "5bd50b98e6b0b0406ab2785a"
+  ],
+  "completion_message": "## Way to help yourself!\n\nNice job writing those helpers. \n\nNow let's run our final stage, abstracting the transaction.",
+  "container_id": "5bce5e20e6b0b012e91da44b",
+  "details": "",
+  "language": "solidity",
+  "language_version": "0.4.19",
+  "position": 9,
+  "task": "The functions below will help our front-end retrieve specific information about the wallet.\n\n## Get Transaction Count\n\n1. Define a `getTransactionCount` public view function with a pending `bool` and an executed `bool` as it's arguments. The function should return a `uint` count of transactions.\n\nThe purpose of this function is to give the front-end the ability to receive a count of pending or executed, or both, transactions.\n\n## Get Transaction IDs\n\n2. Define a `getTransactionIds` public view function with a pending `bool` and executed `bool` as it's arguments. The function should return an array of transaction IDs.\n\nThe purpose of this function is to give the front-end the ability to receive a list of pending or executed, or both, transaction IDs. \n\nRemember that the returned array should be a fixed size of the amount of ID's you want to return per your parameters.\n\n\n## Get All Owners\n\n3. Define a `getOwners` public view function which returns an array of owners addresses\n\nThe reason we cannot just retrieve all owner addresses using our already defined `owners` array is because the getter method created from the public variable `owners` only allows us to key into the `owners` externally. Therefore, we need to create this helper function to return an array of all of the wallet owners.",
+  "test_framework": "truffle_with_mocha",
+  "title": "Helper Functions",
+  "validated_contract": "MultiSig",
+  "updated_at": "2018-11-08T02:51:28.943Z",
+  "created_at": "2018-10-28T17:41:09.493Z",
+  "abi_validations": [
+    {
+      "_id": "5bd80784626daf74460af3aa",
+      "constant": "true",
+      "payable": "false",
+      "error": null,
+      "task_display": "Define a getTransactionIds public function",
+      "name": "getTransactionIds",
+      "type": "function",
+      "outputs": [
+        {
+          "_id": "5bd80784626daf74460af3ab",
+          "name": null,
+          "type": "uint256[]"
+        }
+      ],
+      "inputs": [
+        {
+          "_id": "5bd80784626daf74460af3ac",
+          "name": null,
+          "type": "bool"
+        },
+        {
+          "_id": "5bd80784626daf74460af3ad",
+          "name": null,
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "_id": "5bd80784626daf74460af3ae",
+      "constant": "true",
+      "payable": "nil",
+      "error": null,
+      "task_display": "Define a getTransactionCount public function",
+      "name": "getTransactionCount",
+      "type": "function",
+      "outputs": [
+        {
+          "_id": "5bd80784626daf74460af3af",
+          "name": null,
+          "type": "uint256"
+        }
+      ],
+      "inputs": [
+        {
+          "_id": "5bd80784626daf74460af3b0",
+          "name": null,
+          "type": "bool"
+        },
+        {
+          "_id": "5bd80784626daf74460af3b1",
+          "name": null,
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "_id": "5bd80784626daf74460af3b2",
+      "constant": "true",
+      "payable": "false",
+      "error": null,
+      "task_display": "Define a getOwners public function",
+      "name": "getOwners",
+      "type": "function",
+      "outputs": [
+        {
+          "_id": "5bd80784626daf74460af3b3",
+          "name": null,
+          "type": "address[]"
+        }
+      ]
+    }
+  ]
+}
