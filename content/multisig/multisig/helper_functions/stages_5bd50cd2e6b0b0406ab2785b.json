@@ -1,0 +1,21 @@
+{
+  "_id": "5bd50cd2e6b0b0406ab2785b",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5bcfc074e6b0b0328e69567a",
+    "5bd50b98e6b0b0406ab2785a"
+  ],
+  "completion_message": "## Way to help yourself!\n\nNice job writing those helpers. \n\nNow let's run our final stage, abstracting the transaction.",
+  "container_id": "5bce5e20e6b0b012e91da44b",
+  "details": "details.md",
+  "language": "solidity",
+  "language_version": "0.4.19",
+  "position": 9,
+  "task": "task.md",
+  "test_framework": "truffle_with_mocha",
+  "title": "Helper Functions",
+  "validated_contract": "MultiSig",
+  "updated_at": "2018-11-08T02:51:28.943Z",
+  "created_at": "2018-10-28T17:41:09.493Z",
+  "abi_validations": "validations.json"
+}

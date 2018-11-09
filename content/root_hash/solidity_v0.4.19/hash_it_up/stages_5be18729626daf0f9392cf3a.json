@@ -1,0 +1,21 @@
+{
+  "_id": "5be18729626daf0f9392cf3a",
+  "_type": "CodeStage",
+  "container_id": "5be18681626daf0f9392cf39",
+  "title": "Hash it up",
+  "position": 0,
+  "task": "task.md",
+  "details": "details.md",
+  "validated_contract": "Root",
+  "language_version": "0.4.19",
+  "language": "solidity",
+  "test_framework": "truffle_with_mocha",
+  "updated_at": "2018-11-08T02:51:28.386Z",
+  "created_at": "2018-11-06T12:20:57.350Z",
+  "abi_validations": "validations.json",
+  "code_file_ids": [
+    "5be188ae626daf0f9392cf43",
+    "5be18940626daf0f9392cf45"
+  ],
+  "completion_message": ""
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "_id": "5bd76db2626daf74460af2fd",
+    "constant": "false",
+    "payable": "false",
+    "error": null,
+    "task_display": "Define an addTransaction function",
+    "name": "addTransaction",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5bd76db2626daf74460af2fe",
+        "name": null,
+        "type": "uint256"
+      }
+    ],
+    "inputs": [
+      {
+        "_id": "5bd76db2626daf74460af2ff",
+        "name": null,
+        "type": "address"
+      },
+      {
+        "_id": "5bd76db2626daf74460af300",
+        "name": null,
+        "type": "uint256"
+      }
+    ]
+  }
+]

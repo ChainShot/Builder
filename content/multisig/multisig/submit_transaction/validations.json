@@ -1,0 +1,23 @@
+[
+  {
+    "_id": "5bd79388626daf74460af379",
+    "constant": "false",
+    "payable": "false",
+    "error": null,
+    "task_display": "Define a submitTransaction function",
+    "name": "submitTransaction",
+    "type": "function",
+    "inputs": [
+      {
+        "_id": "5bd79388626daf74460af37a",
+        "name": null,
+        "type": "address"
+      },
+      {
+        "_id": "5bd79388626daf74460af37b",
+        "name": null,
+        "type": "uint256"
+      }
+    ]
+  }
+]

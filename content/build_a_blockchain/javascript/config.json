@@ -5,7 +5,7 @@
     "5b515d6be6b0b0453b4e9e40"
   ],
   "description": "Learn how to create a basic JavaScript implementation of a blockchain. ",
-  "intro": "## JavaScript Blockchain\n\nThis challenge is all about learning the fundamental concepts of the blockchain. We will focus on blocks, hashes, linking blocks together in the blockchain, and then validating that blockchain.\n\nThe resulting blockchain implementation will look something like this:\n\n![Escrow Contract](http://res.cloudinary.com/divzjiip8/image/upload/v1531066487/blockchain_evo36c.png \"BlockChain\")\n\nWhere each block contains a `hash` of its contents, a `previousHash` representing the contents of its predecessor and `data` which is the information stored in the block. \n",
+  "intro": "intro.md",
   "production_ready": true,
   "title": "Build a Blockchain",
   "updated_at": "2018-10-25T15:41:00.999Z",

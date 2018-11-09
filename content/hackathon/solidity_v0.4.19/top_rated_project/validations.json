@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "5bb4e9cdd9f997a89a01f72f",
+    "constant": "nil",
+    "payable": "nil",
+    "error": null,
+    "task_display": "Create the findWinner function",
+    "name": "findWinner",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5bb4e9cdd9f997a89a01f730",
+        "name": null,
+        "type": "string"
+      }
+    ]
+  }
+]

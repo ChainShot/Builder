@@ -1,0 +1,23 @@
+[
+  {
+    "_id": "5b6f5a91d9f9974bb8518d24",
+    "constant": "nil",
+    "payable": "true",
+    "error": "We could not find a constructor in your EscrowContract with two address parameters (for arbiter and beneficiary).",
+    "task_display": "Modify the Constructor to be payable",
+    "name": null,
+    "type": "constructor",
+    "inputs": [
+      {
+        "_id": "5b6f5a91d9f9974bb8518d25",
+        "name": null,
+        "type": "address"
+      },
+      {
+        "_id": "5b6f5a91d9f9974bb8518d26",
+        "name": null,
+        "type": "address"
+      }
+    ]
+  }
+]

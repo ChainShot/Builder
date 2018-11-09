@@ -1,0 +1,17 @@
+{
+  "_id": "5b3faf99d9f997a550e7ca2e",
+  "code_stage_ids": [
+    "5b3fa85ad9f997a550e7ca2b"
+  ],
+  "executable": true,
+  "has_progress": false,
+  "initial_code": "test/linkingTests.js",
+  "mode": "javascript",
+  "name": "linkingTests.js",
+  "read_only": true,
+  "stage_container_id": "5b3afd70d9f99763e5c4b4fe",
+  "test_fixture": true,
+  "visible": true,
+  "updated_at": "2018-10-16T01:50:11.091Z",
+  "created_at": "2018-10-16T01:50:11.091Z"
+}

@@ -1,0 +1,18 @@
+{
+  "_id": "5adab204929d249e5faefb59",
+  "code_stage_ids": [
+    "5adab204929d249e5faefb4d"
+  ],
+  "executable": true,
+  "file_location": "truffle/tests/testConstructor.js",
+  "has_progress": false,
+  "initial_code": "test/testConstructor.js",
+  "mode": "javascript",
+  "name": "testConstructor.js",
+  "read_only": true,
+  "stage_container_id": "5adab204929d249e5faefb4c",
+  "test_fixture": true,
+  "visible": true,
+  "updated_at": "2018-10-16T01:50:11.115Z",
+  "created_at": "2018-10-16T01:50:11.115Z"
+}

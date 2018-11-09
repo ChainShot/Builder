@@ -1,0 +1,18 @@
+{
+  "_id": "5ba2648de6b0b064157b65c7",
+  "code_stage_ids": [
+    "5ba1c57de6b0b01133b453b3"
+  ],
+  "executable": true,
+  "executable_path": "contracts/SafeMath.sol",
+  "has_progress": false,
+  "initial_code": "contracts/SafeMath.sol",
+  "mode": "sol",
+  "name": "SafeMath.sol",
+  "read_only": true,
+  "stage_container_id": "5ba1c494e6b0b01133b453b2",
+  "test_fixture": false,
+  "visible": false,
+  "updated_at": "2018-10-16T01:50:11.373Z",
+  "created_at": "2018-10-16T01:50:11.373Z"
+}

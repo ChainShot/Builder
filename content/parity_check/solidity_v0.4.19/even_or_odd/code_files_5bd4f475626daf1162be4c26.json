@@ -1,0 +1,17 @@
+{
+  "_id": "5bd4f475626daf1162be4c26",
+  "stage_container_id": "5bd4f35d626daf1162be4c1d",
+  "code_stage_ids": [
+    "5bd4f3be626daf1162be4c1e"
+  ],
+  "name": "testUtils.js",
+  "initial_code": "test/testUtils.js",
+  "read_only": true,
+  "test_fixture": true,
+  "visible": true,
+  "executable": true,
+  "mode": "javascript",
+  "has_progress": false,
+  "updated_at": "2018-10-27T23:27:49.915Z",
+  "created_at": "2018-10-27T23:27:49.915Z"
+}

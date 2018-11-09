@@ -1,0 +1,19 @@
+{
+  "_id": "5bcff0371cf372e300ff2b7e",
+  "stage_container_id": "5bcf95981cf372448c2e26b0",
+  "code_stage_ids": [
+    "5bcfefab1cf372e300ff2b7b"
+  ],
+  "name": "Party.v.py",
+  "read_only": false,
+  "has_progress": true,
+  "test_fixture": false,
+  "visible": true,
+  "executable": true,
+  "file_location": "contracts/Party.v.py",
+  "executable_path": "contracts/Party.v.py",
+  "mode": "python",
+  "updated_at": "2018-10-25T02:49:11.872Z",
+  "created_at": "2018-10-24T04:08:23.930Z",
+  "initial_code": "contracts/Party.v.py"
+}

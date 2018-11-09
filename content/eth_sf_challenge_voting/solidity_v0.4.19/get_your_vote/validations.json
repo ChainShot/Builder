@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "5bb6d98b929d2472822d1957",
+    "constant": "true",
+    "payable": "false",
+    "error": null,
+    "task_display": "Create a function myVote",
+    "name": "myVote",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5bb6d98b929d2472822d1958",
+        "name": null,
+        "type": "int256"
+      }
+    ]
+  }
+]

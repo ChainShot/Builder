@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "5bc74ff41cf372ed6d4125b2",
+    "constant": "true",
+    "payable": "false",
+    "task_display": "Create a numberVotes function",
+    "name": "numberVotes",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5bc74ff41cf372ed6d4125b3",
+        "type": "uint256"
+      }
+    ]
+  }
+]

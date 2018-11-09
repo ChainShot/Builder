@@ -7,7 +7,7 @@
     "5b515d23e6b0b0453b4e9e3f"
   ],
   "description": "Create a smart contract which initiates a countdown, the last person to call the tick function gets the prize! ",
-  "intro": "## Countdown Challenge\n\nWelcome! This is a Vyper Smart Contract challenge where you will need to countdown from a particular value and then self-destruct the contract, sending any value stored in the smart contract to the last caller of the contract.\n\n### Challenge Skills\n\nBy completing this challenge you demonstrate your ability to work with constructors, uint, payable functions and conditional branching. ",
+  "intro": "intro.md",
   "production_ready": true,
   "title": "Countdown",
   "updated_at": "2018-10-23T22:59:00.277Z",

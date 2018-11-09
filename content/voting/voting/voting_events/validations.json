@@ -1,0 +1,34 @@
+[
+  {
+    "_id": "5b735726d9f9970a465ebd05",
+    "constant": "nil",
+    "payable": "nil",
+    "error": null,
+    "task_display": "Create a VoteCreated event",
+    "name": "VoteCreated",
+    "type": "event",
+    "inputs": [
+      {
+        "_id": "5b735726d9f9970a465ebd06",
+        "name": null,
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "_id": "5b735726d9f9970a465ebd07",
+    "constant": "nil",
+    "payable": "nil",
+    "error": null,
+    "task_display": "Create a VoteCast event",
+    "name": "VoteCast",
+    "type": "event",
+    "inputs": [
+      {
+        "_id": "5b735726d9f9970a465ebd08",
+        "name": null,
+        "type": "uint256"
+      }
+    ]
+  }
+]

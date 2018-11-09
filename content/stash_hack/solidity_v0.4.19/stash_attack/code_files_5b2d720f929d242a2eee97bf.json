@@ -1,0 +1,19 @@
+{
+  "_id": "5b2d720f929d242a2eee97bf",
+  "code_stage_ids": [
+    "5b2729e8d9f9970e8ed24191"
+  ],
+  "executable": true,
+  "executable_path": "contracts/Squirrel.sol",
+  "file_location": "",
+  "has_progress": true,
+  "initial_code": "contracts/Squirrel.sol",
+  "mode": "sol",
+  "name": "Squirrel.sol",
+  "read_only": true,
+  "stage_container_id": "5b256f43d9f997a91fff3d01",
+  "test_fixture": false,
+  "visible": true,
+  "updated_at": "2018-10-16T01:50:11.166Z",
+  "created_at": "2018-10-16T01:50:11.166Z"
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "_id": "5bd1f309626daf1162be4be7",
+    "constant": "true",
+    "payable": "false",
+    "error": null,
+    "task_display": "Create a public 'symbol' getter",
+    "name": "symbol",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5bd1f309626daf1162be4be8",
+        "name": null,
+        "type": "bytes"
+      }
+    ]
+  },
+  {
+    "_id": "5bd1f309626daf1162be4be9",
+    "constant": "true",
+    "payable": "false",
+    "error": null,
+    "task_display": "Create a public 'name' getter",
+    "name": "name",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5bd1f309626daf1162be4bea",
+        "name": null,
+        "type": "bytes"
+      }
+    ]
+  }
+]

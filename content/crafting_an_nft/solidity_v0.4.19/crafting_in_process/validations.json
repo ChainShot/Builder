@@ -1,0 +1,30 @@
+[
+  {
+    "_id": "5ba3c8cad9f997459c1b2c1d",
+    "constant": "true",
+    "payable": "nil",
+    "error": null,
+    "task_display": "Create a public gameItems data structure which associates an itemId to a GameItem",
+    "name": "gameItems",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5ba3c8cad9f997459c1b2c1e",
+        "name": null,
+        "type": "string"
+      },
+      {
+        "_id": "5ba3c8cad9f997459c1b2c1f",
+        "name": null,
+        "type": "uint256"
+      }
+    ],
+    "inputs": [
+      {
+        "_id": "5ba3c8cad9f997459c1b2c20",
+        "name": null,
+        "type": "uint256"
+      }
+    ]
+  }
+]

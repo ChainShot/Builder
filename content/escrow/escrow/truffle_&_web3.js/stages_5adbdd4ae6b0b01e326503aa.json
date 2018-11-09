@@ -1,0 +1,18 @@
+{
+  "_id": "5adbdd4ae6b0b01e326503aa",
+  "_type": "UiStage",
+  "completion_message": "## Hoopla! \n\nDid I use that word wrong? \n\nWe are now ready to create our deploy function. **Test your code** and move on to the next stage!",
+  "component_name": "AbiStage",
+  "configuration": {
+    "json_code_file_id": "5adab204929d249e5faefb54",
+    "contract_code_file_id": "5adab204929d249e5faefb55"
+  },
+  "container_id": "5adab204929d249e5faefb4c",
+  "details": "details.md",
+  "position": 6,
+  "task": "task.md",
+  "title": "Truffle & Web3.js",
+  "updated_at": "2018-10-16T01:50:10.227Z",
+  "created_at": "2018-10-16T01:50:10.227Z",
+  "abi_validations": "validations.json"
+}

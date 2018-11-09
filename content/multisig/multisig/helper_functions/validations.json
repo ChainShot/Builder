@@ -1,0 +1,74 @@
+[
+  {
+    "_id": "5bd80784626daf74460af3aa",
+    "constant": "true",
+    "payable": "false",
+    "error": null,
+    "task_display": "Define a getTransactionIds public function",
+    "name": "getTransactionIds",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5bd80784626daf74460af3ab",
+        "name": null,
+        "type": "uint256[]"
+      }
+    ],
+    "inputs": [
+      {
+        "_id": "5bd80784626daf74460af3ac",
+        "name": null,
+        "type": "bool"
+      },
+      {
+        "_id": "5bd80784626daf74460af3ad",
+        "name": null,
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "_id": "5bd80784626daf74460af3ae",
+    "constant": "true",
+    "payable": "nil",
+    "error": null,
+    "task_display": "Define a getTransactionCount public function",
+    "name": "getTransactionCount",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5bd80784626daf74460af3af",
+        "name": null,
+        "type": "uint256"
+      }
+    ],
+    "inputs": [
+      {
+        "_id": "5bd80784626daf74460af3b0",
+        "name": null,
+        "type": "bool"
+      },
+      {
+        "_id": "5bd80784626daf74460af3b1",
+        "name": null,
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "_id": "5bd80784626daf74460af3b2",
+    "constant": "true",
+    "payable": "false",
+    "error": null,
+    "task_display": "Define a getOwners public function",
+    "name": "getOwners",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5bd80784626daf74460af3b3",
+        "name": null,
+        "type": "address[]"
+      }
+    ]
+  }
+]

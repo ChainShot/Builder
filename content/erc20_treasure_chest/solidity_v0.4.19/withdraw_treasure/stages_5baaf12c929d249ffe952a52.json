@@ -1,0 +1,23 @@
+{
+  "_id": "5baaf12c929d249ffe952a52",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5baaf15b929d249ffe952a53",
+    "5baaf189929d249ffe952a54",
+    "5baaf1b1929d249ffe952a55",
+    "5baaf1cb929d249ffe952a56"
+  ],
+  "completion_message": "",
+  "container_id": "5baaf085929d249ffe952a51",
+  "details": "details.md",
+  "language": "solidity",
+  "language_version": "0.4.19",
+  "position": 0,
+  "task": "task.md",
+  "test_framework": "truffle_with_mocha",
+  "title": "Withdraw Treasure",
+  "validated_contract": "TreasureChest",
+  "updated_at": "2018-11-08T02:51:28.692Z",
+  "created_at": "2018-10-16T01:50:10.522Z",
+  "abi_validations": "validations.json"
+}

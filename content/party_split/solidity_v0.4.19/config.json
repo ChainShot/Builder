@@ -3,7 +3,7 @@
   "_type": "Challenge",
   "stage_container_group_id": "5bcf93d51cf372448c2e26ab",
   "version": "Solidity v0.4.19",
-  "intro": "## Party Split\n\nWelcome to the Party Split Solidity Smart Contract challenge! \n\nThis one's all about sharing expenses among your friends. You'll work on your skills with receiving and sending ether as refunds. \n\nBest of luck!  ",
+  "intro": "intro.md",
   "production_ready": false,
   "updated_at": "2018-10-24T04:38:22.126Z",
   "created_at": "2018-10-23T21:40:02.683Z"

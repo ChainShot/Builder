@@ -1,0 +1,21 @@
+{
+  "_id": "5b082b71e6b0b05154025885",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5b082e1be6b0b05154025886",
+    "5adab204929d249e5faefb55"
+  ],
+  "completion_message": "# So Security. Much Wow.\n\nYou just secured the hell out of the smart contract! YES. \n\nNext let's learn about how to log events on the blockchain! ",
+  "container_id": "5adab204929d249e5faefb4c",
+  "details": "details.md",
+  "language": "solidity",
+  "language_version": "0.4.19",
+  "position": 4,
+  "task": "task.md",
+  "test_framework": "truffle_with_mocha",
+  "title": "Require",
+  "validated_contract": "EscrowContract",
+  "updated_at": "2018-10-16T01:50:10.652Z",
+  "created_at": "2018-10-16T01:50:10.652Z",
+  "abi_validations": "validations.json"
+}

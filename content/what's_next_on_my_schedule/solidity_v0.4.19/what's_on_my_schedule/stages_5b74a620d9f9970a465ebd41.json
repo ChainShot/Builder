@@ -1,0 +1,21 @@
+{
+  "_id": "5b74a620d9f9970a465ebd41",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5b74a6fad9f9970a465ebd42",
+    "5b74a71ed9f9970a465ebd43"
+  ],
+  "completion_message": "",
+  "container_id": "5b74a4ebd9f9970a465ebd40",
+  "details": "details.md",
+  "language": "solidity",
+  "language_version": "0.4.19",
+  "position": 0,
+  "task": "task.md",
+  "test_framework": "truffle_with_mocha",
+  "title": "What's on my Schedule?",
+  "validated_contract": "Schedule",
+  "updated_at": "2018-11-08T02:51:28.744Z",
+  "created_at": "2018-10-16T01:50:10.576Z",
+  "abi_validations": "validations.json"
+}

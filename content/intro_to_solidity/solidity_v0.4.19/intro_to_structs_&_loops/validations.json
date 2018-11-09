@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "5bb7ff2c929d24ab56a977e7",
+    "constant": "false",
+    "payable": "nil",
+    "error": null,
+    "task_display": "Create a register function",
+    "name": "register",
+    "type": "function",
+    "inputs": [
+      {
+        "_id": "5bb7ff2c929d24ab56a977e8",
+        "name": null,
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "_id": "5bb7ff2c929d24ab56a977e9",
+    "constant": "true",
+    "payable": "nil",
+    "error": null,
+    "task_display": "Create a getMyTeamName function",
+    "name": "getMyTeamName",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5bb7ff2c929d24ab56a977ea",
+        "name": null,
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "_id": "5bb7ff2c929d24ab56a977eb",
+    "constant": "false",
+    "payable": "nil",
+    "error": null,
+    "task_display": "Create  a join function",
+    "name": "join",
+    "type": "function",
+    "inputs": [
+      {
+        "_id": "5bb7ff2c929d24ab56a977ec",
+        "name": null,
+        "type": "uint256"
+      }
+    ]
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "5b76eb9ad9f9970a465ebe4c",
+    "constant": "nil",
+    "payable": "nil",
+    "error": "Could not find a findNextMeetingDate function on your Schedule contract! ",
+    "task_display": "Create the findNextMeetingDate function",
+    "name": "findNextMeetingDate",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5b76eb9ad9f9970a465ebe4d",
+        "name": null,
+        "type": "uint256"
+      }
+    ]
+  }
+]

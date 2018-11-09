@@ -1,0 +1,18 @@
+{
+  "_id": "5bd806ba626daf74460af3a8",
+  "stage_container_id": "5bce5e20e6b0b012e91da44b",
+  "code_stage_ids": [
+    "5bd805a2626daf74460af39d"
+  ],
+  "name": "EIP20Interface.sol",
+  "initial_code": "contracts/EIP20Interface.sol",
+  "read_only": true,
+  "has_progress": false,
+  "test_fixture": false,
+  "executable": true,
+  "executable_path": "contracts/EIP20Interface.sol",
+  "mode": "sol",
+  "visible": false,
+  "updated_at": "2018-10-30T07:22:34.949Z",
+  "created_at": "2018-10-30T07:22:34.949Z"
+}

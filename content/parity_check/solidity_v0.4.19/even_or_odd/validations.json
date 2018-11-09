@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "5bd5e759626daf1162be4c4f",
+    "constant": "false",
+    "payable": "false",
+    "error": null,
+    "task_display": "Create a public function 'check' with a bytes32 argument",
+    "name": "check",
+    "type": "function",
+    "inputs": [
+      {
+        "_id": "5bd5e759626daf1162be4c50",
+        "name": null,
+        "type": "bytes32"
+      }
+    ]
+  }
+]

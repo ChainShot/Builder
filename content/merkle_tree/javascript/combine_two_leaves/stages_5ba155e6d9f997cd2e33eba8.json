@@ -1,0 +1,21 @@
+{
+  "_id": "5ba155e6d9f997cd2e33eba8",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5ba15668d9f997cd2e33ebab",
+    "5ba15643d9f997cd2e33ebaa",
+    "5ba1562ad9f997cd2e33eba9"
+  ],
+  "completion_message": "## We got Root!\n\nNow that we've established our root, it's time to get squirrely.\n\nNext we build a larger Merkle Tree!",
+  "container_id": "5ba1558bd9f997cd2e33eba7",
+  "details": "details.md",
+  "language": "javascript",
+  "language_version": "8.x/babel",
+  "position": 0,
+  "task": "task.md",
+  "test_framework": "mocha_bdd",
+  "title": "Combine Two Leaves",
+  "updated_at": "2018-10-16T01:50:10.200Z",
+  "created_at": "2018-10-16T01:50:10.200Z",
+  "abi_validations": "validations.json"
+}

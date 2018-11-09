@@ -1,0 +1,34 @@
+[
+  {
+    "_id": "5bd1efdf626daf1162be4bca",
+    "constant": "false",
+    "payable": "false",
+    "error": null,
+    "task_display": "Create a public constructor function",
+    "name": "__init__",
+    "type": "constructor",
+    "inputs": [
+      {
+        "_id": "5bd1efdf626daf1162be4bcb",
+        "name": null,
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "_id": "5bd1efdf626daf1162be4bcc",
+    "constant": "true",
+    "payable": "false",
+    "error": null,
+    "task_display": "Create a public 'supply' getter ",
+    "name": "supply",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5bd1efdf626daf1162be4bcd",
+        "name": null,
+        "type": "uint256"
+      }
+    ]
+  }
+]
