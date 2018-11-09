@@ -7,7 +7,7 @@ const COLLECTION = 'stages';
 const writeFiles = [
   { prop: 'task', file: 'task.md' },
   { prop: 'details', file: 'details.md' },
-  { prop: 'abi_validations', file: 'validations.json', transform: prettifyJSON },
+  { prop: 'abi_validations', file: 'validations.json', transform: x => x ? prettifyJSON(x) : '' },
 ]
 
 const identity = x => x;
