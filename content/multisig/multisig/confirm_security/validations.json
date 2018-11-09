@@ -1,0 +1,41 @@
+[
+  {
+    "_id": "5bd789bb626daf74460af34b",
+    "constant": "false",
+    "payable": "false",
+    "error": null,
+    "task_display": "Define a confirmTransaction function",
+    "name": "confirmTransaction",
+    "type": "function",
+    "inputs": [
+      {
+        "_id": "5bd789bb626daf74460af34c",
+        "name": null,
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "_id": "5bd789bb626daf74460af34d",
+    "constant": "true",
+    "payable": "false",
+    "error": null,
+    "task_display": "Define a validOwners mapping",
+    "name": "validOwners",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5bd789bb626daf74460af34e",
+        "name": null,
+        "type": "bool"
+      }
+    ],
+    "inputs": [
+      {
+        "_id": "5bd789bb626daf74460af34f",
+        "name": null,
+        "type": "address"
+      }
+    ]
+  }
+]

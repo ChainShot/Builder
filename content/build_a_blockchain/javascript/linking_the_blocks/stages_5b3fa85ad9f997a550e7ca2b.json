@@ -1,0 +1,21 @@
+{
+  "_id": "5b3fa85ad9f997a550e7ca2b",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5b3afe0cd9f99763e5c4b503",
+    "5b3bad27d9f997b30859bb75",
+    "5b3faf99d9f997a550e7ca2e"
+  ],
+  "completion_message": "## Awesome!\n\nNow our blocks are inextricably linked. Now we'll write a function to validate a blockchain. Combine the concept of a valid blockchain with linked blocks and we'll be able to look at just the most recent hash to see if two blocks are equal.",
+  "container_id": "5b3afd70d9f99763e5c4b4fe",
+  "details": "details.md",
+  "language": "javascript",
+  "language_version": "8.x/babel",
+  "position": 4,
+  "task": "task.md",
+  "test_framework": "mocha_bdd",
+  "title": "Linking The Blocks",
+  "updated_at": "2018-10-16T01:50:10.678Z",
+  "created_at": "2018-10-16T01:50:10.678Z",
+  "abi_validations": "validations.json"
+}

@@ -1,0 +1,22 @@
+{
+  "_id": "5bb62893929d2472822d1900",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5bb627dc929d2472822d18fd",
+    "5bb6271f929d2472822d18fb",
+    "5bb6291f929d2472822d1901"
+  ],
+  "completion_message": "",
+  "container_id": "5bb626c3929d2472822d18f9",
+  "details": "details.md",
+  "language": "solidity",
+  "language_version": "0.4.19",
+  "position": 2,
+  "task": "task.md",
+  "test_framework": "truffle_with_mocha",
+  "title": "Get Your Vote",
+  "validated_contract": "Voting",
+  "updated_at": "2018-11-08T02:51:28.080Z",
+  "created_at": "2018-10-16T01:50:10.136Z",
+  "abi_validations": "validations.json"
+}

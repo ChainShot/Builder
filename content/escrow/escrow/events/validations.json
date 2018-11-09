@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "5b735742d9f9970a465ebd09",
+    "constant": "nil",
+    "payable": "nil",
+    "error": "Remember to add an Approved event to track when the event was approved!",
+    "task_display": "Create an Approved Event with an unsigned integer argument",
+    "name": "Approved",
+    "type": "event",
+    "inputs": [
+      {
+        "_id": "5b735742d9f9970a465ebd0a",
+        "name": null,
+        "type": "uint256"
+      }
+    ]
+  }
+]

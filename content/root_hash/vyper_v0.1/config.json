@@ -3,7 +3,7 @@
   "_type": "Challenge",
   "stage_container_group_id": "5be1864d626daf0f9392cf37",
   "version": "Vyper v0.1",
-  "intro": "## Root Hash\n\nHi there! The goal of this code challenge is to find a root hash from a series of hashes derived by splitting a potentially large bytes array into 32 byte chunks. \n\n### Challenge Skills\n\nBy completing this challenge you demonstrate knowledge of manipulating byte arrays including splitting, hashing and concatenation. \n\nThis can be used for things like validating Merkle Proofs, so it's a useful thing to learn!",
+  "intro": "intro.md",
   "updated_at": "2018-11-07T16:46:12.794Z",
   "created_at": "2018-11-06T12:17:51.089Z"
 }

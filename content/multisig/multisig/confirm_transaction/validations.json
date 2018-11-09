@@ -1,0 +1,41 @@
+[
+  {
+    "_id": "5bd77d37626daf74460af323",
+    "constant": "false",
+    "payable": "false",
+    "error": null,
+    "task_display": "Define a confirmTransaction function",
+    "name": "confirmTransaction",
+    "type": "function",
+    "inputs": [
+      {
+        "_id": "5bd77d37626daf74460af324",
+        "name": null,
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "_id": "5bd77d37626daf74460af325",
+    "constant": "true",
+    "payable": "false",
+    "error": null,
+    "task_display": "Define a getConfirmations function",
+    "name": "getConfirmations",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5bd77d37626daf74460af326",
+        "name": null,
+        "type": "address[]"
+      }
+    ],
+    "inputs": [
+      {
+        "_id": "5bd77d37626daf74460af327",
+        "name": null,
+        "type": "uint256"
+      }
+    ]
+  }
+]

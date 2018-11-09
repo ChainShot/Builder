@@ -1,0 +1,22 @@
+{
+  "_id": "5bc74ff41cf372ed6d4125b1",
+  "_type": "CodeStage",
+  "container_id": "5bc74dce1cf372ed6d4125aa",
+  "title": "Counting Votes",
+  "position": 1,
+  "task": "task.md",
+  "completion_message": "## Count it up \n\nYou did it. One last task to go! \n\nNext we'll let voters lookup their `vote`. ",
+  "validated_contract": "Voting",
+  "language_version": "0.4.19",
+  "language": "solidity",
+  "test_framework": "truffle_with_mocha",
+  "updated_at": "2018-11-08T02:51:28.401Z",
+  "created_at": "2018-10-17T15:06:28.096Z",
+  "abi_validations": "validations.json",
+  "code_file_ids": [
+    "5bc7506a1cf372ed6d4125b7",
+    "5bc750b11cf372ed6d4125b9",
+    "5bc750d11cf372ed6d4125ba"
+  ],
+  "details": "details.md"
+}

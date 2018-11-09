@@ -7,7 +7,7 @@
     "5b515cbde6b0b0453b4e9e3d"
   ],
   "description": "Create a basic Non-Fungible Token (NFT) with trading functionality using the ERC721 standard",
-  "intro": "## Crafting an NFT\n\nThis is a Solidity Smart Contract challenge where you will need to use the ERC-721 contract standard to implement a new game item.\n\n### Challenge Skills\n\nBy completing this challenge you will have gained the knowledge of working with multiple smart contracts and the functions within those contracts.",
+  "intro": "intro.md",
   "production_ready": true,
   "title": "Crafting an NFT",
   "updated_at": "2018-10-23T22:59:37.826Z",

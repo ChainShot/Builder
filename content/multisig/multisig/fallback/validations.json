@@ -1,0 +1,34 @@
+[
+  {
+    "_id": "5bd79375626daf74460af371",
+    "constant": "true",
+    "payable": "false",
+    "error": null,
+    "task_display": "Define an isConfirmed function",
+    "name": "isConfirmed",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5bd79375626daf74460af372",
+        "name": null,
+        "type": "bool"
+      }
+    ],
+    "inputs": [
+      {
+        "_id": "5bd79375626daf74460af373",
+        "name": null,
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "_id": "5bd79375626daf74460af374",
+    "constant": "nil",
+    "payable": "true",
+    "error": null,
+    "task_display": "Define a payable fallback function",
+    "name": null,
+    "type": "fallback"
+  }
+]

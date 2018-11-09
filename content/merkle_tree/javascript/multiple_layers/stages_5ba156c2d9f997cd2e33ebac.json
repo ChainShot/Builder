@@ -1,0 +1,21 @@
+{
+  "_id": "5ba156c2d9f997cd2e33ebac",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5ba15643d9f997cd2e33ebaa",
+    "5ba1562ad9f997cd2e33eba9",
+    "5ba156e4d9f997cd2e33ebad"
+  ],
+  "completion_message": "## We're so impressed by you we wrote this sentence\n\nWe're so impressed by you we wrote (We're so impressed by you we wrote (We're so impressed by you we wrote ...))\n\nWhoops. No base case, we overflowed. :)\n\nOnto odd Merkle Trees! ",
+  "container_id": "5ba1558bd9f997cd2e33eba7",
+  "details": "details.md",
+  "language": "javascript",
+  "language_version": "8.x/babel",
+  "position": 1,
+  "task": "task.md",
+  "test_framework": "mocha_bdd",
+  "title": "Multiple Layers",
+  "updated_at": "2018-10-16T01:50:10.148Z",
+  "created_at": "2018-10-16T01:50:10.148Z",
+  "abi_validations": "validations.json"
+}

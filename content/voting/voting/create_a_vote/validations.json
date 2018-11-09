@@ -1,0 +1,46 @@
+[
+  {
+    "_id": "5b731564d9f9970a465ebce7",
+    "constant": "nil",
+    "payable": "nil",
+    "error": "Could not find a public newVote function",
+    "task_display": "Create a newVote function.",
+    "name": "newVote",
+    "type": "function",
+    "inputs": [
+      {
+        "_id": "5b731564d9f9970a465ebce8",
+        "name": "",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "_id": "5b731564d9f9970a465ebce9",
+    "constant": "nil",
+    "payable": "nil",
+    "error": "",
+    "task_display": "Create a public array votes which is a collection of the struct Vote.",
+    "name": "votes",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5b731564d9f9970a465ebcea",
+        "name": "creator",
+        "type": "address"
+      },
+      {
+        "_id": "5b731564d9f9970a465ebceb",
+        "name": "question",
+        "type": "string"
+      }
+    ],
+    "inputs": [
+      {
+        "_id": "5b731564d9f9970a465ebcec",
+        "name": null,
+        "type": "uint256"
+      }
+    ]
+  }
+]

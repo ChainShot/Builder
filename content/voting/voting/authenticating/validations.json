@@ -1,0 +1,34 @@
+[
+  {
+    "_id": "5b6f50f4d9f997b326486f2a",
+    "constant": "true",
+    "payable": "nil",
+    "error": null,
+    "task_display": "Create a CREATE_VOTES_ROLE bytes32 constant",
+    "name": "CREATE_VOTES_ROLE",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5b6f50f4d9f997b326486f2b",
+        "name": null,
+        "type": "bytes32"
+      }
+    ]
+  },
+  {
+    "_id": "5b6f50f4d9f997b326486f2c",
+    "constant": "true",
+    "payable": "nil",
+    "error": null,
+    "task_display": "Create a CAST_VOTES_ROLE bytes32 constant",
+    "name": "CAST_VOTES_ROLE",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5b6f50f4d9f997b326486f2d",
+        "name": null,
+        "type": "bytes32"
+      }
+    ]
+  }
+]

@@ -7,7 +7,7 @@
     "5b515cbde6b0b0453b4e9e3d"
   ],
   "description": "Create an ERC20 Treasure Chest which allows us to store and withdraw ERC20 tokens at the address.",
-  "intro": "## ERC20 Treasure Chest\n\nThis is a Solidity Smart Contract challenge where you will need to create a contract that can withdraw multiple ERC20 balances from the contracts address to any arbitrary recipients address.  \n\n### Challenge Skills\n\nBy completing this challenge you demonstrate your ability to work with the ERC20 standard and an understanding of addresses as to how  they hold ERC20 token balances. ",
+  "intro": "intro.md",
   "production_ready": true,
   "title": "ERC20 Treasure Chest",
   "updated_at": "2018-10-23T22:59:34.309Z",

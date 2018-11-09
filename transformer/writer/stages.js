@@ -2,26 +2,28 @@ const path = require('path');
 const fs = require('fs-extra');
 const {toFolderName, prettifyJSON} = require('./utils');
 const createCodeFiles = require('./codeFiles');
+const COLLECTION = 'stages';
 
 const writeFiles = [
   { prop: 'task', file: 'task.md' },
   { prop: 'details', file: 'details.md' },
+  { prop: 'abi_validations', file: 'validations.json', transform: prettifyJSON },
 ]
 
+const identity = x => x;
 const create = async(db, folder, container_id) => {
-  const cursor = db.collection('stages').find({ container_id });
+  const cursor = db.collection(COLLECTION).find({ container_id });
   for (let doc = await cursor.next(); doc != null; doc = await cursor.next()) {
       const newFolder = path.join(folder, toFolderName(doc.title));
-      const props = { ...doc }
 
-      writeFiles.forEach(({prop, file}) => {
-        fs.outputFile(path.join(newFolder, file), props[prop]);
+      const props = { ...doc };
+      writeFiles.forEach(({prop, file, transform = identity }) => {
+        fs.outputFile(path.join(newFolder, file), transform(props[prop]));
         props[prop] = file;
       });
+      const json = prettifyJSON(props);
 
-      const json = prettifyJSON(doc);
-
-      const file = path.join(newFolder, 'config.json');
+      const file = path.join(newFolder, `${COLLECTION}_${doc._id}.json`);
       await fs.outputFile(file, json);
 
       if(doc.language === 'solidity' || doc.language === 'vyper') {

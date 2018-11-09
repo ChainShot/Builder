@@ -1,0 +1,23 @@
+[
+  {
+    "_id": "5b730f5bd9f9970a465ebcd4",
+    "constant": "nil",
+    "payable": "nil",
+    "error": "",
+    "task_display": "Create a constructor that takes an arbiter and beneficiary as arguments",
+    "name": null,
+    "type": "constructor",
+    "inputs": [
+      {
+        "_id": "5b730f5bd9f9970a465ebcd5",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "_id": "5b730f5bd9f9970a465ebcd6",
+        "name": "",
+        "type": "address"
+      }
+    ]
+  }
+]

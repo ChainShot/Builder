@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "5b6f5a7cd9f9974bb8518d1d",
+    "constant": "true",
+    "payable": "nil",
+    "error": "We could not find a public depositor address on your EscrowContract (don't forget the public keyword)!",
+    "task_display": "Declare a Public Member depositor Address",
+    "name": "depositor",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5b6f5a7cd9f9974bb8518d1e",
+        "name": "",
+        "type": "address"
+      }
+    ]
+  },
+  {
+    "_id": "5b6f5a7cd9f9974bb8518d1f",
+    "constant": "true",
+    "payable": "nil",
+    "error": "We could not find a public beneficiary address on your EscrowContract (don't forget the public keyword)!",
+    "task_display": "Declare a Public Member beneficiary Address",
+    "name": "beneficiary",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5b6f5a7cd9f9974bb8518d20",
+        "name": null,
+        "type": "address"
+      }
+    ]
+  },
+  {
+    "_id": "5b6f5a7cd9f9974bb8518d21",
+    "constant": "true",
+    "payable": "nil",
+    "error": "We could not find a public arbiter address on your EscrowContract (don't forget the public keyword)!",
+    "task_display": "Declare a Public Member arbiter Address",
+    "name": "arbiter",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5b6f5a7cd9f9974bb8518d22",
+        "name": null,
+        "type": "address"
+      }
+    ]
+  }
+]

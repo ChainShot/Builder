@@ -7,7 +7,7 @@
     "5b515cbde6b0b0453b4e9e3d"
   ],
   "description": "Let's find what the next meeting is on our decentralized schedule! ",
-  "intro": "## What's next on my Schedule?\n\nThis is a Solidity Smart Contract challenge where you will be given a smart contract with a list of meetings and you'll need to find the nearest one that hasn't already passed. \n\n### Challenge Skills\n\nBy completing this challenge you show that you can iterate through a Solidity array of structs and sort uint timestamps in Solidity based on its proximity to the current time, which is an available global to your smart contract. \n",
+  "intro": "intro.md",
   "production_ready": true,
   "title": "What's next on my Schedule?",
   "updated_at": "2018-10-23T23:00:00.138Z",

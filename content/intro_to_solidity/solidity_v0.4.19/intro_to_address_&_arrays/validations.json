@@ -1,0 +1,27 @@
+[
+  {
+    "_id": "5bb84a6f929d24ab56a977fb",
+    "constant": "false",
+    "payable": "false",
+    "error": null,
+    "task_display": "Create an enter function",
+    "name": "enter",
+    "type": "function"
+  },
+  {
+    "_id": "5bb84a6f929d24ab56a977fc",
+    "constant": "true",
+    "payable": "false",
+    "error": null,
+    "task_display": "Create a numberOfParticipants function",
+    "name": "numberOfParticipants",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5bb84a6f929d24ab56a977fd",
+        "name": null,
+        "type": "uint256"
+      }
+    ]
+  }
+]

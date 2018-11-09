@@ -1,0 +1,24 @@
+{
+  "_id": "5b5f8a45d9f9972276897f03",
+  "_type": "CodeStage",
+  "code_file_ids": [
+    "5b5f8c47d9f997cca33a51f7",
+    "5b5f8c92d9f997cca33a51f8",
+    "5b5f8cc3d9f997cca33a51f9",
+    "5b5f8ce6d9f997cca33a51fa",
+    "5b5f8d62d9f997cca33a5208",
+    "5b5f8c20d9f997cca33a51f6"
+  ],
+  "completion_message": "## Locked and Loaded\n\nNicely done, now we can load votes into our front-end application. This is a huge step. \n\nNext we'll listen for events from our `Voting` contract and update our application state accordingly!",
+  "container_id": "5b58fc40d9f997399b71e3fd",
+  "details": "details.md",
+  "language": "javascript",
+  "language_version": "8.x/babel",
+  "position": 5,
+  "task": "task.md",
+  "test_framework": "mocha_bdd",
+  "title": "Loading Votes",
+  "updated_at": "2018-10-16T01:50:10.213Z",
+  "created_at": "2018-10-16T01:50:10.213Z",
+  "abi_validations": "validations.json"
+}

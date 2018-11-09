@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "5baba4c6d9f9970063ceeee9",
+    "constant": "nil",
+    "payable": "nil",
+    "error": null,
+    "task_display": "Create the withdraw function",
+    "name": "withdraw",
+    "type": "function",
+    "inputs": [
+      {
+        "_id": "5baba4c6d9f9970063ceeeea",
+        "name": null,
+        "type": "address[]"
+      }
+    ]
+  }
+]

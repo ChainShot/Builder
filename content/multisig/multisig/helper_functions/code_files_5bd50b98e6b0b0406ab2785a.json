@@ -1,0 +1,17 @@
+{
+  "_id": "5bd50b98e6b0b0406ab2785a",
+  "code_stage_ids": [
+    "5bd50cd2e6b0b0406ab2785b"
+  ],
+  "executable": true,
+  "has_progress": false,
+  "initial_code": "test/testHelper.js",
+  "mode": "javascript",
+  "name": "testHelper.js",
+  "read_only": true,
+  "stage_container_id": "5bce5e20e6b0b012e91da44b",
+  "test_fixture": true,
+  "visible": true,
+  "updated_at": "2018-10-30T00:51:54.013Z",
+  "created_at": "2018-10-28T17:41:09.876Z"
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "_id": "5bd1f84f626daf1162be4bfc",
+    "constant": "false",
+    "payable": "false",
+    "error": null,
+    "task_display": "Create a public 'transfer' function",
+    "name": "transfer",
+    "type": "function",
+    "inputs": [
+      {
+        "_id": "5bd1f84f626daf1162be4bfd",
+        "name": null,
+        "type": "uint256"
+      },
+      {
+        "_id": "5bd1f84f626daf1162be4bfe",
+        "name": null,
+        "type": "address"
+      }
+    ]
+  }
+]

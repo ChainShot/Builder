@@ -1,0 +1,25 @@
+[
+  {
+    "_id": "5be311c0626daf0f9392cf75",
+    "constant": "true",
+    "payable": "false",
+    "error": null,
+    "task_display": "Create a function findRoot which takes in bytes and returns bytes32",
+    "name": "findRoot",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5be311c0626daf0f9392cf76",
+        "name": null,
+        "type": "bytes32"
+      }
+    ],
+    "inputs": [
+      {
+        "_id": "5be311c0626daf0f9392cf77",
+        "name": null,
+        "type": "bytes"
+      }
+    ]
+  }
+]

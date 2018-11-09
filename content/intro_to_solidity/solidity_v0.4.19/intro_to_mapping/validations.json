@@ -1,0 +1,39 @@
+[
+  {
+    "_id": "5b922e8ef1d76e2d5c6c726e",
+    "constant": "false",
+    "payable": "nil",
+    "error": null,
+    "task_display": "Create an assignJudge function.",
+    "name": "assignJudge",
+    "type": "function",
+    "inputs": [
+      {
+        "_id": "5b922e8ef1d76e2d5c6c726f",
+        "name": null,
+        "type": "address"
+      },
+      {
+        "_id": "5b922e8ef1d76e2d5c6c7270",
+        "name": null,
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "_id": "5b922e8ef1d76e2d5c6c7271",
+    "constant": "true",
+    "payable": "nil",
+    "error": null,
+    "task_display": "Create a projectByJudge function",
+    "name": "projectByJudge",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5b922e8ef1d76e2d5c6c7272",
+        "name": null,
+        "type": "string"
+      }
+    ]
+  }
+]

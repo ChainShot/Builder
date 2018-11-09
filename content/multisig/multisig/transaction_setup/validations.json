@@ -1,0 +1,95 @@
+[
+  {
+    "_id": "5bd70d99626daf74460af2dc",
+    "constant": "true",
+    "payable": "nil",
+    "error": "",
+    "task_display": "Create a public required function",
+    "name": "required",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5bd70d99626daf74460af2dd",
+        "name": null,
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "_id": "5bd70d99626daf74460af2de",
+    "constant": "true",
+    "payable": "false",
+    "error": null,
+    "task_display": "Create a public transactionCount function",
+    "name": "transactionCount",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5bd70d99626daf74460af2df",
+        "name": null,
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "_id": "5bd70d99626daf74460af2e0",
+    "constant": "true",
+    "payable": "false",
+    "error": null,
+    "task_display": "Create a transactions mapping",
+    "name": "transactions",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5bd70d99626daf74460af2e1",
+        "name": null,
+        "type": "address"
+      },
+      {
+        "_id": "5bd70d99626daf74460af2e2",
+        "name": null,
+        "type": "uint256"
+      },
+      {
+        "_id": "5bd70d99626daf74460af2e3",
+        "name": null,
+        "type": "bool"
+      }
+    ],
+    "inputs": [
+      {
+        "_id": "5bd70d99626daf74460af2e4",
+        "name": null,
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "_id": "5bd70d99626daf74460af2e5",
+    "constant": "true",
+    "payable": "false",
+    "error": null,
+    "task_display": "Create a confirmations mapping",
+    "name": "confirmations",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5bd70d99626daf74460af2e6",
+        "name": null,
+        "type": "bool"
+      }
+    ],
+    "inputs": [
+      {
+        "_id": "5bd70d99626daf74460af2e7",
+        "name": null,
+        "type": "uint256"
+      },
+      {
+        "_id": "5bd70d99626daf74460af2e8",
+        "name": "",
+        "type": "address"
+      }
+    ]
+  }
+]

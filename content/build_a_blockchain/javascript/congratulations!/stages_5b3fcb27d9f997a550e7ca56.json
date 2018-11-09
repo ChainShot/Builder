@@ -1,0 +1,15 @@
+{
+  "_id": "5b3fcb27d9f997a550e7ca56",
+  "_type": "VideoStage",
+  "completion_message": "",
+  "container_id": "5b3afd70d9f99763e5c4b4fe",
+  "content_id": "7944e950-8156-11e8-a43f-6fc2599acad2",
+  "details": "details.md",
+  "duration": 146819,
+  "position": 6,
+  "task": "task.md",
+  "title": "Congratulations!",
+  "updated_at": "2018-10-16T01:50:10.666Z",
+  "created_at": "2018-10-16T01:50:10.666Z",
+  "abi_validations": "validations.json"
+}

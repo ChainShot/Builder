@@ -1,0 +1,25 @@
+[
+  {
+    "_id": "5bd1f77a626daf1162be4bf7",
+    "constant": "true",
+    "payable": "false",
+    "error": null,
+    "task_display": "Create a public 'balances' mapping",
+    "name": "balances",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5bd1f77a626daf1162be4bf8",
+        "name": null,
+        "type": "uint256"
+      }
+    ],
+    "inputs": [
+      {
+        "_id": "5bd1f77a626daf1162be4bf9",
+        "name": null,
+        "type": "address"
+      }
+    ]
+  }
+]

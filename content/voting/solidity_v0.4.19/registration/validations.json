@@ -1,0 +1,38 @@
+[
+  {
+    "_id": "5bc74fad1cf372ed6d4125ac",
+    "constant": "nil",
+    "payable": "nil",
+    "task_display": "Create a constructor function",
+    "name": "Voting",
+    "type": "constructor"
+  },
+  {
+    "_id": "5bc74fad1cf372ed6d4125ad",
+    "constant": "nil",
+    "payable": "nil",
+    "task_display": "Create a register function",
+    "name": "register",
+    "type": "function",
+    "inputs": [
+      {
+        "_id": "5bc74fad1cf372ed6d4125ae",
+        "type": "address"
+      }
+    ]
+  },
+  {
+    "_id": "5bc74fad1cf372ed6d4125af",
+    "constant": "nil",
+    "payable": "nil",
+    "task_display": "Create a vote function",
+    "name": "vote",
+    "type": "function",
+    "inputs": [
+      {
+        "_id": "5bc74fad1cf372ed6d4125b0",
+        "type": "bool"
+      }
+    ]
+  }
+]

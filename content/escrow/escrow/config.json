@@ -6,7 +6,7 @@
   ],
   "description": "Create a decentralized escrow web application from scratch using Solidity and web3.js! ",
   "estimated_time": 180,
-  "intro": "### What's an Escrow?\n\nAn escrow is an agreement often used when transferring funds in exchange for a good or service. Funds can be held in escrow and a third party can be chosen to \"arbitrate\" or approve the transfer when the service or good is provided.\n\n![Escrow Contract](https://res.cloudinary.com/divzjiip8/image/upload/v1526784126/rlummazk4f0fycevsvbu.png \"An Escrow Contract\")\n\nThere are many use cases for Escrows across real estate, charities and marketplaces. It's the bread and butter of Ethereum Smart Contracts as it's quite easy to write, and yet, so powerful.\n\n### Let's Get Building\n\nWe hope that during this block you'll be thinking about ways that you can use an escrow to launch new decentralized applications. You'll be able to download all the code you wrote into a working application which can be deployed in a couple steps. With a bit of creativity you can create something new and amazing. Start brainstorming! ",
+  "intro": "intro.md",
   "production_ready": true,
   "title": "Escrow",
   "updated_at": "2018-10-29T00:51:33.148Z",

@@ -1,0 +1,17 @@
+{
+  "_id": "5b5e799dd9f9972276897e4e",
+  "code_stage_ids": [
+    "5b5e727ed9f9972276897e4b"
+  ],
+  "executable": true,
+  "has_progress": false,
+  "initial_code": "test/testingEvents.js",
+  "mode": "javascript",
+  "name": "testingEvents.js",
+  "read_only": true,
+  "stage_container_id": "5b58fc40d9f997399b71e3fd",
+  "test_fixture": true,
+  "visible": true,
+  "updated_at": "2018-10-16T01:50:11.362Z",
+  "created_at": "2018-10-16T01:50:11.362Z"
+}

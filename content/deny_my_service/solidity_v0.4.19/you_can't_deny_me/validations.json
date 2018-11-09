@@ -1,0 +1,20 @@
+[
+  {
+    "_id": "5b90b8d6929d2410a2b838de",
+    "constant": "nil",
+    "payable": "nil",
+    "error": null,
+    "task_display": "Create the approveWithdraw function",
+    "name": "approveWithdraw",
+    "type": "function"
+  },
+  {
+    "_id": "5b90b8d6929d2410a2b838df",
+    "constant": "nil",
+    "payable": "nil",
+    "error": null,
+    "task_display": "Create the withdraw function",
+    "name": "withdraw",
+    "type": "function"
+  }
+]

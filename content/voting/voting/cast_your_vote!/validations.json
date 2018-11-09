@@ -1,0 +1,23 @@
+[
+  {
+    "_id": "5b731578d9f9970a465ebced",
+    "constant": "nil",
+    "payable": "nil",
+    "error": null,
+    "task_display": "Create a castVote function.",
+    "name": "castVote",
+    "type": "function",
+    "inputs": [
+      {
+        "_id": "5b731578d9f9970a465ebcee",
+        "name": null,
+        "type": "uint256"
+      },
+      {
+        "_id": "5b731578d9f9970a465ebcef",
+        "name": null,
+        "type": "bool"
+      }
+    ]
+  }
+]

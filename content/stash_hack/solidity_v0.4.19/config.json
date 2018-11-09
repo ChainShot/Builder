@@ -3,7 +3,7 @@
   "_type": "Challenge",
   "badge_type_ids": [],
   "description": "There's a security vulnerability in the squirrel's decentralized winter stash. Help fix the contract before the chipmunk comes and double spends it all away!",
-  "intro": "## Stash Hack \n\nThis is a coding challenge that is a simplified version of the security vulnerability that caused the 2016 DAO hack which caused Ethereum to split into Ethereum and Ethereum Classic.\n\n## Your Goal \n\nTo complete the challenge you'll need to successfully patch the vulnerability while still maintaining the smart contract's functions to deposit and withdraw funds. This requires the ability to read through some Solidity code and make a few changes. You'll be able to test your hypothesis and run the code to see if you've succeeded!\n\n## Your Reward\n\nPride. ",
+  "intro": "intro.md",
   "production_ready": true,
   "title": "Stash Hack",
   "updated_at": "2018-10-23T23:00:19.287Z",

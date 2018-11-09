@@ -1,0 +1,27 @@
+[
+  {
+    "_id": "5bbe46141cf3723ee7b20ae8",
+    "constant": "nil",
+    "payable": "true",
+    "error": null,
+    "task_display": "Create a payable constructor function.",
+    "name": null,
+    "type": "constructor",
+    "inputs": [
+      {
+        "_id": "5bbe46141cf3723ee7b20ae9",
+        "name": null,
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "_id": "5bbe46141cf3723ee7b20aea",
+    "constant": "false",
+    "payable": "nil",
+    "error": null,
+    "task_display": "Create a tick function.",
+    "name": "tick",
+    "type": "function"
+  }
+]

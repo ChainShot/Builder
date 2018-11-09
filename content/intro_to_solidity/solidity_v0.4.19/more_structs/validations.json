@@ -1,0 +1,39 @@
+[
+  {
+    "_id": "5b922c6cf1d76e2d5c6c725a",
+    "constant": "false",
+    "payable": "nil",
+    "error": null,
+    "task_display": "Create a submitProject function",
+    "name": "submitProject",
+    "type": "function",
+    "inputs": [
+      {
+        "_id": "5b922c6cf1d76e2d5c6c725b",
+        "name": null,
+        "type": "uint256"
+      },
+      {
+        "_id": "5b922c6cf1d76e2d5c6c725c",
+        "name": null,
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "_id": "5b922c6cf1d76e2d5c6c725d",
+    "constant": "true",
+    "payable": "nil",
+    "error": null,
+    "task_display": "Create a getMyProject function",
+    "name": "getMyProject",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5b922c6cf1d76e2d5c6c725e",
+        "name": null,
+        "type": "string"
+      }
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+[
+  {
+    "_id": "5b6f5a8ad9f9974bb8518d23",
+    "constant": "false",
+    "payable": "nil",
+    "error": "Expected to see an approve function on your EscrowContract",
+    "task_display": "Create an approve Function",
+    "name": "approve",
+    "type": "function"
+  }
+]

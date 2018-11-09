@@ -1,0 +1,40 @@
+[
+  {
+    "_id": "5bdf6a18e6b0b01c01681105",
+    "constant": "true",
+    "payable": "false",
+    "error": null,
+    "task_display": "Add a bytes array to the Transaction struct",
+    "name": "transactions",
+    "type": "function",
+    "outputs": [
+      {
+        "_id": "5bdf6a18e6b0b01c01681106",
+        "name": null,
+        "type": "address"
+      },
+      {
+        "_id": "5bdf6a18e6b0b01c01681107",
+        "name": null,
+        "type": "uint256"
+      },
+      {
+        "_id": "5bdf6a18e6b0b01c01681108",
+        "name": null,
+        "type": "bool"
+      },
+      {
+        "_id": "5bdf6a18e6b0b01c01681109",
+        "name": null,
+        "type": "bytes"
+      }
+    ],
+    "inputs": [
+      {
+        "_id": "5bdf6a18e6b0b01c0168110a",
+        "name": null,
+        "type": "uint256"
+      }
+    ]
+  }
+]
