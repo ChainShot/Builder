@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs-extra');
 const {toFolderName, prettifyJSON} = require('./utils');
 const COLLECTION = 'code_files';
+const { DB_DIR } = require('../config');
 
 const create = async(db, folder, id) => {
   const cursor = db.collection(COLLECTION).find({ code_stage_ids: { '$in': [id] }});
@@ -15,7 +16,7 @@ const create = async(db, folder, id) => {
       const props = { ...doc };
       props['initial_code'] = location;
       const json = prettifyJSON(props);
-      const file = path.join(folder, `${COLLECTION}_${doc._id}.json`);
+      const file = path.join(DB_DIR, COLLECTION, `${doc._id}.json`);
       await fs.outputFile(file, json);
   }
 }

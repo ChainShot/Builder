@@ -1,0 +1,21 @@
+{
+  "_id": "5beb41081cf372546bb7291a",
+  "_type": "CodeStage",
+  "container_id": "5beb40b11cf372546bb72917",
+  "title": "The UTXO Model",
+  "position": 0,
+  "task": "task.md",
+  "details": "details.md",
+  "validated_contract": "Token",
+  "language_version": "0.4.19",
+  "language": "solidity",
+  "test_framework": "truffle_with_mocha",
+  "updated_at": "2018-11-14T19:55:39.899Z",
+  "created_at": "2018-11-13T21:24:24.313Z",
+  "code_file_ids": [
+    "5beb42f41cf372546bb7291c",
+    "5beb43161cf372546bb7291d"
+  ],
+  "completion_message": "",
+  "abi_validations": "validations.json"
+}

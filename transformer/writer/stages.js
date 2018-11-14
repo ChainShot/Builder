@@ -3,6 +3,7 @@ const fs = require('fs-extra');
 const {toFolderName, prettifyJSON} = require('./utils');
 const createCodeFiles = require('./codeFiles');
 const COLLECTION = 'stages';
+const { DB_DIR } = require('../config');
 
 const writeFiles = [
   { prop: 'task', file: 'task.md' },
@@ -23,7 +24,7 @@ const create = async(db, folder, container_id) => {
       });
       const json = prettifyJSON(props);
 
-      const file = path.join(newFolder, `${COLLECTION}_${doc._id}.json`);
+      const file = path.join(DB_DIR, COLLECTION, `${doc._id}.json`);
       await fs.outputFile(file, json);
 
       if(doc.language === 'solidity' || doc.language === 'vyper') {
