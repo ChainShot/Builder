@@ -12,14 +12,14 @@
   ],
   "completion_message": "## YOU DID IT.\n\nYou've created an Aragon Voting application. \n\nNow, download the code and build on the work you've done! ",
   "container_id": "5b58fc40d9f997399b71e3fd",
-  "details": "details.md",
+  "details": "../content/projects/voting/voting/vote_cast_event/details.md",
   "language": "javascript",
   "language_version": "8.x/babel",
   "position": 7,
-  "task": "task.md",
+  "task": "../content/projects/voting/voting/vote_cast_event/task.md",
   "test_framework": "mocha_bdd",
   "title": "Vote Cast Event",
   "updated_at": "2018-10-16T01:50:10.819Z",
   "created_at": "2018-10-16T01:50:10.819Z",
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/voting/voting/vote_cast_event/validations.json"
 }

@@ -9,14 +9,14 @@
   ],
   "completion_message": "",
   "container_id": "5ba1558bd9f997cd2e33eba7",
-  "details": "details.md",
+  "details": "../content/projects/merkle_tree/javascript/verify_your_proof/details.md",
   "language": "javascript",
   "language_version": "8.x/babel",
   "position": 4,
-  "task": "task.md",
+  "task": "../content/projects/merkle_tree/javascript/verify_your_proof/task.md",
   "test_framework": "mocha_bdd",
   "title": "Verify your Proof",
   "updated_at": "2018-10-28T17:41:08.752Z",
   "created_at": "2018-10-16T01:50:10.174Z",
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/merkle_tree/javascript/verify_your_proof/validations.json"
 }

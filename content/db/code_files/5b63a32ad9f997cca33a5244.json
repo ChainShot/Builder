@@ -7,7 +7,7 @@
   "executable": true,
   "file_location": "app/worker/stateUpdate.js",
   "has_progress": true,
-  "initial_code": "stateUpdate.js",
+  "initial_code": "../content/projects/voting/voting/vote_cast_event/stateUpdate.js",
   "mode": "javascript",
   "name": "stateUpdate.js",
   "read_only": false,

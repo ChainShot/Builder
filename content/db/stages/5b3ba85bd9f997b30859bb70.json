@@ -8,14 +8,14 @@
   ],
   "completion_message": "### It Begins!\n\nWe've created the first block on the chain. Now it's time to move onto appending more blocks at the end.",
   "container_id": "5b3afd70d9f99763e5c4b4fe",
-  "details": "details.md",
+  "details": "../content/projects/build_a_blockchain/javascript/the_genesis_block/details.md",
   "language": "javascript",
   "language_version": "8.x/babel",
   "position": 2,
-  "task": "task.md",
+  "task": "../content/projects/build_a_blockchain/javascript/the_genesis_block/task.md",
   "test_framework": "mocha_bdd",
   "title": "The Genesis Block",
   "updated_at": "2018-10-16T01:50:10.562Z",
   "created_at": "2018-10-16T01:50:10.562Z",
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/build_a_blockchain/javascript/the_genesis_block/validations.json"
 }

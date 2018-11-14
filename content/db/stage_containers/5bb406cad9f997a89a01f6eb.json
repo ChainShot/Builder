@@ -7,7 +7,7 @@
     "5b515d23e6b0b0453b4e9e3f"
   ],
   "description": "Determine the winner from a list of rated projects!",
-  "intro": "intro.md",
+  "intro": "../content/projects/hackathon/solidity_v0.4.19/intro.md",
   "production_ready": true,
   "title": "Hackathon",
   "updated_at": "2018-10-23T22:59:28.155Z",

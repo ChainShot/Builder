@@ -11,7 +11,7 @@
   "executable_path": "contracts/Token.v.py",
   "file_location": "contracts/Token.v.py",
   "has_progress": true,
-  "initial_code": "contracts/Token.v.py",
+  "initial_code": "../content/projects/intro_to_vyper/vyper_v0.1/define_the_supply/contracts/Token.v.py",
   "mode": "python",
   "name": "Token.v.py",
   "read_only": false,

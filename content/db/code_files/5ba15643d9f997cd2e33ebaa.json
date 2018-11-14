@@ -9,7 +9,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "test/testUtil.js",
+  "initial_code": "../content/projects/merkle_tree/javascript/build_the_proof/test/testUtil.js",
   "mode": "javascript",
   "name": "testUtil.js",
   "read_only": true,

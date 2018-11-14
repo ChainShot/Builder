@@ -5,7 +5,7 @@
     "5bcfefab1cf372e300ff2b7b"
   ],
   "name": "partyTest.js",
-  "initial_code": "test/partyTest.js",
+  "initial_code": "../content/projects/party_split/vyper_v0.1/rsvp_to_party/test/partyTest.js",
   "read_only": true,
   "has_progress": false,
   "test_fixture": true,

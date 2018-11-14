@@ -5,7 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "test/testEvents.js",
+  "initial_code": "../content/projects/escrow/escrow/events/test/testEvents.js",
   "mode": "javascript",
   "name": "testEvents.js",
   "read_only": true,

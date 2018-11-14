@@ -8,14 +8,14 @@
   ],
   "completion_message": "# Nicely Done.\n\nYou found all the ether and completed the challenge, way to go! ",
   "container_id": "5b45277dd9f997416b4b0413",
-  "details": "details.md",
+  "details": "../content/projects/who_has_my_ether/javascript/who_has_my_ether/details.md",
   "language": "javascript",
   "language_version": "6.x/babel",
   "position": 0,
-  "task": "task.md",
+  "task": "../content/projects/who_has_my_ether/javascript/who_has_my_ether/task.md",
   "test_framework": "mocha_bdd",
   "title": "Who has my Ether?",
   "updated_at": "2018-10-16T01:50:10.238Z",
   "created_at": "2018-10-16T01:50:10.238Z",
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/who_has_my_ether/javascript/who_has_my_ether/validations.json"
 }

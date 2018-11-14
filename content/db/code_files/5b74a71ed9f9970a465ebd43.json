@@ -5,7 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "test/testSchedule.js",
+  "initial_code": "../content/projects/what's_next_on_my_schedule/solidity_v0.4.19/what's_on_my_schedule/test/testSchedule.js",
   "mode": "javascript",
   "name": "testSchedule.js",
   "read_only": true,

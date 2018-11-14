@@ -7,15 +7,15 @@
   ],
   "completion_message": "## Supplies Supplies\n\nAwesome! You created a token `supply`. Now we can keep track of how many tokens there are total.\n\nNext let's give it a name! ",
   "container_id": "5bb2c8ded9f99705a60c62d3",
-  "details": "details.md",
+  "details": "../content/projects/intro_to_vyper/vyper_v0.1/define_the_supply/details.md",
   "language": "vyper",
   "language_version": "0.1.0b3",
   "position": 0,
-  "task": "task.md",
+  "task": "../content/projects/intro_to_vyper/vyper_v0.1/define_the_supply/task.md",
   "test_framework": "truffle_with_mocha",
   "title": "Define the Supply",
   "updated_at": "2018-11-08T02:51:28.708Z",
   "created_at": "2018-10-16T01:50:10.535Z",
   "validated_contract": "Token",
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/intro_to_vyper/vyper_v0.1/define_the_supply/validations.json"
 }

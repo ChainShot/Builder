@@ -5,7 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "test/testAddresses.js",
+  "initial_code": "../content/projects/who_has_my_ether/javascript/who_has_my_ether/test/testAddresses.js",
   "mode": "javascript",
   "name": "testAddresses.js",
   "read_only": true,

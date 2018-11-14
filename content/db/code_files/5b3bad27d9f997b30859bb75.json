@@ -8,7 +8,7 @@
   ],
   "executable": true,
   "has_progress": true,
-  "initial_code": "Blockchain.js",
+  "initial_code": "../content/projects/build_a_blockchain/javascript/adding_blocks/Blockchain.js",
   "mode": "javascript",
   "name": "Blockchain.js",
   "read_only": false,

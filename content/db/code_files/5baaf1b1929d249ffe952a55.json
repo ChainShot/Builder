@@ -6,7 +6,7 @@
   "executable": true,
   "executable_path": "contracts/EIP20Interface.sol",
   "has_progress": false,
-  "initial_code": "contracts/EIP20Interface.sol",
+  "initial_code": "../content/projects/erc20_treasure_chest/solidity_v0.4.19/withdraw_treasure/contracts/EIP20Interface.sol",
   "mode": "sol",
   "name": "EIP20Interface.sol",
   "read_only": true,

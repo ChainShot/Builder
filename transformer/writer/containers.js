@@ -16,8 +16,9 @@ const create = async (db, folder, stage_container_group_id) => {
       const props = { ...doc };
 
       writeFiles.forEach(({prop, file}) => {
-        fs.outputFile(path.join(newFolder, file), props[prop]);
-        props[prop] = file;
+        const fullPath = path.join(newFolder, file);
+        fs.outputFile(fullPath, props[prop]);
+        props[prop] = fullPath;
       });
 
       const json = prettifyJSON(props);

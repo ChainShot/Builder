@@ -5,7 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "test/testMyVote.js",
+  "initial_code": "../content/projects/eth_sf_challenge_voting/solidity_v0.4.19/get_your_vote/test/testMyVote.js",
   "mode": "javascript",
   "name": "testMyVote.js",
   "read_only": true,

@@ -7,15 +7,15 @@
   ],
   "completion_message": "### Right on! \n\nThis contract now accepts the funds to make this transaction possible. What kind of applications might require an escrow transaction? \n\nStart brainstorming now, we're excited to see what you will build!",
   "container_id": "5adab204929d249e5faefb4c",
-  "details": "details.md",
+  "details": "../content/projects/escrow/escrow/funding/details.md",
   "language": "solidity",
   "language_version": "0.4.19",
   "position": 2,
-  "task": "task.md",
+  "task": "../content/projects/escrow/escrow/funding/task.md",
   "test_framework": "truffle_with_mocha",
   "title": "Funding",
   "validated_contract": "EscrowContract",
   "updated_at": "2018-11-08T02:51:28.559Z",
   "created_at": "2018-10-16T01:50:10.479Z",
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/escrow/escrow/funding/validations.json"
 }

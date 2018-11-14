@@ -12,7 +12,7 @@
   "executable_path": "contracts/escrow.sol",
   "file_location": "truffle/contracts/escrow.sol",
   "has_progress": true,
-  "initial_code": "contracts/escrow.sol",
+  "initial_code": "../content/projects/escrow/escrow/contract_setup/contracts/escrow.sol",
   "mode": "sol",
   "name": "escrow.sol",
   "read_only": false,

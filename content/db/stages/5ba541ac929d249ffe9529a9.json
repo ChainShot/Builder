@@ -8,14 +8,14 @@
   ],
   "completion_message": "## You have *proved* your worth!\n\nNow let's write the necessary code to verify the node belongs in the tree. ",
   "container_id": "5ba1558bd9f997cd2e33eba7",
-  "details": "details.md",
+  "details": "../content/projects/merkle_tree/javascript/build_the_proof/details.md",
   "language": "javascript",
   "language_version": "8.x/babel",
   "position": 3,
-  "task": "task.md",
+  "task": "../content/projects/merkle_tree/javascript/build_the_proof/task.md",
   "test_framework": "mocha_bdd",
   "title": "Build the Proof",
   "updated_at": "2018-10-16T01:50:10.741Z",
   "created_at": "2018-10-16T01:50:10.741Z",
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/merkle_tree/javascript/build_the_proof/validations.json"
 }

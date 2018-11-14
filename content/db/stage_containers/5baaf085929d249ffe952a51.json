@@ -7,7 +7,7 @@
     "5b515cbde6b0b0453b4e9e3d"
   ],
   "description": "Create an ERC20 Treasure Chest which allows us to store and withdraw ERC20 tokens at the address.",
-  "intro": "intro.md",
+  "intro": "../content/projects/erc20_treasure_chest/solidity_v0.4.19/intro.md",
   "production_ready": true,
   "title": "ERC20 Treasure Chest",
   "updated_at": "2018-10-23T22:59:34.309Z",

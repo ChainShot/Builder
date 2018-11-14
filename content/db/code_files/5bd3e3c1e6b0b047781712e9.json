@@ -5,7 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "test/testFallback.js",
+  "initial_code": "../content/projects/multisig/multisig/fallback/test/testFallback.js",
   "mode": "javascript",
   "name": "testFallback.js",
   "read_only": true,

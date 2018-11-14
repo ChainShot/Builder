@@ -14,8 +14,8 @@
     "5bc8b108626daf9c54d6129f",
     "5bb2d834d9f99705a60c6308"
   ],
-  "task": "task.md",
-  "details": "details.md",
-  "abi_validations": "validations.json",
+  "task": "../content/projects/intro_to_vyper/vyper_v0.1/transfer/task.md",
+  "details": "../content/projects/intro_to_vyper/vyper_v0.1/transfer/details.md",
+  "abi_validations": "../content/projects/intro_to_vyper/vyper_v0.1/transfer/validations.json",
   "completion_message": "## Transfer Complete\n\nHeck yeah, you did it! \n\nOne final question: Is your `transfer` secure? "
 }

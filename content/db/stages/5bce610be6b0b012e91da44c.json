@@ -7,15 +7,15 @@
   ],
   "completion_message": "## Now the multisig can be _owned_! \n\nExcellent. \n\nYou've laid the groundwork. Now let's take a look at **transactions**.",
   "container_id": "5bce5e20e6b0b012e91da44b",
-  "details": "details.md",
+  "details": "../content/projects/multisig/multisig/constructor/details.md",
   "language": "solidity",
   "language_version": "0.4.19",
   "position": 0,
-  "task": "task.md",
+  "task": "../content/projects/multisig/multisig/constructor/task.md",
   "test_framework": "truffle_with_mocha",
   "title": "Constructor",
   "updated_at": "2018-11-08T02:51:28.303Z",
   "created_at": "2018-10-25T02:44:28.652Z",
   "validated_contract": "MultiSig",
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/multisig/multisig/constructor/validations.json"
 }

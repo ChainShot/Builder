@@ -6,7 +6,7 @@
   "executable": true,
   "executable_path": "",
   "has_progress": false,
-  "initial_code": "test/itemTest.js",
+  "initial_code": "../content/projects/crafting_an_nft/solidity_v0.4.19/crafting_in_process/test/itemTest.js",
   "mode": "javascript",
   "name": "itemTest.js",
   "read_only": true,

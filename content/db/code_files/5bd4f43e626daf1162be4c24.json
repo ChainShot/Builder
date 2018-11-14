@@ -5,7 +5,7 @@
     "5bd4f411626daf1162be4c21"
   ],
   "name": "parityTest.js",
-  "initial_code": "test/parityTest.js",
+  "initial_code": "../content/projects/parity_check/vyper_v0.1/even_or_odd/test/parityTest.js",
   "read_only": true,
   "test_fixture": true,
   "visible": true,

@@ -8,14 +8,14 @@
   ],
   "completion_message": "## Sweet gravy, it's a chain of blocks!\n\nNow that we have multiple blocks we need a way to make the hash of each block affected by the block before it. ",
   "container_id": "5b3afd70d9f99763e5c4b4fe",
-  "details": "details.md",
+  "details": "../content/projects/build_a_blockchain/javascript/adding_blocks/details.md",
   "language": "javascript",
   "language_version": "8.x/babel",
   "position": 3,
-  "task": "task.md",
+  "task": "../content/projects/build_a_blockchain/javascript/adding_blocks/task.md",
   "test_framework": "mocha_bdd",
   "title": "Adding Blocks",
   "updated_at": "2018-10-16T01:50:10.292Z",
   "created_at": "2018-10-16T01:50:10.292Z",
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/build_a_blockchain/javascript/adding_blocks/validations.json"
 }

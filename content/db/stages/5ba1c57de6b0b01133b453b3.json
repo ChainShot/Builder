@@ -11,15 +11,15 @@
   ],
   "completion_message": "",
   "container_id": "5ba1c494e6b0b01133b453b2",
-  "details": "details.md",
+  "details": "../content/projects/crafting_an_nft/solidity_v0.4.19/crafting_in_process/details.md",
   "language": "solidity",
   "language_version": "0.4.18",
   "position": 0,
-  "task": "task.md",
+  "task": "../content/projects/crafting_an_nft/solidity_v0.4.19/crafting_in_process/task.md",
   "test_framework": "truffle_with_mocha",
   "title": "Crafting in Process",
   "validated_contract": "Marketplace",
   "updated_at": "2018-11-08T02:51:28.346Z",
   "created_at": "2018-10-16T01:50:10.356Z",
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/crafting_an_nft/solidity_v0.4.19/crafting_in_process/validations.json"
 }

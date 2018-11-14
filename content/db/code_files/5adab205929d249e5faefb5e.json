@@ -5,7 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "test/testDeployment.js",
+  "initial_code": "../content/projects/escrow/escrow/deployment/test/testDeployment.js",
   "mode": "javascript",
   "name": "testDeployment.js",
   "read_only": true,

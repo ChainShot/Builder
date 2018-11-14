@@ -7,7 +7,7 @@
   "executable_path": "contracts/Countdown.v.py",
   "file_location": "contracts/Countdown.v.py",
   "has_progress": true,
-  "initial_code": "contracts/Countdown.v.py",
+  "initial_code": "../content/projects/countdown/vyper_v0.1/self-destruct/contracts/Countdown.v.py",
   "mode": "python",
   "name": "Countdown.v.py",
   "read_only": false,

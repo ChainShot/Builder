@@ -5,7 +5,7 @@
     "5bc750351cf372ed6d4125b4"
   ],
   "name": "testMyVote.js",
-  "initial_code": "test/testMyVote.js",
+  "initial_code": "../content/projects/voting/solidity_v0.4.19/get_your_vote/test/testMyVote.js",
   "read_only": true,
   "test_fixture": true,
   "visible": true,

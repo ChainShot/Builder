@@ -5,7 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "deploy.js",
+  "initial_code": "../content/projects/escrow/escrow/js_approve/deploy.js",
   "mode": "javascript",
   "name": "deploy.js",
   "read_only": true,

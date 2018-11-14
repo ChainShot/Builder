@@ -7,15 +7,15 @@
   ],
   "completion_message": "",
   "container_id": "5bb406cad9f997a89a01f6eb",
-  "details": "details.md",
+  "details": "../content/projects/hackathon/solidity_v0.4.19/top_rated_project/details.md",
   "language": "solidity",
   "language_version": "0.4.19",
   "position": 0,
-  "task": "task.md",
+  "task": "../content/projects/hackathon/solidity_v0.4.19/top_rated_project/task.md",
   "test_framework": "truffle_with_mocha",
   "title": "Top Rated Project",
   "validated_contract": "Hackathon",
   "updated_at": "2018-11-08T02:51:28.804Z",
   "created_at": "2018-10-16T01:50:10.623Z",
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/hackathon/solidity_v0.4.19/top_rated_project/validations.json"
 }

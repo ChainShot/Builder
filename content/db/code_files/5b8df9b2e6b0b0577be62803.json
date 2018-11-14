@@ -6,7 +6,7 @@
   "executable": true,
   "executable_path": "contracts/Investment.sol",
   "has_progress": true,
-  "initial_code": "contracts/Investment.sol",
+  "initial_code": "../content/projects/deny_my_service/solidity_v0.4.19/you_can't_deny_me/contracts/Investment.sol",
   "mode": "sol",
   "name": "Investment.sol",
   "read_only": false,

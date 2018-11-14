@@ -5,7 +5,7 @@
     "5ba980ba929d249ffe9529eb"
   ],
   "description": "Build your own Merkle Tree and learn how to get to the root of its optimization powers! ",
-  "intro": "intro.md",
+  "intro": "../content/projects/merkle_tree/javascript/intro.md",
   "production_ready": true,
   "title": "Merkle Tree",
   "updated_at": "2018-10-25T15:40:49.974Z",

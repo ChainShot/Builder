@@ -5,7 +5,7 @@
     "5bd805a2626daf74460af39d"
   ],
   "name": "testBytecode.js",
-  "initial_code": "test/testBytecode.js",
+  "initial_code": "../content/projects/multisig/multisig/abstraction/test/testBytecode.js",
   "read_only": true,
   "test_fixture": true,
   "visible": true,

@@ -7,15 +7,15 @@
   ],
   "completion_message": "## King of Fallbacks\n\nMight not be your best title, but hey, it's not bad.\n\nLet's move on to executing the transaction! ",
   "container_id": "5bce5e20e6b0b012e91da44b",
-  "details": "details.md",
+  "details": "../content/projects/multisig/multisig/fallback/details.md",
   "language": "solidity",
   "language_version": "0.4.19",
   "position": 6,
-  "task": "task.md",
+  "task": "../content/projects/multisig/multisig/fallback/task.md",
   "test_framework": "truffle_with_mocha",
   "title": "Fallback",
   "validated_contract": "MultiSig",
   "updated_at": "2018-11-08T02:51:28.049Z",
   "created_at": "2018-10-28T17:41:08.660Z",
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/multisig/multisig/fallback/validations.json"
 }

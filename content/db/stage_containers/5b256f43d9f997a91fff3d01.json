@@ -3,7 +3,7 @@
   "_type": "Challenge",
   "badge_type_ids": [],
   "description": "There's a security vulnerability in the squirrel's decentralized winter stash. Help fix the contract before the chipmunk comes and double spends it all away!",
-  "intro": "intro.md",
+  "intro": "../content/projects/stash_hack/solidity_v0.4.19/intro.md",
   "production_ready": true,
   "title": "Stash Hack",
   "updated_at": "2018-10-23T23:00:19.287Z",

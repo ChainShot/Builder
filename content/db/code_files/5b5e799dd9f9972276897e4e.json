@@ -5,7 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "test/testingEvents.js",
+  "initial_code": "../content/projects/voting/voting/voting_events/test/testingEvents.js",
   "mode": "javascript",
   "name": "testingEvents.js",
   "read_only": true,

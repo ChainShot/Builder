@@ -4,19 +4,19 @@
   "container_id": "5bc74dce1cf372ed6d4125aa",
   "title": "Get Your Vote",
   "position": 2,
-  "task": "task.md",
+  "task": "../content/projects/voting/solidity_v0.4.19/get_your_vote/task.md",
   "validated_contract": "Voting",
   "language_version": "0.4.19",
   "language": "solidity",
   "test_framework": "truffle_with_mocha",
   "updated_at": "2018-11-08T02:51:28.193Z",
   "created_at": "2018-10-17T15:07:33.525Z",
-  "abi_validations": "validations.json",
+  "abi_validations": "../content/projects/voting/solidity_v0.4.19/get_your_vote/validations.json",
   "code_file_ids": [
     "5bc7506a1cf372ed6d4125b7",
     "5bc750b11cf372ed6d4125b9",
     "5bc750f21cf372ed6d4125bb"
   ],
   "completion_message": "",
-  "details": "details.md"
+  "details": "../content/projects/voting/solidity_v0.4.19/get_your_vote/details.md"
 }

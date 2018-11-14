@@ -5,7 +5,7 @@
     "5b85d0bee6b0b077f1482ffd"
   ],
   "description": "Determine the winning project of the hackathon from a list of rated projects!",
-  "intro": "intro.md",
+  "intro": "../content/projects/eth_berlin_hackathon/solidity_v0.4.19/intro.md",
   "production_ready": false,
   "title": "ETH Berlin Hackathon",
   "updated_at": "2018-10-23T22:59:49.483Z",

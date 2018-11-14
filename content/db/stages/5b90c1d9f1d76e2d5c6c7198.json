@@ -7,15 +7,15 @@
   ],
   "completion_message": "",
   "container_id": "5b8dfa4dd9f9970e1be08638",
-  "details": "details.md",
+  "details": "../content/projects/intro_to_solidity/solidity_v0.4.19/more_structs/details.md",
   "language": "solidity",
   "language_version": "0.4.19",
   "position": 3,
-  "task": "task.md",
+  "task": "../content/projects/intro_to_solidity/solidity_v0.4.19/more_structs/task.md",
   "test_framework": "truffle_with_mocha",
   "title": "More Structs",
   "validated_contract": "Hackathon",
   "updated_at": "2018-11-08T02:51:28.778Z",
   "created_at": "2018-10-16T01:50:10.607Z",
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/intro_to_solidity/solidity_v0.4.19/more_structs/validations.json"
 }

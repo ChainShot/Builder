@@ -9,15 +9,15 @@
   ],
   "completion_message": "",
   "container_id": "5baaf085929d249ffe952a51",
-  "details": "details.md",
+  "details": "../content/projects/erc20_treasure_chest/solidity_v0.4.19/withdraw_treasure/details.md",
   "language": "solidity",
   "language_version": "0.4.19",
   "position": 0,
-  "task": "task.md",
+  "task": "../content/projects/erc20_treasure_chest/solidity_v0.4.19/withdraw_treasure/task.md",
   "test_framework": "truffle_with_mocha",
   "title": "Withdraw Treasure",
   "validated_contract": "TreasureChest",
   "updated_at": "2018-11-08T02:51:28.692Z",
   "created_at": "2018-10-16T01:50:10.522Z",
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/erc20_treasure_chest/solidity_v0.4.19/withdraw_treasure/validations.json"
 }

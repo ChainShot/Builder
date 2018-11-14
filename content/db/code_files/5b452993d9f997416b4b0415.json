@@ -5,7 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "setup.js",
+  "initial_code": "../content/projects/who_has_my_ether/javascript/who_has_my_ether/setup.js",
   "mode": "javascript",
   "name": "setup.js",
   "read_only": true,

@@ -10,11 +10,11 @@ const create = async(db, folder, id) => {
       // write the initial code file
       const defaultLocation = doc.test_fixture ? `test/${doc.name}` : doc.name;
       const location = doc.executable_path || defaultLocation;
-      const codefile = path.join(folder, location);
-      await fs.outputFile(codefile, doc.initial_code);
+      const codefilePath = path.join(folder, location);
+      await fs.outputFile(codefilePath, doc.initial_code);
 
       const props = { ...doc };
-      props['initial_code'] = location;
+      props['initial_code'] = codefilePath;
       const json = prettifyJSON(props);
       const file = path.join(DB_DIR, COLLECTION, `${doc._id}.json`);
       await fs.outputFile(file, json);

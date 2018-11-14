@@ -7,7 +7,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "zen-observable.js",
+  "initial_code": "../content/projects/voting/voting/vote_cast_event/zen-observable.js",
   "mode": "javascript",
   "name": "zen-observable.js",
   "read_only": true,

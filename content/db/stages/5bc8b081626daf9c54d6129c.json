@@ -14,8 +14,8 @@
     "5bc8b130626daf9c54d612a0",
     "5bb2d834d9f99705a60c6308"
   ],
-  "task": "task.md",
-  "details": "details.md",
+  "task": "../content/projects/intro_to_vyper/vyper_v0.1/transfer_debt/task.md",
+  "details": "../content/projects/intro_to_vyper/vyper_v0.1/transfer_debt/details.md",
   "completion_message": "",
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/intro_to_vyper/vyper_v0.1/transfer_debt/validations.json"
 }

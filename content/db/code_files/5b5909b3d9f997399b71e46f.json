@@ -5,7 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "test/testVoteCasting.js",
+  "initial_code": "../content/projects/voting/voting/cast_your_vote!/test/testVoteCasting.js",
   "mode": "javascript",
   "name": "testVoteCasting.js",
   "read_only": true,

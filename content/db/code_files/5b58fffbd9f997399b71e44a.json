@@ -11,7 +11,7 @@
   "executable_path": "contracts/Voting.sol",
   "file_location": "contracts/Voting.sol",
   "has_progress": true,
-  "initial_code": "contracts/Voting.sol",
+  "initial_code": "../content/projects/voting/voting/authenticating/contracts/Voting.sol",
   "mode": "sol",
   "name": "Voting.sol",
   "read_only": false,

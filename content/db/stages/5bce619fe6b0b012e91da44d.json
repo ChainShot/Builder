@@ -7,15 +7,15 @@
   ],
   "completion_message": "## Your awesomeness is deeply confirmed\n\nOk, we admit that was a bit of a setup stage. \n\nNext we'll move onto more functionality! ",
   "container_id": "5bce5e20e6b0b012e91da44b",
-  "details": "details.md",
+  "details": "../content/projects/multisig/multisig/transaction_setup/details.md",
   "language": "solidity",
   "language_version": "0.4.19",
   "position": 1,
-  "task": "task.md",
+  "task": "../content/projects/multisig/multisig/transaction_setup/task.md",
   "test_framework": "truffle_with_mocha",
   "title": "Transaction Setup",
   "updated_at": "2018-11-08T02:51:28.617Z",
   "created_at": "2018-10-25T02:46:50.498Z",
   "validated_contract": "MultiSig",
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/multisig/multisig/transaction_setup/validations.json"
 }
