@@ -3,6 +3,7 @@ const fs = require('fs-extra');
 const {toFolderName, prettifyJSON} = require('./utils');
 const createStages = require('./stages');
 const COLLECTION = 'stage_containers';
+const { DB_DIR } = require('../config');
 
 const writeFiles = [
   { prop: 'intro', file: 'intro.md' },
@@ -20,7 +21,7 @@ const create = async (db, folder, stage_container_group_id) => {
       });
 
       const json = prettifyJSON(props);
-      const file = path.join(newFolder, 'config.json');
+      const file = path.join(DB_DIR, COLLECTION, `${doc._id}.json`);
       await fs.outputFile(file, json);
       await createStages(db, newFolder, doc._id);
   }

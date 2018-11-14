@@ -1,0 +1,49 @@
+[
+  {
+    "_id": "5bec7dbb1cf372546bb729dd",
+    "constant": "false",
+    "payable": "false",
+    "error": null,
+    "task_display": "Create a public function called initialize ",
+    "name": "initialize",
+    "type": "function",
+    "inputs": [
+      {
+        "_id": "5bec7dbb1cf372546bb729de",
+        "name": null,
+        "type": "address"
+      },
+      {
+        "_id": "5bec7dbb1cf372546bb729df",
+        "name": null,
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "_id": "5bec7dbb1cf372546bb729e0",
+    "constant": "false",
+    "payable": "false",
+    "error": null,
+    "task_display": "Create a public function called spend",
+    "name": "spend",
+    "type": "function",
+    "inputs": [
+      {
+        "_id": "5bec7dbb1cf372546bb729e1",
+        "name": null,
+        "type": "bytes32"
+      },
+      {
+        "_id": "5bec7dbb1cf372546bb729e2",
+        "name": null,
+        "type": "uint256"
+      },
+      {
+        "_id": "5bec7dbb1cf372546bb729e3",
+        "name": null,
+        "type": "address"
+      }
+    ]
+  }
+]
