@@ -9,7 +9,7 @@
   "title": "Voting",
   "description": "Create a Voting Contract with a single owner who can register users and allow them to vote.",
   "production_ready": true,
-  "intro": "intro.md",
+  "intro": "../content/projects/voting/solidity_v0.4.19/intro.md",
   "updated_at": "2018-10-28T15:58:47.139Z",
   "created_at": "2018-10-17T14:57:18.055Z",
   "stage_container_group_id": "5bcdf0c31cf372e860c8b8c5",

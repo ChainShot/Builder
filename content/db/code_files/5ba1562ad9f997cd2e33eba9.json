@@ -9,7 +9,7 @@
   ],
   "executable": true,
   "has_progress": true,
-  "initial_code": "index.js",
+  "initial_code": "../content/projects/merkle_tree/javascript/build_the_proof/index.js",
   "mode": "javascript",
   "name": "index.js",
   "read_only": false,

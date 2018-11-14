@@ -14,8 +14,8 @@
     "5bc8b0cd626daf9c54d6129d",
     "5bb2d834d9f99705a60c6308"
   ],
-  "abi_validations": "validations.json",
-  "task": "task.md",
-  "details": "details.md",
+  "abi_validations": "../content/projects/intro_to_vyper/vyper_v0.1/name_your_token/validations.json",
+  "task": "../content/projects/intro_to_vyper/vyper_v0.1/name_your_token/task.md",
+  "details": "../content/projects/intro_to_vyper/vyper_v0.1/name_your_token/details.md",
   "completion_message": "## A Symbolic Victory\n\nWe're very pleased you have named your token. \n\nIt will most certainly go on to do great things! "
 }

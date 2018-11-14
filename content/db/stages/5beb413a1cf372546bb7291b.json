@@ -4,8 +4,8 @@
   "container_id": "5beb40c21cf372546bb72918",
   "title": "The UTXO Model",
   "position": 0,
-  "task": "task.md",
-  "details": "details.md",
+  "task": "../content/projects/utxo_token/vyper_v0.1/the_utxo_model/task.md",
+  "details": "../content/projects/utxo_token/vyper_v0.1/the_utxo_model/details.md",
   "validated_contract": "Token",
   "language_version": "0.1.0b3",
   "language": "vyper",
@@ -16,5 +16,5 @@
     "5beb43421cf372546bb7291e",
     "5beb43681cf372546bb7291f"
   ],
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/utxo_token/vyper_v0.1/the_utxo_model/validations.json"
 }

@@ -6,7 +6,7 @@
   ],
   "description": "Create your own Aragon Voting application using both the Aragon OS smart contracts and the Aragon JS front-end! ",
   "estimated_time": 360,
-  "intro": "intro.md",
+  "intro": "../content/projects/voting/voting/intro.md",
   "production_ready": true,
   "title": "Voting",
   "updated_at": "2018-10-23T20:32:02.166Z",

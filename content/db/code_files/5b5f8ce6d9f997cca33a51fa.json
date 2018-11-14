@@ -5,7 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "test/testLoadVote.js",
+  "initial_code": "../content/projects/voting/voting/loading_votes/test/testLoadVote.js",
   "mode": "javascript",
   "name": "testLoadVote.js",
   "read_only": true,

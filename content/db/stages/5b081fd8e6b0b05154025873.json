@@ -7,15 +7,15 @@
   ],
   "completion_message": "## Approved! \n\nWe approve of the code you just wrote. The code you wrote approves of the funds the depositor deposits. Kermit the frog approves of being green.\n\nNow that your smart contract is complete, we'll move onto deploying and interacting with it! ",
   "container_id": "5adab204929d249e5faefb4c",
-  "details": "details.md",
+  "details": "../content/projects/escrow/escrow/events/details.md",
   "language": "solidity",
   "language_version": "0.4.19",
   "position": 5,
-  "task": "task.md",
+  "task": "../content/projects/escrow/escrow/events/task.md",
   "test_framework": "truffle_with_mocha",
   "title": "Events",
   "validated_contract": "EscrowContract",
   "updated_at": "2018-11-08T02:51:28.822Z",
   "created_at": "2018-10-16T01:50:10.640Z",
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/escrow/escrow/events/validations.json"
 }

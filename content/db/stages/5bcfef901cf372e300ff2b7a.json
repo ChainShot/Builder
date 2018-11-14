@@ -14,8 +14,8 @@
     "5bcfefd61cf372e300ff2b7c",
     "5bcfef2f1cf372e300ff2b79"
   ],
-  "abi_validations": "validations.json",
-  "task": "task.md",
+  "abi_validations": "../content/projects/party_split/solidity_v0.4.19/rsvp_to_party/validations.json",
+  "task": "../content/projects/party_split/solidity_v0.4.19/rsvp_to_party/task.md",
   "completion_message": "",
-  "details": "details.md"
+  "details": "../content/projects/party_split/solidity_v0.4.19/rsvp_to_party/details.md"
 }

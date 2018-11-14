@@ -5,7 +5,7 @@
   ],
   "executable": true,
   "has_progress": true,
-  "initial_code": "test/testProjects.js",
+  "initial_code": "../content/projects/intro_to_solidity/solidity_v0.4.19/more_structs/test/testProjects.js",
   "mode": "javascript",
   "name": "testProjects.js",
   "read_only": false,

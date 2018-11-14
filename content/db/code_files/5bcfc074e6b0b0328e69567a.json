@@ -17,7 +17,7 @@
   "executable_path": "contracts/MultiSig.sol",
   "file_location": "truffle/contracts/MultiSig.sol",
   "has_progress": true,
-  "initial_code": "contracts/MultiSig.sol",
+  "initial_code": "../content/projects/multisig/multisig/abstraction/contracts/MultiSig.sol",
   "mode": "sol",
   "name": "MultiSig.sol",
   "read_only": false,

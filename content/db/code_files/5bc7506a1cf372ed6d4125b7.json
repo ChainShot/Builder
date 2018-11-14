@@ -7,7 +7,7 @@
     "5bc74fad1cf372ed6d4125ab"
   ],
   "name": "Voting.sol",
-  "initial_code": "contracts/Voting.sol",
+  "initial_code": "../content/projects/voting/solidity_v0.4.19/registration/contracts/Voting.sol",
   "has_progress": true,
   "visible": true,
   "executable": true,

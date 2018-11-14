@@ -4,8 +4,8 @@
   "container_id": "5beb40b11cf372546bb72917",
   "title": "The UTXO Model",
   "position": 0,
-  "task": "task.md",
-  "details": "details.md",
+  "task": "../content/projects/utxo_token/solidity_v0.4.19/the_utxo_model/task.md",
+  "details": "../content/projects/utxo_token/solidity_v0.4.19/the_utxo_model/details.md",
   "validated_contract": "Token",
   "language_version": "0.4.19",
   "language": "solidity",
@@ -17,5 +17,5 @@
     "5beb43161cf372546bb7291d"
   ],
   "completion_message": "",
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/utxo_token/solidity_v0.4.19/the_utxo_model/validations.json"
 }

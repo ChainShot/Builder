@@ -5,7 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "test/hashTest.js",
+  "initial_code": "../content/projects/build_a_blockchain/javascript/blocks_and_hashes/test/hashTest.js",
   "mode": "javascript",
   "name": "hashTest.js",
   "read_only": true,

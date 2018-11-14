@@ -3,7 +3,7 @@
   "_type": "Challenge",
   "stage_container_group_id": "5bcf93d51cf372448c2e26ab",
   "version": "Solidity v0.4.19",
-  "intro": "intro.md",
+  "intro": "../content/projects/party_split/solidity_v0.4.19/intro.md",
   "production_ready": false,
   "updated_at": "2018-10-24T04:38:22.126Z",
   "created_at": "2018-10-23T21:40:02.683Z"

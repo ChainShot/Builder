@@ -14,8 +14,8 @@
     "5bcff00f1cf372e300ff2b7d",
     "5bcff0371cf372e300ff2b7e"
   ],
-  "abi_validations": "validations.json",
-  "task": "task.md",
+  "abi_validations": "../content/projects/party_split/vyper_v0.1/rsvp_to_party/validations.json",
+  "task": "../content/projects/party_split/vyper_v0.1/rsvp_to_party/task.md",
   "completion_message": "",
-  "details": "details.md"
+  "details": "../content/projects/party_split/vyper_v0.1/rsvp_to_party/details.md"
 }

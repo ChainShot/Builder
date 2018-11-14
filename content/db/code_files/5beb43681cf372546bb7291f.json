@@ -5,7 +5,7 @@
     "5beb413a1cf372546bb7291b"
   ],
   "name": "testToken.js",
-  "initial_code": "test/testToken.js",
+  "initial_code": "../content/projects/utxo_token/vyper_v0.1/the_utxo_model/test/testToken.js",
   "read_only": true,
   "has_progress": false,
   "test_fixture": true,

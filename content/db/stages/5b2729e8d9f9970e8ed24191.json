@@ -9,15 +9,15 @@
   ],
   "completion_message": "## You've saved the Day! \n\nWay to go! With that pesky re-entrancy bug taken care of, our friend, the squirrel can survive the next crypto winter. ",
   "container_id": "5b256f43d9f997a91fff3d01",
-  "details": "details.md",
+  "details": "../content/projects/stash_hack/solidity_v0.4.19/stash_attack/details.md",
   "language": "solidity",
   "language_version": "0.4.19",
   "position": 0,
-  "task": "task.md",
+  "task": "../content/projects/stash_hack/solidity_v0.4.19/stash_attack/task.md",
   "test_framework": "truffle_with_mocha",
   "title": "Stash Attack",
   "validated_contract": "Stash",
   "updated_at": "2018-10-16T01:50:10.162Z",
   "created_at": "2018-10-16T01:50:10.162Z",
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/stash_hack/solidity_v0.4.19/stash_attack/validations.json"
 }

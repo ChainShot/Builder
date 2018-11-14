@@ -2,7 +2,7 @@
   "_id": "5b8dfa4dd9f9970e1be08638",
   "_type": "Lesson",
   "description": "An intro for someone new to the Solidity Programming Language",
-  "intro": "intro.md",
+  "intro": "../content/projects/intro_to_solidity/solidity_v0.4.19/intro.md",
   "production_ready": false,
   "title": "Intro To Solidity",
   "updated_at": "2018-10-25T15:40:56.115Z",

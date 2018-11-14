@@ -8,7 +8,7 @@
   "executable": true,
   "file_location": "app/worker/loadVote.js",
   "has_progress": true,
-  "initial_code": "loadVote.js",
+  "initial_code": "../content/projects/voting/voting/vote_cast_event/loadVote.js",
   "mode": "javascript",
   "name": "loadVote.js",
   "read_only": false,

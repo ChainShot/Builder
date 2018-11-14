@@ -4,15 +4,15 @@
   "container_id": "5be1866f626daf0f9392cf38",
   "title": "Hash it up",
   "position": 0,
-  "task": "task.md",
-  "details": "details.md",
+  "task": "../content/projects/root_hash/vyper_v0.1/hash_it_up/task.md",
+  "details": "../content/projects/root_hash/vyper_v0.1/hash_it_up/details.md",
   "validated_contract": "Root",
   "language_version": "0.1.0b3",
   "language": "vyper",
   "test_framework": "truffle_with_mocha",
   "updated_at": "2018-11-08T02:51:28.664Z",
   "created_at": "2018-11-06T12:23:13.629Z",
-  "abi_validations": "validations.json",
+  "abi_validations": "../content/projects/root_hash/vyper_v0.1/hash_it_up/validations.json",
   "code_file_ids": [
     "5be187e3626daf0f9392cf42",
     "5be188da626daf0f9392cf44"

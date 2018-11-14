@@ -6,7 +6,7 @@
   ],
   "description": "Create a decentralized escrow web application from scratch using Solidity and web3.js! ",
   "estimated_time": 180,
-  "intro": "intro.md",
+  "intro": "../content/projects/escrow/escrow/intro.md",
   "production_ready": true,
   "title": "Escrow",
   "updated_at": "2018-10-29T00:51:33.148Z",

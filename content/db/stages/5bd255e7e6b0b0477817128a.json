@@ -7,15 +7,15 @@
   ],
   "completion_message": "## Confirmative!\n\nDid we just make up a word? Nope. \n\nNext let's take confirmations to the next level!",
   "container_id": "5bce5e20e6b0b012e91da44b",
-  "details": "details.md",
+  "details": "../content/projects/multisig/multisig/confirm_transaction/details.md",
   "language": "solidity",
   "language_version": "0.4.19",
   "position": 3,
-  "task": "task.md",
+  "task": "../content/projects/multisig/multisig/confirm_transaction/task.md",
   "test_framework": "truffle_with_mocha",
   "title": "Confirm Transaction",
   "validated_contract": "MultiSig",
   "updated_at": "2018-11-08T02:51:28.119Z",
   "created_at": "2018-10-28T17:41:08.736Z",
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/multisig/multisig/confirm_transaction/validations.json"
 }

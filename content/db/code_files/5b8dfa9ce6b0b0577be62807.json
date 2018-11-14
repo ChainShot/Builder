@@ -6,7 +6,7 @@
   "executable": true,
   "executable_path": "",
   "has_progress": false,
-  "initial_code": "test/dosTest.js",
+  "initial_code": "../content/projects/deny_my_service/solidity_v0.4.19/you_can't_deny_me/test/dosTest.js",
   "mode": "javascript",
   "name": "dosTest.js",
   "read_only": true,

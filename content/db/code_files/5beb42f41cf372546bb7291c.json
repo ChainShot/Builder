@@ -5,7 +5,7 @@
     "5beb41081cf372546bb7291a"
   ],
   "name": "Token.sol",
-  "initial_code": "contracts/Token.sol",
+  "initial_code": "../content/projects/utxo_token/solidity_v0.4.19/the_utxo_model/contracts/Token.sol",
   "has_progress": true,
   "visible": true,
   "executable": true,

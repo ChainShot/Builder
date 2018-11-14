@@ -5,7 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "test/testContract.js",
+  "initial_code": "../content/projects/escrow/escrow/contract_setup/test/testContract.js",
   "mode": "javascript",
   "name": "testContract.js",
   "read_only": true,

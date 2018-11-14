@@ -6,7 +6,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "toPromiseFunction.js",
+  "initial_code": "../content/projects/voting/voting/vote_cast_event/toPromiseFunction.js",
   "mode": "javascript",
   "name": "toPromiseFunction.js",
   "read_only": true,

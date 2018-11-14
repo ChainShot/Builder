@@ -6,7 +6,7 @@
   "executable": true,
   "executable_path": "",
   "has_progress": false,
-  "initial_code": "test/testBananaStand.js",
+  "initial_code": "../content/projects/banana_stand/solidity_v0.4.19/handling_bananas/test/testBananaStand.js",
   "mode": "javascript",
   "name": "testBananaStand.js",
   "read_only": true,

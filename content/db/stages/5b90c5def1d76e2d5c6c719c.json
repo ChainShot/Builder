@@ -7,15 +7,15 @@
   ],
   "completion_message": "",
   "container_id": "5b8dfa4dd9f9970e1be08638",
-  "details": "details.md",
+  "details": "../content/projects/intro_to_solidity/solidity_v0.4.19/intro_to_mapping/details.md",
   "language": "solidity",
   "language_version": "0.4.19",
   "position": 4,
-  "task": "task.md",
+  "task": "../content/projects/intro_to_solidity/solidity_v0.4.19/intro_to_mapping/task.md",
   "test_framework": "truffle_with_mocha",
   "title": "Intro to Mapping",
   "validated_contract": "Hackathon",
   "updated_at": "2018-11-08T02:51:28.450Z",
   "created_at": "2018-10-16T01:50:10.417Z",
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/intro_to_solidity/solidity_v0.4.19/intro_to_mapping/validations.json"
 }

@@ -6,7 +6,7 @@
   "executable": true,
   "file_location": "truffle/tests/testFunding.js",
   "has_progress": false,
-  "initial_code": "test/testFunding.js",
+  "initial_code": "../content/projects/escrow/escrow/funding/test/testFunding.js",
   "mode": "javascript",
   "name": "testFunding.js",
   "read_only": true,

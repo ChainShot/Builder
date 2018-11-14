@@ -5,7 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "test/tests.js",
+  "initial_code": "../content/projects/stash_hack/solidity_v0.4.19/stash_attack/test/tests.js",
   "mode": "javascript",
   "name": "tests.js",
   "read_only": true,

@@ -5,7 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "test/testAddTransaction.js",
+  "initial_code": "../content/projects/multisig/multisig/add_transactions/test/testAddTransaction.js",
   "mode": "javascript",
   "name": "testAddTransaction.js",
   "read_only": true,

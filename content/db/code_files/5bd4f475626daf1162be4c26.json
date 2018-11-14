@@ -5,7 +5,7 @@
     "5bd4f3be626daf1162be4c1e"
   ],
   "name": "testUtils.js",
-  "initial_code": "test/testUtils.js",
+  "initial_code": "../content/projects/parity_check/solidity_v0.4.19/even_or_odd/test/testUtils.js",
   "read_only": true,
   "test_fixture": true,
   "visible": true,

@@ -5,7 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "test/validationTests.js",
+  "initial_code": "../content/projects/build_a_blockchain/javascript/validating_the_chain/test/validationTests.js",
   "mode": "javascript",
   "name": "validationTests.js",
   "read_only": true,

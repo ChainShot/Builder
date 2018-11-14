@@ -5,7 +5,7 @@
     "5bc8b081626daf9c54d6129c"
   ],
   "name": "tokenDebt.js",
-  "initial_code": "test/tokenDebt.js",
+  "initial_code": "../content/projects/intro_to_vyper/vyper_v0.1/transfer_debt/test/tokenDebt.js",
   "read_only": true,
   "test_fixture": true,
   "visible": true,

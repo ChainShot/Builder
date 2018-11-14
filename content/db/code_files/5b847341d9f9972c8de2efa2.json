@@ -6,7 +6,7 @@
   "executable": true,
   "executable_path": "contracts/BananaStand.sol",
   "has_progress": true,
-  "initial_code": "contracts/BananaStand.sol",
+  "initial_code": "../content/projects/banana_stand/solidity_v0.4.19/handling_bananas/contracts/BananaStand.sol",
   "mode": "sol",
   "name": "BananaStand.sol",
   "read_only": false,

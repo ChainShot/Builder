@@ -5,7 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "test/testHelper.js",
+  "initial_code": "../content/projects/multisig/multisig/helper_functions/test/testHelper.js",
   "mode": "javascript",
   "name": "testHelper.js",
   "read_only": true,

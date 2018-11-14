@@ -7,15 +7,15 @@
   ],
   "completion_message": "## Yes. Well Done. \n\nThe funds can now be successfully moved from the `depositor` to the `beneficiary`. \n\nThis is a working escrow contract on the blockchain, very exciting!",
   "container_id": "5adab204929d249e5faefb4c",
-  "details": "details.md",
+  "details": "../content/projects/escrow/escrow/approval/details.md",
   "language": "solidity",
   "language_version": "0.4.19",
   "position": 3,
-  "task": "task.md",
+  "task": "../content/projects/escrow/escrow/approval/task.md",
   "test_framework": "truffle_with_mocha",
   "title": "Approval",
   "validated_contract": "EscrowContract",
   "updated_at": "2018-11-08T02:51:28.648Z",
   "created_at": "2018-10-16T01:50:10.493Z",
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/escrow/escrow/approval/validations.json"
 }

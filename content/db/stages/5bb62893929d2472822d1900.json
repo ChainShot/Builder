@@ -8,15 +8,15 @@
   ],
   "completion_message": "",
   "container_id": "5bb626c3929d2472822d18f9",
-  "details": "details.md",
+  "details": "../content/projects/eth_sf_challenge_voting/solidity_v0.4.19/get_your_vote/details.md",
   "language": "solidity",
   "language_version": "0.4.19",
   "position": 2,
-  "task": "task.md",
+  "task": "../content/projects/eth_sf_challenge_voting/solidity_v0.4.19/get_your_vote/task.md",
   "test_framework": "truffle_with_mocha",
   "title": "Get Your Vote",
   "validated_contract": "Voting",
   "updated_at": "2018-11-08T02:51:28.080Z",
   "created_at": "2018-10-16T01:50:10.136Z",
-  "abi_validations": "validations.json"
+  "abi_validations": "../content/projects/eth_sf_challenge_voting/solidity_v0.4.19/get_your_vote/validations.json"
 }
