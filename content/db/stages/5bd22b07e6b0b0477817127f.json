@@ -7,15 +7,15 @@
   ],
   "completion_message": "## Good, Good.\n\nWhat are the chances someone gets that zero address? \n\nOnto confirmations!",
   "container_id": "5bce5e20e6b0b012e91da44b",
-  "details": "../content/projects/multisig/multisig/add_transactions/details.md",
+  "details": "$$LOOKUP",
   "language": "solidity",
   "language_version": "0.4.19",
   "position": 2,
-  "task": "../content/projects/multisig/multisig/add_transactions/task.md",
+  "task": "$$LOOKUP",
   "test_framework": "truffle_with_mocha",
   "title": "Add Transactions",
   "validated_contract": "MultiSig",
   "updated_at": "2018-11-08T02:51:29.166Z",
   "created_at": "2018-10-28T17:41:09.726Z",
-  "abi_validations": "../content/projects/multisig/multisig/add_transactions/validations.json"
+  "abi_validations": "$$LOOKUP"
 }

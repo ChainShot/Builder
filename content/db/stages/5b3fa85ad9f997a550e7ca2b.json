@@ -8,14 +8,14 @@
   ],
   "completion_message": "## Awesome!\n\nNow our blocks are inextricably linked. Now we'll write a function to validate a blockchain. Combine the concept of a valid blockchain with linked blocks and we'll be able to look at just the most recent hash to see if two blocks are equal.",
   "container_id": "5b3afd70d9f99763e5c4b4fe",
-  "details": "../content/projects/build_a_blockchain/javascript/linking_the_blocks/details.md",
+  "details": "$$LOOKUP",
   "language": "javascript",
   "language_version": "8.x/babel",
   "position": 4,
-  "task": "../content/projects/build_a_blockchain/javascript/linking_the_blocks/task.md",
+  "task": "$$LOOKUP",
   "test_framework": "mocha_bdd",
   "title": "Linking The Blocks",
   "updated_at": "2018-10-16T01:50:10.678Z",
   "created_at": "2018-10-16T01:50:10.678Z",
-  "abi_validations": "../content/projects/build_a_blockchain/javascript/linking_the_blocks/validations.json"
+  "abi_validations": "$$LOOKUP"
 }

@@ -9,11 +9,11 @@
     "test_deployment_code_file_id": "5adab205929d249e5faefb5e"
   },
   "container_id": "5adab204929d249e5faefb4c",
-  "details": "../content/projects/escrow/escrow/testnet/details.md",
+  "details": "$$LOOKUP",
   "position": 8,
-  "task": "../content/projects/escrow/escrow/testnet/task.md",
+  "task": "$$LOOKUP",
   "title": "TestNet",
   "updated_at": "2018-10-16T01:50:10.768Z",
   "created_at": "2018-10-16T01:50:10.768Z",
-  "abi_validations": "../content/projects/escrow/escrow/testnet/validations.json"
+  "abi_validations": "$$LOOKUP"
 }

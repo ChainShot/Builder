@@ -11,13 +11,7 @@
   "executable_path": "contracts/Voting.sol",
   "file_location": "contracts/Voting.sol",
   "has_progress": true,
-  "initial_code": [
-    "../content/projects/voting/voting/multiple_votes/contracts/Voting.sol",
-    "../content/projects/voting/voting/cast_your_vote!/contracts/Voting.sol",
-    "../content/projects/voting/voting/create_a_vote/contracts/Voting.sol",
-    "../content/projects/voting/voting/voting_events/contracts/Voting.sol",
-    "../content/projects/voting/voting/authenticating/contracts/Voting.sol"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "sol",
   "name": "Voting.sol",
   "read_only": false,

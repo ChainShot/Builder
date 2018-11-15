@@ -3,7 +3,7 @@
   "_type": "Challenge",
   "stage_container_group_id": "5beb408e1cf372546bb72916",
   "version": "Vyper v0.1",
-  "intro": "../content/projects/utxo_token/vyper_v0.1/intro.md",
+  "intro": "$$LOOKUP",
   "updated_at": "2018-11-14T15:25:57.470Z",
   "created_at": "2018-11-13T21:23:14.845Z"
 }

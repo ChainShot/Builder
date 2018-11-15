@@ -5,9 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": [
-    "../content/projects/erc20_treasure_chest/solidity_v0.4.19/withdraw_treasure/test/testChest.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "javascript",
   "name": "testChest.js",
   "read_only": true,

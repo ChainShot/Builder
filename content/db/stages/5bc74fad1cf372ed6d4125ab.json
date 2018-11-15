@@ -4,7 +4,7 @@
   "container_id": "5bc74dce1cf372ed6d4125aa",
   "title": "Registration",
   "position": 0,
-  "task": "../content/projects/voting/solidity_v0.4.19/registration/task.md",
+  "task": "$$LOOKUP",
   "completion_message": "## Registration Complete.\n\nThe votes are in, you did it! \n\nNext step is to return the number of votes.",
   "validated_contract": "Voting",
   "language_version": "0.4.19",
@@ -12,11 +12,11 @@
   "test_framework": "truffle_with_mocha",
   "updated_at": "2018-11-08T02:51:28.578Z",
   "created_at": "2018-10-17T15:05:17.511Z",
-  "abi_validations": "../content/projects/voting/solidity_v0.4.19/registration/validations.json",
+  "abi_validations": "$$LOOKUP",
   "code_file_ids": [
     "5bc7506a1cf372ed6d4125b7",
     "5bc7508d1cf372ed6d4125b8",
     "5bc750b11cf372ed6d4125b9"
   ],
-  "details": "../content/projects/voting/solidity_v0.4.19/registration/details.md"
+  "details": "$$LOOKUP"
 }

@@ -8,11 +8,7 @@
   "executable": true,
   "file_location": "app/worker/loadVote.js",
   "has_progress": true,
-  "initial_code": [
-    "../content/projects/voting/voting/loading_votes/loadVote.js",
-    "../content/projects/voting/voting/vote_created_event/loadVote.js",
-    "../content/projects/voting/voting/vote_cast_event/loadVote.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "javascript",
   "name": "loadVote.js",
   "read_only": false,

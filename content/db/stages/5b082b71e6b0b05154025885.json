@@ -7,15 +7,15 @@
   ],
   "completion_message": "# So Security. Much Wow.\n\nYou just secured the hell out of the smart contract! YES. \n\nNext let's learn about how to log events on the blockchain! ",
   "container_id": "5adab204929d249e5faefb4c",
-  "details": "../content/projects/escrow/escrow/require/details.md",
+  "details": "$$LOOKUP",
   "language": "solidity",
   "language_version": "0.4.19",
   "position": 4,
-  "task": "../content/projects/escrow/escrow/require/task.md",
+  "task": "$$LOOKUP",
   "test_framework": "truffle_with_mocha",
   "title": "Require",
   "validated_contract": "EscrowContract",
   "updated_at": "2018-10-16T01:50:10.652Z",
   "created_at": "2018-10-16T01:50:10.652Z",
-  "abi_validations": "../content/projects/escrow/escrow/require/validations.json"
+  "abi_validations": "$$LOOKUP"
 }

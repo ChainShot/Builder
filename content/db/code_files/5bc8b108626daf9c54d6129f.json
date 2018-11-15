@@ -5,9 +5,7 @@
     "5bc8b04d626daf9c54d6129b"
   ],
   "name": "tokenTransfer.js",
-  "initial_code": [
-    "../content/projects/intro_to_vyper/vyper_v0.1/transfer/test/tokenTransfer.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "read_only": true,
   "test_fixture": true,
   "visible": true,

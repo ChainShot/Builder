@@ -5,9 +5,7 @@
   ],
   "executable": true,
   "has_progress": true,
-  "initial_code": [
-    "../content/projects/intro_to_solidity/solidity_v0.4.19/intro_to_structs_&_loops/test/testTeams.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "javascript",
   "name": "testTeams.js",
   "read_only": false,

@@ -9,14 +9,14 @@
   ],
   "completion_message": "### Are you pumped? \n\nWe're pumped. You've created the Escrow Contract *and* the code you need to deploy it! Awesome.  \n\nNext, let's party on the TestNet.\n",
   "container_id": "5adab204929d249e5faefb4c",
-  "details": "../content/projects/escrow/escrow/deployment/details.md",
+  "details": "$$LOOKUP",
   "language": "javascript",
   "language_version": "6.x/babel",
   "position": 7,
-  "task": "../content/projects/escrow/escrow/deployment/task.md",
+  "task": "$$LOOKUP",
   "test_framework": "mocha_bdd",
   "title": "Deployment",
   "updated_at": "2018-10-16T01:50:10.834Z",
   "created_at": "2018-10-16T01:50:10.834Z",
-  "abi_validations": "../content/projects/escrow/escrow/deployment/validations.json"
+  "abi_validations": "$$LOOKUP"
 }

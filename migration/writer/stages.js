@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 const {toFolderName, prettifyJSON} = require('./utils');
 const createCodeFiles = require('./codeFiles');
 const COLLECTION = 'stages';
-const { DB_DIR } = require('../config');
+const { DB_DIR, LOOKUP_KEY } = require('../config');
 
 const writeFiles = [
   { prop: 'task', file: 'task.md' },
@@ -21,7 +21,7 @@ const create = async(db, folder, container_id) => {
       writeFiles.forEach(({prop, file, transform = identity }) => {
         const fullPath = path.join(newFolder, file);
         fs.outputFile(fullPath, transform(props[prop]));
-        props[prop] = fullPath;
+        props[prop] = LOOKUP_KEY;
       });
       const json = prettifyJSON(props);
 

@@ -5,9 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": [
-    "../content/projects/eth_sf_challenge_voting/solidity_v0.4.19/registration/test/testRegistration.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "javascript",
   "name": "testRegistration.js",
   "read_only": true,

@@ -5,9 +5,7 @@
   ],
   "executable": true,
   "has_progress": true,
-  "initial_code": [
-    "../content/projects/who_has_my_ether/javascript/who_has_my_ether/findAddresses.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "javascript",
   "name": "findAddresses.js",
   "read_only": false,

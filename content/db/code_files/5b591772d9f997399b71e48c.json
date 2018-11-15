@@ -5,9 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": [
-    "../content/projects/voting/voting/multiple_votes/test/testMultipleVoting.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "javascript",
   "name": "testMultipleVoting.js",
   "read_only": true,

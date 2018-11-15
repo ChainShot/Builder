@@ -5,9 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": [
-    "../content/projects/eth_berlin_hackathon/solidity_v0.4.19/find_the_winner/test/testHackathon.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "javascript",
   "name": "testHackathon.js",
   "read_only": true,

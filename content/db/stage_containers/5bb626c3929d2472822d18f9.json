@@ -5,7 +5,7 @@
     "5bb6a588e6b0b05579436d8a"
   ],
   "description": "Create a Voting Contract with a single owner who can register users and allow them to vote.",
-  "intro": "../content/projects/eth_sf_challenge_voting/solidity_v0.4.19/intro.md",
+  "intro": "$$LOOKUP",
   "production_ready": false,
   "title": "ETH SF Challenge: Voting",
   "updated_at": "2018-10-23T22:59:23.145Z",

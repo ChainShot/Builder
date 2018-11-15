@@ -6,9 +6,7 @@
   "executable": true,
   "file_location": "app/src/contract/approve.js",
   "has_progress": true,
-  "initial_code": [
-    "../content/projects/escrow/escrow/js_approve/approve.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "javascript",
   "name": "approve.js",
   "read_only": false,

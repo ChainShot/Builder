@@ -6,9 +6,7 @@
   "executable": true,
   "executable_path": "test/itemTest.js",
   "has_progress": false,
-  "initial_code": [
-    "../content/projects/crafting_an_nft/solidity_v0.4.19/crafting_in_process/test/itemTest.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "javascript",
   "name": "itemTest.js",
   "read_only": true,

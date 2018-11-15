@@ -7,14 +7,14 @@
   ],
   "completion_message": "### Our hash finally found its meaning!\n\nAwesome, now it's time to include the Blockchain.",
   "container_id": "5b3afd70d9f99763e5c4b4fe",
-  "details": "../content/projects/build_a_blockchain/javascript/what's_in_a_hash/details.md",
+  "details": "$$LOOKUP",
   "language": "javascript",
   "language_version": "8.x/babel",
   "position": 1,
-  "task": "../content/projects/build_a_blockchain/javascript/what's_in_a_hash/task.md",
+  "task": "$$LOOKUP",
   "test_framework": "mocha_bdd",
   "title": "What's in a Hash?",
   "updated_at": "2018-10-16T01:50:10.806Z",
   "created_at": "2018-10-16T01:50:10.806Z",
-  "abi_validations": "../content/projects/build_a_blockchain/javascript/what's_in_a_hash/validations.json"
+  "abi_validations": "$$LOOKUP"
 }

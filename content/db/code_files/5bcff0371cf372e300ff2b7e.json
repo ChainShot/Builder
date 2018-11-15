@@ -15,7 +15,5 @@
   "mode": "python",
   "updated_at": "2018-10-25T02:49:11.872Z",
   "created_at": "2018-10-24T04:08:23.930Z",
-  "initial_code": [
-    "../content/projects/party_split/vyper_v0.1/rsvp_to_party/contracts/Party.v.py"
-  ]
+  "initial_code": "$$LOOKUP"
 }

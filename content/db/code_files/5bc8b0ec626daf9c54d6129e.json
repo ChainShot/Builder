@@ -5,9 +5,7 @@
     "5bc8af83626daf9c54d6129a"
   ],
   "name": "tokenBalances.js",
-  "initial_code": [
-    "../content/projects/intro_to_vyper/vyper_v0.1/balancing_act/test/tokenBalances.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "read_only": true,
   "test_fixture": true,
   "visible": true,

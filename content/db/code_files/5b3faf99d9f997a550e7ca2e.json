@@ -5,9 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": [
-    "../content/projects/build_a_blockchain/javascript/linking_the_blocks/test/linkingTests.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "javascript",
   "name": "linkingTests.js",
   "read_only": true,

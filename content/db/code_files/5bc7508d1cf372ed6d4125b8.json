@@ -5,9 +5,7 @@
     "5bc74fad1cf372ed6d4125ab"
   ],
   "name": "testRegistration.js",
-  "initial_code": [
-    "../content/projects/voting/solidity_v0.4.19/registration/test/testRegistration.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "read_only": true,
   "test_fixture": true,
   "visible": true,

@@ -5,9 +5,7 @@
     "5bd805a2626daf74460af39d"
   ],
   "name": "EIP20.sol",
-  "initial_code": [
-    "../content/projects/multisig/multisig/abstraction/contracts/EIP20.sol"
-  ],
+  "initial_code": "$$LOOKUP",
   "read_only": true,
   "executable": true,
   "executable_path": "contracts/EIP20.sol",

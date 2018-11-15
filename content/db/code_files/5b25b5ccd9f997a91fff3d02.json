@@ -6,9 +6,7 @@
   "executable": true,
   "executable_path": "contracts/Stash.sol",
   "has_progress": true,
-  "initial_code": [
-    "../content/projects/stash_hack/solidity_v0.4.19/stash_attack/contracts/Stash.sol"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "sol",
   "name": "Stash.sol",
   "read_only": false,

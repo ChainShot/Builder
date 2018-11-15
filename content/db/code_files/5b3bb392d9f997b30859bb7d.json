@@ -5,9 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": [
-    "../content/projects/build_a_blockchain/javascript/adding_blocks/test/addingBlocksTest.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "javascript",
   "name": "addingBlocksTest.js",
   "read_only": true,

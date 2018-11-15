@@ -7,9 +7,7 @@
   "executable_path": "contracts/Squirrel.sol",
   "file_location": "",
   "has_progress": true,
-  "initial_code": [
-    "../content/projects/stash_hack/solidity_v0.4.19/stash_attack/contracts/Squirrel.sol"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "sol",
   "name": "Squirrel.sol",
   "read_only": true,

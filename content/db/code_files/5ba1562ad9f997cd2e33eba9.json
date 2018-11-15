@@ -9,13 +9,7 @@
   ],
   "executable": true,
   "has_progress": true,
-  "initial_code": [
-    "../content/projects/merkle_tree/javascript/combine_two_leaves/index.js",
-    "../content/projects/merkle_tree/javascript/odd_leaves/index.js",
-    "../content/projects/merkle_tree/javascript/multiple_layers/index.js",
-    "../content/projects/merkle_tree/javascript/verify_your_proof/index.js",
-    "../content/projects/merkle_tree/javascript/build_the_proof/index.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "javascript",
   "name": "index.js",
   "read_only": false,

@@ -7,15 +7,15 @@
   ],
   "completion_message": "## Way to help yourself!\n\nNice job writing those helpers. \n\nNow let's run our final stage, abstracting the transaction.",
   "container_id": "5bce5e20e6b0b012e91da44b",
-  "details": "../content/projects/multisig/multisig/helper_functions/details.md",
+  "details": "$$LOOKUP",
   "language": "solidity",
   "language_version": "0.4.19",
   "position": 9,
-  "task": "../content/projects/multisig/multisig/helper_functions/task.md",
+  "task": "$$LOOKUP",
   "test_framework": "truffle_with_mocha",
   "title": "Helper Functions",
   "validated_contract": "MultiSig",
   "updated_at": "2018-11-08T02:51:28.943Z",
   "created_at": "2018-10-28T17:41:09.493Z",
-  "abi_validations": "../content/projects/multisig/multisig/helper_functions/validations.json"
+  "abi_validations": "$$LOOKUP"
 }

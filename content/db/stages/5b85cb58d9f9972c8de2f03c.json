@@ -7,15 +7,15 @@
   ],
   "completion_message": "",
   "container_id": "5b85cb10d9f9972c8de2f03b",
-  "details": "../content/projects/eth_berlin_hackathon/solidity_v0.4.19/find_the_winner/details.md",
+  "details": "$$LOOKUP",
   "language": "solidity",
   "language_version": "0.4.19",
   "position": 0,
-  "task": "../content/projects/eth_berlin_hackathon/solidity_v0.4.19/find_the_winner/task.md",
+  "task": "$$LOOKUP",
   "test_framework": "truffle_with_mocha",
   "title": "Find the Winner",
   "validated_contract": "Hackathon",
   "updated_at": "2018-11-08T02:51:28.032Z",
   "created_at": "2018-10-16T01:50:10.095Z",
-  "abi_validations": "../content/projects/eth_berlin_hackathon/solidity_v0.4.19/find_the_winner/validations.json"
+  "abi_validations": "$$LOOKUP"
 }

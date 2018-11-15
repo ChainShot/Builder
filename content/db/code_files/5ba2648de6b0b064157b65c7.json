@@ -6,9 +6,7 @@
   "executable": true,
   "executable_path": "contracts/SafeMath.sol",
   "has_progress": false,
-  "initial_code": [
-    "../content/projects/crafting_an_nft/solidity_v0.4.19/crafting_in_process/contracts/SafeMath.sol"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "sol",
   "name": "SafeMath.sol",
   "read_only": true,

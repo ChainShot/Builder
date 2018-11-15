@@ -7,14 +7,14 @@
   ],
   "completion_message": "### Great job! \n\nNext we're going to make that hash have some meaning.",
   "container_id": "5b3afd70d9f99763e5c4b4fe",
-  "details": "../content/projects/build_a_blockchain/javascript/blocks_and_hashes/details.md",
+  "details": "$$LOOKUP",
   "language": "javascript",
   "language_version": "8.x/babel",
   "position": 0,
-  "task": "../content/projects/build_a_blockchain/javascript/blocks_and_hashes/task.md",
+  "task": "$$LOOKUP",
   "test_framework": "mocha_bdd",
   "title": "Blocks and Hashes",
   "updated_at": "2018-10-16T01:50:10.187Z",
   "created_at": "2018-10-16T01:50:10.187Z",
-  "abi_validations": "../content/projects/build_a_blockchain/javascript/blocks_and_hashes/validations.json"
+  "abi_validations": "$$LOOKUP"
 }

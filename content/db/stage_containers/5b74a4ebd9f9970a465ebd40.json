@@ -7,7 +7,7 @@
     "5b515cbde6b0b0453b4e9e3d"
   ],
   "description": "Let's find what the next meeting is on our decentralized schedule! ",
-  "intro": "../content/projects/what's_next_on_my_schedule/solidity_v0.4.19/intro.md",
+  "intro": "$$LOOKUP",
   "production_ready": true,
   "title": "What's next on my Schedule?",
   "updated_at": "2018-10-23T23:00:00.138Z",
