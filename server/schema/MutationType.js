@@ -9,28 +9,14 @@ const { PROJECTS_DIR } = require('../config');
 const path = require('path');
 
 const codeFileProjectProps = {
-  initialCode: ({ executable_path, test_fixture, code_stage_ids, name }) => {
+  initialCode: ({ executable_path, code_stage_ids, name }) => {
     const ids = (code_stage_ids || []);
     return Promise.all(ids.map(async (id) => {
       const stage = await dbResolver('stages', id);
       const sc = await dbResolver('stage_containers', stage.container_id);
       const scg = await dbResolver('stage_container_groups', sc.stage_container_group_id);
 
-      const basePath = path.join(PROJECTS_DIR, scg.title, sc.version, stage.title);
-      let fullPath;
-      if(executable_path) {
-        fullPath = path.join(basePath, executable_path)
-      }
-      else if(test_fixture) {
-        fullPath = path.join(basePath, 'test', name);
-      }
-      else if(stage.language === 'javascript') {
-        fullPath = path.join(basePath, name);
-      }
-      else if(stage.language === 'solidity' || stage.language === 'vyper') {
-        fullPath = path.join(basePath, 'contracts', name);
-      }
-      return fullPath;
+      return path.join(PROJECTS_DIR, scg.title, sc.version, stage.title, executable_path);
     }));
   }
 }
