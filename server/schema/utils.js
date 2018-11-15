@@ -11,7 +11,7 @@ const fileResolver = (filePath) => {
   return new Promise((resolve, reject) => {
     fs.readFile(filePath, (err, data) => {
       if(err) reject(err);
-      resolve(data.toString());
+      resolve(data && data.toString());
     });
   })
 }

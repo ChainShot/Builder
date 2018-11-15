@@ -1,4 +1,5 @@
 const CodeFileType = require('./CodeFileType');
+const StageType = require('./StageType');
 const {
   GraphQLSchema,
   GraphQLObjectType,
@@ -10,6 +11,15 @@ const { dbResolver, dbReader } = require('./utils');
 const QueryType = new GraphQLObjectType({
   name: 'Query',
   fields: {
+    stage: {
+      type: StageType,
+      args: {
+        id: { type: GraphQLString }
+      },
+      resolve: function (_, {id}) {
+        return dbResolver('stages', id)
+      }
+    },
     codeFile: {
       type: CodeFileType,
       args: {
@@ -22,10 +32,11 @@ const QueryType = new GraphQLObjectType({
     codeFiles: {
       type: new GraphQLList(CodeFileType),
       args: {
-        ids: { type: new GraphQLList(GraphQLString) }
+        containsId: { type: new GraphQLList(GraphQLString) }
       },
-      resolve: function() {
-        return dbReader('code_files').then(ids => {
+      resolve: function(_, { containsId }) {
+        const idsPromise = containsId ? Promise.resolve(containsId) : dbReader('code_files');
+        return idsPromise.then(ids => {
           return Promise.all(ids.map(id => dbResolver('code_files', id)));
         });
       }
