@@ -1,29 +1,13 @@
 const express = require('express')
-const app = express()
-const port = 3000
-const {
-  graphql,
-  GraphQLSchema,
-  GraphQLObjectType,
-  GraphQLString
-} = require('graphql');
-const dbDir = '../content/db';
-const projectsDir = '../content/projects';
+const app = express();
+const { PORT } = require('./config');
+const graphqlHTTP = require('express-graphql');
+const schema = require('./schema');
 
-var schema = new GraphQLSchema({
-  query: new GraphQLObjectType({
-    name: 'RootQueryType',
-    fields: {
-      hello: {
-        type: GraphQLString,
-        resolve() {
-          return 'world';
-        }
-      }
-    }
-  })
-});
-
+app.use('/graphql', graphqlHTTP({
+  schema,
+  graphiql: true
+}));
 
 app.get('/', (req, res) => {
   var query = '{ hello }';
@@ -35,4 +19,4 @@ app.get('/', (req, res) => {
   });
 })
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(PORT, () => console.log(`Buidler server @ ${PORT}!`))
