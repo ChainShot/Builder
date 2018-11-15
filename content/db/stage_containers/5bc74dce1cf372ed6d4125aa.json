@@ -1,17 +1,17 @@
 {
   "_id": "5bc74dce1cf372ed6d4125aa",
-  "_type": "Challenge",
-  "badge_type_ids": [
+  "Type": "Challenge",
+  "badgeTypeIds": [
     "5b515cbde6b0b0453b4e9e3d",
     "5b515cf6e6b0b0453b4e9e3e",
     "5b515d23e6b0b0453b4e9e3f"
   ],
   "title": "Voting",
   "description": "Create a Voting Contract with a single owner who can register users and allow them to vote.",
-  "production_ready": true,
+  "productionReady": true,
   "intro": "$$LOOKUP",
-  "updated_at": "2018-10-28T15:58:47.139Z",
-  "created_at": "2018-10-17T14:57:18.055Z",
-  "stage_container_group_id": "5bcdf0c31cf372e860c8b8c5",
+  "updatedAt": "2018-10-28T15:58:47.139Z",
+  "createdAt": "2018-10-17T14:57:18.055Z",
+  "stageContainerGroupId": "5bcdf0c31cf372e860c8b8c5",
   "version": "Solidity v0.4.19"
 }

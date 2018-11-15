@@ -1,10 +1,10 @@
 {
   "_id": "5bce5e20e6b0b012e91da44b",
-  "_type": "BuildingBlock",
+  "Type": "BuildingBlock",
   "intro": "$$LOOKUP",
-  "stage_container_group_id": "5bd12d21626daf1f7b755038",
-  "updated_at": "2018-11-06T12:12:51.359Z",
-  "created_at": "2018-10-25T02:27:01.204Z",
+  "stageContainerGroupId": "5bd12d21626daf1f7b755038",
+  "updatedAt": "2018-11-06T12:12:51.359Z",
+  "createdAt": "2018-10-25T02:27:01.204Z",
   "image": {
     "_id": "5bd12af1626daf1f7b755032",
     "public_id": "bfnmh4mseasskpmlpk0a",
@@ -16,5 +16,5 @@
     "secure_url": "https://res.cloudinary.com/divzjiip8/image/upload/v1540774326/bfnmh4mseasskpmlpk0a.png"
   },
   "version": "MultiSig",
-  "estimated_time": 120
+  "estimatedTime": 120
 }

@@ -1,21 +1,21 @@
 {
   "_id": "5b8df954e6b0b0577be62802",
-  "_type": "CodeStage",
-  "code_file_ids": [
+  "Type": "CodeStage",
+  "codeFileIds": [
     "5b8df9b2e6b0b0577be62803",
     "5b8dfa9ce6b0b0577be62807"
   ],
-  "completion_message": "",
-  "container_id": "5b8df76ce6b0b0577be62801",
+  "completionMessage": "",
+  "containerId": "5b8df76ce6b0b0577be62801",
   "details": "$$LOOKUP",
   "language": "solidity",
-  "language_version": "0.4.18",
+  "languageVersion": "0.4.18",
   "position": 0,
   "task": "$$LOOKUP",
-  "test_framework": "truffle_with_mocha",
+  "testFramework": "truffle_with_mocha",
   "title": "You can't deny me",
-  "validated_contract": "Investment",
-  "updated_at": "2018-11-08T02:51:28.464Z",
-  "created_at": "2018-10-16T01:50:10.433Z",
-  "abi_validations": "$$LOOKUP"
+  "validatedContract": "Investment",
+  "updatedAt": "2018-11-08T02:51:28.464Z",
+  "createdAt": "2018-10-16T01:50:10.433Z",
+  "abiValidations": "$$LOOKUP"
 }

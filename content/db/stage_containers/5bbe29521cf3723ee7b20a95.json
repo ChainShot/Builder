@@ -1,17 +1,17 @@
 {
   "_id": "5bbe29521cf3723ee7b20a95",
-  "_type": "Challenge",
-  "badge_type_ids": [
+  "Type": "Challenge",
+  "badgeTypeIds": [
     "5b515cf6e6b0b0453b4e9e3e",
     "5b515cbde6b0b0453b4e9e3d",
     "5b515d23e6b0b0453b4e9e3f"
   ],
   "description": "Create a smart contract which initiates a countdown, the last person to call the tick function gets the prize! ",
   "intro": "$$LOOKUP",
-  "production_ready": true,
+  "productionReady": true,
   "title": "Countdown",
-  "updated_at": "2018-10-23T22:59:00.277Z",
-  "created_at": "2018-10-16T01:50:09.957Z",
-  "stage_container_group_id": "5bcdf0c31cf372e860c8b8b8",
+  "updatedAt": "2018-10-23T22:59:00.277Z",
+  "createdAt": "2018-10-16T01:50:09.957Z",
+  "stageContainerGroupId": "5bcdf0c31cf372e860c8b8b8",
   "version": "Vyper v0.1"
 }

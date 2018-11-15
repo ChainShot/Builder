@@ -1,18 +1,18 @@
 {
   "_id": "5b594718d9f997399b71e493",
-  "code_stage_ids": [
+  "codeStageIds": [
     "5b593f53d9f997399b71e491"
   ],
   "executable": true,
-  "has_progress": false,
-  "initial_code": "$$LOOKUP",
+  "hasProgress": false,
+  "initialCode": "$$LOOKUP",
   "mode": "sol",
   "name": "TestVoting.sol",
-  "read_only": true,
-  "stage_container_id": "5b58fc40d9f997399b71e3fd",
-  "test_fixture": true,
+  "readOnly": true,
+  "stageContainerId": "5b58fc40d9f997399b71e3fd",
+  "testFixture": true,
   "visible": false,
-  "updated_at": "2018-11-15T18:32:04.242Z",
-  "created_at": "2018-10-16T01:50:11.285Z",
-  "executable_path": "test/TestVoting.sol"
+  "updatedAt": "2018-11-15T18:32:04.242Z",
+  "createdAt": "2018-10-16T01:50:11.285Z",
+  "executablePath": "test/TestVoting.sol"
 }

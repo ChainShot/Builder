@@ -1,15 +1,15 @@
 {
   "_id": "5bd702bce6b0b07aaf9898bc",
-  "_type": "DownloadStage",
-  "completion_message": "",
-  "container_id": "5bce5e20e6b0b012e91da44b",
+  "Type": "DownloadStage",
+  "completionMessage": "",
+  "containerId": "5bce5e20e6b0b012e91da44b",
   "details": "$$LOOKUP",
   "position": 11,
   "task": "$$LOOKUP",
   "title": "Download",
-  "updated_at": "2018-11-08T02:51:28.261Z",
-  "created_at": "2018-11-08T00:51:29.234Z",
-  "project_skeletons": [
+  "updatedAt": "2018-11-08T02:51:28.261Z",
+  "createdAt": "2018-11-08T00:51:29.234Z",
+  "projectSkeletons": [
     {
       "_id": "5bdf71f9e6b0b01c0168110b",
       "folder": "multisig/react",
@@ -24,5 +24,5 @@
       }
     }
   ],
-  "abi_validations": "$$LOOKUP"
+  "abiValidations": "$$LOOKUP"
 }

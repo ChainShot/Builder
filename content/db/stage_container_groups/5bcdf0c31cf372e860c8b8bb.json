@@ -2,10 +2,10 @@
   "_id": "5bcdf0c31cf372e860c8b8bb",
   "title": "Stash Hack",
   "description": "There's a security vulnerability in the squirrel's decentralized winter stash. Help fix the contract before the chipmunk comes and double spends it all away!",
-  "badge_type_ids": [],
-  "updated_at": "2018-10-22T15:46:11.455Z",
-  "created_at": "2018-10-22T15:46:11.455Z",
-  "container_type": "Challenge",
+  "badgeTypeIds": [],
+  "updatedAt": "2018-10-22T15:46:11.455Z",
+  "createdAt": "2018-10-22T15:46:11.455Z",
+  "containerType": "Challenge",
   "preface": null,
-  "production_ready": true
+  "productionReady": true
 }

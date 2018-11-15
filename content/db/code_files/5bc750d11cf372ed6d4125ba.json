@@ -1,18 +1,18 @@
 {
   "_id": "5bc750d11cf372ed6d4125ba",
-  "stage_container_id": "5bc74dce1cf372ed6d4125aa",
-  "code_stage_ids": [
+  "stageContainerId": "5bc74dce1cf372ed6d4125aa",
+  "codeStageIds": [
     "5bc74ff41cf372ed6d4125b1"
   ],
   "name": "testCounting.js",
-  "initial_code": "$$LOOKUP",
-  "read_only": true,
-  "test_fixture": true,
+  "initialCode": "$$LOOKUP",
+  "readOnly": true,
+  "testFixture": true,
   "visible": true,
   "executable": true,
   "mode": "javascript",
-  "has_progress": false,
-  "updated_at": "2018-11-15T18:32:04.380Z",
-  "created_at": "2018-10-17T15:10:09.063Z",
-  "executable_path": "test/testCounting.js"
+  "hasProgress": false,
+  "updatedAt": "2018-11-15T18:32:04.380Z",
+  "createdAt": "2018-10-17T15:10:09.063Z",
+  "executablePath": "test/testCounting.js"
 }

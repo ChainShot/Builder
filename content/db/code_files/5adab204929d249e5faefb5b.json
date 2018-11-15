@@ -1,19 +1,19 @@
 {
   "_id": "5adab204929d249e5faefb5b",
-  "code_stage_ids": [
+  "codeStageIds": [
     "5adab204929d249e5faefb4f"
   ],
   "executable": true,
-  "file_location": "truffle/tests/testApproval.js",
-  "has_progress": false,
-  "initial_code": "$$LOOKUP",
+  "fileLocation": "truffle/tests/testApproval.js",
+  "hasProgress": false,
+  "initialCode": "$$LOOKUP",
   "mode": "javascript",
   "name": "testApproval.js",
-  "read_only": true,
-  "stage_container_id": "5adab204929d249e5faefb4c",
-  "test_fixture": true,
+  "readOnly": true,
+  "stageContainerId": "5adab204929d249e5faefb4c",
+  "testFixture": true,
   "visible": true,
-  "updated_at": "2018-11-15T18:32:05.055Z",
-  "created_at": "2018-10-16T01:50:11.103Z",
-  "executable_path": "test/testApproval.js"
+  "updatedAt": "2018-11-15T18:32:05.055Z",
+  "createdAt": "2018-10-16T01:50:11.103Z",
+  "executablePath": "test/testApproval.js"
 }

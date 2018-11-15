@@ -1,21 +1,21 @@
 {
   "_id": "5bc8b04d626daf9c54d6129b",
-  "_type": "CodeStage",
-  "container_id": "5bb2c8ded9f99705a60c62d3",
+  "Type": "CodeStage",
+  "containerId": "5bb2c8ded9f99705a60c62d3",
   "title": "Transfer",
   "position": 3,
-  "validated_contract": "Token",
-  "language_version": "0.1.0b3",
+  "validatedContract": "Token",
+  "languageVersion": "0.1.0b3",
   "language": "vyper",
-  "test_framework": "truffle_with_mocha",
-  "updated_at": "2018-11-08T02:51:28.919Z",
-  "created_at": "2018-10-18T16:09:49.384Z",
-  "code_file_ids": [
+  "testFramework": "truffle_with_mocha",
+  "updatedAt": "2018-11-08T02:51:28.919Z",
+  "createdAt": "2018-10-18T16:09:49.384Z",
+  "codeFileIds": [
     "5bc8b108626daf9c54d6129f",
     "5bb2d834d9f99705a60c6308"
   ],
   "task": "$$LOOKUP",
   "details": "$$LOOKUP",
-  "abi_validations": "$$LOOKUP",
-  "completion_message": "## Transfer Complete\n\nHeck yeah, you did it! \n\nOne final question: Is your `transfer` secure? "
+  "abiValidations": "$$LOOKUP",
+  "completionMessage": "## Transfer Complete\n\nHeck yeah, you did it! \n\nOne final question: Is your `transfer` secure? "
 }

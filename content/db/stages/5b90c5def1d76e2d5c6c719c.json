@@ -1,21 +1,21 @@
 {
   "_id": "5b90c5def1d76e2d5c6c719c",
-  "_type": "CodeStage",
-  "code_file_ids": [
+  "Type": "CodeStage",
+  "codeFileIds": [
     "5b90c5f6f1d76e2d5c6c719d",
     "5b8dfd0bd9f9970e1be0863e"
   ],
-  "completion_message": "",
-  "container_id": "5b8dfa4dd9f9970e1be08638",
+  "completionMessage": "",
+  "containerId": "5b8dfa4dd9f9970e1be08638",
   "details": "$$LOOKUP",
   "language": "solidity",
-  "language_version": "0.4.19",
+  "languageVersion": "0.4.19",
   "position": 4,
   "task": "$$LOOKUP",
-  "test_framework": "truffle_with_mocha",
+  "testFramework": "truffle_with_mocha",
   "title": "Intro to Mapping",
-  "validated_contract": "Hackathon",
-  "updated_at": "2018-11-08T02:51:28.450Z",
-  "created_at": "2018-10-16T01:50:10.417Z",
-  "abi_validations": "$$LOOKUP"
+  "validatedContract": "Hackathon",
+  "updatedAt": "2018-11-08T02:51:28.450Z",
+  "createdAt": "2018-10-16T01:50:10.417Z",
+  "abiValidations": "$$LOOKUP"
 }

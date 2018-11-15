@@ -1,18 +1,18 @@
 {
   "_id": "5be188da626daf0f9392cf44",
-  "stage_container_id": "5be1866f626daf0f9392cf38",
-  "code_stage_ids": [
+  "stageContainerId": "5be1866f626daf0f9392cf38",
+  "codeStageIds": [
     "5be187b1626daf0f9392cf3e"
   ],
   "name": "testRoot.js",
-  "initial_code": "$$LOOKUP",
-  "read_only": true,
-  "test_fixture": true,
+  "initialCode": "$$LOOKUP",
+  "readOnly": true,
+  "testFixture": true,
   "visible": true,
   "executable": true,
   "mode": "javascript",
-  "has_progress": false,
-  "updated_at": "2018-11-15T18:32:04.928Z",
-  "created_at": "2018-11-06T12:28:10.231Z",
-  "executable_path": "test/testRoot.js"
+  "hasProgress": false,
+  "updatedAt": "2018-11-15T18:32:04.928Z",
+  "createdAt": "2018-11-06T12:28:10.231Z",
+  "executablePath": "test/testRoot.js"
 }

@@ -1,18 +1,18 @@
 {
   "_id": "5b452993d9f997416b4b0415",
-  "code_stage_ids": [
+  "codeStageIds": [
     "5b4527b8d9f997416b4b0414"
   ],
   "executable": true,
-  "has_progress": false,
-  "initial_code": "$$LOOKUP",
+  "hasProgress": false,
+  "initialCode": "$$LOOKUP",
   "mode": "javascript",
   "name": "setup.js",
-  "read_only": true,
-  "stage_container_id": "5b45277dd9f997416b4b0413",
-  "test_fixture": false,
+  "readOnly": true,
+  "stageContainerId": "5b45277dd9f997416b4b0413",
+  "testFixture": false,
   "visible": false,
-  "updated_at": "2018-11-15T18:32:05.037Z",
-  "created_at": "2018-10-16T01:50:11.036Z",
-  "executable_path": "setup.js"
+  "updatedAt": "2018-11-15T18:32:05.037Z",
+  "createdAt": "2018-10-16T01:50:11.036Z",
+  "executablePath": "setup.js"
 }

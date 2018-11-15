@@ -1,15 +1,15 @@
 {
   "_id": "5adab204929d249e5faefb53",
-  "_type": "DownloadStage",
-  "completion_message": "",
-  "container_id": "5adab204929d249e5faefb4c",
+  "Type": "DownloadStage",
+  "completionMessage": "",
+  "containerId": "5adab204929d249e5faefb4c",
   "details": "$$LOOKUP",
   "position": 10,
   "task": "$$LOOKUP",
   "title": "Download",
-  "updated_at": "2018-11-08T02:51:28.065Z",
-  "created_at": "2018-10-16T01:50:10.122Z",
-  "project_skeletons": [
+  "updatedAt": "2018-11-08T02:51:28.065Z",
+  "createdAt": "2018-10-16T01:50:10.122Z",
+  "projectSkeletons": [
     {
       "_id": "5bd1d391626daf1162be4b7d",
       "folder": "escrow/react",
@@ -37,5 +37,5 @@
       }
     }
   ],
-  "abi_validations": "$$LOOKUP"
+  "abiValidations": "$$LOOKUP"
 }

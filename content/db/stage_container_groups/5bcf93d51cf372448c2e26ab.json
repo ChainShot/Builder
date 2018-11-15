@@ -1,6 +1,6 @@
 {
   "_id": "5bcf93d51cf372448c2e26ab",
-  "badge_type_ids": [
+  "badgeTypeIds": [
     "5b515d23e6b0b0453b4e9e3f",
     "5b515cf6e6b0b0453b4e9e3e",
     "5b515cbde6b0b0453b4e9e3d"
@@ -8,8 +8,8 @@
   "preface": "First preface for multi-challenge",
   "title": "Party Split",
   "description": "Implement a Smart Contract that will allow friends to rsvp to a party and split a shared expense evenly.",
-  "updated_at": "2018-10-28T19:43:53.075Z",
-  "created_at": "2018-10-23T21:34:13.208Z",
-  "container_type": "Challenge",
-  "production_ready": true
+  "updatedAt": "2018-10-28T19:43:53.075Z",
+  "createdAt": "2018-10-23T21:34:13.208Z",
+  "containerType": "Challenge",
+  "productionReady": true
 }

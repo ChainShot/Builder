@@ -2,11 +2,11 @@
   "_id": "5bd12d21626daf1f7b755038",
   "title": "MultiSig",
   "description": "Create your own wallet that requires multiple signatures in order to move funds! ",
-  "production_ready": false,
-  "updated_at": "2018-10-29T00:57:07.165Z",
-  "created_at": "2018-10-25T02:40:33.490Z",
-  "container_type": "BuildingBlock",
-  "badge_type_ids": [
+  "productionReady": false,
+  "updatedAt": "2018-10-29T00:57:07.165Z",
+  "createdAt": "2018-10-25T02:40:33.490Z",
+  "containerType": "BuildingBlock",
+  "badgeTypeIds": [
     "5bcfb90de6b0b0328e695673"
   ]
 }

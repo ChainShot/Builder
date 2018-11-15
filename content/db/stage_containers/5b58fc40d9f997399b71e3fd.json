@@ -1,17 +1,17 @@
 {
   "_id": "5b58fc40d9f997399b71e3fd",
-  "_type": "BuildingBlock",
-  "badge_type_ids": [
+  "Type": "BuildingBlock",
+  "badgeTypeIds": [
     "5b6a8465e6b0b02198e52281"
   ],
   "description": "Create your own Aragon Voting application using both the Aragon OS smart contracts and the Aragon JS front-end! ",
-  "estimated_time": 360,
+  "estimatedTime": 360,
   "intro": "$$LOOKUP",
-  "production_ready": true,
+  "productionReady": true,
   "title": "Voting",
-  "updated_at": "2018-10-23T20:32:02.166Z",
-  "created_at": "2018-10-16T01:50:10.053Z",
-  "stage_container_group_id": "5bcdf0c31cf372e860c8b8c4",
+  "updatedAt": "2018-10-23T20:32:02.166Z",
+  "createdAt": "2018-10-16T01:50:10.053Z",
+  "stageContainerGroupId": "5bcdf0c31cf372e860c8b8c4",
   "version": "Voting",
   "image": {
     "_id": "5bcf85421cf372448c2e2697",

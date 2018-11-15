@@ -1,18 +1,18 @@
 {
   "_id": "5b8df9b2e6b0b0577be62803",
-  "code_stage_ids": [
+  "codeStageIds": [
     "5b8df954e6b0b0577be62802"
   ],
   "executable": true,
-  "executable_path": "contracts/Investment.sol",
-  "has_progress": true,
-  "initial_code": "$$LOOKUP",
+  "executablePath": "contracts/Investment.sol",
+  "hasProgress": true,
+  "initialCode": "$$LOOKUP",
   "mode": "sol",
   "name": "Investment.sol",
-  "read_only": false,
-  "stage_container_id": "5b8df76ce6b0b0577be62801",
-  "test_fixture": false,
+  "readOnly": false,
+  "stageContainerId": "5b8df76ce6b0b0577be62801",
+  "testFixture": false,
   "visible": true,
-  "updated_at": "2018-10-16T01:50:11.430Z",
-  "created_at": "2018-10-16T01:50:11.430Z"
+  "updatedAt": "2018-10-16T01:50:11.430Z",
+  "createdAt": "2018-10-16T01:50:11.430Z"
 }

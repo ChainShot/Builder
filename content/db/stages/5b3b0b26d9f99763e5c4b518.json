@@ -1,20 +1,20 @@
 {
   "_id": "5b3b0b26d9f99763e5c4b518",
-  "_type": "CodeStage",
-  "code_file_ids": [
+  "Type": "CodeStage",
+  "codeFileIds": [
     "5b3afe0cd9f99763e5c4b503",
     "5b3b0c92d9f99763e5c4b520"
   ],
-  "completion_message": "### Our hash finally found its meaning!\n\nAwesome, now it's time to include the Blockchain.",
-  "container_id": "5b3afd70d9f99763e5c4b4fe",
+  "completionMessage": "### Our hash finally found its meaning!\n\nAwesome, now it's time to include the Blockchain.",
+  "containerId": "5b3afd70d9f99763e5c4b4fe",
   "details": "$$LOOKUP",
   "language": "javascript",
-  "language_version": "8.x/babel",
+  "languageVersion": "8.x/babel",
   "position": 1,
   "task": "$$LOOKUP",
-  "test_framework": "mocha_bdd",
+  "testFramework": "mocha_bdd",
   "title": "What's in a Hash?",
-  "updated_at": "2018-10-16T01:50:10.806Z",
-  "created_at": "2018-10-16T01:50:10.806Z",
-  "abi_validations": "$$LOOKUP"
+  "updatedAt": "2018-10-16T01:50:10.806Z",
+  "createdAt": "2018-10-16T01:50:10.806Z",
+  "abiValidations": "$$LOOKUP"
 }

@@ -1,18 +1,18 @@
 {
   "_id": "5b847341d9f9972c8de2efa2",
-  "code_stage_ids": [
+  "codeStageIds": [
     "5b847293d9f9972c8de2efa0"
   ],
   "executable": true,
-  "executable_path": "contracts/BananaStand.sol",
-  "has_progress": true,
-  "initial_code": "$$LOOKUP",
+  "executablePath": "contracts/BananaStand.sol",
+  "hasProgress": true,
+  "initialCode": "$$LOOKUP",
   "mode": "sol",
   "name": "BananaStand.sol",
-  "read_only": false,
-  "stage_container_id": "5b8332b6d9f99799d09d5bdf",
-  "test_fixture": false,
+  "readOnly": false,
+  "stageContainerId": "5b8332b6d9f99799d09d5bdf",
+  "testFixture": false,
   "visible": true,
-  "updated_at": "2018-10-16T01:50:11.541Z",
-  "created_at": "2018-10-16T01:50:11.541Z"
+  "updatedAt": "2018-10-16T01:50:11.541Z",
+  "createdAt": "2018-10-16T01:50:11.541Z"
 }

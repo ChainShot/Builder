@@ -1,18 +1,18 @@
 {
   "_id": "5b082665e6b0b05154025883",
-  "code_stage_ids": [
+  "codeStageIds": [
     "5b081fd8e6b0b05154025873"
   ],
   "executable": true,
-  "has_progress": false,
-  "initial_code": "$$LOOKUP",
+  "hasProgress": false,
+  "initialCode": "$$LOOKUP",
   "mode": "javascript",
   "name": "testEvents.js",
-  "read_only": true,
-  "stage_container_id": "5adab204929d249e5faefb4c",
-  "test_fixture": true,
+  "readOnly": true,
+  "stageContainerId": "5adab204929d249e5faefb4c",
+  "testFixture": true,
   "visible": true,
-  "updated_at": "2018-11-15T18:32:05.091Z",
-  "created_at": "2018-10-16T01:50:11.156Z",
-  "executable_path": "test/testEvents.js"
+  "updatedAt": "2018-11-15T18:32:05.091Z",
+  "createdAt": "2018-10-16T01:50:11.156Z",
+  "executablePath": "test/testEvents.js"
 }

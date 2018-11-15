@@ -2,11 +2,11 @@
   "_id": "5bcdf0c31cf372e860c8b8c2",
   "title": "Merkle Tree",
   "description": "Build your own Merkle Tree and learn how to get to the root of its optimization powers! ",
-  "badge_type_ids": [
+  "badgeTypeIds": [
     "5ba980ba929d249ffe9529eb"
   ],
-  "updated_at": "2018-10-22T15:46:11.591Z",
-  "created_at": "2018-10-22T15:46:11.591Z",
-  "container_type": "Lesson",
-  "production_ready": true
+  "updatedAt": "2018-10-22T15:46:11.591Z",
+  "createdAt": "2018-10-22T15:46:11.591Z",
+  "containerType": "Lesson",
+  "productionReady": true
 }

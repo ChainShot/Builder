@@ -1,17 +1,17 @@
 {
   "_id": "5ba1c494e6b0b01133b453b2",
-  "_type": "Challenge",
-  "badge_type_ids": [
+  "Type": "Challenge",
+  "badgeTypeIds": [
     "5b515cf6e6b0b0453b4e9e3e",
     "5b515d23e6b0b0453b4e9e3f",
     "5b515cbde6b0b0453b4e9e3d"
   ],
   "description": "Create a basic Non-Fungible Token (NFT) with trading functionality using the ERC721 standard",
   "intro": "$$LOOKUP",
-  "production_ready": true,
+  "productionReady": true,
   "title": "Crafting an NFT",
-  "updated_at": "2018-10-23T22:59:37.826Z",
-  "created_at": "2018-10-16T01:50:09.836Z",
-  "stage_container_group_id": "5bcdf0c31cf372e860c8b8b5",
+  "updatedAt": "2018-10-23T22:59:37.826Z",
+  "createdAt": "2018-10-16T01:50:09.836Z",
+  "stageContainerGroupId": "5bcdf0c31cf372e860c8b8b5",
   "version": "Solidity v0.4.19"
 }

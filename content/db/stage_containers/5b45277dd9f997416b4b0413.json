@@ -1,17 +1,17 @@
 {
   "_id": "5b45277dd9f997416b4b0413",
-  "_type": "Challenge",
-  "badge_type_ids": [
+  "Type": "Challenge",
+  "badgeTypeIds": [
     "5b515d23e6b0b0453b4e9e3f",
     "5b515cf6e6b0b0453b4e9e3e",
     "5b515cbde6b0b0453b4e9e3d"
   ],
   "description": "Given an account address on the Ethereum blockchain find all the addresses that were sent Ether from that address.",
   "intro": "$$LOOKUP",
-  "production_ready": true,
+  "productionReady": true,
   "title": "Who has my Ether?",
-  "updated_at": "2018-10-23T23:00:05.507Z",
-  "created_at": "2018-10-16T01:50:09.884Z",
-  "stage_container_group_id": "5bcdf0c31cf372e860c8b8c0",
+  "updatedAt": "2018-10-23T23:00:05.507Z",
+  "createdAt": "2018-10-16T01:50:09.884Z",
+  "stageContainerGroupId": "5bcdf0c31cf372e860c8b8c0",
   "version": "JavaScript"
 }

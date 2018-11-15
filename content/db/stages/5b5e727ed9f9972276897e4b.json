@@ -1,22 +1,22 @@
 {
   "_id": "5b5e727ed9f9972276897e4b",
-  "_type": "CodeStage",
-  "code_file_ids": [
+  "Type": "CodeStage",
+  "codeFileIds": [
     "5b58fffbd9f997399b71e44a",
     "5b5e799dd9f9972276897e4e",
     "5b69fdfbd9f9970c8b2af0e3"
   ],
-  "completion_message": "## Nice!\n\nWe have one final step on our Solidity contract: integrate the Aragon Core! ",
-  "container_id": "5b58fc40d9f997399b71e3fd",
+  "completionMessage": "## Nice!\n\nWe have one final step on our Solidity contract: integrate the Aragon Core! ",
+  "containerId": "5b58fc40d9f997399b71e3fd",
   "details": "$$LOOKUP",
   "language": "solidity",
-  "language_version": "0.4.18",
+  "languageVersion": "0.4.18",
   "position": 3,
   "task": "$$LOOKUP",
-  "test_framework": "truffle_with_mocha",
+  "testFramework": "truffle_with_mocha",
   "title": "Voting Events",
-  "validated_contract": "Voting",
-  "updated_at": "2018-11-08T02:51:28.901Z",
-  "created_at": "2018-10-16T01:50:10.712Z",
-  "abi_validations": "$$LOOKUP"
+  "validatedContract": "Voting",
+  "updatedAt": "2018-11-08T02:51:28.901Z",
+  "createdAt": "2018-10-16T01:50:10.712Z",
+  "abiValidations": "$$LOOKUP"
 }
