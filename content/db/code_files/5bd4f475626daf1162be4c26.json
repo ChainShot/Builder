@@ -12,6 +12,7 @@
   "executable": true,
   "mode": "javascript",
   "has_progress": false,
-  "updated_at": "2018-10-27T23:27:49.915Z",
-  "created_at": "2018-10-27T23:27:49.915Z"
+  "updated_at": "2018-11-15T18:32:05.120Z",
+  "created_at": "2018-10-27T23:27:49.915Z",
+  "executable_path": "test/testUtils.js"
 }

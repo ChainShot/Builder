@@ -12,6 +12,7 @@
   "visible": true,
   "executable": true,
   "mode": "javascript",
-  "updated_at": "2018-10-25T15:47:03.533Z",
-  "created_at": "2018-10-18T16:11:57.499Z"
+  "updated_at": "2018-11-15T18:32:04.412Z",
+  "created_at": "2018-10-18T16:11:57.499Z",
+  "executable_path": "test/tokenNaming.js"
 }

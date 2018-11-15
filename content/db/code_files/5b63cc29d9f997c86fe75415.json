@@ -12,6 +12,7 @@
   "stage_container_id": "5b58fc40d9f997399b71e3fd",
   "test_fixture": true,
   "visible": true,
-  "updated_at": "2018-10-16T01:50:11.674Z",
-  "created_at": "2018-10-16T01:50:11.674Z"
+  "updated_at": "2018-11-15T18:32:04.323Z",
+  "created_at": "2018-10-16T01:50:11.674Z",
+  "executable_path": "test/testVoteCast.js"
 }

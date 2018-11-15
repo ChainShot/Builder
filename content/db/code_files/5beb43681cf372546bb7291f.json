@@ -12,6 +12,7 @@
   "visible": true,
   "executable": true,
   "mode": "javascript",
-  "updated_at": "2018-11-14T15:51:37.710Z",
-  "created_at": "2018-11-13T21:34:32.647Z"
+  "updated_at": "2018-11-15T18:32:04.959Z",
+  "created_at": "2018-11-13T21:34:32.647Z",
+  "executable_path": "test/testToken.js"
 }
