@@ -1,21 +1,21 @@
 {
   "_id": "5adab204929d249e5faefb4f",
-  "_type": "CodeStage",
-  "code_file_ids": [
+  "Type": "CodeStage",
+  "codeFileIds": [
     "5adab204929d249e5faefb55",
     "5adab204929d249e5faefb5b"
   ],
-  "completion_message": "## Yes. Well Done. \n\nThe funds can now be successfully moved from the `depositor` to the `beneficiary`. \n\nThis is a working escrow contract on the blockchain, very exciting!",
-  "container_id": "5adab204929d249e5faefb4c",
+  "completionMessage": "## Yes. Well Done. \n\nThe funds can now be successfully moved from the `depositor` to the `beneficiary`. \n\nThis is a working escrow contract on the blockchain, very exciting!",
+  "containerId": "5adab204929d249e5faefb4c",
   "details": "$$LOOKUP",
   "language": "solidity",
-  "language_version": "0.4.19",
+  "languageVersion": "0.4.19",
   "position": 3,
   "task": "$$LOOKUP",
-  "test_framework": "truffle_with_mocha",
+  "testFramework": "truffle_with_mocha",
   "title": "Approval",
-  "validated_contract": "EscrowContract",
-  "updated_at": "2018-11-08T02:51:28.648Z",
-  "created_at": "2018-10-16T01:50:10.493Z",
-  "abi_validations": "$$LOOKUP"
+  "validatedContract": "EscrowContract",
+  "updatedAt": "2018-11-08T02:51:28.648Z",
+  "createdAt": "2018-10-16T01:50:10.493Z",
+  "abiValidations": "$$LOOKUP"
 }

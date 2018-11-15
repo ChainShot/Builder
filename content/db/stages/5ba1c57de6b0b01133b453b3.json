@@ -1,7 +1,7 @@
 {
   "_id": "5ba1c57de6b0b01133b453b3",
-  "_type": "CodeStage",
-  "code_file_ids": [
+  "Type": "CodeStage",
+  "codeFileIds": [
     "5ba1c61fe6b0b01133b453b7",
     "5ba1c6a9e6b0b01133b453b8",
     "5ba1cb5ee6b0b01133b453bf",
@@ -9,17 +9,17 @@
     "5ba2645ce6b0b064157b65c6",
     "5ba2648de6b0b064157b65c7"
   ],
-  "completion_message": "",
-  "container_id": "5ba1c494e6b0b01133b453b2",
+  "completionMessage": "",
+  "containerId": "5ba1c494e6b0b01133b453b2",
   "details": "$$LOOKUP",
   "language": "solidity",
-  "language_version": "0.4.18",
+  "languageVersion": "0.4.18",
   "position": 0,
   "task": "$$LOOKUP",
-  "test_framework": "truffle_with_mocha",
+  "testFramework": "truffle_with_mocha",
   "title": "Crafting in Process",
-  "validated_contract": "Marketplace",
-  "updated_at": "2018-11-08T02:51:28.346Z",
-  "created_at": "2018-10-16T01:50:10.356Z",
-  "abi_validations": "$$LOOKUP"
+  "validatedContract": "Marketplace",
+  "updatedAt": "2018-11-08T02:51:28.346Z",
+  "createdAt": "2018-10-16T01:50:10.356Z",
+  "abiValidations": "$$LOOKUP"
 }

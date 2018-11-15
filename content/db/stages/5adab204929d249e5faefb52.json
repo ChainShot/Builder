@@ -1,23 +1,23 @@
 {
   "_id": "5adab204929d249e5faefb52",
-  "_type": "CodeStage",
-  "code_file_ids": [
+  "Type": "CodeStage",
+  "codeFileIds": [
     "5adab204929d249e5faefb54",
     "5adab205929d249e5faefb5f",
     "5adab205929d249e5faefb61",
     "5b3aef46d9f99763e5c4b4f0",
     "5b3ae6a9d9f99763e5c4b4cc"
   ],
-  "completion_message": "### Yes.\n\nYou successfully built a smart contract from scratch, a simple JavaScript API to interact with that smart contract! You were also introduced to pivotal technologies such as Metamask, Truffle, and Web3.js. These technologies will be crucial to your progress as a blockchain developer.\n\n**Continue to our final stage where you can download your project into a framework of your choice!**\n",
-  "container_id": "5adab204929d249e5faefb4c",
+  "completionMessage": "### Yes.\n\nYou successfully built a smart contract from scratch, a simple JavaScript API to interact with that smart contract! You were also introduced to pivotal technologies such as Metamask, Truffle, and Web3.js. These technologies will be crucial to your progress as a blockchain developer.\n\n**Continue to our final stage where you can download your project into a framework of your choice!**\n",
+  "containerId": "5adab204929d249e5faefb4c",
   "details": "$$LOOKUP",
   "language": "javascript",
-  "language_version": "6.x/babel",
+  "languageVersion": "6.x/babel",
   "position": 9,
   "task": "$$LOOKUP",
-  "test_framework": "mocha_bdd",
+  "testFramework": "mocha_bdd",
   "title": "JS Approve",
-  "updated_at": "2018-10-16T01:50:10.323Z",
-  "created_at": "2018-10-16T01:50:10.323Z",
-  "abi_validations": "$$LOOKUP"
+  "updatedAt": "2018-10-16T01:50:10.323Z",
+  "createdAt": "2018-10-16T01:50:10.323Z",
+  "abiValidations": "$$LOOKUP"
 }

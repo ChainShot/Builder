@@ -1,21 +1,21 @@
 {
   "_id": "5b0495e6e6b0b023751f9442",
-  "_type": "CodeStage",
-  "code_file_ids": [
+  "Type": "CodeStage",
+  "codeFileIds": [
     "5adab204929d249e5faefb55",
     "5b0814eee6b0b05154025862"
   ],
-  "completion_message": "# We Knew You Could Do It\n\nThey say the first step is always the hardest (or is it the last step?). \n\nEither way you have begun your journey towards creating a decentralized application. Congratulations :)",
-  "container_id": "5adab204929d249e5faefb4c",
+  "completionMessage": "# We Knew You Could Do It\n\nThey say the first step is always the hardest (or is it the last step?). \n\nEither way you have begun your journey towards creating a decentralized application. Congratulations :)",
+  "containerId": "5adab204929d249e5faefb4c",
   "details": "$$LOOKUP",
   "language": "solidity",
-  "language_version": "0.4.19",
+  "languageVersion": "0.4.19",
   "position": 0,
   "task": "$$LOOKUP",
-  "test_framework": "truffle_with_mocha",
+  "testFramework": "truffle_with_mocha",
   "title": "Contract Setup",
-  "validated_contract": "EscrowContract",
-  "updated_at": "2018-11-08T02:51:28.248Z",
-  "created_at": "2018-10-16T01:50:10.275Z",
-  "abi_validations": "$$LOOKUP"
+  "validatedContract": "EscrowContract",
+  "updatedAt": "2018-11-08T02:51:28.248Z",
+  "createdAt": "2018-10-16T01:50:10.275Z",
+  "abiValidations": "$$LOOKUP"
 }

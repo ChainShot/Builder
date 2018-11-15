@@ -1,10 +1,10 @@
 {
   "_id": "5bcf95321cf372448c2e26af",
-  "_type": "Challenge",
-  "stage_container_group_id": "5bcf93d51cf372448c2e26ab",
+  "Type": "Challenge",
+  "stageContainerGroupId": "5bcf93d51cf372448c2e26ab",
   "version": "Solidity v0.4.19",
   "intro": "$$LOOKUP",
-  "production_ready": false,
-  "updated_at": "2018-10-24T04:38:22.126Z",
-  "created_at": "2018-10-23T21:40:02.683Z"
+  "productionReady": false,
+  "updatedAt": "2018-10-24T04:38:22.126Z",
+  "createdAt": "2018-10-23T21:40:02.683Z"
 }

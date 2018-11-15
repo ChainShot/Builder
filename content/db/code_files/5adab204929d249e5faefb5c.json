@@ -1,19 +1,19 @@
 {
   "_id": "5adab204929d249e5faefb5c",
-  "code_stage_ids": [
+  "codeStageIds": [
     "5adab204929d249e5faefb50"
   ],
   "executable": true,
-  "file_location": "app/src/contract/deploy.js",
-  "has_progress": true,
-  "initial_code": "$$LOOKUP",
+  "fileLocation": "app/src/contract/deploy.js",
+  "hasProgress": true,
+  "initialCode": "$$LOOKUP",
   "mode": "javascript",
   "name": "deploy.js",
-  "read_only": false,
-  "stage_container_id": "5adab204929d249e5faefb4c",
-  "test_fixture": false,
+  "readOnly": false,
+  "stageContainerId": "5adab204929d249e5faefb4c",
+  "testFixture": false,
   "visible": true,
-  "updated_at": "2018-11-15T18:32:04.646Z",
-  "created_at": "2018-10-16T01:50:11.264Z",
-  "executable_path": "deploy.js"
+  "updatedAt": "2018-11-15T18:32:04.646Z",
+  "createdAt": "2018-10-16T01:50:11.264Z",
+  "executablePath": "deploy.js"
 }

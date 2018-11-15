@@ -1,18 +1,18 @@
 {
   "_id": "5ba26428e6b0b064157b65c5",
-  "code_stage_ids": [
+  "codeStageIds": [
     "5ba1c57de6b0b01133b453b3"
   ],
   "executable": true,
-  "executable_path": "contracts/ERC721TokenReceiver.sol",
-  "has_progress": false,
-  "initial_code": "$$LOOKUP",
+  "executablePath": "contracts/ERC721TokenReceiver.sol",
+  "hasProgress": false,
+  "initialCode": "$$LOOKUP",
   "mode": "sol",
   "name": "ERC721TokenReceiver.sol",
-  "read_only": true,
-  "stage_container_id": "5ba1c494e6b0b01133b453b2",
-  "test_fixture": false,
+  "readOnly": true,
+  "stageContainerId": "5ba1c494e6b0b01133b453b2",
+  "testFixture": false,
   "visible": false,
-  "updated_at": "2018-10-16T01:50:11.295Z",
-  "created_at": "2018-10-16T01:50:11.295Z"
+  "updatedAt": "2018-10-16T01:50:11.295Z",
+  "createdAt": "2018-10-16T01:50:11.295Z"
 }

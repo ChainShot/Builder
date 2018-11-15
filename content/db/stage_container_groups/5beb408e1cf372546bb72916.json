@@ -1,14 +1,14 @@
 {
   "_id": "5beb408e1cf372546bb72916",
-  "badge_type_ids": [
+  "badgeTypeIds": [
     "5b515d23e6b0b0453b4e9e3f",
     "5b515cf6e6b0b0453b4e9e3e",
     "5b515cbde6b0b0453b4e9e3d"
   ],
   "title": "UTXO Token",
   "description": "Create a Token which tracks its balances through a UTXO model. ",
-  "production_ready": true,
-  "updated_at": "2018-11-14T17:04:06.794Z",
-  "created_at": "2018-11-13T21:22:22.920Z",
-  "container_type": "Challenge"
+  "productionReady": true,
+  "updatedAt": "2018-11-14T17:04:06.794Z",
+  "createdAt": "2018-11-13T21:22:22.920Z",
+  "containerType": "Challenge"
 }

@@ -1,18 +1,18 @@
 {
   "_id": "5bb40bcdd9f997a89a01f6f2",
-  "code_stage_ids": [
+  "codeStageIds": [
     "5bb4072bd9f997a89a01f6ec"
   ],
   "executable": true,
-  "has_progress": false,
-  "initial_code": "$$LOOKUP",
+  "hasProgress": false,
+  "initialCode": "$$LOOKUP",
   "mode": "javascript",
   "name": "testHackathon.js",
-  "read_only": true,
-  "stage_container_id": "5bb406cad9f997a89a01f6eb",
-  "test_fixture": true,
+  "readOnly": true,
+  "stageContainerId": "5bb406cad9f997a89a01f6eb",
+  "testFixture": true,
   "visible": true,
-  "updated_at": "2018-11-15T18:32:05.046Z",
-  "created_at": "2018-10-16T01:50:11.057Z",
-  "executable_path": "test/testHackathon.js"
+  "updatedAt": "2018-11-15T18:32:05.046Z",
+  "createdAt": "2018-10-16T01:50:11.057Z",
+  "executablePath": "test/testHackathon.js"
 }

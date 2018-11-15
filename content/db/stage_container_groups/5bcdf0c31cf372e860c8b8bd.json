@@ -2,14 +2,14 @@
   "_id": "5bcdf0c31cf372e860c8b8bd",
   "title": "Banana Stand",
   "description": "Let's use our math skills and create a decentralized banana stand! ",
-  "badge_type_ids": [
+  "badgeTypeIds": [
     "5b515cf6e6b0b0453b4e9e3e",
     "5b515d23e6b0b0453b4e9e3f",
     "5b515cbde6b0b0453b4e9e3d"
   ],
-  "updated_at": "2018-10-22T15:46:11.482Z",
-  "created_at": "2018-10-22T15:46:11.482Z",
-  "container_type": "Challenge",
+  "updatedAt": "2018-10-22T15:46:11.482Z",
+  "createdAt": "2018-10-22T15:46:11.482Z",
+  "containerType": "Challenge",
   "preface": "This challenge focuses on integer algebra in Solidity using unsigned integers. You'll learn the cases where you need to watch out for integer overflow and underflow. You can do it! ",
-  "production_ready": true
+  "productionReady": true
 }

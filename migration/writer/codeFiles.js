@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs-extra');
-const { toFolderName, prettifyJSON } = require('./utils');
+const { toFolderName, prettifyJSON, camelizeProps } = require('./utils');
 const COLLECTION = 'code_files';
 const { DB_DIR, LOOKUP_KEY } = require('../config');
 
@@ -15,7 +15,7 @@ const create = async(db, folder, id) => {
       const props = { ...doc };
       const filePath = path.join(DB_DIR, COLLECTION, `${doc._id}.json`);
       props['initial_code'] = LOOKUP_KEY;
-      const json = prettifyJSON(props);
+      const json = prettifyJSON(camelizeProps(props));
       await fs.outputFile(filePath, json);
   }
 }

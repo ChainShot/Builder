@@ -1,21 +1,21 @@
 {
   "_id": "5bd36edee6b0b047781712a8",
-  "_type": "CodeStage",
-  "code_file_ids": [
+  "Type": "CodeStage",
+  "codeFileIds": [
     "5bcfc074e6b0b0328e69567a",
     "5bd3d0d1e6b0b047781712d0"
   ],
-  "completion_message": "## Thank Jupiter, such security. \n\nYou've done a great job! Now our MultiSig confirmation function is secure.\n\nOnto more exciting stuff. ",
-  "container_id": "5bce5e20e6b0b012e91da44b",
+  "completionMessage": "## Thank Jupiter, such security. \n\nYou've done a great job! Now our MultiSig confirmation function is secure.\n\nOnto more exciting stuff. ",
+  "containerId": "5bce5e20e6b0b012e91da44b",
   "details": "$$LOOKUP",
   "language": "solidity",
-  "language_version": "0.4.19",
+  "languageVersion": "0.4.19",
   "position": 4,
   "task": "$$LOOKUP",
-  "test_framework": "truffle_with_mocha",
+  "testFramework": "truffle_with_mocha",
   "title": "Confirm Security",
-  "validated_contract": "MultiSig",
-  "updated_at": "2018-11-08T02:51:28.595Z",
-  "created_at": "2018-10-28T17:41:09.176Z",
-  "abi_validations": "$$LOOKUP"
+  "validatedContract": "MultiSig",
+  "updatedAt": "2018-11-08T02:51:28.595Z",
+  "createdAt": "2018-10-28T17:41:09.176Z",
+  "abiValidations": "$$LOOKUP"
 }

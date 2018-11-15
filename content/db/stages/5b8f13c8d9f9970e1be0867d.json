@@ -1,21 +1,21 @@
 {
   "_id": "5b8f13c8d9f9970e1be0867d",
-  "_type": "CodeStage",
-  "code_file_ids": [
+  "Type": "CodeStage",
+  "codeFileIds": [
     "5b8dfd0bd9f9970e1be0863e",
     "5b8f13e8d9f9970e1be0867e"
   ],
-  "completion_message": "",
-  "container_id": "5b8dfa4dd9f9970e1be08638",
+  "completionMessage": "",
+  "containerId": "5b8dfa4dd9f9970e1be08638",
   "details": "$$LOOKUP",
   "language": "solidity",
-  "language_version": "0.4.19",
+  "languageVersion": "0.4.19",
   "position": 2,
   "task": "$$LOOKUP",
-  "test_framework": "truffle_with_mocha",
+  "testFramework": "truffle_with_mocha",
   "title": "Intro to Structs & Loops",
-  "validated_contract": "Hackathon",
-  "updated_at": "2018-11-08T02:51:28.760Z",
-  "created_at": "2018-10-16T01:50:10.591Z",
-  "abi_validations": "$$LOOKUP"
+  "validatedContract": "Hackathon",
+  "updatedAt": "2018-11-08T02:51:28.760Z",
+  "createdAt": "2018-10-16T01:50:10.591Z",
+  "abiValidations": "$$LOOKUP"
 }

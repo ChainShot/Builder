@@ -1,21 +1,21 @@
 {
   "_id": "5be187b1626daf0f9392cf3e",
-  "_type": "CodeStage",
-  "container_id": "5be1866f626daf0f9392cf38",
+  "Type": "CodeStage",
+  "containerId": "5be1866f626daf0f9392cf38",
   "title": "Hash it up",
   "position": 0,
   "task": "$$LOOKUP",
   "details": "$$LOOKUP",
-  "validated_contract": "Root",
-  "language_version": "0.1.0b3",
+  "validatedContract": "Root",
+  "languageVersion": "0.1.0b3",
   "language": "vyper",
-  "test_framework": "truffle_with_mocha",
-  "updated_at": "2018-11-08T02:51:28.664Z",
-  "created_at": "2018-11-06T12:23:13.629Z",
-  "abi_validations": "$$LOOKUP",
-  "code_file_ids": [
+  "testFramework": "truffle_with_mocha",
+  "updatedAt": "2018-11-08T02:51:28.664Z",
+  "createdAt": "2018-11-06T12:23:13.629Z",
+  "abiValidations": "$$LOOKUP",
+  "codeFileIds": [
     "5be187e3626daf0f9392cf42",
     "5be188da626daf0f9392cf44"
   ],
-  "completion_message": ""
+  "completionMessage": ""
 }

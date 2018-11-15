@@ -1,17 +1,17 @@
 {
   "_id": "5b8df76ce6b0b0577be62801",
-  "_type": "Challenge",
-  "badge_type_ids": [
+  "Type": "Challenge",
+  "badgeTypeIds": [
     "5b515cbde6b0b0453b4e9e3d",
     "5b515cf6e6b0b0453b4e9e3e",
     "5b515d23e6b0b0453b4e9e3f"
   ],
   "description": "Identify and fix the denial of service vulnerabilities within the smart contract.",
   "intro": "$$LOOKUP",
-  "production_ready": true,
+  "productionReady": true,
   "title": "Deny my Service",
-  "updated_at": "2018-10-23T22:59:44.990Z",
-  "created_at": "2018-10-16T01:50:09.902Z",
-  "stage_container_group_id": "5bcdf0c31cf372e860c8b8b6",
+  "updatedAt": "2018-10-23T22:59:44.990Z",
+  "createdAt": "2018-10-16T01:50:09.902Z",
+  "stageContainerGroupId": "5bcdf0c31cf372e860c8b8b6",
   "version": "Solidity v0.4.19"
 }

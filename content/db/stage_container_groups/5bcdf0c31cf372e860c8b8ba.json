@@ -2,11 +2,11 @@
   "_id": "5bcdf0c31cf372e860c8b8ba",
   "title": "Escrow",
   "description": "Create a decentralized escrow web application from scratch using Solidity and web3.js! ",
-  "badge_type_ids": [
+  "badgeTypeIds": [
     "5b50f6dce6b0b06eb1fadd40"
   ],
-  "updated_at": "2018-10-22T15:46:11.431Z",
-  "created_at": "2018-10-22T15:46:11.431Z",
-  "container_type": "BuildingBlock",
-  "production_ready": true
+  "updatedAt": "2018-10-22T15:46:11.431Z",
+  "createdAt": "2018-10-22T15:46:11.431Z",
+  "containerType": "BuildingBlock",
+  "productionReady": true
 }

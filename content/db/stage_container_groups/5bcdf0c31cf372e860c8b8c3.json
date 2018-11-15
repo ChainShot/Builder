@@ -2,11 +2,11 @@
   "_id": "5bcdf0c31cf372e860c8b8c3",
   "title": "Build a Blockchain",
   "description": "Learn how to create a basic JavaScript implementation of a blockchain. ",
-  "badge_type_ids": [
+  "badgeTypeIds": [
     "5b515d6be6b0b0453b4e9e40"
   ],
-  "updated_at": "2018-10-22T15:46:11.606Z",
-  "created_at": "2018-10-22T15:46:11.606Z",
-  "container_type": "Lesson",
-  "production_ready": true
+  "updatedAt": "2018-10-22T15:46:11.606Z",
+  "createdAt": "2018-10-22T15:46:11.606Z",
+  "containerType": "Lesson",
+  "productionReady": true
 }

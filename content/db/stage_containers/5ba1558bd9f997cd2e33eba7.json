@@ -1,15 +1,15 @@
 {
   "_id": "5ba1558bd9f997cd2e33eba7",
-  "_type": "Lesson",
-  "badge_type_ids": [
+  "Type": "Lesson",
+  "badgeTypeIds": [
     "5ba980ba929d249ffe9529eb"
   ],
   "description": "Build your own Merkle Tree and learn how to get to the root of its optimization powers! ",
   "intro": "$$LOOKUP",
-  "production_ready": true,
+  "productionReady": true,
   "title": "Merkle Tree",
-  "updated_at": "2018-10-25T15:40:49.974Z",
-  "created_at": "2018-10-16T01:50:09.985Z",
-  "stage_container_group_id": "5bcdf0c31cf372e860c8b8c2",
+  "updatedAt": "2018-10-25T15:40:49.974Z",
+  "createdAt": "2018-10-16T01:50:09.985Z",
+  "stageContainerGroupId": "5bcdf0c31cf372e860c8b8c2",
   "version": "JavaScript"
 }

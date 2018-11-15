@@ -1,21 +1,21 @@
 {
   "_id": "5b847293d9f9972c8de2efa0",
-  "_type": "CodeStage",
-  "code_file_ids": [
+  "Type": "CodeStage",
+  "codeFileIds": [
     "5b84730ed9f9972c8de2efa1",
     "5b847341d9f9972c8de2efa2"
   ],
-  "completion_message": "",
-  "container_id": "5b8332b6d9f99799d09d5bdf",
+  "completionMessage": "",
+  "containerId": "5b8332b6d9f99799d09d5bdf",
   "details": "$$LOOKUP",
   "language": "solidity",
-  "language_version": "0.4.19",
+  "languageVersion": "0.4.19",
   "position": 0,
   "task": "$$LOOKUP",
-  "test_framework": "truffle_with_mocha",
+  "testFramework": "truffle_with_mocha",
   "title": "Handling Bananas",
-  "validated_contract": "BananaStand",
-  "updated_at": "2018-11-08T02:51:28.511Z",
-  "created_at": "2018-10-16T01:50:10.450Z",
-  "abi_validations": "$$LOOKUP"
+  "validatedContract": "BananaStand",
+  "updatedAt": "2018-11-08T02:51:28.511Z",
+  "createdAt": "2018-10-16T01:50:10.450Z",
+  "abiValidations": "$$LOOKUP"
 }

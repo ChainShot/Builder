@@ -1,19 +1,19 @@
 {
   "_id": "5b74a6fad9f9970a465ebd42",
-  "code_stage_ids": [
+  "codeStageIds": [
     "5b74a620d9f9970a465ebd41"
   ],
   "executable": true,
-  "executable_path": "contracts/Schedule.sol",
-  "file_location": "",
-  "has_progress": true,
-  "initial_code": "$$LOOKUP",
+  "executablePath": "contracts/Schedule.sol",
+  "fileLocation": "",
+  "hasProgress": true,
+  "initialCode": "$$LOOKUP",
   "mode": "sol",
   "name": "Schedule.sol",
-  "read_only": false,
-  "stage_container_id": "5b74a4ebd9f9970a465ebd40",
-  "test_fixture": false,
+  "readOnly": false,
+  "stageContainerId": "5b74a4ebd9f9970a465ebd40",
+  "testFixture": false,
   "visible": true,
-  "updated_at": "2018-10-16T01:50:11.563Z",
-  "created_at": "2018-10-16T01:50:11.563Z"
+  "updatedAt": "2018-10-16T01:50:11.563Z",
+  "createdAt": "2018-10-16T01:50:11.563Z"
 }

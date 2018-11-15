@@ -1,21 +1,21 @@
 {
   "_id": "5adab204929d249e5faefb4d",
-  "_type": "CodeStage",
-  "code_file_ids": [
+  "Type": "CodeStage",
+  "codeFileIds": [
     "5adab204929d249e5faefb55",
     "5adab204929d249e5faefb59"
   ],
-  "completion_message": "### Nicely Done!\n\nYou've laid the infrastructure for the Escrow Contract. Over the next two steps we'll continue to build on what you've wrote and make it completely functional. \n\nWe're looking forward to your progress on the next stage! ",
-  "container_id": "5adab204929d249e5faefb4c",
+  "completionMessage": "### Nicely Done!\n\nYou've laid the infrastructure for the Escrow Contract. Over the next two steps we'll continue to build on what you've wrote and make it completely functional. \n\nWe're looking forward to your progress on the next stage! ",
+  "containerId": "5adab204929d249e5faefb4c",
   "details": "$$LOOKUP",
   "language": "solidity",
-  "language_version": "0.4.19",
+  "languageVersion": "0.4.19",
   "position": 1,
   "task": "$$LOOKUP",
-  "test_framework": "truffle_with_mocha",
+  "testFramework": "truffle_with_mocha",
   "title": "Constructor",
-  "validated_contract": "EscrowContract",
-  "updated_at": "2018-11-08T02:51:28.329Z",
-  "created_at": "2018-10-16T01:50:10.339Z",
-  "abi_validations": "$$LOOKUP"
+  "validatedContract": "EscrowContract",
+  "updatedAt": "2018-11-08T02:51:28.329Z",
+  "createdAt": "2018-10-16T01:50:10.339Z",
+  "abiValidations": "$$LOOKUP"
 }
