@@ -15,5 +15,7 @@
   "read_only": false,
   "updated_at": "2018-10-28T16:12:04.866Z",
   "created_at": "2018-10-24T04:06:46.011Z",
-  "initial_code": "../content/projects/party_split/solidity_v0.4.19/rsvp_to_party/contracts/Party.sol"
+  "initial_code": [
+    "../content/projects/party_split/solidity_v0.4.19/rsvp_to_party/contracts/Party.sol"
+  ]
 }

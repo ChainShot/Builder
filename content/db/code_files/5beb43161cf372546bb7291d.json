@@ -5,7 +5,9 @@
     "5beb41081cf372546bb7291a"
   ],
   "name": "testToken.js",
-  "initial_code": "../content/projects/utxo_token/solidity_v0.4.19/the_utxo_model/test/testToken.js",
+  "initial_code": [
+    "../content/projects/utxo_token/solidity_v0.4.19/the_utxo_model/test/testToken.js"
+  ],
   "read_only": true,
   "test_fixture": true,
   "visible": true,

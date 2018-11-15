@@ -5,7 +5,9 @@
     "5be18729626daf0f9392cf3a"
   ],
   "name": "testRoot.js",
-  "initial_code": "../content/projects/root_hash/solidity_v0.4.19/hash_it_up/test/testRoot.js",
+  "initial_code": [
+    "../content/projects/root_hash/solidity_v0.4.19/hash_it_up/test/testRoot.js"
+  ],
   "read_only": true,
   "test_fixture": true,
   "visible": true,

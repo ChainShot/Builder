@@ -5,7 +5,9 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "../content/projects/merkle_tree/javascript/multiple_layers/test/testLayers.js",
+  "initial_code": [
+    "../content/projects/merkle_tree/javascript/multiple_layers/test/testLayers.js"
+  ],
   "mode": "javascript",
   "name": "testLayers.js",
   "read_only": true,

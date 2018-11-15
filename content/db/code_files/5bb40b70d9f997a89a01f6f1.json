@@ -6,7 +6,9 @@
   "executable": true,
   "executable_path": "contracts/Hackathon.sol",
   "has_progress": true,
-  "initial_code": "../content/projects/hackathon/solidity_v0.4.19/top_rated_project/contracts/Hackathon.sol",
+  "initial_code": [
+    "../content/projects/hackathon/solidity_v0.4.19/top_rated_project/contracts/Hackathon.sol"
+  ],
   "mode": "sol",
   "name": "Hackathon.sol",
   "read_only": false,

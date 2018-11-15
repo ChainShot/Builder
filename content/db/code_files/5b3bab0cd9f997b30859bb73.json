@@ -5,7 +5,9 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "../content/projects/build_a_blockchain/javascript/the_genesis_block/test/blockchainTest.js",
+  "initial_code": [
+    "../content/projects/build_a_blockchain/javascript/the_genesis_block/test/blockchainTest.js"
+  ],
   "mode": "javascript",
   "name": "blockchainTest.js",
   "read_only": true,

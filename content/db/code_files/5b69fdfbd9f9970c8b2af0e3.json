@@ -8,7 +8,12 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "../content/projects/voting/voting/voting_events/test/util.js",
+  "initial_code": [
+    "../content/projects/voting/voting/multiple_votes/test/util.js",
+    "../content/projects/voting/voting/cast_your_vote!/test/util.js",
+    "../content/projects/voting/voting/create_a_vote/test/util.js",
+    "../content/projects/voting/voting/voting_events/test/util.js"
+  ],
   "mode": "javascript",
   "name": "util.js",
   "read_only": true,

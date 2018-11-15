@@ -5,7 +5,9 @@
     "5bd805a2626daf74460af39d"
   ],
   "name": "EIP20Interface.sol",
-  "initial_code": "../content/projects/multisig/multisig/abstraction/contracts/EIP20Interface.sol",
+  "initial_code": [
+    "../content/projects/multisig/multisig/abstraction/contracts/EIP20Interface.sol"
+  ],
   "read_only": true,
   "has_progress": false,
   "test_fixture": false,

@@ -9,7 +9,11 @@
   "executable_path": "contracts/Voting.sol",
   "file_location": "contracts/Voting.sol",
   "has_progress": true,
-  "initial_code": "../content/projects/eth_sf_challenge_voting/solidity_v0.4.19/get_your_vote/contracts/Voting.sol",
+  "initial_code": [
+    "../content/projects/eth_sf_challenge_voting/solidity_v0.4.19/counting_votes/contracts/Voting.sol",
+    "../content/projects/eth_sf_challenge_voting/solidity_v0.4.19/registration/contracts/Voting.sol",
+    "../content/projects/eth_sf_challenge_voting/solidity_v0.4.19/get_your_vote/contracts/Voting.sol"
+  ],
   "mode": "sol",
   "name": "Voting.sol",
   "read_only": false,

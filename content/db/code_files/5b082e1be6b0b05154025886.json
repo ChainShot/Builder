@@ -5,7 +5,9 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "../content/projects/escrow/escrow/require/test/testRequire.js",
+  "initial_code": [
+    "../content/projects/escrow/escrow/require/test/testRequire.js"
+  ],
   "mode": "javascript",
   "name": "testRequire.js",
   "read_only": true,

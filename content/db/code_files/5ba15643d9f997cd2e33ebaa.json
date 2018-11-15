@@ -9,7 +9,13 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "../content/projects/merkle_tree/javascript/build_the_proof/test/testUtil.js",
+  "initial_code": [
+    "../content/projects/merkle_tree/javascript/combine_two_leaves/test/testUtil.js",
+    "../content/projects/merkle_tree/javascript/odd_leaves/test/testUtil.js",
+    "../content/projects/merkle_tree/javascript/multiple_layers/test/testUtil.js",
+    "../content/projects/merkle_tree/javascript/verify_your_proof/test/testUtil.js",
+    "../content/projects/merkle_tree/javascript/build_the_proof/test/testUtil.js"
+  ],
   "mode": "javascript",
   "name": "testUtil.js",
   "read_only": true,

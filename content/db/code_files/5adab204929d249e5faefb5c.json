@@ -6,7 +6,9 @@
   "executable": true,
   "file_location": "app/src/contract/deploy.js",
   "has_progress": true,
-  "initial_code": "../content/projects/escrow/escrow/deployment/deploy.js",
+  "initial_code": [
+    "../content/projects/escrow/escrow/deployment/deploy.js"
+  ],
   "mode": "javascript",
   "name": "deploy.js",
   "read_only": false,

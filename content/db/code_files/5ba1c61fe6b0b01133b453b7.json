@@ -6,7 +6,9 @@
   "executable": true,
   "executable_path": "contracts/Marketplace.sol",
   "has_progress": true,
-  "initial_code": "../content/projects/crafting_an_nft/solidity_v0.4.19/crafting_in_process/contracts/Marketplace.sol",
+  "initial_code": [
+    "../content/projects/crafting_an_nft/solidity_v0.4.19/crafting_in_process/contracts/Marketplace.sol"
+  ],
   "mode": "sol",
   "name": "Marketplace.sol",
   "read_only": false,

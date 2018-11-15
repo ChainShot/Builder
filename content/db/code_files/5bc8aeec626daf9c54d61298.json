@@ -5,7 +5,9 @@
     "5bb2d684d9f99705a60c6307"
   ],
   "name": "tokenSupply.js",
-  "initial_code": "../content/projects/intro_to_vyper/vyper_v0.1/define_the_supply/test/tokenSupply.js",
+  "initial_code": [
+    "../content/projects/intro_to_vyper/vyper_v0.1/define_the_supply/test/tokenSupply.js"
+  ],
   "read_only": true,
   "test_fixture": true,
   "visible": true,

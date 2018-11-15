@@ -5,7 +5,9 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "../content/projects/hackathon/solidity_v0.4.19/top_rated_project/test/testHackathon.js",
+  "initial_code": [
+    "../content/projects/hackathon/solidity_v0.4.19/top_rated_project/test/testHackathon.js"
+  ],
   "mode": "javascript",
   "name": "testHackathon.js",
   "read_only": true,

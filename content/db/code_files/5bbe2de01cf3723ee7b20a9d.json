@@ -5,7 +5,9 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "../content/projects/countdown/vyper_v0.1/self-destruct/test/Countdown.test.js",
+  "initial_code": [
+    "../content/projects/countdown/vyper_v0.1/self-destruct/test/Countdown.test.js"
+  ],
   "mode": "javascript",
   "name": "Countdown.test.js",
   "read_only": true,

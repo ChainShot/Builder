@@ -5,7 +5,9 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "../content/projects/voting/voting/authenticating/test/testAragonAuth.js",
+  "initial_code": [
+    "../content/projects/voting/voting/authenticating/test/testAragonAuth.js"
+  ],
   "mode": "javascript",
   "name": "testAragonAuth.js",
   "read_only": true,

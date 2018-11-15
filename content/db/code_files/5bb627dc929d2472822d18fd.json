@@ -7,7 +7,11 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "../content/projects/eth_sf_challenge_voting/solidity_v0.4.19/get_your_vote/test/testUtils.js",
+  "initial_code": [
+    "../content/projects/eth_sf_challenge_voting/solidity_v0.4.19/counting_votes/test/testUtils.js",
+    "../content/projects/eth_sf_challenge_voting/solidity_v0.4.19/registration/test/testUtils.js",
+    "../content/projects/eth_sf_challenge_voting/solidity_v0.4.19/get_your_vote/test/testUtils.js"
+  ],
   "mode": "javascript",
   "name": "testUtils.js",
   "read_only": true,

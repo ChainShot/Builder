@@ -5,7 +5,9 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "../content/projects/eth_sf_challenge_voting/solidity_v0.4.19/counting_votes/test/testCounting.js",
+  "initial_code": [
+    "../content/projects/eth_sf_challenge_voting/solidity_v0.4.19/counting_votes/test/testCounting.js"
+  ],
   "mode": "javascript",
   "name": "testCounting.js",
   "read_only": true,
