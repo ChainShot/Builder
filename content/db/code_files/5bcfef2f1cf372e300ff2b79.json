@@ -9,10 +9,11 @@
   "test_fixture": true,
   "visible": true,
   "executable": true,
-  "updated_at": "2018-10-24T04:07:06.918Z",
+  "updated_at": "2018-11-15T18:32:04.466Z",
   "created_at": "2018-10-24T04:03:59.418Z",
   "file_location": "",
   "code_stage_ids": [
     "5bcfef901cf372e300ff2b7a"
-  ]
+  ],
+  "executable_path": "test/partyTest.js"
 }

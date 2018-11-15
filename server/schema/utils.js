@@ -16,6 +16,21 @@ const fileResolver = (filePath) => {
   })
 }
 
+const dbWriter = (collection, props) => {
+  if(!props['id']) throw new Error(`id not defined for ${JSON.stringify(props)}`);
+  const filePath = path.join(DB_DIR, collection, `${props['id']}.json`);
+  return fileWriter(filePath, prettifyJSON(props)).then(() => props);
+}
+
+const fileWriter = (filePath, props) => {
+  return new Promise((resolve, reject) => {
+    fs.writeFile(filePath, props, (err) => {
+      if(err) reject(err);
+      resolve(props);
+    });
+  })
+}
+
 const dbReader = (collection) => {
   const folder = path.join(DB_DIR, collection);
   return new Promise((resolve, reject) => {
@@ -26,8 +41,15 @@ const dbReader = (collection) => {
   })
 }
 
+function prettifyJSON(json) {
+  return JSON.stringify(json, null, 2);
+}
+
 module.exports = {
   dbResolver,
   dbReader,
+  dbWriter,
+  fileWriter,
   fileResolver,
+  prettifyJSON,
 }

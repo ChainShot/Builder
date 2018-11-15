@@ -15,6 +15,7 @@
   "stage_container_id": "5b58fc40d9f997399b71e3fd",
   "test_fixture": false,
   "visible": true,
-  "updated_at": "2018-10-16T01:50:10.895Z",
-  "created_at": "2018-10-16T01:50:10.895Z"
+  "updated_at": "2018-11-15T18:32:04.991Z",
+  "created_at": "2018-10-16T01:50:10.895Z",
+  "executable_path": "loadVote.js"
 }

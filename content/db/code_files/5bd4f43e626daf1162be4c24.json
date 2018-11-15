@@ -12,6 +12,7 @@
   "executable": true,
   "mode": "javascript",
   "has_progress": false,
-  "updated_at": "2018-11-08T02:51:29.390Z",
-  "created_at": "2018-10-27T23:26:54.019Z"
+  "updated_at": "2018-11-15T18:32:05.102Z",
+  "created_at": "2018-10-27T23:26:54.019Z",
+  "executable_path": "test/parityTest.js"
 }

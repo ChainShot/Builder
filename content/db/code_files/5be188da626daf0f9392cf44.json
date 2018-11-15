@@ -12,6 +12,7 @@
   "executable": true,
   "mode": "javascript",
   "has_progress": false,
-  "updated_at": "2018-11-06T12:30:12.191Z",
-  "created_at": "2018-11-06T12:28:10.231Z"
+  "updated_at": "2018-11-15T18:32:04.928Z",
+  "created_at": "2018-11-06T12:28:10.231Z",
+  "executable_path": "test/testRoot.js"
 }
