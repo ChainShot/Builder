@@ -15,7 +15,5 @@
   "test_fixture": false,
   "updated_at": "2018-10-28T17:41:09.851Z",
   "created_at": "2018-10-27T23:31:55.065Z",
-  "initial_code": [
-    "../content/projects/parity_check/vyper_v0.1/even_or_odd/contracts/Parity.v.py"
-  ]
+  "initial_code": "$$LOOKUP"
 }

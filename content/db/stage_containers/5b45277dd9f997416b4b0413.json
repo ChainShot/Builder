@@ -7,7 +7,7 @@
     "5b515cbde6b0b0453b4e9e3d"
   ],
   "description": "Given an account address on the Ethereum blockchain find all the addresses that were sent Ether from that address.",
-  "intro": "../content/projects/who_has_my_ether/javascript/intro.md",
+  "intro": "$$LOOKUP",
   "production_ready": true,
   "title": "Who has my Ether?",
   "updated_at": "2018-10-23T23:00:05.507Z",

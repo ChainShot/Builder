@@ -7,11 +7,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": [
-    "../content/projects/voting/voting/loading_votes/zen-observable.js",
-    "../content/projects/voting/voting/vote_created_event/zen-observable.js",
-    "../content/projects/voting/voting/vote_cast_event/zen-observable.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "javascript",
   "name": "zen-observable.js",
   "read_only": true,

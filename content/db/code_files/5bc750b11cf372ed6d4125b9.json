@@ -7,11 +7,7 @@
     "5bc74fad1cf372ed6d4125ab"
   ],
   "name": "testUtils.js",
-  "initial_code": [
-    "../content/projects/voting/solidity_v0.4.19/counting_votes/test/testUtils.js",
-    "../content/projects/voting/solidity_v0.4.19/get_your_vote/test/testUtils.js",
-    "../content/projects/voting/solidity_v0.4.19/registration/test/testUtils.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "read_only": true,
   "test_fixture": true,
   "visible": true,

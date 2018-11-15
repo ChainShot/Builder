@@ -8,15 +8,15 @@
   ],
   "completion_message": "## Super\n\nYou did it! Now our Voting app has governance and upgradeability built in. This will make it much easier to build on top of when we want to add more complex logic to our application. \n\nNext step: The Front-End. ",
   "container_id": "5b58fc40d9f997399b71e3fd",
-  "details": "../content/projects/voting/voting/authenticating/details.md",
+  "details": "$$LOOKUP",
   "language": "solidity",
   "language_version": "0.4.18",
   "position": 4,
-  "task": "../content/projects/voting/voting/authenticating/task.md",
+  "task": "$$LOOKUP",
   "test_framework": "truffle_with_mocha",
   "title": "Authenticating",
   "validated_contract": "Voting",
   "updated_at": "2018-11-08T02:51:29.009Z",
   "created_at": "2018-10-16T01:50:10.755Z",
-  "abi_validations": "../content/projects/voting/voting/authenticating/validations.json"
+  "abi_validations": "$$LOOKUP"
 }

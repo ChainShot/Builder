@@ -6,9 +6,7 @@
   "executable": true,
   "executable_path": "test/testBananaStand.js",
   "has_progress": false,
-  "initial_code": [
-    "../content/projects/banana_stand/solidity_v0.4.19/handling_bananas/test/testBananaStand.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "javascript",
   "name": "testBananaStand.js",
   "read_only": true,

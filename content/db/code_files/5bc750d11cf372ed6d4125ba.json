@@ -5,9 +5,7 @@
     "5bc74ff41cf372ed6d4125b1"
   ],
   "name": "testCounting.js",
-  "initial_code": [
-    "../content/projects/voting/solidity_v0.4.19/counting_votes/test/testCounting.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "read_only": true,
   "test_fixture": true,
   "visible": true,

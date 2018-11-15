@@ -5,9 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": [
-    "../content/projects/build_a_blockchain/javascript/validating_the_chain/test/validationTests.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "javascript",
   "name": "validationTests.js",
   "read_only": true,

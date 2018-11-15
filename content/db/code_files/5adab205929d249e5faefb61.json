@@ -6,9 +6,7 @@
   "executable": true,
   "file_location": null,
   "has_progress": false,
-  "initial_code": [
-    "../content/projects/escrow/escrow/js_approve/test/testApprove.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "javascript",
   "name": "testApprove.js",
   "read_only": true,

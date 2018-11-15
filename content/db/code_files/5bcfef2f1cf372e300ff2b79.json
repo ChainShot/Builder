@@ -2,9 +2,7 @@
   "_id": "5bcfef2f1cf372e300ff2b79",
   "stage_container_id": "5bcf95321cf372448c2e26af",
   "name": "partyTest.js",
-  "initial_code": [
-    "../content/projects/party_split/solidity_v0.4.19/rsvp_to_party/test/partyTest.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "javascript",
   "read_only": true,
   "has_progress": false,

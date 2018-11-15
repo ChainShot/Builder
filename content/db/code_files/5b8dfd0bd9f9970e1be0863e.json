@@ -10,13 +10,7 @@
   "executable": true,
   "executable_path": "contracts/Hackathon.sol",
   "has_progress": true,
-  "initial_code": [
-    "../content/projects/intro_to_solidity/solidity_v0.4.19/intro_to_address_&_arrays/contracts/Hackathon.sol",
-    "../content/projects/intro_to_solidity/solidity_v0.4.19/intro_to_mapping/contracts/Hackathon.sol",
-    "../content/projects/intro_to_solidity/solidity_v0.4.19/intro_to_integers/contracts/Hackathon.sol",
-    "../content/projects/intro_to_solidity/solidity_v0.4.19/intro_to_structs_&_loops/contracts/Hackathon.sol",
-    "../content/projects/intro_to_solidity/solidity_v0.4.19/more_structs/contracts/Hackathon.sol"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "sol",
   "name": "Hackathon.sol",
   "read_only": false,

@@ -7,7 +7,7 @@
     "5b515d23e6b0b0453b4e9e3f"
   ],
   "description": "Identify and fix the denial of service vulnerabilities within the smart contract.",
-  "intro": "../content/projects/deny_my_service/solidity_v0.4.19/intro.md",
+  "intro": "$$LOOKUP",
   "production_ready": true,
   "title": "Deny my Service",
   "updated_at": "2018-10-23T22:59:44.990Z",

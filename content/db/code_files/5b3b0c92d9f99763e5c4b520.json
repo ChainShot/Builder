@@ -5,9 +5,7 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": [
-    "../content/projects/build_a_blockchain/javascript/what's_in_a_hash/test/blockSHATest.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "javascript",
   "name": "blockSHATest.js",
   "read_only": true,

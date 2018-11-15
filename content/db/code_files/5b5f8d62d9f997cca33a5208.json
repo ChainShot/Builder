@@ -5,9 +5,7 @@
   ],
   "executable": false,
   "has_progress": false,
-  "initial_code": [
-    "../content/projects/voting/voting/loading_votes/app.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "javascript",
   "name": "app.js",
   "read_only": true,

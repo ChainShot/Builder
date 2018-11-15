@@ -3,9 +3,9 @@
   "_type": "DownloadStage",
   "completion_message": "",
   "container_id": "5adab204929d249e5faefb4c",
-  "details": "../content/projects/escrow/escrow/download/details.md",
+  "details": "$$LOOKUP",
   "position": 10,
-  "task": "../content/projects/escrow/escrow/download/task.md",
+  "task": "$$LOOKUP",
   "title": "Download",
   "updated_at": "2018-11-08T02:51:28.065Z",
   "created_at": "2018-10-16T01:50:10.122Z",
@@ -37,5 +37,5 @@
       }
     }
   ],
-  "abi_validations": "../content/projects/escrow/escrow/download/validations.json"
+  "abi_validations": "$$LOOKUP"
 }

@@ -2,7 +2,7 @@
   "_id": "5bb2c8ded9f99705a60c62d3",
   "_type": "Lesson",
   "description": "Learn the basics of the EVM programming language Vyper! ",
-  "intro": "../content/projects/intro_to_vyper/vyper_v0.1/intro.md",
+  "intro": "$$LOOKUP",
   "production_ready": false,
   "title": "Intro To Vyper",
   "updated_at": "2018-10-25T15:40:24.949Z",

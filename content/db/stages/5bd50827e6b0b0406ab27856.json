@@ -3,11 +3,11 @@
   "_type": "CodeStage",
   "completion_message": "## Clean-Up Complete\n\nLet Mr. Clean know his services are no longer needed. \n\nNext we'll add some getters for our front-end applications. ",
   "container_id": "5bce5e20e6b0b012e91da44b",
-  "details": "../content/projects/multisig/multisig/clean-up/details.md",
+  "details": "$$LOOKUP",
   "language": "solidity",
   "language_version": "0.4.19",
   "position": 8,
-  "task": "../content/projects/multisig/multisig/clean-up/task.md",
+  "task": "$$LOOKUP",
   "test_framework": "truffle_with_mocha",
   "title": "Clean-up",
   "validated_contract": "MultiSig",
@@ -17,5 +17,5 @@
     "5bcfc074e6b0b0328e69567a",
     "5bd50893e6b0b0406ab27857"
   ],
-  "abi_validations": "../content/projects/multisig/multisig/clean-up/validations.json"
+  "abi_validations": "$$LOOKUP"
 }

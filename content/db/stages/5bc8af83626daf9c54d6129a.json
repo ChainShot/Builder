@@ -14,8 +14,8 @@
     "5bc8b0ec626daf9c54d6129e",
     "5bb2d834d9f99705a60c6308"
   ],
-  "abi_validations": "../content/projects/intro_to_vyper/vyper_v0.1/balancing_act/validations.json",
-  "task": "../content/projects/intro_to_vyper/vyper_v0.1/balancing_act/task.md",
-  "details": "../content/projects/intro_to_vyper/vyper_v0.1/balancing_act/details.md",
+  "abi_validations": "$$LOOKUP",
+  "task": "$$LOOKUP",
+  "details": "$$LOOKUP",
   "completion_message": "## We'll just call you Acrobat\n\nBecause you've got the balance! \n\nAwesome. Now let's spread the love around. "
 }

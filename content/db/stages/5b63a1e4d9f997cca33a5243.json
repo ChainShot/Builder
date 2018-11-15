@@ -12,14 +12,14 @@
   ],
   "completion_message": "## A Promising Observation\n\nOur promising observation is that you passed the stage. Way to go! \n\nFinal stage ahead, we're going to modify our `stateUpdate` function to also handle when voters cast their vote.",
   "container_id": "5b58fc40d9f997399b71e3fd",
-  "details": "../content/projects/voting/voting/vote_created_event/details.md",
+  "details": "$$LOOKUP",
   "language": "javascript",
   "language_version": "8.x/babel",
   "position": 6,
-  "task": "../content/projects/voting/voting/vote_created_event/task.md",
+  "task": "$$LOOKUP",
   "test_framework": "mocha_bdd",
   "title": "Vote Created Event",
   "updated_at": "2018-10-16T01:50:10.726Z",
   "created_at": "2018-10-16T01:50:10.726Z",
-  "abi_validations": "../content/projects/voting/voting/vote_created_event/validations.json"
+  "abi_validations": "$$LOOKUP"
 }

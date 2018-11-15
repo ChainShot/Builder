@@ -6,9 +6,7 @@
   "executable": true,
   "executable_path": "contracts/Hackathon.sol",
   "has_progress": true,
-  "initial_code": [
-    "../content/projects/eth_berlin_hackathon/solidity_v0.4.19/find_the_winner/contracts/Hackathon.sol"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "sol",
   "name": "Hackathon.sol",
   "read_only": false,

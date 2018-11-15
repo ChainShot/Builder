@@ -5,7 +5,7 @@
     "5b515d6be6b0b0453b4e9e40"
   ],
   "description": "Learn how to create a basic JavaScript implementation of a blockchain. ",
-  "intro": "../content/projects/build_a_blockchain/javascript/intro.md",
+  "intro": "$$LOOKUP",
   "production_ready": true,
   "title": "Build a Blockchain",
   "updated_at": "2018-10-25T15:41:00.999Z",

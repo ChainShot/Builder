@@ -6,9 +6,7 @@
   "executable": true,
   "executable_path": "test/dosTest.js",
   "has_progress": false,
-  "initial_code": [
-    "../content/projects/deny_my_service/solidity_v0.4.19/you_can't_deny_me/test/dosTest.js"
-  ],
+  "initial_code": "$$LOOKUP",
   "mode": "javascript",
   "name": "dosTest.js",
   "read_only": true,
