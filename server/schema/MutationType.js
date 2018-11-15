@@ -4,7 +4,7 @@ const {
   GraphQLBoolean
 } = require('graphql');
 const CodeFileType = require('./CodeFileType');
-const { dbWriter, fileWriter, dbResolver } = require('./utils');
+const { dbWriter, fileWriter, dbResolver, sanitizeFolderName } = require('./utils');
 const { PROJECTS_DIR } = require('../config');
 const path = require('path');
 
@@ -16,7 +16,11 @@ const codeFileProjectProps = {
       const sc = await dbResolver('stage_containers', stage.container_id);
       const scg = await dbResolver('stage_container_groups', sc.stage_container_group_id);
 
-      return path.join(PROJECTS_DIR, scg.title, sc.version, stage.title, executable_path);
+      return path.join(PROJECTS_DIR,
+        sanitizeFolderName(scg.title),
+        sanitizeFolderName(sc.version),
+        sanitizeFolderName(stage.title),
+        executable_path);
     }));
   }
 }
@@ -49,7 +53,7 @@ const MutationType = new GraphQLObjectType({
         for(let i = 0; i < keys.length; i++) {
           const key = keys[i];
           if(codeFileProjectProps[key]) {
-            const paths = await codeFileProjectProps[key](codeFile);
+            const paths = await codeFileProjectProps[key](codeFile)
             await paths.map(async (path) => {
               await fileWriter(path, props[key]);
             });

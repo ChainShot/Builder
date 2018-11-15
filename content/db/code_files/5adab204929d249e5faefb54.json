@@ -6,7 +6,10 @@
   ],
   "executable": true,
   "has_progress": true,
-  "initial_code": "../content/projects/escrow/escrow/deployment/EscrowContract.json",
+  "initial_code": [
+    "../content/projects/escrow/escrow/js_approve/EscrowContract.json",
+    "../content/projects/escrow/escrow/deployment/EscrowContract.json"
+  ],
   "mode": "json",
   "name": "EscrowContract.json",
   "read_only": true,

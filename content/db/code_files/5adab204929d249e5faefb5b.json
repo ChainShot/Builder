@@ -6,7 +6,9 @@
   "executable": true,
   "file_location": "truffle/tests/testApproval.js",
   "has_progress": false,
-  "initial_code": "../content/projects/escrow/escrow/approval/test/testApproval.js",
+  "initial_code": [
+    "../content/projects/escrow/escrow/approval/test/testApproval.js"
+  ],
   "mode": "javascript",
   "name": "testApproval.js",
   "read_only": true,

@@ -12,7 +12,14 @@
   "executable_path": "contracts/escrow.sol",
   "file_location": "truffle/contracts/escrow.sol",
   "has_progress": true,
-  "initial_code": "../content/projects/escrow/escrow/contract_setup/contracts/escrow.sol",
+  "initial_code": [
+    "../content/projects/escrow/escrow/constructor/contracts/escrow.sol",
+    "../content/projects/escrow/escrow/funding/contracts/escrow.sol",
+    "../content/projects/escrow/escrow/approval/contracts/escrow.sol",
+    "../content/projects/escrow/escrow/events/contracts/escrow.sol",
+    "../content/projects/escrow/escrow/require/contracts/escrow.sol",
+    "../content/projects/escrow/escrow/contract_setup/contracts/escrow.sol"
+  ],
   "mode": "sol",
   "name": "escrow.sol",
   "read_only": false,

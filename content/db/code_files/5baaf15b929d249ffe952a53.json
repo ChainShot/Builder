@@ -6,7 +6,9 @@
   "executable": true,
   "executable_path": "contracts/TreasureChest.sol",
   "has_progress": true,
-  "initial_code": "../content/projects/erc20_treasure_chest/solidity_v0.4.19/withdraw_treasure/contracts/TreasureChest.sol",
+  "initial_code": [
+    "../content/projects/erc20_treasure_chest/solidity_v0.4.19/withdraw_treasure/contracts/TreasureChest.sol"
+  ],
   "mode": "sol",
   "name": "TreasureChest.sol",
   "read_only": false,

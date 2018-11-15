@@ -15,5 +15,7 @@
   "created_at": "2018-11-06T12:24:03.089Z",
   "file_location": "contracts/Root.v.py",
   "executable_path": "contracts/Root.v.py",
-  "initial_code": "../content/projects/root_hash/vyper_v0.1/hash_it_up/contracts/Root.v.py"
+  "initial_code": [
+    "../content/projects/root_hash/vyper_v0.1/hash_it_up/contracts/Root.v.py"
+  ]
 }

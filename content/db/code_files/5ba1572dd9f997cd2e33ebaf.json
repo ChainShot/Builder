@@ -5,7 +5,9 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "../content/projects/merkle_tree/javascript/odd_leaves/test/testOdd.js",
+  "initial_code": [
+    "../content/projects/merkle_tree/javascript/odd_leaves/test/testOdd.js"
+  ],
   "mode": "javascript",
   "name": "testOdd.js",
   "read_only": true,

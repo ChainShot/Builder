@@ -5,7 +5,9 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "../content/projects/voting/voting/create_a_vote/test/testVoteCreation.js",
+  "initial_code": [
+    "../content/projects/voting/voting/create_a_vote/test/testVoteCreation.js"
+  ],
   "mode": "javascript",
   "name": "testVoteCreation.js",
   "read_only": true,

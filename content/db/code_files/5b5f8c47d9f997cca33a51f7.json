@@ -7,7 +7,11 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "../content/projects/voting/voting/vote_cast_event/app.js",
+  "initial_code": [
+    "../content/projects/voting/voting/loading_votes/app.js",
+    "../content/projects/voting/voting/vote_created_event/app.js",
+    "../content/projects/voting/voting/vote_cast_event/app.js"
+  ],
   "mode": "javascript",
   "name": "app.js",
   "read_only": true,

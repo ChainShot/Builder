@@ -5,7 +5,9 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "../content/projects/voting/voting/authenticating/test/TestVoting.sol",
+  "initial_code": [
+    "../content/projects/voting/voting/authenticating/test/TestVoting.sol"
+  ],
   "mode": "sol",
   "name": "TestVoting.sol",
   "read_only": true,

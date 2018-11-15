@@ -6,7 +6,10 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "../content/projects/escrow/escrow/deployment/web3Util.js",
+  "initial_code": [
+    "../content/projects/escrow/escrow/js_approve/web3Util.js",
+    "../content/projects/escrow/escrow/deployment/web3Util.js"
+  ],
   "mode": "javascript",
   "name": "web3Util.js",
   "read_only": true,

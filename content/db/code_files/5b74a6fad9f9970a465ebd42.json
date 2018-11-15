@@ -7,7 +7,9 @@
   "executable_path": "contracts/Schedule.sol",
   "file_location": "",
   "has_progress": true,
-  "initial_code": "../content/projects/what's_next_on_my_schedule/solidity_v0.4.19/what's_on_my_schedule/contracts/Schedule.sol",
+  "initial_code": [
+    "../content/projects/what's_next_on_my_schedule/solidity_v0.4.19/what's_on_my_schedule/contracts/Schedule.sol"
+  ],
   "mode": "sol",
   "name": "Schedule.sol",
   "read_only": false,

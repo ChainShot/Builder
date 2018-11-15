@@ -1,6 +1,7 @@
 const { DB_DIR } = require('../config');
 const fs = require('fs');
 const path = require('path');
+const sanitize = require("sanitize-filename");
 
 const dbResolver = (collection, id) => {
   const filePath = path.join(DB_DIR, collection, `${id}.json`);
@@ -41,6 +42,10 @@ const dbReader = (collection) => {
   })
 }
 
+function sanitizeFolderName(name) {
+  return sanitize(name).toLowerCase().replace(/\s/g, '_');
+}
+
 function prettifyJSON(json) {
   return JSON.stringify(json, null, 2);
 }
@@ -52,4 +57,5 @@ module.exports = {
   fileWriter,
   fileResolver,
   prettifyJSON,
+  sanitizeFolderName,
 }

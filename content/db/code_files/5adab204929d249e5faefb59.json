@@ -6,7 +6,9 @@
   "executable": true,
   "file_location": "truffle/tests/testConstructor.js",
   "has_progress": false,
-  "initial_code": "../content/projects/escrow/escrow/constructor/test/testConstructor.js",
+  "initial_code": [
+    "../content/projects/escrow/escrow/constructor/test/testConstructor.js"
+  ],
   "mode": "javascript",
   "name": "testConstructor.js",
   "read_only": true,

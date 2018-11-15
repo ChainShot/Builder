@@ -5,7 +5,9 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "../content/projects/multisig/multisig/confirm_security/test/testConfirmSecurity.js",
+  "initial_code": [
+    "../content/projects/multisig/multisig/confirm_security/test/testConfirmSecurity.js"
+  ],
   "mode": "javascript",
   "name": "testConfirmSecurity.js",
   "read_only": true,

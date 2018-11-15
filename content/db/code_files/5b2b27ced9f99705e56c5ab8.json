@@ -6,7 +6,9 @@
   "executable": true,
   "executable_path": "contracts/Chipmunk.sol",
   "has_progress": true,
-  "initial_code": "../content/projects/stash_hack/solidity_v0.4.19/stash_attack/contracts/Chipmunk.sol",
+  "initial_code": [
+    "../content/projects/stash_hack/solidity_v0.4.19/stash_attack/contracts/Chipmunk.sol"
+  ],
   "mode": "sol",
   "name": "Chipmunk.sol",
   "read_only": true,

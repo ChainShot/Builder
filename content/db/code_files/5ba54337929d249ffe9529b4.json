@@ -5,7 +5,9 @@
   ],
   "executable": true,
   "has_progress": true,
-  "initial_code": "../content/projects/merkle_tree/javascript/verify_your_proof/verify.js",
+  "initial_code": [
+    "../content/projects/merkle_tree/javascript/verify_your_proof/verify.js"
+  ],
   "mode": "javascript",
   "name": "verify.js",
   "read_only": false,

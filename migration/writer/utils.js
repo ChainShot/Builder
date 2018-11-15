@@ -1,4 +1,5 @@
 const sanitize = require("sanitize-filename");
+const fs = require('fs-extra');
 
 function toFolderName(title) {
   const santized = sanitize(title);
@@ -9,4 +10,17 @@ function prettifyJSON(json) {
   return JSON.stringify(json, null, 2);
 }
 
-module.exports = { toFolderName, prettifyJSON }
+const fileResolver = (filePath) => {
+  return new Promise((resolve, reject) => {
+    fs.readFile(filePath, (err, data) => {
+      if(data) {
+          resolve(JSON.parse(data.toString()));
+      }
+      else {
+        resolve({});
+      }
+    });
+  })
+}
+
+module.exports = { toFolderName, prettifyJSON, fileResolver }

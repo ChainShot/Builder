@@ -15,5 +15,7 @@
   "test_fixture": false,
   "updated_at": "2018-10-28T16:11:42.088Z",
   "created_at": "2018-10-27T23:32:25.751Z",
-  "initial_code": "../content/projects/parity_check/solidity_v0.4.19/even_or_odd/contracts/Parity.sol"
+  "initial_code": [
+    "../content/projects/parity_check/solidity_v0.4.19/even_or_odd/contracts/Parity.sol"
+  ]
 }

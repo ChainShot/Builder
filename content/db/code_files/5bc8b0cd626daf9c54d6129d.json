@@ -5,7 +5,9 @@
     "5bc8af52626daf9c54d61299"
   ],
   "name": "tokenNaming.js",
-  "initial_code": "../content/projects/intro_to_vyper/vyper_v0.1/name_your_token/test/tokenNaming.js",
+  "initial_code": [
+    "../content/projects/intro_to_vyper/vyper_v0.1/name_your_token/test/tokenNaming.js"
+  ],
   "read_only": true,
   "has_progress": false,
   "test_fixture": true,

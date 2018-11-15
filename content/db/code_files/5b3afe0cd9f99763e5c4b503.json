@@ -10,7 +10,14 @@
   ],
   "executable": true,
   "has_progress": true,
-  "initial_code": "../content/projects/build_a_blockchain/javascript/adding_blocks/Block.js",
+  "initial_code": [
+    "../content/projects/build_a_blockchain/javascript/what's_in_a_hash/Block.js",
+    "../content/projects/build_a_blockchain/javascript/the_genesis_block/Block.js",
+    "../content/projects/build_a_blockchain/javascript/linking_the_blocks/Block.js",
+    "../content/projects/build_a_blockchain/javascript/validating_the_chain/Block.js",
+    "../content/projects/build_a_blockchain/javascript/blocks_and_hashes/Block.js",
+    "../content/projects/build_a_blockchain/javascript/adding_blocks/Block.js"
+  ],
   "mode": "javascript",
   "name": "Block.js",
   "read_only": false,

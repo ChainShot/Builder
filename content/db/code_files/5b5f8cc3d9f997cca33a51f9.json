@@ -7,7 +7,11 @@
   ],
   "executable": true,
   "has_progress": false,
-  "initial_code": "../content/projects/voting/voting/vote_cast_event/mockData.js",
+  "initial_code": [
+    "../content/projects/voting/voting/loading_votes/mockData.js",
+    "../content/projects/voting/voting/vote_created_event/mockData.js",
+    "../content/projects/voting/voting/vote_cast_event/mockData.js"
+  ],
   "mode": "javascript",
   "name": "mockData.js",
   "read_only": true,
