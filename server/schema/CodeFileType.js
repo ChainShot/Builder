@@ -16,6 +16,7 @@ const CodeFileType = new GraphQLObjectType({
     },
     name: { type: GraphQLString },
     executable: { type: GraphQLBoolean },
+    executablePath: { type: GraphQLString },
     initialCode: {
       type: GraphQLString,
       resolve: async (cf) => {
