@@ -1,5 +1,5 @@
 {
-  "_id": "5be187b1626daf0f9392cf3e",
+  "id": "5be187b1626daf0f9392cf3e",
   "Type": "CodeStage",
   "containerId": "5be1866f626daf0f9392cf38",
   "title": "Hash it up",

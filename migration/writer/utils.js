@@ -17,7 +17,7 @@ function camelizeProps(props) {
 }
 
 function camelize(str) {
-  if(str === '_id') return "_id";
+  if(str === '_id') return "id";
   let parts = str.split("_");
   return parts.slice(1).reduce((str, cur) => {
     return str + cur[0].toUpperCase() + cur.slice(1);

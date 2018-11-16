@@ -1,5 +1,5 @@
 {
-  "_id": "5bcdf0c31cf372e860c8b8b5",
+  "id": "5bcdf0c31cf372e860c8b8b5",
   "title": "Crafting an NFT",
   "description": "Create a basic Non-Fungible Token (NFT) with trading functionality using the ERC721 standard",
   "badgeTypeIds": [

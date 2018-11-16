@@ -1,5 +1,5 @@
 {
-  "_id": "5bd12d21626daf1f7b755038",
+  "id": "5bd12d21626daf1f7b755038",
   "title": "MultiSig",
   "description": "Create your own wallet that requires multiple signatures in order to move funds! ",
   "productionReady": false,

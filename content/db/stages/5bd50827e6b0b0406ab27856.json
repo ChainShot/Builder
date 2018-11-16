@@ -1,5 +1,5 @@
 {
-  "_id": "5bd50827e6b0b0406ab27856",
+  "id": "5bd50827e6b0b0406ab27856",
   "Type": "CodeStage",
   "completionMessage": "## Clean-Up Complete\n\nLet Mr. Clean know his services are no longer needed. \n\nNext we'll add some getters for our front-end applications. ",
   "containerId": "5bce5e20e6b0b012e91da44b",

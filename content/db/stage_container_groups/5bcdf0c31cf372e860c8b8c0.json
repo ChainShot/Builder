@@ -1,5 +1,5 @@
 {
-  "_id": "5bcdf0c31cf372e860c8b8c0",
+  "id": "5bcdf0c31cf372e860c8b8c0",
   "title": "Who has my Ether?",
   "description": "Given an account address on the Ethereum blockchain find all the addresses that were sent Ether from that address.",
   "badgeTypeIds": [

@@ -1,5 +1,5 @@
 {
-  "_id": "5bce5e20e6b0b012e91da44b",
+  "id": "5bce5e20e6b0b012e91da44b",
   "Type": "BuildingBlock",
   "intro": "$$LOOKUP",
   "stageContainerGroupId": "5bd12d21626daf1f7b755038",

@@ -1,5 +1,5 @@
 {
-  "_id": "5adbdd4ae6b0b01e326503aa",
+  "id": "5adbdd4ae6b0b01e326503aa",
   "Type": "UiStage",
   "completionMessage": "## Hoopla! \n\nDid I use that word wrong? \n\nWe are now ready to create our deploy function. **Test your code** and move on to the next stage!",
   "componentName": "AbiStage",
