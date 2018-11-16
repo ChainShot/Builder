@@ -20,6 +20,16 @@ const QueryType = new GraphQLObjectType({
         return dbResolver('stages', id)
       }
     },
+    stages: {
+      type: new GraphQLList(StageType),
+      args: {
+        containsId: { type: new GraphQLList(GraphQLString) }
+      },
+      resolve: async (_, { containsId }) => {
+        const ids = containsId || await dbReader('stages');
+        return Promise.all(ids.map(id => dbResolver('stages', id)));
+      }
+    },
     codeFile: {
       type: CodeFileType,
       args: {
@@ -34,11 +44,9 @@ const QueryType = new GraphQLObjectType({
       args: {
         containsId: { type: new GraphQLList(GraphQLString) }
       },
-      resolve: function(_, { containsId }) {
-        const idsPromise = containsId ? Promise.resolve(containsId) : dbReader('code_files');
-        return idsPromise.then(ids => {
-          return Promise.all(ids.map(id => dbResolver('code_files', id)));
-        });
+      resolve: async (_, { containsId }) => {
+        const ids = containsId || await dbReader('code_files');
+        return Promise.all(ids.map(id => dbResolver('code_files', id)));
       }
     }
   }
