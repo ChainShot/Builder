@@ -16,8 +16,8 @@ const StageType = new GraphQLObjectType({
     title: { type: GraphQLString },
     codeFiles: {
       type: new GraphQLList(require('./CodeFileType')),
-      resolve: function({ code_file_ids }) {
-        const ids = (code_file_ids || []);
+      resolve: function({ codeFileIds }) {
+        const ids = (codeFileIds || []);
         return Promise.all(ids.map(id => dbResolver('code_files', id)));
       }
     },

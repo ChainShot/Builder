@@ -5,6 +5,7 @@ const {
   GraphQLList,
 } = require('graphql');
 const { fileResolver, dbResolver } = require('./utils');
+const codeFileLookup = require('./lookups/codeFileLookup');
 
 const CodeFileType = new GraphQLObjectType({
   name: 'CodeFile',
@@ -17,12 +18,15 @@ const CodeFileType = new GraphQLObjectType({
     executable: { type: GraphQLBoolean },
     initialCode: {
       type: GraphQLString,
-      resolve: ({ initial_code }) => fileResolver(initial_code)
+      resolve: async (cf) => {
+        const paths = await codeFileLookup(cf);
+        return fileResolver(paths[0]);
+      }
     },
     codeStages: {
       type: new GraphQLList(require('./StageType')),
-      resolve: function({ code_stage_ids }) {
-        const ids = (code_stage_ids || []);
+      resolve: function({ codeStageIds }) {
+        const ids = (codeStageIds || []);
         return Promise.all(ids.map(id => dbResolver('stages', id)));
       }
     }
