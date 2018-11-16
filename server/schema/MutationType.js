@@ -13,27 +13,33 @@ const codeFileProjectProps = {
   initialCode: codeFileLookup
 }
 
+const codeFileMutationArgs = {
+  id: { type: GraphQLString },
+  name: { type: GraphQLString },
+  executable: { type: GraphQLBoolean },
+  executablePath: { type: GraphQLString },
+  fileLocation: { type: GraphQLString },
+  hasProgress: { type: GraphQLBoolean },
+  mode: { type: GraphQLString },
+  readOnly: { type: GraphQLBoolean },
+  testFixture: { type: GraphQLBoolean },
+  visible: { type: GraphQLBoolean },
+  codeStageIds: { type: new GraphQLList(GraphQLString) },
+  initialCode: { type: GraphQLString },
+}
+
 const MutationType = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
     createCodeFile: {
       type: CodeFileType,
-      args: {
-        id: { type: GraphQLString },
-        name: { type: GraphQLString },
-        executable: { type: GraphQLBoolean },
-        executablePath: { type: GraphQLString },
-        codeStageIds: { type: new GraphQLList(GraphQLString) },
-        initialCode: { type: GraphQLString },
-      },
+      args: codeFileMutationArgs,
       async resolve (_, props) {
-        console.log({props});
         const keys = Object.keys(props);
         for(let i = 0; i < keys.length; i++) {
           const key = keys[i];
           if(codeFileProjectProps[key]) {
             const paths = await codeFileProjectProps[key](props);
-            console.log({paths})
             await Promise.all(paths.map(async (path) => {
               return await fileWriter(path, props[key]);
             }));
@@ -45,19 +51,12 @@ const MutationType = new GraphQLObjectType({
     },
     modifyCodeFile: {
       type: CodeFileType,
-      args: {
-        id: { type: GraphQLString },
-        name: { type: GraphQLString },
-        executable: { type: GraphQLBoolean },
-        executablePath: { type: GraphQLString },
-        codeStageIds: { type: new GraphQLList(GraphQLString) },
-        initialCode: { type: GraphQLString },
-      },
+      args: codeFileMutationArgs,
       async resolve (_, props) {
         const codeFile = await dbResolver('code_files', props.id);
         const merged = { ...codeFile, ...props };
 
-        const keys = Object.keys(merged);
+        const keys = Object.keys(props);
         for(let i = 0; i < keys.length; i++) {
           const key = keys[i];
           if(codeFileProjectProps[key]) {
