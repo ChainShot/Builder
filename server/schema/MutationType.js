@@ -1,7 +1,8 @@
 const {
   GraphQLObjectType,
   GraphQLString,
-  GraphQLBoolean
+  GraphQLBoolean,
+  GraphQLList,
 } = require('graphql');
 const CodeFileType = require('./CodeFileType');
 const { dbWriter, fileWriter, dbResolver, fileRemove } = require('./utils');
@@ -20,9 +21,25 @@ const MutationType = new GraphQLObjectType({
       args: {
         id: { type: GraphQLString },
         name: { type: GraphQLString },
-        executable: { type: GraphQLBoolean }
+        executable: { type: GraphQLBoolean },
+        executablePath: { type: GraphQLString },
+        codeStageIds: { type: new GraphQLList(GraphQLString) },
+        initialCode: { type: GraphQLString },
       },
       async resolve (_, props) {
+        console.log({props});
+        const keys = Object.keys(props);
+        for(let i = 0; i < keys.length; i++) {
+          const key = keys[i];
+          if(codeFileProjectProps[key]) {
+            const paths = await codeFileProjectProps[key](props);
+            console.log({paths})
+            await Promise.all(paths.map(async (path) => {
+              return await fileWriter(path, props[key]);
+            }));
+            props[key] = LOOKUP_KEY;
+          }
+        }
         return dbWriter('code_files', props);
       }
     },
@@ -33,6 +50,7 @@ const MutationType = new GraphQLObjectType({
         name: { type: GraphQLString },
         executable: { type: GraphQLBoolean },
         executablePath: { type: GraphQLString },
+        codeStageIds: { type: new GraphQLList(GraphQLString) },
         initialCode: { type: GraphQLString },
       },
       async resolve (_, props) {
@@ -43,20 +61,21 @@ const MutationType = new GraphQLObjectType({
         for(let i = 0; i < keys.length; i++) {
           const key = keys[i];
           if(codeFileProjectProps[key]) {
+            // remove the previous path (TODO: check and only do if not in new paths)
             const previousPaths = await codeFileProjectProps[key](codeFile);
             await Promise.all(previousPaths.map(async (path) => {
-              await fileRemove(path);
+              return await fileRemove(path);
             }));
+            // add the new path
             const paths = await codeFileProjectProps[key](merged);
             await Promise.all(paths.map(async (path) => {
-              await fileWriter(path, merged[key]);
+              return await fileWriter(path, merged[key]);
             }));
             merged[key] = LOOKUP_KEY;
           }
         }
-        console.log('wtf is it all', merged)
 
-        await dbWriter('code_files', merged);
+        return dbWriter('code_files', merged);
       }
     }
   }
