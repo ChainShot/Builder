@@ -5,6 +5,7 @@ const {
   GraphQLList,
 } = require('graphql');
 const stageContainerLookup = require('./lookups/stageContainerLookup');
+const {fileResolver} = require('./utils');
 
 const StageContainerType = new GraphQLObjectType({
   name: 'StageContainer',

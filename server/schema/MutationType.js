@@ -7,7 +7,7 @@ const {
 const CodeFileType = require('./CodeFileType');
 const { dbWriter, fileWriter, dbResolver, fileRemove } = require('./utils');
 const codeFileLookup = require('./lookups/codeFileLookup');
-const { LOOKUP_KEY } = require('../config');
+const { LOOKUP_KEY, MODEL_DB } = require('../config');
 
 const codeFileProjectProps = {
   initialCode: codeFileLookup
@@ -46,14 +46,14 @@ const MutationType = new GraphQLObjectType({
             props[key] = LOOKUP_KEY;
           }
         }
-        return dbWriter('code_files', props);
+        return dbWriter(MODEL_DB.CODE_FILES, props);
       }
     },
     modifyCodeFile: {
       type: CodeFileType,
       args: codeFileMutationArgs,
       async resolve (_, props) {
-        const codeFile = await dbResolver('code_files', props.id);
+        const codeFile = await dbResolver(MODEL_DB.CODE_FILES, props.id);
         const merged = { ...codeFile, ...props };
 
         const keys = Object.keys(props);
@@ -74,7 +74,7 @@ const MutationType = new GraphQLObjectType({
           }
         }
 
-        return dbWriter('code_files', merged);
+        return dbWriter(MODEL_DB.CODE_FILES, merged);
       }
     }
   }

@@ -5,6 +5,7 @@ const {
   GraphQLList,
 } = require('graphql');
 const { fileResolver, dbResolver } = require('./utils');
+const { MODEL_DB } = require('../config');
 const codeFileLookup = require('./lookups/codeFileLookup');
 
 const CodeFileType = new GraphQLObjectType({
@@ -25,7 +26,7 @@ const CodeFileType = new GraphQLObjectType({
       type: new GraphQLList(require('./StageType')),
       resolve: function({ codeStageIds }) {
         const ids = (codeStageIds || []);
-        return Promise.all(ids.map(id => dbResolver('stages', id)));
+        return Promise.all(ids.map(id => dbResolver(MODEL_DB.STAGES, id)));
       }
     },
     initialCode: {
