@@ -8,6 +8,9 @@ class LandingContainer extends Component {
       <div className="container">
         <h2> { title } </h2>
         <p> { description } </p>
+        <div className="btn btn-primary">
+          Modify
+        </div>
       </div>
     )
   }

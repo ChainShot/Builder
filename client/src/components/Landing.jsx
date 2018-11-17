@@ -31,14 +31,29 @@ class Landing extends Component {
         <h1> Building Blocks </h1>
         <div className="stage-container-groups building-blocks">
           { buildingBlocks.map(x => <LandingContainer key={x.id} {...x} />) }
+          <div className="container">
+            <h2>Create your Own!</h2>
+            <p>Build your own Building Block from scratch</p>
+            <div className="btn btn-primary">Create</div>
+          </div>
         </div>
         <h1> Lessons </h1>
         <div className="stage-container-groups lessons">
           { lessons.map(x => <LandingContainer key={x.id} {...x} />) }
+          <div className="container">
+            <h2>Create your Own!</h2>
+            <p>Build your own Lesson from scratch</p>
+            <div className="btn btn-primary">Create</div>
+          </div>
         </div>
         <h1> Challenges </h1>
         <div className="stage-container-groups challenges">
           { challenges.map(x => <LandingContainer key={x.id} {...x} />) }
+          <div className="container">
+            <h2>Create your Own!</h2>
+            <p>Build your own Challenge from scratch</p>
+            <div className="btn btn-primary">Create</div>
+          </div>
         </div>
       </div>
     );
