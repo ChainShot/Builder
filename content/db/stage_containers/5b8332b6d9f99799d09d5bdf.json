@@ -1,6 +1,6 @@
 {
-  "_id": "5b8332b6d9f99799d09d5bdf",
-  "Type": "Challenge",
+  "id": "5b8332b6d9f99799d09d5bdf",
+  "type": "Challenge",
   "badgeTypeIds": [
     "5b515cf6e6b0b0453b4e9e3e",
     "5b515d23e6b0b0453b4e9e3f",

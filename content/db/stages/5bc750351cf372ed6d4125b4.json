@@ -1,6 +1,6 @@
 {
-  "_id": "5bc750351cf372ed6d4125b4",
-  "Type": "CodeStage",
+  "id": "5bc750351cf372ed6d4125b4",
+  "type": "CodeStage",
   "containerId": "5bc74dce1cf372ed6d4125aa",
   "title": "Get Your Vote",
   "position": 2,

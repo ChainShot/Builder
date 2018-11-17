@@ -1,5 +1,5 @@
 {
-  "_id": "5bcdf0c31cf372e860c8b8ba",
+  "id": "5bcdf0c31cf372e860c8b8ba",
   "title": "Escrow",
   "description": "Create a decentralized escrow web application from scratch using Solidity and web3.js! ",
   "badgeTypeIds": [

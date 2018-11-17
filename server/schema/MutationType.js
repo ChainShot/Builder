@@ -1,67 +1,80 @@
 const {
   GraphQLObjectType,
   GraphQLString,
-  GraphQLBoolean
+  GraphQLBoolean,
+  GraphQLList,
 } = require('graphql');
 const CodeFileType = require('./CodeFileType');
-const { dbWriter, fileWriter, dbResolver, sanitizeFolderName } = require('./utils');
-const { PROJECTS_DIR } = require('../config');
-const path = require('path');
+const { dbWriter, fileWriter, dbResolver, fileRemove } = require('./utils');
+const codeFileLookup = require('./lookups/codeFileLookup');
+const { LOOKUP_KEY, MODEL_DB } = require('../config');
 
 const codeFileProjectProps = {
-  initialCode: ({ executable_path, code_stage_ids, name }) => {
-    const ids = (code_stage_ids || []);
-    return Promise.all(ids.map(async (id) => {
-      const stage = await dbResolver('stages', id);
-      const sc = await dbResolver('stage_containers', stage.container_id);
-      const scg = await dbResolver('stage_container_groups', sc.stage_container_group_id);
+  initialCode: codeFileLookup
+}
 
-      return path.join(PROJECTS_DIR,
-        sanitizeFolderName(scg.title),
-        sanitizeFolderName(sc.version),
-        sanitizeFolderName(stage.title),
-        executable_path);
-    }));
-  }
+const codeFileMutationArgs = {
+  id: { type: GraphQLString },
+  name: { type: GraphQLString },
+  executable: { type: GraphQLBoolean },
+  executablePath: { type: GraphQLString },
+  fileLocation: { type: GraphQLString },
+  hasProgress: { type: GraphQLBoolean },
+  mode: { type: GraphQLString },
+  readOnly: { type: GraphQLBoolean },
+  testFixture: { type: GraphQLBoolean },
+  visible: { type: GraphQLBoolean },
+  codeStageIds: { type: new GraphQLList(GraphQLString) },
+  initialCode: { type: GraphQLString },
 }
 
 const MutationType = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
-    create: {
+    createCodeFile: {
       type: CodeFileType,
-      args: {
-        id: { type: GraphQLString },
-        name: { type: GraphQLString },
-        executable: { type: GraphQLBoolean }
-      },
+      args: codeFileMutationArgs,
       async resolve (_, props) {
-        return dbWriter('code_files', props);
-      }
-    },
-    modify: {
-      type: CodeFileType,
-      args: {
-        id: { type: GraphQLString },
-        name: { type: GraphQLString },
-        executable: { type: GraphQLBoolean },
-        initialCode: { type: GraphQLString },
-      },
-      async resolve (_, props) {
-        const codeFile = await dbResolver('code_files', props.id);
         const keys = Object.keys(props);
         for(let i = 0; i < keys.length; i++) {
           const key = keys[i];
           if(codeFileProjectProps[key]) {
-            const paths = await codeFileProjectProps[key](codeFile)
-            await paths.map(async (path) => {
-              await fileWriter(path, props[key]);
-            });
-            props[key] = paths;
+            const paths = await codeFileProjectProps[key](props);
+            await Promise.all(paths.map(async (path) => {
+              return await fileWriter(path, props[key]);
+            }));
+            props[key] = LOOKUP_KEY;
           }
         }
+        return dbWriter(MODEL_DB.CODE_FILES, props);
+      }
+    },
+    modifyCodeFile: {
+      type: CodeFileType,
+      args: codeFileMutationArgs,
+      async resolve (_, props) {
+        const codeFile = await dbResolver(MODEL_DB.CODE_FILES, props.id);
         const merged = { ...codeFile, ...props };
-        return dbWriter('code_files', merged);
+
+        const keys = Object.keys(props);
+        for(let i = 0; i < keys.length; i++) {
+          const key = keys[i];
+          if(codeFileProjectProps[key]) {
+            // remove the previous path (TODO: check and only do if not in new paths)
+            const previousPaths = await codeFileProjectProps[key](codeFile);
+            await Promise.all(previousPaths.map(async (path) => {
+              return await fileRemove(path);
+            }));
+            // add the new path
+            const paths = await codeFileProjectProps[key](merged);
+            await Promise.all(paths.map(async (path) => {
+              return await fileWriter(path, merged[key]);
+            }));
+            merged[key] = LOOKUP_KEY;
+          }
+        }
+
+        return dbWriter(MODEL_DB.CODE_FILES, merged);
       }
     }
   }

@@ -1,6 +1,6 @@
 {
-  "_id": "5bcfef901cf372e300ff2b7a",
-  "Type": "CodeStage",
+  "id": "5bcfef901cf372e300ff2b7a",
+  "type": "CodeStage",
   "containerId": "5bcf95321cf372448c2e26af",
   "title": "RSVP to Party",
   "position": 0,

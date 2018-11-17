@@ -5,6 +5,8 @@ const {
   GraphQLList,
 } = require('graphql');
 const { fileResolver, dbResolver } = require('./utils');
+const { MODEL_DB } = require('../config');
+const stageLookup = require('./lookups/stageLookup');
 
 const StageType = new GraphQLObjectType({
   name: 'Stage',
@@ -16,14 +18,22 @@ const StageType = new GraphQLObjectType({
     title: { type: GraphQLString },
     codeFiles: {
       type: new GraphQLList(require('./CodeFileType')),
-      resolve: function({ code_file_ids }) {
-        const ids = (code_file_ids || []);
-        return Promise.all(ids.map(id => dbResolver('code_files', id)));
+      resolve: function({ codeFileIds }) {
+        const ids = (codeFileIds || []);
+        return Promise.all(ids.map(id => dbResolver(MODEL_DB.CODE_FILES, id)));
       }
     },
     details: {
       type: GraphQLString,
-      resolve: ({ details }) => fileResolver(details)
+      resolve: async (props) => fileResolver(await stageLookup(props, 'details.md'))
+    },
+    task: {
+      type: GraphQLString,
+      resolve: async (props) => fileResolver(await stageLookup(props, 'task.md'))
+    },
+    abiValidations: {
+      type: GraphQLString,
+      resolve: async (props) => fileResolver(await stageLookup(props, 'validations.json'))
     }
   })
 });

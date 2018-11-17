@@ -1,6 +1,6 @@
 {
-  "_id": "5bc8b081626daf9c54d6129c",
-  "Type": "CodeStage",
+  "id": "5bc8b081626daf9c54d6129c",
+  "type": "CodeStage",
   "containerId": "5bb2c8ded9f99705a60c62d3",
   "title": "Transfer Debt?",
   "position": 4,

@@ -1,6 +1,6 @@
 {
-  "_id": "5be18681626daf0f9392cf39",
-  "Type": "Challenge",
+  "id": "5be18681626daf0f9392cf39",
+  "type": "Challenge",
   "stageContainerGroupId": "5be1864d626daf0f9392cf37",
   "version": "Solidity v0.4.19",
   "intro": "$$LOOKUP",

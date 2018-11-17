@@ -1,6 +1,6 @@
 {
-  "_id": "5bcf95981cf372448c2e26b0",
-  "Type": "Challenge",
+  "id": "5bcf95981cf372448c2e26b0",
+  "type": "Challenge",
   "stageContainerGroupId": "5bcf93d51cf372448c2e26ab",
   "version": "Vyper v0.1",
   "intro": "$$LOOKUP",

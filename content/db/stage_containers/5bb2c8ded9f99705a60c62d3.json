@@ -1,6 +1,6 @@
 {
-  "_id": "5bb2c8ded9f99705a60c62d3",
-  "Type": "Lesson",
+  "id": "5bb2c8ded9f99705a60c62d3",
+  "type": "Lesson",
   "description": "Learn the basics of the EVM programming language Vyper! ",
   "intro": "$$LOOKUP",
   "productionReady": false,

@@ -1,6 +1,6 @@
 {
-  "_id": "5bd4f3be626daf1162be4c1e",
-  "Type": "CodeStage",
+  "id": "5bd4f3be626daf1162be4c1e",
+  "type": "CodeStage",
   "containerId": "5bd4f35d626daf1162be4c1d",
   "title": "Even or Odd",
   "position": 0,

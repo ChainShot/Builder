@@ -1,5 +1,5 @@
 {
-  "_id": "5bcfef2f1cf372e300ff2b79",
+  "id": "5bcfef2f1cf372e300ff2b79",
   "stageContainerId": "5bcf95321cf372448c2e26af",
   "name": "partyTest.js",
   "initialCode": "$$LOOKUP",

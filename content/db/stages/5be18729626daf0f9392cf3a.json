@@ -1,6 +1,6 @@
 {
-  "_id": "5be18729626daf0f9392cf3a",
-  "Type": "CodeStage",
+  "id": "5be18729626daf0f9392cf3a",
+  "type": "CodeStage",
   "containerId": "5be18681626daf0f9392cf39",
   "title": "Hash it up",
   "position": 0,

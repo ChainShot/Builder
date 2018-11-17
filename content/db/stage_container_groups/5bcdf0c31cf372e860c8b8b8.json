@@ -1,5 +1,5 @@
 {
-  "_id": "5bcdf0c31cf372e860c8b8b8",
+  "id": "5bcdf0c31cf372e860c8b8b8",
   "title": "Countdown",
   "description": "Create a smart contract which initiates a countdown, the last person to call the tick function gets the prize! ",
   "badgeTypeIds": [

@@ -1,6 +1,6 @@
 {
-  "_id": "5b3afd70d9f99763e5c4b4fe",
-  "Type": "Lesson",
+  "id": "5b3afd70d9f99763e5c4b4fe",
+  "type": "Lesson",
   "badgeTypeIds": [
     "5b515d6be6b0b0453b4e9e40"
   ],

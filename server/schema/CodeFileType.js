@@ -5,27 +5,37 @@ const {
   GraphQLList,
 } = require('graphql');
 const { fileResolver, dbResolver } = require('./utils');
+const { MODEL_DB } = require('../config');
+const codeFileLookup = require('./lookups/codeFileLookup');
 
 const CodeFileType = new GraphQLObjectType({
   name: 'CodeFile',
   fields: () => ({
-    id: {
-      type: GraphQLString,
-      resolve: ({ _id }) => _id
-    },
+    id: { type: GraphQLString },
     name: { type: GraphQLString },
     executable: { type: GraphQLBoolean },
-    initialCode: {
-      type: GraphQLString,
-      resolve: ({ initial_code }) => fileResolver(initial_code)
-    },
+    executablePath: { type: GraphQLString },
+    fileLocation: { type: GraphQLString },
+    hasProgress: { type: GraphQLBoolean },
+    mode: { type: GraphQLString },
+    readOnly: { type: GraphQLBoolean },
+    testFixture: { type: GraphQLBoolean },
+    visible: { type: GraphQLBoolean },
+    codeStageIds: { type: new GraphQLList(GraphQLString) },
     codeStages: {
       type: new GraphQLList(require('./StageType')),
-      resolve: function({ code_stage_ids }) {
-        const ids = (code_stage_ids || []);
-        return Promise.all(ids.map(id => dbResolver('stages', id)));
+      resolve: function({ codeStageIds }) {
+        const ids = (codeStageIds || []);
+        return Promise.all(ids.map(id => dbResolver(MODEL_DB.STAGES, id)));
       }
-    }
+    },
+    initialCode: {
+      type: GraphQLString,
+      resolve: async (cf) => {
+        const paths = await codeFileLookup(cf);
+        return fileResolver(paths[0]);
+      }
+    },
   })
 });
 
