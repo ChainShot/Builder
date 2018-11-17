@@ -1,0 +1,17 @@
+.main {
+  .landing {
+    text-align: center;
+    .stage-container-groups {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      .container {
+        flex-direction: row;
+        max-width: 400px;
+        padding: 20px;
+        margin: 20px;
+        border: 1px solid black;
+      }
+    }
+  }
+}
