@@ -1,6 +1,7 @@
 const CodeFileType = require('./CodeFileType');
 const StageType = require('./StageType');
 const StageContainerGroupType = require('./StageContainerGroupType');
+const StageContainerType = require('./StageContainerType');
 const {
   GraphQLSchema,
   GraphQLObjectType,
@@ -31,13 +32,42 @@ const QueryType = new GraphQLObjectType({
         return Promise.all(ids.map(id => dbResolver('stages', id)));
       }
     },
-    StageContainerGroup: {
+    stageContainerGroup: {
       type: StageContainerGroupType,
       args: {
         id: { type: GraphQLString }
       },
       resolve: function (_, {id}) {
         return dbResolver('stage_container_groups', id)
+      }
+    },
+    stageContainerGroups: {
+      type: new GraphQLList(StageContainerGroupType),
+      args: {
+        containsId: { type: new GraphQLList(GraphQLString) }
+      },
+      resolve: async (_, { containsId }) => {
+        const ids = containsId || (await dbReader('stage_container_groups'));
+        return Promise.all(ids.map(id => dbResolver('stage_container_groups', id)));
+      }
+    },
+    stageContainer: {
+      type: StageContainerType,
+      args: {
+        id: { type: GraphQLString }
+      },
+      resolve: function (_, {id}) {
+        return dbResolver('stage_containers', id)
+      }
+    },
+    stageContainers: {
+      type: new GraphQLList(StageContainerType),
+      args: {
+        containsId: { type: new GraphQLList(GraphQLString) }
+      },
+      resolve: async (_, { containsId }) => {
+        const ids = containsId || (await dbReader('stage_containers'));
+        return Promise.all(ids.map(id => dbResolver('stage_containers', id)));
       }
     },
     codeFile: {
