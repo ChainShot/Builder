@@ -1,6 +1,6 @@
 const DB_DIR = '../content/db';
 const PROJECTS_DIR = '../content/projects';
-const PORT = 3000;
+const PORT = 3001;
 const LOOKUP_KEY = '$$LOOKUP';
 const MODEL_DB = {
   CODE_FILES: 'code_files',
