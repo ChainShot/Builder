@@ -1,6 +1,6 @@
 {
   "id": "5adab204929d249e5faefb53",
-  "Type": "DownloadStage",
+  "type": "DownloadStage",
   "completionMessage": "",
   "containerId": "5adab204929d249e5faefb4c",
   "details": "$$LOOKUP",

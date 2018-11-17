@@ -1,6 +1,6 @@
 {
   "id": "5b2729e8d9f9970e8ed24191",
-  "Type": "CodeStage",
+  "type": "CodeStage",
   "codeFileIds": [
     "5b2b27ced9f99705e56c5ab8",
     "5b2d720f929d242a2eee97bf",

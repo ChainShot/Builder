@@ -1,6 +1,6 @@
 {
   "id": "5bd3dc83e6b0b047781712d8",
-  "Type": "CodeStage",
+  "type": "CodeStage",
   "completionMessage": "## Fantastic.\n\nNow an owner can create their transactions and eat it too. Or have their cake and confirm it as well? \n\nGet excited, it's time to fund our wallet!",
   "containerId": "5bce5e20e6b0b012e91da44b",
   "details": "$$LOOKUP",

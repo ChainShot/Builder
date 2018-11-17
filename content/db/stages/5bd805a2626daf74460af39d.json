@@ -1,6 +1,6 @@
 {
   "id": "5bd805a2626daf74460af39d",
-  "Type": "CodeStage",
+  "type": "CodeStage",
   "containerId": "5bce5e20e6b0b012e91da44b",
   "title": "Abstraction",
   "position": 10,

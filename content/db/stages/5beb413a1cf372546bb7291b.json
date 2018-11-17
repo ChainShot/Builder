@@ -1,6 +1,6 @@
 {
   "id": "5beb413a1cf372546bb7291b",
-  "Type": "CodeStage",
+  "type": "CodeStage",
   "containerId": "5beb40c21cf372546bb72918",
   "title": "The UTXO Model",
   "position": 0,

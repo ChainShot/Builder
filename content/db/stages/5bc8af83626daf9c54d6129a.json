@@ -1,6 +1,6 @@
 {
   "id": "5bc8af83626daf9c54d6129a",
-  "Type": "CodeStage",
+  "type": "CodeStage",
   "containerId": "5bb2c8ded9f99705a60c62d3",
   "title": "Balancing Act",
   "position": 2,

@@ -1,6 +1,6 @@
 {
   "id": "5bc8b04d626daf9c54d6129b",
-  "Type": "CodeStage",
+  "type": "CodeStage",
   "containerId": "5bb2c8ded9f99705a60c62d3",
   "title": "Transfer",
   "position": 3,

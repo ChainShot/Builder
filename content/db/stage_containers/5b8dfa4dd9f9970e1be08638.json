@@ -1,6 +1,6 @@
 {
   "id": "5b8dfa4dd9f9970e1be08638",
-  "Type": "Lesson",
+  "type": "Lesson",
   "description": "An intro for someone new to the Solidity Programming Language",
   "intro": "$$LOOKUP",
   "productionReady": false,

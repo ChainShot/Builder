@@ -1,6 +1,6 @@
 {
   "id": "5bc8af52626daf9c54d61299",
-  "Type": "CodeStage",
+  "type": "CodeStage",
   "containerId": "5bb2c8ded9f99705a60c62d3",
   "title": "Name your Token",
   "position": 1,

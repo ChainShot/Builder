@@ -1,6 +1,6 @@
 {
   "id": "5adab204929d249e5faefb51",
-  "Type": "UiStage",
+  "type": "UiStage",
   "completionMessage": "### TestNet Stage Complete! \n\nThat was an interesting experience, huh? Nothing quite like the old days where when you needed test ether you had to arrange a meeting on a deserted street corner in the sketchy part of town. \n\nLet's write some functions to begin interacting with our Escrow.",
   "componentName": "DeploymentStage",
   "configuration": {
