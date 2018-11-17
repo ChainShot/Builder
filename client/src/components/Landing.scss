@@ -1,0 +1,11 @@
+@import '../variables';
+
+.landing {
+  text-align: center;
+  color: $light-font;
+  .stage-container-groups {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import api from '../utils/api';
 import LandingContainer from './LandingContainer';
+import './Landing.scss';
 
 const query = `query {
   stageContainerGroups {

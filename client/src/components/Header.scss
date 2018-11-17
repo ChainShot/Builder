@@ -1,0 +1,10 @@
+@import '../variables';
+
+.header {
+  background-color: $bg-darkest;
+  padding: 10px;
+  img {
+    height: 30px;
+    width: auto;
+  }
+}
