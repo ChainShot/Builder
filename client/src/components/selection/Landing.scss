@@ -1,6 +1,9 @@
-@import '../shared/variables';
+@import '../../shared/variables';
 
-.group-list {
+.landing {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   .container {
     background-color: $bg-container;
     flex-direction: row;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logotype from '../svgs/logotype.svg';
+import logotype from '../../svgs/logotype.svg';
 import './Header.scss';
 import { NavLink, Link } from 'react-router-dom';
 
