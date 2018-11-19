@@ -22,11 +22,24 @@ const findOneModel = (type, db) => ({
 const findManyModel = (type, db) => ({
     type: new GraphQLList(type),
     args: {
-      containsId: { type: new GraphQLList(GraphQLString) }
+      containsId: { type: new GraphQLList(GraphQLString) },
+      filter: { type: GraphQLString }
     },
-    resolve: async (_, { containsId }) => {
+    resolve: async (_, { containsId, filter }) => {
       const ids = containsId || await dbReader(db);
-      return Promise.all(ids.map(id => dbResolver(db, id)));
+      const models = await Promise.all(ids.map(id => dbResolver(db, id)));
+      if(filter) {
+        const parsed = JSON.parse(filter);
+        return models.filter(model => {
+          const keys = Object.keys(parsed);
+          for(let i = 0; i < keys.length; i++) {
+            const key = keys[i];
+            if(model[key] !== parsed[key]) return false;
+          }
+          return true;
+        });
+      }
+      return models;
     }
 })
 

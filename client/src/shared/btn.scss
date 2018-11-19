@@ -1,0 +1,30 @@
+.btn {
+  cursor: pointer;
+  padding: 7px 17px;
+  text-align: center;
+  font-size: 14px;
+  &.disabled {
+    color: $disabled;
+    border: 1px solid $disabled;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  &.btn-default {
+    color: $light-font;
+    border: 1px solid $light-font;
+    &:hover {
+      background-color: $light-font;
+      color: black;
+    }
+  }
+  &.btn-primary {
+    color: $brand-active;
+    border: 1px solid $brand-active;
+    background-color: transparent;
+    &:hover {
+      background-color: $brand-active;
+      color: black;
+    }
+  }
+}
