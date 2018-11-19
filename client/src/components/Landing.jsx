@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Landing.scss';
 import { Link } from 'react-router-dom';
+import SelectLayout from './SelectLayout';
 
 const containers = [
   {
@@ -23,19 +24,21 @@ const containers = [
 class Landing extends Component {
   render() {
     return (
-      <div className="landing">
-        {containers.map(({ title, description, to }) => (
-          <div className="container">
-            <h2>{title}</h2>
-            <p>{description}</p>
-            <Link to={to}>
-              <div className="btn btn-primary">
-                BUIDL
-              </div>
-            </Link>
-          </div>
-        ))}
-      </div>
+      <SelectLayout>
+        <div className="landing">
+          {containers.map(({ title, description, to }) => (
+            <div className="container">
+              <h2>{title}</h2>
+              <p>{description}</p>
+              <Link to={to}>
+                <div className="btn btn-primary">
+                  BUIDL
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </SelectLayout>
     );
   }
 }
