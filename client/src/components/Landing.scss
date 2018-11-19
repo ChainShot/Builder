@@ -1,11 +1,23 @@
 @import '../shared/variables';
 
 .landing {
-  text-align: center;
-  color: $light-font;
-  .stage-container-groups {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .container {
+    background-color: $bg-container;
+    flex-direction: row;
+    max-width: 400px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid $border-color;
+
+    h2 {
+      color: $white;
+    }
+
+    p {
+      color: $light-font;
+    }
   }
 }

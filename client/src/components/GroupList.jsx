@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import api from '../utils/api';
 import GroupContainer from './GroupContainer';
 import filterSCG from '../queries/filterStageContainerGroups';
+import './GroupList.scss';
 
 class Blocks extends Component {
   state = {
@@ -20,7 +21,7 @@ class Blocks extends Component {
   render() {
     const { stageContainerGroups } = this.state;
     return (
-      <div className="landing">
+      <div className="group-list">
         <div className="stage-container-groups">
           { stageContainerGroups.map(x => <GroupContainer key={x.id} {...x} />) }
           <div className="container">

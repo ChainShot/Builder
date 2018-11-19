@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import GroupList from './GroupList';
 
 const Lessons = () => <GroupList containerType="Lesson" />

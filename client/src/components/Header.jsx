@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import logotype from '../svgs/logotype.svg';
 import './Header.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 class Header extends Component {
   render() {
     return (
       <div className="header">
-        <img src={logotype} />
+        <Link to="/">
+          <img src={logotype} alt="Logo" />
+        </Link>
         <ul>
           <li>
-            <NavLink to="/blocks" exact>
+            <NavLink to="/blocks">
               Building Blocks
             </NavLink>
           </li>
