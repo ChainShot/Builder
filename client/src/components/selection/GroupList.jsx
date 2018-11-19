@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import api from '../../utils/api';
 import GroupContainer from './GroupContainer';
-import filterSCG from '../../queries/filterStageContainerGroups';
+import filterSCG from '../../queries/stageContainerGroup/filter';
 import './GroupList.scss';
 import SelectLayout from './SelectLayout';
 import { Link } from 'react-router-dom';

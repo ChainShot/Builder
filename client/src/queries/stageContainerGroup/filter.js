@@ -1,5 +1,5 @@
 export default `
-query ($filter: String) {
+query filterStageContainerGroups($filter: String) {
   stageContainerGroups(filter: $filter) {
     id
     containerType
