@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './LandingContainer.scss';
+import './GroupContainer.scss';
 
 class LandingContainer extends Component {
   render() {
