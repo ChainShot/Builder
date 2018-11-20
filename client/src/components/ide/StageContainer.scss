@@ -1,0 +1,13 @@
+@import '../../shared/variables';
+
+.stage-container {
+  background-color: $bg-main;
+  min-height: 100%;
+  display: flex;
+}
+
+// .content {
+//   padding: 40px;
+//   flex-grow: 1;
+//   justify-content: center;
+// }

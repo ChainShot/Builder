@@ -1,5 +1,5 @@
 const { dbResolver, sanitizeFolderName } = require('../utils');
-const { PROJECTS_DIR } = require('../../config');
+const { PROJECTS_DIR, MODEL_DB } = require('../../config');
 const path = require('path');
 
 const getBasePath = async (stage) => {

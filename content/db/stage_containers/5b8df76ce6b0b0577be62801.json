@@ -6,7 +6,6 @@
     "5b515cf6e6b0b0453b4e9e3e",
     "5b515d23e6b0b0453b4e9e3f"
   ],
-  "description": "Identify and fix the denial of service vulnerabilities within the smart contract.",
   "intro": "$$LOOKUP",
   "productionReady": true,
   "title": "Deny my Service",

@@ -4,7 +4,6 @@
   "badgeTypeIds": [
     "5bb6a588e6b0b05579436d8a"
   ],
-  "description": "Create a Voting Contract with a single owner who can register users and allow them to vote.",
   "intro": "$$LOOKUP",
   "productionReady": false,
   "title": "ETH SF Challenge: Voting",

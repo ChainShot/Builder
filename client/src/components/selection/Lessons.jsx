@@ -1,6 +1,6 @@
 import React from 'react';
 import GroupList from './GroupList';
 
-const Challenges = () => <GroupList containerType="Challenge" />
+const Lessons = () => <GroupList containerType="Lesson"/>
 
-export default Challenges;
+export default Lessons;

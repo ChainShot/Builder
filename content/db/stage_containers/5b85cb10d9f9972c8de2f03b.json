@@ -4,7 +4,6 @@
   "badgeTypeIds": [
     "5b85d0bee6b0b077f1482ffd"
   ],
-  "description": "Determine the winning project of the hackathon from a list of rated projects!",
   "intro": "$$LOOKUP",
   "productionReady": false,
   "title": "ETH Berlin Hackathon",
