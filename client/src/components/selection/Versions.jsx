@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import apiQuery from '../../utils/apiQuery';
 import findSCG from '../../queries/stageContainerGroup/find';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import SelectLayout from './SelectLayout';
 import './Versions.scss';
 
@@ -19,11 +19,12 @@ class Versions extends Component {
     const { stageContainerGroup } = this.state;
     if(!stageContainerGroup) return null;
     const { stageContainers } = stageContainerGroup;
+    const { pathname } = this.props.location;
     return (
       <SelectLayout>
         <div className="versions">
           {stageContainers.map(({ version, id }) => (
-            <Link to={`/${id}`}>
+            <Link to={`${pathname}/${id}`}>
               <div className="version">
                 { version }
               </div>
@@ -35,4 +36,4 @@ class Versions extends Component {
   }
 }
 
-export default Versions;
+export default withRouter(Versions);
