@@ -5,6 +5,10 @@ query findStageContainerGroup($id: String) {
     containerType
     description
     title
+    stageContainers {
+      id
+      version
+    }
 	}
 }
 `
