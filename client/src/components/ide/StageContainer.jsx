@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import apiQuery from '../../utils/apiQuery';
 import findContainer from '../../queries/stageContainer/find';
+import Sidebar from './Sidebar';
 import './StageContainer.scss';
 
 class StageContainer extends Component {
@@ -15,9 +16,13 @@ class StageContainer extends Component {
   }
   render() {
     const { stageContainer } = this.state;
+    if(!stageContainer) return null;
     return (
       <div className="stage-container">
-        Welcome to {stageContainer && stageContainer.version}
+        <Sidebar stageContainer={stageContainer}/>
+        <div className="content">
+          <p>Welcome to {stageContainer && stageContainer.version}</p>
+        </div>
       </div>
     )
   }
