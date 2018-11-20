@@ -5,6 +5,8 @@ import filterSCG from '../../queries/stageContainerGroup/filter';
 import './GroupList.scss';
 import SelectLayout from './SelectLayout';
 import { Link } from 'react-router-dom';
+import createSCG from '../../mutations/stageContainerGroup/create';
+import apiQuery from '../../utils/apiQuery';
 
 class Blocks extends Component {
   state = {
@@ -12,13 +14,20 @@ class Blocks extends Component {
   }
   componentDidMount() {
     const { containerType } = this.props;
-    const queryParams = {
-      query: filterSCG,
-      variables: { filter: `{ "containerType": "${containerType}" }` }
-    }
-    api.post("graphql", queryParams).then(({ data: { stageContainerGroups } }) => {
+    const variables = { filter: `{ "containerType": "${containerType}" }` };
+    apiQuery(filterSCG, variables).then(({ data: { stageContainerGroups } }) => {
       this.setState({ stageContainerGroups });
-    })
+    });
+  }
+  createNew() {
+    const { relativeLink, containerType } = this.props;
+    const queryParams = {
+      query: createSCG,
+      variables: { containerType }
+    }
+    // api.post("graphql", queryParams).then(({ data: { id, title, containerType }}) => {
+    //   debugger;
+    // })
   }
   render() {
     const { stageContainerGroups } = this.state;
@@ -31,9 +40,7 @@ class Blocks extends Component {
             <div className="container">
               <h2>Create your Own!</h2>
               <p>Build your own from scratch</p>
-              <Link to={`${relativeLink}/new`}>
-                <div className="btn btn-primary">Create</div>
-              </Link>
+              <div className="btn btn-primary" onClick={() => this.createNew()}>Create</div>
             </div>
           </div>
         </div>

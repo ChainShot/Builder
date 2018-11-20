@@ -5,9 +5,11 @@ const {
   GraphQLList,
 } = require('graphql');
 const CodeFileType = require('./CodeFileType');
+const StageContainerGroupType = require('./StageContainerGroupType');
 const { dbWriter, fileWriter, dbResolver, fileRemove } = require('./utils');
 const codeFileLookup = require('./lookups/codeFileLookup');
 const { LOOKUP_KEY, MODEL_DB } = require('../config');
+const { ObjectID } = require('mongodb');
 
 const codeFileProjectProps = {
   initialCode: codeFileLookup
@@ -28,9 +30,27 @@ const codeFileMutationArgs = {
   initialCode: { type: GraphQLString },
 }
 
+const stageContainerGroupArgs = {
+  id: { type: GraphQLString },
+  title: { type: GraphQLString },
+  description: { type: GraphQLString },
+  containerType: { type: GraphQLString },
+}
+
 const MutationType = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
+    createStageContainerGroup: {
+      type: StageContainerGroupType,
+      args: stageContainerGroupArgs,
+      async resolve (_, props) {
+        return dbWriter(MODEL_DB.STAGE_CONTAINER_GROUPS, {
+          id: ObjectID().toString(),
+          title: 'Untitled',
+          ...props
+        });
+      }
+    },
     createCodeFile: {
       type: CodeFileType,
       args: codeFileMutationArgs,

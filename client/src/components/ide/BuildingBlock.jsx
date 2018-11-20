@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Config from './Config';
-import api from '../../utils/api';
+import apiQuery from '../../utils/apiQuery';
 import findSCG from '../../queries/stageContainerGroup/find';
 import './BuildingBlock.scss';
 
@@ -10,11 +10,7 @@ class BuildingBlock extends Component {
   }
   componentDidMount() {
       const {id} = this.props.match.params;
-      const queryParams = {
-        query: findSCG,
-        variables: { id }
-      }
-      api.post("graphql", queryParams).then(({ data: { stageContainerGroup } }) => {
+      apiQuery(findSCG, { id }).then(({ data: { stageContainerGroup } }) => {
         this.setState({ stageContainerGroup });
       })
   }
