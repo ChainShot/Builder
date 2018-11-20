@@ -4,7 +4,6 @@
   "badgeTypeIds": [
     "5b6a8465e6b0b02198e52281"
   ],
-  "description": "Create your own Aragon Voting application using both the Aragon OS smart contracts and the Aragon JS front-end! ",
   "estimatedTime": 360,
   "intro": "$$LOOKUP",
   "productionReady": true,

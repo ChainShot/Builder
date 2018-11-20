@@ -7,7 +7,6 @@
     "5b515d23e6b0b0453b4e9e3f"
   ],
   "title": "Voting",
-  "description": "Create a Voting Contract with a single owner who can register users and allow them to vote.",
   "productionReady": true,
   "intro": "$$LOOKUP",
   "updatedAt": "2018-10-28T15:58:47.139Z",
