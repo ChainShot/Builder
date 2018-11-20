@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './GroupContainer.scss';
-import { Link } from 'react-router-dom';
+import RelativeLink from '../common/RelativeLink';
 
 class LandingContainer extends Component {
   render() {
@@ -9,11 +9,11 @@ class LandingContainer extends Component {
       <div className="container">
         <h2> { title } </h2>
         <p> { description } </p>
-        <Link to={`${relativeLink}/${id}`}>
+        <RelativeLink to={id}>
           <div className="btn btn-primary">
             Modify
           </div>
-        </Link>
+        </RelativeLink>
       </div>
     )
   }

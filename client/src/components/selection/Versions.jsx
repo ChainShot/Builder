@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import apiQuery from '../../utils/apiQuery';
 import findSCG from '../../queries/stageContainerGroup/find';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import RelativeLink from '../common/RelativeLink';
 import SelectLayout from './SelectLayout';
 import './Versions.scss';
 
@@ -24,11 +25,11 @@ class Versions extends Component {
       <SelectLayout>
         <div className="versions">
           {stageContainers.map(({ version, id }) => (
-            <Link to={`${pathname}/${id}`}>
+            <RelativeLink to={id}>
               <div className="version">
                 { version }
               </div>
-            </Link>
+            </RelativeLink>
           ))}
         </div>
       </SelectLayout>
