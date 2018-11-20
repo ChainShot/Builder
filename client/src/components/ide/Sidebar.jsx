@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import RelativeLink from '../common/RelativeLink';
 import './Sidebar.scss';
 
-class StageContainer extends Component {
+class Sidebar extends Component {
   render() {
     const { stageContainer } = this.props;
     return (
@@ -11,6 +11,11 @@ class StageContainer extends Component {
           <li>
             <RelativeLink keepParts={4} to="configuration">
               Configuration
+            </RelativeLink>
+          </li>
+          <li>
+            <RelativeLink keepParts={4} to="intro">
+              Intro.md
             </RelativeLink>
           </li>
           {stageContainer.stages.map(({id, title}) => (
@@ -26,4 +31,4 @@ class StageContainer extends Component {
   }
 }
 
-export default StageContainer;
+export default Sidebar;

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import apiQuery from '../../utils/apiQuery';
 import findContainer from '../../queries/stageContainer/find';
 import Sidebar from './Sidebar';
+import Stage from './Stage';
 import './StageContainer.scss';
+import { Route } from 'react-router-dom';
 
 class StageContainer extends Component {
   state = {
@@ -20,9 +22,7 @@ class StageContainer extends Component {
     return (
       <div className="stage-container">
         <Sidebar stageContainer={stageContainer}/>
-        <div className="content">
-          <p>Welcome to {stageContainer && stageContainer.version}</p>
-        </div>
+        <Route path="/blocks/:gId/:cId/stage/:stageId" component={Stage} />
       </div>
     )
   }
