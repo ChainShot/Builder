@@ -10,7 +10,7 @@ class BuildingBlock extends Component {
   }
   componentDidMount() {
       const {id} = this.props.match.params;
-      apiQuery(findSCG, { id }).then(({ data: { stageContainerGroup } }) => {
+      apiQuery(findSCG, { id }).then(({ stageContainerGroup }) => {
         this.setState({ stageContainerGroup });
       })
   }

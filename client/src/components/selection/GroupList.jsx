@@ -4,9 +4,10 @@ import GroupContainer from './GroupContainer';
 import filterSCG from '../../queries/stageContainerGroup/filter';
 import './GroupList.scss';
 import SelectLayout from './SelectLayout';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import createSCG from '../../mutations/stageContainerGroup/create';
 import apiQuery from '../../utils/apiQuery';
+import apiMutation from '../../utils/apiMutation';
 
 class Blocks extends Component {
   state = {
@@ -15,19 +16,16 @@ class Blocks extends Component {
   componentDidMount() {
     const { containerType } = this.props;
     const variables = { filter: `{ "containerType": "${containerType}" }` };
-    apiQuery(filterSCG, variables).then(({ data: { stageContainerGroups } }) => {
+    apiQuery(filterSCG, variables).then(({ stageContainerGroups }) => {
       this.setState({ stageContainerGroups });
     });
   }
   createNew() {
     const { relativeLink, containerType } = this.props;
-    const queryParams = {
-      query: createSCG,
-      variables: { containerType }
-    }
-    // api.post("graphql", queryParams).then(({ data: { id, title, containerType }}) => {
-    //   debugger;
-    // })
+    console.log('uhh props', this.props)
+    apiMutation(createSCG, { containerType }).then(({ id, title, containerType }) => {
+      this.props.history.push(`${relativeLink}/${id}`)
+    })
   }
   render() {
     const { stageContainerGroups } = this.state;
@@ -49,4 +47,4 @@ class Blocks extends Component {
   }
 }
 
-export default Blocks;
+export default withRouter(Blocks);
