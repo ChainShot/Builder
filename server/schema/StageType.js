@@ -11,10 +11,7 @@ const stageLookup = require('./lookups/stageLookup');
 const StageType = new GraphQLObjectType({
   name: 'Stage',
   fields: () => ({
-    id: {
-      type: GraphQLString,
-      resolve: ({ _id }) => _id
-    },
+    id: { type: GraphQLString },
     title: { type: GraphQLString },
     codeFiles: {
       type: new GraphQLList(require('./CodeFileType')),

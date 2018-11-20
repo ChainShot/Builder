@@ -17,7 +17,7 @@ class App extends Component {
         <div className="main">
           <Route exact path="/" component={Landing} />
           {vanityPaths.map((path) => (
-            <Route exact path={`/${path}/:groupId/:containerId`} component={StageContainer} />
+            <Route path={`/${path}/:groupId/:containerId`} component={StageContainer} />
           ))}
           {vanityPaths.map((path) => (
             <Route exact path={`/${path}/:id`} component={Versions} />
