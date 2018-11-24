@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import apiQuery from '../../utils/apiQuery';
+import StageLoader from './StageLoader';
 import findContainer from '../../queries/stageContainer/find';
 import Sidebar from './Sidebar';
 import Stage from './Stage';
@@ -19,10 +20,11 @@ class StageContainer extends Component {
   render() {
     const { stageContainer } = this.state;
     if(!stageContainer) return null;
+    const { match: { params: { containerId }, url } } = this.props;
     return (
       <div className="stage-container">
-        <Sidebar stageContainer={stageContainer}/>
-        <Route path="/blocks/:gId/:cId/stage/:stageId" component={Stage} />
+        <Sidebar stageContainer={stageContainer} basename={url}/>
+        <Route path="/content/:containerId/stage/:stageId" component={StageLoader} />
       </div>
     )
   }

@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import './GroupContainer.scss';
-import RelativeLink from '../common/RelativeLink';
+import { Link } from 'react-router-dom';
 
 class LandingContainer extends Component {
   render() {
-    const { id, title, description, relativeLink } = this.props;
+    const { id, title, description } = this.props;
     return (
       <div className="container">
         <h2> { title } </h2>
         <p> { description } </p>
-        <RelativeLink to={id}>
+        <Link to={`/versions/${id}/`}>
           <div className="btn btn-primary">
             Modify
           </div>
-        </RelativeLink>
+        </Link>
       </div>
     )
   }

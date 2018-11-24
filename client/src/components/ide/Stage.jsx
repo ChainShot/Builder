@@ -3,25 +3,17 @@ import './Stage.scss';
 import apiQuery from '../../utils/apiQuery';
 import findStage from '../../queries/stage/find';
 import StageSidebar from './StageSidebar';
+import CodeFileLoader from './CodeFileLoader';
 import { Route } from 'react-router-dom';
 
 class Stage extends Component {
-  state = {
-    stage: null
-  }
-  componentDidMount() {
-    const { stageId } = this.props.match.params;
-    apiQuery(findStage, { id: stageId }).then(({ stage }) => {
-      this.setState({ stage });
-    });
-  }
   render() {
-    const { stage } = this.state;
+    const { stage, basename } = this.props;
     if(!stage) return null;
     return (
       <div className="stage">
-        <StageSidebar stage={stage}></StageSidebar>
-        <Route path="/blocks/:gId/:cId/stage/:sId/file/:cId" component={Stage} />
+        <StageSidebar stage={stage} basename={basename}></StageSidebar>
+        <Route path={`${basename}/:codeFileId`} component={CodeFileLoader} />
       </div>
     )
   }

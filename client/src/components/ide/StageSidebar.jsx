@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
-import RelativeLink from '../common/RelativeLink';
+import { NavLink } from 'react-router-dom';
 import './StageSidebar.scss';
 
 class StageSidebar extends Component {
   render() {
-    const { stage } = this.props;
+    const { stage, basename } = this.props;
     return (
       <div className="stage-sidebar">
         <ul className="files">
           <li>
-            <RelativeLink keepParts={6} to="configuration">
+            <NavLink to={`${basename}/config`}>
               Configuration
-            </RelativeLink>
+            </NavLink>
           </li>
           {stage.codeFiles.map(({id, name}) => (
-            <li>
-              <RelativeLink keepParts={6} to={`file/${id}`}>
+            <li key={id}>
+              <NavLink to={`${basename}/${id}`}>
                 {name}
-              </RelativeLink>
+              </NavLink>
             </li>
           ))}
         </ul>
