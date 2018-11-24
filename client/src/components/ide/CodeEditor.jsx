@@ -24,12 +24,16 @@ monaco.editor.defineTheme('chainshot', theme);
 class CodeEditor extends Component {
     componentDidMount() {
       const {code, mode} = this.props;
-      monaco.editor.create(this.refs.container, {
+      const editor = monaco.editor.create(this.refs.container, {
         ...defaultMonacoOptions,
         value: code,
         language: mode,
         theme: "chainshot",
       });
+      const debouncedUpdate = debounce(() => {
+        this.props.onUpdate(editor.getValue());
+      }, 1000);
+      editor.onDidChangeModelContent(debouncedUpdate);
     }
 
     render() {
