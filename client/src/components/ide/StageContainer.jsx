@@ -22,7 +22,7 @@ class StageContainer extends Component {
     return (
       <div className="stage-container">
         <Sidebar stageContainer={stageContainer}/>
-        <Route path="/blocks/:gId/:cId/stage/:stageId" component={Stage} />
+        <Route path="/content/:containerId/:stageId" component={Stage} />
       </div>
     )
   }

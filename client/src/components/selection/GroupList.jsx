@@ -22,19 +22,17 @@ class Blocks extends Component {
   }
   createNew() {
     const { containerType } = this.props;
-    const { pathname } = this.props.location;
     apiMutation(createSCG, { containerType }).then(({ id, title, containerType }) => {
-      this.props.history.push(`${pathname}/${id}`)
+      this.props.history.push(`/versions/${id}/`)
     })
   }
   render() {
     const { stageContainerGroups } = this.state;
-    const { pathname } = this.props.location;
     return (
       <SelectLayout>
         <div className="group-list">
           <div className="stage-container-groups">
-            { stageContainerGroups.map(x => <GroupContainer key={x.id} relativeLink={pathname} {...x} />) }
+            { stageContainerGroups.map(x => <GroupContainer key={x.id} {...x} />) }
             <div className="container">
               <h2>Create your Own!</h2>
               <p>Build your own from scratch</p>

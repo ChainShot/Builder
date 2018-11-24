@@ -7,13 +7,20 @@ import { Route } from 'react-router-dom';
 
 class Stage extends Component {
   state = {
-    stage: null
+    stage: null,
+    currentStageId: null,
   }
-  componentDidMount() {
+  stageUpdate() {
     const { stageId } = this.props.match.params;
     apiQuery(findStage, { id: stageId }).then(({ stage }) => {
       this.setState({ stage });
     });
+  }
+  componentWillReceiveProps() {
+    this.stageUpdate();
+  }
+  componentDidUpdate() {
+    this.stageUpdate();
   }
   render() {
     const { stage } = this.state;
@@ -21,7 +28,7 @@ class Stage extends Component {
     return (
       <div className="stage">
         <StageSidebar stage={stage}></StageSidebar>
-        <Route path="/blocks/:gId/:cId/stage/:sId/file/:cId" component={Stage} />
+        // <Route path="/content/:containerId/:stageId" component={Stage} />
       </div>
     )
   }

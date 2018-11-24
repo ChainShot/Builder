@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RelativeLink from '../common/RelativeLink';
+import { NavLink } from 'react-router-dom';
 import './Sidebar.scss';
 
 class Sidebar extends Component {
@@ -9,20 +9,20 @@ class Sidebar extends Component {
       <div className="stage-container-sidebar">
         <ul className="stages">
           <li>
-            <RelativeLink keepParts={4} to="configuration">
+            <NavLink to="config">
               Configuration
-            </RelativeLink>
+            </NavLink>
           </li>
           <li>
-            <RelativeLink keepParts={4} to="intro">
+            <NavLink to="intro">
               Intro.md
-            </RelativeLink>
+            </NavLink>
           </li>
           {stageContainer.stages.map(({id, title}) => (
             <li>
-              <RelativeLink keepParts={4} to={`stage/${id}`}>
+              <NavLink to={id}>
                 {title}
-              </RelativeLink>
+              </NavLink>
             </li>
           ))}
         </ul>
