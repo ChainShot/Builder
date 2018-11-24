@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import './Sidebar.scss';
 
 class Sidebar extends Component {
   render() {
-    const { stageContainer } = this.props;
+    const { stageContainer, basename } = this.props;
     return (
       <div className="stage-container-sidebar">
         <ul className="stages">
           <li>
-            <NavLink to="config">
+            <NavLink to={`${basename}/config`}>
               Configuration
             </NavLink>
           </li>
           <li>
-            <NavLink to="intro">
+            <NavLink to={`${basename}/intro`}>
               Intro.md
             </NavLink>
           </li>
           {stageContainer.stages.map(({id, title}) => (
-            <li>
-              <NavLink to={id}>
+            <li key={id}>
+              <NavLink to={`${basename}/stage/${id}`}>
                 {title}
               </NavLink>
             </li>
@@ -31,4 +31,4 @@ class Sidebar extends Component {
   }
 }
 
-export default Sidebar;
+export default withRouter(Sidebar);

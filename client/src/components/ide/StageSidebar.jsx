@@ -4,18 +4,18 @@ import './StageSidebar.scss';
 
 class StageSidebar extends Component {
   render() {
-    const { stage } = this.props;
+    const { stage, basename } = this.props;
     return (
       <div className="stage-sidebar">
         <ul className="files">
           <li>
-            <NavLink to="config" activeClassName="active">
+            <NavLink to={`${basename}/config`}>
               Configuration
             </NavLink>
           </li>
           {stage.codeFiles.map(({id, name}) => (
-            <li>
-              <NavLink to={id}>
+            <li key={id}>
+              <NavLink to={`${basename}/${id}`}>
                 {name}
               </NavLink>
             </li>
