@@ -20,11 +20,10 @@ class StageContainer extends Component {
   render() {
     const { stageContainer } = this.state;
     if(!stageContainer) return null;
-    const { containerId } = this.props.match.params;
-    const basename = `/content/${containerId}`;
+    const { match: { params: { containerId }, url } } = this.props;
     return (
       <div className="stage-container">
-        <Sidebar stageContainer={stageContainer} basename={basename}/>
+        <Sidebar stageContainer={stageContainer} basename={url}/>
         <Route path="/content/:containerId/stage/:stageId" component={StageLoader} />
       </div>
     )

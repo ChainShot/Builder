@@ -7,7 +7,7 @@ import Stage from './Stage';
 
 class StageLoader extends Component {
   render() {
-    const { match: { params: { stageId, }, url } } = this.props;
+    const { match: { params: { stageId }, url } } = this.props;
     const variables = { id: stageId };
     const queries = [{ query: findStage, prop: 'stage', variables }];
     return (

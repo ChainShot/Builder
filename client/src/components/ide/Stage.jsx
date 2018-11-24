@@ -3,6 +3,7 @@ import './Stage.scss';
 import apiQuery from '../../utils/apiQuery';
 import findStage from '../../queries/stage/find';
 import StageSidebar from './StageSidebar';
+import CodeFileLoader from './CodeFileLoader';
 import { Route } from 'react-router-dom';
 
 class Stage extends Component {
@@ -12,7 +13,7 @@ class Stage extends Component {
     return (
       <div className="stage">
         <StageSidebar stage={stage} basename={basename}></StageSidebar>
-        // <Route path="/content/:containerId/:stageId" component={Stage} />
+        <Route path={`${basename}/:codeFileId`} component={CodeFileLoader} />
       </div>
     )
   }
