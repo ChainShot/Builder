@@ -10,6 +10,7 @@ const defaultMonacoOptions = {
     minimap: {
         enabled: false,
     },
+    wordWrap: "on",
     fontSize: '14px',
     lineHeight: '20px',
     formatOnPaste: true,

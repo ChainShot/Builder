@@ -6,13 +6,19 @@ const {
 } = require('graphql');
 const CodeFileType = require('./CodeFileType');
 const StageContainerGroupType = require('./StageContainerGroupType');
+const StageContainerType = require('./StageContainerType');
 const { dbWriter, fileWriter, dbResolver, fileRemove } = require('./utils');
 const codeFileLookup = require('./lookups/codeFileLookup');
+const stageContainerLookup = require('./lookups/stageContainerLookup');
 const { LOOKUP_KEY, MODEL_DB } = require('../config');
 const { ObjectID } = require('mongodb');
 
 const codeFileProjectProps = {
   initialCode: codeFileLookup
+}
+
+const stageContainerProjectProps = {
+  intro: stageContainerLookup
 }
 
 const codeFileMutationArgs = {
@@ -37,6 +43,12 @@ const stageContainerGroupArgs = {
   containerType: { type: GraphQLString },
 }
 
+const stageContainerArgs = {
+  id: { type: GraphQLString },
+  version: { type: GraphQLString },
+  intro: { type: GraphQLString },
+}
+
 const MutationType = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
@@ -49,6 +61,35 @@ const MutationType = new GraphQLObjectType({
           title: 'Untitled',
           ...props
         });
+      }
+    },
+    modifyStageContainer: {
+      type: StageContainerType,
+      args: stageContainerArgs,
+      async resolve (_, props) {
+        const stageContainer = await dbResolver(MODEL_DB.STAGE_CONTAINERS, props.id);
+        const merged = { ...stageContainer, ...props };
+
+        const keys = Object.keys(props);
+        for(let i = 0; i < keys.length; i++) {
+          const key = keys[i];
+          if(stageContainerProjectProps[key]) {
+            try {
+              // remove the previous path (TODO: check and only do if changed)
+              const previousPath = await stageContainerProjectProps[key](stageContainer, `${key}.md`);
+              await fileRemove(previousPath);
+              // add the new path
+              const newPath = await stageContainerProjectProps[key](merged, `${key}.md`);
+              await fileWriter(newPath, merged[key]);
+              merged[key] = LOOKUP_KEY;
+            }
+            catch(ex) {
+              console.log('wtf', ex)
+            }
+          }
+        }
+
+        return dbWriter(MODEL_DB.STAGE_CONTAINERS, merged);
       }
     },
     createCodeFile: {

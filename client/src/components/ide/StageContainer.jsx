@@ -5,6 +5,7 @@ import findContainer from '../../queries/stageContainer/find';
 import Sidebar from './sidebar/Sidebar';
 import Stage from './Stage';
 import './StageContainer.scss';
+import Intro from './Intro';
 import { Route } from 'react-router-dom';
 
 class StageContainer extends Component {
@@ -25,6 +26,7 @@ class StageContainer extends Component {
       <div className="stage-container">
         <Sidebar stageContainer={stageContainer} basename={url}/>
         <Route path="/content/:containerId/stage/:stageId" component={StageLoader} />
+        <Route path="/content/:containerId/intro" component={() => <Intro stageContainer={stageContainer} />} />
       </div>
     )
   }

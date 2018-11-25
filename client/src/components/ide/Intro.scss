@@ -1,0 +1,13 @@
+.intro {
+  min-height: 100%;
+  flex-grow: 1;
+  display: flex;
+
+  .code-editor {
+    width: 50%;
+  }
+
+  .display {
+    width: 50%;
+  }
+}

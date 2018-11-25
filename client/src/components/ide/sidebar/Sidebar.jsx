@@ -5,7 +5,7 @@ import './Sidebar.scss';
 
 class Sidebar extends Component {
   render() {
-    const { stageContainer: { stageContainerGroup: { title } }, basename } = this.props;
+    const { stageContainer: { stageContainerGroup: { title }, stages }, basename } = this.props;
     return (
       <div className="stage-container-sidebar">
         <ul className="top-options">
@@ -21,7 +21,7 @@ class Sidebar extends Component {
           </li>
         </ul>
         <div className="stages">
-          <label>Stages</label>
+          <label>Stages ( {stages.length} )</label>
           <StagesNav {...this.props} />
         </div>
       </div>
