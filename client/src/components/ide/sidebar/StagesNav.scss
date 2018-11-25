@@ -1,0 +1,10 @@
+@import '../../../shared/variables';
+@import 'SidebarList';
+
+ul.stages-nav {
+  @extend %sidebar-list;
+
+  > li {
+    @extend %sidebar-list-item;
+  }
+}

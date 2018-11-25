@@ -1,31 +1,29 @@
 import React, { Component } from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
+import { NavLink, withRouter, Route } from 'react-router-dom';
+import StagesNav from './StagesNav';
 import './Sidebar.scss';
 
 class Sidebar extends Component {
   render() {
-    const { stageContainer, basename } = this.props;
+    const { stageContainer: { stageContainerGroup: { title } }, basename } = this.props;
     return (
       <div className="stage-container-sidebar">
-        <ul className="stages">
+        <ul className="top-options">
           <li>
             <NavLink to={`${basename}/config`}>
-              Configuration
+              { title }
             </NavLink>
           </li>
           <li>
             <NavLink to={`${basename}/intro`}>
-              Intro.md
+              Introduction
             </NavLink>
           </li>
-          {stageContainer.stages.map(({id, title}) => (
-            <li key={id}>
-              <NavLink to={`${basename}/stage/${id}`}>
-                {title}
-              </NavLink>
-            </li>
-          ))}
         </ul>
+        <div className="stages">
+          <label>Stages</label>
+          <StagesNav {...this.props} />
+        </div>
       </div>
     )
   }

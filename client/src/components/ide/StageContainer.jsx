@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import apiQuery from '../../utils/apiQuery';
 import StageLoader from './StageLoader';
 import findContainer from '../../queries/stageContainer/find';
-import Sidebar from './Sidebar';
+import Sidebar from './sidebar/Sidebar';
 import Stage from './Stage';
 import './StageContainer.scss';
 import { Route } from 'react-router-dom';

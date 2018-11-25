@@ -7,7 +7,6 @@ import './CodeFile.scss';
 class CodeFile extends Component {
   updateCode(code) {
     const { codeFile: { id } } = this.props;
-    console.log('in update', code);
     apiMutation(modifyCodeFile, { id, initialCode: code });
   }
   render() {

@@ -16,6 +16,10 @@ const StageContainerType = new GraphQLObjectType({
     description: { type: GraphQLString },
     title: { type: GraphQLString },
     stageContainerGroupId: { type: GraphQLString },
+    stageContainerGroup: {
+      type: require('./StageContainerGroupType'),
+      resolve: async (props) => dbResolver(MODEL_DB.STAGE_CONTAINER_GROUPS, props.stageContainerGroupId),
+    },
     version: { type: GraphQLString },
     stages: {
       type: new GraphQLList(require('./StageType')),
