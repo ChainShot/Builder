@@ -74,18 +74,13 @@ const MutationType = new GraphQLObjectType({
         for(let i = 0; i < keys.length; i++) {
           const key = keys[i];
           if(stageContainerProjectProps[key]) {
-            try {
-              // remove the previous path (TODO: check and only do if changed)
-              const previousPath = await stageContainerProjectProps[key](stageContainer, `${key}.md`);
-              await fileRemove(previousPath);
-              // add the new path
-              const newPath = await stageContainerProjectProps[key](merged, `${key}.md`);
-              await fileWriter(newPath, merged[key]);
-              merged[key] = LOOKUP_KEY;
-            }
-            catch(ex) {
-              console.log('wtf', ex)
-            }
+            // remove the previous path (TODO: check and only do if changed)
+            const previousPath = await stageContainerProjectProps[key](stageContainer, `${key}.md`);
+            await fileRemove(previousPath);
+            // add the new path
+            const newPath = await stageContainerProjectProps[key](merged, `${key}.md`);
+            await fileWriter(newPath, merged[key]);
+            merged[key] = LOOKUP_KEY;
           }
         }
 
