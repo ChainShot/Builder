@@ -6,12 +6,12 @@ const projectUpdate = require('./projectUpdate');
 const setup = (io) => {
   watch(DB_DIR, { recursive: true }, (...args) => {
     const response = dbUpdate(...args);
-    io.sockets.emit('hi', { response });
+    // io.sockets.emit('update', { response });
   });
 
-  watch(PROJECTS_DIR, { recursive: true }, (...args) => {
-    const response = projectUpdate(...args);
-    io.sockets.emit('hi', { response });
+  watch(PROJECTS_DIR, { recursive: true }, async (...args) => {
+    const model = await projectUpdate(...args);
+    io.sockets.emit('update', model);
   });
 }
 

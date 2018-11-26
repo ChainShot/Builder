@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import apiQuery from '../../utils/apiQuery';
+import { subscribe } from '../../utils/apiSubscription';
 import StageLoader from './StageLoader';
 import findContainer from '../../queries/stageContainer/find';
 import Sidebar from './sidebar/Sidebar';
@@ -16,6 +17,9 @@ class StageContainer extends Component {
     const { containerId } = this.props.match.params;
     apiQuery(findContainer, { id: containerId }).then(({ stageContainer }) => {
       this.setState({ stageContainer });
+      subscribe('stageContainerGroup', stageContainer.stageContainerGroupId, (scg) => {
+        this.setState({ stageContainer: scg.stageContainers[0] });
+      });
     });
   }
   render() {

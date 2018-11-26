@@ -11,12 +11,27 @@ const {
 const { MODEL_DB } = require('../config');
 const { dbResolver, dbReader } = require('./utils');
 
-const findOneModel = (type, db) => ({
+const findOneModel = (type, db, extraArgs = []) => ({
   type,
   args: {
-    id: { type: GraphQLString }
+    id: { type: GraphQLString },
+    ...extraArgs.reduce((obj, arg) => ({ [arg]: { type: GraphQLString }, ...obj}), {})
   },
-  resolve: (_, {id}) => dbResolver(db, id),
+  resolve: async (_, {id, ...props}) => {
+    if(id) {
+      return dbResolver(db, id)
+    }
+    const ids = await dbReader(db);
+    for(let i = 0; i < ids.length; i++) {
+      const model = await dbResolver(db, ids[i]);
+      const keys = Object.keys(props);
+      let matches = true;
+      for(let j = 0; j < keys.length; j++) {
+        if(model[keys[j]] !== props[keys[j]]) matches = false;
+      }
+      if(matches) return model;
+    }
+  },
 });
 
 const findManyModel = (type, db) => ({
@@ -48,7 +63,7 @@ const QueryType = new GraphQLObjectType({
   fields: {
     stage: findOneModel(StageType, MODEL_DB.STAGES),
     stages: findManyModel(StageType, MODEL_DB.STAGES),
-    stageContainerGroup: findOneModel(StageContainerGroupType, MODEL_DB.STAGE_CONTAINER_GROUPS),
+    stageContainerGroup: findOneModel(StageContainerGroupType, MODEL_DB.STAGE_CONTAINER_GROUPS, ['title']),
     stageContainerGroups: findManyModel(StageContainerGroupType, MODEL_DB.STAGE_CONTAINER_GROUPS),
     stageContainer: findOneModel(StageContainerType, MODEL_DB.STAGE_CONTAINERS),
     stageContainers: findManyModel(StageContainerType, MODEL_DB.STAGE_CONTAINERS),

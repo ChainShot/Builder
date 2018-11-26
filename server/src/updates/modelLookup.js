@@ -1,8 +1,49 @@
+const schema = require('../schema');
+const { graphql } = require('graphql');
+
+const findGroup = `
+query findStageContainerGroup($title: String) {
+  stageContainerGroup(title: $title) {
+    stageContainers {
+      id
+      version
+      intro
+      stageContainerGroup {
+        id
+        containerType
+        description
+        title
+    	}
+      stages {
+        id
+        title
+        details
+        task
+        abiValidations
+        codeFiles {
+          id
+          name
+          executable
+          executablePath
+          fileLocation
+          hasProgress
+          mode
+          readOnly
+          testFixture
+          visible
+          initialCode
+        }
+      }
+    }
+  }
+}
+`;
+
 const lookups = [
   {
     template: '{groupTitle}/{version}/intro.md',
-    lookup: ({ groupTitle, version, file }) => {
-      console.log(1, { groupTitle, version, file })
+    lookup: async ({ groupTitle, version, file }) => {
+      return (await graphql(schema, findGroup, null, null, { title: groupTitle })).data.stageContainerGroup;
     }
   },
   {
@@ -29,7 +70,7 @@ const matchOption = (x) => {
   return options.filter(y => x === y)[0];
 }
 
-const modelLookup = (name) => {
+const modelLookup = async (name) => {
   for(let i = 0; i < lookups.length; i++) {
     const { template, lookup } = lookups[i];
     const parts = template.split('/');
@@ -46,13 +87,13 @@ const modelLookup = (name) => {
       if(isVariable(part)) {
         matches[getVariable(part)] = namePart;
       }
-      else if(isOptions(part) && matchOption(namePart)) {
-        matches.file = namePart;
-      }
       else if(part == '**') {
         matches.file = nameParts.split('/').slice(j).join('/');
       }
       else if(part === namePart) {
+        matches.file = namePart;
+      }
+      else if(isOptions(part) && matchOption(namePart)) {
         matches.file = namePart;
       }
       else {

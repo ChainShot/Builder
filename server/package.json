@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index"
+    "start": "gulp"
   },
   "author": "",
   "license": "ISC",
@@ -14,9 +14,13 @@
     "express-graphql": "^0.7.1",
     "graphiql": "^0.12.0",
     "graphql": "^14.0.2",
+    "gulp": "^3.9.1",
     "mongodb": "^3.1.10",
     "node-watch": "^0.5.9",
     "sanitize-filename": "^1.6.1",
     "socket.io": "^2.1.1"
+  },
+  "devDependencies": {
+    "gulp-nodemon": "^2.4.1"
   }
 }
