@@ -2,8 +2,7 @@ const sanitize = require("sanitize-filename");
 const fs = require('fs-extra');
 
 function toFolderName(title) {
-  const santized = sanitize(title);
-  return santized.toLowerCase().replace(/\s/g, '_');
+  return camelize(sanitize(title));
 }
 
 function prettifyJSON(json) {
@@ -24,4 +23,4 @@ function camelize(str) {
   }, parts[0]);
 }
 
-module.exports = { toFolderName, prettifyJSON, camelizeProps }
+module.exports = { toFolderName, prettifyJSON, camelizeProps, camelize }
