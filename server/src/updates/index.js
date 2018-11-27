@@ -5,11 +5,13 @@ const projectUpdate = require('./projectUpdate');
 
 const setup = (io) => {
   watch(DB_DIR, { recursive: true }, (evt, name) => {
+    if(io.sockets.length === 0) return;
     const update = dbUpdate(evt, name);
     io.sockets.emit('update', update);
   });
 
   watch(PROJECTS_DIR, { recursive: true }, async (evt, name) => {
+    if(io.sockets.length === 0) return;
     try {
       const update = await projectUpdate(evt, name);
       io.sockets.emit('update', update);

@@ -1,0 +1,49 @@
+@import '../shared/variables';
+
+.dialog {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 101;
+  background-color: $bg-darkest;
+  border: 1px solid $border-color;
+  min-width: 350px;
+
+  .heading {
+    border-bottom: 1px solid $border-color;
+    .title {
+      font-size: 1.2em;
+      text-align: center;
+      padding: 10px 0;
+    }
+    .close {
+      position: absolute;
+      right: 10px;
+      top: 5px;
+      font-size: 1.5em;
+      &:after {
+        display: inline-block;
+        content: "\00d7";
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .content {
+    padding: 30px;
+  }
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: $bg-darkest;
+  opacity: .8;
+  z-index: 100;
+}
