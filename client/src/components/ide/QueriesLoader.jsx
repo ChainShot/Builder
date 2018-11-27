@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import apiQuery from '../../utils/apiQuery';
+import apiQuery from '../../utils/api/query';
 
 class QueryLoader extends Component {
   state = {

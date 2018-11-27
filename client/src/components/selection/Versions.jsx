@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import apiQuery from '../../utils/apiQuery';
+import apiQuery from '../../utils/api/query';
 import findSCG from '../../queries/stageContainerGroup/find';
 import { withRouter, Link } from 'react-router-dom';
 import SelectLayout from './SelectLayout';

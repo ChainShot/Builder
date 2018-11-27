@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import apiQuery from '../../utils/apiQuery';
+import apiQuery from '../../utils/api/query';
 import findStage from '../../queries/stage/find';
 import { withRouter } from 'react-router-dom';
 import QueriesLoader from './QueriesLoader';

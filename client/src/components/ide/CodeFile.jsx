@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import CodeEditor from './CodeEditor';
-import apiMutation from '../../utils/apiMutation';
+import apiMutation from '../../utils/api/mutation';
 import modifyCodeFile from '../../mutations/codeFile/modify';
 import './CodeFile.scss';
 
 class CodeFile extends Component {
   updateCode(code) {
     const { codeFile: { id } } = this.props;
-    console.log('in update', code);
     apiMutation(modifyCodeFile, { id, initialCode: code });
   }
   render() {

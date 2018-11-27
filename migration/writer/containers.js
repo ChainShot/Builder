@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs-extra');
-const {toFolderName, prettifyJSON, camelizeProps} = require('./utils');
+const {toFolderName, prettifyJSON, camelizeProps, camelize} = require('./utils');
 const createStages = require('./stages');
 const COLLECTION = 'stage_containers';
 const { DB_DIR, LOOKUP_KEY } = require('../config');
@@ -22,7 +22,7 @@ const create = async (db, folder, stage_container_group_id) => {
       });
 
       const json = prettifyJSON(camelizeProps(props));
-      const file = path.join(DB_DIR, COLLECTION, `${doc._id}.json`);
+      const file = path.join(DB_DIR, camelize(COLLECTION), `${doc._id}.json`);
       await fs.outputFile(file, json);
       await createStages(db, newFolder, doc._id);
   }

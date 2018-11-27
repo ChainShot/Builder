@@ -1,0 +1,43 @@
+@import '../../../shared/variables';
+@import '../../../shared/caret';
+
+%sidebar-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+%sidebar-list-item {
+  display: flex;
+  flex-direction: column;
+
+  > a {
+    padding: 15px 20px 8px;
+    display: flex;
+    align-items: center;
+
+    &::before {
+      content: '';
+      display: block;
+      @include caret-right(5px, $border-color);
+      margin-right: 12px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      &::before {
+        @include caret-right(5px, lighten($brand-active, 20));
+      }
+    }
+
+    &.active {
+      color: white;
+      &::before {
+        @include caret-down(5px, $brand-active);
+        margin-right: 7px;
+      }
+    }
+  }
+}

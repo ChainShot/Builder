@@ -1,0 +1,40 @@
+@import '../../../shared/variables';
+@import 'SidebarList';
+
+ul.code-file-options-nav {
+  @extend %sidebar-list;
+
+  > li {
+    > a {
+      padding: 4px 25px;
+      display: flex;
+      width: auto;
+      border-right: 2px solid transparent;
+
+      &::before {
+        content: '';
+        margin-left: 25px;
+        margin-right: 10px;
+        height: 10px;
+        width: 10px;
+        display: block;
+        border-left: 1px dotted $border-color;
+        border-bottom: 1px dotted $border-color;
+      }
+
+      &:hover {
+        cursor: pointer;
+        &::before {
+          border-color: lighten($brand-active, 10);
+        }
+      }
+
+      &.active {
+        color: white;
+        &::before {
+          border-color: $brand-active;
+        }
+      }
+    }
+  }
+}
