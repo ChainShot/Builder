@@ -12,7 +12,7 @@ class CodeFilesNav extends Component {
           <NavLink to={`${basename}/details`}> Details </NavLink>
         </li>
         <li>
-          <NavLink to={`${basename}/tasks`}> Tasks </NavLink>
+          <NavLink to={`${basename}/task`}> Task </NavLink>
         </li>
         <li>
           <NavLink to={`${basename}/validations`}> Validations </NavLink>
