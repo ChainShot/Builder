@@ -24,7 +24,7 @@ const stageContainerProjectProps = {
 }
 
 const stageProjectProps = {
-  abiValidation: stageLookup,
+  abiValidations: stageLookup,
   task: stageLookup,
   details: stageLookup,
 }
@@ -59,9 +59,16 @@ const stageContainerArgs = {
 
 const stageArgs = {
   id: { type: GraphQLString },
-  abiValidation: { type: GraphQLString },
+  containerId: { type: GraphQLString },
+  title: { type: GraphQLString },
+  abiValidations: { type: GraphQLString },
   task: { type: GraphQLString },
   details: { type: GraphQLString },
+}
+
+const stagePropToFile = (prop) => {
+  if(prop === 'abiValidations') return `validations.json`;
+  return `${prop}.md`;
 }
 
 const MutationType = new GraphQLObjectType({
@@ -78,6 +85,25 @@ const MutationType = new GraphQLObjectType({
         });
       }
     },
+    createStage: {
+      type: StageType,
+      args: stageArgs,
+      async resolve (_, props) {
+        props.id = ObjectID().toString();
+
+        const keys = Object.keys(props);
+        for(let i = 0; i < keys.length; i++) {
+          const key = keys[i];
+          if(stageProjectProps[key]) {
+            const newPath = await stageProjectProps[key](props, stagePropToFile(key));
+            await fileWriter(newPath, props[key]);
+            props[key] = LOOKUP_KEY;
+          }
+        }
+
+        return dbWriter(MODEL_DB.STAGES, props);
+      }
+    },
     modifyStage: {
       type: StageType,
       args: stageArgs,
@@ -90,10 +116,10 @@ const MutationType = new GraphQLObjectType({
           const key = keys[i];
           if(stageProjectProps[key]) {
             // remove the previous path (TODO: check and only do if changed)
-            const previousPath = await stageProjectProps[key](stage, `${key}.md`);
+            const previousPath = await stageProjectProps[key](stage, stagePropToFile(key));
             await fileRemove(previousPath);
             // add the new path
-            const newPath = await stageProjectProps[key](merged, `${key}.md`);
+            const newPath = await stageProjectProps[key](merged, stagePropToFile(key));
             await fileWriter(newPath, merged[key]);
             merged[key] = LOOKUP_KEY;
           }
