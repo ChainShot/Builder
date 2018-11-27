@@ -2,18 +2,16 @@ import React, { Component } from 'react';
 import apiQuery from '../../utils/api/query';
 import findCodeFile from '../../queries/codeFile/find';
 import { withRouter } from 'react-router-dom';
-import QueriesLoader from './QueriesLoader';
+import Subscriber from './Subscriber';
 import CodeFile from './CodeFile';
 
 class CodeFileLoader extends Component {
   render() {
     const { match: { params: { codeFileId }, url } } = this.props;
-    const variables = { id: codeFileId };
-    const queries = [{ query: findCodeFile, prop: 'codeFile', variables }];
     return (
-      <QueriesLoader queries={queries} key={codeFileId}>
+      <Subscriber query={findCodeFile} modelType="codeFile" id={codeFileId} key={codeFileId}>
         <CodeFile basename={url} />
-      </QueriesLoader>
+      </Subscriber>
     )
   }
 }

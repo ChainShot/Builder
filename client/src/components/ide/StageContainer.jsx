@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import apiQuery from '../../utils/api/query';
-import { subscribe } from '../../utils/api/subscription';
+import { subscribe, unsubscribe } from '../../utils/api/subscription';
 import StageLoader from './StageLoader';
 import findContainer from '../../queries/stageContainer/find';
 import Sidebar from './sidebar/Sidebar';
@@ -15,9 +15,16 @@ class StageContainer extends Component {
   }
   componentDidMount() {
     const { containerId } = this.props.match.params;
-    subscribe(findContainer, containerId, 'stageContainer', ({ stageContainer }) => {
+    const subscriptionIdx = subscribe(findContainer, containerId, 'stageContainer', ({ stageContainer }) => {
       this.setState({ stageContainer });
     });
+    this.setState({ subscriptionIdx });
+  }
+  componentWillUnmount() {
+    const { subscriptionIdx } = this.state;
+    if(subscriptionIdx) {
+      unsubscribe(subscriptionIdx);
+    }
   }
   render() {
     const { stageContainer } = this.state;

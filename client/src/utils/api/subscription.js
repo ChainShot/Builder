@@ -15,11 +15,11 @@ socket.on('update', (_) => {
 
 const subscribe = (query, id, modelType, fn) => {
   apiQuery(query, {id}).then(fn);
-  return subscriptions.push({ query, modelType, id, fn });
+  return subscriptions.push({ query, modelType, id, fn }) - 1;
 }
 
 const unsubscribe = (idx) => {
-  subscriptions.slice(idx, 1);
+  subscriptions.splice(idx, 1);
 }
 
 export {
