@@ -1,26 +1,18 @@
 import React, { Component } from 'react';
-import CodeEditor from './CodeEditor';
-import ReactMarkdown from 'react-markdown';
-import modifyStage from '../../mutations/stage/modify';
-import apiMutation from '../../utils/api/mutation';
-import './Details.scss';
+import MarkdownEdit from './MarkdownEdit';
 
-class Details extends Component {
-  updateDetails(details) {
-    const { id } = this.props.stageContainer;
-    apiMutation(modifyStage, { id, details });
+const mutation = `
+mutation modifyStage($id: String, $details: String) {
+  modifyStage(id: $id, details: $details) {
+    id
+    details
   }
-  render() {
-    const { details } = this.props.stage;
-    return (
-      <div className="details">
-        <CodeEditor mode="markdown" code={details} onUpdate={(x) => this.updateDetails(x)} />
-        <div className="display">
-          <ReactMarkdown source={details} />
-        </div>
-      </div>
-    )
-  }
+}
+`;
+
+const Details = ({ stage }) => {
+  const { id, details } = stage;
+  return <MarkdownEdit mutation={mutation} id={id} markdownProp="details" markdown={details} />
 }
 
 export default Details;

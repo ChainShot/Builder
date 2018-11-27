@@ -20,4 +20,4 @@ You might have asked the yourself, *“What about the depositor of the funds?”
 
 Assign the depositor address to the global variable ```msg.sender```. This built in global variable represents the address of the caller of the specified function, in this case the constructor.
 
-For more information on global variables, check out the [Miscellaneous](http://solidity.readthedocs.io/en/v0.4.19/miscellaneous.html) section within the Solidity documentation.
+For more information on global variables, check out the [Miscellaneous](http://solidity.readthedocs.io/en/v0.4.19/miscellaneous.html) section within the Solidity documentation!!

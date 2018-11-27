@@ -13,12 +13,12 @@ class Stage extends Component {
     const { stage, basename } = this.props;
     if(!stage) return null;
     return (
-      <div className="stage">
+      <React.Fragment>
         <Route path={`${basename}/file/:codeFileId`} component={CodeFileLoader} />
         <Route path={`${basename}/details`} component={() => <Details stage={stage}/>} />
         <Route path={`${basename}/task`} component={() => <Task stage={stage}/>} />
         <Route path={`${basename}/validations`} component={() => <Validations stage={stage}/>} />
-      </div>
+      </React.Fragment>
     )
   }
 }

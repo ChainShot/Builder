@@ -7,9 +7,11 @@ const {
 const CodeFileType = require('./CodeFileType');
 const StageContainerGroupType = require('./StageContainerGroupType');
 const StageContainerType = require('./StageContainerType');
+const StageType = require('./StageType');
 const { dbWriter, fileWriter, dbResolver, fileRemove } = require('./utils');
 const codeFileLookup = require('./lookups/codeFileLookup');
 const stageContainerLookup = require('./lookups/stageContainerLookup');
+const stageLookup = require('./lookups/stageLookup');
 const { LOOKUP_KEY, MODEL_DB } = require('../config');
 const { ObjectID } = require('mongodb');
 
@@ -19,6 +21,12 @@ const codeFileProjectProps = {
 
 const stageContainerProjectProps = {
   intro: stageContainerLookup
+}
+
+const stageProjectProps = {
+  abiValidation: stageLookup,
+  task: stageLookup,
+  details: stageLookup,
 }
 
 const codeFileMutationArgs = {
@@ -49,6 +57,13 @@ const stageContainerArgs = {
   intro: { type: GraphQLString },
 }
 
+const stageArgs = {
+  id: { type: GraphQLString },
+  abiValidation: { type: GraphQLString },
+  task: { type: GraphQLString },
+  details: { type: GraphQLString },
+}
+
 const MutationType = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
@@ -61,6 +76,30 @@ const MutationType = new GraphQLObjectType({
           title: 'Untitled',
           ...props
         });
+      }
+    },
+    modifyStage: {
+      type: StageType,
+      args: stageArgs,
+      async resolve (_, props) {
+        const stage = await dbResolver(MODEL_DB.STAGES, props.id);
+        const merged = { ...stage, ...props };
+
+        const keys = Object.keys(props);
+        for(let i = 0; i < keys.length; i++) {
+          const key = keys[i];
+          if(stageProjectProps[key]) {
+            // remove the previous path (TODO: check and only do if changed)
+            const previousPath = await stageProjectProps[key](stage, `${key}.md`);
+            await fileRemove(previousPath);
+            // add the new path
+            const newPath = await stageProjectProps[key](merged, `${key}.md`);
+            await fileWriter(newPath, merged[key]);
+            merged[key] = LOOKUP_KEY;
+          }
+        }
+
+        return dbWriter(MODEL_DB.STAGES, merged);
       }
     },
     modifyStageContainer: {
