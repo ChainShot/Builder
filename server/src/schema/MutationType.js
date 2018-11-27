@@ -91,17 +91,28 @@ const MutationType = new GraphQLObjectType({
       async resolve (_, props) {
         props.id = ObjectID().toString();
 
+        const filesToWrite = [];
+
         const keys = Object.keys(props);
         for(let i = 0; i < keys.length; i++) {
           const key = keys[i];
           if(stageProjectProps[key]) {
             const newPath = await stageProjectProps[key](props, stagePropToFile(key));
-            await fileWriter(newPath, props[key]);
+            filesToWrite.push({ path: newPath, contents: props[key] });
             props[key] = LOOKUP_KEY;
           }
         }
 
-        return dbWriter(MODEL_DB.STAGES, props);
+        await dbWriter(MODEL_DB.STAGES, props);
+
+        // write project files after creation so
+        // the sockets db lookup can happen properly
+        for(let i = 0; i < filesToWrite.length; i++) {
+          const { path, contents } = filesToWrite[i];
+          await fileWriter(path, contents);
+        }
+
+        return props;
       }
     },
     modifyStage: {

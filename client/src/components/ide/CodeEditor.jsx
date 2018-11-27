@@ -18,35 +18,47 @@ const defaultMonacoOptions = {
     glyphMargin: false,
     fixedOverflowWidgets: true,
     parameterHints: false,
+    theme: "chainshot",
 }
 
 monaco.editor.defineTheme('chainshot', theme);
 
+// a half second buffer to help handle synchronizing issues
+// a mutation to the server should return a socket update in less time
+// meanwhile multiple saves should be at least this far apart
+const buffer = .5 * 1000;
+
 class CodeEditor extends Component {
-    componentDidMount() {
-      const {code, mode} = this.props;
-      const editor = monaco.editor.create(this.refs.container, {
-        ...defaultMonacoOptions,
-        value: code,
-        language: mode,
-        theme: "chainshot",
-      });
-      const debouncedUpdate = debounce(() => {
-        this.props.onUpdate(editor.getValue());
-      }, 1000);
-      editor.onDidChangeModelContent(debouncedUpdate);
-      this.editor = editor;
-    }
+  state = {
+    lastEdit: null
+  }
+  componentDidMount() {
+    const {code, mode} = this.props;
+    const editor = monaco.editor.create(this.refs.container, {
+      ...defaultMonacoOptions,
+      value: code,
+      language: mode,
+    });
+    const debouncedUpdate = debounce(() => {
+      const value = editor.getValue();
+      this.setState({ lastEdit: Date.now() });
+      this.props.onUpdate(editor.getValue());
+    }, 1000);
+    editor.onDidChangeModelContent(debouncedUpdate);
+    this.editor = editor;
+  }
 
-    componentDidUpdate(prevProps) {
-      if(prevProps.code !== this.props.code) {
-        this.editor.setValue(this.props.code);
-      }
+  componentDidUpdate(prevProps) {
+    const { lastEdit } = this.state;
+    const sinceEdit = Date.now() - lastEdit;
+    if(prevProps.code !== this.props.code && sinceEdit > buffer) {
+      this.editor.setValue(this.props.code);
     }
+  }
 
-    render() {
-        return <div className="code-editor" ref="container" />
-    }
+  render() {
+      return <div className="code-editor" ref="container" />
+  }
 }
 
 export default CodeEditor;

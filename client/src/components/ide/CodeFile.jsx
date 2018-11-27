@@ -2,15 +2,20 @@ import React, { Component } from 'react';
 import CodeEditor from './CodeEditor';
 import apiMutation from '../../utils/api/mutation';
 import modifyCodeFile from '../../mutations/codeFile/modify';
+import { withRouter } from 'react-router-dom';
 import './CodeFile.scss';
 
 class CodeFile extends Component {
+  getCodeFile() {
+    const { match: { params: { codeFileId } }, stage } = this.props;
+    return stage.codeFiles.filter(x => x.id === codeFileId)[0];
+  }
   updateCode(code) {
-    const { codeFile: { id } } = this.props;
+    const { id } = this.getCodeFile();
     apiMutation(modifyCodeFile, { id, initialCode: code });
   }
   render() {
-    const { codeFile: { initialCode, mode } } = this.props;
+    const { initialCode, mode } = this.getCodeFile();
     return (
       <div className="code-file">
         <CodeEditor code={initialCode} mode={mode} onUpdate={(code) => this.updateCode(code)}/>
@@ -19,4 +24,4 @@ class CodeFile extends Component {
   }
 }
 
-export default CodeFile;
+export default withRouter(CodeFile);
