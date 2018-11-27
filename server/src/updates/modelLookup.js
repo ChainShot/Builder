@@ -5,35 +5,8 @@ const findGroup = `
 query findStageContainerGroup($title: String) {
   stageContainerGroup(title: $title) {
     stageContainers {
-      id
       version
-      intro
-      stageContainerGroup {
-        id
-        containerType
-        description
-        title
-    	}
-      stages {
-        id
-        title
-        details
-        task
-        abiValidations
-        codeFiles {
-          id
-          name
-          executable
-          executablePath
-          fileLocation
-          hasProgress
-          mode
-          readOnly
-          testFixture
-          visible
-          initialCode
-        }
-      }
+      id
     }
   }
 }
@@ -43,7 +16,9 @@ const lookups = [
   {
     template: '{groupTitle}/{version}/intro.md',
     lookup: async ({ groupTitle, version, file }) => {
-      return (await graphql(schema, findGroup, null, null, { title: groupTitle })).data.stageContainerGroup;
+      const { data } = await graphql(schema, findGroup, null, null, { title: groupTitle });
+      const { id } = data.stageContainerGroup.stageContainers.filter(x => x.version == version)[0];
+      return { modelType: 'stageContainer', id };
     }
   },
   {

@@ -1,4 +1,4 @@
-import api from './api';
+import api from './';
 
 const apiMutation = (query, variables) => {
   return api.post("graphql", {query, variables}).then(({ data: { errors, ...props } }) => {

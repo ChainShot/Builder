@@ -1,4 +1,4 @@
-import api from './api';
+import api from './';
 
 const apiQuery = (query, variables) => {
   return api.post("graphql", {query, variables}).then(({ errors, data }) => {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Stage.scss';
-import apiQuery from '../../utils/apiQuery';
+import apiQuery from '../../utils/api/query';
 import findStage from '../../queries/stage/find';
 import CodeFileLoader from './CodeFileLoader';
 import { Route } from 'react-router-dom';

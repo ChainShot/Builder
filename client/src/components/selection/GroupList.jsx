@@ -6,8 +6,8 @@ import './GroupList.scss';
 import SelectLayout from './SelectLayout';
 import { Link, withRouter } from 'react-router-dom';
 import createSCG from '../../mutations/stageContainerGroup/create';
-import apiQuery from '../../utils/apiQuery';
-import apiMutation from '../../utils/apiMutation';
+import apiQuery from '../../utils/api/query';
+import apiMutation from '../../utils/api/mutation';
 
 class Blocks extends Component {
   state = {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CodeEditor from './CodeEditor';
 import ReactMarkdown from 'react-markdown';
 import modifyStageContainer from '../../mutations/stageContainer/modify';
-import apiMutation from '../../utils/apiMutation';
+import apiMutation from '../../utils/api/mutation';
 import './Intro.scss';
 
 class Intro extends Component {
