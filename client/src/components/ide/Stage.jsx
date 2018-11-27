@@ -7,18 +7,19 @@ import Details from './Details';
 import Task from './Task';
 import Validations from './Validations';
 import { Route } from 'react-router-dom';
+import PropsRoute from '../PropsRoute';
 
 class Stage extends Component {
   render() {
     const { stage, basename } = this.props;
     if(!stage) return null;
     return (
-      <div className="stage">
+      <React.Fragment>
         <Route path={`${basename}/file/:codeFileId`} component={CodeFileLoader} />
-        <Route path={`${basename}/details`} component={() => <Details stage={stage}/>} />
-        <Route path={`${basename}/task`} component={() => <Task stage={stage}/>} />
-        <Route path={`${basename}/validations`} component={() => <Validations stage={stage}/>} />
-      </div>
+        <PropsRoute path={`${basename}/details`} component={Details} stage={stage} />
+        <PropsRoute path={`${basename}/task`} component={Task} stage={stage} />
+        <PropsRoute path={`${basename}/validations`} component={Validations} stage={stage} />
+      </React.Fragment>
     )
   }
 }

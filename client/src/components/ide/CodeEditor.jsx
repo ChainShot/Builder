@@ -35,13 +35,17 @@ class CodeEditor extends Component {
         this.props.onUpdate(editor.getValue());
       }, 1000);
       editor.onDidChangeModelContent(debouncedUpdate);
+      this.editor = editor;
+    }
+
+    componentDidUpdate(prevProps) {
+      if(prevProps.code !== this.props.code) {
+        this.editor.setValue(this.props.code);
+      }
     }
 
     render() {
-        return (
-            <div className="code-editor"
-                ref="container" />
-        );
+        return <div className="code-editor" ref="container" />
     }
 }
 
