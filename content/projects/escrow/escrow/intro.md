@@ -8,4 +8,4 @@ There are many use cases for Escrows across real estate, charities and marketpla
 
 ### Let's Get Building
 
-We hope that during this block you'll be thinking about ways that you can use an escrow to launch new decentralized applications. You'll be able to download all the code you wrote into a working application which can be deployed in a couple steps. With a bit of creativity you can create something new and amazing. Start brainstorming today...
+We hope that during this block you'll be thinking about ways that you can use an escrow to launch new decentralized applications. You'll be able to download all the code you wrote into a working application which can be deployed in a couple steps. With a bit of creativity you can create something new and amazing. Start brainstorming! 
