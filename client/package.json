@@ -46,6 +46,8 @@
     "react-markdown": "^4.0.3",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
+    "react-select": "^2.1.2",
+    "react-switch": "^3.0.4",
     "resolve": "1.8.1",
     "sass-loader": "7.1.0",
     "socket.io-client": "^2.1.1",
