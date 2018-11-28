@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import api from '../../utils/api';
 import GroupContainer from './GroupContainer';
 import filterSCG from '../../queries/stageContainerGroup/filter';
 import './GroupList.scss';
 import SelectLayout from './SelectLayout';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import createSCG from '../../mutations/stageContainerGroup/create';
 import apiQuery from '../../utils/api/query';
 import apiMutation from '../../utils/api/mutation';

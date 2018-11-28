@@ -24,7 +24,7 @@ const stageContainerProjectProps = {
 }
 
 const stageProjectProps = {
-  abiValidation: stageLookup,
+  abiValidations: stageLookup,
   task: stageLookup,
   details: stageLookup,
 }
@@ -54,14 +54,22 @@ const stageContainerGroupArgs = {
 const stageContainerArgs = {
   id: { type: GraphQLString },
   version: { type: GraphQLString },
+  type: { type: GraphQLString },
   intro: { type: GraphQLString },
 }
 
 const stageArgs = {
   id: { type: GraphQLString },
-  abiValidation: { type: GraphQLString },
+  containerId: { type: GraphQLString },
+  title: { type: GraphQLString },
+  abiValidations: { type: GraphQLString },
   task: { type: GraphQLString },
   details: { type: GraphQLString },
+}
+
+const stagePropToFile = (prop) => {
+  if(prop === 'abiValidations') return `validations.json`;
+  return `${prop}.md`;
 }
 
 const MutationType = new GraphQLObjectType({
@@ -78,6 +86,36 @@ const MutationType = new GraphQLObjectType({
         });
       }
     },
+    createStage: {
+      type: StageType,
+      args: stageArgs,
+      async resolve (_, props) {
+        props.id = ObjectID().toString();
+
+        const filesToWrite = [];
+
+        const keys = Object.keys(props);
+        for(let i = 0; i < keys.length; i++) {
+          const key = keys[i];
+          if(stageProjectProps[key]) {
+            const newPath = await stageProjectProps[key](props, stagePropToFile(key));
+            filesToWrite.push({ path: newPath, contents: props[key] });
+            props[key] = LOOKUP_KEY;
+          }
+        }
+
+        await dbWriter(MODEL_DB.STAGES, props);
+
+        // write project files after creation so
+        // the sockets db lookup can happen properly
+        for(let i = 0; i < filesToWrite.length; i++) {
+          const { path, contents } = filesToWrite[i];
+          await fileWriter(path, contents);
+        }
+
+        return props;
+      }
+    },
     modifyStage: {
       type: StageType,
       args: stageArgs,
@@ -90,10 +128,10 @@ const MutationType = new GraphQLObjectType({
           const key = keys[i];
           if(stageProjectProps[key]) {
             // remove the previous path (TODO: check and only do if changed)
-            const previousPath = await stageProjectProps[key](stage, `${key}.md`);
+            const previousPath = await stageProjectProps[key](stage, stagePropToFile(key));
             await fileRemove(previousPath);
             // add the new path
-            const newPath = await stageProjectProps[key](merged, `${key}.md`);
+            const newPath = await stageProjectProps[key](merged, stagePropToFile(key));
             await fileWriter(newPath, merged[key]);
             merged[key] = LOOKUP_KEY;
           }
@@ -122,6 +160,8 @@ const MutationType = new GraphQLObjectType({
             merged[key] = LOOKUP_KEY;
           }
         }
+
+        // TODO: on version change, we need to rename the project folder
 
         return dbWriter(MODEL_DB.STAGE_CONTAINERS, merged);
       }

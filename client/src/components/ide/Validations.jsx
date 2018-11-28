@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CodeEditor from './CodeEditor';
-import ReactMarkdown from 'react-markdown';
 import modifyStage from '../../mutations/stage/modify';
 import apiMutation from '../../utils/api/mutation';
 import './Validations.scss';

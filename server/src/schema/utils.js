@@ -1,5 +1,5 @@
 const { DB_DIR } = require('../config');
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 const sanitize = require("sanitize-filename");
 const camelize = require('../utils/camelize');
@@ -26,7 +26,7 @@ const dbWriter = (collection, props) => {
 
 const fileWriter = (filePath, props) => {
   return new Promise((resolve, reject) => {
-    fs.writeFile(filePath, props, (err) => {
+    fs.outputFile(filePath, props, (err) => {
       if(err) reject(err);
       resolve(props);
     });

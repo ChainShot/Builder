@@ -19,12 +19,11 @@ class Versions extends Component {
     const { stageContainerGroup } = this.state;
     if(!stageContainerGroup) return null;
     const { stageContainers } = stageContainerGroup;
-    const { pathname } = this.props.location;
     return (
       <SelectLayout>
         <div className="versions">
           {stageContainers.map(({ version, id }) => (
-            <Link to={`/content/${id}/`}>
+            <Link key={id} to={`/content/${id}/`}>
               <div className="version">
                 { version }
               </div>

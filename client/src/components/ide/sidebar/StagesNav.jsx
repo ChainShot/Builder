@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-import { NavLink, withRouter, Route } from 'react-router-dom';
+import { NavLink, Route } from 'react-router-dom';
 import CodeFilesNav from './CodeFilesNav';
+import * as dialog from '../../../utils/dialog';
+import AddStage from './AddStage';
 import './StagesNav.scss';
 
 class StagesNav extends Component {
   render() {
-    const { stageContainer: { stages }} = this.props;
+    const { stageContainer: { id, stages }} = this.props;
     return (
       <ul className="stages-nav">
         { stages.map(stage => <StageNav key={stage.id} stage={stage} {...this.props} /> ) }
+        <li>
+          <a onClick={() => dialog.open(AddStage, { containerId: id })}>Add a Stage</a>
+        </li>
       </ul>
     )
   }

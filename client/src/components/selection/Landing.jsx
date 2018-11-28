@@ -27,12 +27,12 @@ class Landing extends Component {
       <SelectLayout>
         <div className="landing">
           {containers.map(({ title, description, to }) => (
-            <div className="container">
+            <div key={to} className="container">
               <h2>{title}</h2>
               <p>{description}</p>
               <Link to={to}>
                 <div className="btn btn-primary">
-                  BUIDL
+                  Build
                 </div>
               </Link>
             </div>

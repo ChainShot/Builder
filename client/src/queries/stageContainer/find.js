@@ -3,6 +3,7 @@ query findStageContainer($id: String) {
   stageContainer(id: $id) {
     id
     version
+    type
     intro
     stageContainerGroup {
       id

@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import { NavLink, withRouter, Route } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import StagesNav from './StagesNav';
 import './Sidebar.scss';
 
 class Sidebar extends Component {
   render() {
-    const { stageContainer: { stageContainerGroup: { title }, stages }, basename } = this.props;
+    const { stageContainer: { stageContainerGroup: { title }, version, stages }, basename } = this.props;
     return (
       <div className="stage-container-sidebar">
         <ul className="top-options">
-          <li>
+          <li className="title">
             <NavLink to={`${basename}/config`}>
-              { title }
+              { title }: { version }
             </NavLink>
           </li>
-          <li>
+          <li className="intro">
             <NavLink to={`${basename}/intro`}>
               Introduction
             </NavLink>

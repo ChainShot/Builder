@@ -1,11 +1,9 @@
+import mainFields from '../../fragments/codeFile/mainFields';
+
 export default `
 query findStage($id: String) {
   stage(id: $id) {
-    id
-    title
-    details
-    task
-    abiValidations
+    ...mainFields
     codeFiles {
       id
       name
@@ -21,4 +19,6 @@ query findStage($id: String) {
     }
   }
 }
-`
+
+${mainFields}
+`;
