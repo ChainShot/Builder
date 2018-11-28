@@ -14,7 +14,6 @@ mutation createStage($title: String, $containerId: String) {
 }
 `;
 
-
 class AddStage extends Component {
   state = {
     title: ""

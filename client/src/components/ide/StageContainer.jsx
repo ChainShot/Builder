@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import apiQuery from '../../utils/api/query';
 import { subscribe, unsubscribe } from '../../utils/api/subscription';
 import findContainer from '../../queries/stageContainer/find';
 import Sidebar from './sidebar/Sidebar';
 import Stage from './Stage';
 import './StageContainer.scss';
 import Intro from './Intro';
-import { Route } from 'react-router-dom';
 import PropsRoute from '../PropsRoute';
 
 class StageContainer extends Component {
@@ -29,12 +27,12 @@ class StageContainer extends Component {
   render() {
     const { stageContainer } = this.state;
     if(!stageContainer) return null;
-    const { match: { params: { containerId }, url } } = this.props;
+    const { match: { url } } = this.props;
     return (
       <div className="stage-container">
         <Sidebar stageContainer={stageContainer} basename={url}/>
         <PropsRoute path="/content/:containerId/stage/:stageId" component={Stage} stageContainer={stageContainer}/>
-        <Route path="/content/:containerId/intro" component={() => <Intro stageContainer={stageContainer} />} />
+        <PropsRoute path="/content/:containerId/intro" component={Intro} stageContainer={stageContainer}/>
       </div>
     )
   }

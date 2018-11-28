@@ -18,6 +18,18 @@
     display: flex;
     align-items: center;
 
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.active {
+      color: white;
+    }
+  }
+}
+
+%caret-list-item {
+  > a {
     &::before {
       content: '';
       display: block;
@@ -26,14 +38,12 @@
     }
 
     &:hover {
-      cursor: pointer;
       &::before {
         @include caret-right(5px, lighten($brand-active, 20));
       }
     }
 
     &.active {
-      color: white;
       &::before {
         @include caret-down(5px, $brand-active);
         margin-right: 7px;

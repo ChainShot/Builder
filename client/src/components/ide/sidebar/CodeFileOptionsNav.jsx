@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink, withRouter, Route } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './CodeFileOptionsNav.scss';
 
 class CodeFileOptionsNav extends Component {

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './Stage.scss';
-import apiQuery from '../../utils/api/query';
-import findStage from '../../queries/stage/find';
 import CodeFile from './CodeFile';
 import Details from './Details';
 import Task from './Task';

@@ -40,7 +40,6 @@ class CodeEditor extends Component {
       language: mode,
     });
     const debouncedUpdate = debounce(() => {
-      const value = editor.getValue();
       this.setState({ lastEdit: Date.now() });
       this.props.onUpdate(editor.getValue());
     }, 1000);
