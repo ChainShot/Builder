@@ -54,6 +54,7 @@ const stageContainerGroupArgs = {
 const stageContainerArgs = {
   id: { type: GraphQLString },
   version: { type: GraphQLString },
+  type: { type: GraphQLString },
   intro: { type: GraphQLString },
 }
 
@@ -159,6 +160,8 @@ const MutationType = new GraphQLObjectType({
             merged[key] = LOOKUP_KEY;
           }
         }
+
+        // TODO: on version change, we need to rename the project folder
 
         return dbWriter(MODEL_DB.STAGE_CONTAINERS, merged);
       }
