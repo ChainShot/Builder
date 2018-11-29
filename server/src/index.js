@@ -21,4 +21,4 @@ const server = http.createServer(app);
 
 updates(io(server));
 
-server.listen(PORT, () => console.log(`Buidler server @ ${PORT}!`))
+server.listen(PORT, () => console.log(`Builder server @ ${PORT}!`))
