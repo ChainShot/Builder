@@ -4,9 +4,9 @@ const {
   GraphQLString,
   GraphQLList,
 } = require('graphql');
-const { fileResolver, dbResolver } = require('./utils');
-const { MODEL_DB } = require('../config');
-const codeFileLookup = require('./lookups/codeFileLookup');
+const { fileResolver, dbResolver } = require('../../utils/ioHelpers');
+const { MODEL_DB } = require('../../config');
+const findCodeFileBasePaths = require('../../projectHelpers/findCodeFilePaths');
 
 const CodeFileType = new GraphQLObjectType({
   name: 'CodeFile',
@@ -32,7 +32,7 @@ const CodeFileType = new GraphQLObjectType({
     initialCode: {
       type: GraphQLString,
       resolve: async (cf) => {
-        const paths = await codeFileLookup(cf);
+        const paths = await findCodeFilePaths(cf);
         return fileResolver(paths[0]);
       }
     },

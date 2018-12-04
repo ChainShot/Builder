@@ -23,15 +23,7 @@ const defaultMonacoOptions = {
 
 monaco.editor.defineTheme('chainshot', theme);
 
-// a half second buffer to help handle synchronizing issues
-// a mutation to the server should return a socket update in less time
-// meanwhile multiple saves should be at least this far apart
-const buffer = .5 * 1000;
-
 class CodeEditor extends Component {
-  state = {
-    lastEdit: null
-  }
   componentDidMount() {
     const {code, mode} = this.props;
     const editor = monaco.editor.create(this.refs.container, {
@@ -40,7 +32,6 @@ class CodeEditor extends Component {
       language: mode,
     });
     const debouncedUpdate = debounce(() => {
-      this.setState({ lastEdit: Date.now() });
       this.props.onUpdate(editor.getValue());
     }, 1000);
     editor.onDidChangeModelContent(debouncedUpdate);
@@ -48,10 +39,18 @@ class CodeEditor extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { lastEdit } = this.state;
-    const sinceEdit = Date.now() - lastEdit;
-    if(prevProps.code !== this.props.code && sinceEdit > buffer) {
-      this.editor.setValue(this.props.code);
+    if(prevProps.mode !== this.props.mode) {
+      monaco.editor.setModelLanguage(this.editor.getModel(), this.props.mode);
+    }
+    if(prevProps.code !== this.props.code) {
+      // if the editor has focus, dont change the content 
+      // the idea here is we'll accept socket changes from a new tab, window or local IDE 
+      // since were concerned only with changes from one person editing the content 
+      // they should not be able to mantain focus on multiple editors at once 
+      // (there is a small latency period where they can switch quickly and this will reject changes)
+      if(!this.editor.hasWidgetFocus()) {
+        this.editor.setValue(this.props.code);  
+      }
     }
   }
 
