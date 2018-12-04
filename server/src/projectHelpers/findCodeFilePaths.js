@@ -1,5 +1,5 @@
-const { dbResolver, sanitizeFolderName } = require('../utils');
-const { PROJECTS_DIR, MODEL_DB } = require('../../config');
+const { dbResolver, sanitizeFolderName } = require('../utils/ioHelpers');
+const { PROJECTS_DIR, MODEL_DB } = require('../config');
 const path = require('path');
 
 const codeFileLookup = ({ executablePath, codeStageIds, name }) => {

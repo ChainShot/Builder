@@ -1,5 +1,5 @@
-const { dbResolver, sanitizeFolderName } = require('../utils');
-const { PROJECTS_DIR, MODEL_DB } = require('../../config');
+const { dbResolver, sanitizeFolderName } = require('../utils/ioHelpers');
+const { PROJECTS_DIR, MODEL_DB } = require('../config');
 const path = require('path');
 
 const getBasePath = async (stage) => {
@@ -12,8 +12,8 @@ const getBasePath = async (stage) => {
     sanitizeFolderName(stage.title));
 }
 
-const stageLookup = async (props, field) => {
-  return path.join(await getBasePath(props), field);
+const stageLookup = async (props, fileName) => {
+  return path.join(await getBasePath(props), fileName);
 }
 
 module.exports = stageLookup;

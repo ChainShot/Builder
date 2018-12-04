@@ -4,29 +4,24 @@ const {
   GraphQLBoolean,
   GraphQLList,
 } = require('graphql');
-const CodeFileType = require('./CodeFileType');
-const StageContainerGroupType = require('./StageContainerGroupType');
-const StageContainerType = require('./StageContainerType');
-const StageType = require('./StageType');
-const { dbWriter, fileWriter, dbResolver, fileRemove } = require('./utils');
-const codeFileLookup = require('./lookups/codeFileLookup');
-const stageContainerLookup = require('./lookups/stageContainerLookup');
-const stageLookup = require('./lookups/stageLookup');
-const { LOOKUP_KEY, MODEL_DB } = require('../config');
+const { CodeFileType, StageContainerGroupType, StageContainerType, StageType } = require('../models');
+const { dbWriter, fileWriter, dbResolver, fileRemove } = require('../../utils/ioHelpers');
+const { findCodeFilePaths, findStageContainerFilePath, findStageFilePath } = require('../../projectHelpers');
+const { LOOKUP_KEY, MODEL_DB } = require('../../config');
 const { ObjectID } = require('mongodb');
 
 const codeFileProjectProps = {
-  initialCode: codeFileLookup
+  initialCode: findCodeFilePaths
 }
 
 const stageContainerProjectProps = {
-  intro: stageContainerLookup
+  intro: findStageContainerFilePath
 }
 
 const stageProjectProps = {
-  abiValidations: stageLookup,
-  task: stageLookup,
-  details: stageLookup,
+  abiValidations: findStageFilePath,
+  task: findStageFilePath,
+  details: findStageFilePath,
 }
 
 const codeFileMutationArgs = {

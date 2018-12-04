@@ -4,8 +4,8 @@ const {
   GraphQLString,
   GraphQLList,
 } = require('graphql');
-const { MODEL_DB } = require('../config');
-const { dbReader, dbResolver } = require('./utils');
+const { MODEL_DB } = require('../../config');
+const { dbReader, dbResolver } = require('../../utils/ioHelpers');
 
 const StageContainerGroupType = new GraphQLObjectType({
   name: 'StageContainerGroup',

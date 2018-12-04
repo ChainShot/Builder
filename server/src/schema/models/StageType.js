@@ -4,9 +4,9 @@ const {
   GraphQLString,
   GraphQLList,
 } = require('graphql');
-const { fileResolver, dbResolver } = require('./utils');
-const { MODEL_DB } = require('../config');
-const stageLookup = require('./lookups/stageLookup');
+const { fileResolver, dbResolver } = require('../../utils/ioHelpers');
+const { MODEL_DB } = require('../../config');
+const findStageFilePath = require('../../projectHelpers/findStageFilePath');
 
 const StageType = new GraphQLObjectType({
   name: 'Stage',
@@ -23,15 +23,15 @@ const StageType = new GraphQLObjectType({
     },
     details: {
       type: GraphQLString,
-      resolve: async (props) => fileResolver(await stageLookup(props, 'details.md'))
+      resolve: async (props) => fileResolver(await findStageFilePath(props, 'details.md'))
     },
     task: {
       type: GraphQLString,
-      resolve: async (props) => fileResolver(await stageLookup(props, 'task.md'))
+      resolve: async (props) => fileResolver(await findStageFilePath(props, 'task.md'))
     },
     abiValidations: {
       type: GraphQLString,
-      resolve: async (props) => fileResolver(await stageLookup(props, 'validations.json'))
+      resolve: async (props) => fileResolver(await findStageFilePath(props, 'validations.json'))
     }
   })
 });
