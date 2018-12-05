@@ -1,5 +1,6 @@
-const schema = require('../schema');
+const schema = require('../../../schema');
 const { graphql } = require('graphql');
+const path = require('path');
 
 const findContainer = `
 query findStageContainerGroup($title: String) {
