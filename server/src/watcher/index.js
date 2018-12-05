@@ -21,7 +21,7 @@ const setup = (io) => {
     const posixFileName = slash(name);
 
     // if these changes affect the project file paths, update them here
-    // await configSave(posixFileName);
+    await configSave(posixFileName);
 
     const clients = await getClients(io);
     if(clients.length > 0) {
