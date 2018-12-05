@@ -1,4 +1,4 @@
-const DB_DIR = '../../Content/db';
+const CONFIG_DIR = '../../Content/config';
 const PROJECTS_DIR = '../../Content/projects';
 const PORT = 3001;
 const LOOKUP_KEY = '$$LOOKUP';
@@ -10,7 +10,7 @@ const MODEL_DB = {
 }
 
 module.exports = {
-  DB_DIR,
+  CONFIG_DIR,
   PROJECTS_DIR,
   PORT,
   LOOKUP_KEY,

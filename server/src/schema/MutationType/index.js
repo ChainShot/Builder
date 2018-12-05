@@ -5,7 +5,7 @@ const {
   GraphQLList,
 } = require('graphql');
 const { CodeFileType, StageContainerGroupType, StageContainerType, StageType } = require('../models');
-const { dbWriter, fileWriter, dbResolver, fileRemove } = require('../../utils/ioHelpers');
+const { configWriter, fileWriter, configResolver, fileRemove } = require('../../utils/ioHelpers');
 const { findCodeFilePaths, findStageContainerFilePath, findStageFilePath } = require('../../projectHelpers');
 const { LOOKUP_KEY, MODEL_DB } = require('../../config');
 const { ObjectID } = require('mongodb');
@@ -74,7 +74,7 @@ const MutationType = new GraphQLObjectType({
       type: StageContainerGroupType,
       args: stageContainerGroupArgs,
       async resolve (_, props) {
-        return dbWriter(MODEL_DB.STAGE_CONTAINER_GROUPS, {
+        return configWriter(MODEL_DB.STAGE_CONTAINER_GROUPS, {
           id: ObjectID().toString(),
           title: 'Untitled',
           ...props
@@ -99,10 +99,10 @@ const MutationType = new GraphQLObjectType({
           }
         }
 
-        await dbWriter(MODEL_DB.STAGES, props);
+        await configWriter(MODEL_DB.STAGES, props);
 
         // write project files after creation so
-        // the sockets db lookup can happen properly
+        // the sockets config lookup can happen properly
         for(let i = 0; i < filesToWrite.length; i++) {
           const { path, contents } = filesToWrite[i];
           await fileWriter(path, contents);
@@ -115,7 +115,7 @@ const MutationType = new GraphQLObjectType({
       type: StageType,
       args: stageArgs,
       async resolve (_, props) {
-        const stage = await dbResolver(MODEL_DB.STAGES, props.id);
+        const stage = await configResolver(MODEL_DB.STAGES, props.id);
         const merged = { ...stage, ...props };
 
         const keys = Object.keys(props);
@@ -132,14 +132,14 @@ const MutationType = new GraphQLObjectType({
           }
         }
 
-        return dbWriter(MODEL_DB.STAGES, merged);
+        return configWriter(MODEL_DB.STAGES, merged);
       }
     },
     modifyStageContainer: {
       type: StageContainerType,
       args: stageContainerArgs,
       async resolve (_, props) {
-        const stageContainer = await dbResolver(MODEL_DB.STAGE_CONTAINERS, props.id);
+        const stageContainer = await configResolver(MODEL_DB.STAGE_CONTAINERS, props.id);
         const merged = { ...stageContainer, ...props };
 
         const keys = Object.keys(props);
@@ -158,7 +158,7 @@ const MutationType = new GraphQLObjectType({
 
         // TODO: on version change, we need to rename the project folder
 
-        return dbWriter(MODEL_DB.STAGE_CONTAINERS, merged);
+        return configWriter(MODEL_DB.STAGE_CONTAINERS, merged);
       }
     },
     createCodeFile: {
@@ -176,14 +176,14 @@ const MutationType = new GraphQLObjectType({
             props[key] = LOOKUP_KEY;
           }
         }
-        return dbWriter(MODEL_DB.CODE_FILES, props);
+        return configWriter(MODEL_DB.CODE_FILES, props);
       }
     },
     modifyCodeFile: {
       type: CodeFileType,
       args: codeFileMutationArgs,
       async resolve (_, props) {
-        const codeFile = await dbResolver(MODEL_DB.CODE_FILES, props.id);
+        const codeFile = await configResolver(MODEL_DB.CODE_FILES, props.id);
         const merged = { ...codeFile, ...props };
 
         const keys = Object.keys(props);
@@ -204,7 +204,7 @@ const MutationType = new GraphQLObjectType({
           }
         }
 
-        return dbWriter(MODEL_DB.CODE_FILES, merged);
+        return configWriter(MODEL_DB.CODE_FILES, merged);
       }
     }
   }

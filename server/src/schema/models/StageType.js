@@ -4,7 +4,7 @@ const {
   GraphQLString,
   GraphQLList,
 } = require('graphql');
-const { fileResolver, dbResolver } = require('../../utils/ioHelpers');
+const { fileResolver, configResolver } = require('../../utils/ioHelpers');
 const { MODEL_DB } = require('../../config');
 const findStageFilePath = require('../../projectHelpers/findStageFilePath');
 
@@ -18,7 +18,7 @@ const StageType = new GraphQLObjectType({
       type: new GraphQLList(require('./CodeFileType')),
       resolve: function({ codeFileIds }) {
         const ids = (codeFileIds || []);
-        return Promise.all(ids.map(id => dbResolver(MODEL_DB.CODE_FILES, id)));
+        return Promise.all(ids.map(id => configResolver(MODEL_DB.CODE_FILES, id)));
       }
     },
     details: {

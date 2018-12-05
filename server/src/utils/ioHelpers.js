@@ -1,11 +1,11 @@
-const { DB_DIR } = require('../config');
+const { CONFIG_DIR } = require('../config');
 const fs = require('fs-extra');
 const path = require('path');
 const sanitize = require("sanitize-filename");
 const camelize = require('../utils/camelize');
 
-const dbResolver = (collection, id) => {
-  const filePath = path.join(DB_DIR, collection, `${id}.json`);
+const configResolver = (collection, id) => {
+  const filePath = path.join(CONFIG_DIR, collection, `${id}.json`);
   return fileResolver(filePath).then(JSON.parse);
 }
 
@@ -18,9 +18,9 @@ const fileResolver = (filePath) => {
   })
 }
 
-const dbWriter = (collection, props) => {
+const configWriter = (collection, props) => {
   if(!props['id']) throw new Error(`id not defined for ${JSON.stringify(props)}`);
-  const filePath = path.join(DB_DIR, collection, `${props['id']}.json`);
+  const filePath = path.join(CONFIG_DIR, collection, `${props['id']}.json`);
   return fileWriter(filePath, prettifyJSON(props)).then(() => props);
 }
 
@@ -42,8 +42,8 @@ const fileRemove = (filePath) => {
   })
 }
 
-const dbReader = (collection) => {
-  const folder = path.join(DB_DIR, collection);
+const configReader = (collection) => {
+  const folder = path.join(CONFIG_DIR, collection);
   return new Promise((resolve, reject) => {
     fs.readdir(folder, (err, files) => {
       if(err) reject(err);
@@ -61,9 +61,9 @@ function prettifyJSON(json) {
 }
 
 module.exports = {
-  dbResolver,
-  dbReader,
-  dbWriter,
+  configResolver,
+  configReader,
+  configWriter,
   fileWriter,
   fileRemove,
   fileResolver,
