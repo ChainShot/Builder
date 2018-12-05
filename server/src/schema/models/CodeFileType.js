@@ -6,7 +6,7 @@ const {
 } = require('graphql');
 const { fileResolver, dbResolver } = require('../../utils/ioHelpers');
 const { MODEL_DB } = require('../../config');
-const findCodeFileBasePaths = require('../../projectHelpers/findCodeFilePaths');
+const findCodeFilePaths = require('../../projectHelpers/findCodeFilePaths');
 
 const CodeFileType = new GraphQLObjectType({
   name: 'CodeFile',

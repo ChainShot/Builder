@@ -18,7 +18,9 @@
     "gulp": "^3.9.1",
     "mongodb": "^3.1.10",
     "node-watch": "^0.5.9",
+    "route-parser": "0.0.5",
     "sanitize-filename": "^1.6.1",
+    "slash": "^2.0.0",
     "socket.io": "^2.1.1"
   },
   "devDependencies": {

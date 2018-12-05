@@ -7,7 +7,7 @@ const cors = require('cors');
 const {graphql} = require('graphql');
 const http = require('http');
 const io = require('socket.io');
-const updates = require('./updates');
+const watcher = require('./watcher');
 
 app.use(express.json());
 app.use(cors());
@@ -19,6 +19,7 @@ app.use('/graphql', graphqlHTTP({
 
 const server = http.createServer(app);
 
-updates(io(server));
+// watch for file updates and broadcast to listening clients
+watcher(io(server));
 
 server.listen(PORT, () => console.log(`Builder server @ ${PORT}!`))
