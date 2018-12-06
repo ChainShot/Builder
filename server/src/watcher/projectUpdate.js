@@ -1,4 +1,4 @@
-const { PROJECTS_DIR } = require('../../../config');
+const { PROJECTS_DIR } = require('../config');
 const stageContainerLookup = require('./stageContainerLookup');
 const path = require('path');
 

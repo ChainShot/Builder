@@ -5,7 +5,7 @@ const {
   GraphQLList,
 } = require('graphql');
 const { MODEL_DB } = require('../../config');
-const { dbReader, dbResolver } = require('../../utils/ioHelpers');
+const { configReader, configResolver } = require('../../utils/ioHelpers');
 
 const StageContainerGroupType = new GraphQLObjectType({
   name: 'StageContainerGroup',
@@ -19,8 +19,8 @@ const StageContainerGroupType = new GraphQLObjectType({
     stageContainers: {
       type: new GraphQLList(require('./StageContainerType')),
       resolve: async ({ id }) => {
-        const ids = await dbReader(MODEL_DB.STAGE_CONTAINERS);
-        const models = await Promise.all(ids.map(id => dbResolver(MODEL_DB.STAGE_CONTAINERS, id)));
+        const ids = await configReader(MODEL_DB.STAGE_CONTAINERS);
+        const models = await Promise.all(ids.map(id => configResolver(MODEL_DB.STAGE_CONTAINERS, id)));
         return models.filter(x => x.stageContainerGroupId === id);
       }
     },

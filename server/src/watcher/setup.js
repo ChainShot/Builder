@@ -1,9 +1,7 @@
-const { DB_DIR, PROJECTS_DIR } = require('../config');
+const { CONFIG_DIR, PROJECTS_DIR } = require('../config');
 const watch = require('node-watch');
-const dbMessage = require('./db/message');
-const dbSave = require('./db/save');
-const projectMessage = require('./project/message');
-const projectSave = require('./project/save');
+const configUpdate = require('./configUpdate');
+const projectUpdate = require('./projectUpdate');
 const slash = require('slash');
 
 function getClients(io) {
@@ -16,17 +14,17 @@ function getClients(io) {
 }
 
 const setup = (io) => {
-  watch(DB_DIR, { recursive: true }, async (evt, name) => {
+  watch(CONFIG_DIR, { recursive: true }, async (evt, name) => {
     // convert to forward slash here so we can use it with abandon
     const posixFileName = slash(name);
 
     // if these changes affect the project file paths, update them here
-    // await dbSave(posixFileName);
+    await configSave(posixFileName);
 
     const clients = await getClients(io);
     if(clients.length > 0) {
       // broadcast changes if anyones listening
-      const message = dbMessage(posixFileName);
+      const message = configMessage(posixFileName);
       io.sockets.emit('update', message);
     }
   });

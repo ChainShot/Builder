@@ -1,15 +1,12 @@
-const CodeFileType = require('../models/CodeFileType');
-const StageType = require('../models/StageType');
-const StageContainerGroupType = require('../models/StageContainerGroupType');
-const StageContainerType = require('../models/StageContainerType');
+const { CodeFileType, StageContainerGroupType, StageContainerType, StageType } = require('./models');
 const {
   GraphQLSchema,
   GraphQLObjectType,
   GraphQLString,
   GraphQLList,
 } = require('graphql');
-const { MODEL_DB } = require('../../config');
-const { dbResolver, dbReader } = require('../../utils/ioHelpers');
+const { MODEL_DB } = require('../config');
+const { configResolver, configReader } = require('../utils/ioHelpers');
 
 const findOneModel = (type, db, extraArgs = []) => ({
   type,
@@ -19,11 +16,11 @@ const findOneModel = (type, db, extraArgs = []) => ({
   },
   resolve: async (_, {id, ...props}) => {
     if(id) {
-      return dbResolver(db, id)
+      return configResolver(db, id)
     }
-    const ids = await dbReader(db);
+    const ids = await configReader(db);
     for(let i = 0; i < ids.length; i++) {
-      const model = await dbResolver(db, ids[i]);
+      const model = await configResolver(db, ids[i]);
       const keys = Object.keys(props);
       let matches = true;
       for(let j = 0; j < keys.length; j++) {
@@ -41,8 +38,8 @@ const findManyModel = (type, db) => ({
       filter: { type: GraphQLString }
     },
     resolve: async (_, { containsId, filter }) => {
-      const ids = containsId || await dbReader(db);
-      const models = await Promise.all(ids.map(id => dbResolver(db, id)));
+      const ids = containsId || await configReader(db);
+      const models = await Promise.all(ids.map(id => configResolver(db, id)));
       if(filter) {
         const parsed = JSON.parse(filter);
         return models.filter(model => {
