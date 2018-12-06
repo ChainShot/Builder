@@ -3,7 +3,12 @@ import CodeEditor from './CodeEditor';
 import apiMutation from '../../utils/api/mutation';
 import modifyCodeFile from '../../mutations/codeFile/modify';
 import { withRouter } from 'react-router-dom';
+import CodeFileConfig from './CodeFileConfig';
+import PropsRoute from '../PropsRoute';
 import './CodeFile.scss';
+
+const CodeFileEditor = ({ codeFile: { initialCode, mode }}) => 
+  <CodeEditor code={initialCode} mode={mode} onUpdate={(code) => this.updateCode(code)}/>
 
 class CodeFile extends Component {
   getCodeFile() {
@@ -15,10 +20,13 @@ class CodeFile extends Component {
     apiMutation(modifyCodeFile, { id, initialCode: code });
   }
   render() {
-    const { initialCode, mode } = this.getCodeFile();
+    const { match: { url } } = this.props;
+    const codeFile = this.getCodeFile();
+    const { initialCode, mode } = codeFile;
     return (
       <div className="code-file">
-        <CodeEditor code={initialCode} mode={mode} onUpdate={(code) => this.updateCode(code)}/>
+        <PropsRoute path={`${url}/`} exact component={CodeFileConfig} codeFile={codeFile} />
+        <PropsRoute path={`${url}/code`} component={CodeFileEditor} codeFile={codeFile} />
       </div>
     )
   }
