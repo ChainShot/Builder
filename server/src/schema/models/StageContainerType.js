@@ -6,6 +6,7 @@ const {
 } = require('graphql');
 const findStageContainerFilePath = require('../../projectHelpers/findStageContainerFilePath');
 const {fileResolver, configReader, configResolver} = require('../../utils/ioHelpers');
+const path = require('path');
 const { MODEL_DB } = require('../../config');
 
 const StageContainerType = new GraphQLObjectType({
@@ -31,7 +32,7 @@ const StageContainerType = new GraphQLObjectType({
     },
     intro: {
       type: GraphQLString,
-      resolve: async (props) => fileResolver(await findStageContainerFilePath(props, 'intro.md'))
+      resolve: async (props) => fileResolver(path.join(await findStageContainerFilePath(props), 'intro.md'))
     },
   })
 });
