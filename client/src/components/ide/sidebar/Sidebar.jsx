@@ -19,7 +19,7 @@ class Sidebar extends Component {
           <li className="intro">
             <NavLink to={`${basename}/intro`}>
               <SVG name="file"/>
-              <span>introduction.md</span>
+              <span>intro.md</span>
             </NavLink>
           </li>
         </ul>
