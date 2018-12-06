@@ -6,6 +6,8 @@ ul.stages-nav {
 
   > li {
     @extend %sidebar-list-item;
-    @extend %caret-list-item;
+    &.caret {
+      @extend %caret-list-item;
+    }
   }
 }
