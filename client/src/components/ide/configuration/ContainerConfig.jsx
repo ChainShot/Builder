@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
-import Switch from "react-switch";
+import StyledSwitch from './StyledSwitch';
 import apiMutation from '../../../utils/api/mutation';
 import selectTheme from '../../../utils/selectTheme';
 import './ContainerConfig.scss';
@@ -44,7 +44,7 @@ class ContainerConfig extends Component {
           <span>Version</span>
           <input value={version} onChange={({ target: { value }}) => this.handleChange('version', value)}/>
         </label>
-
+        
         <label>
           <span>Type</span>
           <Select
@@ -56,16 +56,10 @@ class ContainerConfig extends Component {
           />
         </label>
 
-        <label>
-          <span>Production Ready?</span>
-          <Switch
-            onChange={(val) => this.handleChange('productionReady', val)}
-            className="styled-switch"
-            onColor="#ff8d21"
-            checked={!!productionReady} />
-        </label>
-
-
+        <StyledSwitch 
+          label="Production Ready?"
+          onChange={(val) => this.handleChange('productionReady', val)}
+          checked={!!productionReady} />
       </div>
     )
   }

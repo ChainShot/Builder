@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import apiMutation from '../../../utils/api/mutation';
 import './CodeFileConfig.scss';
-import Switch from "react-switch";
+import StyledSwitch from './StyledSwitch';
 import selectTheme from '../../../utils/selectTheme';
 
 const mutation = `
@@ -68,20 +68,6 @@ class CodeFileConfig extends Component {
           label="Test File?"
           checked={visible} />
       </div>
-    )
-  }
-}
-
-class StyledSwitch extends Component {
-  render() {
-    const { label, ...props } = this.props;
-    return (
-      <label>
-        <span>{ label }</span>
-        <Switch {...props}
-          className="styled-switch"
-          onColor="#ff8d21" />
-      </label>
     )
   }
 }
