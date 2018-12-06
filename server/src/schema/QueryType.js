@@ -1,15 +1,12 @@
-const CodeFileType = require('../models/CodeFileType');
-const StageType = require('../models/StageType');
-const StageContainerGroupType = require('../models/StageContainerGroupType');
-const StageContainerType = require('../models/StageContainerType');
+const { CodeFileType, StageContainerGroupType, StageContainerType, StageType } = require('./models');
 const {
   GraphQLSchema,
   GraphQLObjectType,
   GraphQLString,
   GraphQLList,
 } = require('graphql');
-const { MODEL_DB } = require('../../config');
-const { configResolver, configReader } = require('../../utils/ioHelpers');
+const { MODEL_DB } = require('../config');
+const { configResolver, configReader } = require('../utils/ioHelpers');
 
 const findOneModel = (type, db, extraArgs = []) => ({
   type,

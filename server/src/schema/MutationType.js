@@ -4,10 +4,10 @@ const {
   GraphQLBoolean,
   GraphQLList,
 } = require('graphql');
-const { CodeFileType, StageContainerGroupType, StageContainerType, StageType } = require('../models');
-const { configWriter, fileWriter, configResolver, fileRemove } = require('../../utils/ioHelpers');
-const { findCodeFilePaths, findStageContainerFilePath, findStageFilePath } = require('../../projectHelpers');
-const { LOOKUP_KEY, MODEL_DB } = require('../../config');
+const { CodeFileType, StageContainerGroupType, StageContainerType, StageType } = require('./models');
+const { configWriter, fileWriter, configResolver, fileRemove } = require('../utils/ioHelpers');
+const { findCodeFilePaths, findStageContainerFilePath, findStageFilePath } = require('../projectHelpers');
+const { LOOKUP_KEY, MODEL_DB } = require('../config');
 const { ObjectID } = require('mongodb');
 
 const codeFileProjectProps = {

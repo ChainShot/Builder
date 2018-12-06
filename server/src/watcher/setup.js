@@ -1,9 +1,7 @@
 const { CONFIG_DIR, PROJECTS_DIR } = require('../config');
 const watch = require('node-watch');
-const configMessage = require('./config/message');
-const configSave = require('./config/save');
-const projectMessage = require('./project/message');
-const projectSave = require('./project/save');
+const configUpdate = require('./configUpdate');
+const projectUpdate = require('./projectUpdate');
 const slash = require('slash');
 
 function getClients(io) {

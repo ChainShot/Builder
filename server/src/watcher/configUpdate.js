@@ -1,5 +1,5 @@
-const camelize = require('../../../utils/camelize');
-const { CONFIG_DIR } = require('../../../config');
+const camelize = require('../utils/camelize');
+const { CONFIG_DIR } = require('../config');
 const path = require('path');
 
 const configUpdate = (name) => {
