@@ -12,8 +12,9 @@
 %sidebar-list-item {
   display: flex;
   flex-direction: column;
+  min-height: 30px;
 
-  > a {
+  > a, > .action {
     padding: 15px 20px 8px;
     display: flex;
     align-items: center;
@@ -22,8 +23,23 @@
       cursor: pointer;
     }
 
+    span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    svg {
+      width: 14px;
+      height: auto;
+      margin-right: 10px;
+    }
+
     &.active {
-      color: white;
+      color: $brand-active;
+      svg {
+        color: $brand-active;
+      }
     }
   }
 }

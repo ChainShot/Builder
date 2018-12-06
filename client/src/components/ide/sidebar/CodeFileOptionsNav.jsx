@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import SVG from '../../SVG';
 import './CodeFileOptionsNav.scss';
 
 class CodeFileOptionsNav extends Component {
@@ -8,8 +9,14 @@ class CodeFileOptionsNav extends Component {
     return (
       <ul className="code-file-options-nav">
         <li>
-          <NavLink to={`${basename}/code`}>Code</NavLink>
-          <NavLink to={`${basename}/config`}>Configuration</NavLink>
+          <NavLink to={`${basename}`} exact>
+            <SVG name="codefile"/>
+            <span>code</span>
+          </NavLink>
+          <NavLink to={`${basename}/config`}>
+            <SVG name="wrench"/>
+            <span>configuration</span>
+          </NavLink>
         </li>
       </ul>
     )

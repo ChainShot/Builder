@@ -3,9 +3,12 @@
 
 ul.stages-nav {
   @extend %sidebar-list;
+  padding-bottom: 100px;
 
   > li {
     @extend %sidebar-list-item;
-    @extend %caret-list-item;
+    &.caret {
+      @extend %caret-list-item;
+    }
   }
 }

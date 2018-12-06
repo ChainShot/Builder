@@ -1,5 +1,7 @@
 const apiUrl = 'http://localhost:3001/';
+const PUBLIC_URL = '/';
 
 export {
-  apiUrl
+  apiUrl,
+  PUBLIC_URL
 }

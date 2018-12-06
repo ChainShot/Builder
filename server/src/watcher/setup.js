@@ -21,7 +21,7 @@ const setup = (io) => {
     const clients = await getClients(io);
     if(clients.length > 0) {
       // broadcast changes if anyones listening
-      const message = configUpdate(posixFileName);
+      const message = await configUpdate(posixFileName);
       io.sockets.emit('update', message);
     }
   });

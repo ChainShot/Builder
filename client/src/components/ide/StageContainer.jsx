@@ -6,7 +6,7 @@ import Stage from './Stage';
 import './StageContainer.scss';
 import Intro from './Intro';
 import PropsRoute from '../PropsRoute';
-import Config from './Config';
+import ContainerConfig from './configuration/ContainerConfig';
 
 class StageContainer extends Component {
   state = {
@@ -32,9 +32,9 @@ class StageContainer extends Component {
     return (
       <div className="stage-container">
         <Sidebar stageContainer={stageContainer} basename={url}/>
-        <PropsRoute path="/content/:containerId/stage/:stageId" component={Stage} stageContainer={stageContainer}/>
-        <PropsRoute path="/content/:containerId/config" component={Config} stageContainer={stageContainer}/>
+        <PropsRoute path="/content/:containerId/" exact component={ContainerConfig} stageContainer={stageContainer}/>
         <PropsRoute path="/content/:containerId/intro" component={Intro} stageContainer={stageContainer}/>
+        <PropsRoute path="/content/:containerId/stage/:stageId" component={Stage} stageContainer={stageContainer}/>
       </div>
     )
   }
