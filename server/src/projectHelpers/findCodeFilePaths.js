@@ -2,7 +2,7 @@ const { configResolver, sanitizeFolderName } = require('../utils/ioHelpers');
 const { PROJECTS_DIR, MODEL_DB } = require('../config');
 const path = require('path');
 
-const codeFileLookup = ({ executablePath, codeStageIds, name }) => {
+const findCodeFilePaths = ({ executablePath, codeStageIds, name }) => {
   const ids = (codeStageIds || []);
   return Promise.all(ids.map(async (id) => {
     const stage = await configResolver(MODEL_DB.STAGES, id);
@@ -17,4 +17,4 @@ const codeFileLookup = ({ executablePath, codeStageIds, name }) => {
   }));
 }
 
-module.exports = codeFileLookup;
+module.exports = findCodeFilePaths;
