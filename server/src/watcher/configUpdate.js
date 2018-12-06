@@ -9,12 +9,12 @@ async function configUpdate(name) {
     return { modelType: 'stageContainer', id }
   }
   if(modelDB === MODEL_DB.STAGES) {
-    const contents = JSON.parse(await fileResolver(name));
-    return { modelType: 'stageContainer', id: contents.containerId }
+    const {containerId} = JSON.parse(await fileResolver(name));
+    return { modelType: 'stageContainer', id: containerId }
   }
   if(modelDB === MODEL_DB.CODE_FILES) {
-
-    return { modelType: 'stageContainer', id: null }
+    const {stageContainerId} = JSON.parse(await fileResolver(name));
+    return { modelType: 'stageContainer', id: stageContainerId }
   }
 }
 
