@@ -8,7 +8,7 @@ class CodeFileOptionsNav extends Component {
     return (
       <ul className="code-file-options-nav">
         <li>
-          <NavLink to={`${basename}/code`}>Code</NavLink>
+          <NavLink to={`${basename}/code`}>Initial Code</NavLink>
         </li>
       </ul>
     )
