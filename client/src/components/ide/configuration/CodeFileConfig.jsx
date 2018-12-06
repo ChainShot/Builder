@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import apiMutation from '../../../utils/api/mutation';
 import './CodeFileConfig.scss';
 import StyledSwitch from './StyledSwitch';
-import selectTheme from '../../../utils/selectTheme';
 
 const mutation = `
 mutation modifyCodeFile($id: String, $name: String) {
@@ -66,7 +65,7 @@ class CodeFileConfig extends Component {
         <StyledSwitch
           onChange={(x) => this.handleChange('testFixture', x)} 
           label="Test File?"
-          checked={visible} />
+          checked={testFixture} />
       </div>
     )
   }

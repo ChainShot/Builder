@@ -22,7 +22,6 @@ class CodeFile extends Component {
   render() {
     const { match: { url } } = this.props;
     const codeFile = this.getCodeFile();
-    const { initialCode, mode } = codeFile;
     return (
       <div className="code-file">
         <PropsRoute path={`${url}/config`} component={CodeFileConfig} codeFile={codeFile} />

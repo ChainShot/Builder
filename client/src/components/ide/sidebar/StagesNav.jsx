@@ -13,10 +13,10 @@ class StagesNav extends Component {
       <ul className="stages-nav">
         { stages.map(stage => <StageNav key={stage.id} stage={stage} {...this.props} /> ) }
         <li>
-          <a onClick={() => dialog.open(AddStage, { containerId: id })}>
+          <div className="action" onClick={() => dialog.open(AddStage, { containerId: id })}>
             <SVG name="add" />
             <span>Add a Stage…</span>
-          </a>
+          </div>
         </li>
       </ul>
     )

@@ -35,10 +35,10 @@ class CodeFilesNav extends Component {
         </li>
         { codeFiles.map(cf => <CodeFileNav key={cf.id} codeFile={cf} {...this.props} />) }
         <li>
-          <a> 
+          <div className="action"> 
             <SVG name="file-plus"/>
             <span>add code file…</span>
-          </a>
+          </div>
         </li>
       </ul>
     )
