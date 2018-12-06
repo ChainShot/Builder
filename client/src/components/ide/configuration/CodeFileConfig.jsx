@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import apiMutation from '../../utils/api/mutation';
+import apiMutation from '../../../utils/api/mutation';
 import './CodeFileConfig.scss';
 import Switch from "react-switch";
-import selectTheme from '../../utils/selectTheme';
+import selectTheme from '../../../utils/selectTheme';
 
 const mutation = `
 mutation modifyCodeFile($id: String, $name: String) {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import apiMutation from '../../utils/api/mutation';
+import apiMutation from '../../../utils/api/mutation';
 import './ContainerConfig.scss';
 
 const mutation = `

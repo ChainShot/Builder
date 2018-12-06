@@ -3,7 +3,7 @@ import CodeEditor from './CodeEditor';
 import apiMutation from '../../utils/api/mutation';
 import modifyCodeFile from '../../mutations/codeFile/modify';
 import { withRouter } from 'react-router-dom';
-import CodeFileConfig from './CodeFileConfig';
+import CodeFileConfig from './configuration/CodeFileConfig';
 import PropsRoute from '../PropsRoute';
 import './CodeFile.scss';
 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 import Switch from "react-switch";
-import apiMutation from '../../utils/api/mutation';
-import selectTheme from '../../utils/selectTheme';
+import apiMutation from '../../../utils/api/mutation';
+import selectTheme from '../../../utils/selectTheme';
 import './ContainerConfig.scss';
 
 const typeOptions = [

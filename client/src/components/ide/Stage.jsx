@@ -6,7 +6,7 @@ import Task from './Task';
 import Validations from './Validations';
 import { withRouter } from 'react-router-dom';
 import PropsRoute from '../PropsRoute';
-import StageConfig from './StageConfig';
+import StageConfig from './configuration/StageConfig';
 
 class Stage extends Component {
   render() {

@@ -6,7 +6,7 @@ import Stage from './Stage';
 import './StageContainer.scss';
 import Intro from './Intro';
 import PropsRoute from '../PropsRoute';
-import ContainerConfig from './ContainerConfig';
+import ContainerConfig from './configuration/ContainerConfig';
 
 class StageContainer extends Component {
   state = {
