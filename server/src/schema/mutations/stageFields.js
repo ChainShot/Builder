@@ -4,6 +4,7 @@ const { configWriter, fileWriter, configResolver, fileRemove } = require('../../
 const { LOOKUP_KEY, MODEL_DB } = require('../../config');
 const { ObjectID } = require('mongodb');
 const path = require('path');
+const fs = require('fs-extra');
 const {
   GraphQLString,
 } = require('graphql');
@@ -62,18 +63,20 @@ module.exports = {
       const stage = await configResolver(MODEL_DB.STAGES, props.id);
       const merged = { ...stage, ...props };
 
+      const newBasePath = await findStageFilePath(merged);
+      const previousBasePath = await findStageFilePath(stage);
+
+      // if the title has changed, update the folder name
+      if(props.title) {
+        fs.rename(previousBasePath, newBasePath)
+      }
+
       const keys = Object.keys(props);
       for(let i = 0; i < keys.length; i++) {
         const key = keys[i];
         if(stageProjectPropNames[key]) {
-          // remove the previous path (TODO: check and only do if changed)
-          const previousBasePath = await findStageFilePath(stage);
-          const previousPath = path.join(previousBasePath, stageProjectPropNames[key]);
-          await fileRemove(previousPath);
-          // add the new path
-          const newBasePath = await findStageFilePath(merged);
-          const newPath = path.join(newBasePath, stageProjectPropNames[key]);
-          await fileWriter(newPath, merged[key]);
+          const filePath = path.join(newBasePath, stageProjectPropNames[key]);
+          await fileWriter(filePath, merged[key]);
           merged[key] = LOOKUP_KEY;
         }
       }

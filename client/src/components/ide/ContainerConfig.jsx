@@ -3,7 +3,7 @@ import Select from 'react-select';
 import Switch from "react-switch";
 import apiMutation from '../../utils/api/mutation';
 import selectTheme from '../../utils/selectTheme';
-import './Config.scss';
+import './ContainerConfig.scss';
 
 const typeOptions = [
   { label: 'Challenge', value: 'Challenge' },
@@ -21,7 +21,7 @@ mutation modifyStageContainer($id: String, $version: String, $type: String) {
 }
 `
 
-class Config extends Component {
+class ContainerConfig extends Component {
   constructor(props) {
     super(props);
     const { type, version, productionReady } = props.stageContainer;
@@ -71,4 +71,4 @@ class Config extends Component {
   }
 }
 
-export default Config;
+export default ContainerConfig;
