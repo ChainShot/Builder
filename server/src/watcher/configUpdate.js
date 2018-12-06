@@ -1,4 +1,3 @@
-const camelize = require('../utils/camelize');
 const { CONFIG_DIR, MODEL_DB } = require('../config');
 const { fileResolver } = require('../utils/ioHelpers');
 const path = require('path');

@@ -21,10 +21,17 @@ mutation modifyStage($id: String, $title: String) {
 `
 
 class StageConfig extends Component {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { title, id } = nextProps.stage;
+    if(id !== prevState.id) {
+       return { title, id };
+    }
+    return prevState;
+  }
   constructor(props) {
     super(props);
-    const { title } = props.stage;
-    this.state = { title }
+    const { title, id } = props.stage;
+    this.state = { title, id }
   }
   handleChange(prop, value) {
     this.setState({ [prop]: value });
@@ -34,7 +41,7 @@ class StageConfig extends Component {
   render() {
     const { title } = this.state;
     return (
-      <div className="config">
+      <div className="config" ref="container">
         <label>
           <span>Title</span>
           <input value={title} onChange={({ target: { value }}) => this.handleChange('title', value)}/>
