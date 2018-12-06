@@ -18,13 +18,10 @@ const setup = (io) => {
     // convert to forward slash here so we can use it with abandon
     const posixFileName = slash(name);
 
-    // if these changes affect the project file paths, update them here
-    await configSave(posixFileName);
-
     const clients = await getClients(io);
     if(clients.length > 0) {
       // broadcast changes if anyones listening
-      const message = configMessage(posixFileName);
+      const message = configUpdate(posixFileName);
       io.sockets.emit('update', message);
     }
   });
@@ -33,14 +30,11 @@ const setup = (io) => {
     // convert to forward slash here so we can use it with abandon
     const posixFileName = slash(name);
 
-    // if these changes need to be saved to other files, handle it here
-    await projectSave(posixFileName);
-
     const clients = await getClients(io);
     if(clients.length > 0) {
       // broadcast changes if anyones listening
       try {
-        const message = await projectMessage(posixFileName);
+        const message = await projectUpdate(posixFileName);
         io.sockets.emit('update', message);
       }
       catch(ex) {
