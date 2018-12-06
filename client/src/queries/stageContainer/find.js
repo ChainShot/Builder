@@ -15,6 +15,7 @@ query findStageContainer($id: String) {
       id
       title
       details
+      codeFileIds
       task
       abiValidations
       codeFiles {
@@ -29,6 +30,7 @@ query findStageContainer($id: String) {
         testFixture
         visible
         initialCode
+        codeStageIds
       }
     }
 	}

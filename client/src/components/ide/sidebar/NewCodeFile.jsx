@@ -26,9 +26,9 @@ class NewCodeFile extends Component {
   render() {
     const { name } = this.state;
     return (
-      <div className="body">
+      <React.Fragment>
         <label>
-          Name
+          <span>Name</span>
           <input value={name} onChange={(...args) => this.handleChange('name', ...args)}/>
         </label>
 
@@ -37,7 +37,7 @@ class NewCodeFile extends Component {
             Add New Code File
           </div>
         </div>
-      </div>
+      </React.Fragment>
     )
   }
 }

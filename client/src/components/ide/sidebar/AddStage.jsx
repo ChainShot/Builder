@@ -35,7 +35,7 @@ class AddStage extends Component {
       <Dialog title="New Stage" className="add-stage">
         <form onSubmit={this.onSubmit}>
           <label>
-            Name
+            <span>Title</span>
             <input value={title} onChange={(...args) => this.handleChange('title', ...args)}/>
           </label>
           <div className="actions">

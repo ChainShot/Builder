@@ -1,22 +1,6 @@
 @import '../../../shared/variables';
 
 .add-codefile {
-  label {
-    display: block;
-    text-transform: uppercase;
-    font-size: .8em;
-    input {
-      font-size: 1.2em;
-      padding: 3px;
-      color: white;
-      outline-color: $brand-active;
-      outline-width: 1px;
-      display: block;
-      border: none;
-      background-color: $bg-container;
-    }
-  }
-
   .actions {
     display: flex;
     margin-top: 20px;
@@ -29,5 +13,9 @@
         border-color: $brand-active;
       }
     }
+  }
+
+  .content-body {
+    margin-top: 20px;
   }
 }
