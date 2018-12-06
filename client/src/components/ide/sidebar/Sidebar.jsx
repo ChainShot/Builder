@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import StagesNav from './StagesNav';
 import './Sidebar.scss';
+import SVG from '../../SVG';
 
 class Sidebar extends Component {
   render() {
@@ -10,13 +11,15 @@ class Sidebar extends Component {
       <div className="stage-container-sidebar">
         <ul className="top-options">
           <li className="title">
-            <NavLink to={`${basename}/config`}>
-              { title }: { version }
+            <NavLink to={`${basename}`} exact>
+              <SVG name="wrench"/>
+              <span>{ title }: { version }</span>
             </NavLink>
           </li>
           <li className="intro">
             <NavLink to={`${basename}/intro`}>
-              Introduction
+              <SVG name="file"/>
+              <span>introduction.md</span>
             </NavLink>
           </li>
         </ul>

@@ -7,8 +7,8 @@ import CodeFileConfig from './configuration/CodeFileConfig';
 import PropsRoute from '../PropsRoute';
 import './CodeFile.scss';
 
-const CodeFileEditor = ({ codeFile: { initialCode, mode }}) => 
-  <CodeEditor code={initialCode} mode={mode} onUpdate={(code) => this.updateCode(code)}/>
+const CodeFileEditor = ({ codeFile: { initialCode, mode }, ...props}) => 
+  <CodeEditor code={initialCode} mode={mode} {...props}/>
 
 class CodeFile extends Component {
   getCodeFile() {
@@ -25,8 +25,8 @@ class CodeFile extends Component {
     const { initialCode, mode } = codeFile;
     return (
       <div className="code-file">
-        <PropsRoute path={`${url}/`} exact component={CodeFileConfig} codeFile={codeFile} />
-        <PropsRoute path={`${url}/code`} component={CodeFileEditor} codeFile={codeFile} />
+        <PropsRoute path={`${url}/config`} component={CodeFileConfig} codeFile={codeFile} />
+        <PropsRoute path={`${url}/`} exact component={CodeFileEditor} codeFile={codeFile} onUpdate={(code) => this.updateCode(code)}/>
       </div>
     )
   }

@@ -22,8 +22,23 @@
       cursor: pointer;
     }
 
+    span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    svg {
+      width: 14px;
+      height: auto;
+      margin-right: 10px;
+    }
+
     &.active {
-      color: white;
+      color: $brand-active;
+      svg {
+        color: $brand-active;
+      }
     }
   }
 }
