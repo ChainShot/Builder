@@ -3,11 +3,25 @@ import apiMutation from '../../../utils/api/mutation';
 import './CodeFileConfig.scss';
 import StyledSwitch from './StyledSwitch';
 
+const variables = [
+  ['id', 'String'],
+  ['name', 'String'],
+  ['executablePath', 'String'],
+  ['readOnly', 'Boolean'],
+  ['hasProgress', 'Boolean'],
+  ['executable', 'Boolean'],
+  ['testFixture', 'Boolean'],
+  ['visible', 'Boolean'],
+]
+
+const args = variables.map(([prop, type]) => `$${prop}: ${type}`).join(', ');
+const mapping = variables.map(([prop, type]) => `${prop}: $${prop}`).join(', ');
+const returns = variables.map(([prop]) => `${prop}`).join('\n    ');
+
 const mutation = `
-mutation modifyCodeFile($id: String, $name: String) {
-  modifyCodeFile(id: $id, title: $name) {
-    id
-    name
+mutation modifyCodeFile(${args}) {
+  modifyCodeFile(${mapping}) {
+    ${returns}
   }
 }
 `

@@ -13,7 +13,8 @@ async function configUpdate(name) {
     return { modelType: 'stageContainer', id: contents.containerId }
   }
   if(modelDB === MODEL_DB.CODE_FILES) {
-    // TBD
+
+    return { modelType: 'stageContainer', id: null }
   }
 }
 
