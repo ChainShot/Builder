@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { NavLink, Route } from 'react-router-dom';
 import CodeFileOptionsNav from './CodeFileOptionsNav';
 import './CodeFilesNav.scss';
+import * as dialog from '../../../utils/dialog';
+import AddCodeFile from './AddCodeFile';
 import SVG from '../../SVG';
 
 class CodeFilesNav extends Component {
   render() {
-    const { basename, stage: { codeFiles }} = this.props;
+    const { basename, stage: { id, codeFiles }, stageContainer } = this.props;
     return (
       <ul className="code-files-nav">
         <li>
@@ -35,7 +37,7 @@ class CodeFilesNav extends Component {
         </li>
         { codeFiles.map(cf => <CodeFileNav key={cf.id} codeFile={cf} {...this.props} />) }
         <li>
-          <div className="action"> 
+          <div className="action" onClick={() => dialog.open(AddCodeFile, { containerId: stageContainer.id, stageId: id })}>
             <SVG name="file-plus"/>
             <span>add code file…</span>
           </div>

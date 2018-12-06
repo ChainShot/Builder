@@ -32,12 +32,12 @@ class StageConfig extends Component {
   render() {
     const { title } = this.state;
     return (
-      <div className="config" ref="container">
+      <form className="config" ref="container">
         <label>
           <span>Title</span>
           <input value={title} onChange={({ target: { value }}) => this.handleChange('title', value)}/>
         </label>
-      </div>
+      </form>
     )
   }
 }
