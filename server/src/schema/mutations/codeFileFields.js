@@ -2,6 +2,7 @@ const { findCodeFilePaths } = require('../../projectHelpers');
 const { CodeFileType } = require('../models');
 const { configWriter, fileWriter, configResolver, fileRemove } = require('../../utils/ioHelpers');
 const { LOOKUP_KEY, MODEL_DB } = require('../../config');
+const fs = require('fs-extra');
 const {
   GraphQLString,
   GraphQLBoolean,
@@ -35,7 +36,7 @@ module.exports = {
       const keys = Object.keys(props);
       for(let i = 0; i < keys.length; i++) {
         const key = keys[i];
-        if(codeFileProjectProps[key]) {
+        if(cfProjectPropNames[key]) {
           const paths = await findCodeFilePaths(codeFile);
           await Promise.all(paths.map(async (path) => {
             return await fileWriter(path, props[key]);
@@ -53,18 +54,24 @@ module.exports = {
       const codeFile = await configResolver(MODEL_DB.CODE_FILES, props.id);
       const merged = { ...codeFile, ...props };
 
+      const newPaths = await findCodeFilePaths(merged);
+      const previousPaths = await findCodeFilePaths(codeFile);
+
+      // if the executablePath has changed, update the file paths
+      if(props.executablePath) {
+        for(let i = 0; i < previousPaths.length; i++) {
+          const newPath = newPaths[i];
+          const previousPath = previousPaths[i];
+          fs.rename(previousPath, newPath);
+        }
+      }
+
       const keys = Object.keys(props);
       for(let i = 0; i < keys.length; i++) {
         const key = keys[i];
-        if(codeFileProjectProps[key]) {
-          // remove the previous path (TODO: check and only do if not in new paths)
-          const previousPaths = await findCodeFilePaths(codeFile);
-          await Promise.all(previousPaths.map(async (basePath) => {
-            return await fileRemove(path);
-          }));
-          // add the new path
+        if(cfProjectPropNames[key]) {
           const paths = await findCodeFilePaths(merged);
-          await Promise.all(paths.map(async (path) => {
+          await Promise.all(newPaths.map(async (path) => {
             return await fileWriter(path, merged[key]);
           }));
           merged[key] = LOOKUP_KEY;
