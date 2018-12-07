@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import CodeEditor from './CodeEditor';
+import CodeEditor from '../CodeEditor';
 import ReactMarkdown from 'react-markdown';
-import apiMutation from '../../utils/api/mutation';
+import apiMutation from '../../../utils/api/mutation';
 import './MarkdownEdit.scss';
 
 class MarkdownEdit extends Component {

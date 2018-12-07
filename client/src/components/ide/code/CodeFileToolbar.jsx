@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './CodeFileToolbar.scss';
 import Output from './Output';
-import SVG from '../SVG';
+import SVG from '../../SVG';
 
 class CodeFileToolbar extends Component {
   state = {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './Stage.scss';
 import CodeFile from './CodeFile';
-import Details from './Details';
-import Task from './Task';
+import Details from './markdown/Details';
+import Task from './markdown/Task';
 import Validations from './Validations';
 import { withRouter } from 'react-router-dom';
 import PropsRoute from '../PropsRoute';

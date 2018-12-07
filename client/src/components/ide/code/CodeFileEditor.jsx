@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CodeEditor from './CodeEditor';
+import CodeEditor from '../CodeEditor';
 import CodeFileToolbar from './CodeFileToolbar';
 import './CodeFileEditor.scss';
 
