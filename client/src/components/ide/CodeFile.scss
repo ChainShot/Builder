@@ -1,4 +1,7 @@
+@import '../../shared/variables';
+
 .code-file {
   flex-grow: 1;
   height: 100%;
+  max-width: calc(100vw - #{$sidebar-width});
 }

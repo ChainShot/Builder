@@ -36,6 +36,16 @@ class CodeEditor extends Component {
     }, 1000);
     editor.onDidChangeModelContent(debouncedUpdate);
     this.editor = editor;
+
+    window.addEventListener("resize", this.updateDimensions.bind(this));
+  }
+
+  updateDimensions() {
+    this.editor.layout();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateDimensions.bind(this));
   }
 
   componentDidUpdate(prevProps) {
@@ -43,13 +53,13 @@ class CodeEditor extends Component {
       monaco.editor.setModelLanguage(this.editor.getModel(), this.props.mode);
     }
     if(prevProps.code !== this.props.code) {
-      // if the editor has focus, dont change the content 
-      // the idea here is we'll accept socket changes from a new tab, window or local IDE 
-      // since were concerned only with changes from one person editing the content 
-      // they should not be able to mantain focus on multiple editors at once 
+      // if the editor has focus, dont change the content
+      // the idea here is we'll accept socket changes from a new tab, window or local IDE
+      // since were concerned only with changes from one person editing the content
+      // they should not be able to mantain focus on multiple editors at once
       // (there is a small latency period where they can switch quickly and this will reject changes)
       if(!this.editor.hasWidgetFocus()) {
-        this.editor.setValue(this.props.code);  
+        this.editor.setValue(this.props.code);
       }
     }
   }

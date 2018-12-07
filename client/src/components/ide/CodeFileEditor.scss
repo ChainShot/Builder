@@ -1,0 +1,12 @@
+.code-file-editor {
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .test  {
+    flex-grow: 1;
+    display: flex;
+    overflow: hidden;
+  }
+}

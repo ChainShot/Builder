@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import CodeEditor from './CodeEditor';
 import apiMutation from '../../utils/api/mutation';
 import modifyCodeFile from '../../mutations/codeFile/modify';
 import { withRouter } from 'react-router-dom';
 import CodeFileConfig from './configuration/CodeFileConfig';
+import CodeFileEditor from './CodeFileEditor';
 import PropsRoute from '../PropsRoute';
 import './CodeFile.scss';
-
-const CodeFileEditor = ({ codeFile: { initialCode, mode }, ...props}) =>
-  <CodeEditor code={initialCode} mode={mode} {...props}/>
 
 class CodeFile extends Component {
   getCodeFile() {
