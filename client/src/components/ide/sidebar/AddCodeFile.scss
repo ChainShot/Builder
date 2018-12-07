@@ -1,6 +1,6 @@
 @import '../../../shared/variables';
 
-.add-stage {
+.add-codefile {
   .actions {
     display: flex;
     margin-top: 20px;
@@ -13,5 +13,9 @@
         border-color: $brand-active;
       }
     }
+  }
+
+  .content-body {
+    margin-top: 20px;
   }
 }

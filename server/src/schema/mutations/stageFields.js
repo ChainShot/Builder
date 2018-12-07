@@ -6,12 +6,14 @@ const { ObjectID } = require('mongodb');
 const path = require('path');
 const fs = require('fs-extra');
 const {
+  GraphQLList,
   GraphQLString,
 } = require('graphql');
 
 const stageArgs = {
   id: { type: GraphQLString },
   containerId: { type: GraphQLString },
+  codeFileIds: { type: new GraphQLList(GraphQLString) },
   title: { type: GraphQLString },
   abiValidations: { type: GraphQLString },
   task: { type: GraphQLString },

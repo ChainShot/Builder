@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import apiMutation from '../../../utils/api/mutation';
 import './CodeFileConfig.scss';
-import StyledSwitch from './StyledSwitch';
+import StyledSwitch from '../../forms/StyledSwitch';
+import SVG from '../../SVG';
 
 const variables = [
   ['id', 'String'],
@@ -46,7 +47,7 @@ class CodeFileConfig extends Component {
   render() {
     const { name, executablePath, readOnly, hasProgress, executable, testFixture, visible } = this.state;
     return (
-      <div className="config" ref="container">
+      <form className="config" ref="container">
         <label>
           <span>Name</span>
           <input value={name} onChange={({ target: { value }}) => this.handleChange('name', value)}/>
@@ -57,30 +58,35 @@ class CodeFileConfig extends Component {
         </label>
 
         <StyledSwitch
-          onChange={(x) => this.handleChange('visible', x)} 
+          onChange={(x) => this.handleChange('visible', x)}
           label="Visible to Users?"
           checked={visible} />
 
         <StyledSwitch
-          onChange={(x) => this.handleChange('executable', x)} 
+          onChange={(x) => this.handleChange('executable', x)}
           label="Executable?"
           checked={executable} />
 
         <StyledSwitch
-          onChange={(x) => this.handleChange('hasProgress', x)} 
+          onChange={(x) => this.handleChange('hasProgress', x)}
           label="Mantain User Progress?"
           checked={hasProgress} />
 
         <StyledSwitch
-          onChange={(x) => this.handleChange('readOnly', x)} 
+          onChange={(x) => this.handleChange('readOnly', x)}
           label="Read Only?"
           checked={readOnly} />
 
         <StyledSwitch
-          onChange={(x) => this.handleChange('testFixture', x)} 
+          onChange={(x) => this.handleChange('testFixture', x)}
           label="Test File?"
           checked={testFixture} />
-      </div>
+
+        <div class="btn btn-primary">
+          <SVG name="trash" />
+          Destroy { name }
+        </div>
+      </form>
     )
   }
 }

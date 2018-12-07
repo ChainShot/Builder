@@ -13,7 +13,7 @@ const findCodeFilePaths = ({ executablePath, codeStageIds, name }) => {
       sanitizeFolderName(scg.title),
       sanitizeFolderName(sc.version),
       sanitizeFolderName(stage.title),
-      executablePath);
+      executablePath || "");
   }));
 }
 

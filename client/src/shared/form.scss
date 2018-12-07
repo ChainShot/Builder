@@ -1,0 +1,29 @@
+form {
+  display: flex;
+  flex-direction: column;
+  
+  label {
+    margin: 10px 0;
+    > span {
+      text-transform: uppercase;
+      font-size: .8em;
+      display: block;
+      margin-bottom: 2px;
+    }
+  }
+
+  input {
+    font-size: 1em;
+    padding: 10px;
+    color: white;
+    outline-color: $brand-active;
+    outline-width: 1px;
+    display: block;
+    border: 1px solid $border-color;
+    background-color: black;
+  }
+
+  .styled-switch {
+    margin-top: 5px;
+  }
+}

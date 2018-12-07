@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import Select from 'react-select';
-import StyledSwitch from './StyledSwitch';
+import StyledSwitch from '../../forms/StyledSwitch';
+import StyledSelect from '../../forms/StyledSelect';
 import apiMutation from '../../../utils/api/mutation';
-import selectTheme from '../../../utils/selectTheme';
 import './ContainerConfig.scss';
 
 const typeOptions = [
@@ -39,28 +38,23 @@ class ContainerConfig extends Component {
   render() {
     const { type, version, productionReady } = this.state;
     return (
-      <div className="config">
+      <form className="config">
         <label>
           <span>Version</span>
           <input value={version} onChange={({ target: { value }}) => this.handleChange('version', value)}/>
         </label>
-        
-        <label>
-          <span>Type</span>
-          <Select
-            className="styled-select"
-            theme={selectTheme}
-            value={type}
-            onChange={(val) => this.handleChange("type", val)}
-            options={typeOptions}
-          />
-        </label>
 
-        <StyledSwitch 
+        <StyledSelect
+          label="Type"
+          onChange={(val) => this.handleChange("type", val)}
+          value={type}
+          options={typeOptions} />
+
+        <StyledSwitch
           label="Production Ready?"
           onChange={(val) => this.handleChange('productionReady', val)}
           checked={!!productionReady} />
-      </div>
+      </form>
     )
   }
 }

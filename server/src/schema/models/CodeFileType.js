@@ -18,6 +18,7 @@ const CodeFileType = new GraphQLObjectType({
     fileLocation: { type: GraphQLString },
     hasProgress: { type: GraphQLBoolean },
     mode: { type: GraphQLString },
+    stageContainerId: { type: GraphQLString },
     readOnly: { type: GraphQLBoolean },
     testFixture: { type: GraphQLBoolean },
     visible: { type: GraphQLBoolean },
