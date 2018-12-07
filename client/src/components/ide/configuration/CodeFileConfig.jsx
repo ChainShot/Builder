@@ -27,6 +27,14 @@ mutation modifyCodeFile(${args}) {
 }
 `
 
+const deleteMutation = `
+mutation deleteCodeFile($id: String) {
+  deleteCodeFile(id: $id) {
+    id
+  }
+}
+`
+
 class CodeFileConfig extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     const { id } = nextProps.codeFile;
@@ -43,6 +51,10 @@ class CodeFileConfig extends Component {
     this.setState({ [prop]: value });
     const { id } = this.props.codeFile;
     apiMutation(mutation, { [prop]: value, id });
+  }
+  destroy = () => {
+    const { id } = this.props.codeFile;
+    apiMutation(deleteMutation, { id });
   }
   render() {
     const { name, executablePath, readOnly, hasProgress, executable, testFixture, visible } = this.state;
@@ -82,7 +94,7 @@ class CodeFileConfig extends Component {
           label="Test File?"
           checked={testFixture} />
 
-        <div class="btn btn-primary">
+        <div class="btn btn-primary" onClick={this.destroy}>
           <SVG name="trash" />
           Destroy { name }
         </div>

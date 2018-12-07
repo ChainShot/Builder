@@ -5,6 +5,7 @@ const sanitize = require("sanitize-filename");
 const camelize = require('../utils/camelize');
 
 const configResolver = (collection, id) => {
+  if(!collection) throw new Error('Collection not provided to resolve!')
   const filePath = path.join(CONFIG_DIR, collection, `${id}.json`);
   return fileResolver(filePath).then(JSON.parse);
 }
@@ -15,10 +16,11 @@ const fileResolver = (filePath) => {
       if(err) reject(err);
       resolve(data && data.toString());
     });
-  })
+  });
 }
 
 const configWriter = (collection, props) => {
+  if(!collection) throw new Error('Collection not provided to write to!')
   if(!props['id']) throw new Error(`id not defined for ${JSON.stringify(props)}`);
   const filePath = path.join(CONFIG_DIR, collection, `${props['id']}.json`);
   return fileWriter(filePath, prettifyJSON(props)).then(() => props);
@@ -30,7 +32,13 @@ const fileWriter = (filePath, props) => {
       if(err) reject(err);
       resolve(props);
     });
-  })
+  });
+}
+
+const configRemove = (collection, id) => {
+  if(!collection) throw new Error('Collection not provided to remove!')
+  const filePath = path.join(CONFIG_DIR, collection, `${id}.json`);
+  return fileRemove(filePath);
 }
 
 const fileRemove = (filePath) => {
@@ -39,17 +47,18 @@ const fileRemove = (filePath) => {
       if(err) reject(err);
       resolve();
     });
-  })
+  });
 }
 
 const configReader = (collection) => {
+  if(!collection) throw new Error('Collection not provided to read!')
   const folder = path.join(CONFIG_DIR, collection);
   return new Promise((resolve, reject) => {
     fs.readdir(folder, (err, files) => {
       if(err) reject(err);
       resolve(files.map(x => x.split(".json")[0]));
     });
-  })
+  });
 }
 
 function sanitizeFolderName(name) {
@@ -64,6 +73,7 @@ module.exports = {
   configResolver,
   configReader,
   configWriter,
+  configRemove,
   fileWriter,
   fileRemove,
   fileResolver,

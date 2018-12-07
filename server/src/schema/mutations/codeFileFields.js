@@ -1,6 +1,12 @@
 const { findCodeFilePaths } = require('../../projectHelpers');
 const { CodeFileType } = require('../models');
-const { configWriter, fileWriter, configResolver, fileRemove } = require('../../utils/ioHelpers');
+const {
+  configWriter,
+  fileWriter,
+  configResolver,
+  fileRemove,
+  configRemove,
+} = require('../../utils/ioHelpers');
 const { LOOKUP_KEY, MODEL_DB } = require('../../config');
 const { ObjectID } = require('mongodb');
 const fs = require('fs-extra');
@@ -31,6 +37,29 @@ const codeFileMutationArgs = {
 }
 
 module.exports = {
+  deleteCodeFile: {
+    type: CodeFileType,
+    args: {
+      id: { type: GraphQLString },
+    },
+    async resolve(_, props) {
+      const codeFile = await configResolver(MODEL_DB.CODE_FILES, props.id);
+
+      const { codeStageIds } = codeFile;
+      for(let i = 0; i < codeStageIds.length; i++) {
+        const codeStage = await configResolver(MODEL_DB.STAGES, codeStageIds[i]);
+        const index = codeStage.codeFileIds.indexOf(props.id);
+        if(index >= 0) {
+          codeStage.codeFileIds.splice(index, 1);
+        }
+        await configWriter(MODEL_DB.STAGES, codeStage);
+      }
+
+      const paths = await findCodeFilePaths(codeFile);
+      await Promise.all(paths.map(fileRemove));
+      await configRemove(MODEL_DB.CODE_FILES, props.id);
+    }
+  },
   createCodeFile: {
     type: CodeFileType,
     args: codeFileMutationArgs,
