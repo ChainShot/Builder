@@ -3,21 +3,30 @@
 .code-file-toolbar {
   display: flex;
   flex-direction: column;
+  border-top: 1px solid $border-color;
+
   ul.actions {
     margin: 0;
-    padding: 10px;
-    border-top: 1px solid $border-color;
     background-color: $bg-container;
     display: flex;
     justify-content: flex-end;
 
     > li {
-      margin: 0 18px;
+      padding: 10px 20px;
       display: flex;
       svg {
         height: 14px;
         width: auto;
         margin-right: 9px;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: lighten($bg-darkest, 10);
+      }
+
+      &.active {
+        background-color: $bg-darkest;
       }
     }
   }

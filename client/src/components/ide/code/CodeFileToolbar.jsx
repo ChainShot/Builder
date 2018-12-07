@@ -18,20 +18,25 @@ class CodeFileToolbar extends Component {
     this.setState({ pane });
     window.requestAnimationFrame(() => window.dispatchEvent(new CustomEvent('resize')));
   }
+  classes(pane) {
+    return this.state.pane === pane ? 'active' : '';
+  }
   render() {
     return (
       <div className="code-file-toolbar">
+        { this.renderPane() }
         <ul className="actions">
-          <li onClick={() => this.changePane('compilation')}>
+          <li className={this.classes('compilation')}
+              onClick={() => this.changePane('compilation')}>
             <SVG name="code"/>
             Compilation
           </li>
-          <li onClick={() => this.changePane('output')}>
+          <li className={this.classes('output')}
+              onClick={() => this.changePane('output')}>
             <SVG name="play"/>
             Run
           </li>
         </ul>
-        { this.renderPane() }
       </div>
     )
   }

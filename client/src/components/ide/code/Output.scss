@@ -3,4 +3,11 @@
 .output {
   padding: 20px;
   background-color: $bg-darkest;
+
+  .key {
+    font-weight: 200;
+    margin-left: 5px;
+    font-style: italic;
+    color: darken($light-font, 30);
+  }
 }
