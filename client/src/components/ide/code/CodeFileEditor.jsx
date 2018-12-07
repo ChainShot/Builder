@@ -8,10 +8,10 @@ class CodeFileEditor extends Component {
       const { codeFile: { initialCode, mode }, ...props } = this.props;
       return (
         <div className="code-file-editor">
-          <div className="test">
+          <div className="editor-container">
             <CodeEditor code={initialCode} mode={mode} {...props}/>
           </div>
-          <CodeFileToolbar />
+          <CodeFileToolbar {...props} />
         </div>
       )
     }

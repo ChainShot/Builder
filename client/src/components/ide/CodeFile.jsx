@@ -19,11 +19,12 @@ class CodeFile extends Component {
   render() {
     const { match: { url } } = this.props;
     const codeFile = this.getCodeFile();
+    const { stage } = this.props;
     if(!codeFile) return null;
     return (
       <div className="code-file">
         <PropsRoute path={`${url}/config`} component={CodeFileConfig} codeFile={codeFile} />
-        <PropsRoute path={`${url}/`} exact component={CodeFileEditor} codeFile={codeFile} onUpdate={(code) => this.updateCode(code)}/>
+        <PropsRoute path={`${url}/`} exact component={CodeFileEditor} codeFile={codeFile} stage={stage} onUpdate={(code) => this.updateCode(code)}/>
       </div>
     )
   }

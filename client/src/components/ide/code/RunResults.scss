@@ -1,0 +1,101 @@
+@import '../../../shared/variables';
+
+.run-output {
+  width: 100%;
+  padding: 10px;
+}
+
+.run-results {
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+}
+
+.run-result-item__test-results {
+  margin-left: 2.5rem;
+}
+
+.result-type {
+  font-weight: normal;
+  margin: 3px 0;
+  font-size: 15px;
+  overflow: auto;
+}
+
+.result-type--tree {
+  svg {
+    fill: black;
+    margin-right: 8px;
+  }
+}
+
+.result-type--it {
+  svg {
+    height: 13px;
+    width: 13px;
+  }
+}
+
+.result-type--describe {
+  svg {
+    height: 15px;
+    width: 15px;
+  }
+}
+
+.result-type--log {
+  svg {
+    height: 13px;
+    width: 13px;
+    fill: black;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.result-type--passed, .result-type--failed {
+  display: flex;
+  svg {
+    height: 16px;
+    width: 16px;
+    margin-right: 5px;
+  }
+}
+
+.result-type--passed {
+  color: $success-light;
+  svg {
+    fill: $success-light;
+  }
+}
+
+.result-type--error {
+  border: 1px solid $danger-light;
+  background-color: $danger-dark;
+  color: $danger-light;
+  padding: 10px;
+  pre {
+    margin: 0;
+  }
+}
+
+.result-type--failed {
+  color: $danger-light;
+  svg {
+    fill: $danger-light;
+  }
+}
+
+.result-type--log {
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border: 1px solid $border-color;
+  position: relative;
+  margin-bottom: .5rem;
+
+  svg {
+    fill: white;
+  }
+}

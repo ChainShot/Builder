@@ -1,0 +1,16 @@
+@import '../../../shared/variables';
+
+.output-toolbar {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid $border-color;
+  background-color: $bg-main;
+
+  .tool {
+    padding: 6px;
+    svg {
+      height: 15px;
+      width: auto;
+    }
+  }
+}

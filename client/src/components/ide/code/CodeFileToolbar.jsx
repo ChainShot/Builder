@@ -9,8 +9,9 @@ class CodeFileToolbar extends Component {
   }
   renderPane() {
     const { pane } = this.state;
+    const { stage } = this.props;
     if(pane === 'output') {
-      return <Output />
+      return <Output stage={stage}/>
     }
     return null;
   }
@@ -29,12 +30,12 @@ class CodeFileToolbar extends Component {
           <li className={this.classes('compilation')}
               onClick={() => this.changePane('compilation')}>
             <SVG name="code"/>
-            Compilation
+            <div>Compilation</div>
           </li>
           <li className={this.classes('output')}
               onClick={() => this.changePane('output')}>
             <SVG name="play"/>
-            Run
+            <div>Run</div>
           </li>
         </ul>
       </div>
