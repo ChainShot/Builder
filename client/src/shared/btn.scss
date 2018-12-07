@@ -1,8 +1,15 @@
 .btn {
   cursor: pointer;
+  width: fit-content;
   padding: 7px 17px;
   text-align: center;
   font-size: 14px;
+  display: flex;
+  SVG {
+    height: 14px;
+    width: auto;
+    margin-right: 10px;
+  }
   &.disabled {
     color: $disabled;
     border: 1px solid $disabled;
@@ -19,12 +26,10 @@
     }
   }
   &.btn-primary {
-    color: $brand-active;
-    border: 1px solid $brand-active;
-    background-color: transparent;
+    border: 1px solid $border-color;
     &:hover {
-      background-color: $brand-active;
-      color: black;
+      cursor: pointer;
+      border-color: $brand-active;
     }
   }
 }

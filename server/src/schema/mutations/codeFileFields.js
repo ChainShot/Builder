@@ -2,6 +2,7 @@ const { findCodeFilePaths } = require('../../projectHelpers');
 const { CodeFileType } = require('../models');
 const { configWriter, fileWriter, configResolver, fileRemove } = require('../../utils/ioHelpers');
 const { LOOKUP_KEY, MODEL_DB } = require('../../config');
+const { ObjectID } = require('mongodb');
 const fs = require('fs-extra');
 const {
   GraphQLString,
@@ -24,6 +25,7 @@ const codeFileMutationArgs = {
   readOnly: { type: GraphQLBoolean },
   testFixture: { type: GraphQLBoolean },
   visible: { type: GraphQLBoolean },
+  stageContainerId: { type: GraphQLString },
   codeStageIds: { type: new GraphQLList(GraphQLString) },
   initialCode: { type: GraphQLString },
 }
@@ -33,11 +35,23 @@ module.exports = {
     type: CodeFileType,
     args: codeFileMutationArgs,
     async resolve (_, props) {
+      props.id = ObjectID().toString();
+      props.initialCode = props.initialCode || "";
+      props.executablePath = (props.executablePath || props.name);
+
+      const numStages = props.codeStageIds ? props.codeStageIds.length : 0;
+      for(let i = 0; i < numStages; i++) {
+        const id = props.codeStageIds[i];
+        const stage = await configResolver(MODEL_DB.STAGES, id);
+        stage.codeFileIds.push(props.id);
+        await configWriter(MODEL_DB.STAGES, stage);
+      }
+
       const keys = Object.keys(props);
       for(let i = 0; i < keys.length; i++) {
         const key = keys[i];
         if(cfProjectPropNames[key]) {
-          const paths = await findCodeFilePaths(codeFile);
+          const paths = await findCodeFilePaths(props);
           await Promise.all(paths.map(async (path) => {
             return await fileWriter(path, props[key]);
           }));

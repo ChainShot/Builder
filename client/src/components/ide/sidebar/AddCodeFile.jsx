@@ -24,9 +24,7 @@ class AddCodeFile extends Component {
             checked={existing}
             onChange={(x) => this.handleChange('existing', x)} />
 
-          <div className="content-body">
-            <BodyComponent stageContainer={stageContainer} stage={stage}/>
-          </div>
+          <BodyComponent stageContainer={stageContainer} stage={stage}/>
         </form>
       </Dialog>
     );

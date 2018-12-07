@@ -1,4 +1,7 @@
 form {
+  display: flex;
+  flex-direction: column;
+  
   label {
     margin: 10px 0;
     > span {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import apiMutation from '../../../utils/api/mutation';
 import './CodeFileConfig.scss';
 import StyledSwitch from '../../forms/StyledSwitch';
+import SVG from '../../SVG';
 
 const variables = [
   ['id', 'String'],
@@ -80,6 +81,11 @@ class CodeFileConfig extends Component {
           onChange={(x) => this.handleChange('testFixture', x)}
           label="Test File?"
           checked={testFixture} />
+
+        <div class="btn btn-primary">
+          <SVG name="trash" />
+          Destroy { name }
+        </div>
       </form>
     )
   }
