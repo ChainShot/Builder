@@ -2,11 +2,9 @@
 
 .output-message {
   width: 100%;
-  > p {
-    margin-top: 30px;
-    justify-content: center;
-    display: flex;
-  }
+  margin-top: 30px;
+  justify-content: center;
+  display: flex;
   svg {
     height: 14px;
     width: auto;

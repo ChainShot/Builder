@@ -29,7 +29,7 @@ class Output extends Component {
     const { running, output } = this.state;
     return (
       <div className="output">
-        <OutputToolbar hide={hide} runCode={this.runCode} cancelRun={this.cancelRun} />
+        <OutputToolbar hide={hide} runCode={this.runCode} cancelRun={this.cancelRun} running={running} />
         <OutputDisplay output={output} running={running} runCode={this.runCode} cancelRun={this.cancelRun} />
       </div>
     )

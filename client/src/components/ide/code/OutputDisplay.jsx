@@ -10,10 +10,8 @@ class OutputDisplay extends Component {
     if(running) {
       return (
         <div className="output-message">
-          <p>
-            Running your code... Click
-            <SVG name="cancel" onClick={cancelRun}/> to cancel
-          </p>
+          Running your code... Click
+          <SVG name="cancel" onClick={cancelRun}/> to cancel
         </div>
       )
     }
@@ -22,10 +20,8 @@ class OutputDisplay extends Component {
     }
     return (
       <div className="output-message">
-        <p>
-          No Output to Display. To run code click
-          <SVG name="play" onClick={runCode}/> or hit <span className="key">CMD + ENTER</span>
-        </p>
+        No Output to Display. To run code click
+        <SVG name="play" onClick={runCode}/> or hit <span className="key">CMD + ENTER</span>
       </div>
     )
   }

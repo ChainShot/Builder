@@ -1,0 +1,41 @@
+@import '../../../shared/variables';
+
+.compilation-message {
+  width: 100%;
+  margin-top: 30px;
+  justify-content: center;
+  display: flex;
+  svg {
+    height: 14px;
+    width: auto;
+    margin: 0 10px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.compilation-errors {
+  margin: 20px;
+  > p {
+    margin: 0;
+  }
+  > ul {
+    color: $light-font;
+    padding: 0;
+    > li {
+      margin: 20px 0;
+      padding: 10px 20px;
+      background-color: #1C202B;
+      overflow: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      > pre {
+        margin: 0;
+      }
+      &.error {
+        border: 1px solid $danger-muted;
+      }
+    }
+  }
+}

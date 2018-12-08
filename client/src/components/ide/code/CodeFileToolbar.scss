@@ -24,7 +24,7 @@
 
       &:hover {
         cursor: pointer;
-        background-color: lighten($bg-dark, 10);
+        background-color: lighten($bg-dark, 3);
       }
 
       &.active {

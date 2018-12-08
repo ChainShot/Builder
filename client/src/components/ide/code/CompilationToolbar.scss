@@ -1,6 +1,6 @@
 @import '../../../shared/variables';
 
-.output-toolbar {
+.compilation-toolbar {
   display: flex;
   flex-direction: column;
   background-color: $bg-dark;
@@ -17,6 +17,15 @@
 
     &:hover {
       cursor: pointer;
+      color: $brand-active;
+    }
+
+    &.off {
+      color: lighten($bg-dark, 10);
+    }
+
+    &.on {
+      color: $brand-active;
     }
 
     &.disabled {
