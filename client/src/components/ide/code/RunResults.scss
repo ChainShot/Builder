@@ -2,7 +2,7 @@
 
 .run-output {
   width: 100%;
-  padding: 10px;
+  padding: 5px 10px 0;
 }
 
 .run-results {
@@ -24,7 +24,7 @@
 
 .result-type--tree {
   svg {
-    fill: black;
+    fill: white;
     margin-right: 8px;
   }
 }
@@ -71,9 +71,8 @@
 }
 
 .result-type--error {
-  border: 1px solid $danger-light;
-  background-color: $danger-dark;
-  color: $danger-light;
+  background-color: $danger;
+  color: white;
   padding: 10px;
   pre {
     margin: 0;
@@ -81,9 +80,9 @@
 }
 
 .result-type--failed {
-  color: $danger-light;
+  color: $danger;
   svg {
-    fill: $danger-light;
+    fill: $danger;
   }
 }
 
