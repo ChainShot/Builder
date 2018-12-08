@@ -11,11 +11,12 @@ class CodeFileToolbar extends Component {
     const { pane } = this.state;
     const { stage } = this.props;
     if(pane === 'output') {
-      return <Output stage={stage}/>
+      return <Output stage={stage}
+                     hide={() => this.changePane('')}/>
     }
     return null;
   }
-  changePane(pane) {
+  changePane = (pane) => {
     this.setState({ pane });
     window.requestAnimationFrame(() => window.dispatchEvent(new CustomEvent('resize')));
   }
@@ -35,7 +36,7 @@ class CodeFileToolbar extends Component {
           <li className={this.classes('output')}
               onClick={() => this.changePane('output')}>
             <SVG name="play"/>
-            <div>Run</div>
+            <div>Output</div>
           </li>
         </ul>
       </div>

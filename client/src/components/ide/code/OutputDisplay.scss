@@ -10,7 +10,11 @@
   svg {
     height: 14px;
     width: auto;
-    margin: 0 5px;
+    margin: 0 10px;
+    &:hover {
+      color: $brand-active;
+      cursor: pointer;
+    }
   }
   .key {
     font-weight: 200;

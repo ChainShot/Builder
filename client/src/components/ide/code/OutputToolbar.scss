@@ -3,14 +3,25 @@
 .output-toolbar {
   display: flex;
   flex-direction: column;
-  border-right: 1px solid $border-color;
-  background-color: $bg-main;
+
+  background-color: $bg-dark;
 
   .tool {
-    padding: 6px;
+    padding: 10px;
+    align-self: center;
+
     svg {
       height: 15px;
       width: auto;
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: $brand-active;
+    }
+
+    &.end {
+      margin-top: auto;
     }
   }
 }
