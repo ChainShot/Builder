@@ -100,12 +100,11 @@ module.exports = {
       const newPaths = await findCodeFilePaths(merged);
       const previousPaths = await findCodeFilePaths(codeFile);
 
-      // if the executablePath has changed, update the file paths
-      if(props.executablePath) {
-        for(let i = 0; i < previousPaths.length; i++) {
-          const newPath = newPaths[i];
-          const previousPath = previousPaths[i];
-          fs.rename(previousPath, newPath);
+      for(let i = 0; i < previousPaths.length; i++) {
+        const newPath = newPaths[i];
+        const previousPath = previousPaths[i];
+        if(previousPath !== newPath) {
+            await fs.rename(previousPath, newPath);
         }
       }
 
@@ -113,7 +112,6 @@ module.exports = {
       for(let i = 0; i < keys.length; i++) {
         const key = keys[i];
         if(cfProjectPropNames[key]) {
-          const paths = await findCodeFilePaths(merged);
           await Promise.all(newPaths.map(async (path) => {
             return await fileWriter(path, merged[key]);
           }));
