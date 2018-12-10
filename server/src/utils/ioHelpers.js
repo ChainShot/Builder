@@ -13,7 +13,7 @@ const configResolver = (collection, id) => {
 const fileResolver = (filePath) => {
   return new Promise((resolve, reject) => {
     fs.readFile(filePath, (err, data) => {
-      if(err) reject(err);
+      if(err) return reject(err);
       resolve(data && data.toString());
     });
   });
@@ -29,7 +29,7 @@ const configWriter = (collection, props) => {
 const fileWriter = (filePath, props) => {
   return new Promise((resolve, reject) => {
     fs.outputFile(filePath, props, (err) => {
-      if(err) reject(err);
+      if(err) return reject(err);
       resolve(props);
     });
   });
@@ -44,7 +44,7 @@ const configRemove = (collection, id) => {
 const fileRemove = (filePath) => {
   return new Promise((resolve, reject) => {
     fs.unlink(filePath, (err) => {
-      if(err) reject(err);
+      if(err) return reject(err);
       resolve();
     });
   });
@@ -55,7 +55,7 @@ const configReader = (collection) => {
   const folder = path.join(CONFIG_DIR, collection);
   return new Promise((resolve, reject) => {
     fs.readdir(folder, (err, files) => {
-      if(err) reject(err);
+      if(err) return reject(err);
       resolve(files.map(x => x.split(".json")[0]));
     });
   });

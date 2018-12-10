@@ -1,5 +1,6 @@
 const CONFIG_DIR = '../../Content/config';
 const PROJECTS_DIR = '../../Content/projects';
+const INITIAL_CODE_DIR = 'setup';
 const PORT = 3001;
 const LOOKUP_KEY = '$$LOOKUP';
 const MODEL_DB = {
@@ -7,6 +8,7 @@ const MODEL_DB = {
   STAGE_CONTAINER_GROUPS: 'stageContainerGroups',
   STAGE_CONTAINERS: 'stageContainers',
   STAGES: 'stages',
+  SOLUTIONS: 'solutions',
 }
 
 module.exports = {
@@ -14,5 +16,6 @@ module.exports = {
   PROJECTS_DIR,
   PORT,
   LOOKUP_KEY,
+  INITIAL_CODE_DIR,
   MODEL_DB,
 }
