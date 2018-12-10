@@ -14,9 +14,8 @@ class CodeFile extends Component {
     return stage.codeFiles.find(x => x.id === codeFileId);
   }
   getSolution() {
-    const { stage } = this.props;
-    const codeFile = this.getCodeFile();
-    return stage.solutions.find(x => x.codeFileId = codeFile.id);
+    const { match: { params: { codeFileId } }, stage } = this.props;
+    return stage.solutions.find(x => x.codeFileId === codeFileId);
   }
   updateCode(code) {
     const { id } = this.getCodeFile();
