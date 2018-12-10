@@ -18,17 +18,26 @@ class Versions extends Component {
   render() {
     const { stageContainerGroup } = this.state;
     if(!stageContainerGroup) return null;
-    const { stageContainers } = stageContainerGroup;
+    const { stageContainers, title } = stageContainerGroup;
     return (
       <SelectLayout>
+        <h1> Pick an existing version for {title} or create a new one! </h1>
+        <p>
+          Content can have multiple versions to support different libraries
+          or languages. For instance, one lesson version might be Solidity while another
+          is Vyper. Or one might use ethers.js rather than web3.js.
+        </p>
         <div className="versions">
           {stageContainers.map(({ version, id }) => (
             <Link key={id} to={`/content/${id}/`}>
               <div className="version">
-                { version }
+                Select { version }
               </div>
             </Link>
           ))}
+          <div className="version">
+            Create a new Version
+          </div>
         </div>
       </SelectLayout>
     )

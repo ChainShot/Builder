@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import GroupContainer from './GroupContainer';
 import filterSCG from '../../queries/stageContainerGroup/filter';
 import './GroupList.scss';
-import SelectLayout from './SelectLayout';
 import { withRouter } from 'react-router-dom';
 import createSCG from '../../mutations/stageContainerGroup/create';
 import apiQuery from '../../utils/api/query';
@@ -28,18 +27,16 @@ class Blocks extends Component {
   render() {
     const { stageContainerGroups } = this.state;
     return (
-      <SelectLayout>
-        <div className="group-list">
-          <div className="stage-container-groups">
-            { stageContainerGroups.map(x => <GroupContainer key={x.id} {...x} />) }
-            <div className="container">
-              <h2>Create your Own!</h2>
-              <p>Build your own from scratch</p>
-              <div className="btn btn-primary" onClick={() => this.createNew()}>Create</div>
-            </div>
+      <div className="group-list">
+        <div className="stage-container-groups">
+          <div className="container">
+            <h2>Create New</h2>
+            <p>Build your own from scratch</p>
+            <div className="btn btn-primary" onClick={() => this.createNew()}>Create</div>
           </div>
+          { stageContainerGroups.map(x => <GroupContainer key={x.id} {...x} />) }
         </div>
-      </SelectLayout>
+      </div>
     );
   }
 }

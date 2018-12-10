@@ -19,5 +19,10 @@
     p {
       color: $light-font;
     }
+
+    &:hover {
+      cursor: pointer;
+      border: 1px solid $brand-active;
+    }
   }
 }
