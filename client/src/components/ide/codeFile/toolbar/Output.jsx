@@ -16,7 +16,14 @@ class Output extends Component {
   runCode = async () => {
     const { stage } = this.props;
     const { runIdx } = this.state;
-    const files = stage.codeFiles.map(({ id, initialCode }) => ({ id, contents: initialCode }));
+
+    const files = stage.codeFiles.map(({ id, initialCode, hasProgress }) => {
+      if(hasProgress) {
+        const solution = stage.solutions.find(x => x.codeFileId === id);
+        return { id, contents: solution.code }
+      }
+      return { id, contents: initialCode }
+    });
 
     this.setState({ running: true });
     const { data } = await runner.post(stage.id, {files});
@@ -25,7 +32,7 @@ class Output extends Component {
     }
   }
   render() {
-    const { hide, cancelRun } = this.props;
+    const { hide } = this.props;
     const { running, output } = this.state;
     return (
       <div className="output">

@@ -9,7 +9,7 @@ import SVG from '../../SVG';
 class CodeFilesNav extends Component {
   render() {
     const { basename, stage, stageContainer } = this.props;
-    const { id, codeFiles } = stage;
+    const { codeFiles } = stage;
     return (
       <ul className="code-files-nav">
         <li>

@@ -16,7 +16,7 @@ async function configUpdate(name) {
     const {stageContainerId} = JSON.parse(await fileResolver(name));
     return { modelType: 'stageContainer', id: stageContainerId }
   }
-  if(modelDB = MODEL_DB.SOLUTIONS) {
+  if(modelDB === MODEL_DB.SOLUTIONS) {
     const {stageId} = JSON.parse(await fileResolver(name));
     const {stageContainerId} = configResolver(MODEL_DB.STAGES, stageId);
     return { modelType: 'stageContainer', id: stageContainerId }
