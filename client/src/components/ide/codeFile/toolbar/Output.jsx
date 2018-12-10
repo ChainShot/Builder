@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Output.scss';
-import runner from '../../../utils/api/runner';
+import runner from '../../../../utils/api/runner';
 import OutputDisplay from './OutputDisplay';
 import OutputToolbar from './OutputToolbar';
 

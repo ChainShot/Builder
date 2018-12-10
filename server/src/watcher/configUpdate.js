@@ -1,5 +1,5 @@
 const { CONFIG_DIR, MODEL_DB } = require('../config');
-const { fileResolver } = require('../utils/ioHelpers');
+const { fileResolver, configResolver } = require('../utils/ioHelpers');
 const path = require('path');
 
 async function configUpdate(name) {
@@ -14,6 +14,11 @@ async function configUpdate(name) {
   }
   if(modelDB === MODEL_DB.CODE_FILES) {
     const {stageContainerId} = JSON.parse(await fileResolver(name));
+    return { modelType: 'stageContainer', id: stageContainerId }
+  }
+  if(modelDB = MODEL_DB.SOLUTIONS) {
+    const {stageId} = JSON.parse(await fileResolver(name));
+    const {stageContainerId} = configResolver(MODEL_DB.STAGES, stageId);
     return { modelType: 'stageContainer', id: stageContainerId }
   }
 }

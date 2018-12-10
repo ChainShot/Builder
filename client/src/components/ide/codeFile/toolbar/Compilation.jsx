@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Compilation.scss';
-import * as compilers from '../../../utils/api/compilers';
+import * as compilers from '../../../../utils/api/compilers';
 import CompilationDisplay from './CompilationDisplay';
 import CompilationToolbar from './CompilationToolbar';
 

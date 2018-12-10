@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import SVG from '../../SVG';
+import SVG from '../../../SVG';
 import './OutputToolbar.scss';
 
 class OutputToolbar extends Component {

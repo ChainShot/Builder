@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {RunOutput} from 'chainshot-runoutput';
-import SVG from '../../SVG';
+import SVG from '../../../SVG';
 import './RunResults.scss';
 import './OutputDisplay.scss';
 

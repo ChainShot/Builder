@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Stage.scss';
-import CodeFile from './CodeFile';
+import CodeFile from './codeFile/CodeFile';
 import Details from './markdown/Details';
 import Task from './markdown/Task';
 import Validations from './Validations';

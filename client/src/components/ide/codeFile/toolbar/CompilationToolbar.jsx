@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import SVG from '../../SVG';
+import SVG from '../../../SVG';
 import './CompilationToolbar.scss';
 
 class CompilationToolbar extends Component {

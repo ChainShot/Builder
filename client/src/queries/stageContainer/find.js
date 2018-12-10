@@ -20,6 +20,12 @@ query findStageContainer($id: String) {
       language
       languageVersion
       abiValidations
+      solutions {
+        id
+        codeFileId
+        stageId
+        code
+      }
       codeFiles {
         id
         name
