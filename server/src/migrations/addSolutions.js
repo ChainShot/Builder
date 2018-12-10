@@ -1,6 +1,7 @@
 const path = require('path');
-const { MODEL_DB, PROJECTS_DIR, INITIAL_CODE_DIR } = require('../config');
-const { configReader, fileWriter, fileResolver, configResolver, sanitizeFolderName } = require('../utils/ioHelpers');
+const { ObjectID } = require('mongodb');
+const { MODEL_DB, PROJECTS_DIR, INITIAL_CODE_DIR, LOOKUP_KEY } = require('../config');
+const { configReader, configWriter, fileWriter, fileResolver, configResolver, sanitizeFolderName } = require('../utils/ioHelpers');
 
 const findOldPaths = ({ executablePath, codeStageIds, name }) => {
   const ids = (codeStageIds || []);
@@ -38,9 +39,21 @@ async function addSolution(codeFile) {
     const oldPaths = await findOldPaths(codeFile);
     const oldContents = await Promise.all(oldPaths.map(fileResolver));
 
+    // write the setup folder (for initial code)
     const newPaths = await findNewPaths(codeFile);
     for(let i = 0; i < newPaths.length; i++) {
       await fileWriter(newPaths[i], oldContents[i]);
+    }
+
+    // write the solution db document
+    for(let i = 0; i < codeFile.codeStageIds.length; i++) {
+      const solution = {
+        id: ObjectID().toString(),
+        codeFileId: codeFile.id,
+        stageId: codeFile.codeStageIds[i],
+        code: LOOKUP_KEY,
+      }
+      await configWriter(MODEL_DB.SOLUTIONS, solution);
     }
   }
 }
