@@ -1,8 +1,8 @@
 import io from 'socket.io-client';
-import {apiUrl} from '../../config';
+import {API_URL} from '../../config';
 import apiQuery from './query';
 
-const socket = io(apiUrl);
+const socket = io(API_URL);
 const subscriptions = [];
 
 socket.on('update', (_) => {

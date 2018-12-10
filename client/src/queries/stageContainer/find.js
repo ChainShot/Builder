@@ -17,6 +17,8 @@ query findStageContainer($id: String) {
       details
       codeFileIds
       task
+      language
+      languageVersion
       abiValidations
       codeFiles {
         id

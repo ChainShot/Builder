@@ -1,6 +1,12 @@
 const { findCodeFilePaths } = require('../../projectHelpers');
 const { CodeFileType } = require('../models');
-const { configWriter, fileWriter, configResolver, fileRemove } = require('../../utils/ioHelpers');
+const {
+  configWriter,
+  fileWriter,
+  configResolver,
+  fileRemove,
+  configRemove,
+} = require('../../utils/ioHelpers');
 const { LOOKUP_KEY, MODEL_DB } = require('../../config');
 const { ObjectID } = require('mongodb');
 const fs = require('fs-extra');
@@ -31,6 +37,29 @@ const codeFileMutationArgs = {
 }
 
 module.exports = {
+  deleteCodeFile: {
+    type: CodeFileType,
+    args: {
+      id: { type: GraphQLString },
+    },
+    async resolve(_, props) {
+      const codeFile = await configResolver(MODEL_DB.CODE_FILES, props.id);
+
+      const { codeStageIds } = codeFile;
+      for(let i = 0; i < codeStageIds.length; i++) {
+        const codeStage = await configResolver(MODEL_DB.STAGES, codeStageIds[i]);
+        const index = codeStage.codeFileIds.indexOf(props.id);
+        if(index >= 0) {
+          codeStage.codeFileIds.splice(index, 1);
+        }
+        await configWriter(MODEL_DB.STAGES, codeStage);
+      }
+
+      const paths = await findCodeFilePaths(codeFile);
+      await Promise.all(paths.map(fileRemove));
+      await configRemove(MODEL_DB.CODE_FILES, props.id);
+    }
+  },
   createCodeFile: {
     type: CodeFileType,
     args: codeFileMutationArgs,
@@ -71,12 +100,11 @@ module.exports = {
       const newPaths = await findCodeFilePaths(merged);
       const previousPaths = await findCodeFilePaths(codeFile);
 
-      // if the executablePath has changed, update the file paths
-      if(props.executablePath) {
-        for(let i = 0; i < previousPaths.length; i++) {
-          const newPath = newPaths[i];
-          const previousPath = previousPaths[i];
-          fs.rename(previousPath, newPath);
+      for(let i = 0; i < previousPaths.length; i++) {
+        const newPath = newPaths[i];
+        const previousPath = previousPaths[i];
+        if(previousPath !== newPath) {
+            await fs.rename(previousPath, newPath);
         }
       }
 
@@ -84,7 +112,6 @@ module.exports = {
       for(let i = 0; i < keys.length; i++) {
         const key = keys[i];
         if(cfProjectPropNames[key]) {
-          const paths = await findCodeFilePaths(merged);
           await Promise.all(newPaths.map(async (path) => {
             return await fileWriter(path, merged[key]);
           }));

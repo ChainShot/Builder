@@ -1,8 +1,8 @@
 import axios from 'axios';
-import {API_URL} from '../../config';
+import {RUNNER_URL} from '../../config';
 
 export default axios.create({
-    baseURL: API_URL,
+    baseURL: RUNNER_URL,
     transformResponse: [(response, headers) => {
         const contentType = headers['content-type'];
         if (contentType && contentType.indexOf('json') >= 0) {

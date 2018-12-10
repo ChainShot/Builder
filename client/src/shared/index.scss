@@ -6,6 +6,10 @@ html, body, #root {
   color: $light-font;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;

@@ -31,8 +31,8 @@ module.exports = {
       const previousBasePath = await findStageContainerFilePath(stageContainer);
 
       // if the version has changed, update the folder name
-      if(props.version) {
-        fs.rename(previousBasePath, newBasePath)
+      if(newBasePath !== previousBasePath) {
+        await fs.rename(previousBasePath, newBasePath)
       }
 
       // if any project files have updated, overwrite them

@@ -1,0 +1,40 @@
+@import '../../../shared/variables';
+
+.compilation-toolbar {
+  display: flex;
+  flex-direction: column;
+  background-color: $bg-dark;
+
+  .tool {
+    padding: 10px;
+    align-self: center;
+    transition: color .25s;
+
+    svg {
+      height: 15px;
+      width: auto;
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: $brand-active;
+    }
+
+    &.off {
+      color: lighten($bg-dark, 10);
+    }
+
+    &.on {
+      color: $brand-active;
+    }
+
+    &.disabled {
+      cursor: default;
+      color: lighten($bg-dark, 5);
+    }
+
+    &.end {
+      margin-top: auto;
+    }
+  }
+}

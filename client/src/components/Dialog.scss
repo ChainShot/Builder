@@ -6,7 +6,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 101;
-  background-color: $bg-darkest;
+  background-color: $bg-dark;
   border: 1px solid $border-color;
   min-width: 350px;
 
@@ -43,7 +43,7 @@
   right: 0;
   bottom: 0;
   top: 0;
-  background-color: $bg-darkest;
+  background-color: $bg-dark;
   opacity: .8;
   z-index: 100;
 }

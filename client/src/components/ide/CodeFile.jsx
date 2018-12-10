@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import CodeEditor from './CodeEditor';
 import apiMutation from '../../utils/api/mutation';
 import modifyCodeFile from '../../mutations/codeFile/modify';
 import { withRouter } from 'react-router-dom';
 import CodeFileConfig from './configuration/CodeFileConfig';
+import CodeFileEditor from './code/CodeFileEditor';
 import PropsRoute from '../PropsRoute';
 import './CodeFile.scss';
-
-const CodeFileEditor = ({ codeFile: { initialCode, mode }, ...props}) =>
-  <CodeEditor code={initialCode} mode={mode} {...props}/>
 
 class CodeFile extends Component {
   getCodeFile() {
@@ -22,11 +19,12 @@ class CodeFile extends Component {
   render() {
     const { match: { url } } = this.props;
     const codeFile = this.getCodeFile();
+    const { stage } = this.props;
     if(!codeFile) return null;
     return (
       <div className="code-file">
         <PropsRoute path={`${url}/config`} component={CodeFileConfig} codeFile={codeFile} />
-        <PropsRoute path={`${url}/`} exact component={CodeFileEditor} codeFile={codeFile} onUpdate={(code) => this.updateCode(code)}/>
+        <PropsRoute path={`${url}/`} exact component={CodeFileEditor} codeFile={codeFile} stage={stage} onUpdate={(code) => this.updateCode(code)}/>
       </div>
     )
   }

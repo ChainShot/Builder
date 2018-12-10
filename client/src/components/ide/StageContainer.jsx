@@ -4,7 +4,7 @@ import findContainer from '../../queries/stageContainer/find';
 import Sidebar from './sidebar/Sidebar';
 import Stage from './Stage';
 import './StageContainer.scss';
-import Intro from './Intro';
+import Intro from './markdown/Intro';
 import PropsRoute from '../PropsRoute';
 import ContainerConfig from './configuration/ContainerConfig';
 

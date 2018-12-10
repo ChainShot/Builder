@@ -6,7 +6,8 @@
   overflow-y: scroll;
   border-right: 1px solid $border-color;
   background-color: $bg-container;
-  min-width: 225px;
+  width: $sidebar-width;
+  min-width: $sidebar-width;
 
   ul.top-options {
     @extend %sidebar-list;

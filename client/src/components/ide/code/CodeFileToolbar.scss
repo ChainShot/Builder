@@ -1,0 +1,35 @@
+@import '../../../shared/variables';
+
+.code-file-toolbar {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid $border-color;
+
+  ul.actions {
+    margin: 0;
+    padding: 0;
+    background-color: $bg-container;
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: flex-end;
+
+    > li {
+      padding: 10px 20px;
+      display: flex;
+      svg {
+        height: 14px;
+        width: auto;
+        margin-right: 9px;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: lighten($bg-dark, 3);
+      }
+
+      &.active {
+        background-color: $bg-dark;
+      }
+    }
+  }
+}

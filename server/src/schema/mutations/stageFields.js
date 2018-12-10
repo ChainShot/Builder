@@ -68,9 +68,8 @@ module.exports = {
       const newBasePath = await findStageFilePath(merged);
       const previousBasePath = await findStageFilePath(stage);
 
-      // if the title has changed, update the folder name
-      if(props.title) {
-        fs.rename(previousBasePath, newBasePath)
+      if(newBasePath !== previousBasePath) {
+        await fs.rename(previousBasePath, newBasePath)
       }
 
       const keys = Object.keys(props);

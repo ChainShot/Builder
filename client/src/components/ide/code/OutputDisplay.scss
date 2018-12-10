@@ -1,0 +1,21 @@
+@import '../../../shared/variables';
+
+.output-message {
+  width: 100%;
+  margin-top: 30px;
+  justify-content: center;
+  display: flex;
+  svg {
+    height: 14px;
+    width: auto;
+    margin: 0 10px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .key {
+    font-weight: 200;
+    margin-left: 5px;
+    color: darken($light-font, 30);
+  }
+}
