@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './CodeFileToolbar.scss';
 import Output from './Output';
 import Compilation from './Compilation';
-import SVG from '../../SVG';
+import SVG from '../../../SVG';
 
 const COMPILE_REGEX = /\w*(\.sol|\.v\.py)$/;
 

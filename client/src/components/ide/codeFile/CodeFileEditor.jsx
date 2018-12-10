@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import CodeEditor from '../CodeEditor';
-import CodeFileToolbar from './CodeFileToolbar';
+import CodeFileToolbar from './toolbar/CodeFileToolbar';
 import './CodeFileEditor.scss';
 
 class CodeFileEditor extends Component {
     render() {
-      const { codeFile: { initialCode, mode }, onUpdate } = this.props;
+      const { code, mode, onUpdate } = this.props;
       return (
         <div className="code-file-editor">
           <div className="editor-container">
-            <CodeEditor code={initialCode} mode={mode} onUpdate={onUpdate}/>
+            <CodeEditor code={code} mode={mode} onUpdate={onUpdate}/>
           </div>
           <CodeFileToolbar {...this.props} />
         </div>

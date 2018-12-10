@@ -2,6 +2,7 @@ const {
   codeFileFields,
   stageContainerFields,
   stageFields,
+  solutionFields,
   stageContainerGroupFields
 } = require('./mutations');
 const { GraphQLObjectType } = require('graphql');
@@ -13,6 +14,7 @@ const MutationType = new GraphQLObjectType({
     ...stageContainerFields,
     ...stageFields,
     ...stageContainerGroupFields,
+    ...solutionFields,
   }
 })
 
