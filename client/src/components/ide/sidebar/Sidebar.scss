@@ -9,6 +9,15 @@
   width: $sidebar-width;
   min-width: $sidebar-width;
 
+  .logo {
+    padding: 10px 10px 0;
+
+    svg {
+      height: 30px;
+      width: auto;
+    }
+  }
+
   ul.top-options {
     @extend %sidebar-list;
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
+import { Link, NavLink, withRouter } from 'react-router-dom';
 import StagesNav from './StagesNav';
 import './Sidebar.scss';
 import SVG from '../../SVG';
@@ -9,6 +9,9 @@ class Sidebar extends Component {
     const { stageContainer: { stageContainerGroup: { title }, version, stages }, basename } = this.props;
     return (
       <div className="stage-container-sidebar">
+        <Link to="/" exact>
+          <SVG className="logo" name="logotype"/>
+        </Link>
         <ul className="top-options">
           <li className="title">
             <NavLink to={`${basename}`} exact>
