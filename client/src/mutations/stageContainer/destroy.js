@@ -1,6 +1,6 @@
 export default `
-mutation destroyStageContainerGroup($id: String) {
-  destroyStageContainerGroup(id: $id) {
+mutation destroyStageContainer($id: String) {
+  destroyStageContainer(id: $id) {
     id
   }
 }
