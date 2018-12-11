@@ -22,7 +22,7 @@ class Blocks extends Component {
     const { containerType } = this.props;
     apiMutation(createSCG, { containerType }).then((response) => {
       const { stageContainers } = response;
-      this.props.history.push(`/content/${stageContainers[0].id}/`)
+      this.props.history.push(`/content/${stageContainers[0].id}`)
     });
   }
   render() {

@@ -3,6 +3,7 @@ const { StageContainerType } = require('../models');
 const { configWriter, fileWriter, configResolver, fileRemove } = require('../../utils/ioHelpers');
 const { LOOKUP_KEY, MODEL_DB } = require('../../config');
 const fs = require('fs-extra');
+const { ObjectID } = require('mongodb');
 const path = require('path');
 const {
   GraphQLString,
@@ -24,11 +25,25 @@ const onChange = {
 const stageContainerArgs = {
   id: { type: GraphQLString },
   version: { type: GraphQLString },
+  stageContainerGroupId: { type: GraphQLString },
   type: { type: GraphQLString },
   intro: { type: GraphQLString },
 }
 
 module.exports = {
+  createStageContainer: {
+    type: StageContainerType,
+    args: stageContainerArgs,
+    async resolve (_, { stageContainerGroupId }) {
+      const stageContainerGroup = await configResolver(MODEL_DB.STAGE_CONTAINER_GROUPS, stageContainerGroupId);
+      return await configWriter(MODEL_DB.STAGE_CONTAINERS, {
+        id: ObjectID().toString(),
+        type: stageContainerGroup.containerType,
+        stageContainerGroupId,
+        version: 'TBD',
+      });
+    }
+  },
   modifyStageContainer: {
     type: StageContainerType,
     args: stageContainerArgs,
@@ -40,7 +55,9 @@ module.exports = {
       const previousBasePath = await findStageContainerFilePath(stageContainer);
 
       if(newBasePath !== previousBasePath) {
-        await fs.rename(previousBasePath, newBasePath)
+        if(await fs.exists(previousBasePath)) {
+          await fs.rename(previousBasePath, newBasePath)
+        }
       }
 
       const keys = Object.keys(props);

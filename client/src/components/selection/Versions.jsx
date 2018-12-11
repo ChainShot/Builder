@@ -3,6 +3,8 @@ import apiQuery from '../../utils/api/query';
 import findSCG from '../../queries/stageContainerGroup/find';
 import { withRouter, Link } from 'react-router-dom';
 import SelectLayout from './SelectLayout';
+import apiMutation from '../../utils/api/mutation';
+import createSC from '../../mutations/stageContainer/create';
 import './Versions.scss';
 
 class Versions extends Component {
@@ -13,6 +15,12 @@ class Versions extends Component {
     const {id} = this.props.match.params;
     apiQuery(findSCG, { id }).then(({ stageContainerGroup }) => {
       this.setState({ stageContainerGroup });
+    });
+  }
+  createVersion = () => {
+    const { stageContainerGroup: { id } } = this.state;
+    apiMutation(createSC, { stageContainerGroupId: id }).then(({ id }) => {
+      this.props.history.push(`/content/${id}`)
     });
   }
   render() {
@@ -35,7 +43,7 @@ class Versions extends Component {
               </div>
             </Link>
           ))}
-          <div className="version">
+          <div className="version" onClick={this.createVersion}>
             Create a new Version
           </div>
         </div>
