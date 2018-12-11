@@ -6,6 +6,7 @@ const { ObjectID } = require('mongodb');
 const path = require('path');
 const fs = require('fs-extra');
 const destroyStage = require('./stage/destroy');
+const createStage = require('./stage/create');
 const reportWrapper = require('./reportWrapper');
 const stageProjectProps = require('./stage/projectProps');
 const {
@@ -29,38 +30,12 @@ module.exports = {
     args: {
       id: { type: GraphQLString },
     },
-    resolve: async (_, { id }) => reportWrapper(destroyStage)(id),
+    resolve: (_, { id }) => reportWrapper(destroyStage)(id),
   },
   createStage: {
     type: StageType,
     args: stageArgs,
-    async resolve (_, props) {
-      props.id = ObjectID().toString();
-
-      const filesToWrite = [];
-
-      const keys = Object.keys(props);
-      for(let i = 0; i < keys.length; i++) {
-        const key = keys[i];
-        if(stageProjectProps[key]) {
-          const basePath = await findStageFilePath(props);
-          const newPath = path.join(basePath, stageProjectProps[key]);
-          filesToWrite.push({ path: newPath, contents: props[key] });
-          props[key] = LOOKUP_KEY;
-        }
-      }
-
-      await configWriter(MODEL_DB.STAGES, props);
-
-      // write project files after creation so
-      // the sockets config lookup can happen properly
-      for(let i = 0; i < filesToWrite.length; i++) {
-        const { path, contents } = filesToWrite[i];
-        await fileWriter(path, contents);
-      }
-
-      return props;
-    }
+    resolve: (_, props) => reportWrapper(createStage)(props),
   },
   modifyStage: {
     type: StageType,

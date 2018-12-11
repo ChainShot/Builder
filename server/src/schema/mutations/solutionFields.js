@@ -9,13 +9,10 @@ const {
 } = require('../../utils/ioHelpers');
 const { LOOKUP_KEY, MODEL_DB } = require('../../config');
 const fs = require('fs-extra');
+const solutionProjectProps = require('./solution/projectProps');
 const {
   GraphQLString,
 } = require('graphql');
-
-const solutionProjectPropNames = {
-  code: true
-}
 
 const solutionMutationArgs = {
   id: { type: GraphQLString },
@@ -42,8 +39,7 @@ module.exports = {
       const keys = Object.keys(props);
       for(let i = 0; i < keys.length; i++) {
         const key = keys[i];
-        console.log(key);
-        if(solutionProjectPropNames[key]) {
+        if(solutionProjectProps[key]) {
           await fileWriter(newPath, merged[key]);
           merged[key] = LOOKUP_KEY;
         }

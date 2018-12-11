@@ -44,7 +44,7 @@ class StageConfig extends Component {
           <input value={title} onChange={({ target: { value }}) => this.handleChange('title', value)}/>
         </label>
 
-        <div class="btn btn-primary" onClick={this.destroyStage}>
+        <div className="btn btn-primary" onClick={this.destroyStage}>
           <SVG name="trash" />
           Destroy stage { title }
         </div>

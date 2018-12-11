@@ -88,12 +88,12 @@ class ContainerConfig extends Component {
           onChange={(val) => this.handleGroupChange('productionReady', val)}
           checked={!!productionReady} />
 
-        <div class="btn btn-primary" onClick={this.destroyContainer}>
+        <div className="btn btn-primary" onClick={this.destroyContainer}>
           <SVG name="trash" />
           Destroy this Version (v. { version })
         </div>
 
-        <div class="btn btn-primary" onClick={this.destroyGroup}>
+        <div className="btn btn-primary" onClick={this.destroyGroup}>
           <SVG name="trash" />
           Destroy { title }
         </div>

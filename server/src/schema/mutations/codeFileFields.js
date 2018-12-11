@@ -10,7 +10,9 @@ const {
 const { LOOKUP_KEY, MODEL_DB } = require('../../config');
 const { ObjectID } = require('mongodb');
 const fs = require('fs-extra');
+const reportWrapper = require('./reportWrapper');
 const destroyCodeFile = require('./codeFile/destroy');
+const createCodeFile = require('./codeFile/create');
 const cfProjectPropNames = require('./codeFile/projectProps');
 const {
   GraphQLString,
@@ -40,47 +42,12 @@ module.exports = {
     args: {
       id: { type: GraphQLString },
     },
-    resolve: async (_, { id }) => destroyCodeFile(id),
+    resolve: async (_, { id }) => reportWrapper(destroyCodeFile)(id),
   },
   createCodeFile: {
     type: CodeFileType,
     args: codeFileMutationArgs,
-    async resolve (_, props) {
-      props.id = ObjectID().toString();
-      props.initialCode = props.initialCode || "";
-      props.executablePath = (props.executablePath || props.name);
-
-      const numStages = props.codeStageIds ? props.codeStageIds.length : 0;
-      for(let i = 0; i < numStages; i++) {
-        const id = props.codeStageIds[i];
-        const stage = await configResolver(MODEL_DB.STAGES, id);
-        stage.codeFileIds = (stage.codeFileIds || []).concat(props.id);
-        await configWriter(MODEL_DB.STAGES, stage);
-
-        if(props.hasProgress) {
-          const solution = {
-            id: ObjectID().toString(),
-            codeFileId: props.id,
-            stageId: stage.id,
-            code: LOOKUP_KEY,
-          }
-          await configWriter(MODEL_DB.SOLUTIONS, solution);
-        }
-      }
-
-      const keys = Object.keys(props);
-      for(let i = 0; i < keys.length; i++) {
-        const key = keys[i];
-        if(cfProjectPropNames[key]) {
-          const paths = await findCodeFilePaths(props);
-          await Promise.all(paths.map(async (path) => {
-            return await fileWriter(path, props[key]);
-          }));
-          props[key] = LOOKUP_KEY;
-        }
-      }
-      return configWriter(MODEL_DB.CODE_FILES, props);
-    }
+    resolve: (_, props) => reportWrapper(createCodeFile)(props),
   },
   modifyCodeFile: {
     type: CodeFileType,
