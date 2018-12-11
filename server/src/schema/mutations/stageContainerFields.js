@@ -12,6 +12,15 @@ const scProjectPropNames = {
   intro: 'intro.md'
 }
 
+const onChange = {
+  type: async (stageContainer) => {
+    const { stageContainerGroupId } = stageContainer;
+    const stageContainerGroup = await configResolver(MODEL_DB.STAGE_CONTAINER_GROUPS, stageContainerGroupId);
+    stageContainerGroup.containerType = stageContainer.type;
+    await configWriter(MODEL_DB.STAGE_CONTAINER_GROUPS, stageContainerGroup);
+  }
+}
+
 const stageContainerArgs = {
   id: { type: GraphQLString },
   version: { type: GraphQLString },
@@ -34,10 +43,14 @@ module.exports = {
         await fs.rename(previousBasePath, newBasePath)
       }
 
-      // if any project files have updated, overwrite them
       const keys = Object.keys(props);
       for(let i = 0; i < keys.length; i++) {
         const key = keys[i];
+
+        if(onChange[key]) {
+          await onChange[key](merged);
+        }
+
         if(scProjectPropNames[key]) {
           const filePath = path.join(newBasePath, scProjectPropNames[key]);
           await fileWriter(filePath, merged[key]);
