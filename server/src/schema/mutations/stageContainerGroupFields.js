@@ -3,6 +3,7 @@ const { configWriter, configResolver } = require('../../utils/ioHelpers');
 const { findStageContainerGroupFilePath } = require('../../projectHelpers');
 const { MODEL_DB } = require('../../config');
 const destroyStageContainerGroup = require('./stageContainerGroup/destroy');
+const createStageContainerGroup = require('./stageContainerGroup/create');
 const { ObjectID } = require('mongodb');
 const fs = require('fs-extra');
 const reportWrapper = require('./reportWrapper');
@@ -25,6 +26,11 @@ module.exports = {
     },
     resolve: (_, { id }) => reportWrapper(destroyStageContainerGroup)(id),
   },
+  createStageContainerGroup: {
+    type: StageContainerGroupType,
+    args: stageContainerGroupArgs,
+    resolve: (_, props) => reportWrapper(createStageContainerGroup)(props),
+  },
   modifyStageContainerGroup: {
     type: StageContainerGroupType,
     args: stageContainerGroupArgs,
@@ -42,27 +48,4 @@ module.exports = {
       return configWriter(MODEL_DB.STAGE_CONTAINER_GROUPS, merged);
     }
   },
-  createStageContainerGroup: {
-    type: StageContainerGroupType,
-    args: stageContainerGroupArgs,
-    async resolve (_, props) {
-      const stageContainerGroupId = ObjectID().toString();
-      const stageContainerGroup = await configWriter(MODEL_DB.STAGE_CONTAINER_GROUPS, {
-        id: stageContainerGroupId,
-        title: 'Untitled',
-        containerType: props.containerType,
-        ...props,
-      });
-      const stageContainer = await configWriter(MODEL_DB.STAGE_CONTAINERS, {
-        id: ObjectID().toString(),
-        type: props.containerType,
-        stageContainerGroupId,
-        version: 'TBD',
-      });
-      return {
-        ...stageContainerGroup,
-        stageContainers: [stageContainer]
-      }
-    }
-  }
 }

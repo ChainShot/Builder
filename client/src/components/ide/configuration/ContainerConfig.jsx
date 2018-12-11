@@ -53,13 +53,15 @@ class ContainerConfig extends Component {
     const { id } = this.props.stageContainer;
     apiMutation(containerMutation, { [prop]: value, id });
   }
-  destroyContainer = () => {
+  destroyContainer = async () => {
     const { id } = this.props.stageContainer;
     apiMutation(destroySC, { id });
+    this.props.history.push(`/`);
   }
-  destroyGroup = () => {
+  destroyGroup = async () => {
     const { id } = this.props.stageContainer.stageContainerGroup;
     apiMutation(destroySCG, { id });
+    this.props.history.push(`/`);
   }
   render() {
     const { type, version, productionReady, title } = this.state;

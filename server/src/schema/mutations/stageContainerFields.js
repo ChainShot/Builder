@@ -2,6 +2,8 @@ const { findStageContainerFilePath } = require('../../projectHelpers');
 const { StageContainerType } = require('../models');
 const { configWriter, fileWriter, configResolver, fileRemove } = require('../../utils/ioHelpers');
 const destroyStageContainer = require('./stageContainer/destroy');
+const createStageContainer = require('./stageContainer/create');
+const reportWrapper = require('./reportWrapper');
 const stageContainerProjectProps = require('./stageContainer/projectProps');
 const { LOOKUP_KEY, MODEL_DB } = require('../../config');
 const fs = require('fs-extra');
@@ -34,30 +36,12 @@ module.exports = {
     args: {
       id: { type: GraphQLString },
     },
-    resolve: async (_, { id }) => destroyStageContainer(id),
+    resolve: (_, { id }) => reportWrapper(destroyStageContainer)(id),
   },
   createStageContainer: {
     type: StageContainerType,
     args: stageContainerArgs,
-    async resolve (_, { stageContainerGroupId }) {
-      const stageContainerGroup = await configResolver(MODEL_DB.STAGE_CONTAINER_GROUPS, stageContainerGroupId);
-      const stageContainer = await configWriter(MODEL_DB.STAGE_CONTAINERS, {
-        id: ObjectID().toString(),
-        type: stageContainerGroup.containerType,
-        stageContainerGroupId,
-        version: 'TBD',
-      });
-
-      const basePath = await findStageContainerFilePath(stageContainer);
-      const keys = Object.keys(stageContainerProjectProps);
-      for(let i = 0; i < keys.length; i++) {
-          const key = keys[i];
-          const value = stageContainerProjectProps[key];
-          await fileWriter(path.join(basePath, key), value);
-      }
-
-      return stageContainer;
-    }
+    resolve: (_, { stageContainerGroupId }) => reportWrapper(createStageContainer)(stageContainerGroupId),
   },
   modifyStageContainer: {
     type: StageContainerType,

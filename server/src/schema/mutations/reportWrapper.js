@@ -1,7 +1,7 @@
 function reportWrapper(promiseFn) {
   return async (...args) => {
     try {
-      await promiseFn(...args);
+      return await promiseFn(...args);
     }
     catch(ex) {
       console.log(ex);
