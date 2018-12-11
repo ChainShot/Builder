@@ -40,7 +40,7 @@ class ExistingCodeFile extends Component {
     const { stage } = this.props;
     const { codeFileIds } = stage;
     const { codeFile } = this.state;
-    const { codeStageIds, id } = codeFile.value;
+    const { codeStageIds, id } = codeFile;
     const variables = {
       codeFileId: id,
       codeStageIds: codeStageIds.concat(stage.id),

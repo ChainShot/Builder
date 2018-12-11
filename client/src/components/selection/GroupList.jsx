@@ -20,9 +20,10 @@ class Blocks extends Component {
   }
   createNew() {
     const { containerType } = this.props;
-    apiMutation(createSCG, { containerType }).then(({ id, title, containerType }) => {
-      this.props.history.push(`/versions/${id}/`)
-    })
+    apiMutation(createSCG, { containerType }).then((response) => {
+      const { stageContainers } = response;
+      this.props.history.push(`/content/${stageContainers[0].id}/`)
+    });
   }
   render() {
     const { stageContainerGroups } = this.state;

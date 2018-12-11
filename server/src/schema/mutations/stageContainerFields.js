@@ -30,7 +30,6 @@ module.exports = {
       const newBasePath = await findStageContainerFilePath(merged);
       const previousBasePath = await findStageContainerFilePath(stageContainer);
 
-      // if the version has changed, update the folder name
       if(newBasePath !== previousBasePath) {
         await fs.rename(previousBasePath, newBasePath)
       }

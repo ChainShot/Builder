@@ -6,6 +6,7 @@ const socket = io(API_URL);
 const subscriptions = [];
 
 socket.on('update', (_) => {
+  if(!_) return;
   subscriptions.forEach(({ query, id, modelType, fn }) => {
     if(_.modelType === modelType && _.id === id) {
       apiQuery(query, {id}).then(fn);

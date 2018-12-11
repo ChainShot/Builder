@@ -4,6 +4,9 @@ mutation createStageContainerGroup($containerType: String) {
     id
     title
     containerType
+    stageContainers {
+      id
+    }
   }
 }
 `
