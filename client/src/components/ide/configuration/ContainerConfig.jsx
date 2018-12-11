@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import StyledSwitch from '../../forms/StyledSwitch';
 import StyledSelect from '../../forms/StyledSelect';
 import apiMutation from '../../../utils/api/mutation';
+import destroySC from '../../../mutations/stageContainer/destroy';
+import destroySCG from '../../../mutations/stageContainerGroup/destroy';
+import SVG from '../../SVG';
 import './ContainerConfig.scss';
 
 const typeOptions = [
@@ -50,6 +53,14 @@ class ContainerConfig extends Component {
     const { id } = this.props.stageContainer;
     apiMutation(containerMutation, { [prop]: value, id });
   }
+  destroyContainer = () => {
+    const { id } = this.props.stageContainer;
+    apiMutation(destroySC, { id });
+  }
+  destroyGroup = () => {
+    const { id } = this.props.stageContainer.stageContainerGroup;
+    apiMutation(destroySCG, { id });
+  }
   render() {
     const { type, version, productionReady, title } = this.state;
     return (
@@ -74,6 +85,16 @@ class ContainerConfig extends Component {
           label="Production Ready?"
           onChange={(val) => this.handleGroupChange('productionReady', val)}
           checked={!!productionReady} />
+
+        <div class="btn btn-primary" onClick={this.destroyContainer}>
+          <SVG name="trash" />
+          Destroy this Version (v. { version })
+        </div>
+
+        <div class="btn btn-primary" onClick={this.destroyGroup}>
+          <SVG name="trash" />
+          Destroy { title }
+        </div>
       </form>
     )
   }

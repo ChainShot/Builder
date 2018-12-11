@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import apiMutation from '../../../utils/api/mutation';
+import destroyStage from '../../../mutations/stage/destroy';
+import SVG from '../../SVG';
 import './ContainerConfig.scss';
 
 const mutation = `
@@ -29,6 +31,10 @@ class StageConfig extends Component {
     const { id } = this.props.stage;
     apiMutation(mutation, { [prop]: value, id });
   }
+  destroyStage = () => {
+    const { id } = this.props.stage;
+    apiMutation(destroyStage, { id });
+  }
   render() {
     const { title } = this.state;
     return (
@@ -37,6 +43,11 @@ class StageConfig extends Component {
           <span>Title</span>
           <input value={title} onChange={({ target: { value }}) => this.handleChange('title', value)}/>
         </label>
+
+        <div class="btn btn-primary" onClick={this.destroyStage}>
+          <SVG name="trash" />
+          Destroy stage { title }
+        </div>
       </form>
     )
   }

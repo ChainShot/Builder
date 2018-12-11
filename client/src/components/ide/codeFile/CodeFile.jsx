@@ -25,22 +25,30 @@ class CodeFile extends Component {
     const { id } = this.getSolution();
     apiMutation(modifySolution, { id, code });
   }
-  render() {
-    const { match: { url } } = this.props;
+  renderSolutionRoute() {
+    const { stage, match: { url } } = this.props;
     const codeFile = this.getCodeFile();
+    if(!codeFile.hasProgress) return null;
     const solution = this.getSolution();
-    const { stage } = this.props;
-    const { initialCode, mode } = codeFile;
     const { code } = solution;
+    const { mode } = codeFile;
+    return (
+      <PropsRoute path={`${url}/solution`} exact component={CodeFileEditor}
+            codeFile={codeFile} stage={stage} code={code} mode={mode}
+            onUpdate={(code) => this.updateSolution(code)}/>
+    )
+  }
+  render() {
+    const { stage, match: { url } } = this.props;
+    const codeFile = this.getCodeFile();
+    const { initialCode, mode } = codeFile;
     if(!codeFile) return null;
     return (
       <div className="code-file">
         <PropsRoute path={`${url}/`} exact component={CodeFileEditor}
               codeFile={codeFile} stage={stage} code={initialCode} mode={mode}
               onUpdate={(code) => this.updateCode(code)}/>
-        <PropsRoute path={`${url}/solution`} exact component={CodeFileEditor}
-              codeFile={codeFile} stage={stage} code={code} mode={mode}
-              onUpdate={(code) => this.updateSolution(code)}/>
+        { this.renderSolutionRoute() }
         <PropsRoute path={`${url}/config`} component={CodeFileConfig} codeFile={codeFile} />
       </div>
     )

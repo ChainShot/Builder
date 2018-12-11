@@ -1,6 +1,8 @@
 const { findStageContainerFilePath } = require('../../projectHelpers');
 const { StageContainerType } = require('../models');
 const { configWriter, fileWriter, configResolver, fileRemove } = require('../../utils/ioHelpers');
+const destroyStageContainer = require('./stageContainer/destroy');
+const stageContainerProjectProps = require('./stageContainer/projectProps');
 const { LOOKUP_KEY, MODEL_DB } = require('../../config');
 const fs = require('fs-extra');
 const { ObjectID } = require('mongodb');
@@ -8,10 +10,6 @@ const path = require('path');
 const {
   GraphQLString,
 } = require('graphql');
-
-const scProjectPropNames = {
-  intro: 'intro.md'
-}
 
 const onChange = {
   type: async (stageContainer) => {
@@ -31,17 +29,34 @@ const stageContainerArgs = {
 }
 
 module.exports = {
+  destroyStageContainer: {
+    type: StageContainerType,
+    args: {
+      id: { type: GraphQLString },
+    },
+    resolve: async (_, { id }) => destroyStageContainer(id),
+  },
   createStageContainer: {
     type: StageContainerType,
     args: stageContainerArgs,
     async resolve (_, { stageContainerGroupId }) {
       const stageContainerGroup = await configResolver(MODEL_DB.STAGE_CONTAINER_GROUPS, stageContainerGroupId);
-      return await configWriter(MODEL_DB.STAGE_CONTAINERS, {
+      const stageContainer = await configWriter(MODEL_DB.STAGE_CONTAINERS, {
         id: ObjectID().toString(),
         type: stageContainerGroup.containerType,
         stageContainerGroupId,
         version: 'TBD',
       });
+
+      const basePath = await findStageContainerFilePath(stageContainer);
+      const keys = Object.keys(stageContainerProjectProps);
+      for(let i = 0; i < keys.length; i++) {
+          const key = keys[i];
+          const value = stageContainerProjectProps[key];
+          await fileWriter(path.join(basePath, key), value);
+      }
+
+      return stageContainer;
     }
   },
   modifyStageContainer: {
@@ -68,8 +83,8 @@ module.exports = {
           await onChange[key](merged);
         }
 
-        if(scProjectPropNames[key]) {
-          const filePath = path.join(newBasePath, scProjectPropNames[key]);
+        if(stageContainerProjectProps[key]) {
+          const filePath = path.join(newBasePath, stageContainerProjectProps[key]);
           await fileWriter(filePath, merged[key]);
           merged[key] = LOOKUP_KEY;
         }

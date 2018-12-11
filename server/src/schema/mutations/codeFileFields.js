@@ -10,15 +10,13 @@ const {
 const { LOOKUP_KEY, MODEL_DB } = require('../../config');
 const { ObjectID } = require('mongodb');
 const fs = require('fs-extra');
+const destroyCodeFile = require('./codeFile/destroy');
+const cfProjectPropNames = require('./codeFile/projectProps');
 const {
   GraphQLString,
   GraphQLBoolean,
   GraphQLList,
 } = require('graphql');
-
-const cfProjectPropNames = {
-  initialCode: true
-}
 
 const codeFileMutationArgs = {
   id: { type: GraphQLString },
@@ -42,23 +40,7 @@ module.exports = {
     args: {
       id: { type: GraphQLString },
     },
-    async resolve(_, props) {
-      const codeFile = await configResolver(MODEL_DB.CODE_FILES, props.id);
-
-      const { codeStageIds } = codeFile;
-      for(let i = 0; i < codeStageIds.length; i++) {
-        const codeStage = await configResolver(MODEL_DB.STAGES, codeStageIds[i]);
-        const index = codeStage.codeFileIds.indexOf(props.id);
-        if(index >= 0) {
-          codeStage.codeFileIds.splice(index, 1);
-        }
-        await configWriter(MODEL_DB.STAGES, codeStage);
-      }
-
-      const paths = await findCodeFilePaths(codeFile);
-      await Promise.all(paths.map(fileRemove));
-      await configRemove(MODEL_DB.CODE_FILES, props.id);
-    }
+    resolve: async (_, { id }) => destroyCodeFile(id),
   },
   createCodeFile: {
     type: CodeFileType,
@@ -72,8 +54,18 @@ module.exports = {
       for(let i = 0; i < numStages; i++) {
         const id = props.codeStageIds[i];
         const stage = await configResolver(MODEL_DB.STAGES, id);
-        stage.codeFileIds.push(props.id);
+        stage.codeFileIds = (stage.codeFileIds || []).concat(props.id);
         await configWriter(MODEL_DB.STAGES, stage);
+
+        if(props.hasProgress) {
+          const solution = {
+            id: ObjectID().toString(),
+            codeFileId: props.id,
+            stageId: stage.id,
+            code: LOOKUP_KEY,
+          }
+          await configWriter(MODEL_DB.SOLUTIONS, solution);
+        }
       }
 
       const keys = Object.keys(props);
@@ -104,6 +96,7 @@ module.exports = {
         const newPath = newPaths[i];
         const previousPath = previousPaths[i];
         if(previousPath !== newPath) {
+            await fs.ensureFile(newPath);
             await fs.rename(previousPath, newPath);
         }
       }

@@ -36,7 +36,7 @@ class CodeFilesNav extends Component {
             <span>validations.json</span>
           </NavLink>
         </li>
-        { codeFiles.map(cf => <CodeFileNav key={cf.id} codeFile={cf} {...this.props} />) }
+        { (codeFiles || []).map(cf => <CodeFileNav key={cf.id} codeFile={cf} {...this.props} />) }
         <li>
           <div className="action" onClick={() => dialog.open(AddCodeFile, { stage, stageContainer })}>
             <SVG name="file-plus"/>

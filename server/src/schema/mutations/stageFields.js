@@ -5,6 +5,9 @@ const { LOOKUP_KEY, MODEL_DB } = require('../../config');
 const { ObjectID } = require('mongodb');
 const path = require('path');
 const fs = require('fs-extra');
+const destroyStage = require('./stage/destroy');
+const reportWrapper = require('./reportWrapper');
+const stageProjectProps = require('./stage/projectProps');
 const {
   GraphQLList,
   GraphQLString,
@@ -20,13 +23,14 @@ const stageArgs = {
   details: { type: GraphQLString },
 }
 
-const stageProjectPropNames = {
-  abiValidations: 'validations.json',
-  task: 'task.md',
-  details: 'details.md',
-}
-
 module.exports = {
+  destroyStage: {
+    type: StageType,
+    args: {
+      id: { type: GraphQLString },
+    },
+    resolve: async (_, { id }) => reportWrapper(destroyStage)(id),
+  },
   createStage: {
     type: StageType,
     args: stageArgs,
@@ -38,9 +42,9 @@ module.exports = {
       const keys = Object.keys(props);
       for(let i = 0; i < keys.length; i++) {
         const key = keys[i];
-        if(stageProjectPropNames[key]) {
+        if(stageProjectProps[key]) {
           const basePath = await findStageFilePath(props);
-          const newPath = path.join(basePath, stageProjectPropNames[key]);
+          const newPath = path.join(basePath, stageProjectProps[key]);
           filesToWrite.push({ path: newPath, contents: props[key] });
           props[key] = LOOKUP_KEY;
         }
@@ -75,8 +79,8 @@ module.exports = {
       const keys = Object.keys(props);
       for(let i = 0; i < keys.length; i++) {
         const key = keys[i];
-        if(stageProjectPropNames[key]) {
-          const filePath = path.join(newBasePath, stageProjectPropNames[key]);
+        if(stageProjectProps[key]) {
+          const filePath = path.join(newBasePath, stageProjectProps[key]);
           await fileWriter(filePath, merged[key]);
           merged[key] = LOOKUP_KEY;
         }
