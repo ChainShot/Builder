@@ -18,13 +18,12 @@ async function createDocument(stageId, codeFileId) {
 }
 
 async function createProjectFiles(solution) {
-  const basePath = await findSolutionPath(solution);
+  const filePath = await findSolutionPath(solution);
   const keys = Object.keys(solutionProjectProps);
   for(let i = 0; i < keys.length; i++) {
     const key = keys[i];
-    const filename = solutionProjectProps[key];
     const contents = solution[key] || "";
-    await fileWriter(path.join(basePath, filename), contents);
+    await fileWriter(filePath, contents);
   }
 }
 
