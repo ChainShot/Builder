@@ -37,7 +37,7 @@ class Versions extends Component {
         </p>
         <div className="versions">
           {stageContainers.map(({ version, id }) => (
-            <Link key={id} to={`/content/${id}/`}>
+            <Link key={id} to={`/content/${id}`}>
               <div className="version">
                 Select { version }
               </div>
