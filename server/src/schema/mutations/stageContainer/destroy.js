@@ -5,14 +5,13 @@ const destroyStage = require('../stage/destroy');
 const path = require('path');
 const {
   configRemove,
-  configReader,
   configResolver,
+  configDocumentReader,
   fileRemove,
 } = require('../../../utils/ioHelpers');
 
 async function destroyStages(stageContainer) {
-  const ids = await configReader(MODEL_DB.STAGES);
-  const stages = (await Promise.all(ids.map(id => configResolver(MODEL_DB.STAGES, id)))).filter(x => x.containerId === stageContainer.id);
+  const stages = (await configDocumentReader(MODEL_DB.STAGES)).filter(x => x.containerId === stageContainer.id);
   for(let i = 0; i < stages.length; i++) {
     await destroyStage(stages[i].id);
   }

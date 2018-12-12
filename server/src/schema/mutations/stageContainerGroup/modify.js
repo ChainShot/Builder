@@ -1,6 +1,6 @@
-const { configWriter, configResolver } = require('../../utils/ioHelpers');
-const { findStageContainerGroupFilePath } = require('../../projectHelpers');
-const { MODEL_DB } = require('../../config');
+const { configWriter, configResolver } = require('../../../utils/ioHelpers');
+const { findStageContainerGroupFilePath } = require('../../../projectHelpers');
+const { MODEL_DB } = require('../../../config');
 const fs = require('fs-extra');
 
 async function modifyStageContainerGroup(props) {

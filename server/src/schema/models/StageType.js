@@ -3,7 +3,7 @@ const {
   GraphQLString,
   GraphQLList,
 } = require('graphql');
-const { fileResolver, configResolver, configReader } = require('../../utils/ioHelpers');
+const { fileResolver, configResolver, configDocumentReader } = require('../../utils/ioHelpers');
 const { MODEL_DB } = require('../../config');
 const path = require('path');
 const findStageFilePath = require('../../projectHelpers/findStageFilePath');
@@ -20,8 +20,7 @@ const StageType = new GraphQLObjectType({
     solutions: {
       type: new GraphQLList(require('./SolutionType')),
       resolve: async (props) => {
-        const ids = await configReader(MODEL_DB.SOLUTIONS);
-        const models = await Promise.all(ids.map(id => configResolver(MODEL_DB.SOLUTIONS, id)));
+        const models = await configDocumentReader(MODEL_DB.SOLUTIONS);
         return models.filter(x => x.stageId === props.id);
       }
     },

@@ -46,6 +46,11 @@ async function configReader(collection) {
   return files.map(x => x.split(".json")[0]);
 }
 
+async function configDocumentReader(collection) {
+  const ids = await configReader(collection);
+  return Promise.all(ids.map(x => configResolver(collection, x)));
+}
+
 function sanitizeFolderName(name) {
   return camelize(sanitize(name));
 }
@@ -57,6 +62,7 @@ function prettifyJSON(json) {
 module.exports = {
   configResolver,
   configReader,
+  configDocumentReader,
   configWriter,
   configRemove,
   fileWriter,
