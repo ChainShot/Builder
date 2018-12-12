@@ -1,20 +1,20 @@
-const { configWriter, configResolver } = require('../../../utils/ioHelpers');
-const { findStageContainerGroupFilePath } = require('../../../projectHelpers');
 const { MODEL_DB } = require('../../../config');
 const fs = require('fs-extra');
 
-async function modifyStageContainerGroup(props) {
-  const stageContainerGroup = await configResolver(MODEL_DB.STAGE_CONTAINER_GROUPS, props.id);
-  const merged = { ...stageContainerGroup, ...props };
+module.exports = ({ configWriter, configResolver }, { findStageContainerGroupFilePath }) => {
+  async function modifyStageContainerGroup(props) {
+    const stageContainerGroup = await configResolver(MODEL_DB.STAGE_CONTAINER_GROUPS, props.id);
+    const merged = { ...stageContainerGroup, ...props };
 
-  const newBasePath = await findStageContainerGroupFilePath(merged);
-  const previousBasePath = await findStageContainerGroupFilePath(stageContainerGroup);
+    const newBasePath = await findStageContainerGroupFilePath(merged);
+    const previousBasePath = await findStageContainerGroupFilePath(stageContainerGroup);
 
-  if(newBasePath !== previousBasePath) {
-    await fs.rename(previousBasePath, newBasePath)
+    if(newBasePath !== previousBasePath) {
+      await fs.rename(previousBasePath, newBasePath)
+    }
+
+    return configWriter(MODEL_DB.STAGE_CONTAINER_GROUPS, merged);
   }
 
-  return configWriter(MODEL_DB.STAGE_CONTAINER_GROUPS, merged);
+  return modifyStageContainerGroup;
 }
-
-module.exports = modifyStageContainerGroup;

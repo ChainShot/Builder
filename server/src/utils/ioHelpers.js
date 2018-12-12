@@ -16,6 +16,11 @@ async function fileResolver(filePath) {
   return contents && contents.toString();
 }
 
+async function rename(previousPath, newPath) {
+  await fs.ensureFile(newPath);
+  await fs.rename(previousPath, newPath);
+}
+
 const configWriter = (collection, props) => {
   if(!collection) throw new Error('Collection not provided to write to!')
   if(!props['id']) throw new Error(`id not defined for ${JSON.stringify(props)}`);
@@ -65,6 +70,7 @@ module.exports = {
   configDocumentReader,
   configWriter,
   configRemove,
+  rename,
   fileWriter,
   fileRemove,
   fileResolver,
