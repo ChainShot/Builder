@@ -1,13 +1,12 @@
 const { findStageContainerFilePath } = require('../../projectHelpers');
 const { StageContainerType } = require('../models');
-const { configWriter, fileWriter, configResolver, fileRemove } = require('../../utils/ioHelpers');
+const { configWriter, fileWriter, configResolver } = require('../../utils/ioHelpers');
 const destroyStageContainer = require('./stageContainer/destroy');
 const createStageContainer = require('./stageContainer/create');
 const reportWrapper = require('./reportWrapper');
 const stageContainerProjectProps = require('./stageContainer/projectProps');
 const { LOOKUP_KEY, MODEL_DB } = require('../../config');
 const fs = require('fs-extra');
-const { ObjectID } = require('mongodb');
 const path = require('path');
 const {
   GraphQLString,

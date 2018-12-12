@@ -4,7 +4,6 @@ const stageContainerProjectProps = require('./projectProps');
 const destroyStage = require('../stage/destroy');
 const path = require('path');
 const {
-  configWriter,
   configRemove,
   configReader,
   configResolver,

@@ -4,8 +4,6 @@ const {
   configWriter,
   fileWriter,
   configResolver,
-  fileRemove,
-  configRemove,
 } = require('../../utils/ioHelpers');
 const { LOOKUP_KEY, MODEL_DB } = require('../../config');
 const fs = require('fs-extra');

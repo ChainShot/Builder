@@ -24,12 +24,12 @@ async function unlinkCodeFiles(stage) {
   const { codeFileIds } = stage;
   for(let i = 0; i < (codeFileIds || []).length; i++) {
     const codeFile = await configResolver(MODEL_DB.CODE_FILES, codeFileIds[i]);
-    const index = codeFileIds.indexOf(id);
+    const index = codeFileIds.indexOf(codeFile.id);
     if(index >= 0) {
       codeFileIds.splice(index, 1);
     }
     if(codeFileIds.length === 0) {
-      await destroyCodeFile(id);
+      await destroyCodeFile(codeFile.id);
     }
     else {
       await configWriter(MODEL_DB.CODE_FILES, codeFile);

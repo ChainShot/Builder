@@ -5,7 +5,6 @@ const stageProjectProps = require('./projectProps');
 const path = require('path');
 const {
   configWriter,
-  configResolver,
   fileWriter,
 } = require('../../../utils/ioHelpers');
 

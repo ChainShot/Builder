@@ -3,7 +3,7 @@ const { ObjectID } = require('mongodb');
 const { MODEL_DB, PROJECTS_DIR, INITIAL_CODE_DIR, LOOKUP_KEY } = require('../config');
 const { configReader, configWriter, fileWriter, fileResolver, configResolver, sanitizeFolderName } = require('../utils/ioHelpers');
 
-const findOldPaths = ({ executablePath, codeStageIds, name }) => {
+const findOldPaths = ({ executablePath, codeStageIds }) => {
   const ids = (codeStageIds || []);
   return Promise.all(ids.map(async (id) => {
     const stage = await configResolver(MODEL_DB.STAGES, id);

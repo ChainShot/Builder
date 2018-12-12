@@ -4,7 +4,6 @@ const { findStageContainerGroupFilePath } = require('../../projectHelpers');
 const { MODEL_DB } = require('../../config');
 const destroyStageContainerGroup = require('./stageContainerGroup/destroy');
 const createStageContainerGroup = require('./stageContainerGroup/create');
-const { ObjectID } = require('mongodb');
 const fs = require('fs-extra');
 const reportWrapper = require('./reportWrapper');
 const {

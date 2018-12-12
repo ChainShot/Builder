@@ -2,7 +2,6 @@ const { MODEL_DB, LOOKUP_KEY } = require('../../../config');
 const { ObjectID } = require('mongodb');
 const { findCodeFilePaths } = require('../../../projectHelpers');
 const cfProjectProps = require('./projectProps');
-const path = require('path');
 const createSolution = require('../solution/create');
 const {
   configWriter,

@@ -1,11 +1,9 @@
 const { MODEL_DB } = require('../../../config');
 const destroyStageContainer = require('../stageContainer/destroy');
 const {
-  configWriter,
   configRemove,
   configReader,
   configResolver,
-  fileRemove,
 } = require('../../../utils/ioHelpers');
 
 async function destroyStageContainers(stageContainerGroup) {

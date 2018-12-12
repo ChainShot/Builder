@@ -3,13 +3,15 @@ const { findCodeFilePaths } = require('../../../projectHelpers');
 const {
   configWriter,
   configRemove,
+  configResolver,
+  fileRemove,
 } = require('../../../utils/ioHelpers');
 
 async function unlinkCodeStages(codeFile) {
   const { codeStageIds } = codeFile;
   for(let i = 0; i < codeStageIds.length; i++) {
     const codeStage = await configResolver(MODEL_DB.STAGES, codeStageIds[i]);
-    const index = codeStage.codeFileIds.indexOf(id);
+    const index = codeStage.codeFileIds.indexOf(codeFile.id);
     if(index >= 0) {
       codeStage.codeFileIds.splice(index, 1);
     }

@@ -1,8 +1,7 @@
 const { findStageFilePath } = require('../../projectHelpers');
 const { StageType } = require('../models');
-const { configWriter, fileWriter, configResolver, fileRemove } = require('../../utils/ioHelpers');
+const { configWriter, fileWriter, configResolver } = require('../../utils/ioHelpers');
 const { LOOKUP_KEY, MODEL_DB } = require('../../config');
-const { ObjectID } = require('mongodb');
 const path = require('path');
 const fs = require('fs-extra');
 const destroyStage = require('./stage/destroy');
