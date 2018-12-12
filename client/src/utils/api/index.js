@@ -7,8 +7,7 @@ export default axios.create({
         const contentType = headers['content-type'];
         if (contentType && contentType.indexOf('json') >= 0) {
             if(!response) return {};
-            const json = JSON.parse(response);
-            return (json && json.data) ? json.data : json;
+            return JSON.parse(response);
         }
         return response;
     }],

@@ -5,5 +5,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    .container {
+      width: 400px;
+    }
   }
 }

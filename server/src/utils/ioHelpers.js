@@ -6,17 +6,14 @@ const camelize = require('../utils/camelize');
 
 const configResolver = (collection, id) => {
   if(!collection) throw new Error('Collection not provided to resolve!')
+  if(!id) throw new Error(`id not provided to resolve for ${collection}!`)
   const filePath = path.join(CONFIG_DIR, collection, `${id}.json`);
   return fileResolver(filePath).then(JSON.parse);
 }
 
-const fileResolver = (filePath) => {
-  return new Promise((resolve, reject) => {
-    fs.readFile(filePath, (err, data) => {
-      if(err) return reject(err);
-      resolve(data && data.toString());
-    });
-  });
+async function fileResolver(filePath) {
+  const contents = await fs.readFile(filePath);
+  return contents && contents.toString();
 }
 
 const configWriter = (collection, props) => {
@@ -26,13 +23,8 @@ const configWriter = (collection, props) => {
   return fileWriter(filePath, prettifyJSON(props)).then(() => props);
 }
 
-const fileWriter = (filePath, props) => {
-  return new Promise((resolve, reject) => {
-    fs.outputFile(filePath, props, (err) => {
-      if(err) return reject(err);
-      resolve(props);
-    });
-  });
+function fileWriter(filePath, props) {
+  return fs.outputFile(filePath, props);
 }
 
 const configRemove = (collection, id) => {
@@ -41,24 +33,22 @@ const configRemove = (collection, id) => {
   return fileRemove(filePath);
 }
 
-const fileRemove = (filePath) => {
-  return new Promise((resolve, reject) => {
-    fs.unlink(filePath, (err) => {
-      if(err) return reject(err);
-      resolve();
-    });
-  });
+async function fileRemove(filePath) {
+  if(await fs.exists(filePath)) {
+    await fs.unlink(filePath);
+  }
 }
 
-const configReader = (collection) => {
+async function configReader(collection) {
   if(!collection) throw new Error('Collection not provided to read!')
   const folder = path.join(CONFIG_DIR, collection);
-  return new Promise((resolve, reject) => {
-    fs.readdir(folder, (err, files) => {
-      if(err) return reject(err);
-      resolve(files.map(x => x.split(".json")[0]));
-    });
-  });
+  const files = await fs.readdir(folder);
+  return files.map(x => x.split(".json")[0]);
+}
+
+async function configDocumentReader(collection) {
+  const ids = await configReader(collection);
+  return Promise.all(ids.map(x => configResolver(collection, x)));
 }
 
 function sanitizeFolderName(name) {
@@ -72,6 +62,7 @@ function prettifyJSON(json) {
 module.exports = {
   configResolver,
   configReader,
+  configDocumentReader,
   configWriter,
   configRemove,
   fileWriter,

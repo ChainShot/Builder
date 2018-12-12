@@ -1,7 +1,8 @@
 const { StageContainerGroupType } = require('../models');
-const { configWriter } = require('../../utils/ioHelpers');
-const { MODEL_DB } = require('../../config');
-const { ObjectID } = require('mongodb');
+const destroyStageContainerGroup = require('./stageContainerGroup/destroy');
+const createStageContainerGroup = require('./stageContainerGroup/create');
+const modifyStageContainerGroup = require('./stageContainerGroup/modify');
+const reportWrapper = require('./reportWrapper');
 const {
   GraphQLString,
 } = require('graphql');
@@ -14,15 +15,21 @@ const stageContainerGroupArgs = {
 }
 
 module.exports = {
+  destroyStageContainerGroup: {
+    type: StageContainerGroupType,
+    args: {
+      id: { type: GraphQLString },
+    },
+    resolve: (_, { id }) => reportWrapper(destroyStageContainerGroup)(id),
+  },
   createStageContainerGroup: {
     type: StageContainerGroupType,
     args: stageContainerGroupArgs,
-    async resolve (_, props) {
-      return configWriter(MODEL_DB.STAGE_CONTAINER_GROUPS, {
-        id: ObjectID().toString(),
-        title: 'Untitled',
-        ...props
-      });
-    }
-  }
+    resolve: (_, props) => reportWrapper(createStageContainerGroup)(props),
+  },
+  modifyStageContainerGroup: {
+    type: StageContainerGroupType,
+    args: stageContainerGroupArgs,
+    resolve: (_, props) => reportWrapper(modifyStageContainerGroup)(props),
+  },
 }

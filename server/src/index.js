@@ -4,7 +4,6 @@ const { PORT } = require('./config');
 const graphqlHTTP = require('express-graphql');
 const schema = require('./schema');
 const cors = require('cors');
-const {graphql} = require('graphql');
 const http = require('http');
 const io = require('socket.io');
 const watcher = require('./watcher/setup');

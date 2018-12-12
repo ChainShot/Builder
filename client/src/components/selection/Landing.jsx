@@ -26,17 +26,21 @@ class Landing extends Component {
     return (
       <SelectLayout>
         <div className="landing">
-          {containers.map(({ title, description, to }) => (
-            <div key={to} className="container">
-              <h2>{title}</h2>
-              <p>{description}</p>
-              <Link to={to}>
-                <div className="btn btn-primary">
-                  Build
-                </div>
-              </Link>
-            </div>
-          ))}
+          <h1> Welcome to ChainShot Builder! </h1>
+          <p> Select a content type you'd like to create or modify </p>
+          <div className="containers">
+            {containers.map(({ title, description, to }) => (
+              <div key={to} className="container">
+                <h2>{title}</h2>
+                <p>{description}</p>
+                <Link to={to}>
+                  <div className="btn btn-primary">
+                    Select
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
       </SelectLayout>
     );

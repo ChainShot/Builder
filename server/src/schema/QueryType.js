@@ -1,6 +1,5 @@
 const { CodeFileType, StageContainerGroupType, StageContainerType, StageType } = require('./models');
 const {
-  GraphQLSchema,
   GraphQLObjectType,
   GraphQLString,
   GraphQLList,

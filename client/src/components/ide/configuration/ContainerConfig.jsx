@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import StyledSwitch from '../../forms/StyledSwitch';
 import StyledSelect from '../../forms/StyledSelect';
 import apiMutation from '../../../utils/api/mutation';
+import destroySC from '../../../mutations/stageContainer/destroy';
+import destroySCG from '../../../mutations/stageContainerGroup/destroy';
+import SVG from '../../SVG';
 import './ContainerConfig.scss';
 
 const typeOptions = [
@@ -10,7 +13,7 @@ const typeOptions = [
   { label: 'Lesson', value: 'Lesson' },
 ]
 
-const mutation = `
+const containerMutation = `
 mutation modifyStageContainer($id: String, $version: String, $type: String) {
   modifyStageContainer(id: $id, version: $version, type: $type) {
     id
@@ -20,40 +23,80 @@ mutation modifyStageContainer($id: String, $version: String, $type: String) {
 }
 `
 
+const groupMutation = `
+mutation modifyStageContainerGroup($id: String, $title: String) {
+  modifyStageContainerGroup(id: $id, title: $title) {
+    title
+  }
+}
+`
+
 class ContainerConfig extends Component {
   constructor(props) {
     super(props);
-    const { type, version, productionReady } = props.stageContainer;
+    const { type, version, productionReady, stageContainerGroup } = props.stageContainer;
+    const { title } = stageContainerGroup;
     this.state = {
-      type: typeOptions.filter(x => x.value === type)[0],
+      type,
       version,
       productionReady,
+      title,
     }
   }
-  handleChange(prop, value) {
+  handleGroupChange(prop, value) {
+    this.setState({ [prop]: value });
+    const { id } = this.props.stageContainer.stageContainerGroup;
+    apiMutation(groupMutation, { [prop]: value, id });
+  }
+  handleContainerChange(prop, value) {
     this.setState({ [prop]: value });
     const { id } = this.props.stageContainer;
-    apiMutation(mutation, { [prop]: value, id });
+    apiMutation(containerMutation, { [prop]: value, id });
+  }
+  destroyContainer = async () => {
+    const { id } = this.props.stageContainer;
+    apiMutation(destroySC, { id });
+    this.props.history.push(`/`);
+  }
+  destroyGroup = async () => {
+    const { id } = this.props.stageContainer.stageContainerGroup;
+    apiMutation(destroySCG, { id });
+    this.props.history.push(`/`);
   }
   render() {
-    const { type, version, productionReady } = this.state;
+    const { type, version, productionReady, title } = this.state;
     return (
       <form className="config">
         <label>
+          <span>Title</span>
+          <input value={title} onChange={({ target: { value }}) => this.handleGroupChange('title', value)}/>
+        </label>
+
+        <label>
           <span>Version</span>
-          <input value={version} onChange={({ target: { value }}) => this.handleChange('version', value)}/>
+          <input value={version} onChange={({ target: { value }}) => this.handleContainerChange('version', value)}/>
         </label>
 
         <StyledSelect
           label="Type"
-          onChange={(val) => this.handleChange("type", val)}
+          onChange={(val) => this.handleContainerChange("type", val)}
           value={type}
           options={typeOptions} />
 
         <StyledSwitch
           label="Production Ready?"
-          onChange={(val) => this.handleChange('productionReady', val)}
+          onChange={(val) => this.handleGroupChange('productionReady', val)}
           checked={!!productionReady} />
+
+        <div className="btn btn-primary" onClick={this.destroyContainer}>
+          <SVG name="trash" />
+          Destroy this Version (v. { version })
+        </div>
+
+        <div className="btn btn-primary" onClick={this.destroyGroup}>
+          <SVG name="trash" />
+          Destroy { title }
+        </div>
       </form>
     )
   }
