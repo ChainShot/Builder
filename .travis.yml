@@ -1,0 +1,5 @@
+before_script:
+  - cd server
+
+script:
+  - npm run lint && npm test
