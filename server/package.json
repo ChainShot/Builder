@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "lint": "./node_modules/.bin/eslint src/**",
+    "test": "mocha --recursive"
   },
   "author": "",
   "license": "ISC",

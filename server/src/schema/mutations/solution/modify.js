@@ -1,5 +1,4 @@
 const { LOOKUP_KEY, MODEL_DB } = require('../../../config');
-const fs = require('fs-extra');
 const solutionProjectProps = require('./projectProps');
 
 module.exports = ({ configWriter, fileWriter, configResolver, rename }, { findSolutionPath }) => {

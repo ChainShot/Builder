@@ -1,7 +1,6 @@
 const { MODEL_DB, LOOKUP_KEY } = require('../../../config');
 const { ObjectID } = require('mongodb');
 const solutionProjectProps = require('./projectProps');
-const path = require('path');
 
 module.exports = ({ configWriter, fileWriter }, { findSolutionPath }) => {
   async function createDocument(stageId, codeFileId) {
@@ -17,7 +16,6 @@ module.exports = ({ configWriter, fileWriter }, { findSolutionPath }) => {
     const filePath = await findSolutionPath(solution);
     const keys = Object.keys(solutionProjectProps);
     for(let i = 0; i < keys.length; i++) {
-      const key = keys[i];
       await fileWriter(filePath, "");
     }
   }

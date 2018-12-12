@@ -1,7 +1,5 @@
 const cfProjectProps = require('./projectProps');
 const { LOOKUP_KEY, MODEL_DB } = require('../../../config');
-const fs = require('fs-extra');
-
 
 module.exports = (ioHelpers, projectHelpers) => {
   const createSolution = require('../solution/create')(ioHelpers, projectHelpers);
