@@ -1,10 +1,7 @@
 const { StageContainerGroupType } = require('../models');
-const { configWriter, configResolver } = require('../../utils/ioHelpers');
-const { findStageContainerGroupFilePath } = require('../../projectHelpers');
-const { MODEL_DB } = require('../../config');
 const destroyStageContainerGroup = require('./stageContainerGroup/destroy');
 const createStageContainerGroup = require('./stageContainerGroup/create');
-const fs = require('fs-extra');
+const modifyStageContainerGroup = require('./stageContainerGroup/modify');
 const reportWrapper = require('./reportWrapper');
 const {
   GraphQLString,
@@ -33,18 +30,6 @@ module.exports = {
   modifyStageContainerGroup: {
     type: StageContainerGroupType,
     args: stageContainerGroupArgs,
-    async resolve (_, props) {
-      const stageContainerGroup = await configResolver(MODEL_DB.STAGE_CONTAINER_GROUPS, props.id);
-      const merged = { ...stageContainerGroup, ...props };
-
-      const newBasePath = await findStageContainerGroupFilePath(merged);
-      const previousBasePath = await findStageContainerGroupFilePath(stageContainerGroup);
-
-      if(newBasePath !== previousBasePath) {
-        await fs.rename(previousBasePath, newBasePath)
-      }
-
-      return configWriter(MODEL_DB.STAGE_CONTAINER_GROUPS, merged);
-    }
+    resolve: (_, props) => reportWrapper(modifyStageContainerGroup)(props),
   },
 }

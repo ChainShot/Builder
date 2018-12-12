@@ -1,13 +1,8 @@
-const { findStageFilePath } = require('../../projectHelpers');
-const { StageType } = require('../models');
-const { configWriter, fileWriter, configResolver } = require('../../utils/ioHelpers');
-const { LOOKUP_KEY, MODEL_DB } = require('../../config');
-const path = require('path');
-const fs = require('fs-extra');
 const destroyStage = require('./stage/destroy');
 const createStage = require('./stage/create');
+const modifyStage = require('./stage/modify');
 const reportWrapper = require('./reportWrapper');
-const stageProjectProps = require('./stage/projectProps');
+const { StageType } = require('../models');
 const {
   GraphQLList,
   GraphQLString,
@@ -39,28 +34,6 @@ module.exports = {
   modifyStage: {
     type: StageType,
     args: stageArgs,
-    async resolve (_, props) {
-      const stage = await configResolver(MODEL_DB.STAGES, props.id);
-      const merged = { ...stage, ...props };
-
-      const newBasePath = await findStageFilePath(merged);
-      const previousBasePath = await findStageFilePath(stage);
-
-      if(newBasePath !== previousBasePath) {
-        await fs.rename(previousBasePath, newBasePath)
-      }
-
-      const keys = Object.keys(props);
-      for(let i = 0; i < keys.length; i++) {
-        const key = keys[i];
-        if(stageProjectProps[key]) {
-          const filePath = path.join(newBasePath, stageProjectProps[key]);
-          await fileWriter(filePath, merged[key]);
-          merged[key] = LOOKUP_KEY;
-        }
-      }
-
-      return configWriter(MODEL_DB.STAGES, merged);
-    }
+    resolve: (_, props) => reportWrapper(modifyStage)(props),
   },
 }
