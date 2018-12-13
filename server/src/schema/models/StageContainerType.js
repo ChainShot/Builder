@@ -4,7 +4,7 @@ const {
   GraphQLList,
 } = require('graphql');
 const findStageContainerFilePath = require('../../projectHelpers/findStageContainerFilePath');
-const {fileResolver, configDocumentReader, configResolver} = require('../../utils/ioHelpers');
+const {fileResolver, configDocumentReader, configResolver} = require('../../ioHelpers').dethunked;
 const path = require('path');
 const { MODEL_DB } = require('../../config');
 

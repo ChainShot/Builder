@@ -5,7 +5,7 @@ const {
   GraphQLList,
 } = require('graphql');
 const { MODEL_DB } = require('../config');
-const { configResolver, configReader } = require('../utils/ioHelpers');
+const { configResolver, configReader } = require('../ioHelpers').dethunked;
 
 const findOneModel = (type, db, extraArgs = []) => ({
   type,

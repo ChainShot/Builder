@@ -3,7 +3,7 @@ const {
   GraphQLString,
   GraphQLList,
 } = require('graphql');
-const { fileResolver, configResolver, configDocumentReader } = require('../../utils/ioHelpers');
+const { fileResolver, configResolver, configDocumentReader } = require('../../ioHelpers').dethunked;
 const { MODEL_DB } = require('../../config');
 const path = require('path');
 const findStageFilePath = require('../../projectHelpers/findStageFilePath');

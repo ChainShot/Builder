@@ -2,7 +2,7 @@ const {
   GraphQLString,
   GraphQLObjectType,
 } = require('graphql');
-const { fileResolver } = require('../../utils/ioHelpers');
+const { fileResolver } = require('../../ioHelpers').dethunked;
 const findSolutionPath = require('../../projectHelpers/findSolutionPath');
 
 const SolutionType = new GraphQLObjectType({
