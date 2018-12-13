@@ -4,7 +4,7 @@ const {
   GraphQLString,
   GraphQLList,
 } = require('graphql');
-const { fileResolver, configResolver } = require('../../utils/ioHelpers');
+const { fileResolver, configResolver } = require('../../ioHelpers').dethunked;
 const { MODEL_DB } = require('../../config');
 const findCodeFilePaths = require('../../projectHelpers/findCodeFilePaths');
 

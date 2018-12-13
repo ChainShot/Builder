@@ -1,5 +1,5 @@
 const { CONFIG_DIR, MODEL_DB } = require('../config');
-const { fileResolver, configResolver } = require('../utils/ioHelpers');
+const { fileResolver, configResolver } = require('../ioHelpers').dethunked;
 const fs = require('fs-extra');
 
 async function configUpdate(filePath) {

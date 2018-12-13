@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "lint": "./node_modules/.bin/eslint src/**",
+    "test": "mocha --recursive"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +19,7 @@
     "graphiql": "^0.12.0",
     "graphql": "^14.0.2",
     "gulp": "^3.9.1",
+    "mocha": "^5.2.0",
     "mongodb": "^3.1.10",
     "node-watch": "^0.5.9",
     "route-parser": "0.0.5",

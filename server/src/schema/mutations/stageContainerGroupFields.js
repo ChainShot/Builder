@@ -2,7 +2,7 @@ const { StageContainerGroupType } = require('../models');
 const destroyStageContainerGroup = require('./stageContainerGroup/destroy');
 const createStageContainerGroup = require('./stageContainerGroup/create');
 const modifyStageContainerGroup = require('./stageContainerGroup/modify');
-const reportWrapper = require('./reportWrapper');
+const txWrapper = require('./txWrapper');
 const {
   GraphQLString,
 } = require('graphql');
@@ -20,16 +20,16 @@ module.exports = {
     args: {
       id: { type: GraphQLString },
     },
-    resolve: (_, { id }) => reportWrapper(destroyStageContainerGroup)(id),
+    resolve: (_, { id }) => txWrapper(destroyStageContainerGroup)(id),
   },
   createStageContainerGroup: {
     type: StageContainerGroupType,
     args: stageContainerGroupArgs,
-    resolve: (_, props) => reportWrapper(createStageContainerGroup)(props),
+    resolve: (_, props) => txWrapper(createStageContainerGroup)(props),
   },
   modifyStageContainerGroup: {
     type: StageContainerGroupType,
     args: stageContainerGroupArgs,
-    resolve: (_, props) => reportWrapper(modifyStageContainerGroup)(props),
+    resolve: (_, props) => txWrapper(modifyStageContainerGroup)(props),
   },
 }

@@ -5,7 +5,7 @@ const {
   GraphQLList,
 } = require('graphql');
 const { MODEL_DB } = require('../../config');
-const { configDocumentReader } = require('../../utils/ioHelpers');
+const { configDocumentReader } = require('../../ioHelpers').dethunked;
 
 const StageContainerGroupType = new GraphQLObjectType({
   name: 'StageContainerGroup',

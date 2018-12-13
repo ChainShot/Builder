@@ -1,7 +1,7 @@
 const destroyStage = require('./stage/destroy');
 const createStage = require('./stage/create');
 const modifyStage = require('./stage/modify');
-const reportWrapper = require('./reportWrapper');
+const txWrapper = require('./txWrapper');
 const { StageType } = require('../models');
 const {
   GraphQLList,
@@ -24,16 +24,16 @@ module.exports = {
     args: {
       id: { type: GraphQLString },
     },
-    resolve: (_, { id }) => reportWrapper(destroyStage)(id),
+    resolve: (_, { id }) => txWrapper(destroyStage)(id),
   },
   createStage: {
     type: StageType,
     args: stageArgs,
-    resolve: (_, props) => reportWrapper(createStage)(props),
+    resolve: (_, props) => txWrapper(createStage)(props),
   },
   modifyStage: {
     type: StageType,
     args: stageArgs,
-    resolve: (_, props) => reportWrapper(modifyStage)(props),
+    resolve: (_, props) => txWrapper(modifyStage)(props),
   },
 }

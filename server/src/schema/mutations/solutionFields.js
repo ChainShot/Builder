@@ -1,6 +1,6 @@
 const { SolutionType } = require('../models');
 const modifySolution = require('./solution/modify');
-const reportWrapper = require('./reportWrapper');
+const txWrapper = require('./txWrapper');
 const {
   GraphQLString,
 } = require('graphql');
@@ -16,6 +16,6 @@ module.exports = {
   modifySolution: {
     type: SolutionType,
     args: solutionMutationArgs,
-    resolve: (_, props) => reportWrapper(modifySolution)(props),
+    resolve: (_, props) => txWrapper(modifySolution)(props),
   }
 }
