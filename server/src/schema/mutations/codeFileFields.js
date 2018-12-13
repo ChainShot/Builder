@@ -1,5 +1,5 @@
 const { CodeFileType } = require('../models');
-const reportWrapper = require('./reportWrapper');
+const txWrapper = require('./txWrapper');
 const destroyCodeFile = require('./codeFile/destroy');
 const createCodeFile = require('./codeFile/create');
 const modifyCodeFile = require('./codeFile/modify');
@@ -31,16 +31,16 @@ module.exports = {
     args: {
       id: { type: GraphQLString },
     },
-    resolve: async (_, { id }) => reportWrapper(destroyCodeFile)(id),
+    resolve: async (_, { id }) => txWrapper(destroyCodeFile)(id),
   },
   createCodeFile: {
     type: CodeFileType,
     args: codeFileMutationArgs,
-    resolve: (_, props) => reportWrapper(createCodeFile)(props),
+    resolve: (_, props) => txWrapper(createCodeFile)(props),
   },
   modifyCodeFile: {
     type: CodeFileType,
     args: codeFileMutationArgs,
-    resolve: (_, props) => reportWrapper(modifyCodeFile)(props),
+    resolve: (_, props) => txWrapper(modifyCodeFile)(props),
   }
 }

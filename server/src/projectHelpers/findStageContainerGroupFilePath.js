@@ -1,4 +1,4 @@
-const { sanitizeFolderName } = require('../utils/ioHelpers');
+const { sanitizeFolderName } = require('../ioHelpers').dethunked;
 const { PROJECTS_DIR } = require('../config');
 const path = require('path');
 
