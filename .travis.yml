@@ -1,5 +1,5 @@
-before_script:
-  - cd server
-
-script:
-  - npm test
+language: node_js
+node_js:
+  - "iojs"
+before_script: cd server && npm i
+script: npm test
