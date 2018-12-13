@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs-extra');
-const CONFIG_DIR = require('../config');
+const {CONFIG_DIR} = require('../config');
 
 module.exports = () => {
   const configReader = async (collection) => {

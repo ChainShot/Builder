@@ -1,5 +1,5 @@
 const path = require('path');
-const CONFIG_DIR = require('../config');
+const {CONFIG_DIR} = require('../config');
 
 module.exports = (transaction) => {
   const fileResolver = require('./fileResolver')(transaction);
