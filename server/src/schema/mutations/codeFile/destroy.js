@@ -1,6 +1,6 @@
 const { MODEL_DB } = require('../../../config');
 
-module.exports = ({ configWriter, configRemove, configResolver, fileRemove }, { findCodeFilePaths }) => {
+module.exports = ({ configWriter, configRemove, configDocumentReader, configResolver, fileRemove }, { findCodeFilePaths }) => {
   async function unlinkCodeStages(codeFile) {
     const { codeStageIds } = codeFile;
     for(let i = 0; i < (codeStageIds || []).length; i++) {
@@ -18,10 +18,19 @@ module.exports = ({ configWriter, configRemove, configResolver, fileRemove }, { 
     await Promise.all(paths.map(fileRemove));
   }
 
+  async function removeSolutions(codeFile) {
+    const solutions = await configDocumentReader(MODEL_DB.SOLUTIONS);
+    const relevant = solutions.filter(x => x.codeFileId === codeFile.id);
+    for(let i = 0; i < relevant.length; i++) {
+      await configRemove(MODEL_DB.SOLUTIONS, relevant[i].id);
+    }
+  }
+
   async function destroyCodeFile(id) {
     const codeFile = await configResolver(MODEL_DB.CODE_FILES, id);
     await unlinkCodeStages(codeFile);
     await removeProjectFiles(codeFile);
+    await removeSolutions(codeFile);
     await configRemove(MODEL_DB.CODE_FILES, id);
   }
 
