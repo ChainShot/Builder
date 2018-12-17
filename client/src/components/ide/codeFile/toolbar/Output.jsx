@@ -17,16 +17,22 @@ class Output extends Component {
     const { stage } = this.props;
     const { runIdx } = this.state;
 
-    const files = stage.codeFiles.map(({ id, initialCode, hasProgress }) => {
+    const files = stage.codeFiles.map(({ id, initialCode, executablePath, hasProgress }) => {
       if(hasProgress) {
         const solution = stage.solutions.find(x => x.codeFileId === id);
-        return { id, contents: solution.code }
+        return { contents: solution.code, path: executablePath }
       }
-      return { id, contents: initialCode }
+      return { contents: initialCode, path: executablePath }
     });
 
     this.setState({ running: true });
-    const { data } = await runner.post(stage.id, {files});
+    const { languageVersion, language, testFramework } = stage;
+    const { data } = await runner.post('', {
+      files,
+      languageVersion,
+      language,
+      testFramework,
+    });
     if(this.state.runIdx === runIdx) {
       this.setState({ output: data, runIdx: runIdx + 1, running: false });
     }
