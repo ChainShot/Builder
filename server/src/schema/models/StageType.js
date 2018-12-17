@@ -15,6 +15,8 @@ const StageType = new GraphQLObjectType({
     containerId: { type: GraphQLString },
     title: { type: GraphQLString },
     language: { type: GraphQLString },
+    testFramework: { type: GraphQLString },
+    languageVersion: { type: GraphQLString },
     languageVersion: { type: GraphQLString },
     codeFileIds: { type: GraphQLList(GraphQLString) },
     solutions: {

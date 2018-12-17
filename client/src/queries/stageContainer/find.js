@@ -19,6 +19,7 @@ query findStageContainer($id: String) {
       task
       language
       languageVersion
+      testFramework
       abiValidations
       solutions {
         id
