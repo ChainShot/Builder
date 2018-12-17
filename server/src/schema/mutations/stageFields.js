@@ -10,6 +10,7 @@ const {
 
 const stageArgs = {
   id: { type: GraphQLString },
+  type: { type: GraphQLString },
   containerId: { type: GraphQLString },
   codeFileIds: { type: new GraphQLList(GraphQLString) },
   language: { type: GraphQLString },

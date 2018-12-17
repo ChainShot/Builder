@@ -14,6 +14,7 @@ query findStageContainer($id: String) {
     stages {
       id
       title
+      type
       details
       codeFileIds
       task

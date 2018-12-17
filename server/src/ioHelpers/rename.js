@@ -1,8 +1,10 @@
 const fs = require('fs-extra');
+const path = require('path');
 
 module.exports = (transaction) => {
   const rename = async (previousPath, newPath) => {
     if(fs.exists(previousPath)) {
+      await fs.ensureDir(path.dirname(newPath));
       await fs.rename(previousPath, newPath);
 
       transaction.add(async () => {

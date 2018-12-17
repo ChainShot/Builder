@@ -9,6 +9,7 @@ const variables = [
   ['id', 'String'],
   ['title', 'String'],
   ['language', 'String'],
+  ['type', 'String'],
   ['languageVersion', 'String'],
   ['testFramework', 'String'],
 ]
@@ -24,6 +25,12 @@ mutation modifyStage(${args}) {
   }
 }
 `
+
+const typeOptions = [
+  { label: 'Code Stage', value: 'CodeStage' },
+  { label: 'UI Stage', value: 'UIStage' },
+  { label: 'Video Stage', value: 'VideoStage' },
+]
 
 const languageOptions = [
   { label: 'JavaScript', value: 'javascript' },
@@ -63,13 +70,19 @@ class StageConfig extends Component {
     apiMutation(destroyStage, { id });
   }
   render() {
-    const { title, language, languageVersion, testFramework } = this.state;
+    const { title, type, language, languageVersion, testFramework } = this.state;
     return (
       <form className="config" ref="container">
         <label>
           <span>Title</span>
           <input value={title} onChange={({ target: { value }}) => this.handleChange('title', value)}/>
         </label>
+        
+        <StyledSelect
+          label="Type"
+          onChange={(val) => this.handleChange("type", val)}
+          value={type}
+          options={typeOptions} />
         
         <StyledSelect
           label="Language"

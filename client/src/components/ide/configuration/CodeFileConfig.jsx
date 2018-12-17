@@ -73,6 +73,7 @@ class CodeFileConfig extends Component {
           <span>Name</span>
           <input value={name} onChange={({ target: { value }}) => this.handleChange('name', value)}/>
         </label>
+        
         <label>
           <span>Execution Path</span>
           <input value={executablePath} onChange={({ target: { value }}) => this.handleChange('executablePath', value)}/>

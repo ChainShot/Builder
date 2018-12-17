@@ -3,8 +3,7 @@ const { LOOKUP_KEY, MODEL_DB } = require('../../../config');
 
 module.exports = (ioHelpers, projectHelpers) => {
   const createSolution = require('../solution/create')(ioHelpers, projectHelpers);
-  const destroySolution = require('../solution/destroy')(ioHelpers, projectHelpers);
-  const { configWriter, rename, fileWriter, configResolver, configDocumentReader } = ioHelpers;
+  const { configWriter, configRemove, rename, fileWriter, configResolver, configDocumentReader } = ioHelpers;
   const { findCodeFilePaths } = projectHelpers;
 
   const onChange = {
@@ -23,7 +22,8 @@ module.exports = (ioHelpers, projectHelpers) => {
           const solutions = await configDocumentReader(MODEL_DB.SOLUTIONS);
           const solution = solutions.find(x => (x.codeFileId === codeFile.id) && (x.stageId === codeStageId));
           if(solution) {
-              await destroySolution(solution.id);
+            // no need to remove project files as well since the renaming will handle it
+            await configRemove(MODEL_DB.SOLUTIONS, solution.id);
           }
         }
       }
