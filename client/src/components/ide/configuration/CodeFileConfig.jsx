@@ -2,11 +2,20 @@ import React, { Component } from 'react';
 import apiMutation from '../../../utils/api/mutation';
 import './CodeFileConfig.scss';
 import StyledSwitch from '../../forms/StyledSwitch';
+import StyledSelect from '../../forms/StyledSelect';
 import SVG from '../../SVG';
+
+const modeOptions = [
+  { label: 'Solidity', value: 'solidity' },
+  { label: 'JavaScript', value: 'javascript' },
+  { label: 'Vyper', value: 'python' },
+  { label: 'JSON', value: 'json' },
+]
 
 const variables = [
   ['id', 'String'],
   ['name', 'String'],
+  ['mode', 'String'],
   ['executablePath', 'String'],
   ['readOnly', 'Boolean'],
   ['hasProgress', 'Boolean'],
@@ -57,7 +66,7 @@ class CodeFileConfig extends Component {
     apiMutation(deleteMutation, { id });
   }
   render() {
-    const { name, executablePath, readOnly, hasProgress, executable, testFixture, visible } = this.state;
+    const { name, mode, executablePath, readOnly, hasProgress, executable, testFixture, visible } = this.state;
     return (
       <form className="config" ref="container">
         <label>
@@ -68,6 +77,12 @@ class CodeFileConfig extends Component {
           <span>Execution Path</span>
           <input value={executablePath} onChange={({ target: { value }}) => this.handleChange('executablePath', value)}/>
         </label>
+          
+        <StyledSelect
+          label="Monaco Mode"
+          onChange={(val) => this.handleChange("mode", val)}
+          value={mode}
+          options={modeOptions} />
 
         <StyledSwitch
           onChange={(x) => this.handleChange('visible', x)}
