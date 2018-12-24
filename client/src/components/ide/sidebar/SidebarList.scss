@@ -49,7 +49,7 @@
     &::before {
       content: '';
       display: block;
-      @include caret-right(5px, $border-color);
+      @include caret-right(5px, white);
       margin-right: 12px;
     }
 

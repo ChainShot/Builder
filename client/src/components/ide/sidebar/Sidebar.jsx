@@ -10,12 +10,6 @@ class Sidebar extends Component {
     return (
       <div className="stage-container-sidebar">
         <ul className="top-options">
-          <li className="home">
-            <Link to="/" exact>
-              <SVG name="home"/>
-              Main Content
-            </Link>
-          </li>
           <li className="title">
             <NavLink to={`${basename}`} exact>
               <SVG name="wrench"/>

@@ -3,12 +3,11 @@
 .code-file-toolbar {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid $border-color;
 
   ul.actions {
     margin: 0;
     padding: 0;
-    background-color: $bg-container;
+    background-color: $bg-darker;
     flex: 1 1 auto;
     display: flex;
     justify-content: flex-end;
@@ -24,11 +23,11 @@
 
       &:hover {
         cursor: pointer;
-        background-color: lighten($bg-dark, 3);
+        background-color: darken($bg-darker, 3);
       }
 
       &.active {
-        background-color: $bg-dark;
+        background-color: black;
       }
     }
   }
