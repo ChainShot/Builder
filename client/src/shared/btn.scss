@@ -18,11 +18,10 @@
     cursor: pointer;
   }
   &.btn-default {
-    color: $light-font;
-    border: 1px solid $light-font;
+    border: 1px solid $border-color;
     &:hover {
-      background-color: $light-font;
-      color: black;
+      cursor: pointer;
+      border-color: white;
     }
   }
   &.btn-primary {

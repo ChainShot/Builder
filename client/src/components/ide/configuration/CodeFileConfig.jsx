@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import apiMutation from '../../../utils/api/mutation';
+import confirm from '../../../utils/confirm';
 import './CodeFileConfig.scss';
 import StyledSwitch from '../../forms/StyledSwitch';
 import StyledSelect from '../../forms/StyledSelect';
@@ -63,7 +64,12 @@ class CodeFileConfig extends Component {
   }
   destroy = () => {
     const { id } = this.props.codeFile;
-    apiMutation(deleteMutation, { id });
+    confirm("Are you sure you want to delete this Code File?").then(() => {
+      apiMutation(deleteMutation, { id }).then(() => {
+        const { match: { url } } = this.props;
+        this.props.history.push(url.split('/').slice(0, -3).join('/'));
+      });
+    });
   }
   render() {
     const { name, mode, executablePath, readOnly, hasProgress, executable, testFixture, visible } = this.state;
@@ -73,12 +79,12 @@ class CodeFileConfig extends Component {
           <span>Name</span>
           <input value={name} onChange={({ target: { value }}) => this.handleChange('name', value)}/>
         </label>
-        
+
         <label>
           <span>Execution Path</span>
           <input value={executablePath} onChange={({ target: { value }}) => this.handleChange('executablePath', value)}/>
         </label>
-          
+
         <StyledSelect
           label="Monaco Mode"
           onChange={(val) => this.handleChange("mode", val)}
