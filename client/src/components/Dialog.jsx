@@ -21,7 +21,9 @@ class Dialog extends Component {
             <div className="close" onClick={() => this.closeMe()}></div>
           </div>
           <div className="content">
-            { this.props.children }
+            <form onSubmit={(evt) => evt.preventDefault()}>
+              { this.props.children }
+            </form>
           </div>
         </div>
         <div className="overlay" onClick={() => this.closeMe()} />
