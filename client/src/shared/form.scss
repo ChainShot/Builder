@@ -1,7 +1,7 @@
 form {
   display: flex;
   flex-direction: column;
-  
+
   label {
     margin: 10px 0;
     > span {
@@ -21,6 +21,10 @@ form {
     display: block;
     border: 1px solid $border-color;
     background-color: black;
+    &:focus {
+      outline-width: 0;
+      border: 1px solid $brand-active;
+    }
   }
 
   .styled-switch {

@@ -9,10 +9,13 @@ class Sidebar extends Component {
     const { stageContainer: { stageContainerGroup: { title }, version, stages }, basename } = this.props;
     return (
       <div className="stage-container-sidebar">
-        <Link to="/" exact>
-          <SVG className="logo" name="logotype"/>
-        </Link>
         <ul className="top-options">
+          <li className="home">
+            <Link to="/" exact>
+              <SVG name="home"/>
+              Main Content
+            </Link>
+          </li>
           <li className="title">
             <NavLink to={`${basename}`} exact>
               <SVG name="wrench"/>
