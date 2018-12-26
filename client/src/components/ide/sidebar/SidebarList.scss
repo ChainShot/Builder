@@ -21,6 +21,7 @@
 
     &:hover {
       cursor: pointer;
+      color: lighten($brand-active, 20);
     }
 
     span {

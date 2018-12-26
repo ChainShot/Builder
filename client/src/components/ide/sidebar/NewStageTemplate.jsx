@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Dialog from '../../Dialog';
 import { close } from '../../../utils/dialog';
 import './AddStage.scss';
 import apiMutation from '../../../utils/api/mutation';

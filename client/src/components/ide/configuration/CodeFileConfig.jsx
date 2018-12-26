@@ -116,7 +116,7 @@ class CodeFileConfig extends Component {
           label="Test File?"
           checked={testFixture} />
 
-        <div class="btn btn-primary" onClick={this.destroy}>
+        <div className="btn btn-primary" onClick={this.destroy}>
           <SVG name="trash" />
           Destroy { name }
         </div>

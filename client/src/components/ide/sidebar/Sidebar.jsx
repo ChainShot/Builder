@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, NavLink, withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import StagesNav from './StagesNav';
 import './Sidebar.scss';
 import SVG from '../../SVG';

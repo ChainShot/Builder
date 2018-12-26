@@ -1,7 +1,5 @@
 import Confirm from '../components/dialogs/Confirm';
 import * as dialog from './dialog';
-import React from 'react';
-import ReactDOM from 'react-dom';
 
 const closeHandler = (resolve, reject) => (success) => {
   if(success) resolve();

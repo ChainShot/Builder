@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import IntroToolbar from './IntroToolbar';
-import { withRouter } from 'react-router-dom';
 import PropsRoute from '../../PropsRoute';
 import SVG from '../../SVG';
 import { Link } from 'react-router-dom';
@@ -8,12 +7,12 @@ import './Toolbar.scss';
 
 class Toolbar extends Component {
   render() {
-    const { match: { params: { stageId }, url }, stageContainer } = this.props;
+    const { stageContainer } = this.props;
     if(!stageContainer) return null;
     return (
       <ul className="toolbar">
         <li className="logo">
-          <Link to="/" exact>
+          <Link to="/">
             <SVG name="logotype"/>
           </Link>
         </li>
@@ -23,4 +22,4 @@ class Toolbar extends Component {
   }
 }
 
-export default withRouter(Toolbar);
+export default Toolbar;
