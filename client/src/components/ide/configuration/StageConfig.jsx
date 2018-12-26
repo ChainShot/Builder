@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import apiMutation from '../../../utils/api/mutation';
 import destroyStage from '../../../mutations/stage/destroy';
 import StyledSelect from '../../forms/StyledSelect';
+import {STAGE_TYPE_OPTIONS, STAGE_LANGUAGE_OPTIONS} from '../../../config';
+import confirm from '../../../utils/confirm';
 import SVG from '../../SVG';
 import './ContainerConfig.scss';
 
@@ -26,18 +28,6 @@ mutation modifyStage(${args}) {
 }
 `
 
-const typeOptions = [
-  { label: 'Code Stage', value: 'CodeStage' },
-  { label: 'UI Stage', value: 'UIStage' },
-  { label: 'Video Stage', value: 'VideoStage' },
-]
-
-const languageOptions = [
-  { label: 'JavaScript', value: 'javascript' },
-  { label: 'Solidity', value: 'solidity' },
-  { label: 'Vyper', value: 'vyper' },
-]
-
 const languageVersionOptions = [
   { label: 'Solidity v0.4.19', value: '0.4.19' },
   { label: 'Vyper v0.1', value: 'Vyper v0.1' },
@@ -46,6 +36,7 @@ const languageVersionOptions = [
 
 const frameworkOptions = [
   { label: 'Mocha', value: 'mocha_bdd' },
+  { label: 'Truffle With Mocha', value: 'truffle_with_mocha' },
 ]
 
 class StageConfig extends Component {
@@ -66,8 +57,10 @@ class StageConfig extends Component {
     apiMutation(mutation, { [prop]: value, id });
   }
   destroyStage = () => {
-    const { id } = this.props.stage;
-    apiMutation(destroyStage, { id });
+    confirm("Are you sure you want to delete this stage?").then(() => {
+      const { id } = this.props.stage;
+      apiMutation(destroyStage, { id });
+    });
   }
   render() {
     const { title, type, language, languageVersion, testFramework } = this.state;
@@ -77,25 +70,25 @@ class StageConfig extends Component {
           <span>Title</span>
           <input value={title} onChange={({ target: { value }}) => this.handleChange('title', value)}/>
         </label>
-        
+
         <StyledSelect
           label="Type"
           onChange={(val) => this.handleChange("type", val)}
           value={type}
-          options={typeOptions} />
-        
+          options={STAGE_TYPE_OPTIONS} />
+
         <StyledSelect
           label="Language"
           onChange={(val) => this.handleChange("language", val)}
           value={language}
-          options={languageOptions} />
-          
+          options={STAGE_LANGUAGE_OPTIONS} />
+
         <StyledSelect
           label="Language Version"
           onChange={(val) => this.handleChange("languageVersion", val)}
           value={languageVersion}
           options={languageVersionOptions} />
-          
+
         <StyledSelect
           label="Test Framework"
           onChange={(val) => this.handleChange("testFramework", val)}

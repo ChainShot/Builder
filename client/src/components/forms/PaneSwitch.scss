@@ -1,24 +1,43 @@
 @import '../../shared/variables';
 
 .pane-switch {
-  display: flex;
-  color: white;
-  background-color: black;
-  justify-content: center;
+  $horiz-padding: 30px;
+  $dark-border: darken($border-color, 10);
+  margin: 30px 0;
+  border: 1px solid $dark-border;
+  padding: 30px $horiz-padding;
+  position: relative;
 
-  .option {
-    text-align: center;
-    border: 1px solid $border-color;
-    flex-grow: 1;
-    padding: 10px 0;
-    &:first-child {
-      border-right: 1px solid $border-color;
-    }
-    &:hover {
-      cursor: pointer;
-    }
-    &.active {
-      border-color: $brand-active;
+  .options {
+    display: flex;
+    color: white;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    width: calc(100% - #{$horiz-padding * 2});
+    transform: translateY(-50%);
+
+    .option {
+      text-align: center;
+      flex-grow: 1;
+      background-color: $dark-border;
+      padding: 8px 5px;
+      transition: background-color .25s;
+      &:first-child {
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        border-right: 1px solid transparent;
+      }
+      &:last-child {
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+      &.active {
+        background-color: lighten($border-color, 5);
+      }
     }
   }
 }

@@ -49,7 +49,7 @@ class NewCodeFile extends Component {
   render() {
     const { name, testFixture } = this.state;
     return (
-      <React.Fragment>
+      <form onSubmit={() => this.onSubmit()}>
         <label>
           <span>Name</span>
           <input value={name} onChange={({ target }) => this.handleChange('name', target.value)}/>
@@ -65,7 +65,7 @@ class NewCodeFile extends Component {
             Add New Code File
           </div>
         </div>
-      </React.Fragment>
+      </form>
     )
   }
 }

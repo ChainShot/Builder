@@ -15,8 +15,8 @@ const overrides = {
     neutral80: "#eee",
     neutral90: "#fff",
     primary: "#cc6e15", // existing selection & focus control color
-    primary25: "#12151e", // hover selection color
-    primary50: "#12151e", // active selection color
+    primary25: "#763d07", // hover selection color
+    primary50: "#763d07", // active selection color
     primary75: "#ddd",
   },
   spacing: {

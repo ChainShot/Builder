@@ -7,7 +7,7 @@ import StyledSelect from '../../forms/StyledSelect';
 import SVG from '../../SVG';
 
 const modeOptions = [
-  { label: 'Solidity', value: 'solidity' },
+  { label: 'Solidity', value: 'sol' },
   { label: 'JavaScript', value: 'javascript' },
   { label: 'Vyper', value: 'python' },
   { label: 'JSON', value: 'json' },

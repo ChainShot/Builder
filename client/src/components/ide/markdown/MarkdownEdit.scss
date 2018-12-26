@@ -1,12 +1,16 @@
 .markdown-edit {
   flex-grow: 1;
   display: flex;
+  overflow: hidden;
+  position: relative;
 
   .code-editor {
     width: 50%;
   }
 
   .display {
+    position: absolute;
+    right: 0;
     padding: 10px;
     width: 50%;
   }

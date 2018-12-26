@@ -6,32 +6,34 @@ class PaneSwitch extends Component {
     idx: 0,
   }
   chooseOption(idx) {
-    const { options, onChange } = this.props;
     this.setState({ idx });
-    onChange(options[idx].value);
   }
   render() {
-    const { label, options } = this.props;
+    const { labels } = this.props;
     const { idx } = this.state;
-    const [option1, option2] = options;
+    const [label1, label2] = labels;
     const defaultClasses = ['option'];
     const activeClasses = defaultClasses.concat('active');
     const option1Classes = idx === 0 ? activeClasses : defaultClasses
     const option2Classes = idx === 1 ? activeClasses : defaultClasses;
     return (
-      <label>
-        <span>{ label }</span>
-        <div className="pane-switch">
-          <div className={option1Classes.join(' ')}
-               onClick={() => this.chooseOption(0)}>
-            { option1.display }
+      <div className="pane-switch">
+        <label>
+          <div className="options">
+            <div className={option1Classes.join(' ')}
+                 onClick={() => this.chooseOption(0)}>
+              { label1 }
+            </div>
+            <div className={option2Classes.join(' ')}
+                 onClick={() => this.chooseOption(1)}>
+              { label2 }
+            </div>
           </div>
-          <div className={option2Classes.join(' ')}
-               onClick={() => this.chooseOption(1)}>
-            { option2.display }
-          </div>
+        </label>
+        <div className="pane">
+          { this.props.children[idx] }
         </div>
-      </label>
+      </div>
     )
   }
 }
