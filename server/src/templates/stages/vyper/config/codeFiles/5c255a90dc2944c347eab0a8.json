@@ -1,0 +1,15 @@
+{
+  "executablePath": "contracts/Contract.v.py",
+  "name": "Contract.v.py",
+  "testFixture": false,
+  "stageContainerId": "5c1711c471bd490ed52bf8a8",
+  "codeStageIds": [
+    "5c25568bdc2944c347eab0a7"
+  ],
+  "id": "5c255a90dc2944c347eab0a8",
+  "initialCode": "$$LOOKUP",
+  "mode": "python",
+  "visible": true,
+  "executable": true,
+  "hasProgress": true
+}

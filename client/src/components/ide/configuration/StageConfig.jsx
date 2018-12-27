@@ -30,7 +30,7 @@ mutation modifyStage(${args}) {
 
 const languageVersionOptions = [
   { label: 'Solidity v0.4.19', value: '0.4.19' },
-  { label: 'Vyper v0.1', value: 'Vyper v0.1' },
+  { label: 'Vyper v0.1', value: '0.1.0b3' },
   { label: 'Node 8.x', value: '8.x/babel' },
 ]
 

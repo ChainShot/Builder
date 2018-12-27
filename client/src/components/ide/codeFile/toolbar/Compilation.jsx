@@ -16,7 +16,7 @@ class Compilation extends Component {
 
     let compiler;
     if(language === 'solidity') compiler = compilers.solc;
-    else if(language === 'vyper') compiler = compilers.solc;
+    else if(language === 'vyper') compiler = compilers.vyper;
 
     if(compiler) {
       const { initialCode, name, hasProgress } = codeFile;

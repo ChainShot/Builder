@@ -9,6 +9,7 @@
   background-color: $bg-dark;
   border: 1px solid $border-color;
   min-width: 350px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 
   .heading {
     border-bottom: 1px solid $border-color;
@@ -44,6 +45,6 @@
   bottom: 0;
   top: 0;
   background-color: $bg-dark;
-  opacity: .8;
+  opacity: .95;
   z-index: 100;
 }
