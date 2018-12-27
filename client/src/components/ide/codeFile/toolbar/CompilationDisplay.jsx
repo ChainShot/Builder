@@ -6,7 +6,8 @@ class CompilationDisplay extends Component {
   render() {
     const {output, compile, toggleAuto} = this.props;
     if(output) {
-      const { errors, warnings } = output;
+      const { errors } = output;
+      const warnings = output.warnings || [];
       if(errors.length + warnings.length === 0) {
         return (
           <div className="compilation-message"> Compilation Successful. No errors. </div>

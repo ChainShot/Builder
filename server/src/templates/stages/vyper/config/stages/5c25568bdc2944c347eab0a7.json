@@ -1,0 +1,16 @@
+{
+  "type": "CodeStage",
+  "containerId": "5c1711c471bd490ed52bf8a8",
+  "language": "vyper",
+  "title": "Vyper Template",
+  "abiValidations": "$$LOOKUP",
+  "task": "$$LOOKUP",
+  "details": "$$LOOKUP",
+  "id": "5c25568bdc2944c347eab0a7",
+  "languageVersion": "0.1.0b3",
+  "testFramework": "truffle_with_mocha",
+  "codeFileIds": [
+    "5c255a90dc2944c347eab0a8",
+    "5c255be4dc2944c347eab0aa"
+  ]
+}
