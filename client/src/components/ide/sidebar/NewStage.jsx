@@ -3,7 +3,6 @@ import Dialog from '../../Dialog';
 import { close } from '../../../utils/dialog';
 import { STAGE_LANGUAGE_OPTIONS, STAGE_TYPE_OPTIONS } from '../../../config';
 import StyledSelect from '../../forms/StyledSelect';
-import './AddStage.scss';
 import apiMutation from '../../../utils/api/mutation';
 
 const variables = [
