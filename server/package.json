@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "gulp",
+    "start": "node src/index",
     "lint": "./node_modules/.bin/eslint src/**",
     "test": "mocha --recursive"
   },
@@ -12,13 +12,13 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
     "eslint": "^5.10.0",
     "express": "^4.16.4",
     "express-graphql": "^0.7.1",
     "fs-extra": "^7.0.1",
     "graphiql": "^0.12.0",
     "graphql": "^14.0.2",
-    "gulp": "^3.9.1",
     "mocha": "^5.2.0",
     "mongodb": "^3.1.10",
     "node-watch": "^0.5.9",

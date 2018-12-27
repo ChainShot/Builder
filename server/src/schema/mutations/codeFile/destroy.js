@@ -1,6 +1,8 @@
-const { MODEL_DB } = require('../../../config');
-
-module.exports = ({ configWriter, configRemove, configDocumentReader, configResolver, fileRemove }, { findCodeFilePaths }) => {
+module.exports = ({
+  ioHelpers: { configWriter, configRemove, configDocumentReader, configResolver, fileRemove },
+  projectHelpers: { findCodeFilePaths },
+  config: { MODEL_DB },
+}) => {
   async function unlinkCodeStages(codeFile) {
     const { codeStageIds } = codeFile;
     for(let i = 0; i < (codeStageIds || []).length; i++) {

@@ -10,12 +10,21 @@ const {
 
 const stageArgs = {
   id: { type: GraphQLString },
+  type: { type: GraphQLString },
   containerId: { type: GraphQLString },
   codeFileIds: { type: new GraphQLList(GraphQLString) },
+  language: { type: GraphQLString },
+  testFramework: { type: GraphQLString },
+  languageVersion: { type: GraphQLString },
   title: { type: GraphQLString },
   abiValidations: { type: GraphQLString },
   task: { type: GraphQLString },
   details: { type: GraphQLString },
+}
+
+const creationArgs = {
+  ...stageArgs,
+  template: { type: GraphQLString },
 }
 
 module.exports = {
@@ -28,7 +37,7 @@ module.exports = {
   },
   createStage: {
     type: StageType,
-    args: stageArgs,
+    args: creationArgs,
     resolve: (_, props) => txWrapper(createStage)(props),
   },
   modifyStage: {

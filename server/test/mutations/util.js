@@ -1,3 +1,9 @@
+const DEFAULT_CONFIG = require('../../src/config');
+const path = require('path');
+const MOCK_CONFIG = {
+  TEMPLATES_DIR: path.join(__dirname, "..", "..", "src", "templates"),
+  ...DEFAULT_CONFIG,
+}
 const MONGO_ID_REGEX = /^[0-9a-fA-F]{24}$/;
 const LOOKUP_KEY = '$$LOOKUP';
 const SOLUTION_PROJECT_PATH = 'test/solution';
@@ -44,6 +50,7 @@ const writtenFiles = {};
 let removedModels = blankLookups();
 const removedFiles = {};
 const renamed = [];
+const copied = [];
 
 let mockCollections = blankLookups();
 
@@ -109,10 +116,17 @@ const fileWriter = (filePath, props) => {
 }
 
 const rename = (previousPath, newPath) => {
-  renamed.push([{
+  renamed.push({
     previousPath,
     newPath
-  }]);
+  });
+}
+
+const copy = (previousPath, newPath) => {
+  copied.push({
+    previousPath,
+    newPath
+  });
 }
 
 const findSolutionPath = () => SOLUTION_PROJECT_PATH;
@@ -120,6 +134,32 @@ const findCodeFilePaths = () => CODE_FILE_PROJECT_PATHS;
 const findStageFilePath = () => STAGE_PROJECT_PATH;
 const findStageContainerFilePath = () => STAGE_CONTAINER_PROJECT_PATH;
 const findStageContainerGroupFilePath = () => STAGE_CONTAINER_GROUP_PROJECT_PATH;
+
+const projectHelpers = {
+  findSolutionPath,
+  findCodeFilePaths,
+  findStageFilePath,
+  findStageContainerFilePath,
+  findStageContainerGroupFilePath,
+}
+
+const ioHelpers = {
+  configWriter,
+  fileWriter,
+  fileRemove,
+  configRemove,
+  configDocumentReader,
+  configResolver,
+  copy,
+}
+
+const mutationWrapper = (fn) => {
+  return fn({
+    config: MOCK_CONFIG,
+    ioHelpers,
+    projectHelpers,
+  });
+}
 
 module.exports = {
   LOOKUP_KEY,
@@ -130,27 +170,17 @@ module.exports = {
   STAGE_PROJECT_PATH,
   MONGO_ID_REGEX,
   MODEL_DB,
+  MOCK_CONFIG,
   writtenModelsLookup,
   writtenModels,
   writtenFiles,
   removedModels,
   removedFiles,
   renamed,
+  copied,
   mockSuite,
   mockConfigDocument,
-  ioHelpers: {
-    configWriter,
-    fileWriter,
-    fileRemove,
-    configRemove,
-    configDocumentReader,
-    configResolver,
-  },
-  projectHelpers: {
-    findSolutionPath,
-    findCodeFilePaths,
-    findStageFilePath,
-    findStageContainerFilePath,
-    findStageContainerGroupFilePath,
-  }
+  mutationWrapper,
+  ioHelpers,
+  projectHelpers,
 }

@@ -1,11 +1,13 @@
-const { MODEL_DB } = require('../../../config');
 const stageContainerProjectProps = require('./projectProps');
 const path = require('path');
 
-module.exports = (ioHelpers, projectHelpers) => {
-  const destroyStage = require('../stage/destroy')(ioHelpers, projectHelpers);
-  const { configDocumentReader, configRemove, configResolver, fileRemove } = ioHelpers;
-  const { findStageContainerFilePath } = projectHelpers;
+module.exports = (injections) => {
+  const destroyStage = require('../stage/destroy')(injections);
+  const {
+    config: { MODEL_DB },
+    ioHelpers: { configDocumentReader, configRemove, configResolver, fileRemove },
+    projectHelpers: { findStageContainerFilePath },
+  } = injections;
 
   async function destroyStages(stageContainer) {
     const stages = (await configDocumentReader(MODEL_DB.STAGES)).filter(x => x.containerId === stageContainer.id);

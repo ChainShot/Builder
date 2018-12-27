@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
 import apiMutation from '../../../utils/api/mutation';
+import confirm from '../../../utils/confirm';
 import './CodeFileConfig.scss';
 import StyledSwitch from '../../forms/StyledSwitch';
+import StyledSelect from '../../forms/StyledSelect';
 import SVG from '../../SVG';
+
+const modeOptions = [
+  { label: 'Solidity', value: 'sol' },
+  { label: 'JavaScript', value: 'javascript' },
+  { label: 'Vyper', value: 'python' },
+  { label: 'JSON', value: 'json' },
+]
 
 const variables = [
   ['id', 'String'],
   ['name', 'String'],
+  ['mode', 'String'],
   ['executablePath', 'String'],
   ['readOnly', 'Boolean'],
   ['hasProgress', 'Boolean'],
@@ -54,20 +64,32 @@ class CodeFileConfig extends Component {
   }
   destroy = () => {
     const { id } = this.props.codeFile;
-    apiMutation(deleteMutation, { id });
+    confirm("Are you sure you want to delete this Code File?").then(() => {
+      apiMutation(deleteMutation, { id }).then(() => {
+        const { match: { url } } = this.props;
+        this.props.history.push(url.split('/').slice(0, -3).join('/'));
+      });
+    });
   }
   render() {
-    const { name, executablePath, readOnly, hasProgress, executable, testFixture, visible } = this.state;
+    const { name, mode, executablePath, readOnly, hasProgress, executable, testFixture, visible } = this.state;
     return (
       <form className="config" ref="container">
         <label>
           <span>Name</span>
           <input value={name} onChange={({ target: { value }}) => this.handleChange('name', value)}/>
         </label>
+
         <label>
           <span>Execution Path</span>
           <input value={executablePath} onChange={({ target: { value }}) => this.handleChange('executablePath', value)}/>
         </label>
+
+        <StyledSelect
+          label="Monaco Mode"
+          onChange={(val) => this.handleChange("mode", val)}
+          value={mode}
+          options={modeOptions} />
 
         <StyledSwitch
           onChange={(x) => this.handleChange('visible', x)}
@@ -94,7 +116,7 @@ class CodeFileConfig extends Component {
           label="Test File?"
           checked={testFixture} />
 
-        <div class="btn btn-primary" onClick={this.destroy}>
+        <div className="btn btn-primary" onClick={this.destroy}>
           <SVG name="trash" />
           Destroy { name }
         </div>

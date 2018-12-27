@@ -12,9 +12,11 @@ const StageType = new GraphQLObjectType({
   name: 'Stage',
   fields: () => ({
     id: { type: GraphQLString },
+    type: { type: GraphQLString },
     containerId: { type: GraphQLString },
     title: { type: GraphQLString },
     language: { type: GraphQLString },
+    testFramework: { type: GraphQLString },
     languageVersion: { type: GraphQLString },
     codeFileIds: { type: GraphQLList(GraphQLString) },
     solutions: {

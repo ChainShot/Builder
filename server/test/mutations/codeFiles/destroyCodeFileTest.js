@@ -1,8 +1,6 @@
 const assert = require('assert');
-const destroyCodeFile = require('../../../src/schema/mutations/codeFile/destroy');
 const {
-  ioHelpers,
-  projectHelpers,
+  mutationWrapper,
   mockConfigDocument,
   removedModels,
   removedFiles,
@@ -12,7 +10,7 @@ const {
   mockSuite,
 } = require('../util');
 
-const destroy = destroyCodeFile(ioHelpers, projectHelpers);
+const destroyCodeFile = mutationWrapper(require('../../../src/schema/mutations/codeFile/destroy'));
 const existingSolutions = [
   { id: 2, codeFileId: 1, },
   { id: 3, codeFileId: 1, },
@@ -28,7 +26,7 @@ mockSuite('Mutations::CodeFiles::Destroy', () => {
     existingSolutions.forEach(solution => {
       mockConfigDocument(MODEL_DB.SOLUTIONS, solution);
     });
-    await destroy(existingCodeFile.id);
+    await destroyCodeFile(existingCodeFile.id);
   });
 
   it('should have removed the codeFile', () => {

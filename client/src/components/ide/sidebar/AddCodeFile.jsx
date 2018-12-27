@@ -1,31 +1,20 @@
 import React, { Component } from 'react';
 import Dialog from '../../Dialog';
 import './AddCodeFile.scss';
-import StyledSwitch from '../../forms/StyledSwitch';
+import PaneSwitch from '../../forms/PaneSwitch';
 import NewCodeFile from './NewCodeFile';
 import ExistingCodeFile from './ExistingCodeFile';
 
 class AddCodeFile extends Component {
-  state = {
-    existing: false,
-  }
-  handleChange(prop, value) {
-    this.setState({ [prop]: value });
-  }
   render() {
-    const { existing } = this.state;
     const { stageContainer, stage } = this.props;
-    const BodyComponent = existing ? ExistingCodeFile : NewCodeFile;
     return (
-      <Dialog name="Add Code File" className="add-codefile">
-        <form>
-          <StyledSwitch
-            label="Add Existing Code File?"
-            checked={existing}
-            onChange={(x) => this.handleChange('existing', x)} />
-
-          <BodyComponent stageContainer={stageContainer} stage={stage}/>
-        </form>
+      <Dialog title="Add Code File" className="add-codefile">
+        <PaneSwitch
+          labels={['New File', 'Existing File']}>
+          <NewCodeFile stageContainer={stageContainer} stage={stage}/>
+          <ExistingCodeFile stageContainer={stageContainer} stage={stage}/>
+        </PaneSwitch>
       </Dialog>
     );
   }

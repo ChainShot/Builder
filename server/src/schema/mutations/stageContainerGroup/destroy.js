@@ -1,8 +1,9 @@
-const { MODEL_DB } = require('../../../config');
-
-module.exports = (ioHelpers, projectHelpers) => {
-  const destroyStageContainer = require('../stageContainer/destroy')(ioHelpers, projectHelpers);
-  const { configRemove, configDocumentReader, configResolver } = ioHelpers;
+module.exports = (injections) => {
+  const destroyStageContainer = require('../stageContainer/destroy')(injections);
+  const {
+    config: { MODEL_DB },
+    ioHelpers: { configRemove, configDocumentReader, configResolver },
+  } = injections;
 
   async function destroyStageContainers(stageContainerGroup) {
     const stageContainers = (await configDocumentReader(MODEL_DB.STAGE_CONTAINERS)).filter(x => x.stageContainerGroupId === stageContainerGroup.id);

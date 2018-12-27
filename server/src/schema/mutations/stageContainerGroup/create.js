@@ -1,9 +1,11 @@
-const { MODEL_DB } = require('../../../config');
 const { ObjectID } = require('mongodb');
 
-module.exports = (ioHelpers, projectHelpers) => {
-  const createStageContainer = require('../stageContainer/create')(ioHelpers, projectHelpers);
-  const { configWriter } = ioHelpers;
+module.exports = (injections) => {
+  const createStageContainer = require('../stageContainer/create')(injections);
+  const {
+    config: { MODEL_DB },
+    ioHelpers: { configWriter },
+  } = injections;
 
   async function createDocument(props) {
     return await configWriter(MODEL_DB.STAGE_CONTAINER_GROUPS, {

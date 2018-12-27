@@ -1,0 +1,10 @@
+.actions {
+  margin-top: 25px;
+  display: flex;
+  justify-content: flex-end;
+  > div {
+    &:first-child {
+      margin-right: 10px;
+    }
+  }
+}

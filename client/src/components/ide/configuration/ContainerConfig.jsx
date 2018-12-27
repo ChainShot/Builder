@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import StyledSwitch from '../../forms/StyledSwitch';
 import StyledSelect from '../../forms/StyledSelect';
 import apiMutation from '../../../utils/api/mutation';
+import confirm from '../../../utils/confirm';
 import destroySC from '../../../mutations/stageContainer/destroy';
 import destroySCG from '../../../mutations/stageContainerGroup/destroy';
 import SVG from '../../SVG';
@@ -54,14 +55,18 @@ class ContainerConfig extends Component {
     apiMutation(containerMutation, { [prop]: value, id });
   }
   destroyContainer = async () => {
-    const { id } = this.props.stageContainer;
-    apiMutation(destroySC, { id });
-    this.props.history.push(`/`);
+    confirm("Are you sure you want to delete this version?").then(() => {
+      const { id } = this.props.stageContainer;
+      apiMutation(destroySC, { id });
+      this.props.history.push(`/`);
+    });
   }
   destroyGroup = async () => {
-    const { id } = this.props.stageContainer.stageContainerGroup;
-    apiMutation(destroySCG, { id });
-    this.props.history.push(`/`);
+    confirm("Are you sure you want to delete this group?").then(() => {
+      const { id } = this.props.stageContainer.stageContainerGroup;
+      apiMutation(destroySCG, { id });
+      this.props.history.push(`/`);
+    });
   }
   render() {
     const { type, version, productionReady, title } = this.state;

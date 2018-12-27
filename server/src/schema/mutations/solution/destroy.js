@@ -1,6 +1,8 @@
-const { MODEL_DB } = require('../../../config');
-
-module.exports = ({ fileRemove, configRemove, configResolver }, { findSolutionPath }) => {
+module.exports = ({
+  ioHelpers: { fileRemove, configRemove, configResolver },
+  projectHelpers: { findSolutionPath },
+  config: { MODEL_DB },
+}) => {
   async function removeProjectFiles(solution) {
     const path = await findSolutionPath(solution);
     await fileRemove(path);

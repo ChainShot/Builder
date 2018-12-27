@@ -4,12 +4,10 @@ const {
   LOOKUP_KEY,
   writtenModelsLookup,
   writtenFiles,
-  ioHelpers,
-  projectHelpers,
+  mutationWrapper,
   mockSuite,
 } = require('../util');
-const createStageContainerGroup = require('../../../src/schema/mutations/stageContainerGroup/create');
-const create = createStageContainerGroup(ioHelpers, projectHelpers);
+const createStageContainerGroup = mutationWrapper(require('../../../src/schema/mutations/stageContainerGroup/create'));
 
 mockSuite('Mutations::StageContainerGroups::Create', () => {
   let stageContainerGroup;
@@ -17,7 +15,7 @@ mockSuite('Mutations::StageContainerGroups::Create', () => {
   const containerType = 'BuildingBlock';
 
   before(async () => {
-    stageContainerGroup = await create({title, containerType});
+    stageContainerGroup = await createStageContainerGroup({title, containerType});
   });
 
   describe('properties', () => {

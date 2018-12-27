@@ -1,17 +1,14 @@
 const assert = require('assert');
-const createSolution = require('../../../src/schema/mutations/solution/create');
 const {
   MONGO_ID_REGEX,
   LOOKUP_KEY,
   SOLUTION_PROJECT_PATH,
   writtenModelsLookup,
   writtenFiles,
-  ioHelpers,
-  projectHelpers,
+  mutationWrapper,
   mockSuite,
 } = require('../util');
-
-const create = createSolution(ioHelpers, projectHelpers);
+const createSolution = mutationWrapper(require('../../../src/schema/mutations/solution/create'));
 
 mockSuite('Mutations::Solutions::Create', () => {
   let solution;
@@ -19,7 +16,7 @@ mockSuite('Mutations::Solutions::Create', () => {
   const codeFileId = 2;
 
   before(async () => {
-    solution = await create(stageId, codeFileId);
+    solution = await createSolution(stageId, codeFileId);
   });
 
   describe('properties', () => {

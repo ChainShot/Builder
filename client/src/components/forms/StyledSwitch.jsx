@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Switch from "react-switch";
+import SVG from '../SVG';
+import "./StyledSwitch.scss";
 
 class StyledSwitch extends Component {
   render() {
@@ -9,7 +11,8 @@ class StyledSwitch extends Component {
         <span>{ label }</span>
         <Switch {...props}
           className="styled-switch"
-          onColor="#ff8d21" />
+          height={24}
+          width={48} />
       </label>
     )
   }

@@ -1,0 +1,28 @@
+@import '../../../shared/variables';
+
+ul.toolbar {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  background-color: $bg-darker;
+  display: flex;
+  align-items: center;
+
+  > li {
+    margin: 0 15px 0 5px;
+
+    &.logo {
+      svg {
+        height: 30px;
+        width: auto;
+      }
+
+      width: $sidebar-width;
+    }
+
+    &.docs {
+      flex-grow: 1;
+      text-align: right;
+    }
+  }
+}

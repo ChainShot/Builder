@@ -1,26 +1,29 @@
 const assert = require('assert');
 const {
+  MODEL_DB,
   MONGO_ID_REGEX,
   LOOKUP_KEY,
+  MOCK_CONFIG,
   STAGE_PROJECT_PATH,
   writtenModelsLookup,
+  writtenModels,
   writtenFiles,
-  ioHelpers,
-  projectHelpers,
+  mockConfigDocument,
+  mutationWrapper,
   mockSuite,
+  copied,
 } = require('../util');
-const createStage = require('../../../src/schema/mutations/stage/create');
-const create = createStage(ioHelpers, projectHelpers);
+const createStage = mutationWrapper(require('../../../src/schema/mutations/stage/create'));
 const path = require('path');
 
-mockSuite('Mutations::Stages::Create', () => {
+mockSuite('Mutations::Stages::CreateBlank', () => {
   let stage;
   const abiValidations = "{ a: true }";
   const details = "Some info";
   const task = "Task"
 
   before(async () => {
-    stage = await create({
+    stage = await createStage({
       abiValidations,
       details,
       task
@@ -66,3 +69,55 @@ mockSuite('Mutations::Stages::Create', () => {
     });
   });
 });
+
+mockSuite('Mutations::Stages::CreateTemplate', () => {
+  let stage;
+  const containerId = 1;
+  const groupId = 2;
+  const groupTitle = "group";
+  const containerVersion = "version";
+  const template = "solidity";
+  const newTitle = "title";
+
+  before(async () => {
+    mockConfigDocument(MODEL_DB.STAGE_CONTAINER_GROUPS, {
+      id: groupId,
+      title: groupTitle,
+    })
+    mockConfigDocument(MODEL_DB.STAGE_CONTAINERS, {
+      id: containerId,
+      stageContainerGroupId: groupId,
+      version: containerVersion,
+    })
+    stage = await createStage({ containerId, title: newTitle, template });
+  });
+
+  it('should have set properties', () => {
+    assert.equal(stage.type, "CodeStage");
+    assert.equal(stage.language, "solidity");
+  });
+
+  it('should have set a new title', () => {
+    assert.equal(stage.title, newTitle);
+  });
+
+  it('should have written two code files', () => {
+    assert.equal(writtenModels.codeFiles.length, 2)
+  });
+
+  it('should have written a solution', () => {
+    assert.equal(writtenModels.solutions.length, 1)
+  });
+
+  it('should have not written a stage container', () => {
+    assert.equal(writtenModels.stageContainers.length, 0);
+  });
+
+  it('should have written a stage', () => {
+    assert.equal(writtenModels.stages.length, 1);
+  });
+
+  it('should have copied a directory', () => {
+    assert.equal(copied[0].newPath, STAGE_PROJECT_PATH);
+  });
+})
