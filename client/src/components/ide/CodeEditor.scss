@@ -31,8 +31,8 @@
         a.action-label {
           color: $border-color;
         }
-        &:hover:not(.disabled) {
-          background-color: $brand-active;
+        &:hover:not(.disabled) .action-menu-item {
+          background-color: rgb(82, 80, 80) !important;
         }
       }
       .monaco-action-bar.vertical {

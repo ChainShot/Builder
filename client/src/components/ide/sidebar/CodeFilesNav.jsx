@@ -6,7 +6,22 @@ import * as dialog from '../../../utils/dialog';
 import AddCodeFile from './AddCodeFile';
 import SVG from '../../SVG';
 
+const VALIDATION_LANGUAGES = ['vyper', 'solidity'];
+
 class CodeFilesNav extends Component {
+  renderValidations() {
+    const { basename, stage } = this.props;
+    if(VALIDATION_LANGUAGES.indexOf(stage.language) >= 0) {
+      return (
+        <li>
+          <NavLink to={`${basename}/validations`}>
+            <SVG name="file"/>
+            <span>validations.json</span>
+          </NavLink>
+        </li>
+      )
+    }
+  }
   render() {
     const { basename, stage, stageContainer } = this.props;
     const { codeFiles } = stage;
@@ -30,12 +45,7 @@ class CodeFilesNav extends Component {
             <span>task.md</span>
           </NavLink>
         </li>
-        <li>
-          <NavLink to={`${basename}/validations`}>
-            <SVG name="file"/>
-            <span>validations.json</span>
-          </NavLink>
-        </li>
+        { this.renderValidations() }
         { (codeFiles || []).map(cf => <CodeFileNav key={cf.id} codeFile={cf} {...this.props} />) }
         <li>
           <div className="action" onClick={() => dialog.open(AddCodeFile, { stage, stageContainer })}>
