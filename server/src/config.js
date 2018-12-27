@@ -6,6 +6,7 @@ const CONTENT_REPO_NAME = process.env.CONTENT_REPO_NAME || 'Content';
 const CONTENT_DIR = path.join(__dirname, '..', '..', '..', CONTENT_REPO_NAME);
 const CONFIG_DIR = `${CONTENT_DIR}/config`;
 const PROJECTS_DIR = `${CONTENT_DIR}/projects`;
+const TEMPLATES_DIR = path.join(__dirname, 'templates');
 const INITIAL_CODE_DIR = 'setup';
 const PORT = process.env.PORT || 3001;
 const LOOKUP_KEY = '$$LOOKUP';
@@ -20,6 +21,7 @@ const MODEL_DB = {
 module.exports = {
   CONFIG_DIR,
   PROJECTS_DIR,
+  TEMPLATES_DIR,
   PORT,
   LOOKUP_KEY,
   INITIAL_CODE_DIR,

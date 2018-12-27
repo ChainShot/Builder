@@ -1,7 +1,6 @@
 const assert = require('assert');
 const {
-  ioHelpers,
-  projectHelpers,
+  mutationWrapper,
   mockConfigDocument,
   removedModels,
   removedFiles,
@@ -10,8 +9,8 @@ const {
   mockSuite,
 } = require('../util');
 const path = require('path');
-const destroyStageContainerGroup = require('../../../src/schema/mutations/stageContainerGroup/destroy');
-const destroy = destroyStageContainerGroup(ioHelpers, projectHelpers);
+const destroyStageContainerGroup = mutationWrapper(require('../../../src/schema/mutations/stageContainerGroup/destroy'));
+
 const existingStageContainerGroup = {
   id: 1,
   intro: LOOKUP_KEY,
@@ -20,7 +19,7 @@ const existingStageContainerGroup = {
 mockSuite('Mutations::StageContainerGroups::Destroy', () => {
   before(async () => {
     mockConfigDocument(MODEL_DB.STAGE_CONTAINER_GROUPS, existingStageContainerGroup);
-    await destroy(existingStageContainerGroup.id);
+    await destroyStageContainerGroup(existingStageContainerGroup.id);
   });
 
   it('should have removed the stageContainerGroup', () => {

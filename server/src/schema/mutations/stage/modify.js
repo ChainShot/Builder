@@ -1,8 +1,11 @@
-const { LOOKUP_KEY, MODEL_DB } = require('../../../config');
 const stageProjectProps = require('./projectProps');
 const path = require('path');
 
-module.exports = ({ configWriter, fileWriter, configResolver, rename }, { findStageFilePath }) => {
+module.exports = ({
+  ioHelpers: { configWriter, fileWriter, configResolver, rename },
+  projectHelpers: { findStageFilePath },
+  config: { LOOKUP_KEY, MODEL_DB },
+}) => {
   async function modifyStage(props) {
     const stage = await configResolver(MODEL_DB.STAGES, props.id);
     const merged = { ...stage, ...props };

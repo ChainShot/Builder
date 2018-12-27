@@ -1,16 +1,14 @@
 const assert = require('assert');
-const modifyStage = require('../../../src/schema/mutations/stage/modify');
 const path = require('path');
 const {
-  ioHelpers,
-  projectHelpers,
+  mutationWrapper,
   STAGE_PROJECT_PATH,
   LOOKUP_KEY,
   writtenFiles,
   mockSuite,
 } = require('../util');
+const modifyStage = mutationWrapper(require('../../../src/schema/mutations/stage/modify'));
 
-const modify = modifyStage(ioHelpers, projectHelpers);
 const existingStage = {
   id: 1,
   task: LOOKUP_KEY,
@@ -27,7 +25,7 @@ mockSuite('Mutations::Stage::Modify', () => {
   }
 
   before(async () => {
-    await modify(modifyProps);
+    await modifyStage(modifyProps);
   });
 
   describe('properties', () => {

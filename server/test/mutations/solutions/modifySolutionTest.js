@@ -1,15 +1,13 @@
 const assert = require('assert');
-const modifySolution = require('../../../src/schema/mutations/solution/modify');
 const {
-  ioHelpers,
-  projectHelpers,
+  mutationWrapper,
   SOLUTION_PROJECT_PATH,
   LOOKUP_KEY,
   writtenFiles,
   mockSuite,
 } = require('../util');
 
-const modify = modifySolution(ioHelpers, projectHelpers);
+const modifySolution = mutationWrapper(require('../../../src/schema/mutations/solution/modify'));
 
 const existingSolution = {
   id: 1,
@@ -26,7 +24,7 @@ mockSuite('Mutations::Solutions::Modify', () => {
 
   let solution;
   before(async () => {
-    solution = await modify(modifyProps);
+    solution = await modifySolution(modifyProps);
   });
 
   describe('properties', () => {

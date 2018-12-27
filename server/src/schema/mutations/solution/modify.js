@@ -1,7 +1,10 @@
-const { LOOKUP_KEY, MODEL_DB } = require('../../../config');
 const solutionProjectProps = require('./projectProps');
 
-module.exports = ({ configWriter, fileWriter, configResolver, rename }, { findSolutionPath }) => {
+module.exports = ({
+  ioHelpers: { configWriter, fileWriter, configResolver, rename },
+  projectHelpers: { findSolutionPath },
+  config: { LOOKUP_KEY, MODEL_DB },
+}) => {
   async function modifySolution(props) {
     const solution = await configResolver(MODEL_DB.SOLUTIONS, props.id);
     const merged = { ...solution, ...props };

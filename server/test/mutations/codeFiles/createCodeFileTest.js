@@ -1,17 +1,15 @@
 const assert = require('assert');
-const createCodeFile = require('../../../src/schema/mutations/codeFile/create');
 const {
   MONGO_ID_REGEX,
   LOOKUP_KEY,
   SOLUTION_PROJECT_PATH,
   writtenModels,
   writtenFiles,
-  ioHelpers,
-  projectHelpers,
+  mutationWrapper,
   mockSuite,
 } = require('../util');
 
-const create = createCodeFile(ioHelpers, projectHelpers);
+const createCodeFile = mutationWrapper(require('../../../src/schema/mutations/codeFile/create'));
 
 mockSuite('Mutations::CodeFiles::Create', () => {
   describe('Creating a test file', () => {
@@ -21,7 +19,7 @@ mockSuite('Mutations::CodeFiles::Create', () => {
     }
 
     before(async () => {
-      await create(testFile);
+      await createCodeFile(testFile);
     });
 
     describe('Created model', () => {

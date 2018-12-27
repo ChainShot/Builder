@@ -1,9 +1,12 @@
-const { MODEL_DB } = require('../../../config');
 const { ObjectID } = require('mongodb');
 const stageContainerProjectProps = require('./projectProps');
 const path = require('path');
 
-module.exports = ({ configWriter, configResolver, fileWriter }, { findStageContainerFilePath }) => {
+module.exports = ({
+  ioHelpers: { configWriter, configResolver, fileWriter },
+  projectHelpers: { findStageContainerFilePath },
+  config: { MODEL_DB },
+}) => {
   async function createDocument({ containerType, id }) {
     return await configWriter(MODEL_DB.STAGE_CONTAINERS, {
       id: ObjectID().toString(),

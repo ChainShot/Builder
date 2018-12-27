@@ -5,13 +5,12 @@ const {
   STAGE_CONTAINER_PROJECT_PATH,
   writtenModelsLookup,
   writtenFiles,
-  ioHelpers,
-  projectHelpers,
+  mutationWrapper,
   mockSuite,
 } = require('../util');
 const path = require('path');
-const modifyStageContainerGroup = require('../../../src/schema/mutations/stageContainerGroup/modify');
-const modify = modifyStageContainerGroup(ioHelpers, projectHelpers);
+const modifyStageContainerGroup = mutationWrapper(require('../../../src/schema/mutations/stageContainerGroup/modify'));
+
 const existingStageContainerGroup = {
   id: 1,
   title: "original",
@@ -22,7 +21,7 @@ mockSuite('Mutations::StageContainerGroups::Modify', () => {
   const title = "new title";
 
   before(async () => {
-    stageContainerGroup = await modify({
+    stageContainerGroup = await modifyStageContainerGroup({
       title,
     });
   });

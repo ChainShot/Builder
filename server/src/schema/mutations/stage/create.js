@@ -1,9 +1,13 @@
-const { MODEL_DB, LOOKUP_KEY } = require('../../../config');
 const { ObjectID } = require('mongodb');
 const stageProjectProps = require('./projectProps');
 const path = require('path');
+const fs = require('fs-extra');
 
-module.exports = ({ configWriter, fileWriter }, { findStageFilePath }) => {
+module.exports = ({
+  ioHelpers: { configWriter, fileWriter },
+  projectHelpers: { findStageFilePath },
+  config: { MODEL_DB, LOOKUP_KEY, TEMPLATES_DIR },
+}) => {
   async function createDocument({ ...props }) {
     Object.keys(stageProjectProps).forEach(key => {
       props[key] = LOOKUP_KEY;
@@ -24,11 +28,21 @@ module.exports = ({ configWriter, fileWriter }, { findStageFilePath }) => {
     }
   }
 
+  async function buildTemplate(template) {
+    console.log(TEMPLATES_DIR);
+    // fs.readDir(__dirname, )
+  }
+
   async function createStage(props) {
-    props.id = ObjectID().toString();
-    const stage = await createDocument(props);
-    await createProjectFiles(props);
-    return stage;
+    if(props.template) {
+      return buildTemplate(props.template);
+    }
+    else {
+      props.id = ObjectID().toString();
+      const stage = await createDocument(props);
+      await createProjectFiles(props);
+      return stage;
+    }
   }
 
   return createStage;

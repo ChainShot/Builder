@@ -1,15 +1,13 @@
 const assert = require('assert');
-const modifyCodeFile = require('../../../src/schema/mutations/codeFile/modify');
 const {
-  ioHelpers,
-  projectHelpers,
+  mutationWrapper,
   CODE_FILE_PROJECT_PATHS,
   LOOKUP_KEY,
   writtenFiles,
   mockSuite,
 } = require('../util');
 
-const modify = modifyCodeFile(ioHelpers, projectHelpers);
+const modifyCodeFile = mutationWrapper(require('../../../src/schema/mutations/codeFile/modify'));
 
 const existingCodeFile = {
   id: 1,
@@ -23,7 +21,7 @@ mockSuite('Mutations::CodeFiles::Modify', () => {
   }
 
   before(async () => {
-    await modify(modifyProps);
+    await modifyCodeFile(modifyProps);
   });
 
   describe('properties', () => {

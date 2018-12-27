@@ -1,10 +1,12 @@
 const cfProjectProps = require('./projectProps');
-const { LOOKUP_KEY, MODEL_DB } = require('../../../config');
 
-module.exports = (ioHelpers, projectHelpers) => {
-  const createSolution = require('../solution/create')(ioHelpers, projectHelpers);
-  const { configWriter, configRemove, rename, fileWriter, configResolver, configDocumentReader } = ioHelpers;
-  const { findCodeFilePaths } = projectHelpers;
+module.exports = (injections) => {
+  const createSolution = require('../solution/create')(injections);
+  const {
+    config: { LOOKUP_KEY, MODEL_DB },
+    ioHelpers: { configWriter, configRemove, rename, fileWriter, configResolver, configDocumentReader },
+    projectHelpers: { findCodeFilePaths },
+  } = injections;
 
   const onChange = {
     hasProgress: async (codeFile) => {

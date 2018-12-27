@@ -1,9 +1,7 @@
 const assert = require('assert');
-const destroyStage = require('../../../src/schema/mutations/stage/destroy');
 const path = require('path');
 const {
-  ioHelpers,
-  projectHelpers,
+  mutationWrapper,
   mockConfigDocument,
   removedModels,
   removedFiles,
@@ -12,8 +10,8 @@ const {
   MODEL_DB,
   mockSuite,
 } = require('../util');
+const destroyStage = mutationWrapper(require('../../../src/schema/mutations/stage/destroy'));
 
-const destroy = destroyStage(ioHelpers, projectHelpers);
 const existingStage = {
   id: 1,
   task: LOOKUP_KEY,
@@ -24,7 +22,7 @@ const existingStage = {
 mockSuite('Mutations::Stages::Destroy', () => {
   before(async () => {
     mockConfigDocument(MODEL_DB.STAGES, existingStage);
-    await destroy(existingStage.id);
+    await destroyStage(existingStage.id);
   });
 
   it('should have removed the stage', () => {

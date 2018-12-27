@@ -1,8 +1,11 @@
-const { MODEL_DB, LOOKUP_KEY } = require('../../../config');
 const { ObjectID } = require('mongodb');
 const solutionProjectProps = require('./projectProps');
 
-module.exports = ({ configWriter, fileWriter }, { findSolutionPath }) => {
+module.exports = ({
+  ioHelpers: { configWriter, fileWriter },
+  projectHelpers: { findSolutionPath },
+  config: { LOOKUP_KEY, MODEL_DB },
+}) => {
   async function createDocument(stageId, codeFileId) {
     return await configWriter(MODEL_DB.SOLUTIONS, {
       id: ObjectID().toString(),

@@ -1,9 +1,12 @@
 const stageContainerProjectProps = require('./projectProps');
-const { LOOKUP_KEY, MODEL_DB } = require('../../../config');
 const fs = require('fs-extra');
 const path = require('path');
 
-module.exports = ({ configWriter, fileWriter, configResolver }, { findStageContainerFilePath }) => {
+module.exports = ({
+  ioHelpers: { configWriter, fileWriter, configResolver },
+  projectHelpers: { findStageContainerFilePath },
+  config: { LOOKUP_KEY, MODEL_DB },
+}) => {
   const onChange = {
     type: async (stageContainer) => {
       const { stageContainerGroupId } = stageContainer;

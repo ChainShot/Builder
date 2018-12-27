@@ -18,7 +18,6 @@ const StageType = new GraphQLObjectType({
     language: { type: GraphQLString },
     testFramework: { type: GraphQLString },
     languageVersion: { type: GraphQLString },
-    languageVersion: { type: GraphQLString },
     codeFileIds: { type: GraphQLList(GraphQLString) },
     solutions: {
       type: new GraphQLList(require('./SolutionType')),

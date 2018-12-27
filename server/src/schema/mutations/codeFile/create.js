@@ -1,11 +1,13 @@
-const { MODEL_DB, LOOKUP_KEY } = require('../../../config');
 const { ObjectID } = require('mongodb');
 const cfProjectProps = require('./projectProps');
 
-module.exports = (ioHelpers, projectHelpers) => {
-  const createSolution = require('../solution/create')(ioHelpers, projectHelpers);
-  const { configWriter, fileWriter, configResolver } = ioHelpers;
-  const { findCodeFilePaths } = projectHelpers;
+module.exports = (injections) => {
+  const createSolution = require('../solution/create')(injections);
+  const {
+    config: { LOOKUP_KEY, MODEL_DB },
+    ioHelpers: { configWriter, fileWriter, configResolver },
+    projectHelpers: { findCodeFilePaths },
+  } = injections;
 
   async function createDocument({ ...props }) {
     Object.keys(cfProjectProps).forEach(key => {

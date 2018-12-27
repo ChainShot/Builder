@@ -5,13 +5,12 @@ const {
   STAGE_CONTAINER_PROJECT_PATH,
   writtenModelsLookup,
   writtenFiles,
-  ioHelpers,
-  projectHelpers,
+  mutationWrapper,
   mockSuite,
 } = require('../util');
 const path = require('path');
-const modifyStageContainer = require('../../../src/schema/mutations/stageContainer/modify');
-const modify = modifyStageContainer(ioHelpers, projectHelpers);
+const modifyStageContainer = mutationWrapper(require('../../../src/schema/mutations/stageContainer/modify'));
+
 const existingStageContainer = {
   id: 1,
   intro: LOOKUP_KEY,
@@ -22,7 +21,7 @@ mockSuite('Mutations::StageContainers::Modify', () => {
   const intro = "WELCOME";
 
   before(async () => {
-    stageContainer = await modify({
+    stageContainer = await modifyStageContainer({
       intro,
     });
   });

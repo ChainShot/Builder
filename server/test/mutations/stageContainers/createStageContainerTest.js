@@ -7,12 +7,10 @@ const {
   mockConfigDocument,
   writtenModelsLookup,
   writtenFiles,
-  ioHelpers,
-  projectHelpers,
+  mutationWrapper,
   mockSuite,
 } = require('../util');
-const createStageContainer = require('../../../src/schema/mutations/stageContainer/create');
-const create = createStageContainer(ioHelpers, projectHelpers);
+const createStageContainer = mutationWrapper(require('../../../src/schema/mutations/stageContainer/create'));
 const path = require('path');
 
 mockSuite('Mutations::StageContainers::Create', () => {
@@ -25,7 +23,7 @@ mockSuite('Mutations::StageContainers::Create', () => {
       id: stageContainerGroupId,
       containerType,
     })
-    stageContainer = await create(stageContainerGroupId);
+    stageContainer = await createStageContainer(stageContainerGroupId);
   });
 
   describe('properties', () => {

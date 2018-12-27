@@ -1,11 +1,16 @@
 const Transaction = require('./Transaction');
 const projectHelpers = require('../../projectHelpers');
 const ioHelpers = require('../../ioHelpers');
+const config = require('../../config');
 
 function txWrapper(setupFn) {
   return async (...args) => {
     const transaction = new Transaction();
-    const mutationFn = setupFn(ioHelpers.withTransaction(transaction), projectHelpers);
+    const mutationFn = setupFn({
+      ioHelpers: ioHelpers.withTransaction(transaction),
+      projectHelpers,
+      config,
+    });
     try {
       return await mutationFn(...args);
     }

@@ -1,7 +1,10 @@
-const { MODEL_DB } = require('../../../config');
 const fs = require('fs-extra');
 
-module.exports = ({ configWriter, configResolver }, { findStageContainerGroupFilePath }) => {
+module.exports = ({
+  ioHelpers: { configWriter, configResolver },
+  projectHelpers: { findStageContainerGroupFilePath },
+  config: { MODEL_DB },
+}) => {
   async function modifyStageContainerGroup(props) {
     const stageContainerGroup = await configResolver(MODEL_DB.STAGE_CONTAINER_GROUPS, props.id);
     const merged = { ...stageContainerGroup, ...props };
