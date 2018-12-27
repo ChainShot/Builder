@@ -50,6 +50,7 @@ const writtenFiles = {};
 let removedModels = blankLookups();
 const removedFiles = {};
 const renamed = [];
+const copied = [];
 
 let mockCollections = blankLookups();
 
@@ -115,10 +116,17 @@ const fileWriter = (filePath, props) => {
 }
 
 const rename = (previousPath, newPath) => {
-  renamed.push([{
+  renamed.push({
     previousPath,
     newPath
-  }]);
+  });
+}
+
+const copy = (previousPath, newPath) => {
+  copied.push({
+    previousPath,
+    newPath
+  });
 }
 
 const findSolutionPath = () => SOLUTION_PROJECT_PATH;
@@ -142,6 +150,7 @@ const ioHelpers = {
   configRemove,
   configDocumentReader,
   configResolver,
+  copy,
 }
 
 const mutationWrapper = (fn) => {
@@ -168,6 +177,7 @@ module.exports = {
   removedModels,
   removedFiles,
   renamed,
+  copied,
   mockSuite,
   mockConfigDocument,
   mutationWrapper,

@@ -7,6 +7,7 @@ const fileRemove = require('./fileRemove');
 const fileResolver = require('./fileResolver');
 const fileWriter = require('./fileWriter');
 const rename = require('./rename');
+const copy = require('./copy');
 
 const helpers = {
   configDocumentReader,
@@ -18,6 +19,7 @@ const helpers = {
   fileResolver,
   fileWriter,
   rename,
+  copy,
 }
 
 // a set of a helpers which can be invoked immediately without a transaction
