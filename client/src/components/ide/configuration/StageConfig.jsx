@@ -68,7 +68,8 @@ class StageConfig extends Component {
       <form className="config" ref="container">
         <label>
           <span>Title</span>
-          <input value={title} onChange={({ target: { value }}) => this.handleChange('title', value)}/>
+          <input type="text" className="styled" value={title}
+            onChange={({ target: { value }}) => this.handleChange('title', value)}/>
         </label>
 
         <StyledSelect

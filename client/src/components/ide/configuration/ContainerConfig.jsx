@@ -74,12 +74,14 @@ class ContainerConfig extends Component {
       <form className="config">
         <label>
           <span>Title</span>
-          <input value={title} onChange={({ target: { value }}) => this.handleGroupChange('title', value)}/>
+          <input type="text" className="styled" value={title}
+            onChange={({ target: { value }}) => this.handleGroupChange('title', value)}/>
         </label>
 
         <label>
           <span>Version</span>
-          <input value={version} onChange={({ target: { value }}) => this.handleContainerChange('version', value)}/>
+          <input type="text" className="styled" value={version}
+            onChange={({ target: { value }}) => this.handleContainerChange('version', value)}/>
         </label>
 
         <StyledSelect

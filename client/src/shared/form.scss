@@ -11,7 +11,7 @@ form {
     }
   }
 
-  input {
+  input[type="text"].styled {
     font-size: 1em;
     padding: 10px;
     color: white;
@@ -20,8 +20,13 @@ form {
     display: block;
     border: 1px solid $border-color;
     background-color: black;
+    transition: border .25s;
+    &:hover {
+      border: 1px solid #999;
+    }
     &:focus {
       outline-width: 0;
+      box-shadow: 0 0 0 1px $brand-active;
       border: 1px solid $brand-active;
     }
   }

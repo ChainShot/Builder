@@ -77,12 +77,16 @@ class CodeFileConfig extends Component {
       <form className="config" ref="container">
         <label>
           <span>Name</span>
-          <input value={name} onChange={({ target: { value }}) => this.handleChange('name', value)}/>
+          <input
+            type="text" className="styled" value={name}
+            onChange={({ target: { value }}) => this.handleChange('name', value)}/>
         </label>
 
         <label>
           <span>Execution Path</span>
-          <input value={executablePath} onChange={({ target: { value }}) => this.handleChange('executablePath', value)}/>
+          <input
+            type="text" className="styled" value={executablePath}
+            onChange={({ target: { value }}) => this.handleChange('executablePath', value)}/>
         </label>
 
         <StyledSelect

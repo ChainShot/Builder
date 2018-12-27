@@ -21,7 +21,8 @@ class AddStage extends Component {
           <div className="shared">
             <label>
               <span>Title</span>
-              <input value={title} onChange={({ target }) => this.handleChange('title', target.value)}/>
+              <input type="text" className="styled" value={title}
+                onChange={({ target }) => this.handleChange('title', target.value)}/>
             </label>
           </div>
 
