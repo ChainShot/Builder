@@ -1,7 +1,48 @@
+@import '../../shared/variables';
+
 .code-editor {
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
+}
+
+.monaco-editor.vs-dark {
+  .view-overlays .current-line {
+    border: none !important;
+    background-color: lighten($bg-dark, 3);
+  }
+
+  .lines-content {
+    .cigr {
+      box-shadow: none;
+      border-left: 1px solid $border-color;
+    }
+  }
+
+  .context-view.monaco-menu-container {
+    box-shadow: 0 1px 1px $bg-darker;
+    font-family: 'Muli', sans-serif;
+    border: 1px solid $border-color;
+    .monaco-menu {
+      background-color: $bg-darker;
+      li.action-item {
+        a.action-label {
+          color: $border-color;
+        }
+        &:hover:not(.disabled) {
+          background-color: $brand-active;
+        }
+      }
+      .monaco-action-bar.vertical {
+        .action-label.separator {
+          border-bottom: 1px solid $border-color;
+        }
+        .action-item .action-label:focus {
+          color: white;
+        }
+      }
+    }
+  }
 }
