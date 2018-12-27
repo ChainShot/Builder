@@ -52,7 +52,8 @@ class NewCodeFile extends Component {
       <form onSubmit={() => this.onSubmit()}>
         <label>
           <span>Name</span>
-          <input value={name} onChange={({ target }) => this.handleChange('name', target.value)}/>
+          <input type="text" className="styled" value={name}
+            onChange={({ target }) => this.handleChange('name', target.value)}/>
         </label>
 
         <StyledSwitch

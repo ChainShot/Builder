@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { close } from '../../../utils/dialog';
-import './AddStage.scss';
 import apiMutation from '../../../utils/api/mutation';
 import StyledSelect from '../../forms/StyledSelect';
+import './NewStageTemplate.scss';
 
 const variables = [
   ['title', 'String'],
@@ -46,7 +46,7 @@ class NewStageTemplate extends Component {
   render() {
     const { template, title } = this.state;
     return (
-      <React.Fragment>
+      <div className="new-stage-template">
         <StyledSelect
           label="Stage Template"
           onChange={(val) => this.handleChange("template", val)}
@@ -58,7 +58,7 @@ class NewStageTemplate extends Component {
             Add Stage Template
           </div>
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }

@@ -6,7 +6,7 @@ const overrides = {
     neutral0: "#000",
     neutral5: "#333",
     neutral10: "#555",
-    neutral20: "#777",
+    neutral20: "#363636",
     neutral30: "#999",
     neutral40: "#aaa",
     neutral50: "#bbb",

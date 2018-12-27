@@ -4,6 +4,8 @@ import StagesNav from './StagesNav';
 import './Sidebar.scss';
 import SVG from '../../SVG';
 
+const s = n => n === 1 ? '' : 's';
+
 class Sidebar extends Component {
   render() {
     const { stageContainer: { stageContainerGroup: { title }, version, stages }, basename } = this.props;
@@ -24,7 +26,7 @@ class Sidebar extends Component {
           </li>
         </ul>
         <div className="stages">
-          <label>Stages ( {stages.length} )</label>
+          <label>{stages.length} Stage{s(stages.length)}</label>
           <StagesNav {...this.props} />
         </div>
       </div>
