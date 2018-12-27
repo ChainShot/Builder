@@ -14,20 +14,21 @@ class AddStage extends Component {
   }
   render() {
     const { title } = this.state;
+    const { containerId } = this.props;
     return (
       <Dialog title="New Stage" className="add-stage">
         <form>
           <div className="shared">
             <label>
               <span>Title</span>
-              <input value={title} onChange={(...args) => this.handleChange('title', ...args)}/>
+              <input value={title} onChange={({ target }) => this.handleChange('title', target.value)}/>
             </label>
           </div>
 
           <PaneSwitch
             labels={['From Template', 'Blank Stage']}>
-            <NewStageTemplate title={title}/>
-            <NewStage title={title}/>
+            <NewStageTemplate title={title} containerId={containerId}/>
+            <NewStage title={title} containerId={containerId}/>
           </PaneSwitch>
         </form>
       </Dialog>

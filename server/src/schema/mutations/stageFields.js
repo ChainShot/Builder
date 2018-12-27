@@ -22,6 +22,11 @@ const stageArgs = {
   details: { type: GraphQLString },
 }
 
+const creationArgs = {
+  ...stageArgs,
+  template: { type: GraphQLString },
+}
+
 module.exports = {
   destroyStage: {
     type: StageType,
@@ -32,7 +37,7 @@ module.exports = {
   },
   createStage: {
     type: StageType,
-    args: stageArgs,
+    args: creationArgs,
     resolve: (_, props) => txWrapper(createStage)(props),
   },
   modifyStage: {

@@ -4,18 +4,25 @@ import './AddStage.scss';
 import apiMutation from '../../../utils/api/mutation';
 import StyledSelect from '../../forms/StyledSelect';
 
+const variables = [
+  ['title', 'String'],
+  ['containerId', 'String'],
+  ['template', 'String'],
+]
+
+const args = variables.map(([prop, type]) => `$${prop}: ${type}`).join(', ');
+const mapping = variables.map(([prop, type]) => `${prop}: $${prop}`).join(', ');
+
 const mutation = `
-mutation createStage($title: String, $containerId: String) {
-  createStage(title: $title, containerId: $containerId, details: "", task: "", abiValidations: "") {
+mutation createStage(${args}) {
+  createStage(${mapping}, details: "", task: "", abiValidations: "") {
     id
-    title
-    containerId
   }
 }
 `;
 
 const templates = [
-    { label: 'Solidity Stage', value: 'Solidity' },
+    { label: 'Solidity Stage', value: 'solidity' },
     { label: 'Vyper Stage', value: 'Vyper' },
     { label: 'Web3 JS Stage', value: 'Web3 JS' },
 ]
@@ -27,9 +34,9 @@ class NewStageTemplate extends Component {
   }
   onSubmit = (evt) => {
     evt.preventDefault();
-    const { containerId } = this.props;
-    const { title } = this.state;
-    apiMutation(mutation, { title, containerId }).then(() => {
+    const { containerId, title } = this.props;
+    const { template } = this.state;
+    apiMutation(mutation, { title, containerId, template }).then(() => {
       close();
     });
   }

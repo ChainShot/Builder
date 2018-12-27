@@ -29,27 +29,46 @@ module.exports = ({
   }
 
   async function buildTemplate({title, containerId, template}) {
-    // copy all config docs and replace the IDs
-    let stage;
     const templateConfigPath = path.join(TEMPLATES_DIR, MODEL_DB.STAGES, template, 'config');
-    const collections = await fs.readdir(templateConfigPath);
-    for(let i = 0; i < collections.length; i++) {
-      const collection = collections[i];
-      const collectionPath = path.join(templateConfigPath, collection);
-      const docs = await fs.readdir(collectionPath);
-      for(let j = 0; j < docs.length; j++) {
-        const doc = await fs.readFile(path.join(collectionPath, docs[j]));
-        const props = JSON.parse(doc.toString());
-        if(collection === 'stages') {
-          props.title = title;
-          props.containerId = containerId;
-          stage = props;
-        }
-        props.id = ObjectID().toString();
-        await configWriter(collection, props);
-      }
+
+    const stagePath = path.join(templateConfigPath, MODEL_DB.STAGES);
+    const stageDocName = (await fs.readdir(stagePath))[0];
+    const stageDoc = await fs.readFile(path.join(stagePath, stageDocName));
+    let stage = JSON.parse(stageDoc.toString());
+    stage.id = ObjectID().toString();
+    stage.title = title;
+    stage.containerId = containerId;
+    stage.codeFileIds = [];
+
+    const codeFileIdChanges = [];
+    const codeFilePath = path.join(templateConfigPath, MODEL_DB.CODE_FILES);
+    const codeFileDocs = await fs.readdir(codeFilePath);
+    for(let i = 0; i < codeFileDocs.length; i++) {
+      const doc = await fs.readFile(path.join(codeFilePath, codeFileDocs[i]));
+      const props = JSON.parse(doc.toString());
+      const newId = ObjectID().toString();
+      codeFileIdChanges[props.id] = newId;
+      props.codeStageIds = [stage.id];
+      props.stageContainerId = containerId;
+      props.id = newId;
+      stage.codeFileIds.push(props.id);
+      await configWriter(MODEL_DB.CODE_FILES, props);
     }
-    
+
+    const solutionsPath = path.join(templateConfigPath, MODEL_DB.SOLUTIONS);
+    const solutionDocs = await fs.readdir(solutionsPath);
+    for(let i = 0; i < solutionDocs.length; i++) {
+      const doc = await fs.readFile(path.join(solutionsPath, solutionDocs[i]));
+      const props = JSON.parse(doc.toString());
+      const newId = ObjectID().toString();
+      props.codeFileId = codeFileIdChanges[props.codeFileId];
+      props.stageId = stage.id;
+      props.id = newId;
+      await configWriter(MODEL_DB.SOLUTIONS, props);
+    }
+
+    await configWriter(MODEL_DB.STAGES, stage);
+
     const templateProjectsPath = path.join(TEMPLATES_DIR, MODEL_DB.STAGES, template, 'projects');
     const outputPath = await findStageFilePath(stage);
     const projects = await copy(templateProjectsPath, outputPath);
