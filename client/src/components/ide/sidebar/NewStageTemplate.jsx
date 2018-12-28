@@ -23,8 +23,8 @@ mutation createStage(${args}) {
 
 const templates = [
     { label: 'Solidity Stage', value: 'solidity' },
-    { label: 'Vyper Stage', value: 'Vyper' },
-    { label: 'Web3 JS Stage', value: 'Web3 JS' },
+    { label: 'Vyper Stage', value: 'vyper' },
+    { label: 'Web3 JS Stage', value: 'web3' },
 ]
 
 class NewStageTemplate extends Component {
