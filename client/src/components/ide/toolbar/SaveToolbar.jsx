@@ -1,22 +1,26 @@
 import React, { Component } from 'react';
-import SVG from '../../SVG';
 import './SaveToolbar.scss';
+import Save from './Save';
+import AutoSave from './AutoSave';
+import { startSave, toggleAutosave } from '../../../redux/actions';
+import { connect } from 'react-redux';
 
 class SaveToolbar extends Component {
   render() {
+    const { startSave, toggleAutosave, saveState } = this.props;
     return (
       <React.Fragment>
-        <li className="save">
-          <SVG name="save" />
-          <div>Save</div>
-        </li>
-        <li className="auto-save">
-          <SVG name="magic" />
-          Auto-Save
-        </li>
+        <AutoSave toggleAutosave={toggleAutosave} startSave={startSave} saveState={saveState}/>
+        <Save startSave={startSave} saveState={saveState}/>
       </React.Fragment>
     )
   }
 }
 
-export default SaveToolbar;
+const mapStateToProps = ({ saveState }) => ({ saveState });
+const mapDispatchToProps = { startSave, toggleAutosave }
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SaveToolbar);

@@ -1,11 +1,33 @@
+@import '../../../shared/variables';
+
 ul.toolbar {
   li.save, li.auto-save {
     display: flex;
+    color: $disabled;
+    transition: color .3s;
 
     SVG {
       height: 18px;
       width: auto;
       margin-right: 10px;
+    }
+  }
+
+  li.auto-save {
+    &:hover {
+      cursor: pointer;
+    }
+    &.on {
+      color: $success;
+    }
+  }
+
+  li.save {
+    &.has-changes {
+      color: $brand-active;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }
