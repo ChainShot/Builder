@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import MarkdownToolbar from './MarkdownToolbar';
+import SVG from '../../SVG';
+import './IntroToolbar.scss';
 
 class IntroToolbar extends Component {
   render() {
@@ -8,7 +10,8 @@ class IntroToolbar extends Component {
       <React.Fragment>
         <MarkdownToolbar stageContainer={stageContainer}/>
         <li className="docs">
-          Help
+          <SVG name="book" />
+          <div> Markdown Docs </div>
         </li>
       </React.Fragment>
     )

@@ -1,0 +1,11 @@
+ul.toolbar {
+  li.save, li.auto-save {
+    display: flex;
+
+    SVG {
+      height: 18px;
+      width: auto;
+      margin-right: 10px;
+    }
+  }
+}

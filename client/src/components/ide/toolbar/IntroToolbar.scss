@@ -1,0 +1,13 @@
+ul.toolbar {
+  li.docs {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+
+    SVG {
+      height: 18px;
+      width: auto;
+      margin-right: 10px;
+    }
+  }
+}
