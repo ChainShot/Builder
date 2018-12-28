@@ -3,10 +3,9 @@ import SaveToolbar from './SaveToolbar';
 
 class MarkdownToolbar extends Component {
   render() {
-    const { stageContainer } = this.props;
     return (
       <React.Fragment>
-        <SaveToolbar stageContainer={stageContainer}/>
+        <SaveToolbar />
       </React.Fragment>
     )
   }

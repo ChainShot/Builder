@@ -1,26 +1,55 @@
 import store from '../store';
 import { completeSave, registerChanges, unregisterChanges } from '../actions';
 
-let savePromise = null;
-let isSaving = false;
-let originalState = null;
-let currentState = null;
+const svcInitialState = {
+  savePromise: null,
+  isSaving: false,
+  originalState: null,
+  currentState: null,
+}
+
+const svc = {
+  __state: { ...svcInitialState },
+  getState: function() {
+    return this.__state.currentState;
+  },
+  register: function (_originalState, _savePromise) {
+    this.__state.savePromise = _savePromise;
+    this.__state.originalState = _originalState;
+    this.__state.currentState = _originalState;
+  },
+  onUpdate: function (state) {
+    this.__state.currentState = {
+      ...this.__state.currentState,
+      ...state,
+    };
+    if(!equalObjects(this.__state.originalState, this.__state.currentState)) {
+      store.dispatch(registerChanges());
+    }
+    else {
+      store.dispatch(unregisterChanges());
+    }
+  },
+  unregister: function () {
+    this.__state = { ...svcInitialState }
+  }
+}
 
 store.subscribe(async () => {
   const { saveState: { saving }} = store.getState();
-  if(saving && !isSaving) {
+  if(saving && !svc.__state.isSaving) {
     try {
-      originalState = currentState;
-      await savePromise(currentState);
+      svc.__state.originalState = svc.__state.currentState;
+      await svc.__state.savePromise(svc.__state.currentState);
       store.dispatch(unregisterChanges());
     }
     catch(ex) {
-
+      // TODO: revert original state and show a message to user
     }
     store.dispatch(completeSave());
   }
-  if(!saving && isSaving) {
-    isSaving = false;
+  if(!saving && svc.__state.isSaving) {
+    svc.__state.isSaving = false;
   }
 });
 
@@ -35,24 +64,4 @@ function equalObjects(a, b) {
   return true;
 }
 
-export default {
-  register: (_originalState, _savePromise) => {
-    savePromise = _savePromise;
-    originalState = _originalState;
-  },
-  onUpdate: (state) => {
-    currentState = state;
-    if(!equalObjects(originalState, state)) {
-      store.dispatch(registerChanges());
-    }
-    else {
-      store.dispatch(unregisterChanges());
-    }
-  },
-  unregister: () => {
-    savePromise = null;
-    isSaving = false;
-    originalState = null;
-    currentState = null;
-  }
-}
+export default svc;
