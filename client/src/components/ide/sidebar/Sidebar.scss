@@ -17,11 +17,12 @@
   }
 
   label {
-    border-bottom: 1px solid darken($bg-container, 2);
+    $darker: darken($bg-container, 2);
+    background-color: $darker;
     color: $darker-font;
     margin-top: 8px;
-    padding-bottom: 3px;
-    padding-left: 5px;
+    padding: 5px 0;
+    text-align: center;
     font-size: 13px;
     display: block;
   }

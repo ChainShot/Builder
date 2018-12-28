@@ -1,0 +1,17 @@
+{
+  "type": "CodeStage",
+  "containerId": "5c1711c471bd490ed52bf8a8",
+  "language": "javascript",
+  "title": "Web3.js Template",
+  "abiValidations": "$$LOOKUP",
+  "task": "$$LOOKUP",
+  "details": "$$LOOKUP",
+  "id": "5c2586f613ceeee82bd42ee5",
+  "languageVersion": "6.x/babel",
+  "testFramework": "mocha_bdd",
+  "codeFileIds": [
+    "5c25875c13ceeee82bd42ee6",
+    "5c25876813ceeee82bd42ee7",
+    "5c258b1d13ceeee82bd42ef1"
+  ]
+}
