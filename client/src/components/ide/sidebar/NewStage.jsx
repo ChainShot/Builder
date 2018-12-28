@@ -38,8 +38,8 @@ class NewStage extends Component {
       close();
     });
   }
-  handleChange(prop, {target}) {
-    this.setState({[prop]: target.value});
+  handleChange(prop, val) {
+    this.setState({[prop]: val});
   }
   render() {
     const { title } = this.props;
