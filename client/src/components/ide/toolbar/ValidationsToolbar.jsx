@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import MarkdownToolbar from './MarkdownToolbar';
+import SaveToolbar from './SaveToolbar';
 import SVG from '../../SVG';
 import { READ_THE_DOCS } from '../../../config';
 
-class IntroToolbar extends Component {
+class ValidationsToolbar extends Component {
   render() {
     return (
       <React.Fragment>
-        <MarkdownToolbar />
+        <SaveToolbar />
         <li className="docs">
           <a href={`${READ_THE_DOCS}/content.html`} target="_blank">
             <SVG name="book" />
-            <div> Markdown Docs </div>
+            <div> ABI Validations Docs </div>
           </a>
         </li>
       </React.Fragment>
@@ -19,4 +19,4 @@ class IntroToolbar extends Component {
   }
 }
 
-export default IntroToolbar;
+export default ValidationsToolbar;

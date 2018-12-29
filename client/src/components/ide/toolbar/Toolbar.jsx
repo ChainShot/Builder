@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import IntroToolbar from './IntroToolbar';
+import MarkdownToolbar from './MarkdownToolbar';
+import ValidationsToolbar from './ValidationsToolbar';
 import StageConfigToolbar from './StageConfigToolbar';
 import PropsRoute from '../../PropsRoute';
 import SVG from '../../SVG';
@@ -17,8 +18,10 @@ class Toolbar extends Component {
             <SVG name="logotype"/>
           </Link>
         </li>
-        <PropsRoute path="/content/:containerId/intro" component={IntroToolbar} />
+        <PropsRoute path="/content/:containerId/intro" component={MarkdownToolbar} />
         <PropsRoute exact path="/content/:containerId/stage/:stageId" component={StageConfigToolbar} />
+        <PropsRoute path="/content/:containerId/stage/:stageId/(details|task)" component={MarkdownToolbar} />
+        <PropsRoute path="/content/:containerId/stage/:stageId/validations" component={ValidationsToolbar} />
       </ul>
     )
   }
