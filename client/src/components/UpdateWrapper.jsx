@@ -38,9 +38,9 @@ function deeplyEqualObjects(a, b) {
 class UpdateWrapper extends Component {
   constructor(props) {
     super(props);
-    const { child, ...rest } = props;
+    const { child, savePromise, ...rest } = props;
     this.state = {
-      savePromise: null,
+      savePromise,
       isSaving: false,
       originalState: { ...rest },
       currentState: { ...rest },
