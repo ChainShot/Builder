@@ -1,0 +1,29 @@
+@import '../../../shared/variables';
+
+ul.toolbar {
+  li.run-code {
+    display: flex;
+    transition: color .3s;
+    flex-grow: .5;
+    justify-content: flex-end;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    SVG {
+      transition: color .3s;
+      color: $success;
+      height: 18px;
+      width: auto;
+      margin-right: 10px;
+    }
+
+    &.running {
+      color: $disabled;
+      SVG {
+        color: $disabled;
+      }
+    }
+  }
+}

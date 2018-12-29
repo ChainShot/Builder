@@ -3,6 +3,7 @@ import './CodeFileToolbar.scss';
 import Output from './Output';
 import Compilation from './Compilation';
 import SVG from '../../../SVG';
+import { connect } from 'react-redux';
 
 const COMPILE_REGEX = /\w*(\.sol|\.v\.py)$/;
 
@@ -24,6 +25,12 @@ class CodeFileToolbar extends Component {
                      hide={() => this.changePane('')}/>
     }
     return null;
+  }
+  componentDidUpdate(prevProps) {
+    const { executionState: { running }} = this.props;
+    if(!prevProps.executionState.running && running) {
+      this.changePane('output');
+    }
   }
   changePane = (pane) => {
     if(pane === this.state.pane) this.setState({ pane: '' });
@@ -63,4 +70,9 @@ class CodeFileToolbar extends Component {
   }
 }
 
-export default CodeFileToolbar;
+
+const mapStateToProps = ({ executionState }) => ({ executionState });
+
+export default connect(
+  mapStateToProps,
+)(CodeFileToolbar);

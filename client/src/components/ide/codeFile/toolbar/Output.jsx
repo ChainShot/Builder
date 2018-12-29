@@ -3,6 +3,8 @@ import './Output.scss';
 import runner from '../../../../utils/api/runner';
 import OutputDisplay from './OutputDisplay';
 import OutputToolbar from './OutputToolbar';
+import { completeCodeExecution } from '../../../../redux/actions';
+import { connect } from 'react-redux';
 
 class Output extends Component {
   state = {
@@ -49,4 +51,11 @@ class Output extends Component {
   }
 }
 
-export default Output;
+
+const mapStateToProps = ({ executionState }) => ({ executionState });
+const mapDispatchToProps = { completeCodeExecution }
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Output);
