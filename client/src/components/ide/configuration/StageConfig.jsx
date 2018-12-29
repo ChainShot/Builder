@@ -6,8 +6,6 @@ import {STAGE_TYPE_OPTIONS, STAGE_LANGUAGE_OPTIONS} from '../../../config';
 import confirm from '../../../utils/confirm';
 import SVG from '../../SVG';
 import './ContainerConfig.scss';
-import UpdateService from '../../../redux/services/UpdateService';
-import {connect} from 'react-redux';
 
 const variables = [
   ['id', 'String'],
@@ -43,70 +41,50 @@ const frameworkOptions = [
 ]
 
 class StageConfig extends Component {
-  // static getDerivedStateFromProps(nextProps, prevState) {
-  //   const { title, id } = nextProps.stage;
-  //   if(id !== prevState.id) {
-  //      return { title, id };
-  //   }
-  //   return prevState;
-  // }
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { ...props.stage }
-  // }
-  // handleChange(prop, value) {
-  //   this.setState({ [prop]: value });
-  //   const { id } = this.props.stage;
-  //   apiMutation(mutation, { [prop]: value, id });
-  // }
+  constructor(props) {
+    super(props);
+    props.onSave(({ stage }) => apiMutation(mutation, stage));
+  }
   destroyStage = () => {
     confirm("Are you sure you want to delete this stage?").then(() => {
       const { id } = this.props.stage;
       apiMutation(destroyStage, { id });
     });
   }
-  componentWillUnmount() {
-    UpdateService.unregister();
-  }
-  constructor(props) {
-    super(props);
-    const { stage } = props;
-    UpdateService.register(
-      { ...stage },
-      (props) => apiMutation(mutation, props)
-    );
-  }
   render() {
-    const { title, type, language, languageVersion, testFramework } = UpdateService.getState();
+    const { update,
+       stage: { title, type, language, languageVersion, testFramework }
+     } = this.props;
+    const updateStage = (state) => update({ stage: state })
     return (
       <form className="config" ref="container">
         <label>
           <span>Title</span>
           <input type="text" className="styled" value={title}
-            onChange={({ target: { value }}) => UpdateService.onUpdate({ title: value })}/>
+            onChange={({ target: { value }}) => updateStage({ title: value })}/>
         </label>
 
         <StyledSelect
           label="Type"
-          onChange={(type) => UpdateService.onUpdate({ type })}
+          onChange={(type) => updateStage({ type })}
           value={type}
           options={STAGE_TYPE_OPTIONS} />
 
         <StyledSelect
           label="Language"
-          onChange={(language) => UpdateService.onUpdate({ language })}
+          onChange={(language) => updateStage({ language })}
           value={language}
           options={STAGE_LANGUAGE_OPTIONS} />
 
         <StyledSelect
           label="Language Version"
-          onChange={(languageVersion) => UpdateService.onUpdate({ languageVersion })}
+          onChange={(languageVersion) => updateStage({ languageVersion })}
           value={languageVersion}
           options={languageVersionOptions} />
 
         <StyledSelect
           label="Test Framework"
-          onChange={(testFramework) => UpdateService.onUpdate({ testFramework })}
+          onChange={(testFramework) => updateStage({ testFramework })}
           value={testFramework}
           options={frameworkOptions} />
 
@@ -119,9 +97,4 @@ class StageConfig extends Component {
   }
 }
 
-
-const mapStateToProps = ({ saveState }) => ({ saveState });
-
-export default connect(
-  mapStateToProps,
-)(StageConfig);
+export default StageConfig;

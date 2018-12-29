@@ -3,24 +3,24 @@ import CodeEditor from '../CodeEditor';
 import ReactMarkdown from 'react-markdown';
 import apiMutation from '../../../utils/api/mutation';
 import './MarkdownEdit.scss';
-import UpdateService from '../../../redux/services/UpdateService';
+import UpdateWrapper from '../../UpdateWrapper';
 
 class MarkdownEdit extends Component {
-  componentWillUnmount() {
-    UpdateService.unregister();
+  render() {
+    return <UpdateWrapper {...this.props} child={MarkdownEditChild} />
   }
+}
+
+class MarkdownEditChild extends Component {
   componentDidMount() {
-    const { markdownProp, id, mutation, markdown } = this.props;
-    UpdateService.register(
-      { markdown },
-      ({ markdown }) => apiMutation(mutation, { id, [markdownProp]: markdown })
-    );
+    const { onSave, mutation, markdown, id, markdownProp } = this.props;
+    onSave(({ markdown }) => apiMutation(mutation, { id, [markdownProp]: markdown }));
   }
   render() {
-    const { markdown } = this.props;
+    const { markdown, update } = this.props;
     return (
       <div className="markdown-edit">
-        <CodeEditor mode="markdown" code={markdown} onUpdate={(markdown) => UpdateService.onUpdate({ markdown })} />
+        <CodeEditor mode="markdown" code={markdown} onUpdate={(markdown) => update({ markdown })} />
         <div className="display">
           <ReactMarkdown source={markdown} />
         </div>
