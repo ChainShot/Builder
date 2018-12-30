@@ -7,17 +7,17 @@ const COMPILATION_TAB = 'compilation';
 
 class CodeFileToolbarPane extends Component {
   render() {
-    const { pane, stage, codeFile } = this.props;
+    const { pane, stage, codeFile, changePane } = this.props;
     return (
       <React.Fragment>
         <Output stage={stage}
                codeFile={codeFile}
                shouldShow={pane === OUTPUT_TAB}
-               hide={() => this.changePane('')}/>
+               hide={changePane}/>
         <Compilation stage={stage}
                 codeFile={codeFile}
                 shouldShow={pane === COMPILATION_TAB}
-                hide={() => this.changePane('')}/>
+                hide={changePane}/>
       </React.Fragment>
     )
   }
