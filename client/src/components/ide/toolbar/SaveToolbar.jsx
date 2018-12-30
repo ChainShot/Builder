@@ -10,7 +10,7 @@ class SaveToolbar extends Component {
     const { startSave, toggleAutosave, saveState } = this.props;
     return (
       <li className="save-toolbar">
-        <label> Save </label>
+        <label> save </label>
         <AutoSave toggleAutosave={toggleAutosave} startSave={startSave} saveState={saveState}/>
         <Save startSave={startSave} saveState={saveState}/>
       </li>

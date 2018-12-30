@@ -4,9 +4,12 @@ import SVG from '../../SVG';
 import { startCompilation } from '../../../redux/actions';
 import { connect } from 'react-redux';
 
+const COMPILE_REGEX = /\w*(\.sol|\.v\.py)$/;
+
 class CompileCode extends Component {
   render() {
-    const { startCompilation, compilationState: { compiling } } = this.props;
+    const { codeFile, startCompilation, compilationState: { compiling } } = this.props;
+    if(!COMPILE_REGEX.test(codeFile.name)) return null;
     const classes = ['compile-code'];
     if(compiling) classes.push('running');
     return (

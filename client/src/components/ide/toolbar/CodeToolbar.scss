@@ -2,7 +2,8 @@
 
 ul.toolbar li.code-toolbar {
   display: flex;
-  margin-left: 40px;
+  flex-grow: .5;
+  justify-content: center;
 
   > label  {
     margin-right: 10px;

@@ -5,11 +5,12 @@ import './CodeToolbar.scss';
 
 class CodeToolbar extends Component {
   render() {
+    const { codeFile } = this.props;
     return (
       <li className="code-toolbar">
-        <label> Code </label>
+        <label> code </label>
         <RunCode />
-        <CompileCode />
+        <CompileCode codeFile={codeFile} />
       </li>
     )
   }
