@@ -19,7 +19,7 @@ class AutoSave extends Component {
     const classes = ['auto-save'];
     if(autosave) classes.push('on');
     return (
-      <div className={classes.join(' ')} onClick={toggleAutosave}>
+      <div className={classes.join(' ')} onClick={toggleAutosave} data-rh="Autosave (Toggle)">
         <SVG name="magic" />
       </div>
     )
