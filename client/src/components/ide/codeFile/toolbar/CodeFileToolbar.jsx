@@ -1,30 +1,13 @@
 import React, { Component } from 'react';
 import './CodeFileToolbar.scss';
-import Output from './Output';
-import Compilation from './Compilation';
-import SVG from '../../../SVG';
+import CodeFileToolbarPane from './CodeFileToolbarPane';
+import CompilationTab from './CompilationTab';
+import OutputTab from './OutputTab';
 import { connect } from 'react-redux';
-
-const COMPILE_REGEX = /\w*(\.sol|\.v\.py)$/;
 
 class CodeFileToolbar extends Component {
   state = {
     pane: null,
-  }
-  renderPane() {
-    const { pane } = this.state;
-    const { stage, codeFile } = this.props;
-    if(pane === 'output') {
-      return <Output stage={stage}
-                     codeFile={codeFile}
-                     hide={() => this.changePane('')}/>
-    }
-    if(pane === 'compilation') {
-      return <Compilation stage={stage}
-                     codeFile={codeFile}
-                     hide={() => this.changePane('')}/>
-    }
-    return null;
   }
   componentDidUpdate(prevProps) {
     const { executionState: { running }} = this.props;
@@ -40,36 +23,20 @@ class CodeFileToolbar extends Component {
   classes(pane) {
     return this.state.pane === pane ? 'active' : '';
   }
-  renderCompileTab() {
-    const { codeFile } = this.props;
-    if(COMPILE_REGEX.test(codeFile.name)) {
-      return (
-        <li className={this.classes('compilation')}
-            onClick={() => this.changePane('compilation')}>
-          <SVG name="code"/>
-          <div>Compilation</div>
-        </li>
-      )
-    }
-    return null;
-  }
   render() {
+    const { pane } = this.state;
+    const { stage, codeFile } = this.props;
     return (
       <div className="code-file-toolbar">
-        { this.renderPane() }
+        <CodeFileToolbarPane pane={pane} stage={stage} codeFile={codeFile} />
         <ul className="actions">
-          { this.renderCompileTab() }
-          <li className={this.classes('output')}
-              onClick={() => this.changePane('output')}>
-            <SVG name="play"/>
-            <div>Output</div>
-          </li>
+          <CompilationTab changePane={this.changePane} pane={pane} codeFile={codeFile} />
+          <OutputTab changePane={this.changePane} pane={pane} codeFile={codeFile} />
         </ul>
       </div>
     )
   }
 }
-
 
 const mapStateToProps = ({ executionState }) => ({ executionState });
 

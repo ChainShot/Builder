@@ -39,6 +39,12 @@ class Output extends Component {
       this.setState({ output: data, runIdx: runIdx + 1, running: false });
     }
   }
+  componentDidUpdate(prevProps) {
+    const { executionState: { running }} = this.props;
+    if(!prevProps.executionState.running && running) {
+      this.runCode();
+    }
+  }
   render() {
     const { hide } = this.props;
     const { running, output } = this.state;
