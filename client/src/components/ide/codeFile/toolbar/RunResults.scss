@@ -49,7 +49,6 @@
   svg {
     height: 13px;
     width: 13px;
-    fill: black;
     &:hover {
       cursor: pointer;
     }
@@ -89,7 +88,6 @@
 }
 
 .result-type--log {
-  background-color: black;
   color: white;
   position: relative;
   margin-bottom: .5rem;

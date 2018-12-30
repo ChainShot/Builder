@@ -5,6 +5,14 @@ import { startCodeExecution } from '../../../redux/actions';
 import { connect } from 'react-redux';
 
 class RunCodeToolbar extends Component {
+  componentDidMount() {
+    document.addEventListener('keydown', (evt) => {
+      if(evt.metaKey && (evt.keyCode === 13)) {
+        this.props.startCodeExecution();
+        evt.preventDefault();
+      }
+    })
+  }
   render() {
     const { startCodeExecution, executionState: { running } } = this.props;
     const classes = ['run-code'];
