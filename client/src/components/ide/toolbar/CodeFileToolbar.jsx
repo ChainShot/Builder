@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import SaveToolbar from './SaveToolbar';
-import RunCodeToolbar from './RunCodeToolbar';
-import CompileCodeToolbar from './CompileCodeToolbar';
+import CodeToolbar from './CodeToolbar';
 import SVG from '../../SVG';
 import { READ_THE_DOCS } from '../../../config';
 
@@ -10,8 +9,7 @@ class CodeFileToolbar extends Component {
     return (
       <React.Fragment>
         <SaveToolbar />
-        <RunCodeToolbar />
-        <CompileCodeToolbar />
+        <CodeToolbar />
         <li className="docs">
           <a href={`${READ_THE_DOCS}/content.html`} target="_blank">
             <SVG name="book" />

@@ -1,0 +1,12 @@
+@import '../../../shared/variables';
+
+ul.toolbar li.save-toolbar {
+  .save {
+    &.has-changes {
+      color: $success;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

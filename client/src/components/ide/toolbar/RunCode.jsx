@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './RunCodeToolbar.scss';
+import './RunCode.scss';
 import SVG from '../../SVG';
 import { startCodeExecution } from '../../../redux/actions';
 import { connect } from 'react-redux';
 
-class RunCodeToolbar extends Component {
+class RunCode extends Component {
   componentDidMount() {
     document.addEventListener('keydown', (evt) => {
       if(evt.metaKey && (evt.keyCode === 13)) {
@@ -18,10 +18,9 @@ class RunCodeToolbar extends Component {
     const classes = ['run-code'];
     if(running) classes.push('running');
     return (
-      <li className={classes.join(' ')} onClick={startCodeExecution}>
+      <div className={classes.join(' ')} onClick={startCodeExecution}>
         <SVG name="play" />
-        <div>Run Code</div>
-      </li>
+      </div>
     )
   }
 }
@@ -32,4 +31,4 @@ const mapDispatchToProps = { startCodeExecution }
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(RunCodeToolbar);
+)(RunCode);

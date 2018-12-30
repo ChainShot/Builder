@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import debounce from '../../../utils/debounce';
 import SVG from '../../SVG';
+import './AutoSave.scss';
 
 const DEBOUNCE_INTERVAL = 1000;
 class AutoSave extends Component {
@@ -18,10 +19,9 @@ class AutoSave extends Component {
     const classes = ['auto-save'];
     if(autosave) classes.push('on');
     return (
-      <li className={classes.join(' ')} onClick={toggleAutosave}>
+      <div className={classes.join(' ')} onClick={toggleAutosave}>
         <SVG name="magic" />
-        Auto-Save
-      </li>
+      </div>
     )
   }
 }

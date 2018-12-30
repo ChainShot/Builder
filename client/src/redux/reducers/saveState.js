@@ -9,7 +9,7 @@ import {
 const initialState = {
   saving: false,
   changes: false,
-  autosave: false,
+  autosave: true,
 }
 
 export default function(state = initialState, action) {

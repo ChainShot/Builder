@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SVG from '../../SVG';
+import './Save.scss';
 
 class Save extends Component {
   componentDidMount() {
@@ -16,10 +17,9 @@ class Save extends Component {
     if(saving) classes.push('saving');
     if(changes) classes.push('has-changes');
     return (
-      <li className={classes.join(' ')} onClick={startSave}>
+      <div className={classes.join(' ')} onClick={startSave}>
         <SVG name="save" />
-        <div>Save</div>
-      </li>
+      </div>
     )
   }
 }

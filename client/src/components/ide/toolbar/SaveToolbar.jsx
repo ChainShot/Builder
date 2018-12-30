@@ -9,10 +9,11 @@ class SaveToolbar extends Component {
   render() {
     const { startSave, toggleAutosave, saveState } = this.props;
     return (
-      <React.Fragment>
+      <li className="save-toolbar">
+        <label> Save </label>
         <AutoSave toggleAutosave={toggleAutosave} startSave={startSave} saveState={saveState}/>
         <Save startSave={startSave} saveState={saveState}/>
-      </React.Fragment>
+      </li>
     )
   }
 }

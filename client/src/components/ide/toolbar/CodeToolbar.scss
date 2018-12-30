@@ -1,11 +1,16 @@
 @import '../../../shared/variables';
 
-ul.toolbar {
-  li.compile-code {
-    display: flex;
+ul.toolbar li.code-toolbar {
+  display: flex;
+  margin-left: 40px;
+
+  > label  {
+    margin-right: 10px;
+  }
+
+  > div {
     transition: color .3s;
-    flex-grow: .5;
-    justify-content: flex-end;
+    margin-right: 15px;
 
     &:hover {
       cursor: pointer;
@@ -17,13 +22,6 @@ ul.toolbar {
       height: 18px;
       width: auto;
       margin-right: 10px;
-    }
-
-    &.running {
-      color: $disabled;
-      SVG {
-        color: $disabled;
-      }
     }
   }
 }
