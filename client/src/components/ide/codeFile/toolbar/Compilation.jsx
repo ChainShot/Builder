@@ -3,11 +3,11 @@ import './Compilation.scss';
 import * as compilers from '../../../../utils/api/compilers';
 import CompilationDisplay from './CompilationDisplay';
 import CompilationToolbar from './CompilationToolbar';
+import { completeCompilation, startCompilation } from '../../../../redux/actions';
+import { connect } from 'react-redux';
 
 class Compilation extends Component {
   state = {
-    output: null,
-    compiling: false,
     auto: true,
   }
   compile = async () => {
@@ -25,10 +25,12 @@ class Compilation extends Component {
         const solution = stage.solutions.find(x => x.codeFileId === codeFile.id);
         code = solution.code;
       }
-      this.setState({ compiling: true });
       const output = await compiler.compile(code, name);
-      this.setState({ output, compiling: false });
+      this.props.completeCompilation(output);
     }
+  }
+  startCompilation = () => {
+    this.props.startCompilation();
   }
   toggleAuto = () => {
     this.setState({ auto: !this.state.auto })
@@ -47,18 +49,28 @@ class Compilation extends Component {
           this.compile();
       }
     }
+    const { compilationState: { compiling }} = this.props;
+    if(!prevProps.compilationState.compiling && compiling) {
+      this.compile();
+    }
   }
   render() {
-    const { compiling, output, auto } = this.state;
-    const { hide, shouldShow } = this.props;
+    const { auto } = this.state;
+    const { hide, shouldShow, compilationState: { output, compiling } } = this.props;
     if(!shouldShow) return null;
     return (
       <div className="compilation">
-        <CompilationToolbar compile={this.compile} hide={hide} compiling={compiling} auto={auto} toggleAuto={this.toggleAuto}/>
-        <CompilationDisplay compile={this.compile} output={output} toggleAuto={this.toggleAuto}/>
+        <CompilationToolbar compile={this.startCompilation} hide={hide} compiling={compiling} auto={auto} toggleAuto={this.toggleAuto}/>
+        <CompilationDisplay compile={this.startCompilation} output={output} toggleAuto={this.toggleAuto}/>
       </div>
     )
   }
 }
 
-export default Compilation;
+const mapStateToProps = ({ compilationState }) => ({ compilationState });
+const mapDispatchToProps = { completeCompilation, startCompilation }
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Compilation);

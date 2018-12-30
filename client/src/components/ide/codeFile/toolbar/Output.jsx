@@ -52,12 +52,11 @@ class Output extends Component {
     return (
       <div className="output">
         <OutputToolbar hide={hide} runCode={this.startRun} cancelRun={this.cancelRun} running={running} />
-        <OutputDisplay output={output} running={running} runCode={this.runCode} cancelRun={this.cancelRun} />
+        <OutputDisplay output={output} running={running} runCode={this.startRun} cancelRun={this.cancelRun} />
       </div>
     )
   }
 }
-
 
 const mapStateToProps = ({ executionState }) => ({ executionState });
 const mapDispatchToProps = { completeCodeExecution, startCodeExecution }

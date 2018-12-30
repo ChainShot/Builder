@@ -14,6 +14,10 @@ class CodeFileToolbar extends Component {
     if(!prevProps.executionState.running && running) {
       this.changePane('output');
     }
+    const { compilationState: { compiling }} = this.props;
+    if(!prevProps.compilationState.compiling && compiling) {
+      this.changePane('compilation');
+    }
   }
   changePane = (pane) => {
     this.setState({ pane });
@@ -37,7 +41,7 @@ class CodeFileToolbar extends Component {
   }
 }
 
-const mapStateToProps = ({ executionState }) => ({ executionState });
+const mapStateToProps = ({ executionState, compilationState }) => ({ executionState, compilationState });
 
 export default connect(
   mapStateToProps,
