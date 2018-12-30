@@ -33,6 +33,21 @@ class CodeEditor extends Component {
     editor.onDidChangeModelContent(() => this.props.onUpdate(editor.getValue()));
     this.editor = editor;
 
+    editor.addAction({
+    	id: 'run-code',
+    	label: 'Run Code',
+    	keybindings: [
+    		monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter,
+    	],
+    	precondition: null,
+    	keybindingContext: null,
+    	contextMenuGroupId: 'navigation',
+    	contextMenuOrder: 1.5,
+    	run: function(ed) {
+        // handled by keybindings
+    	}
+    });
+
     window.addEventListener("resize", this.updateDimensions.bind(this));
   }
 
