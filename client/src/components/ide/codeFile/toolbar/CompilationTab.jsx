@@ -7,11 +7,12 @@ class CompilationTab extends Component {
   render() {
     const { codeFile, changePane, pane } = this.props;
     const classes = [];
-    if(pane === TAB_NAME) classes.push('active');
+    const isActive = (pane === TAB_NAME);
+    if(isActive) classes.push('active');
     if(COMPILE_REGEX.test(codeFile.name)) {
       return (
         <li className={classes.join(' ')}
-            onClick={() => changePane(TAB_NAME)}>
+            onClick={() => changePane(isActive ? '' : TAB_NAME)}>
           <SVG name="code"/>
           <div>Compilation</div>
         </li>

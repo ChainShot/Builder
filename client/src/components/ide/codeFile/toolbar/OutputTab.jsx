@@ -6,10 +6,11 @@ class OutputTab extends Component {
   render() {
     const { codeFile, changePane, pane } = this.props;
     const classes = [];
-    if(pane === TAB_NAME) classes.push('active');
+    const isActive = (pane === TAB_NAME);
+    if(isActive) classes.push('active');
     return (
       <li className={classes.join(' ')}
-          onClick={() => changePane(TAB_NAME)}>
+          onClick={() => changePane(isActive ? '' : TAB_NAME)}>
         <SVG name="play"/>
         <div>Output</div>
       </li>

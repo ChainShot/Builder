@@ -2,20 +2,24 @@ import React, { Component } from 'react';
 import Output from './Output';
 import Compilation from './Compilation';
 
+const OUTPUT_TAB = 'output';
+const COMPILATION_TAB = 'compilation';
+
 class CodeFileToolbarPane extends Component {
   render() {
     const { pane, stage, codeFile } = this.props;
-    if(pane === 'output') {
-      return <Output stage={stage}
-                     codeFile={codeFile}
-                     hide={() => this.changePane('')}/>
-    }
-    if(pane === 'compilation') {
-      return <Compilation stage={stage}
-                     codeFile={codeFile}
-                     hide={() => this.changePane('')}/>
-    }
-    return null;
+    return (
+      <React.Fragment>
+        <Output stage={stage}
+               codeFile={codeFile}
+               shouldShow={pane === OUTPUT_TAB}
+               hide={() => this.changePane('')}/>
+        <Compilation stage={stage}
+                codeFile={codeFile}
+                shouldShow={pane === COMPILATION_TAB}
+                hide={() => this.changePane('')}/>
+      </React.Fragment>
+    )
   }
 }
 

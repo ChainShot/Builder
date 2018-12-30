@@ -50,7 +50,8 @@ class Compilation extends Component {
   }
   render() {
     const { compiling, output, auto } = this.state;
-    const { hide } = this.props;
+    const { hide, shouldShow } = this.props;
+    if(!shouldShow) return null;
     return (
       <div className="compilation">
         <CompilationToolbar compile={this.compile} hide={hide} compiling={compiling} auto={auto} toggleAuto={this.toggleAuto}/>

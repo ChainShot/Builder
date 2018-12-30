@@ -16,8 +16,7 @@ class CodeFileToolbar extends Component {
     }
   }
   changePane = (pane) => {
-    if(pane === this.state.pane) this.setState({ pane: '' });
-    else this.setState({ pane });
+    this.setState({ pane });
     window.requestAnimationFrame(() => window.dispatchEvent(new CustomEvent('resize')));
   }
   classes(pane) {
