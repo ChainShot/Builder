@@ -20,7 +20,7 @@ class Stage extends Component {
         <PropsRoute path={`${url}/file/:codeFileId`} component={CodeFile} stage={stage} />
         <PropsRoute path={`${url}/details`} component={Details} stage={stage} />
         <PropsRoute path={`${url}/task`} component={Task} stage={stage} />
-        <PropsRoute path={`${url}/validations`} component={Validations} stage={stage} />
+        <PropsRoute path={`${url}/validations`} component={UpdateWrapper} child={Validations} stage={stage} />
       </React.Fragment>
     )
   }
