@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Switch from "react-switch";
-import SVG from '../SVG';
 import "./StyledSwitch.scss";
 
 class StyledSwitch extends Component {

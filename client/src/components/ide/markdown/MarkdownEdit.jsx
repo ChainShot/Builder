@@ -13,7 +13,7 @@ class MarkdownEdit extends Component {
 
 class MarkdownEditChild extends Component {
   componentDidMount() {
-    const { onSave, mutation, markdown, id, markdownProp } = this.props;
+    const { onSave, mutation, id, markdownProp } = this.props;
     onSave(({ markdown }) => apiMutation(mutation, { id, [markdownProp]: markdown }));
   }
   render() {
