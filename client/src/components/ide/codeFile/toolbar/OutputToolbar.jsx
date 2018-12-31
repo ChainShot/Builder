@@ -11,13 +11,13 @@ class OutputToolbar extends Component {
     if(!running) cancelClasses.push('disabled');
     return (
       <div className="output-toolbar">
-        <div className={runnerClasses.join(' ')} onClick={runCode}>
+        <div className={runnerClasses.join(' ')} onClick={runCode} data-rh="Run Code">
           <SVG name="play"/>
         </div>
-        <div className={cancelClasses.join(' ')} onClick={cancelRun}>
+        <div className={cancelClasses.join(' ')} onClick={cancelRun} data-rh="Cancel Run">
           <SVG name="cancel"/>
         </div>
-        <div className="tool end" onClick={hide}>
+        <div className="tool end" onClick={hide} data-rh="Hide">
           <SVG name="minus"/>
         </div>
       </div>

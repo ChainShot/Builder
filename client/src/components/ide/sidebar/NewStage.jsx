@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Dialog from '../../Dialog';
 import { close } from '../../../utils/dialog';
 import { STAGE_LANGUAGE_OPTIONS, STAGE_TYPE_OPTIONS } from '../../../config';
 import StyledSelect from '../../forms/StyledSelect';
@@ -42,7 +41,6 @@ class NewStage extends Component {
     this.setState({[prop]: val});
   }
   render() {
-    const { title } = this.props;
     const { type, language } = this.state;
     return (
       <form onSubmit={this.onSubmit}>

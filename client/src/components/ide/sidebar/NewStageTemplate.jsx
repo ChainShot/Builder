@@ -44,7 +44,7 @@ class NewStageTemplate extends Component {
     this.setState({ [prop]: value });
   }
   render() {
-    const { template, title } = this.state;
+    const { template } = this.state;
     return (
       <div className="new-stage-template">
         <StyledSelect

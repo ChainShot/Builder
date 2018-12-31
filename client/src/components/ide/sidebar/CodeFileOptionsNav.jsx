@@ -9,7 +9,7 @@ class CodeFileOptionsNav extends Component {
     if(codeFile.hasProgress) {
       return (
         <li>
-          <NavLink to={`${basename}/solution`} exact>
+          <NavLink to={`${basename}/solution`} exact data-rh="Your Solution" data-rh-at="right">
             <SVG name="codefile"/>
             <span>solution</span>
           </NavLink>
@@ -22,7 +22,7 @@ class CodeFileOptionsNav extends Component {
     return (
       <ul className="code-file-options-nav">
         <li>
-          <NavLink to={`${basename}`} exact>
+          <NavLink to={`${basename}`} exact data-rh="User's Initial Code" data-rh-at="right">
             <SVG name="codefile"/>
             <span>setup</span>
           </NavLink>

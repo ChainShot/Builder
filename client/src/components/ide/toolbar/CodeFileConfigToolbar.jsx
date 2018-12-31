@@ -9,7 +9,7 @@ class CodeFileConfigToolbar extends Component {
       <React.Fragment>
         <SaveToolbar />
         <li className="docs">
-          <a href={`${READ_THE_DOCS}/content.html`} target="_blank">
+          <a href={`${READ_THE_DOCS}/content.html`} target="_blank" rel="noopener noreferrer">
             <SVG name="book" />
             <div> Code File Docs </div>
           </a>

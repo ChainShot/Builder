@@ -12,13 +12,13 @@ class CompilationToolbar extends Component {
     else autoClasses.push('off');
     return (
       <div className="compilation-toolbar">
-        <div className={compileClasses.join(' ')} onClick={compile}>
+        <div className={compileClasses.join(' ')} onClick={compile} data-rh="Compile Code">
           <SVG name="code"/>
         </div>
-        <div className={autoClasses.join(' ')} onClick={toggleAuto}>
+        <div className={autoClasses.join(' ')} onClick={toggleAuto} data-rh="Auto-Compile (Toggle)">
           <SVG name="magic"/>
         </div>
-        <div className="tool end" onClick={hide}>
+        <div className="tool end" onClick={hide} data-rh="Hide">
           <SVG name="minus"/>
         </div>
       </div>
