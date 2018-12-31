@@ -1,0 +1,25 @@
+@import '../../../shared/variables';
+
+ul.toolbar li.save-toolbar {
+  display: flex;
+
+  > label  {
+    margin-right: 10px;
+  }
+
+  .save, .auto-save {
+    display: flex;
+    color: $disabled;
+    transition: color .3s;
+    margin-right: 25px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    SVG {
+      height: 18px;
+      width: auto;
+    }
+  }
+}

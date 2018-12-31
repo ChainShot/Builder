@@ -1,66 +1,48 @@
 import React, { Component } from 'react';
 import './CodeFileToolbar.scss';
-import Output from './Output';
-import Compilation from './Compilation';
-import SVG from '../../../SVG';
-
-const COMPILE_REGEX = /\w*(\.sol|\.v\.py)$/;
+import CodeFileToolbarPane from './CodeFileToolbarPane';
+import CompilationTab from './CompilationTab';
+import OutputTab from './OutputTab';
+import { connect } from 'react-redux';
 
 class CodeFileToolbar extends Component {
   state = {
     pane: null,
   }
-  renderPane() {
-    const { pane } = this.state;
-    const { stage, codeFile } = this.props;
-    if(pane === 'output') {
-      return <Output stage={stage}
-                     codeFile={codeFile}
-                     hide={() => this.changePane('')}/>
+  componentDidUpdate(prevProps) {
+    const { executionState: { running }} = this.props;
+    if(!prevProps.executionState.running && running) {
+      this.changePane('output');
     }
-    if(pane === 'compilation') {
-      return <Compilation stage={stage}
-                     codeFile={codeFile}
-                     hide={() => this.changePane('')}/>
+    const { compilationState: { compiling }} = this.props;
+    if(!prevProps.compilationState.compiling && compiling) {
+      this.changePane('compilation');
     }
-    return null;
   }
   changePane = (pane) => {
-    if(pane === this.state.pane) this.setState({ pane: '' });
-    else this.setState({ pane });
+    this.setState({ pane });
     window.requestAnimationFrame(() => window.dispatchEvent(new CustomEvent('resize')));
   }
   classes(pane) {
     return this.state.pane === pane ? 'active' : '';
   }
-  renderCompileTab() {
-    const { codeFile } = this.props;
-    if(COMPILE_REGEX.test(codeFile.name)) {
-      return (
-        <li className={this.classes('compilation')}
-            onClick={() => this.changePane('compilation')}>
-          <SVG name="code"/>
-          <div>Compilation</div>
-        </li>
-      )
-    }
-    return null;
-  }
   render() {
+    const { pane } = this.state;
+    const { stage, codeFile } = this.props;
     return (
       <div className="code-file-toolbar">
-        { this.renderPane() }
+        <CodeFileToolbarPane changePane={this.changePane} pane={pane} stage={stage} codeFile={codeFile} />
         <ul className="actions">
-          { this.renderCompileTab() }
-          <li className={this.classes('output')}
-              onClick={() => this.changePane('output')}>
-            <SVG name="play"/>
-            <div>Output</div>
-          </li>
+          <CompilationTab changePane={this.changePane} pane={pane} codeFile={codeFile} />
+          <OutputTab changePane={this.changePane} pane={pane} codeFile={codeFile} />
         </ul>
       </div>
     )
   }
 }
 
-export default CodeFileToolbar;
+const mapStateToProps = ({ executionState, compilationState }) => ({ executionState, compilationState });
+
+export default connect(
+  mapStateToProps,
+)(CodeFileToolbar);

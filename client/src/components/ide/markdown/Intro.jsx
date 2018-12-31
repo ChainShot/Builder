@@ -10,9 +10,9 @@ mutation modifyStageContainer($id: String, $intro: String) {
 }
 `;
 
-const Details = ({ stageContainer }) => {
+const Intro = ({ stageContainer }) => {
   const { id, intro } = stageContainer;
   return <MarkdownEdit mutation={mutation} id={id} markdownProp="intro" markdown={intro} />
 }
 
-export default Details;
+export default Intro;

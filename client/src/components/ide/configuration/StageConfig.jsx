@@ -41,21 +41,9 @@ const frameworkOptions = [
 ]
 
 class StageConfig extends Component {
-  static getDerivedStateFromProps(nextProps, prevState) {
-    const { title, id } = nextProps.stage;
-    if(id !== prevState.id) {
-       return { title, id };
-    }
-    return prevState;
-  }
   constructor(props) {
     super(props);
-    this.state = { ...props.stage }
-  }
-  handleChange(prop, value) {
-    this.setState({ [prop]: value });
-    const { id } = this.props.stage;
-    apiMutation(mutation, { [prop]: value, id });
+    props.onSave(({ stage }) => apiMutation(mutation, stage));
   }
   destroyStage = () => {
     confirm("Are you sure you want to delete this stage?").then(() => {
@@ -64,36 +52,39 @@ class StageConfig extends Component {
     });
   }
   render() {
-    const { title, type, language, languageVersion, testFramework } = this.state;
+    const { update,
+       stage: { title, type, language, languageVersion, testFramework }
+     } = this.props;
+    const updateStage = (state) => update({ stage: state })
     return (
       <form className="config" ref="container">
         <label>
           <span>Title</span>
           <input type="text" className="styled" value={title}
-            onChange={({ target: { value }}) => this.handleChange('title', value)}/>
+            onChange={({ target: { value }}) => updateStage({ title: value })}/>
         </label>
 
         <StyledSelect
           label="Type"
-          onChange={(val) => this.handleChange("type", val)}
+          onChange={(type) => updateStage({ type })}
           value={type}
           options={STAGE_TYPE_OPTIONS} />
 
         <StyledSelect
           label="Language"
-          onChange={(val) => this.handleChange("language", val)}
+          onChange={(language) => updateStage({ language })}
           value={language}
           options={STAGE_LANGUAGE_OPTIONS} />
 
         <StyledSelect
           label="Language Version"
-          onChange={(val) => this.handleChange("languageVersion", val)}
+          onChange={(languageVersion) => updateStage({ languageVersion })}
           value={languageVersion}
           options={languageVersionOptions} />
 
         <StyledSelect
           label="Test Framework"
-          onChange={(val) => this.handleChange("testFramework", val)}
+          onChange={(testFramework) => updateStage({ testFramework })}
           value={testFramework}
           options={frameworkOptions} />
 

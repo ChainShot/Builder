@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import debounce from '../../utils/debounce';
 import * as monaco from 'monaco-editor'
 import theme from '../../utils/monacoTheme';
 import './CodeEditor.scss';
@@ -31,11 +30,23 @@ class CodeEditor extends Component {
       value: code,
       language: mode,
     });
-    const debouncedUpdate = debounce(() => {
-      this.props.onUpdate(editor.getValue());
-    }, 1000);
-    editor.onDidChangeModelContent(debouncedUpdate);
+    editor.onDidChangeModelContent(() => this.props.onUpdate(editor.getValue()));
     this.editor = editor;
+
+    editor.addAction({
+    	id: 'run-code',
+    	label: 'Run Code',
+    	keybindings: [
+    		monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter,
+    	],
+    	precondition: null,
+    	keybindingContext: null,
+    	contextMenuGroupId: 'navigation',
+    	contextMenuOrder: 1.5,
+    	run: function(ed) {
+        // handled by keybindings
+    	}
+    });
 
     window.addEventListener("resize", this.updateDimensions.bind(this));
   }
@@ -52,7 +63,7 @@ class CodeEditor extends Component {
     if(prevProps.mode !== this.props.mode) {
       monaco.editor.setModelLanguage(this.editor.getModel(), this.props.mode);
     }
-    if(prevProps.code !== this.props.code) {
+    if(prevProps.code !== this.props.code && this.props.code !== this.editor.getValue()) {
       // if the editor has focus, dont change the content
       // the idea here is we'll accept socket changes from a new tab, window or local IDE
       // since were concerned only with changes from one person editing the content

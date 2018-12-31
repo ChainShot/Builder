@@ -10,7 +10,7 @@
   overflow: auto;
   height: 100%;
   width: 100%;
-  padding: 0 10px 100px;
+  padding: 10px 20px 100px;
 }
 
 .run-result-item__test-results {
@@ -49,7 +49,6 @@
   svg {
     height: 13px;
     width: 13px;
-    fill: black;
     &:hover {
       cursor: pointer;
     }
@@ -89,8 +88,6 @@
 }
 
 .result-type--log {
-  padding: 10px;
-  background-color: black;
   color: white;
   position: relative;
   margin-bottom: .5rem;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { close } from '../../../utils/dialog';
 import apiMutation from '../../../utils/api/mutation';
 import StyledSelect from '../../forms/StyledSelect';
+import './ExistingCodeFile.scss';
 
 const mutation = `
 mutation modifyCodeFile($codeFileId: String, $codeStageIds: [String], $stageId: String, $codeFileIds: [String]) {
@@ -57,7 +58,7 @@ class ExistingCodeFile extends Component {
   render() {
     const { codeFile, options } = this.state;
     return (
-      <React.Fragment>
+      <div className="existing-code-file">
         <StyledSelect
           label="Existing Code File"
           onChange={(val) => this.handleChange("codeFile", val)}
@@ -69,7 +70,7 @@ class ExistingCodeFile extends Component {
             Add Existing Code File
           </div>
         </div>
-      </React.Fragment>
+      </div>
     )
   }
 }

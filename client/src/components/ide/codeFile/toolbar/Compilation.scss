@@ -1,7 +1,7 @@
 @import '../../../../shared/variables';
 
 .compilation {
-  background-color: black;
+  background-color: $bg-darkest;
   flex: 0 1 200px;
   display: flex;
 }

@@ -27,7 +27,7 @@
       }
 
       &.active {
-        background-color: black;
+        background-color: lighten($bg-darkest, 1);
       }
     }
   }

@@ -19,7 +19,7 @@ form {
     outline-width: 1px;
     display: block;
     border: 1px solid $border-color;
-    background-color: black;
+    background-color: $bg-darkest;
     transition: border .25s;
     &:hover {
       border: 1px solid #999;

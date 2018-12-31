@@ -3,15 +3,16 @@ import './Output.scss';
 import runner from '../../../../utils/api/runner';
 import OutputDisplay from './OutputDisplay';
 import OutputToolbar from './OutputToolbar';
+import { completeCodeExecution, startCodeExecution } from '../../../../redux/actions';
+import { connect } from 'react-redux';
 
 class Output extends Component {
   state = {
-    output: "",
-    running: false,
     runIdx: 0,
   }
   cancelRun = () => {
-    this.setState({ runIdx: this.state.runIdx + 1, running: false })
+    this.setState({ runIdx: this.state.runIdx + 1 });
+    this.props.completeCodeExecution(null);
   }
   runCode = async () => {
     const { stage } = this.props;
@@ -25,7 +26,6 @@ class Output extends Component {
       return { contents: initialCode, path: executablePath }
     });
 
-    this.setState({ running: true });
     const { languageVersion, language, testFramework } = stage;
     const { data } = await runner.post('', {
       files,
@@ -34,19 +34,34 @@ class Output extends Component {
       testFramework,
     });
     if(this.state.runIdx === runIdx) {
-      this.setState({ output: data, runIdx: runIdx + 1, running: false });
+      this.props.completeCodeExecution(data);
+    }
+  }
+  startRun = () => {
+    this.props.startCodeExecution();
+  }
+  componentDidUpdate(prevProps) {
+    const { executionState: { running }} = this.props;
+    if(!prevProps.executionState.running && running) {
+      this.runCode();
     }
   }
   render() {
-    const { hide } = this.props;
-    const { running, output } = this.state;
+    const { hide, shouldShow, executionState: { output, running } } = this.props;
+    if(!shouldShow) return null;
     return (
       <div className="output">
-        <OutputToolbar hide={hide} runCode={this.runCode} cancelRun={this.cancelRun} running={running} />
-        <OutputDisplay output={output} running={running} runCode={this.runCode} cancelRun={this.cancelRun} />
+        <OutputToolbar hide={hide} runCode={this.startRun} cancelRun={this.cancelRun} running={running} />
+        <OutputDisplay output={output} running={running} runCode={this.startRun} cancelRun={this.cancelRun} />
       </div>
     )
   }
 }
 
-export default Output;
+const mapStateToProps = ({ executionState }) => ({ executionState });
+const mapDispatchToProps = { completeCodeExecution, startCodeExecution }
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Output);

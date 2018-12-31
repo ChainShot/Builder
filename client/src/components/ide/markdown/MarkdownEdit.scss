@@ -1,3 +1,5 @@
+@import '../../../shared/variables';
+
 .markdown-edit {
   flex-grow: 1;
   display: flex;
@@ -11,7 +13,12 @@
   .display {
     position: absolute;
     right: 0;
-    padding: 10px;
+    padding: 0 25px;
     width: 50%;
+
+    a {
+      color: white;
+      text-decoration: underline;
+    }
   }
 }

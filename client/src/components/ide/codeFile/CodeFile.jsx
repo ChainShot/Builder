@@ -3,6 +3,7 @@ import apiMutation from '../../../utils/api/mutation';
 import modifyCodeFile from '../../../mutations/codeFile/modify';
 import modifySolution from '../../../mutations/solution/modify';
 import { withRouter } from 'react-router-dom';
+import UpdateWrapper from '../../UpdateWrapper';
 import CodeFileConfig from '../configuration/CodeFileConfig';
 import CodeFileEditor from './CodeFileEditor';
 import PropsRoute from '../../PropsRoute';
@@ -19,11 +20,11 @@ class CodeFile extends Component {
   }
   updateCode(code) {
     const { id } = this.getCodeFile();
-    apiMutation(modifyCodeFile, { id, initialCode: code });
+    return apiMutation(modifyCodeFile, { id, initialCode: code });
   }
   updateSolution(code) {
     const { id } = this.getSolution();
-    apiMutation(modifySolution, { id, code });
+    return apiMutation(modifySolution, { id, code });
   }
   renderSolutionRoute() {
     const { stage, match: { url } } = this.props;
@@ -33,19 +34,21 @@ class CodeFile extends Component {
     const { code } = solution;
     const { mode } = codeFile;
     return (
-      <PropsRoute path={`${url}/solution`} exact component={CodeFileEditor}
+      <PropsRoute path={`${url}/solution`} exact component={UpdateWrapper}
+            child={CodeFileEditor} savePromise={({ code }) => this.updateSolution(code)}
             codeFile={codeFile} stage={stage} code={code} mode={mode}
             onUpdate={(code) => this.updateSolution(code)}/>
     )
   }
   render() {
-    const { stage, match: { url } } = this.props;
+    const { stage, match: { url, params: { codeFileId } } } = this.props;
     const codeFile = this.getCodeFile();
     const { initialCode, mode } = codeFile;
     if(!codeFile) return null;
     return (
       <div className="code-file">
-        <PropsRoute path={`${url}/`} exact component={CodeFileEditor}
+        <PropsRoute path={`${url}/`} exact key={codeFileId} component={UpdateWrapper}
+              child={CodeFileEditor} savePromise={({ code }) => this.updateCode(code)}
               codeFile={codeFile} stage={stage} code={initialCode} mode={mode}
               onUpdate={(code) => this.updateCode(code)}/>
         { this.renderSolutionRoute() }
