@@ -5,10 +5,32 @@ module.exports = (injections) => {
   const {
     config: { LOOKUP_KEY, MODEL_DB },
     ioHelpers: { configWriter, configRemove, rename, fileWriter, configResolver, configDocumentReader },
-    projectHelpers: { findCodeFilePaths },
+    projectHelpers: { findCodeFilePaths, findSolutionPath },
   } = injections;
 
   const onChange = {
+    executablePath: async (codeFile) => {
+      if(codeFile.hasProgress) {
+        const { codeStageIds } = codeFile;
+        for(let i = 0; i < codeStageIds.length; i++) {
+          const codeStageId = codeStageIds[i];
+          const solutions = await configDocumentReader(MODEL_DB.SOLUTIONS);
+          const solution = solutions.find(x => (x.codeFileId === codeFile.id) && (x.stageId === codeStageId));
+          if(solution) {
+            // the tricky part here is the solution path depends upon
+            // the codefile executablePath being updated
+            // without passing in the codefile before or after we'll never quite
+            // catch the path changing and so it won't update quite right...
+            // that's why we're passing it into the findSolutionPath
+            const newPath = await findSolutionPath({ ...solution, codeFile });
+            const previousPath = await findSolutionPath(solution);
+            if(newPath !== previousPath) {
+              await rename(previousPath, newPath);
+            }
+          }
+        }
+      }
+    },
     hasProgress: async (codeFile) => {
       if(codeFile.hasProgress) {
         const { codeStageIds } = codeFile;
@@ -53,14 +75,16 @@ module.exports = (injections) => {
     const keys = Object.keys(props);
     for(let i = 0; i < keys.length; i++) {
       const key = keys[i];
-      if(onChange[key]) {
-        await onChange[key](merged);
-      }
-      if(cfProjectProps[key]) {
-        await Promise.all(newPaths.map(async (path) => {
-          return await fileWriter(path, merged[key]);
-        }));
-        merged[key] = LOOKUP_KEY;
+      if(codeFile[key] !== merged[key]) {
+        if(onChange[key]) {
+          await onChange[key](merged);
+        }
+        if(cfProjectProps[key]) {
+          await Promise.all(newPaths.map(async (path) => {
+            return await fileWriter(path, merged[key]);
+          }));
+          merged[key] = LOOKUP_KEY;
+        }
       }
     }
 

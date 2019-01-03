@@ -19,9 +19,11 @@ module.exports = ({
     const keys = Object.keys(props);
     for(let i = 0; i < keys.length; i++) {
       const key = keys[i];
-      if(solutionProjectProps[key]) {
-        await fileWriter(newPath, merged[key]);
-        merged[key] = LOOKUP_KEY;
+      if(solution[key] !== merged[key]) {
+        if(solutionProjectProps[key]) {
+          await fileWriter(newPath, merged[key]);
+          merged[key] = LOOKUP_KEY;
+        }
       }
     }
 

@@ -20,10 +20,12 @@ module.exports = ({
     const keys = Object.keys(props);
     for(let i = 0; i < keys.length; i++) {
       const key = keys[i];
-      if(stageProjectProps[key]) {
-        const filePath = path.join(newBasePath, stageProjectProps[key]);
-        await fileWriter(filePath, merged[key]);
-        merged[key] = LOOKUP_KEY;
+      if(stage[key] !== merged[key]) {
+        if(stageProjectProps[key]) {
+          const filePath = path.join(newBasePath, stageProjectProps[key]);
+          await fileWriter(filePath, merged[key]);
+          merged[key] = LOOKUP_KEY;
+        }
       }
     }
 
