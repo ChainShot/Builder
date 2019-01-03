@@ -1,9 +1,13 @@
 const assert = require('assert');
 const {
+  constants: {
+    SOLUTION_PROJECT_PATH,
+    LOOKUP_KEY,
+  },
+  testData: {
+    writtenFiles,
+  },
   mutationWrapper,
-  SOLUTION_PROJECT_PATH,
-  LOOKUP_KEY,
-  writtenFiles,
   mockSuite,
 } = require('../util');
 

@@ -1,10 +1,14 @@
 const assert = require('assert');
 const path = require('path');
 const {
+  constants: {
+    STAGE_PROJECT_PATH,
+    LOOKUP_KEY,
+  },
+  testData: {
+    writtenFiles,
+  },
   mutationWrapper,
-  STAGE_PROJECT_PATH,
-  LOOKUP_KEY,
-  writtenFiles,
   mockSuite,
 } = require('../util');
 const modifyStage = mutationWrapper(require('../../../src/schema/mutations/stage/modify'));

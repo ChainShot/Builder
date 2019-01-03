@@ -1,13 +1,17 @@
 const assert = require('assert');
 const path = require('path');
 const {
+  constants: {
+    LOOKUP_KEY,
+    STAGE_PROJECT_PATH,
+    MODEL_DB,
+  },
+  testData: {
+    removedModels,
+    removedFiles,
+  },
   mutationWrapper,
   mockConfigDocument,
-  removedModels,
-  removedFiles,
-  LOOKUP_KEY,
-  STAGE_PROJECT_PATH,
-  MODEL_DB,
   mockSuite,
 } = require('../util');
 const destroyStage = mutationWrapper(require('../../../src/schema/mutations/stage/destroy'));

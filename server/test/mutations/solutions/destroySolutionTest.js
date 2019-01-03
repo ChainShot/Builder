@@ -1,12 +1,16 @@
 const assert = require('assert');
 const {
+  constants: {
+    LOOKUP_KEY,
+    SOLUTION_PROJECT_PATH,
+    MODEL_DB,
+  },
+  testData: {
+    removedModels,
+    removedFiles,
+  },
   mutationWrapper,
   mockConfigDocument,
-  removedModels,
-  removedFiles,
-  LOOKUP_KEY,
-  SOLUTION_PROJECT_PATH,
-  MODEL_DB,
   mockSuite,
 } = require('../util');
 

@@ -63,7 +63,6 @@ class ContainerConfig extends Component {
       const containerUpdates = ripUpdates(containerVariables, stageContainer);
       const { stageContainerGroup } = stageContainer;
       const groupUpdates = ripUpdates(groupVariables, stageContainerGroup);
-      debugger;
       apiMutation(containerMutation, containerUpdates);
       apiMutation(groupMutation, groupUpdates);
     });

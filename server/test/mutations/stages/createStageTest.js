@@ -1,17 +1,21 @@
 const assert = require('assert');
 const {
-  MODEL_DB,
-  MONGO_ID_REGEX,
-  LOOKUP_KEY,
-  MOCK_CONFIG,
-  STAGE_PROJECT_PATH,
-  writtenModelsLookup,
-  writtenModels,
-  writtenFiles,
+  constants: {
+    MODEL_DB,
+    MONGO_ID_REGEX,
+    LOOKUP_KEY,
+    MOCK_CONFIG,
+    STAGE_PROJECT_PATH,
+  },
+  testData: {
+    writtenModelsLookup,
+    writtenModels,
+    writtenFiles,
+    copied,
+  },
   mockConfigDocument,
   mutationWrapper,
   mockSuite,
-  copied,
 } = require('../util');
 const createStage = mutationWrapper(require('../../../src/schema/mutations/stage/create'));
 const path = require('path');

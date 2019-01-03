@@ -1,12 +1,16 @@
 const assert = require('assert');
 const {
-  MONGO_ID_REGEX,
-  LOOKUP_KEY,
-  STAGE_CONTAINER_PROJECT_PATH,
-  MODEL_DB,
+  constants: {
+    MONGO_ID_REGEX,
+    LOOKUP_KEY,
+    STAGE_CONTAINER_PROJECT_PATH,
+    MODEL_DB,
+  },
+  testData: {
+    writtenModelsLookup,
+    writtenFiles,
+  },
   mockConfigDocument,
-  writtenModelsLookup,
-  writtenFiles,
   mutationWrapper,
   mockSuite,
 } = require('../util');
