@@ -4,10 +4,20 @@ const {
   STAGE_PROJECT_PATH,
   STAGE_CONTAINER_PROJECT_PATH,
   STAGE_CONTAINER_GROUP_PROJECT_PATH,
+  MODEL_DB,
 } = require('./constants');
+const {
+  mockCollections
+} = require('./testData');
 const path = require('path');
 
-const findSolutionPath = () => SOLUTION_PROJECT_PATH;
+const findSolutionPath = ({ stageId, codeFileId, codeFile }) => {
+  codeFile = codeFile || mockCollections[MODEL_DB.CODE_FILES][codeFileId];
+  return path.join(
+    SOLUTION_PROJECT_PATH,
+    codeFile.executablePath,
+  );
+}
 const findCodeFilePaths = () => CODE_FILE_PROJECT_PATHS;
 const findStageFilePath = () => STAGE_PROJECT_PATH;
 const findStageContainerFilePath = () => STAGE_CONTAINER_PROJECT_PATH;

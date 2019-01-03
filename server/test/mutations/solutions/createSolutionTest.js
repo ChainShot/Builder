@@ -1,26 +1,34 @@
 const assert = require('assert');
+const path = require('path');
 const {
   constants: {
+    SOLUTION_PROJECT_PATH,
     MONGO_ID_REGEX,
     LOOKUP_KEY,
-    SOLUTION_PROJECT_PATH,
+    MODEL_DB,
   },
   testData: {
     writtenModelsLookup,
     writtenFiles,
   },
   mutationWrapper,
+  mockConfigDocument,
   mockSuite,
 } = require('../util');
 const createSolution = mutationWrapper(require('../../../src/schema/mutations/solution/create'));
 
+const existingCodeFile = {
+  id: 2,
+  executablePath: "contracts/code.sol",
+}
+
 mockSuite('Mutations::Solutions::Create', () => {
   let solution;
   const stageId = 1;
-  const codeFileId = 2;
 
   before(async () => {
-    solution = await createSolution(stageId, codeFileId);
+    mockConfigDocument(MODEL_DB.CODE_FILES, existingCodeFile);
+    solution = await createSolution(stageId, existingCodeFile.id);
   });
 
   describe('properties', () => {
@@ -33,7 +41,7 @@ mockSuite('Mutations::Solutions::Create', () => {
     });
 
     it('should have set the codeFileId', () => {
-      assert.equal(solution.codeFileId, codeFileId);
+      assert.equal(solution.codeFileId, existingCodeFile.id);
     });
 
     it('should have set a lookup for the code', () => {
@@ -43,7 +51,8 @@ mockSuite('Mutations::Solutions::Create', () => {
 
   describe('written files', () => {
     it('should have written a blank project file to the solution path', () => {
-      assert.equal(writtenFiles[SOLUTION_PROJECT_PATH], "");
+      const solutionPath = path.join(SOLUTION_PROJECT_PATH, existingCodeFile.executablePath);
+      assert.equal(writtenFiles[solutionPath], "");
     });
 
     it('should have written a solutions config file', () => {
