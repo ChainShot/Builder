@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 const path = require('path');
 
 module.exports = ({
-  ioHelpers: { configWriter, fileWriter, configResolver },
+  ioHelpers: { configWriter, fileWriter, configResolver, rename },
   projectHelpers: { findStageContainerFilePath },
   config: { LOOKUP_KEY, MODEL_DB },
 }) => {
@@ -24,9 +24,7 @@ module.exports = ({
     const previousBasePath = await findStageContainerFilePath(stageContainer);
 
     if(newBasePath !== previousBasePath) {
-      if(await fs.exists(previousBasePath)) {
-        await fs.rename(previousBasePath, newBasePath)
-      }
+      await rename(previousBasePath, newBasePath);
     }
 
     const keys = Object.keys(props);

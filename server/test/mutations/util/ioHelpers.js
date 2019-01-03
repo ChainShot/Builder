@@ -59,5 +59,6 @@ module.exports = {
   configRemove,
   configDocumentReader,
   configResolver,
+  rename,
   copy,
 }

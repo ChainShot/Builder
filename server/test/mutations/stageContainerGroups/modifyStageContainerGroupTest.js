@@ -3,13 +3,15 @@ const {
   constants: {
     MONGO_ID_REGEX,
     LOOKUP_KEY,
+    MODEL_DB,
     STAGE_CONTAINER_PROJECT_PATH,
-    STAGE_PROJECT_PATH,
   },
   testData: {
     writtenModelsLookup,
     writtenFiles,
+    renamed,
   },
+  mockConfigDocument,
   mutationWrapper,
   mockSuite,
 } = require('../util');
@@ -23,17 +25,27 @@ const existingStageContainerGroup = {
 
 mockSuite('Mutations::StageContainerGroups::Modify', () => {
   let stageContainerGroup;
-  const title = "new title";
+  const newTitle = "new title";
 
   before(async () => {
+    mockConfigDocument(MODEL_DB.STAGE_CONTAINER_GROUPS, existingStageContainerGroup);
     stageContainerGroup = await modifyStageContainerGroup({
-      title,
+      id: existingStageContainerGroup.id,
+      title: newTitle,
     });
   });
 
   describe('properties', () => {
     it('should have set the new title', () => {
-      assert.equal(stageContainerGroup.title, title);
+      assert.equal(stageContainerGroup.title, newTitle);
+    });
+  });
+
+  describe('renamed directory', () => {
+    it('should have renamed the stageContainer directory', () => {
+      const oldPath = path.join(STAGE_CONTAINER_PROJECT_PATH, existingStageContainerGroup.title);
+      const newPath = path.join(STAGE_CONTAINER_PROJECT_PATH, newTitle);
+      assert.equal(renamed[path])
     });
   });
 });
