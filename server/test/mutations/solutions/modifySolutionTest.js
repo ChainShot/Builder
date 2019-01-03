@@ -3,11 +3,13 @@ const {
   constants: {
     SOLUTION_PROJECT_PATH,
     LOOKUP_KEY,
+    MODEL_DB,
   },
   testData: {
     writtenFiles,
   },
   mutationWrapper,
+  mockConfigDocument,
   mockSuite,
 } = require('../util');
 
@@ -28,6 +30,7 @@ mockSuite('Mutations::Solutions::Modify', () => {
 
   let solution;
   before(async () => {
+    mockConfigDocument(MODEL_DB.SOLUTIONS, existingSolution);
     solution = await modifySolution(modifyProps);
   });
 

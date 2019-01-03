@@ -3,11 +3,13 @@ const {
   constants: {
     CODE_FILE_PROJECT_PATHS,
     LOOKUP_KEY,
+    MODEL_DB,
   },
   testData: {
     writtenFiles,
   },
   mutationWrapper,
+  mockConfigDocument,
   mockSuite,
 } = require('../util');
 
@@ -25,6 +27,7 @@ mockSuite('Mutations::CodeFiles::Modify', () => {
   }
 
   before(async () => {
+    mockConfigDocument(MODEL_DB.CODE_FILES, existingCodeFile);
     await modifyCodeFile(modifyProps);
   });
 
