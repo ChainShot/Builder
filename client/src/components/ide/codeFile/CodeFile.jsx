@@ -52,7 +52,7 @@ class CodeFile extends Component {
               codeFile={codeFile} stage={stage} code={initialCode} mode={mode}
               onUpdate={(code) => this.updateCode(code)}/>
         { this.renderSolutionRoute() }
-        <PropsRoute path={`${url}/config`} component={CodeFileConfig} codeFile={codeFile} />
+        <PropsRoute path={`${url}/config`} component={UpdateWrapper} child={CodeFileConfig} codeFile={codeFile} />
       </div>
     )
   }
