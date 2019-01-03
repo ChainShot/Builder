@@ -10,7 +10,7 @@ module.exports = ({
   const onChange = {
     type: async (stageContainer) => {
       const { stageContainerGroupId } = stageContainer;
-      configReadWrite(MODEL_DB.STAGE_CONTAINER_GROUPS, stageContainerGroupId, (stageContainerGroup) => {
+      return configReadWrite(MODEL_DB.STAGE_CONTAINER_GROUPS, stageContainerGroupId, (stageContainerGroup) => {
         return {
           ...stageContainerGroup,
           containerType: stageContainer.type,

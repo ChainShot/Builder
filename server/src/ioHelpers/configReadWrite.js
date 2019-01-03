@@ -1,5 +1,7 @@
 const path = require('path');
 const {CONFIG_DIR} = require('../config');
+const prettifyJSON = require('../utils/prettifyJSON');
+const fs = require('fs-extra');
 
 module.exports = (transaction) => {
   const fileWriter = require('./fileWriter')(transaction);
@@ -12,8 +14,8 @@ module.exports = (transaction) => {
     if(!id) throw new Error(`id not provided to resolve for ${collection}!`)
     const filePath = path.join(CONFIG_DIR, collection, `${id}.json`);
     const contents = fs.readFileSync(filePath);
-    return contents && contents.toString();
-    const parsed = JSON.parse(contents);
+    const contentString = contents && contents.toString();
+    const parsed = JSON.parse(contentString);
     const transformed = transformFn(parsed);
     return fileWriter(filePath, prettifyJSON(transformed));
   }
