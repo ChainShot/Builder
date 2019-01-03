@@ -9,6 +9,7 @@ query findStageContainer($id: String) {
       id
       containerType
       description
+      productionReady
       title
   	}
     stages {
