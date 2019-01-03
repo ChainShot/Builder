@@ -41,7 +41,6 @@ class UpdateWrapper extends Component {
     const { child, savePromise, ...rest } = props;
     this.state = {
       savePromise,
-      isSaving: false,
       originalState: { ...rest },
       currentState: { ...rest },
     }
@@ -51,22 +50,19 @@ class UpdateWrapper extends Component {
     this.setState({ savePromise });
   }
 
-  async componentDidUpdate() {
+  async componentDidUpdate(prevProps) {
     const { saveState: { saving }} = this.props;
-    if(saving && !this.state.isSaving) {
+    if(saving && !prevProps.saveState.saving) {
       try {
-        this.setState({
-          isSaving: true,
-          originalState: this.state.currentState,
-        });
-        await this.state.savePromise(this.state.currentState);
+        this.setState({ originalState: this.state.currentState });
         this.props.unregisterChanges();
+        await this.state.savePromise(this.state.currentState);
       }
       catch(ex) {
         // TODO: revert original state and show a message to user
       }
-      this.props.completeSave();
-      this.setState({ isSaving: false })
+      const changes = !deeplyEqualObjects(this.state.originalState, this.state.currentState);
+      this.props.completeSave(changes);
     }
   }
 
