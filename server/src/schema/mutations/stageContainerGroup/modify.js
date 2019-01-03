@@ -13,7 +13,6 @@ module.exports = ({
     if(newBasePath !== previousBasePath) {
       await rename(previousBasePath, newBasePath);
     }
-
     return configWriter(MODEL_DB.STAGE_CONTAINER_GROUPS, merged);
   }
 

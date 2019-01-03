@@ -26,6 +26,12 @@ const configResolver = (collection, id) => {
   return mockCollections[collection][id];
 }
 
+const configReadWrite = (collection, id, transformFn) => {
+  const transformed = transformFn(mockCollections[collection][id]);
+  mockCollections[collection][id] = transformed;
+  return transformed;
+}
+
 const configWriter = (collection, props) => {
   writtenModelsLookup[collection] = { [props.id]: props };
   writtenModels[collection].push(props);
@@ -54,6 +60,7 @@ const copy = (previousPath, newPath) => {
 
 module.exports = {
   configWriter,
+  configReadWrite,
   fileWriter,
   fileRemove,
   configRemove,

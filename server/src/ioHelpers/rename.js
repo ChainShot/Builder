@@ -5,10 +5,10 @@ module.exports = (transaction) => {
   const rename = async (previousPath, newPath) => {
     if(fs.exists(previousPath)) {
       await fs.ensureDir(path.dirname(newPath));
-      await fs.rename(previousPath, newPath);
+      await fs.move(previousPath, newPath, { overwrite: true });
 
       transaction.add(async () => {
-        await fs.rename(newPath, previousPath);
+        await fs.move(newPath, previousPath, { overwrite: true });
       });
     }
     else {

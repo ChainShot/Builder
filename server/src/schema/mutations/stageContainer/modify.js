@@ -3,16 +3,19 @@ const fs = require('fs-extra');
 const path = require('path');
 
 module.exports = ({
-  ioHelpers: { configWriter, fileWriter, configResolver, rename },
+  ioHelpers: { configWriter, fileWriter, configResolver, rename, configReadWrite },
   projectHelpers: { findStageContainerFilePath },
   config: { LOOKUP_KEY, MODEL_DB },
 }) => {
   const onChange = {
     type: async (stageContainer) => {
       const { stageContainerGroupId } = stageContainer;
-      const stageContainerGroup = await configResolver(MODEL_DB.STAGE_CONTAINER_GROUPS, stageContainerGroupId);
-      stageContainerGroup.containerType = stageContainer.type;
-      await configWriter(MODEL_DB.STAGE_CONTAINER_GROUPS, stageContainerGroup);
+      configReadWrite(MODEL_DB.STAGE_CONTAINER_GROUPS, stageContainerGroupId, (stageContainerGroup) => {
+        return {
+          ...stageContainerGroup,
+          containerType: stageContainer.type,
+        }
+      });
     }
   }
 
