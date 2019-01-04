@@ -22,6 +22,20 @@ class CodeFilesNav extends Component {
       )
     }
   }
+  renderAddCodeFile() {
+    const { stage, stageContainer } = this.props;
+    const { type } = stage;
+    if(type === 'CodeStage') {
+      return (
+        <li>
+          <div className="action" onClick={() => dialog.open(AddCodeFile, { stage, stageContainer })}>
+            <SVG name="file-plus"/>
+            <span>add code file…</span>
+          </div>
+        </li>
+      )
+    }
+  }
   render() {
     const { basename, stage, stageContainer } = this.props;
     const { codeFiles } = stage;
@@ -47,12 +61,7 @@ class CodeFilesNav extends Component {
         </li>
         { this.renderValidations() }
         { (codeFiles || []).map(cf => <CodeFileNav key={cf.id} codeFile={cf} {...this.props} />) }
-        <li>
-          <div className="action" onClick={() => dialog.open(AddCodeFile, { stage, stageContainer })}>
-            <SVG name="file-plus"/>
-            <span>add code file…</span>
-          </div>
-        </li>
+        { this.renderAddCodeFile() }
       </ul>
     )
   }

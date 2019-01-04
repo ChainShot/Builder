@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import apiMutation from '../../../utils/api/mutation';
 import destroyStage from '../../../mutations/stage/destroy';
+import CodeStageConfig from './CodeStageConfig';
+import UIStageConfig from './UIStageConfig';
+import DownloadStageConfig from './DownloadStageConfig';
+import VideoStageConfig from './VideoStageConfig';
 import StyledSelect from '../../forms/StyledSelect';
-import {STAGE_TYPE_OPTIONS, STAGE_LANGUAGE_OPTIONS} from '../../../config';
+import {STAGE_TYPE_OPTIONS} from '../../../config';
 import confirm from '../../../utils/confirm';
 import SVG from '../../SVG';
 import './ContainerConfig.scss';
@@ -28,18 +32,6 @@ mutation modifyStage(${args}) {
 }
 `
 
-const languageVersionOptions = [
-  { label: 'Solidity v0.4.19', value: '0.4.19' },
-  { label: 'Vyper v0.1', value: '0.1.0b3' },
-  { label: 'Node 8.x', value: '8.x/babel' },
-  { label: 'Node 6.x', value: '6.x/babel' },
-]
-
-const frameworkOptions = [
-  { label: 'Mocha', value: 'mocha_bdd' },
-  { label: 'Truffle With Mocha', value: 'truffle_with_mocha' },
-]
-
 class StageConfig extends Component {
   constructor(props) {
     super(props);
@@ -52,9 +44,8 @@ class StageConfig extends Component {
     });
   }
   render() {
-    const { update,
-       stage: { title, type, language, languageVersion, testFramework }
-     } = this.props;
+    const { update, stage } = this.props;
+    const { title, type, language, languageVersion, testFramework } = stage;
     const updateStage = (state) => update({ stage: state })
     return (
       <form className="config" ref="container">
@@ -70,23 +61,21 @@ class StageConfig extends Component {
           value={type}
           options={STAGE_TYPE_OPTIONS} />
 
-        <StyledSelect
-          label="Language"
-          onChange={(language) => updateStage({ language })}
-          value={language}
-          options={STAGE_LANGUAGE_OPTIONS} />
+        <CodeStageConfig
+          stage={stage}
+          onChange={updateStage} />
 
-        <StyledSelect
-          label="Language Version"
-          onChange={(languageVersion) => updateStage({ languageVersion })}
-          value={languageVersion}
-          options={languageVersionOptions} />
+        <UIStageConfig
+          stage={stage}
+          onChange={updateStage} />
 
-        <StyledSelect
-          label="Test Framework"
-          onChange={(testFramework) => updateStage({ testFramework })}
-          value={testFramework}
-          options={frameworkOptions} />
+        <DownloadStageConfig
+          stage={stage}
+          onChange={updateStage} />
+
+        <VideoStageConfig
+          stage={stage}
+          onChange={updateStage} />
 
         <div className="btn btn-primary" onClick={this.destroyStage}>
           <SVG name="trash" />
