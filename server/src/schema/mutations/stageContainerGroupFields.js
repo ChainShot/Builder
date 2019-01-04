@@ -13,6 +13,7 @@ const stageContainerGroupArgs = {
   title: { type: GraphQLString },
   description: { type: GraphQLString },
   containerType: { type: GraphQLString },
+  thumbnailUrl: { type: GraphQLString },
   productionReady: { type: GraphQLBoolean },
 }
 

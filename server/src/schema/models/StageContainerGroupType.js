@@ -16,6 +16,7 @@ const StageContainerGroupType = new GraphQLObjectType({
     containerType: { type: GraphQLString },
     preface: { type: GraphQLString },
     productionReady: { type: GraphQLBoolean },
+    thumbnailUrl: { type: GraphQLString },
     stageContainers: {
       type: new GraphQLList(require('./StageContainerType')),
       resolve: async ({ id }) => {

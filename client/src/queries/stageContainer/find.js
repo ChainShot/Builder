@@ -10,6 +10,7 @@ query findStageContainer($id: String) {
       containerType
       description
       productionReady
+      thumbnailUrl
       title
   	}
     stages {
