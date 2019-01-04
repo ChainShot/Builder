@@ -20,6 +20,7 @@ const StageType = new GraphQLObjectType({
     language: { type: GraphQLString },
     testFramework: { type: GraphQLString },
     languageVersion: { type: GraphQLString },
+    projectSkeletons: { type: GraphQLList(require('./ProjectSkeletonType')) },
     codeFileIds: { type: GraphQLList(GraphQLString) },
     solutions: {
       type: new GraphQLList(require('./SolutionType')),

@@ -4,6 +4,7 @@ import CodeFileOptionsNav from './CodeFileOptionsNav';
 import './CodeFilesNav.scss';
 import * as dialog from '../../../utils/dialog';
 import AddCodeFile from './AddCodeFile';
+import AddSkeleton from './AddSkeleton';
 import SVG from '../../SVG';
 
 const VALIDATION_LANGUAGES = ['vyper', 'solidity'];
@@ -36,9 +37,23 @@ class CodeFilesNav extends Component {
       )
     }
   }
+  renderAddSkeleton() {
+    const { stage } = this.props;
+    const { type } = stage;
+    if(type === 'DownloadStage') {
+      return (
+        <li>
+          <div className="action" onClick={() => dialog.open(AddSkeleton, { stage })}>
+            <SVG name="skeleton"/>
+            <span>add skeleton…</span>
+          </div>
+        </li>
+      )
+    }
+  }
   render() {
     const { basename, stage, stageContainer } = this.props;
-    const { codeFiles } = stage;
+    const { codeFiles, projectSkeletons } = stage;
     return (
       <ul className="code-files-nav">
         <li>
@@ -60,9 +75,27 @@ class CodeFilesNav extends Component {
           </NavLink>
         </li>
         { this.renderValidations() }
+        { (projectSkeletons || []).map(ps => <SkeletonNav key={ps.id} skeleton={ps} {...this.props} />) }
         { (codeFiles || []).map(cf => <CodeFileNav key={cf.id} codeFile={cf} {...this.props} />) }
         { this.renderAddCodeFile() }
+        { this.renderAddSkeleton() }
       </ul>
+    )
+  }
+}
+
+class SkeletonNav extends Component {
+  render() {
+    const { basename, skeleton } = this.props;
+    const { title, id } = skeleton;
+    const path = `${basename}/skeleton/${id}`;
+    return (
+      <li>
+        <NavLink to={path}>
+          <SVG name="skeleton"/>
+          <span>{ title }</span>
+        </NavLink>
+      </li>
     )
   }
 }

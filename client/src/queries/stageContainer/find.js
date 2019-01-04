@@ -26,6 +26,15 @@ query findStageContainer($id: String) {
       languageVersion
       testFramework
       abiValidations
+      projectSkeletons {
+        id
+        ghNodeId
+        ghRepoId
+        title
+        description
+        thumbnailUrl
+        zipName
+      }
       solutions {
         id
         codeFileId
