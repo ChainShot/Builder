@@ -6,6 +6,7 @@ const txWrapper = require('./txWrapper');
 const {
   GraphQLString,
   GraphQLBoolean,
+  GraphQLInt,
 } = require('graphql');
 
 const stageContainerGroupArgs = {
@@ -15,6 +16,7 @@ const stageContainerGroupArgs = {
   containerType: { type: GraphQLString },
   thumbnailUrl: { type: GraphQLString },
   productionReady: { type: GraphQLBoolean },
+  estimatedTime: { type: GraphQLInt },
 }
 
 module.exports = {

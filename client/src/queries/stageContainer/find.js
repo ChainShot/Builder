@@ -11,6 +11,7 @@ query findStageContainer($id: String) {
       description
       productionReady
       thumbnailUrl
+      estimatedTime
       title
   	}
     stages {

@@ -11,23 +11,25 @@ form {
     }
   }
 
-  input[type="text"].styled {
-    font-size: 1em;
-    padding: 10px;
-    color: white;
-    outline-color: $brand-active;
-    outline-width: 1px;
-    display: block;
-    border: 1px solid $border-color;
-    background-color: $bg-darkest;
-    transition: border .25s;
-    &:hover {
-      border: 1px solid #999;
-    }
-    &:focus {
-      outline-width: 0;
-      box-shadow: 0 0 0 1px $brand-active;
-      border: 1px solid $brand-active;
+  input[type="text"], input[type="number"] {
+    &.styled {
+      font-size: 1em;
+      padding: 10px;
+      color: white;
+      outline-color: $brand-active;
+      outline-width: 1px;
+      display: block;
+      border: 1px solid $border-color;
+      background-color: $bg-darkest;
+      transition: border .25s;
+      &:hover {
+        border: 1px solid #999;
+      }
+      &:focus {
+        outline-width: 0;
+        box-shadow: 0 0 0 1px $brand-active;
+        border: 1px solid $brand-active;
+      }
     }
   }
 

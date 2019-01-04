@@ -3,6 +3,7 @@ const {
   GraphQLBoolean,
   GraphQLString,
   GraphQLList,
+  GraphQLInt,
 } = require('graphql');
 const { MODEL_DB } = require('../../config');
 const { configDocumentReader } = require('../../ioHelpers').dethunked;
@@ -17,6 +18,7 @@ const StageContainerGroupType = new GraphQLObjectType({
     preface: { type: GraphQLString },
     productionReady: { type: GraphQLBoolean },
     thumbnailUrl: { type: GraphQLString },
+    estimatedTime: { type: GraphQLInt },
     stageContainers: {
       type: new GraphQLList(require('./StageContainerType')),
       resolve: async ({ id }) => {

@@ -29,6 +29,7 @@ const groupVariables = [
   ['title', 'String'],
   ['productionReady', 'Boolean'],
   ['thumbnailUrl', 'String'],
+  ['estimatedTime', 'Int'],
 ];
 
 const containerMutation = `
@@ -83,7 +84,7 @@ class ContainerConfig extends Component {
   }
   render() {
     const { stageContainer, update } = this.props;
-    const { type, version, stageContainerGroup: { thumbnailUrl, title, productionReady } } = stageContainer;
+    const { type, version, stageContainerGroup: { estimatedTime, thumbnailUrl, title, productionReady } } = stageContainer;
     const updateStageContainer = (state) => update({ stageContainer: state })
     const updateStageContainerGroup = (state) => update({ stageContainer: { stageContainerGroup: state } })
     return (
@@ -98,6 +99,12 @@ class ContainerConfig extends Component {
           <span>Version</span>
           <input type="text" className="styled" value={version}
             onChange={({ target: { value }}) => updateStageContainer({ version: value })}/>
+        </label>
+
+        <label>
+          <span>Estimated Time in Minutes</span>
+          <input type="number" className="styled" value={estimatedTime}
+            onChange={({ target: { value }}) => updateStageContainerGroup({ estimatedTime: +value })}/>
         </label>
 
         <label>
