@@ -16,6 +16,7 @@ const variables = [
   ['title', 'String'],
   ['language', 'String'],
   ['type', 'String'],
+  ['position', 'Int'],
   ['languageVersion', 'String'],
   ['testFramework', 'String'],
 ]
@@ -45,7 +46,7 @@ class StageConfig extends Component {
   }
   render() {
     const { update, stage } = this.props;
-    const { title, type, language, languageVersion, testFramework } = stage;
+    const { title, position, type, language, languageVersion, testFramework } = stage;
     const updateStage = (state) => update({ stage: state })
     return (
       <form className="config" ref="container">
@@ -53,6 +54,12 @@ class StageConfig extends Component {
           <span>Title</span>
           <input type="text" className="styled" value={title}
             onChange={({ target: { value }}) => updateStage({ title: value })}/>
+        </label>
+
+        <label>
+          <span>Position</span>
+          <input type="number" className="styled" value={position}
+            onChange={({ target: { value }}) => updateStage({ position: +value })}/>
         </label>
 
         <StyledSelect

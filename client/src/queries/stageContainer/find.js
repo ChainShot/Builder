@@ -22,6 +22,7 @@ query findStageContainer($id: String) {
       codeFileIds
       task
       language
+      position
       languageVersion
       testFramework
       abiValidations

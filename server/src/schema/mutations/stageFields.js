@@ -6,6 +6,7 @@ const { StageType } = require('../models');
 const {
   GraphQLList,
   GraphQLString,
+  GraphQLInt,
 } = require('graphql');
 
 const stageArgs = {
@@ -20,6 +21,7 @@ const stageArgs = {
   abiValidations: { type: GraphQLString },
   task: { type: GraphQLString },
   details: { type: GraphQLString },
+  position: { type: GraphQLInt },
 }
 
 const creationArgs = {
