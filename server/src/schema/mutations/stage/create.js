@@ -28,7 +28,7 @@ module.exports = ({
     }
   }
 
-  async function buildTemplate({title, containerId, template}) {
+  async function buildTemplate({title, position, containerId, template}) {
     const templateConfigPath = path.join(TEMPLATES_DIR, MODEL_DB.STAGES, template, 'config');
 
     const stagePath = path.join(templateConfigPath, MODEL_DB.STAGES);
@@ -37,6 +37,7 @@ module.exports = ({
     let stage = JSON.parse(stageDoc.toString());
     stage.id = ObjectID().toString();
     stage.title = title;
+    stage.position = position;
     stage.containerId = containerId;
     stage.codeFileIds = [];
 

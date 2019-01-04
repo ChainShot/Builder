@@ -8,6 +8,7 @@ const variables = [
   ['title', 'String'],
   ['containerId', 'String'],
   ['template', 'String'],
+  ['position', 'Int'],
 ]
 
 const args = variables.map(([prop, type]) => `$${prop}: ${type}`).join(', ');
@@ -34,9 +35,9 @@ class NewStageTemplate extends Component {
   }
   onSubmit = (evt) => {
     evt.preventDefault();
-    const { containerId, title } = this.props;
+    const { containerId, title, position } = this.props;
     const { template } = this.state;
-    apiMutation(mutation, { title, containerId, template }).then(() => {
+    apiMutation(mutation, { title, containerId, template, position }).then(() => {
       close();
     });
   }
