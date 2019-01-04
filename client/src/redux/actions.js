@@ -11,17 +11,22 @@ import {
 } from "./actionTypes";
 
 export const startSave = () => ({ type: START_SAVE });
-export const completeSave = () => ({ type: COMPLETE_SAVE });
+export const completeSave = (changes) => ({
+  type: COMPLETE_SAVE,
+  payload: { changes }
+});
 export const registerChanges = () => ({ type: REGISTER_CHANGES });
 export const unregisterChanges = () => ({ type: UNREGISTER_CHANGES });
 export const toggleAutosave = () => ({ type: TOGGLE_AUTOSAVE });
 
 export const startCodeExecution = () => ({ type: START_CODE_EXECUTION });
-export const completeCodeExecution = (output) => {
-    return ({ type: COMPLETE_CODE_EXECUTION, payload: { output } });
-}
+export const completeCodeExecution = (output) => ({
+  type: COMPLETE_CODE_EXECUTION,
+  payload: { output }
+});
 
 export const startCompilation = () => ({ type: START_COMPILATION });
-export const completeCompilation = (output) => {
-    return ({ type: COMPLETE_COMPILATION, payload: { output } });
-}
+export const completeCompilation = (output) => ({
+  type: COMPLETE_COMPILATION,
+  payload: { output }
+});

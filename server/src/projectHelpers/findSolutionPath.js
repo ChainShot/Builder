@@ -3,8 +3,8 @@ const sanitizeFolderName = require('../utils/sanitizeFolderName');
 const { PROJECTS_DIR, MODEL_DB } = require('../config');
 const path = require('path');
 
-async function findSolutionPath({ stageId, codeFileId }) {
-  const codeFile = await configResolver(MODEL_DB.CODE_FILES, codeFileId);
+async function findSolutionPath({ stageId, codeFileId, codeFile }) {
+  codeFile = codeFile || await configResolver(MODEL_DB.CODE_FILES, codeFileId);
   const stage = await configResolver(MODEL_DB.STAGES, stageId);
   const sc = await configResolver(MODEL_DB.STAGE_CONTAINERS, stage.containerId);
   const scg = await configResolver(MODEL_DB.STAGE_CONTAINER_GROUPS, sc.stageContainerGroupId);

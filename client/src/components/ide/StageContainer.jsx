@@ -8,6 +8,7 @@ import Intro from './markdown/Intro';
 import PropsRoute from '../PropsRoute';
 import Toolbar from './toolbar/Toolbar';
 import ContainerConfig from './configuration/ContainerConfig';
+import UpdateWrapper from '../UpdateWrapper';
 
 class StageContainer extends Component {
   state = {
@@ -35,7 +36,7 @@ class StageContainer extends Component {
         <Toolbar stageContainer={stageContainer} />
         <div className="main-content">
           <Sidebar stageContainer={stageContainer} basename={url}/>
-          <PropsRoute path="/content/:containerId/" exact component={ContainerConfig} stageContainer={stageContainer}/>
+          <PropsRoute path="/content/:containerId/" exact component={UpdateWrapper} child={ContainerConfig} stageContainer={stageContainer}/>
           <PropsRoute path="/content/:containerId/intro" component={Intro} stageContainer={stageContainer}/>
           <PropsRoute path="/content/:containerId/stage/:stageId" component={Stage} stageContainer={stageContainer}/>
         </div>

@@ -1,7 +1,5 @@
-const fs = require('fs-extra');
-
 module.exports = ({
-  ioHelpers: { configWriter, configResolver },
+  ioHelpers: { configWriter, configResolver, rename },
   projectHelpers: { findStageContainerGroupFilePath },
   config: { MODEL_DB },
 }) => {
@@ -13,9 +11,8 @@ module.exports = ({
     const previousBasePath = await findStageContainerGroupFilePath(stageContainerGroup);
 
     if(newBasePath !== previousBasePath) {
-      await fs.rename(previousBasePath, newBasePath)
+      await rename(previousBasePath, newBasePath);
     }
-
     return configWriter(MODEL_DB.STAGE_CONTAINER_GROUPS, merged);
   }
 

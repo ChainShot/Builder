@@ -1,10 +1,16 @@
 const assert = require('assert');
 const path = require('path');
 const {
+  constants: {
+    STAGE_PROJECT_PATH,
+    LOOKUP_KEY,
+    MODEL_DB,
+  },
+  testData: {
+    writtenFiles,
+  },
   mutationWrapper,
-  STAGE_PROJECT_PATH,
-  LOOKUP_KEY,
-  writtenFiles,
+  mockConfigDocument,
   mockSuite,
 } = require('../util');
 const modifyStage = mutationWrapper(require('../../../src/schema/mutations/stage/modify'));
@@ -25,6 +31,7 @@ mockSuite('Mutations::Stage::Modify', () => {
   }
 
   before(async () => {
+    mockConfigDocument(MODEL_DB.STAGES, existingStage);
     await modifyStage(modifyProps);
   });
 

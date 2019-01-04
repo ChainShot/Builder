@@ -14,45 +14,58 @@ const typeOptions = [
   { label: 'Lesson', value: 'Lesson' },
 ]
 
+const toArgs = (v) => v.map(([prop, type]) => `$${prop}: ${type}`).join(', ');
+const toMapping = (v) => v.map(([prop, type]) => `${prop}: $${prop}`).join(', ');
+const toReturns = (v) => v.map(([prop]) => `${prop}`).join('\n    ');
+
+const containerVariables = [
+  ['id', 'String'],
+  ['version', 'String'],
+  ['type', 'String'],
+];
+
+const groupVariables = [
+  ['id', 'String'],
+  ['title', 'String'],
+  ['productionReady', 'Boolean'],
+];
+
 const containerMutation = `
-mutation modifyStageContainer($id: String, $version: String, $type: String) {
-  modifyStageContainer(id: $id, version: $version, type: $type) {
-    id
-    type
-    version
+mutation modifyStageContainer(${toArgs(containerVariables)}) {
+  modifyStageContainer(${toMapping(containerVariables)}) {
+    ${toReturns(containerVariables)}
   }
 }
 `
 
 const groupMutation = `
-mutation modifyStageContainerGroup($id: String, $title: String) {
-  modifyStageContainerGroup(id: $id, title: $title) {
-    title
+mutation modifyStageContainerGroup(${toArgs(groupVariables)}) {
+  modifyStageContainerGroup(${toMapping(groupVariables)}) {
+    ${toReturns(groupVariables)}
   }
 }
 `
 
+const ripUpdates = (variables, doc) => {
+  return variables.reduce((obj, [prop]) => {
+    return {
+      [prop]: doc[prop],
+      ...obj,
+    }
+  }, {});
+}
+
 class ContainerConfig extends Component {
   constructor(props) {
     super(props);
-    const { type, version, productionReady, stageContainerGroup } = props.stageContainer;
-    const { title } = stageContainerGroup;
-    this.state = {
-      type,
-      version,
-      productionReady,
-      title,
-    }
-  }
-  handleGroupChange(prop, value) {
-    this.setState({ [prop]: value });
-    const { id } = this.props.stageContainer.stageContainerGroup;
-    apiMutation(groupMutation, { [prop]: value, id });
-  }
-  handleContainerChange(prop, value) {
-    this.setState({ [prop]: value });
-    const { id } = this.props.stageContainer;
-    apiMutation(containerMutation, { [prop]: value, id });
+    props.onSave(({ stageContainer }) => {
+      // TODO: detect which changed
+      const containerUpdates = ripUpdates(containerVariables, stageContainer);
+      const { stageContainerGroup } = stageContainer;
+      const groupUpdates = ripUpdates(groupVariables, stageContainerGroup);
+      apiMutation(containerMutation, containerUpdates);
+      apiMutation(groupMutation, groupUpdates);
+    });
   }
   destroyContainer = async () => {
     confirm("Are you sure you want to delete this version?").then(() => {
@@ -69,30 +82,34 @@ class ContainerConfig extends Component {
     });
   }
   render() {
-    const { type, version, productionReady, title } = this.state;
+    const { update,
+      stageContainer: { type, version, stageContainerGroup: { title, productionReady } },
+    } = this.props;
+    const updateStageContainer = (state) => update({ stageContainer: state })
+    const updateStageContainerGroup = (state) => update({ stageContainer: { stageContainerGroup: state } })
     return (
       <form className="config">
         <label>
           <span>Title</span>
           <input type="text" className="styled" value={title}
-            onChange={({ target: { value }}) => this.handleGroupChange('title', value)}/>
+            onChange={({ target: { value }}) => updateStageContainerGroup({ title: value })}/>
         </label>
 
         <label>
           <span>Version</span>
           <input type="text" className="styled" value={version}
-            onChange={({ target: { value }}) => this.handleContainerChange('version', value)}/>
+            onChange={({ target: { value }}) => updateStageContainer({ version: value })}/>
         </label>
 
         <StyledSelect
           label="Type"
-          onChange={(val) => this.handleContainerChange("type", val)}
+          onChange={(type) => updateStageContainer({ type })}
           value={type}
           options={typeOptions} />
 
         <StyledSwitch
           label="Production Ready?"
-          onChange={(val) => this.handleGroupChange('productionReady', val)}
+          onChange={(productionReady) => updateStageContainerGroup({ productionReady })}
           checked={!!productionReady} />
 
         <div className="btn btn-primary" onClick={this.destroyContainer}>

@@ -5,6 +5,7 @@ const modifyStageContainerGroup = require('./stageContainerGroup/modify');
 const txWrapper = require('./txWrapper');
 const {
   GraphQLString,
+  GraphQLBoolean,
 } = require('graphql');
 
 const stageContainerGroupArgs = {
@@ -12,6 +13,7 @@ const stageContainerGroupArgs = {
   title: { type: GraphQLString },
   description: { type: GraphQLString },
   containerType: { type: GraphQLString },
+  productionReady: { type: GraphQLBoolean },
 }
 
 module.exports = {

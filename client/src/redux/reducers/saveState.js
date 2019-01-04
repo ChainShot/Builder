@@ -20,8 +20,10 @@ export default function(state = initialState, action) {
         saving: true,
       }
     case COMPLETE_SAVE:
+      const { changes } = action.payload;
       return {
         ...state,
+        changes,
         saving: false,
       }
     case UNREGISTER_CHANGES:

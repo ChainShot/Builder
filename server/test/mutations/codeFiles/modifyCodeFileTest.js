@@ -1,9 +1,18 @@
 const assert = require('assert');
+const path = require('path');
 const {
+  constants: {
+    CODE_FILE_PROJECT_PATHS,
+    SOLUTION_PROJECT_PATH,
+    LOOKUP_KEY,
+    MODEL_DB,
+  },
+  testData: {
+    writtenFiles,
+    renamed,
+  },
   mutationWrapper,
-  CODE_FILE_PROJECT_PATHS,
-  LOOKUP_KEY,
-  writtenFiles,
+  mockConfigDocument,
   mockSuite,
 } = require('../util');
 
@@ -12,15 +21,27 @@ const modifyCodeFile = mutationWrapper(require('../../../src/schema/mutations/co
 const existingCodeFile = {
   id: 1,
   initialCode: LOOKUP_KEY,
+  hasProgress: true,
+  executablePath: "contracts/thing.sol",
+  codeStageIds: [3],
+}
+
+const existingSolution = {
+  id: 2,
+  codeFileId: existingCodeFile.id,
+  stageId: existingCodeFile.codeStageIds[0],
 }
 
 mockSuite('Mutations::CodeFiles::Modify', () => {
   const modifyProps = {
     id: existingCodeFile.id,
     initialCode: "var a = 1",
+    executablePath: "contracts/newThing.sol",
   }
 
   before(async () => {
+    mockConfigDocument(MODEL_DB.CODE_FILES, existingCodeFile);
+    mockConfigDocument(MODEL_DB.SOLUTIONS, existingSolution);
     await modifyCodeFile(modifyProps);
   });
 
@@ -35,6 +56,12 @@ mockSuite('Mutations::CodeFiles::Modify', () => {
       CODE_FILE_PROJECT_PATHS.forEach((filePath) => {
         assert.equal(writtenFiles[filePath], modifyProps.initialCode);
       });
+    });
+
+    it('should have renamed the solution project files', () => {
+      const oldPath = path.join(SOLUTION_PROJECT_PATH, existingCodeFile.executablePath);
+      const newPath = path.join(SOLUTION_PROJECT_PATH, modifyProps.executablePath);
+      assert.equal(renamed[path])
     });
   });
 });

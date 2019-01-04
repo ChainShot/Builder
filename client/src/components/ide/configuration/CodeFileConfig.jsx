@@ -46,21 +46,9 @@ mutation deleteCodeFile($id: String) {
 `
 
 class CodeFileConfig extends Component {
-  static getDerivedStateFromProps(nextProps, prevState) {
-    const { id } = nextProps.codeFile;
-    if(id !== prevState.id) {
-       return { ...nextProps.codeFile }
-    }
-    return prevState;
-  }
   constructor(props) {
     super(props);
-    this.state = { ...props.codeFile }
-  }
-  handleChange(prop, value) {
-    this.setState({ [prop]: value });
-    const { id } = this.props.codeFile;
-    apiMutation(mutation, { [prop]: value, id });
+    this.props.onSave(({codeFile}) => apiMutation(mutation, codeFile));
   }
   destroy = () => {
     const { id } = this.props.codeFile;
@@ -72,51 +60,55 @@ class CodeFileConfig extends Component {
     });
   }
   render() {
-    const { name, mode, executablePath, readOnly, hasProgress, executable, testFixture, visible } = this.state;
+    const {
+      update,
+      codeFile: { name, mode, executablePath, readOnly, hasProgress, executable, testFixture, visible }
+    } = this.props;
+    const updateCodeFile = (state) => update({ codeFile: state })
     return (
       <form className="config" ref="container">
         <label>
           <span>Name</span>
           <input
             type="text" className="styled" value={name}
-            onChange={({ target: { value }}) => this.handleChange('name', value)}/>
+            onChange={({ target: { value }}) => updateCodeFile({ name: value })}/>
         </label>
 
         <label>
           <span>Execution Path</span>
           <input
             type="text" className="styled" value={executablePath}
-            onChange={({ target: { value }}) => this.handleChange('executablePath', value)}/>
+            onChange={({ target: { value }}) => updateCodeFile({ executablePath: value })}/>
         </label>
 
         <StyledSelect
           label="Monaco Mode"
-          onChange={(val) => this.handleChange("mode", val)}
+          onChange={(mode) => updateCodeFile({ mode })}
           value={mode}
           options={modeOptions} />
 
         <StyledSwitch
-          onChange={(x) => this.handleChange('visible', x)}
+          onChange={(visible) => updateCodeFile({ visible })}
           label="Visible to Users?"
           checked={visible} />
 
         <StyledSwitch
-          onChange={(x) => this.handleChange('executable', x)}
+          onChange={(executable) => updateCodeFile({ executable })}
           label="Executable?"
           checked={executable} />
 
         <StyledSwitch
-          onChange={(x) => this.handleChange('hasProgress', x)}
+          onChange={(hasProgress) => updateCodeFile({ hasProgress })}
           label="Mantain User Progress?"
           checked={hasProgress} />
 
         <StyledSwitch
-          onChange={(x) => this.handleChange('readOnly', x)}
+          onChange={(readOnly) => updateCodeFile({ readOnly })}
           label="Read Only?"
           checked={readOnly} />
 
         <StyledSwitch
-          onChange={(x) => this.handleChange('testFixture', x)}
+          onChange={(testFixture) => updateCodeFile({ testFixture })}
           label="Test File?"
           checked={testFixture} />
 
