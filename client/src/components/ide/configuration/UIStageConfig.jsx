@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-class UIStageConfig extends Component {
+class UiStageConfig extends Component {
   render() {
     const { type } = this.props.stage;
-    if(type !== 'UIStage') return null;
+    if(type !== 'UiStage') return null;
     return (
       <React.Fragment>
 
@@ -12,4 +12,4 @@ class UIStageConfig extends Component {
   }
 }
 
-export default UIStageConfig;
+export default UiStageConfig;
