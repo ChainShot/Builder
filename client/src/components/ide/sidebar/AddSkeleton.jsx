@@ -4,23 +4,19 @@ import './AddSkeleton.scss';
 import { close } from '../../../utils/dialog';
 import apiMutation from '../../../utils/api/mutation';
 
-const variables = [
-  ['title', 'String'],
-  ['containerId', 'String'],
-  ['type', 'String'],
-  ['position', 'Int'],
-  ['language', 'String'],
-]
-
-const args = variables.map(([prop, type]) => `$${prop}: ${type}`).join(', ');
-const mapping = variables.map(([prop, type]) => `${prop}: $${prop}`).join(', ');
-const returns = variables.map(([prop]) => `${prop}`).join('\n    ');
-
 const mutation = `
-mutation modifyStage(${args}) {
-  modifyStage(${mapping}, details: "", task: "", abiValidations: "") {
+mutation modifyStage($id: String, $projectSkeletons: [ProjectSkeletonInput]) {
+  modifyStage(id: $id, projectSkeletons: $projectSkeletons) {
     id
-    ${returns}
+    projectSkeletons {
+      id
+      ghNodeId
+      ghRepoId
+      title
+      description
+      thumbnailUrl
+      zipName
+    }
   }
 }
 `;
@@ -33,7 +29,14 @@ class AddSkeleton extends Component {
     evt && evt.preventDefault();
     const { stage } = this.props;
     const { title } = this.state;
-    apiMutation(mutation, variables).then(() => {
+    const newStage = { ...stage }
+    newStage.projectSkeletons.push({
+      title,
+      description: "",
+      thumbnailUrl: "",
+      zipName: "",
+    });
+    apiMutation(mutation, newStage).then(() => {
       close();
     });
   }

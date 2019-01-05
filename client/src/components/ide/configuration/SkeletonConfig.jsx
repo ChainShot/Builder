@@ -3,40 +3,39 @@ import StyledSelect from '../../forms/StyledSelect';
 import apiMutation from '../../../utils/api/mutation';
 import confirm from '../../../utils/confirm';
 import SVG from '../../SVG';
+import { withRouter } from 'react-router-dom';
 import './SkeletonConfig.scss';
 
-const variables = [
-  ['id', 'String'],
-  ['ghNodeId', 'String'],
-  ['ghRepoId', 'String'],
-  ['title', 'String'],
-  ['description', 'String'],
-  ['thumbnailUrl', 'String'],
-  ['zipName', 'String'],
-]
-
-const args = variables.map(([prop, type]) => `$${prop}: ${type}`).join(', ');
-const mapping = variables.map(([prop, type]) => `${prop}: $${prop}`).join(', ');
-const returns = variables.map(([prop]) => `${prop}`).join('\n    ');
-
 const mutation = `
-mutation modifyStage(${args}) {
-  modifyStage(${mapping}) {
-    ${returns}
+mutation modifyStage($id: String, $projectSkeletons: [ProjectSkeletonInput]) {
+  modifyStage(id: $id, projectSkeletons: $projectSkeletons) {
+    id
+    projectSkeletons {
+      id
+      ghNodeId
+      ghRepoId
+      title
+      description
+      thumbnailUrl
+      zipName
+    }
   }
 }
-`
-const destroySkeleton = ``// hmm
+`;
 
 class SkeletonConfig extends Component {
   constructor(props) {
     super(props);
+    props.onSave(({ stage }) => apiMutation(mutation, stage))
   }
   destroySkeleton = () => {
+    const { match: { url, params: { skeletonId }} } = this.props;
     confirm("Are you sure you want to delete this skeleton?").then(() => {
-      const { skeletonId } = this.props;
-      // probably will want to modify stage with the skeleton removed
-      apiMutation(destroySkeleton, { skeletonId });
+      const { stage } = this.props;
+      const newStage = { ...stage }
+      newStage.projectSkeletons = newStage.projectSkeletons.filter(x => x.id !== skeletonId);
+      apiMutation(mutation, newStage);
+      this.props.history.push(url.split('/').slice(0, -2).join('/'));
     });
   }
   render() {
@@ -91,4 +90,4 @@ class SkeletonConfig extends Component {
   }
 }
 
-export default SkeletonConfig;
+export default withRouter(SkeletonConfig);
