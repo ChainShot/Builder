@@ -19,7 +19,7 @@ class Stage extends Component {
       <React.Fragment>
         <PropsRoute path={`${url}/`} exact key={stageId} component={UpdateWrapper} child={StageConfig} stage={stage} />
         <PropsRoute path={`${url}/file/:codeFileId`} component={CodeFile} stage={stage} />
-        <PropsRoute path={`${url}/skeleton/:skeletonId`} component={SkeletonConfig} stage={stage} />
+        <PropsRoute path={`${url}/skeleton/:skeletonId`} component={UpdateWrapper} child={SkeletonConfig} stage={stage} />
         <PropsRoute path={`${url}/details`} component={Details} stage={stage} />
         <PropsRoute path={`${url}/task`} component={Task} stage={stage} />
         <PropsRoute path={`${url}/validations`} component={UpdateWrapper} child={Validations} stage={stage} />

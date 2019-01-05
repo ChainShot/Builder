@@ -47,11 +47,12 @@ class SkeletonConfig extends Component {
       const idx = stage.projectSkeletons.findIndex(x => x.id === skeletonId);
       update({
         stage: {
-          skeletons: [
-            stage.skeletons.slice(0, idx),
+          ...stage,
+          projectSkeletons: [
+            ...stage.projectSkeletons.slice(0, idx),
             state,
-            stage.skeletons.slice(idx + 1),
-          ]
+            ...stage.projectSkeletons.slice(idx + 1),
+          ],
         }
       });
     }
