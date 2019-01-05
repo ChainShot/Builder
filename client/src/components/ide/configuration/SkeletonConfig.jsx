@@ -47,10 +47,18 @@ class SkeletonConfig extends Component {
   }
   updateGithub = async () => {
     const { ghRepoId, ghNodeId } = this.getSkeleton();
-    const { data } = await axios.get(`https://api.github.com/repositories/${ghRepoId}`);
-    const owner = data.owner.login;
-    const name = data.name;
-    dialog.open(UpdateGithub, { ghRepoId, ghNodeId, owner, name }).then((state) => {
+    const params = {ghRepoId, ghNodeId, owner: "", name: ""};
+    try {
+      if(ghRepoId) {
+        const { data } = await axios.get(`https://api.github.com/repositories/${ghRepoId}`);
+        params.owner = data.owner.login;
+        params.name = data.name;
+      }
+    }
+    catch(ex) {
+      console.error(`Repo ID ${ghRepoId} not found`);
+    }
+    dialog.open(UpdateGithub, params).then((state) => {
       if(state) {
         this.updateSkeleton(state);
       }
