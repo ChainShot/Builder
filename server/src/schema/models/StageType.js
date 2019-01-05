@@ -2,6 +2,7 @@ const {
   GraphQLObjectType,
   GraphQLString,
   GraphQLList,
+  GraphQLInt,
 } = require('graphql');
 const { fileResolver, configResolver, configDocumentReader } = require('../../ioHelpers').dethunked;
 const { MODEL_DB } = require('../../config');
@@ -14,10 +15,12 @@ const StageType = new GraphQLObjectType({
     id: { type: GraphQLString },
     type: { type: GraphQLString },
     containerId: { type: GraphQLString },
+    position: { type: GraphQLInt },
     title: { type: GraphQLString },
     language: { type: GraphQLString },
     testFramework: { type: GraphQLString },
     languageVersion: { type: GraphQLString },
+    projectSkeletons: { type: GraphQLList(require('./ProjectSkeletonType')) },
     codeFileIds: { type: GraphQLList(GraphQLString) },
     solutions: {
       type: new GraphQLList(require('./SolutionType')),

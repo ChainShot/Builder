@@ -1,0 +1,17 @@
+@import '../../../shared/variables';
+
+.add-skeleton {
+  .actions {
+    display: flex;
+    margin-top: 20px;
+
+    .submit {
+      padding: 8px;
+      border: 1px solid $border-color;
+      &:hover {
+        cursor: pointer;
+        border-color: $brand-active;
+      }
+    }
+  }
+}

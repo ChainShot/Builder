@@ -10,6 +10,8 @@ query findStageContainer($id: String) {
       containerType
       description
       productionReady
+      thumbnailUrl
+      estimatedTime
       title
   	}
     stages {
@@ -20,9 +22,19 @@ query findStageContainer($id: String) {
       codeFileIds
       task
       language
+      position
       languageVersion
       testFramework
       abiValidations
+      projectSkeletons {
+        id
+        ghNodeId
+        ghRepoId
+        title
+        description
+        thumbnailUrl
+        zipName
+      }
       solutions {
         id
         codeFileId

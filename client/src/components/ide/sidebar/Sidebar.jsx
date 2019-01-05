@@ -9,6 +9,7 @@ const s = n => n === 1 ? '' : 's';
 class Sidebar extends Component {
   render() {
     const { stageContainer: { stageContainerGroup: { title }, version, stages }, basename } = this.props;
+    const sortedStages = stages.sort((a,b) => a.position - b.position);
     return (
       <div className="stage-container-sidebar">
         <ul className="top-options">

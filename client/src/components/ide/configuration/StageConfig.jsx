@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import apiMutation from '../../../utils/api/mutation';
 import destroyStage from '../../../mutations/stage/destroy';
+import CodeStageConfig from './CodeStageConfig';
+import UiStageConfig from './UiStageConfig';
+import DownloadStageConfig from './DownloadStageConfig';
+import VideoStageConfig from './VideoStageConfig';
 import StyledSelect from '../../forms/StyledSelect';
-import {STAGE_TYPE_OPTIONS, STAGE_LANGUAGE_OPTIONS} from '../../../config';
+import {STAGE_TYPE_OPTIONS} from '../../../config';
 import confirm from '../../../utils/confirm';
 import SVG from '../../SVG';
 import './ContainerConfig.scss';
@@ -12,6 +16,7 @@ const variables = [
   ['title', 'String'],
   ['language', 'String'],
   ['type', 'String'],
+  ['position', 'Int'],
   ['languageVersion', 'String'],
   ['testFramework', 'String'],
 ]
@@ -28,18 +33,6 @@ mutation modifyStage(${args}) {
 }
 `
 
-const languageVersionOptions = [
-  { label: 'Solidity v0.4.19', value: '0.4.19' },
-  { label: 'Vyper v0.1', value: '0.1.0b3' },
-  { label: 'Node 8.x', value: '8.x/babel' },
-  { label: 'Node 6.x', value: '6.x/babel' },
-]
-
-const frameworkOptions = [
-  { label: 'Mocha', value: 'mocha_bdd' },
-  { label: 'Truffle With Mocha', value: 'truffle_with_mocha' },
-]
-
 class StageConfig extends Component {
   constructor(props) {
     super(props);
@@ -52,9 +45,8 @@ class StageConfig extends Component {
     });
   }
   render() {
-    const { update,
-       stage: { title, type, language, languageVersion, testFramework }
-     } = this.props;
+    const { update, stage } = this.props;
+    const { title, position, type, language, languageVersion, testFramework } = stage;
     const updateStage = (state) => update({ stage: state })
     return (
       <form className="config" ref="container">
@@ -64,29 +56,33 @@ class StageConfig extends Component {
             onChange={({ target: { value }}) => updateStage({ title: value })}/>
         </label>
 
+        <label>
+          <span>Position</span>
+          <input type="number" className="styled" value={position}
+            onChange={({ target: { value }}) => updateStage({ position: +value })}/>
+        </label>
+
         <StyledSelect
           label="Type"
           onChange={(type) => updateStage({ type })}
           value={type}
           options={STAGE_TYPE_OPTIONS} />
 
-        <StyledSelect
-          label="Language"
-          onChange={(language) => updateStage({ language })}
-          value={language}
-          options={STAGE_LANGUAGE_OPTIONS} />
+        <CodeStageConfig
+          stage={stage}
+          onChange={updateStage} />
 
-        <StyledSelect
-          label="Language Version"
-          onChange={(languageVersion) => updateStage({ languageVersion })}
-          value={languageVersion}
-          options={languageVersionOptions} />
+        <UiStageConfig
+          stage={stage}
+          onChange={updateStage} />
 
-        <StyledSelect
-          label="Test Framework"
-          onChange={(testFramework) => updateStage({ testFramework })}
-          value={testFramework}
-          options={frameworkOptions} />
+        <DownloadStageConfig
+          stage={stage}
+          onChange={updateStage} />
+
+        <VideoStageConfig
+          stage={stage}
+          onChange={updateStage} />
 
         <div className="btn btn-primary" onClick={this.destroyStage}>
           <SVG name="trash" />

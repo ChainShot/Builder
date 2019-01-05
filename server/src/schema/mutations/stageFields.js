@@ -6,12 +6,29 @@ const { StageType } = require('../models');
 const {
   GraphQLList,
   GraphQLString,
+  GraphQLInputObjectType,
+  GraphQLInt,
 } = require('graphql');
+
+const ProjectSkeletonInputType = new GraphQLInputObjectType({
+  name: 'ProjectSkeletonInput',
+  description: 'Project Skeletons',
+  fields: {
+    id: { type: GraphQLString },
+    ghNodeId: { type: GraphQLString },
+    ghRepoId: { type: GraphQLInt },
+    title: { type: GraphQLString },
+    description: { type: GraphQLString },
+    thumbnailUrl: { type: GraphQLString },
+    zipName: { type: GraphQLString },
+  }
+});
 
 const stageArgs = {
   id: { type: GraphQLString },
   type: { type: GraphQLString },
   containerId: { type: GraphQLString },
+  projectSkeletons: { type: new GraphQLList(ProjectSkeletonInputType) },
   codeFileIds: { type: new GraphQLList(GraphQLString) },
   language: { type: GraphQLString },
   testFramework: { type: GraphQLString },
@@ -20,6 +37,7 @@ const stageArgs = {
   abiValidations: { type: GraphQLString },
   task: { type: GraphQLString },
   details: { type: GraphQLString },
+  position: { type: GraphQLInt },
 }
 
 const creationArgs = {

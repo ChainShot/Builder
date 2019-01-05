@@ -3,11 +3,11 @@ import { completeSave, registerChanges, unregisterChanges } from '../redux/actio
 import { connect } from 'react-redux';
 
 function deepMerge(props, dest) {
-  const merged = { ...dest };
+  const merged = Array.isArray(props) ? [ ...dest ] : { ...dest };
   const keys = Object.keys(props);
   for(let i = 0; i < keys.length; i++) {
     const key = keys[i];
-    if(typeof props[key] === 'object') {
+    if(props[key] && typeof props[key] === 'object') {
       merged[key] = deepMerge(props[key], dest[key]);
     }
     else {

@@ -7,7 +7,8 @@ const READ_THE_DOCS = process.env.REACT_APP_READ_THE_DOCS || 'https://chainshotb
 
 const STAGE_TYPE_OPTIONS = [
   { label: 'Code Stage', value: 'CodeStage' },
-  { label: 'UI Stage', value: 'UIStage' },
+  { label: 'Download Stage', value: 'DownloadStage' },
+  { label: 'UI Stage', value: 'UiStage' },
   { label: 'Video Stage', value: 'VideoStage' },
 ]
 

@@ -14,7 +14,7 @@ class AddStage extends Component {
   }
   render() {
     const { title } = this.state;
-    const { containerId } = this.props;
+    const { containerId, position } = this.props;
     return (
       <Dialog title="New Stage" className="add-stage">
         <form>
@@ -28,8 +28,8 @@ class AddStage extends Component {
 
           <PaneSwitch
             labels={['From Template', 'Blank Stage']}>
-            <NewStageTemplate title={title} containerId={containerId}/>
-            <NewStage title={title} containerId={containerId}/>
+            <NewStageTemplate title={title} containerId={containerId} position={position}/>
+            <NewStage title={title} containerId={containerId} position={position}/>
           </PaneSwitch>
         </form>
       </Dialog>

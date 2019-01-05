@@ -7,6 +7,7 @@ import Validations from './Validations';
 import { withRouter } from 'react-router-dom';
 import PropsRoute from '../PropsRoute';
 import StageConfig from './configuration/StageConfig';
+import SkeletonConfig from './configuration/SkeletonConfig';
 import UpdateWrapper from '../UpdateWrapper';
 
 class Stage extends Component {
@@ -18,6 +19,7 @@ class Stage extends Component {
       <React.Fragment>
         <PropsRoute path={`${url}/`} exact key={stageId} component={UpdateWrapper} child={StageConfig} stage={stage} />
         <PropsRoute path={`${url}/file/:codeFileId`} component={CodeFile} stage={stage} />
+        <PropsRoute path={`${url}/skeleton/:skeletonId`} component={UpdateWrapper} child={SkeletonConfig} stage={stage} />
         <PropsRoute path={`${url}/details`} component={Details} stage={stage} />
         <PropsRoute path={`${url}/task`} component={Task} stage={stage} />
         <PropsRoute path={`${url}/validations`} component={UpdateWrapper} child={Validations} stage={stage} />

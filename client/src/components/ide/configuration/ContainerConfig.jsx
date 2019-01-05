@@ -28,6 +28,8 @@ const groupVariables = [
   ['id', 'String'],
   ['title', 'String'],
   ['productionReady', 'Boolean'],
+  ['thumbnailUrl', 'String'],
+  ['estimatedTime', 'Int'],
 ];
 
 const containerMutation = `
@@ -59,7 +61,6 @@ class ContainerConfig extends Component {
   constructor(props) {
     super(props);
     props.onSave(({ stageContainer }) => {
-      // TODO: detect which changed
       const containerUpdates = ripUpdates(containerVariables, stageContainer);
       const { stageContainerGroup } = stageContainer;
       const groupUpdates = ripUpdates(groupVariables, stageContainerGroup);
@@ -82,9 +83,8 @@ class ContainerConfig extends Component {
     });
   }
   render() {
-    const { update,
-      stageContainer: { type, version, stageContainerGroup: { title, productionReady } },
-    } = this.props;
+    const { stageContainer, update } = this.props;
+    const { type, version, stageContainerGroup: { estimatedTime, thumbnailUrl, title, productionReady } } = stageContainer;
     const updateStageContainer = (state) => update({ stageContainer: state })
     const updateStageContainerGroup = (state) => update({ stageContainer: { stageContainerGroup: state } })
     return (
@@ -99,6 +99,18 @@ class ContainerConfig extends Component {
           <span>Version</span>
           <input type="text" className="styled" value={version}
             onChange={({ target: { value }}) => updateStageContainer({ version: value })}/>
+        </label>
+
+        <label>
+          <span>Estimated Time in Minutes</span>
+          <input type="number" className="styled" value={estimatedTime}
+            onChange={({ target: { value }}) => updateStageContainerGroup({ estimatedTime: +value })}/>
+        </label>
+
+        <label>
+          <span>Thumbnail URL</span>
+          <input type="text" className="styled" value={thumbnailUrl}
+            onChange={({ target: { value }}) => updateStageContainerGroup({ thumbnailUrl: value })}/>
         </label>
 
         <StyledSelect

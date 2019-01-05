@@ -8,6 +8,7 @@ const variables = [
   ['title', 'String'],
   ['containerId', 'String'],
   ['type', 'String'],
+  ['position', 'Int'],
   ['language', 'String'],
 ]
 
@@ -31,9 +32,9 @@ class NewStage extends Component {
   }
   onSubmit = (evt) => {
     evt.preventDefault();
-    const { containerId, title } = this.props;
+    const { containerId, title, position } = this.props;
     const { type, language } = this.state;
-    apiMutation(mutation, { title, containerId, type, language }).then(() => {
+    apiMutation(mutation, { position, title, containerId, type, language }).then(() => {
       close();
     });
   }

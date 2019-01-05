@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MarkdownToolbar from './MarkdownToolbar';
 import ValidationsToolbar from './ValidationsToolbar';
+import SkeletonToolbar from './SkeletonToolbar';
 import StageConfigToolbar from './StageConfigToolbar';
 import ContainerConfigToolbar from './ContainerConfigToolbar';
 import CodeFileToolbar from './CodeFileToolbar';
@@ -26,6 +27,7 @@ class Toolbar extends Component {
         <PropsRoute exact path="/content/:containerId/stage/:stageId" component={StageConfigToolbar} />
         <PropsRoute path="/content/:containerId/stage/:stageId/(details|task)" component={MarkdownToolbar} />
         <PropsRoute path="/content/:containerId/stage/:stageId/validations" component={ValidationsToolbar} />
+        <PropsRoute path="/content/:containerId/stage/:stageId/skeleton/:skeletonId" component={SkeletonToolbar} />
         <PropsRoute exact path="/content/:containerId/stage/:stageId/file/:codeFileId" component={CodeFileToolbar} stageContainer={stageContainer} />
         <PropsRoute path="/content/:containerId/stage/:stageId/file/:codeFileId/solution" component={CodeFileToolbar} stageContainer={stageContainer} />
         <PropsRoute path="/content/:containerId/stage/:stageId/file/:codeFileId/config" component={CodeFileConfigToolbar} />
