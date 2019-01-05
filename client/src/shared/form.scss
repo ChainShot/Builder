@@ -30,6 +30,9 @@ form {
         box-shadow: 0 0 0 1px $brand-active;
         border: 1px solid $brand-active;
       }
+      &[disabled] {
+        background-color: $bg-main;
+      }
     }
   }
 

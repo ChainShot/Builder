@@ -16,7 +16,7 @@ const ProjectSkeletonInputType = new GraphQLInputObjectType({
   fields: {
     id: { type: GraphQLString },
     ghNodeId: { type: GraphQLString },
-    ghRepoId: { type: GraphQLString },
+    ghRepoId: { type: GraphQLInt },
     title: { type: GraphQLString },
     description: { type: GraphQLString },
     thumbnailUrl: { type: GraphQLString },
