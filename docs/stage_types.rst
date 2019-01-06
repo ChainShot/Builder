@@ -47,3 +47,47 @@ Field                   Description
 ======================  ====================================================================
 projectSkeletons        An embedded array of :ref:`project_skeletons`
 ======================  ====================================================================
+
+.. _video_stage:
+
+Video Stage
+===========
+
+A stage that renders with an embedded video that can teach concepts that require
+more of a visual or audio perspective.
+
+.. note::
+    This type is not editable through the Builder UI as it is currently under development.
+    In the future, videos can be recorded from within the Builder UI.
+
+Fields
+------
+======================  ====================================================================
+Field                   Description
+======================  ====================================================================
+contentId               Video content ID
+duration                Video time in milliseconds 
+======================  ====================================================================
+
+.. _ui_stage:
+
+UI Stage
+========
+
+A flexible stage that can be rendered with particular React elements. Generally
+this stage is used to teach particular concepts that aren't covered with the other
+stage types.
+
+.. note::
+    This type is not editable through the Builder UI as it is currently under development.
+    In the future, this stage type may be split out into several more specific stage
+    types.
+
+Fields
+------
+======================  ====================================================================
+Field                   Description
+======================  ====================================================================
+componentName           The specific component that this stage will render as
+configuration           A loose JSON object that configures the component
+======================  ====================================================================
