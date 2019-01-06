@@ -49,7 +49,7 @@ stageContainerGroupId   The ID of the group to which this container belongs
 version                 Uniquely identifies this container from others in the group
 ======================  ===========================================================
 
-:: _stages:
+.. _stages:
 
 Stages
 ======

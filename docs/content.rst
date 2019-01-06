@@ -2,7 +2,7 @@
 Content Repositories
 ####################
 
-ChainShot learning content is stored in git repositories to 
+ChainShot learning content is stored in git repositories to
 
 This data is built using the Builder application locally and then committed up to
 Github.
