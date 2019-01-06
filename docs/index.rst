@@ -29,5 +29,8 @@ Glossary
     :maxdepth: 2
 
     content.rst
-    content_models.rst
+    model_types.rst
+    stage_types.rst
+    project_skeletons.rst
     container_types.rst
+    abi_validations.rst

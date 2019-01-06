@@ -49,8 +49,35 @@ stageContainerGroupId   The ID of the group to which this container belongs
 version                 Uniquely identifies this container from others in the group
 ======================  ===========================================================
 
+:: _stages:
+
 Stages
 ======
+
+Stages are the main interactive piece of content. They contain some text documentation
+which helps the user understand their goals.
+
+There are four different types of Stages. To learn more about each type of stage
+see :ref:`stage_types`.
+
+The fundamental properties for all stages are:
+
+Fields
+------
+
+======================  ====================================================================
+Field                   Description
+======================  ====================================================================
+id                      Mongo ID identifier
+title                   Short Name
+type                    See :ref:`stage_types`
+completionMessage       A message shown to the user after completion
+position                Integer value for the stage position in the container (zero-indexed)
+version                 Uniquely identifies this container from others in the group
+task                    Markdown file describing the users task in this stage
+details                 Markdown file containing additional context information for the user
+======================  ====================================================================
+
 
 CodeFiles
 =========
