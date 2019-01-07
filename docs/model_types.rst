@@ -28,6 +28,8 @@ preface               One-Liner explanation of the tutorial
 productionReady       Should this appear in production to users
 ====================  ====================================================
 
+.. _stage_containers:
+
 Stage Containers
 ================
 
@@ -81,6 +83,29 @@ details                 Markdown file containing additional context information 
 
 CodeFiles
 =========
+
+Code Files represent a file within a CodeStage. They come with a number of properties
+that describe how they should be rendered and executed within the stage.
+
+Fields
+------
+
+======================  ====================================================================
+Field                   Description
+======================  ====================================================================
+id                      Mongo ID identifier
+name                    Short Name
+stageContainerId        Which of the :ref:`stage_containers` this belongs in
+codeStageIds            Array of IDs of all :ref:`code_stage` this code file belongs to
+mode                    The Monaco Code Editor mode to display the code in
+executable              Should this be included when the stage code is executed?
+executablePath          The path at which the code file is executed
+hasProgress             Should ChainShot track users progress for this CodeFile?
+readOnly                Should users be allowed to change this file?
+testFixture             Is this a file with test cases in it?
+visible                 Should this be shown to the user? (sometimes turned off for utils)
+======================  ====================================================================
+
 
 Solutions
 =========
