@@ -83,7 +83,7 @@ details                 Markdown file containing additional context information 
 .. _code_files:
 
 Code Files
-=========
+==========
 
 Code Files represent a file within a CodeStage. They come with a number of properties
 that describe how they should be rendered and executed within the stage.
