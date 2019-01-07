@@ -31,8 +31,6 @@ Start
 
 To run the Builder Client you can navigate to the /client folder and run `npm start`.
 
-.. _client_configuration:
-
 Tech Stack
 ----------
 
@@ -40,6 +38,8 @@ The client's main tech stack includes react, scss, and GraphQL.
 
 Initially it was created using the create-react-app tool and then ejected
 for further configuration of it's webpack settings.
+
+.. _client_configuration:
 
 Configuration
 -------------
@@ -90,8 +90,6 @@ Start
 -----
 
 To run the Builder Server you can navigate to the /server folder and run `npm start`.
-
-.. _client_configuration:
 
 Tech Stack
 ----------
