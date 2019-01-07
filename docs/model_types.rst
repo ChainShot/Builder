@@ -80,8 +80,9 @@ task                    Markdown file describing the users task in this stage
 details                 Markdown file containing additional context information for the user
 ======================  ====================================================================
 
+.. _code_files:
 
-CodeFiles
+Code Files
 =========
 
 Code Files represent a file within a CodeStage. They come with a number of properties
@@ -95,9 +96,10 @@ Field                   Description
 ======================  ====================================================================
 id                      Mongo ID identifier
 name                    Short Name
+initialCode             The code which this CodeFile should begin with for the user
+mode                    The Monaco Code Editor mode to display the code in
 stageContainerId        Which of the :ref:`stage_containers` this belongs in
 codeStageIds            Array of IDs of all :ref:`code_stage` this code file belongs to
-mode                    The Monaco Code Editor mode to display the code in
 executable              Should this be included when the stage code is executed?
 executablePath          The path at which the code file is executed
 hasProgress             Should ChainShot track users progress for this CodeFile?
@@ -109,3 +111,22 @@ visible                 Should this be shown to the user? (sometimes turned off 
 
 Solutions
 =========
+
+Solutions are predominantly for reference and help designing the test cases.
+
+They ensure that there is a working solution and can be shared across
+collaborating content creators to ensure the test cases are
+still working properly for any updates.
+
+
+Fields
+------
+
+======================  ====================================================================
+Field                   Description
+======================  ====================================================================
+id                      Mongo ID identifier
+codeFileId              Which of the :ref:`code_files` this belongs to
+stageId                 Which :ref:`code_stage` this belongs to
+code                    The actual solution code
+======================  ====================================================================
