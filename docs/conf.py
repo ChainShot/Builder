@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Builder'
-copyright = '2018, Dan Nolan'
+copyright = '2018, ChainShot Inc'
 author = 'Dan Nolan'
 
 # The short X.Y version
