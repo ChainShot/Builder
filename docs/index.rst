@@ -35,7 +35,7 @@ Glossary
     content.rst
     builder_structure.rst
     model_types.rst
+    container_types.rst
     stage_types.rst
     project_skeletons.rst
-    container_types.rst
     abi_validations.rst
