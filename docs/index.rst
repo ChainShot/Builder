@@ -28,8 +28,10 @@ Glossary
 .. toctree::
     :maxdepth: 2
 
+    setting_up.rst
     building_new_content.rst
     forking_existing_content.rst
+    linking_github.rst
     content.rst
     builder_structure.rst
     model_types.rst
