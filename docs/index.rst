@@ -12,11 +12,15 @@ ChainShot Builder
    :alt: ChainShot logo
    :align: left
 
+**What is ChainShot?**
+
 `ChainShot <https://www.chainshot.com>`_ is an interactive learning website for
 Ethereum developers.
 
+**What is ChainShot Builder?**
+
 The ChainShot Builder allows content creators to build their own interactive
-learning content and reach whole new audiences. 
+learning content and reach whole new audiences.
 
 ********
 Glossary
@@ -24,4 +28,14 @@ Glossary
 .. toctree::
     :maxdepth: 2
 
+    setting_up.rst
+    building_new_content.rst
+    forking_existing_content.rst
+    linking_github.rst
     content.rst
+    builder_structure.rst
+    model_types.rst
+    container_types.rst
+    stage_types.rst
+    project_skeletons.rst
+    abi_validations.rst
