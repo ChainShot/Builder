@@ -37,34 +37,15 @@ Here are the fields for each individual validation:
 Fields
 ------
 
-  {
-    "_id": "5b735742d9f9970a465ebd09",
-    "constant": "nil",
-    "payable": "nil",
-    "error": "Remember to add an Approved event to track when the event was approved!",
-    "task_display": "Create an Approved Event with an unsigned integer argument",
-    "name": "Approved",
-    "type": "event",
-    "inputs": [
-      {
-        "_id": "5b735742d9f9970a465ebd0a",
-        "name": null,
-        "type": "uint256"
-      }
-    ]
-  }
-
-  Fields
-  ------
-  ======================  ====================================================================
-  Field                   Description
-  ======================  ====================================================================
-  id                      Mongo ID identifier
-  name                    The name of the exposed property
-  type                    The type of the exposed property
-  task_display            The task to show to the user, for them to satisfy this validation
-  constant                Is this a constant function?
-  payable                 Is this a payable function?
-  inputs                  An embedded array of required inputs
-  outputs                 An embedded array of required outputs
-  ======================  ====================================================================
+======================  ====================================================================
+Field                   Description
+======================  ====================================================================
+id                      Mongo ID identifier
+name                    The name of the exposed property
+type                    The type of the exposed property
+task_display            The task to show to the user, for them to satisfy this validation
+constant                Is this a constant function?
+payable                 Is this a payable function?
+inputs                  An embedded array of required inputs
+outputs                 An embedded array of required outputs
+======================  ====================================================================
