@@ -4,20 +4,36 @@
 Setting up your Builder
 #######################
 
-First, clone the Builder repository.
+First, clone the |Builder Repository|.
 
-Install
--------
+.. |Builder Repository| raw:: html
 
-TODO: add these instructions, reference them from the readme
+   <a href="https://github.com/ChainShot/Builder" target="_blank">Builder repository</a>
 
-Run
----
+::
 
+ git clone https://github.com/ChainShot/Builder.git
 
+The Builder runs with a client/server architecture so it is broken into
+two main components client and server. We'll need to install the dependencies
+and run these components separately.
+
+Install Dependencies
+--------------------
+
+1) :ref:`install_client`
+
+2) :ref:`install_server`
+
+Start Client & Server
+---------------------
+
+1) :ref:`run_client`
+
+2) :ref:`run_server`
 
 Configure
 ---------
 
-To understand more about what's going on underneath the hood, or to help
-develop and contribute to the Builder check out the `:ref:builder_structure` section.
+Both the server and the client can be configured to run with different environment
+settings, :ref:`client_configuration` and :ref:`server_configuration`.

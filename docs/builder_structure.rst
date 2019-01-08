@@ -20,14 +20,18 @@ features are added to the ChainShot system, the Builder client will continue to
 add more functionality for recording videos, running competitions and holding
 livestreams.
 
-Install Dependencies
---------------------
+.. _install_client:
+
+Install Client Dependencies
+---------------------------
 
 To install dependencies for the Builder Client you can navigate to the /client
 folder and run `npm install`.
 
-Start
------
+.. _run_client:
+
+Start Client
+------------
 
 To run the Builder Client you can navigate to the /client folder and run `npm start`.
 
@@ -41,8 +45,8 @@ for further configuration of it's webpack settings.
 
 .. _client_configuration:
 
-Configuration
--------------
+Client Configuration
+--------------------
 
 Builder Client uses the dotenv node module which makes it easier to create override
 settings for your own environment without committing them.
@@ -80,14 +84,18 @@ The builder is expected to be run on a single machine, locally, for a single use
 As such, it's not safe for concurrency. Sending multiple updates at once may result in some
 unexpected overrides.
 
-Install Dependencies
---------------------
+.. _install_server:
+
+Install Server Dependencies
+---------------------------
 
 To install dependencies for the Builder Server you can navigate to the /server
 folder and run `npm install`.
 
-Start
------
+.. _run_server:
+
+Start Server
+------------
 
 To run the Builder Server you can navigate to the /server folder and run `npm start`.
 
@@ -98,8 +106,8 @@ The client's main tech stack includes node, express, socket.io and GraphQL.
 
 .. _server_configuration:
 
-Configuration
--------------
+Server Configuration
+--------------------
 
 Builder Server uses the dotenv node module which makes it easier to create override
 settings for your own environment without committing them.
