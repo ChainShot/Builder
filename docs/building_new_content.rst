@@ -13,51 +13,56 @@ Start Editing
 =============
 
 Once you have Builder up and running you'll be able to create your own content.
-
 You'll be given the choice between starting from any of the stage container types
 (see :ref:`container_types`).
 
 Once you're inside the editor you'll be able to configure your stage container
-and start adding stages. Any changes made within the editor will automatically
-save to your file system.
+and start adding stages. The Builder will automatically create a folder called
+'Content' (unless overridden by :ref:`server_configuration`).
+Any changes made within the editor will automatically save to your file system.
 
-Pushing Up to Github
-====================
+Creating a git repository
+=========================
 
-Now that you have your
+Once you have a Content Folder, you'll want to create a git repository.
+
+Navigate to your content folder. By default it is created on the same directory
+level as your Builder repository, so it should look like this on your file system:
+
+::
+
+  /Builder
+  /Content
+
+Navigate to :code:`/Content` and initialize a new repository, and commit all contents:
+
+::
+
+  git init
+  git add .
+  git commit -m "init content"
+
+Now you'll need to connect it to a remote. Easiest way to do this is to go to Github and
+|New Repo|.
+
+.. |New Repo| raw:: html
+
+   <a href="https://github.com/new" target="_blank">create a new Github Repository</a>
+
+.. note::
+   This repository must be public. If you'd like to setup a private repository integration,
+   contact us team@chainshot.com
+
+Then connect to your remote repository:
+
+::
+
+  git remote add origin PUT_YOUR_REPO_GIT_URL_HERE
+  git push -u origin master
 
 
 Connecting your Github Repository
 =================================
 
-Once you have your Content repository up on Github you'll be able to link to it
-from ChainShot to hook up to automatic deployments. ChainShot will transform your
-content repository into interactive tutorials. Any changes to your content repository
-will automatically be reflected on the ChainShot site.
-
-Connect to Github
------------------
-
-To set this up, navigate to your profile on ChainShot:
-
-[ image here ]
-
-
-Github Webhook
---------------
-
-Once you have hooked up your Content repository on ChainShot a webhook will be
-created on your Github repository. This webhook will automatically notify ChainShot
-when changes are made to your Github repository so that the new Content can be deployed.
-
-You can view the status of the latest deployments on your deployments page.
-
-Manual Deployment
------------------
-
-If your deployments ever fail for some reason you can always kick off a manual deployment:
-
-[ image here ]
-
-For any help or assistance on why your content has failed deployment, reach out to
-ChainShot administrators on Slack and we'll get you set up :) 
+For instructions on linking your new Github Repository to Chainshot, check out
+our :ref:`linking_github` section.
