@@ -24,7 +24,7 @@ class CodeFileOptionsNav extends Component {
         <li>
           <NavLink to={`${basename}`} exact data-rh="User's Initial Code" data-rh-at="right">
             <SVG name="codefile"/>
-            <span>setup</span>
+            <span>initial code</span>
           </NavLink>
         </li>
         {this.renderSolution()}

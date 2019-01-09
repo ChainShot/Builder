@@ -22,7 +22,7 @@ class CodeFileToolbar extends Component {
         <SaveToolbar />
         <CodeToolbar codeFile={codeFile}/>
         <li className="docs">
-          <a href={`${READ_THE_DOCS}/content.html`} target="_blank" rel="noopener noreferrer">
+          <a href={`${READ_THE_DOCS}/model_types.html#code-files`} target="_blank" rel="noopener noreferrer">
             <SVG name="book" />
             <div> CodeFile Docs </div>
           </a>
