@@ -10,7 +10,7 @@ ChainShot Builder
 .. image:: logo.svg
    :width: 80px
    :alt: ChainShot logo
-   :align: left
+   :align: right
 
 **What is ChainShot?**
 
@@ -19,8 +19,8 @@ Ethereum developers.
 
 **What is ChainShot Builder?**
 
-The ChainShot Builder allows content creators to build their own interactive
-learning content and reach whole new audiences.
+The ChainShot Builder is an application that allows Content Creators to build
+their own interactive learning content. 
 
 ********
 Glossary
