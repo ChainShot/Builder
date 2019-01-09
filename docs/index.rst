@@ -20,7 +20,7 @@ Ethereum developers.
 **What is ChainShot Builder?**
 
 The ChainShot Builder is an application that allows Content Creators to build
-their own interactive learning content. 
+their own interactive learning content.
 
 ********
 Glossary
@@ -39,3 +39,4 @@ Glossary
     stage_types.rst
     project_skeletons.rst
     abi_validations.rst
+    markdown_editor.rst

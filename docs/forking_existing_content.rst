@@ -32,7 +32,7 @@ instructions for :ref:`setting_up` if you haven't already.
 After you do so, you'll want to configure the builder to point at your content repository.
 
 By default, the builder will look for a directory called `Content` on it's same
-directory level. If you'd like to configure this, see :_server_configuration.
+directory level. If you'd like to configure this, see :ref:`_server_configuration`.
 
 Making Updates
 ==============

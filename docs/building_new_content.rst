@@ -18,7 +18,7 @@ You'll be given the choice between starting from any of the stage container type
 
 Once you're inside the editor you'll be able to configure your stage container
 and start adding stages. The Builder will automatically create a folder called
-'Content' (unless overridden by :ref:`server_configuration`).
+:code:`Content` (unless overridden by :ref:`server_configuration`).
 Any changes made within the editor will automatically save to your file system.
 
 Creating a git repository

@@ -9,7 +9,7 @@ class SkeletonToolbar extends Component {
       <React.Fragment>
         <SaveToolbar />
         <li className="docs">
-          <a href={`${READ_THE_DOCS}/content.html`} target="_blank" rel="noopener noreferrer">
+          <a href={`${READ_THE_DOCS}/project_skeletons.html`} target="_blank" rel="noopener noreferrer">
             <SVG name="book" />
             <div> Project Skeleton Docs </div>
           </a>
