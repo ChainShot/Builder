@@ -4,4 +4,4 @@ Calling all [teachers](https://chainshotbuilder.readthedocs.io/en/latest/contain
 
 ChainShot Builder is for anyone excited to build interactive coding educational content.
 
-Check out the [Builder Documentation](https://chainshotbuilder.readthedocs.io/en/latest/container_types.html) to learn more.
+Check out the [Builder Documentation](https://chainshotbuilder.readthedocs.io/en/latest/) to learn more.
