@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import apiMutation from '../../../utils/api/mutation';
 import destroyStage from '../../../mutations/stage/destroy';
 import CodeStageConfig from './CodeStageConfig';
-import UiStageConfig from './UIStageConfig';
+import UiStageConfig from './UiStageConfig';
 import DownloadStageConfig from './DownloadStageConfig';
 import VideoStageConfig from './VideoStageConfig';
 import StyledSelect from '../../forms/StyledSelect';
