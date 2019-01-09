@@ -55,4 +55,6 @@ If your deployments ever fail for some reason you can always kick off a manual d
   :alt: Manual Deployment
 
 For any help or assistance on why your content has failed deployment, reach out to
-ChainShot administrators on Slack and we'll get you set up :)
+ChainShot administrators on
+`Slack <https://join.slack.com/t/chainshotnodes/shared_invite/enQtMzU3ODc5NTM3MTI3LTFlZTY1YzcwM2QzYWI0ODY2ZDczMmYzOTVlYWQwZjkyZDFlYzUxZWM4NDNlNjk3N2EyNGMwOGQ0ZTVkZjQyNjE>`_
+and we'll get you set up :)
