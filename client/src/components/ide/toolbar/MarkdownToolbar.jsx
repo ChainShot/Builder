@@ -9,7 +9,7 @@ class MarkdownToolbar extends Component {
       <React.Fragment>
         <SaveToolbar />
         <li className="docs">
-          <a href={`${READ_THE_DOCS}/markdown-editor.html`} target="_blank" rel="noopener noreferrer">
+          <a href={`${READ_THE_DOCS}/markdown_editor.html`} target="_blank" rel="noopener noreferrer">
             <SVG name="book" />
             <div> Markdown Docs </div>
           </a>

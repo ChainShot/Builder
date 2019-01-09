@@ -1,11 +1,6 @@
-## Available Scripts
+## Builder Client
 
-In the project directory, you can run:
+The Builder Client is the interface for building content repositories. It is
+essentially an IDE fitted for the purposes of creating ChainShot-style content.
 
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Learn more in the [Builder Documentation](https://chainshotbuilder.readthedocs.io/en/latest/builder_structure.html#client).

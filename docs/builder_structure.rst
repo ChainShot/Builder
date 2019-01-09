@@ -26,14 +26,15 @@ Install Client Dependencies
 ---------------------------
 
 To install dependencies for the Builder Client you can navigate to the /client
-folder and run `npm install`.
+folder and run :code:`npm install`.
 
 .. _run_client:
 
 Start Client
 ------------
 
-To run the Builder Client you can navigate to the /client folder and run `npm start`.
+To run the Builder Client you can navigate to the :code:`/client`
+folder and run :code:`npm start`.
 
 Tech Stack
 ----------
@@ -51,11 +52,13 @@ Client Configuration
 Builder Client uses the dotenv node module which makes it easier to create override
 settings for your own environment without committing them.
 
-To create your own environmental variables simply create a `.env` file in the `client/`
-directory. You can then override settings with the format:
+To create your own environmental variables simply create a :code:`.env` file in the
+:code:`client/` directory. You can then override settings with the format:
 
-REACT_APP_SETTING1=VALUE1
-REACT_APP_SETTING2=VALUE2
+::
+
+  REACT_APP_SETTING1=VALUE1
+  REACT_APP_SETTING2=VALUE2
 
 .. note::
     You'll notice the REACT_APP_* prefix on these settings. This is used by
@@ -89,15 +92,16 @@ unexpected overrides.
 Install Server Dependencies
 ---------------------------
 
-To install dependencies for the Builder Server you can navigate to the /server
-folder and run `npm install`.
+To install dependencies for the Builder Server you can navigate to the :code:`/server`
+folder and run :code:`npm install`.
 
 .. _run_server:
 
 Start Server
 ------------
 
-To run the Builder Server you can navigate to the /server folder and run `npm start`.
+To run the Builder Server you can navigate to the :code:`/server` folder and
+run :code:`npm start`.
 
 Tech Stack
 ----------
@@ -109,14 +113,16 @@ The client's main tech stack includes node, express, socket.io and GraphQL.
 Server Configuration
 --------------------
 
-Builder Server uses the dotenv node module which makes it easier to create override
+Builder Server uses the :code:`dotenv` node module which makes it easier to create override
 settings for your own environment without committing them.
 
-To create your own environmental variables simply create a `.env` file in the `server/`
-directory. You can then override settings with the format:
+To create your own environmental variables simply create a :code:`.env` file in the
+:code:`server/` directory. You can then override settings with the format:
 
-SETTING1=VALUE1
-SETTING2=VALUE2
+::
+
+  SETTING1=VALUE1
+  SETTING2=VALUE2
 
 Some of the override-able settings include:
 
@@ -135,5 +141,5 @@ docs are stored in rst files the intention is that anyone can come and make upda
 as necessary.
 
 For installation instructions, see `Sphinx Docs <`http://sphinx-doc.org/`>`_. To
-build the docs locally simply run the `make` command and open the index.html
-file within the generated _build folder.
+build the docs locally simply run the :code:`make` command and open the :code:`index.html`
+file within the generated :code:`_build` folder.
