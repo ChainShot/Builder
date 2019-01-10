@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './CodeFileToolbar.scss';
-import CodeFileToolbarPane from './CodeFileToolbarPane';
+import './CodeFilePanes.scss';
+import CodeFilePane from './CodeFilePane';
 import CompilationTab from './CompilationTab';
 import OutputTab from './OutputTab';
 import { connect } from 'react-redux';
 
-class CodeFileToolbar extends Component {
+class CodeFilePanes extends Component {
   state = {
     pane: null,
   }
@@ -31,7 +31,7 @@ class CodeFileToolbar extends Component {
     const { stage, codeFile } = this.props;
     return (
       <div className="code-file-toolbar">
-        <CodeFileToolbarPane changePane={this.changePane} pane={pane} stage={stage} codeFile={codeFile} />
+        <CodeFilePane changePane={this.changePane} pane={pane} stage={stage} codeFile={codeFile} />
         <ul className="actions">
           <CompilationTab changePane={this.changePane} pane={pane} codeFile={codeFile} />
           <OutputTab changePane={this.changePane} pane={pane} codeFile={codeFile} />
@@ -45,4 +45,4 @@ const mapStateToProps = ({ executionState, compilationState }) => ({ executionSt
 
 export default connect(
   mapStateToProps,
-)(CodeFileToolbar);
+)(CodeFilePanes);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CodeEditor from '../CodeEditor';
-import CodeFileToolbar from './toolbar/CodeFileToolbar';
+import CodeFilePanes from './panes/CodeFilePanes';
 import './CodeFileEditor.scss';
 
 class CodeFileEditor extends Component {
@@ -11,7 +11,7 @@ class CodeFileEditor extends Component {
           <div className="editor-container">
             <CodeEditor code={code} mode={mode} onUpdate={(code) => update({ code })}/>
           </div>
-          <CodeFileToolbar {...this.props} />
+          <CodeFilePanes {...this.props} />
         </div>
       )
     }
