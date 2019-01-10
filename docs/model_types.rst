@@ -74,8 +74,7 @@ id                      Mongo ID identifier
 title                   Short Name
 type                    See :ref:`stage_types`
 completionMessage       A message shown to the user after completion
-position                Integer value for the stage position in the container (zero-indexed)
-version                 Uniquely identifies this container from others in the group
+position                Integer value for the stage position in the container (zero-indexed)        
 task                    Markdown file describing the users task in this stage
 details                 Markdown file containing additional context information for the user
 ======================  ====================================================================
