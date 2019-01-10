@@ -15,10 +15,13 @@ class Output extends Component {
     this.props.completeCodeExecution(null);
   }
   runCode = async () => {
-    const { stage } = this.props;
+    const { stage, code, codeFile } = this.props;
     const { runIdx } = this.state;
 
     const files = stage.codeFiles.map(({ id, initialCode, executablePath, hasProgress }) => {
+      if(id === codeFile.id) {
+        return { contents: code, path: executablePath }
+      }
       if(hasProgress) {
         const solution = stage.solutions.find(x => x.codeFileId === id);
         return { contents: solution.code, path: executablePath }

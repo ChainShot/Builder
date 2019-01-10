@@ -5,13 +5,13 @@ import './CodeFileEditor.scss';
 
 class CodeFileEditor extends Component {
     render() {
-      const { code, mode, update } = this.props;
+      const { code, mode, update, stage, codeFile } = this.props;
       return (
         <div className="code-file-editor">
           <div className="editor-container">
             <CodeEditor code={code} mode={mode} onUpdate={(code) => update({ code })}/>
           </div>
-          <CodeFilePanes {...this.props} />
+          <CodeFilePanes stage={stage} codeFile={codeFile} code={code} />
         </div>
       )
     }
