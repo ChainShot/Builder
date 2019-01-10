@@ -4,7 +4,8 @@ const fs = require('fs-extra');
 const prettifyJSON = require('../utils/prettifyJSON');
 
 // transforms the validations property
-// type => interfaceType
+// validation type => interfaceType
+// argument type => staticType
 async function runMigration() {
   const groups = await fs.readdir(PROJECTS_DIR);
   for(let i = 0; i < groups.length; i++) {
@@ -25,6 +26,14 @@ async function runMigration() {
             validations.forEach((validation) => {
               validation.interfaceType = validation.type;
               delete validation.type;
+              (validation.inputs || []).forEach(input => {
+                input.staticType = input.type;
+                delete input.type;
+              });
+              (validation.outputs || []).forEach(output => {
+                output.staticType = output.type;
+                delete output.type;
+              });
             });
             await fs.writeFile(validationsPath, prettifyJSON(validations));
           }
