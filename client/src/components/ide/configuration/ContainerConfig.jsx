@@ -27,6 +27,7 @@ const containerVariables = [
 const groupVariables = [
   ['id', 'String'],
   ['title', 'String'],
+  ['description', 'String'],
   ['productionReady', 'Boolean'],
   ['thumbnailUrl', 'String'],
   ['estimatedTime', 'Int'],
@@ -84,7 +85,10 @@ class ContainerConfig extends Component {
   }
   render() {
     const { stageContainer, update } = this.props;
-    const { type, version, stageContainerGroup: { estimatedTime, thumbnailUrl, title, productionReady } } = stageContainer;
+    const { type, version, 
+      stageContainerGroup: { 
+        description, estimatedTime, thumbnailUrl, title, productionReady 
+      } } = stageContainer;
     const updateStageContainer = (state) => update({ stageContainer: state })
     const updateStageContainerGroup = (state) => update({ stageContainer: { stageContainerGroup: state } })
     return (
@@ -93,6 +97,12 @@ class ContainerConfig extends Component {
           <span>Title</span>
           <input type="text" className="styled" value={title}
             onChange={({ target: { value }}) => updateStageContainerGroup({ title: value })}/>
+        </label>
+        
+        <label>
+          <span>Description</span>
+          <textarea type="text" className="styled" value={description}
+            onChange={({ target: { value }}) => updateStageContainerGroup({ description: value })}/>
         </label>
 
         <label>
