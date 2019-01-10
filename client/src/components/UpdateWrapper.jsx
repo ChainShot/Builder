@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { completeSave, registerChanges, unregisterChanges } from '../redux/actions';
 import { connect } from 'react-redux';
+import { Prompt } from 'react-router-dom';
 
 function deepMerge(props, dest) {
   const merged = Array.isArray(props) ? [ ...dest ] : { ...dest };
@@ -49,6 +50,10 @@ class UpdateWrapper extends Component {
   onSave(savePromise) {
     this.setState({ savePromise });
   }
+  
+  componentWillUnmount() {
+    this.props.unregisterChanges();
+  }
 
   async componentDidUpdate(prevProps) {
     const { saveState: { saving }} = this.props;
@@ -80,12 +85,19 @@ class UpdateWrapper extends Component {
   }
 
   render() {
-    const { child } = this.props;
+    const { child, saveState: { changes } } = this.props;
     const { currentState } = this.state;
     const ChildComponent = child;
-    return <ChildComponent {...currentState}
-              onSave={(...args) => this.onSave(...args)}
-              update={(...args) => this.update(...args)} />
+    return (
+        <React.Fragment>
+          <ChildComponent {...currentState}
+                    onSave={(...args) => this.onSave(...args)}
+                    update={(...args) => this.update(...args)} />
+          <Prompt
+            when={changes}
+            message="Unsaved Changes. Discard them?" />
+        </React.Fragment>
+    )
   }
 }
 
