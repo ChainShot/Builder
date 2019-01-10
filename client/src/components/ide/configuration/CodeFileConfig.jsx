@@ -17,6 +17,7 @@ const variables = [
   ['id', 'String'],
   ['name', 'String'],
   ['mode', 'String'],
+  ['fileLocation', 'String'],
   ['executablePath', 'String'],
   ['readOnly', 'Boolean'],
   ['hasProgress', 'Boolean'],
@@ -62,7 +63,7 @@ class CodeFileConfig extends Component {
   render() {
     const {
       update,
-      codeFile: { name, mode, executablePath, readOnly, hasProgress, executable, testFixture, visible }
+      codeFile: { name, mode, executablePath, fileLocation, readOnly, hasProgress, executable, testFixture, visible }
     } = this.props;
     const updateCodeFile = (state) => update({ codeFile: state })
     return (
@@ -79,6 +80,13 @@ class CodeFileConfig extends Component {
           <input
             type="text" className="styled" value={executablePath}
             onChange={({ target: { value }}) => updateCodeFile({ executablePath: value })}/>
+        </label>
+
+        <label>
+          <span>File Location</span>
+          <input
+            type="text" className="styled" value={fileLocation}
+            onChange={({ target: { value }}) => updateCodeFile({ fileLocation: value })}/>
         </label>
 
         <StyledSelect
