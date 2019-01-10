@@ -26,7 +26,6 @@ id                    Mongo ID identifier
 title                 Short Name
 description           Description of the Tutorials Purpose
 containerType         Refers to the stage container :ref:`container_types`
-preface               One-Liner explanation of the tutorial
 productionReady       Should this appear in production to users
 ====================  ====================================================
 
