@@ -20,7 +20,6 @@ const StageType = new GraphQLObjectType({
     language: { type: GraphQLString },
     testFramework: { type: GraphQLString },
     languageVersion: { type: GraphQLString },
-    completionMessage: { type: GraphQLString },
     projectSkeletons: { type: GraphQLList(require('./ProjectSkeletonType')) },
     codeFileIds: { type: GraphQLList(GraphQLString) },
     solutions: {
@@ -36,6 +35,10 @@ const StageType = new GraphQLObjectType({
         const ids = (codeFileIds || []);
         return Promise.all(ids.map(id => configResolver(MODEL_DB.CODE_FILES, id)));
       }
+    },
+    completionMessage: {
+      type: GraphQLString,
+      resolve: async (props) => fileResolver(path.join(await findStageFilePath(props), 'completionMessage.md'))
     },
     details: {
       type: GraphQLString,
