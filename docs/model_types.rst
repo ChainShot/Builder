@@ -26,7 +26,6 @@ id                    Mongo ID identifier
 title                 Short Name
 description           Description of the Tutorials Purpose
 containerType         Refers to the stage container :ref:`container_types`
-preface               One-Liner explanation of the tutorial
 productionReady       Should this appear in production to users
 ====================  ====================================================
 
@@ -46,11 +45,10 @@ Fields
 Field                   Description
 ======================  ===========================================================
 id                      Mongo ID identifier
-title                   Short Name
+version                 Uniquely identifies this container from others in the group
 type                    See :ref:`container_types`
 intro                   Markdown which is shown to the user when they begin
 stageContainerGroupId   The ID of the group to which this container belongs
-version                 Uniquely identifies this container from others in the group
 ======================  ===========================================================
 
 .. _stages:
@@ -76,8 +74,7 @@ id                      Mongo ID identifier
 title                   Short Name
 type                    See :ref:`stage_types`
 completionMessage       A message shown to the user after completion
-position                Integer value for the stage position in the container (zero-indexed)
-version                 Uniquely identifies this container from others in the group
+position                Integer value for the stage position in the container (zero-indexed)        
 task                    Markdown file describing the users task in this stage
 details                 Markdown file containing additional context information for the user
 ======================  ====================================================================
