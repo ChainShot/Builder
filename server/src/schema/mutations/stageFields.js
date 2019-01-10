@@ -31,6 +31,7 @@ const stageArgs = {
   projectSkeletons: { type: new GraphQLList(ProjectSkeletonInputType) },
   codeFileIds: { type: new GraphQLList(GraphQLString) },
   language: { type: GraphQLString },
+  completionMessage: { type: GraphQLString },
   testFramework: { type: GraphQLString },
   languageVersion: { type: GraphQLString },
   title: { type: GraphQLString },

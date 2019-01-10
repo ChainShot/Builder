@@ -36,6 +36,10 @@ const StageType = new GraphQLObjectType({
         return Promise.all(ids.map(id => configResolver(MODEL_DB.CODE_FILES, id)));
       }
     },
+    completionMessage: {
+      type: GraphQLString,
+      resolve: async (props) => fileResolver(path.join(await findStageFilePath(props), 'completionMessage.md'))
+    },
     details: {
       type: GraphQLString,
       resolve: async (props) => fileResolver(path.join(await findStageFilePath(props), 'details.md'))
