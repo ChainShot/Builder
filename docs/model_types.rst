@@ -45,11 +45,10 @@ Fields
 Field                   Description
 ======================  ===========================================================
 id                      Mongo ID identifier
-title                   Short Name
+version                 Uniquely identifies this container from others in the group
 type                    See :ref:`container_types`
 intro                   Markdown which is shown to the user when they begin
 stageContainerGroupId   The ID of the group to which this container belongs
-version                 Uniquely identifies this container from others in the group
 ======================  ===========================================================
 
 .. _stages:
