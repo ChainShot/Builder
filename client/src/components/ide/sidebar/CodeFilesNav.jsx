@@ -74,6 +74,12 @@ class CodeFilesNav extends Component {
             <span>task.md</span>
           </NavLink>
         </li>
+        <li>
+          <NavLink to={`${basename}/completion`}>
+            <SVG name="file"/>
+            <span>completion.md</span>
+          </NavLink>
+        </li>
         { this.renderValidations() }
         { (projectSkeletons || []).map(ps => <SkeletonNav key={ps.id} skeleton={ps} {...this.props} />) }
         { (codeFiles || []).map(cf => <CodeFileNav key={cf.id} codeFile={cf} {...this.props} />) }

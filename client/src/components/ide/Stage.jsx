@@ -3,6 +3,7 @@ import './Stage.scss';
 import CodeFile from './codeFile/CodeFile';
 import Details from './markdown/Details';
 import Task from './markdown/Task';
+import Completion from './markdown/Completion';
 import Validations from './Validations';
 import { withRouter } from 'react-router-dom';
 import PropsRoute from '../PropsRoute';
@@ -22,6 +23,7 @@ class Stage extends Component {
         <PropsRoute path={`${url}/skeleton/:skeletonId`} component={UpdateWrapper} child={SkeletonConfig} stage={stage} />
         <PropsRoute path={`${url}/details`} component={Details} stage={stage} />
         <PropsRoute path={`${url}/task`} component={Task} stage={stage} />
+        <PropsRoute path={`${url}/completion`} component={Completion} stage={stage} />
         <PropsRoute path={`${url}/validations`} component={UpdateWrapper} child={Validations} stage={stage} />
       </React.Fragment>
     )

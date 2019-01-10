@@ -25,7 +25,7 @@ class Toolbar extends Component {
         <PropsRoute exact path="/content/:containerId" component={ContainerConfigToolbar} />
         <PropsRoute path="/content/:containerId/intro" component={MarkdownToolbar} />
         <PropsRoute exact path="/content/:containerId/stage/:stageId" component={StageConfigToolbar} />
-        <PropsRoute path="/content/:containerId/stage/:stageId/(details|task)" component={MarkdownToolbar} />
+        <PropsRoute path="/content/:containerId/stage/:stageId/(details|task|completion)" component={MarkdownToolbar} />
         <PropsRoute path="/content/:containerId/stage/:stageId/validations" component={ValidationsToolbar} />
         <PropsRoute path="/content/:containerId/stage/:stageId/skeleton/:skeletonId" component={SkeletonToolbar} />
         <PropsRoute exact path="/content/:containerId/stage/:stageId/file/:codeFileId" component={CodeFileToolbar} stageContainer={stageContainer} />

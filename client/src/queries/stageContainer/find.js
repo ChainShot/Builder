@@ -19,6 +19,7 @@ query findStageContainer($id: String) {
       title
       type
       details
+      completionMessage
       codeFileIds
       task
       language
