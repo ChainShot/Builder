@@ -1,7 +1,7 @@
 const DEFAULT_CONFIG = require('../../../src/config');
 const path = require('path');
 const MOCK_CONFIG = {
-  TEMPLATES_DIR: path.join(__dirname, "..", "..", "src", "templates"),
+  TEMPLATES_DIR: path.join(__dirname, "..", "..", "templates"),
   ...DEFAULT_CONFIG,
 }
 const MONGO_ID_REGEX = /^[0-9a-fA-F]{24}$/;

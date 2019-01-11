@@ -1,4 +1,4 @@
-const { MODEL_DB, LOOKUP_KEY, CONFIG_DIR } = require('../config');
+const { LOOKUP_KEY, CONFIG_DIR } = require('../config');
 const findStageFilePath = require('../projectHelpers/findStageFilePath');
 const fs = require('fs-extra');
 const path = require('path');

@@ -9,9 +9,10 @@ import './StagesNav.scss';
 class StagesNav extends Component {
   render() {
     const { stageContainer: { id, stages }} = this.props;
+    const sortedStages = stages.sort((a,b) => a.position - b.position);
     return (
       <ul className="stages-nav">
-        { stages.map(stage => <StageNav key={stage.id} stage={stage} {...this.props} /> ) }
+        { sortedStages.map(stage => <StageNav key={stage.id} stage={stage} {...this.props} /> ) }
         <li>
           <div className="action" onClick={() => dialog.open(AddStage, { containerId: id, position: stages.length })}>
             <SVG name="add" />

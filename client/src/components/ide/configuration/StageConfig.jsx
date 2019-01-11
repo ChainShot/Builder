@@ -46,7 +46,7 @@ class StageConfig extends Component {
   }
   render() {
     const { update, stage } = this.props;
-    const { title, position, type, language, languageVersion, testFramework } = stage;
+    const { title, position, type } = stage;
     const updateStage = (state) => update({ stage: state })
     return (
       <form className="config" ref="container">
