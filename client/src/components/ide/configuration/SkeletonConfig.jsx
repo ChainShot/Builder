@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import StyledSelect from '../../forms/StyledSelect';
 import apiMutation from '../../../utils/api/mutation';
 import confirm from '../../../utils/confirm';
 import * as dialog from '../../../utils/dialog';
@@ -42,7 +41,7 @@ class SkeletonConfig extends Component {
     });
   }
   getSkeleton() {
-    const { match: { params: { skeletonId }}, update, stage } = this.props;
+    const { match: { params: { skeletonId }}, stage } = this.props;
     return stage.projectSkeletons.find(x => x.id === skeletonId);
   }
   updateGithub = async () => {

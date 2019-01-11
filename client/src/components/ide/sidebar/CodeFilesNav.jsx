@@ -52,7 +52,7 @@ class CodeFilesNav extends Component {
     }
   }
   render() {
-    const { basename, stage, stageContainer } = this.props;
+    const { basename, stage } = this.props;
     const { codeFiles, projectSkeletons } = stage;
     return (
       <ul className="code-files-nav">

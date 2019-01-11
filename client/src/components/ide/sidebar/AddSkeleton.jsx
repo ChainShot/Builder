@@ -44,7 +44,6 @@ class AddSkeleton extends Component {
     this.setState({[prop]: value});
   }
   render() {
-    const { stage } = this.props;
     const { title } = this.state;
     return (
       <Dialog title="Add Project Skeleton" className="add-skeleton">

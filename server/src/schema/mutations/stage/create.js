@@ -4,9 +4,9 @@ const path = require('path');
 const fs = require('fs-extra');
 
 module.exports = ({
-  ioHelpers: { configWriter, configResolver, fileWriter, copy },
+  ioHelpers: { configWriter, fileWriter, copy },
   projectHelpers: { findStageFilePath },
-  config: { MODEL_DB, LOOKUP_KEY, TEMPLATES_DIR, PROJECTS_DIR },
+  config: { MODEL_DB, LOOKUP_KEY, TEMPLATES_DIR },
 }) => {
   async function createDocument({ ...props }) {
     Object.keys(stageProjectProps).forEach(key => {
@@ -72,7 +72,7 @@ module.exports = ({
 
     const templateProjectsPath = path.join(TEMPLATES_DIR, MODEL_DB.STAGES, template, 'projects');
     const outputPath = await findStageFilePath(stage);
-    const projects = await copy(templateProjectsPath, outputPath);
+    await copy(templateProjectsPath, outputPath);
 
     return stage;
   }
