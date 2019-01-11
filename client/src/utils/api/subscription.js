@@ -28,7 +28,6 @@ function debounce(id, callback, time = 500) {
   if(timeouts[id]) {
     // called at least twice,
     // catch the trailing edge
-    console.log('call twice')
     timeouts[id] = callback;
   }
   else {
