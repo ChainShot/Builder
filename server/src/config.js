@@ -20,6 +20,7 @@ const MODEL_DB = {
 
 module.exports = {
   CONFIG_DIR,
+  CONTENT_DIR,
   PROJECTS_DIR,
   TEMPLATES_DIR,
   PORT,
