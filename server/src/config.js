@@ -2,8 +2,10 @@ require('dotenv').config();
 const path = require('path');
 
 const CONTENT_REPO_NAME = process.env.CONTENT_REPO_NAME || 'Content';
-// assumes the content repo to be on the same level as Builder
-const CONTENT_DIR = path.join(__dirname, '..', '..', '..', CONTENT_REPO_NAME);
+// will place the content folder on the same level as builder
+const BUILDER_LEVEL = path.join(__dirname, '..', '..', '..');
+const CONTENT_PATH = process.env.CONTENT_PATH || BUILDER_LEVEL;
+const CONTENT_DIR = path.join(CONTENT_PATH, CONTENT_REPO_NAME);
 const CONFIG_DIR = `${CONTENT_DIR}/config`;
 const PROJECTS_DIR = `${CONTENT_DIR}/projects`;
 const TEMPLATES_DIR = path.join(__dirname, '..', 'templates');
