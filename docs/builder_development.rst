@@ -4,15 +4,10 @@
 Developing on Builder
 #####################
 
-There are two ways to setup Builder:
+Setting up for Development
+--------------------------
 
-1) Quick Start using the CLI
-2) Setting up for Development by running it manually
-
-2. Setting up for Development
------------------------------
-
-If you want to setup the Builder for development, it will take a few more steps!
+Looking to contribute directly to the development of Builder? Great!
 
 First, clone the |Builder Repository|.
 
