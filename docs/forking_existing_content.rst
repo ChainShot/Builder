@@ -26,24 +26,19 @@ Then you can clone your forked repository and start editing it with the Builder!
 Point the Builder
 =================
 
-To edit your forked repository with the Builder, be sure to follow the
-instructions for :ref:`setting_up` if you haven't already.
+To edit your forked repository with the Builder you'll want to install
+:code:`chainshot-builder` globally using :code:`npm` if you haven't already:
 
-After you do so, you'll want to configure the builder to point at your content repository.
+::
 
-By default, the builder will look for a directory called `Content` on it's same
-directory level. If you'd like to configure this, see :ref:`_server_configuration`.
+  npm i chainshot-builder -g
 
-Making Updates
-==============
+Once you've done that, you'll want to navigate your forked repository, then simply:
 
-You'll know when you've successfully configured the Builder if the content
-appears within your Builder UI:
+::
 
-.. image:: existing_content.png
-  :alt: Existing Content
-  :align: left
+  cd path/to/my/repo
+  chainhshot-builder
 
-To make updates to the content you can simply click modify and start working
-within the editor! All changes will be saved directly to your file system,
-and you'll be able to commit them to your content repository as necessary.
+The app will spin up and you'll be ready to start making updates! Any changes made
+within the app will update your file system and can be committed back up to Github.

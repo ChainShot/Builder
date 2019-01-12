@@ -30,7 +30,7 @@ Building Block Tutorial.
 Create the Block
 ----------------
 
-If you've setup your Builder application (:ref:`setting_up`),
+If you've setup your Builder application (:ref:`quick_start`),
 you'll be able to create your own Building Block.
 
 You can create some stages that are designed to help the user learn about the project
