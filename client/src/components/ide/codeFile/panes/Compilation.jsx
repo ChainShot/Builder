@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './Compilation.scss';
 import * as compilers from '../../../../utils/api/compilers';
+import debounce from '../../../../utils/debounce';
 import CompilationDisplay from './CompilationDisplay';
 import CompilationToolbar from './CompilationToolbar';
 import { completeCompilation, startCompilation } from '../../../../redux/actions';
@@ -30,10 +31,11 @@ class Compilation extends Component {
   toggleAuto = () => {
     this.setState({ auto: !this.state.auto })
   }
+  debouncedCompile = debounce(this.compile, 500)
   componentDidUpdate(prevProps) {
     const { code } = this.props;
     if(this.state.auto && code !== prevProps.code) {
-      this.compile();
+      this.debouncedCompile();
     }
     const { compilationState: { compiling }} = this.props;
     if(!prevProps.compilationState.compiling && compiling) {

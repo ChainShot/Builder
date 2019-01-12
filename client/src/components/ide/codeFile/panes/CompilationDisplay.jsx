@@ -10,7 +10,10 @@ class CompilationDisplay extends Component {
       const warnings = output.warnings || [];
       if(errors.length + warnings.length === 0) {
         return (
-          <div className="compilation-message"> Compilation Successful. No errors. </div>
+          <div className="compilation-message"> 
+            <SVG name="check" />
+            Compilation Successful. No errors. 
+          </div>
         )
       }
       else {
