@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import './Output.scss';
 import runner from '../../../../utils/api/runner';
+import * as dialog from '../../../../utils/dialog';
+import Error from '../../../dialogs/Error';
 import OutputDisplay from './OutputDisplay';
 import OutputToolbar from './OutputToolbar';
 import { completeCodeExecution, startCodeExecution } from '../../../../redux/actions';
@@ -30,14 +32,22 @@ class Output extends Component {
     });
 
     const { languageVersion, language, testFramework } = stage;
-    const { data } = await runner.post('', {
-      files,
-      languageVersion,
-      language,
-      testFramework,
-    });
+    let response;
+    try {
+      response = await runner.post('', {
+        files,
+        languageVersion,
+        language,
+        testFramework,
+      });  
+    }
+    catch(ex) {
+      dialog.open(Error, { message: "Oof. Failed to Run Your Code just now. \nPlease try again soon." });
+      this.props.completeCodeExecution();
+      return;
+    }
     if(this.state.runIdx === runIdx) {
-      this.props.completeCodeExecution(data);
+      this.props.completeCodeExecution(response.data);
     }
   }
   startRun = () => {
