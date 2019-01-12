@@ -1,15 +1,11 @@
 ## ChainShot Builder
 
 This is the Content Building application for ChainShot-style educational content.
-The Output of the Builder is [Content Repositories](https://github.com/ChainShot/Content)
+The Builder creates [Content Repositories](https://chainshotbuilder.readthedocs.io/en/latest/content.html) (i.e. [ChainShot Content](https://github.com/ChainShot/Content))
 which can be setup to deploy automatically to ChainShot for live user audiences.
 
 ChainShot Builder is for teachers, meetup hosts, hackathon organizers and anyone excited to builder educational coding content! Build [Challenges](https://chainshotbuilder.readthedocs.io/en/latest/container_types.html#challenges), write [Lessons](https://chainshotbuilder.readthedocs.io/en/latest/container_types.html#lessons),
 design [Building Blocks](https://chainshotbuilder.readthedocs.io/en/latest/container_types.html#building-blocks).
-
-### App Preview
-
-![Builder Preview](preview.png)
 
 ### Quick Start
 
@@ -23,6 +19,13 @@ mkdir myContentRepository
 cd myContentRepository
 chainshot-builder
 ```
+
+This will spin up the IDE and get you started. To learn more about editing and committing
+to your new content repository check out the [Building New Content Docs](https://chainshotbuilder.readthedocs.io/en/latest/building_new_content.html#start-editing).
+
+### App Preview
+
+![Builder Preview](preview.png)
 
 ### Documentation
 
