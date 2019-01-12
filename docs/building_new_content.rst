@@ -7,7 +7,7 @@ Here are the steps to start from scratch and build your own content.
 Setting Up
 ==========
 
-First, if you haven't already, follow the instructions on :ref:`setting_up`.
+First, if you haven't already, follow the instructions on the :ref:`quick_start`.
 
 Start Editing
 =============
@@ -20,6 +20,8 @@ Once you're inside the editor you'll be able to configure your stage container
 and start adding stages. The Builder will automatically create a folder called
 :code:`Content` (unless overridden by :ref:`server_configuration`).
 Any changes made within the editor will automatically save to your file system.
+
+.. _create_git_repo:
 
 Creating a git repository
 =========================

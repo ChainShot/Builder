@@ -4,7 +4,8 @@
 Builder Structure
 #################
 
-The builder is divided into three main folders: client, server and docs.
+Hey there! If you're looking to help contribute to the builder
+the project is divided into three main folders: client, server and docs.
 
 Client
 ======
