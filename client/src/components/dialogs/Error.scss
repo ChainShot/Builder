@@ -1,4 +1,4 @@
-.confirm-dialog {
+.error-dialog {
   .actions {
     margin-top: 25px;
     display: flex;
@@ -8,5 +8,11 @@
         margin-right: 10px;
       }
     }
+    SVG {
+      height: 18px;
+    }
+  }
+  .message {
+    white-space: pre;
   }
 }
