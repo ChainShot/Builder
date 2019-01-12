@@ -19,7 +19,7 @@ class Save extends Component {
   render() {
     const { startSave, saveState: { saving, changes } } = this.props;
     const classes = ['save'];
-    const shortcut = isMacLike ? 'CMD + S' : 'CTRL + S';
+    const shortcut = isMacLike() ? 'CMD + S' : 'CTRL + S';
     if(saving) classes.push('saving');
     if(changes) classes.push('has-changes');
     return (

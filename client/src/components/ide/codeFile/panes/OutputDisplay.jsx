@@ -19,7 +19,7 @@ class OutputDisplay extends Component {
     if(output) {
       return <RunOutput response={output} />
     }
-    const metaKey = isMacLike ? 'CMD' : 'CTRL';
+    const metaKey = isMacLike() ? 'CMD' : 'CTRL';
     return (
       <div className="output-message">
         No Output to Display. To run code click
