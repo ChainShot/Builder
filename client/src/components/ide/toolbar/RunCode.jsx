@@ -21,7 +21,7 @@ class RunCode extends Component {
   render() {
     const { startCodeExecution, executionState: { running } } = this.props;
     const classes = ['run-code'];
-    const shortcut = isMacLike ? 'CMD + ENTER' : 'CTRL + ENTER';
+    const shortcut = isMacLike() ? 'CMD + ENTER' : 'CTRL + ENTER';
     if(running) classes.push('running');
     return (
       <div className={classes.join(' ')} onClick={startCodeExecution} data-rh={`Run Code (${shortcut})`}>
