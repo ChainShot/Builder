@@ -1,9 +1,9 @@
 language: node_js
 node_js:
 - node
-before_script: cd server && npm i
-before_deploy: cd build && npm i && node ./
+before_script: ( cd server && npm i )
 script: npm test
+before_deploy: ( cd build && npm i && node ./ )
 deploy:
   provider: releases
   api_key:
