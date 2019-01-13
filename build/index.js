@@ -15,6 +15,10 @@ async function build() {
   const output = new AdmZip();
   output.addLocalFolder(`${clientPath}/build`, 'client/build');
   output.addLocalFolder(`${serverPath}`, 'server');
+  const versionContent = JSON.stringify({
+    version: process.env.TRAVIS_TAG
+  }, null, 2);
+  zip.addFile("build.json", Buffer.alloc(versionContent.length, versionContent));
   output.writeZip('build.zip');
 }
 
