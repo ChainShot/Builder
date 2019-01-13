@@ -18,7 +18,7 @@ const returns = variables.map(([prop]) => `${prop}`).join('\n    ');
 
 const mutation = `
 mutation createStage(${args}) {
-  createStage(${mapping}, details: "", task: "", abiValidations: "") {
+  createStage(${mapping}, details: "", task: "", abiValidations: "", completionMessage: "") {
     id
     ${returns}
   }
