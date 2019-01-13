@@ -18,7 +18,7 @@ async function build() {
   const versionContent = JSON.stringify({
     version: process.env.TRAVIS_TAG
   }, null, 2);
-  zip.addFile("build.json", Buffer.alloc(versionContent.length, versionContent));
+  output.addFile("build.json", Buffer.alloc(versionContent.length, versionContent));
   output.writeZip('build.zip');
 }
 
