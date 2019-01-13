@@ -1,5 +1,14 @@
 language: node_js
 node_js:
-  - "node"
+- node
 before_script: cd server && npm i
+before_deploy: cd build && npm i && node ./
 script: npm test
+deploy:
+  provider: releases
+  api_key:
+    secure: AyJ7SHMI0oVdzjZ+783rJLK/Tz1i3Kq8+peO+IXRx6x+sQNKNr+muHeW7p9sidmKKMB7TnAaW2FChafpGG4uI1JkWbYR7ec2y4DFIMMtWx2GX5CmZ9aQ3gJ7tEg/B611hflC33BW2Ss1kFBZDdpAqVXV3sQvUAVg6XVzl62u3ZFaspVgMXINICQAAI/HzRxn4vbu97ru6NcIHAc4WVAlLj8cKlBHhcxn4SN/fEP73bfH4+7a+AF+TR2GwgM+Rx29rUp2OE6hwBuB5oTtEVfnDIlL2ygZ6w3mTh6kxZiLMi+fg5mtb5vWIASHT4PnUn0I/9CObtSaeHv7dJh+zvd6Hu4o7b6IecIRs1+eA+o8v324BfsyZ2LFuinW8onfny2wJHpbafPIpb+zkj1wLfNe6Tbjp0O7HoB4kfsgbwwPebsuuinOX7ESUdPhKy9dsPn9cyt3/DGSlO68Qx7wx0uAqJpNyH5vPRvl3iCIAbQXm77J7NjCHHIl/6YQW3jwTsB1zqP0zeyqtFS8qQp9b/za7f1fcKsctwwM+Us1TtTX7dkb1tzWFbvNNRHdJmtN+qljg24MZ4vVqmqo2QmpIm4KyoR5pcjHJP80hSyBBv0i1EUFy6zgQgiLN8zqHdD/gk0dnwQO4EZIAr2CW7GLgEr5Ght43TwgSpaMuleamKxJU2g=
+  file: build/build.zip
+  skip_cleanup: true
+  on:
+    tags: true
