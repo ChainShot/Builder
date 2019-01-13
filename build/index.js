@@ -13,7 +13,7 @@ async function build() {
   await setupServer(serverPath);
 
   const output = new AdmZip();
-  output.addLocalFolder(`${clientPath}/build`, 'client');
+  output.addLocalFolder(`${clientPath}/build`, 'client/build');
   output.addLocalFolder(`${serverPath}`, 'server');
   output.writeZip('build.zip');
 }
