@@ -8,11 +8,11 @@ const http = require('http');
 const io = require('socket.io');
 const path = require('path');
 const watcher = require('./watcher/setup');
-const ensureContentDirs = require('./utils/ensureContentDirs');
+const contentStartup = require('./contentStartup');
 // message detected by the CLI for a successful start
 const SERVER_UP = `Builder server @ ${PORT}!`;
 
-ensureContentDirs().then(() => {
+contentStartup(process.env.CONTENT_INIT).then(() => {
   app.use(express.json());
   app.use(cors({}));
 

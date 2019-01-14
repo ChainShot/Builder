@@ -1,5 +1,26 @@
-This repository was created by the [ChainShot Builder](https://github.com/ChainShot/Builder).
+## Content Repository
 
-It can be deployed to [ChainShot](https://www.chainshot.com/) as interactive content.
+This is a Content Repository created by the [ChainShot Builder](https://github.com/ChainShot/Builder).
 
-Learn more in the [Builder Documentation](https://chainshotbuilder.readthedocs.io/en/latest/).
+To make modifications to this content use the ChainShot CLI which can be installed globally using npm:
+
+```
+npm i -g chainshot-builder
+```
+
+Pull down this repository locally if you haven't already. Then run the builder:
+
+```
+chainshot-builder run
+```
+
+Any modifications made in the IDE will be reflected in the file system immediately and can be
+committed up to your repository.
+
+## Content Structure
+
+Content Repositories contain two folders, [projects and config](https://chainshotbuilder.readthedocs.io/en/latest/content.html#structure), which are used to track modifications to content and open up collaboration between many content creators.
+
+## Deployment
+
+[Follow Documentation](https://chainshotbuilder.readthedocs.io/en/latest/building_new_content.html#start-editing) to deploy to [ChainShot](https://www.chainshot.com/) as interactive content.

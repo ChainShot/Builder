@@ -38,7 +38,7 @@ Once you've done that, you'll want to navigate your forked repository, then simp
 ::
 
   cd path/to/my/repo
-  chainhshot-builder
+  chainshot-builder run
 
 The app will spin up and you'll be ready to start making updates! Any changes made
 within the app will update your file system and can be committed back up to Github.
