@@ -17,7 +17,7 @@ Simply install `chainshot-builder` globally and run it to create your first cont
 npm install -g chainshot-builder
 mkdir myContentRepository
 cd myContentRepository
-chainshot-builder
+chainshot-builder init
 ```
 
 This will spin up the IDE and get you started. To learn more about editing and committing

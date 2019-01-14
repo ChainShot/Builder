@@ -1,11 +1,12 @@
 const fs = require('fs-extra');
 const path = require('path');
-const {CONTENT_DIR, CONFIG_DIR, TEMPLATES_DIR, PROJECTS_DIR, MODEL_DB} = require('../config');
+const {CONTENT_DIR, CONFIG_DIR, TEMPLATES_DIR, PROJECTS_DIR, MODEL_DB} = require('./config');
 
-async function ensureContentDirs() {
-  const existed = await fs.exists(CONTENT_DIR);
-  if(!existed) {
-    fs.mkdir(CONTENT_DIR);
+// setups the content directory
+// if this content initialization, also add readme
+async function contentStartup(initialization) {
+  await fs.ensureDir(CONTENT_DIR);
+  if(initialization) {
     fs.copy(path.join(TEMPLATES_DIR, 'README.md'), path.join(CONTENT_DIR, 'README.md'));
   }
   await fs.ensureDir(CONFIG_DIR);
@@ -16,4 +17,4 @@ async function ensureContentDirs() {
   }
 }
 
-module.exports = ensureContentDirs;
+module.exports = contentStartup;

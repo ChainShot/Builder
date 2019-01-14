@@ -19,11 +19,11 @@ it from your new content repository!
   npm install -g chainshot-builder
   mkdir myContentRepository
   cd myContentRepository
-  chainshot-builder
+  chainshot-builder init
 
 And that's it!
 
-The Builder CLI will spin up the application for you. Any changes
+The Builder CLI will spin up the IDE for you. Any changes
 you make within the UI will be written to your file system.
 
 Simply commit any changes up to Github (:ref:`create_git_repo`) and
