@@ -71,8 +71,13 @@ Some of the override-able settings include:
 ====================  ===========================================================================
 Field                 Description
 ====================  ===========================================================================
-REACT_APP_API_URL     The API URL for the builder server (useful if changing builder server PORT)
+REACT_APP_API_URL     The API URL for the builder server
 ====================  ===========================================================================
+
+.. note::
+  The client will fallback to the :code:`window.location.port` unless given an explicit
+  API URL. This is done so that the client can bind to dynamic ports from the CLI after
+  it's been packaged up in a release build.
 
 Server
 ======
