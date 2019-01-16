@@ -1,8 +1,10 @@
+const path = require('path');
+
 module.exports = (injections) => {
   const destroyStageContainer = require('../stageContainer/destroy')(injections);
   const {
-    config: { MODEL_DB },
-    ioHelpers: { configRemove, configDocumentReader, configResolver },
+    config: { MODEL_DB, PROJECTS_DIR },
+    ioHelpers: { configRemove, directoryRemove, configDocumentReader, configResolver },
   } = injections;
 
   async function destroyStageContainers(stageContainerGroup) {
@@ -16,6 +18,9 @@ module.exports = (injections) => {
     const stageContainerGroup = await configResolver(MODEL_DB.STAGE_CONTAINER_GROUPS, id);
     await destroyStageContainers(stageContainerGroup);
     await configRemove(MODEL_DB.STAGE_CONTAINER_GROUPS, id);
+    await directoryRemove(path.join(PROJECTS_DIR, stageContainerGroup.title));
+
+    throw new Error('testing');
   }
 
   return destroyStageContainerGroup;
