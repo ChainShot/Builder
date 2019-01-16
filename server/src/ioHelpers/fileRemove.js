@@ -8,7 +8,7 @@ module.exports = (transaction) => {
       await fs.unlink(filePath);
 
       transaction.add(async () => {
-        await fs.outputFile(filePath, contents.toString);
+        await fs.outputFile(filePath, contents.toString());
       });
     }
   }

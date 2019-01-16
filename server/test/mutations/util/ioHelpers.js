@@ -44,6 +44,8 @@ const fileWriter = (filePath, props) => {
   return props;
 }
 
+const directoryRemove = () => {}
+
 const rename = (previousPath, newPath) => {
   renamed.push({
     previousPath,
@@ -64,6 +66,7 @@ module.exports = {
   fileWriter,
   fileRemove,
   configRemove,
+  directoryRemove,
   configDocumentReader,
   configResolver,
   rename,
