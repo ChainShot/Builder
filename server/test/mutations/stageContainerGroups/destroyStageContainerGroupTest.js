@@ -18,6 +18,7 @@ const destroyStageContainerGroup = mutationWrapper(require('../../../src/schema/
 const existingStageContainerGroup = {
   id: 1,
   intro: LOOKUP_KEY,
+  title: "Group",
 }
 
 mockSuite('Mutations::StageContainerGroups::Destroy', () => {
