@@ -10,7 +10,7 @@ const CONFIG_DIR = `${CONTENT_DIR}/config`;
 const PROJECTS_DIR = `${CONTENT_DIR}/projects`;
 const TEMPLATES_DIR = path.join(__dirname, '..', 'templates');
 const INITIAL_CODE_DIR = 'setup';
-const PORT = process.env.PORT || 59449;
+const PORT = process.env.PORT || 3030;
 const LOOKUP_KEY = '$$LOOKUP';
 const MODEL_DB = {
   CODE_FILES: 'codeFiles',
