@@ -7,7 +7,7 @@ const apiMutation = (query, variables) => {
     if(errors) {
       const messages = errors.map(x => x.message);
       const errorMessage = messages.length > 4 ? (messages.slice(0,4).join("\n") + '...') : messages.join("\n");
-      const message = `Failed to save your data:\n\n${errorMessage}`;
+      const message = `Failed to make request:\n\n${errorMessage}`;
       dialog.open(Error, { message });
       return Promise.reject(errors);
     }

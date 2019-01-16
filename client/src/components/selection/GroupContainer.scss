@@ -16,5 +16,13 @@
     p {
       color: $light-font;
     }
+
+    .actions {
+      display: flex;
+
+      > * {
+        margin-right: 15px;
+      }
+    }
   }
 }
