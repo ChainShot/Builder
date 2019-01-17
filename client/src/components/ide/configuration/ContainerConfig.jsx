@@ -65,8 +65,10 @@ class ContainerConfig extends Component {
       const containerUpdates = ripUpdates(containerVariables, stageContainer);
       const { stageContainerGroup } = stageContainer;
       const groupUpdates = ripUpdates(groupVariables, stageContainerGroup);
-      apiMutation(containerMutation, containerUpdates);
-      apiMutation(groupMutation, groupUpdates);
+      return Promise.all([
+        apiMutation(containerMutation, containerUpdates),
+        apiMutation(groupMutation, groupUpdates)
+      ]);
     });
   }
   destroyContainer = async () => {
@@ -85,9 +87,9 @@ class ContainerConfig extends Component {
   }
   render() {
     const { stageContainer, update } = this.props;
-    const { type, version, 
-      stageContainerGroup: { 
-        description, estimatedTime, thumbnailUrl, title, productionReady 
+    const { type, version,
+      stageContainerGroup: {
+        description, estimatedTime, thumbnailUrl, title, productionReady
       } } = stageContainer;
     const updateStageContainer = (state) => update({ stageContainer: state })
     const updateStageContainerGroup = (state) => update({ stageContainer: { stageContainerGroup: state } })
@@ -98,7 +100,7 @@ class ContainerConfig extends Component {
           <input type="text" className="styled" value={title}
             onChange={({ target: { value }}) => updateStageContainerGroup({ title: value })}/>
         </label>
-        
+
         <label>
           <span>Description</span>
           <textarea type="text" className="styled" value={description}

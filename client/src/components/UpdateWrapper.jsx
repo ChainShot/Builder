@@ -50,24 +50,35 @@ class UpdateWrapper extends Component {
   onSave(savePromise) {
     this.setState({ savePromise });
   }
-  
+
   componentWillUnmount() {
-    this.props.unregisterChanges();
+    const { saveState: { autosave, changes }} = this.props;
+    if(autosave && changes) {
+      this.saveState();
+    }
+    else {
+      this.props.unregisterChanges();
+    }
+  }
+
+  async saveState() {
+    try {
+      this.setState({ originalState: this.state.currentState });
+      this.props.unregisterChanges();
+      await this.state.savePromise(this.state.currentState);
+    }
+    catch(ex) {
+      // do nothing: mutations automatically display errors
+      // allow the user to attempt to fix their current state and retry
+    }
+    const changes = !deeplyEqualObjects(this.state.originalState, this.state.currentState);
+    this.props.completeSave(changes);
   }
 
   async componentDidUpdate(prevProps) {
     const { saveState: { saving }} = this.props;
     if(saving && !prevProps.saveState.saving) {
-      try {
-        this.setState({ originalState: this.state.currentState });
-        this.props.unregisterChanges();
-        await this.state.savePromise(this.state.currentState);
-      }
-      catch(ex) {
-        // TODO: revert original state and show a message to user
-      }
-      const changes = !deeplyEqualObjects(this.state.originalState, this.state.currentState);
-      this.props.completeSave(changes);
+      this.saveState();
     }
   }
 
@@ -85,7 +96,7 @@ class UpdateWrapper extends Component {
   }
 
   render() {
-    const { child, saveState: { changes } } = this.props;
+    const { child, saveState: { changes, autosave } } = this.props;
     const { currentState } = this.state;
     const ChildComponent = child;
     return (
@@ -94,7 +105,7 @@ class UpdateWrapper extends Component {
                     onSave={(...args) => this.onSave(...args)}
                     update={(...args) => this.update(...args)} />
           <Prompt
-            when={changes}
+            when={changes && !autosave}
             message="Unsaved Changes. Discard them?" />
         </React.Fragment>
     )
