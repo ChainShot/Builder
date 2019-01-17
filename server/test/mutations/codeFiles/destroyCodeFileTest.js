@@ -1,8 +1,10 @@
 const assert = require('assert');
+const path = require('path');
 const {
   constants: {
     LOOKUP_KEY,
     CODE_FILE_PROJECT_PATHS,
+    SOLUTION_PROJECT_PATH,
     MODEL_DB,
   },
   testData: {
@@ -22,6 +24,7 @@ const existingSolutions = [
 const existingCodeFile = {
   id: 1,
   initialCode: LOOKUP_KEY,
+  executablePath: 'contracts/thing.sol',
 }
 
 mockSuite('Mutations::CodeFiles::Destroy', () => {
@@ -40,6 +43,13 @@ mockSuite('Mutations::CodeFiles::Destroy', () => {
   it('should have removed the solutions', () => {
     existingSolutions.forEach(solution => {
       assert(removedModels.solutions[solution.id]);
+    });
+  });
+
+  it('should have removed the solution project path', () => {
+    existingSolutions.forEach(solution => {
+      const solutionPath = path.join(SOLUTION_PROJECT_PATH, existingCodeFile.executablePath);
+      assert(removedFiles[solutionPath]);
     });
   });
 

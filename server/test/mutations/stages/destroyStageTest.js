@@ -4,6 +4,7 @@ const {
   constants: {
     LOOKUP_KEY,
     STAGE_PROJECT_PATH,
+    CODE_FILE_PROJECT_PATHS,
     MODEL_DB,
   },
   testData: {
@@ -20,6 +21,7 @@ const existingCodeFile = {
   id: 4,
   initialCode: LOOKUP_KEY,
   codeStageIds: [1],
+  executablePath: 'contracts/thing.sol',
 }
 const existingSolutions = [
   { id: 2, codeFileId: existingCodeFile.id, },
@@ -47,16 +49,6 @@ mockSuite('Mutations::Stages::Destroy', () => {
     assert(removedModels.stages[existingStage.id]);
   });
 
-  it('should have removed the codeFile', () => {
-    assert(removedModels.codeFiles[existingCodeFile.id]);
-  });
-
-  it('should have removed the solutions', () => {
-    existingSolutions.forEach(solution => {
-      assert(removedModels.solutions[solution.id]);
-    });
-  });
-
   it('should have removed the task project path', () => {
     const filePath = path.join(STAGE_PROJECT_PATH, "task.md");
     assert(removedFiles[filePath]);
@@ -70,5 +62,23 @@ mockSuite('Mutations::Stages::Destroy', () => {
   it('should have removed the validations project path', () => {
     const filePath = path.join(STAGE_PROJECT_PATH, "validations.json");
     assert(removedFiles[filePath]);
+  });
+
+  describe('codefile', () => {
+    it('should have removed the codeFile', () => {
+      assert(removedModels.codeFiles[existingCodeFile.id]);
+    });
+
+    it('should have removed the solutions', () => {
+      existingSolutions.forEach(solution => {
+        assert(removedModels.solutions[solution.id]);
+      });
+    });
+
+    it('should have removed the codeFile project paths', () => {
+      CODE_FILE_PROJECT_PATHS.forEach((filePath) => {
+        assert(removedFiles[filePath]);
+      });
+    });
   });
 });
