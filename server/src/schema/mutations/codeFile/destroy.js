@@ -1,8 +1,11 @@
-module.exports = ({
-  ioHelpers: { configWriter, configRemove, configDocumentReader, configResolver, fileRemove },
-  projectHelpers: { findCodeFilePaths },
-  config: { MODEL_DB },
-}) => {
+module.exports = (injections) => {
+  const destroySolution = require('../solution/destroy')(injections);
+  const {
+    ioHelpers: { configWriter, configRemove, configDocumentReader, configResolver, fileRemove },
+    projectHelpers: { findCodeFilePaths },
+    config: { MODEL_DB },
+  } = injections;
+
   async function unlinkCodeStages(codeFile) {
     const { codeStageIds } = codeFile;
     for(let i = 0; i < (codeStageIds || []).length; i++) {
@@ -24,7 +27,7 @@ module.exports = ({
     const solutions = await configDocumentReader(MODEL_DB.SOLUTIONS);
     const relevant = solutions.filter(x => x.codeFileId === codeFile.id);
     for(let i = 0; i < relevant.length; i++) {
-      await configRemove(MODEL_DB.SOLUTIONS, relevant[i].id);
+      await destroySolution(relevant[i].id);
     }
   }
 

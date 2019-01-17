@@ -23,14 +23,17 @@ module.exports = (injections) => {
     const { codeFileIds } = stage;
     for(let i = 0; i < (codeFileIds || []).length; i++) {
       const codeFile = await configResolver(MODEL_DB.CODE_FILES, codeFileIds[i]);
-      const index = codeFileIds.indexOf(codeFile.id);
+      const index = codeFile.codeStageIds.indexOf(stage.id);
       if(index >= 0) {
-        codeFileIds.splice(index, 1);
+        // unlink this code stage from the code file
+        codeFile.codeStageIds.splice(index, 1);
       }
-      if(codeFileIds.length === 0) {
+      if(codeFile.codeStageIds.length === 0) {
+        // if this is the last code stage, delete the code file
         await destroyCodeFile(codeFile.id);
       }
       else {
+        // if there are other code stages, just update the ids
         await configWriter(MODEL_DB.CODE_FILES, codeFile);
       }
     }
