@@ -6,7 +6,16 @@ import confirm from '../../../utils/confirm';
 import destroySC from '../../../mutations/stageContainer/destroy';
 import destroySCG from '../../../mutations/stageContainerGroup/destroy';
 import SVG from '../../SVG';
+import Help from '../../Help';
 import './ContainerConfig.scss';
+
+const TITLE_HINT = 'Short name displayed to the user';
+const DESCRIPTION_HINT = 'Description of this Contents purpose';
+const VERSION_HINT = 'Uniquely identifies this Content in its group';
+const ESTIMATED_TIME_HINT = 'How long a user should expect to complete this';
+const THUMBNAIL_HINT = 'You give us a web URL of an image, we\'ll show it the user';
+const TYPE_HINT = 'Tells the user what kind of content to expect';
+const PRODUCTION_READY_HINT = 'When deployed, should this be shown to users?';
 
 const typeOptions = [
   { label: 'Challenge', value: 'Challenge' },
@@ -96,43 +105,45 @@ class ContainerConfig extends Component {
     return (
       <form className="config">
         <label>
-          <span>Title</span>
+          <Help hint={TITLE_HINT}> Title </Help>
           <input type="text" className="styled" value={title}
             onChange={({ target: { value }}) => updateStageContainerGroup({ title: value })}/>
         </label>
 
         <label>
-          <span>Description</span>
+          <Help hint={DESCRIPTION_HINT}> Description </Help>
           <textarea type="text" className="styled" value={description}
             onChange={({ target: { value }}) => updateStageContainerGroup({ description: value })}/>
         </label>
 
         <label>
-          <span>Version</span>
+          <Help hint={VERSION_HINT}> Version </Help>
           <input type="text" className="styled" value={version}
             onChange={({ target: { value }}) => updateStageContainer({ version: value })}/>
         </label>
 
         <label>
-          <span>Estimated Time in Minutes</span>
+          <Help hint={ESTIMATED_TIME_HINT}> Estimated Time in Minutes </Help>
           <input type="number" className="styled" value={estimatedTime}
             onChange={({ target: { value }}) => updateStageContainerGroup({ estimatedTime: +value })}/>
         </label>
 
         <label>
-          <span>Thumbnail URL</span>
+          <Help hint={THUMBNAIL_HINT}> Thumbnail URL </Help>
           <input type="text" className="styled" value={thumbnailUrl}
             onChange={({ target: { value }}) => updateStageContainerGroup({ thumbnailUrl: value })}/>
         </label>
 
         <StyledSelect
           label="Type"
+          hint={TYPE_HINT}
           onChange={(type) => updateStageContainer({ type })}
           value={type}
           options={typeOptions} />
 
         <StyledSwitch
           label="Production Ready?"
+          hint={PRODUCTION_READY_HINT}
           onChange={(productionReady) => updateStageContainerGroup({ productionReady })}
           checked={!!productionReady} />
 

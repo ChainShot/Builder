@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import Switch from "react-switch";
+import Help from '../Help';
 import "./StyledSwitch.scss";
 
 class StyledSwitch extends Component {
   render() {
-    const { label, ...props } = this.props;
+    const { label, hint, ...props } = this.props;
     return (
       <label>
-        <span>{ label }</span>
+        <Help hint={hint}> {label} </Help>
         <Switch {...props}
           className="styled-switch"
           height={24}
