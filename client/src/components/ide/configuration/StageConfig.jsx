@@ -10,6 +10,11 @@ import {STAGE_TYPE_OPTIONS} from '../../../config';
 import confirm from '../../../utils/confirm';
 import SVG from '../../SVG';
 import './ContainerConfig.scss';
+import Help from '../../Help';
+
+const TITLE_HINT = 'Short name displayed to the user';
+const POSITION_HINT = 'The order of this stage relative to other stages';
+const TYPE_HINT = 'Determines the interface the user will encounter';
 
 const variables = [
   ['id', 'String'],
@@ -51,19 +56,20 @@ class StageConfig extends Component {
     return (
       <form className="config" ref="container">
         <label>
-          <span>Title</span>
+          <Help hint={TITLE_HINT}> Title </Help>
           <input type="text" className="styled" value={title}
             onChange={({ target: { value }}) => updateStage({ title: value })}/>
         </label>
 
         <label>
-          <span>Position</span>
+          <Help hint={POSITION_HINT}> Position </Help>
           <input type="number" className="styled" value={position}
             onChange={({ target: { value }}) => updateStage({ position: +value })}/>
         </label>
 
         <StyledSelect
           label="Type"
+          hint={TYPE_HINT}
           onChange={(type) => updateStage({ type })}
           value={type}
           options={STAGE_TYPE_OPTIONS} />

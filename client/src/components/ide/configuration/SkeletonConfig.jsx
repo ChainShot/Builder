@@ -7,6 +7,14 @@ import SVG from '../../SVG';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import './SkeletonConfig.scss';
+import Help from '../../Help';
+
+const TITLE_HINT = 'Short name displayed to the user';
+const DESCRIPTION_HINT = 'Description of this application';
+const ZIP_HINT = 'The name of the zip folder the user will download this into';
+const THUMBNAIL_HINT = 'You give us a web URL of an image, we\'ll show it the user';
+const GITHUB_REPO_HINT = 'This is an identifier Github assigns its repositories';
+const GITHUB_NODE_HINT = 'This is an identifier Github assigns its any entity';
 
 const mutation = `
 mutation modifyStage($id: String, $projectSkeletons: [ProjectSkeletonInput]) {
@@ -82,25 +90,25 @@ class SkeletonConfig extends Component {
     return (
       <form className="config skeleton">
         <label>
-          <span>Title</span>
+          <Help hint={TITLE_HINT}> Title </Help>
           <input type="text" className="styled" value={title}
             onChange={({ target: { value }}) => this.updateSkeleton({ title: value })}/>
         </label>
 
         <label>
-          <span>Description</span>
+          <Help hint={DESCRIPTION_HINT}> Description </Help>
           <input type="text" className="styled" value={description}
             onChange={({ target: { value }}) => this.updateSkeleton({ description: value })}/>
         </label>
 
         <label>
-          <span>Thumbnail URL</span>
+          <Help hint={THUMBNAIL_HINT}> Thumbnail URL </Help>
           <input type="text" className="styled" value={thumbnailUrl}
             onChange={({ target: { value }}) => this.updateSkeleton({ thumbnailUrl: value })}/>
         </label>
 
         <label>
-          <span>Zip Name</span>
+          <Help hint={ZIP_HINT}> Zip Name </Help>
           <input type="text" className="styled" value={zipName}
             onChange={({ target: { value }}) => this.updateSkeleton({ zipName: value })}/>
         </label>
@@ -111,12 +119,12 @@ class SkeletonConfig extends Component {
         </div>
 
         <label>
-          <span>Github Repo ID</span>
+          <Help hint={GITHUB_REPO_HINT}> Github Repo ID </Help>
           <input type="text" disabled className="styled" value={ghRepoId}/>
         </label>
 
         <label>
-          <span>Github Node ID</span>
+          <Help hint={GITHUB_NODE_HINT}> Github Node ID </Help>
           <input type="text" disabled className="styled" value={ghNodeId}/>
         </label>
 

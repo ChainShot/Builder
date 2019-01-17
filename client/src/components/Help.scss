@@ -1,0 +1,16 @@
+@import '../shared/variables';
+
+.help {
+  display: flex;
+  svg {
+    color: transparent;
+    transition: color .35s;
+    margin-left: 5px;
+    height: 15px;
+  }
+  &:hover {
+    svg {
+      color: $light-font;
+    }
+  }
+}
