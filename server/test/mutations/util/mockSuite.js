@@ -2,6 +2,7 @@ const {
   mockCollections,
   writtenModelsLookup,
   writtenModels,
+  removedDirectories,
   writtenFiles,
   removedModels,
   removedFiles,
@@ -29,6 +30,7 @@ function mockSuite(desc, cb) {
       resetLookups(mockCollections);
       resetLookup(writtenFiles);
       resetLookup(removedFiles);
+      resetLookup(removedDirectories);
       resetArrays(writtenModels);
       resetArray(renamed);
     });

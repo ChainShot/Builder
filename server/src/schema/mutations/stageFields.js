@@ -1,5 +1,6 @@
 const destroyStage = require('./stage/destroy');
 const createStage = require('./stage/create');
+const duplicateStage = require('./stage/duplicate');
 const modifyStage = require('./stage/modify');
 const txWrapper = require('./txWrapper');
 const { StageType } = require('../models');
@@ -58,6 +59,11 @@ module.exports = {
     type: StageType,
     args: creationArgs,
     resolve: (_, props) => txWrapper(createStage)(props),
+  },
+  duplicateStage: {
+    type: StageType,
+    args: stageArgs,
+    resolve: (_, props) => txWrapper(duplicateStage)(props),
   },
   modifyStage: {
     type: StageType,

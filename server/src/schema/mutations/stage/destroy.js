@@ -1,21 +1,25 @@
 const stageProjectProps = require('./projectProps');
+const positionalShift = require('./positionalShift');
 const path = require('path');
 
 module.exports = (injections) => {
-  const destroyCodeFile = require('../codeFile/destroy')(injections);
   const {
     config: { MODEL_DB },
-    ioHelpers: { configWriter, configRemove, configResolver, fileRemove },
+    ioHelpers: { configWriter, configRemove, configResolver, configDocumentReader, directoryRemove },
     projectHelpers: { findStageFilePath },
   } = injections;
 
   async function destroyProjectFiles(stage) {
     const stagePath = await findStageFilePath(stage);
-    const keys = Object.keys(stageProjectProps);
-    for(let i = 0; i < keys.length; i++) {
-      const key = keys[i];
-      const file = stageProjectProps[key];
-      await fileRemove(path.join(stagePath, file));
+    await directoryRemove(stagePath);
+  }
+
+  async function removeSolutions(stageId) {
+    const solutions = await configDocumentReader(MODEL_DB.SOLUTIONS);
+    for(let i = 0; i < solutions.length; i++) {
+      if(solutions[i].stageId === stageId) {
+        await configRemove(MODEL_DB.SOLUTIONS, solutions[i].id);
+      }
     }
   }
 
@@ -30,7 +34,8 @@ module.exports = (injections) => {
       }
       if(codeFile.codeStageIds.length === 0) {
         // if this is the last code stage, delete the code file
-        await destroyCodeFile(codeFile.id);
+        await configRemove(MODEL_DB.CODE_FILES, codeFile.id);
+
       }
       else {
         // if there are other code stages, just update the ids
@@ -44,6 +49,15 @@ module.exports = (injections) => {
     await destroyProjectFiles(stage);
     await unlinkCodeFiles(stage);
     await configRemove(MODEL_DB.STAGES, id);
+    await removeSolutions(stage.id);
+
+    // shift stages around to keep everything zero-based
+    const stages = await configDocumentReader(MODEL_DB.STAGES);
+    const relevant = stages.filter(x => x.containerId === stage.containerId);
+    positionalShift(relevant);
+    for(let i = 0; i < relevant.length; i++) {
+      await configWriter(MODEL_DB.STAGES, relevant[i]);
+    }
   }
 
   return destroyStage;

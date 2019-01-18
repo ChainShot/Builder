@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import apiMutation from '../../../utils/api/mutation';
 import destroyStage from '../../../mutations/stage/destroy';
+import DuplicateStage from './DuplicateStage';
 import CodeStageConfig from './CodeStageConfig';
 import UiStageConfig from './UiStageConfig';
 import DownloadStageConfig from './DownloadStageConfig';
@@ -8,6 +10,7 @@ import VideoStageConfig from './VideoStageConfig';
 import StyledSelect from '../../forms/StyledSelect';
 import {STAGE_TYPE_OPTIONS} from '../../../config';
 import confirm from '../../../utils/confirm';
+import * as dialog from '../../../utils/dialog';
 import SVG from '../../SVG';
 import './ContainerConfig.scss';
 import Help from '../../Help';
@@ -47,6 +50,14 @@ class StageConfig extends Component {
     confirm("Are you sure you want to delete this stage?").then(() => {
       const { id } = this.props.stage;
       apiMutation(destroyStage, { id });
+    });
+  }
+  duplicateStage = () => {
+    const { match: { url }, stage } = this.props;
+    dialog.open(DuplicateStage, stage).then((id) => {
+      if(id) {
+        this.props.history.push(url.split('/').slice(0, -1).concat(id).join('/'));
+      }
     });
   }
   render() {
@@ -90,13 +101,18 @@ class StageConfig extends Component {
           stage={stage}
           onChange={updateStage} />
 
+        <div className="btn btn-primary" onClick={this.duplicateStage}>
+          <SVG name="clone" />
+          Duplicate stage
+        </div>
+
         <div className="btn btn-primary" onClick={this.destroyStage}>
           <SVG name="trash" />
-          Destroy stage { title }
+          Destroy stage
         </div>
       </form>
     )
   }
 }
 
-export default StageConfig;
+export default withRouter(StageConfig);
