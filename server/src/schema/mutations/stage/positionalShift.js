@@ -1,10 +1,10 @@
 // moves all stages within a container to accommodate the stubborn stage
 // assumes we're only moving one stage and we were zero-indexed beforehand
 function positionalShift(stages, stubbornStageId) {
-  // first, is there an open spot in front of the stubborn stage?
   const stubborn = stages.find(x => x.id === stubbornStageId);
   let inFront = false;
   if(stubbornStageId) {
+    // is there an open spot in front of the stubborn stage?
     for(let i = 0; i < stubborn.position; i++) {
       const existing = stages.find(x => x.position === i);
       if(!existing) {
@@ -14,12 +14,13 @@ function positionalShift(stages, stubbornStageId) {
   }
   else {
     // no stubborn id
-    // we're just filling positions as needed 
+    // we're just pulling positions forward as needed
     inFront = true;
   }
 
   if(inFront) {
-    // there is a spot in front of the stubborn stage, move things up until it works
+    // there is a spot in front of the stubborn stage (or no stubborn stage)
+    // we'll pull forward non-stubborn stage ids until it all fits
     const sorted = stages.sort((a,b) => a.position - b.position);
     for(let i = 0; i < sorted.length; i++) {
       const inPosition = stages.filter(x => x.position === i);
@@ -40,6 +41,7 @@ function positionalShift(stages, stubbornStageId) {
   else {
     // no spots in front, we'll need to move the non-stubborn back when encountered
     const sorted = stages.sort((a,b) => a.position - b.position);
+    // keep track of the ones we've moved already; push back others instead
     const moved = [];
     for(let i = 0; i < sorted.length; i++) {
       const inPosition = stages.filter(x => x.position === i);

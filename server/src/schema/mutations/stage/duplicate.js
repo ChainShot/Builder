@@ -28,17 +28,6 @@ module.exports = (injections) => {
     // including codefile/solution project files
     await copyProjectFiles(stage, newStage);
 
-    // create the stage model
-    await configWriter(MODEL_DB.STAGES, newStage);
-
-    // shift stages around to keep everything zero-based
-    const stages = await configDocumentReader(MODEL_DB.STAGES);
-    const relevant = stages.filter(x => x.containerId === stage.containerId);
-    positionalShift(relevant, newStage.id);
-    for(let i = 0; i < relevant.length; i++) {
-      await configWriter(MODEL_DB.STAGES, relevant[i]);
-    }
-
     // create the code file and solution models
     for(let i = 0; i < newStage.codeFileIds.length; i++) {
       const codeFileId = newStage.codeFileIds[i];
@@ -55,11 +44,26 @@ module.exports = (injections) => {
         });
       }
       else {
+        const oldId = codeFile.id;
         // create a new code file
         codeFile.id = ObjectID().toString();
         codeFile.codeStageIds = [newStage.id];
+        // replace the old code file id on the new stage
+        const idx = newStage.codeFileIds.indexOf(oldId);
+        newStage.codeFileIds[idx] = codeFile.id;
       }
       await configWriter(MODEL_DB.CODE_FILES, codeFile);
+    }
+
+    // create the stage model
+    await configWriter(MODEL_DB.STAGES, newStage);
+
+    // shift stages around to keep everything zero-based
+    const stages = await configDocumentReader(MODEL_DB.STAGES);
+    const relevant = stages.filter(x => x.containerId === stage.containerId);
+    positionalShift(relevant, newStage.id);
+    for(let i = 0; i < relevant.length; i++) {
+      await configWriter(MODEL_DB.STAGES, relevant[i]);
     }
 
     return newStage;
