@@ -4,6 +4,7 @@ const {
   writtenModels,
   writtenFiles,
   removedModels,
+  removedDirectories,
   removedFiles,
   renamed,
   copied,
@@ -44,7 +45,9 @@ const fileWriter = (filePath, props) => {
   return props;
 }
 
-const directoryRemove = () => {}
+const directoryRemove = (dirPath) => {
+  removedDirectories[dirPath] = true;
+}
 
 const exists = (filePath) => {
   return writtenFiles[filePath];
