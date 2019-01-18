@@ -4,11 +4,41 @@ module.exports = (injections) => {
   const createSolution = require('../solution/create')(injections);
   const {
     config: { LOOKUP_KEY, MODEL_DB },
-    ioHelpers: { configWriter, configRemove, rename, fileWriter, configResolver, configDocumentReader },
+    ioHelpers: { configWriter, configRemove, rename, exists, fileWriter, fileResolver, configResolver, configDocumentReader },
     projectHelpers: { findCodeFilePaths, findSolutionPath },
   } = injections;
 
   const onChange = {
+    // codeStageIds is modified when adding an existing code file to a new stage
+    codeStageIds: async(codeFile) => {
+      // we need to check that this code file has project files written for each stage
+      const filePaths = await findCodeFilePaths(codeFile);
+      let contents;
+      for(let i = 0; i < filePaths.length; i++) {
+        const filePath = filePaths[i];
+        const doesExist = await exists(filePath);
+        if(doesExist) {
+          contents = await fileResolver(filePath);
+        }
+      }
+      for(let i = 0; i < filePaths.length; i++) {
+        const filePath = filePaths[i];
+        const doesExist = await exists(filePath);
+        if(!doesExist) {
+          await fileWriter(filePath, contents);
+        }
+      }
+      // and then create a solution if the code file has progress
+      if(codeFile.hasProgress) {
+        for(let i = 0; i < codeFile.codeStageIds.length; i++) {
+          const codeStageId = codeFile.codeStageIds[i];
+          const solution = await findSolution(codeFile.id, codeStageId);
+          if(!solution) {
+            await createSolution(codeStageId, codeFile.id);
+          }
+        }
+      }
+    },
     executablePath: async (codeFile) => {
       if(codeFile.hasProgress) {
         const { codeStageIds } = codeFile;
@@ -43,15 +73,19 @@ module.exports = (injections) => {
         const { codeStageIds } = codeFile;
         for(let i = 0; i < codeStageIds.length; i++) {
           const codeStageId = codeStageIds[i];
-          const solutions = await configDocumentReader(MODEL_DB.SOLUTIONS);
-          const solution = solutions.find(x => (x.codeFileId === codeFile.id) && (x.stageId === codeStageId));
+          const solution = await findSolution(codeFile.id, codeStageId);
           if(solution) {
-            // no need to remove project files as well since the renaming will handle it
-            await configRemove(MODEL_DB.SOLUTIONS, solution.id);
+              // no need to remove project files as well since the renaming will handle it
+              await configRemove(MODEL_DB.SOLUTIONS, solution.id);
           }
         }
       }
     }
+  }
+
+  async function findSolution(codeFileId, codeStageId) {
+    const solutions = await configDocumentReader(MODEL_DB.SOLUTIONS);
+    return solutions.find(x => (x.codeFileId === codeFileId) && (x.stageId === codeStageId));
   }
 
   async function rewritePaths(previousPaths, newPaths) {
