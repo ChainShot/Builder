@@ -53,8 +53,8 @@ class DuplicateStage extends Component {
 
           <label>
             <span>Position</span>
-            <input type="text" className="styled" value={position}
-              onChange={({ target }) => this.handleChange('position', target.value)}/>
+            <input type="number" className="styled" value={position}
+              onChange={({ target }) => this.handleChange('position', +target.value)}/>
           </label>
 
           <div className="actions">
