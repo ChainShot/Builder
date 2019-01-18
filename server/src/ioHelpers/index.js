@@ -5,6 +5,7 @@ const configResolver = require('./configResolver');
 const configWriter = require('./configWriter');
 const configReadWrite = require('./configReadWrite');
 const directoryRemove = require('./directoryRemove');
+const exists = require('./exists');
 const fileRemove = require('./fileRemove');
 const fileResolver = require('./fileResolver');
 const fileWriter = require('./fileWriter');
@@ -19,6 +20,7 @@ const helpers = {
   configWriter,
   configReadWrite,
   directoryRemove,
+  exists,
   fileRemove,
   fileResolver,
   fileWriter,
