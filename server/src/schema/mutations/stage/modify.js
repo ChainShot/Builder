@@ -1,9 +1,10 @@
 const { ObjectID } = require('mongodb');
 const stageProjectProps = require('./projectProps');
+const positionalShift = require('./positionalShift');
 const path = require('path');
 
 module.exports = ({
-  ioHelpers: { configWriter, fileWriter, configResolver, rename },
+  ioHelpers: { configWriter, fileWriter, configDocumentReader, configResolver, rename },
   projectHelpers: { findStageFilePath },
   config: { LOOKUP_KEY, MODEL_DB },
 }) => {
@@ -43,7 +44,17 @@ module.exports = ({
       }
     }
 
-    return configWriter(MODEL_DB.STAGES, merged);
+    await configWriter(MODEL_DB.STAGES, merged);
+
+    // shift stages around to keep everything zero-based
+    const stages = await configDocumentReader(MODEL_DB.STAGES);
+    const relevant = stages.filter(x => x.containerId === stage.containerId);
+    positionalShift(relevant, props.id);
+    for(let i = 0; i < relevant.length; i++) {
+      await configWriter(MODEL_DB.STAGES, relevant[i]);
+    }
+
+    return merged;
   }
 
   return modifyStage;

@@ -85,6 +85,25 @@ describe('positionalShift', () => {
     });
   });
 
+  describe('nothing stubborn', () => {
+    const stages = [
+      { position: 0, id: 1 },
+      { position: 1, id: 2 },
+      { position: 3, id: 4 },
+      { position: 4, id: 5 },
+    ];
+
+    before(() => {
+      positionalShift(stages);
+    });
+
+    it('should have all positions filled', () => {
+      for(let i = 0; i < stages.length; i++) {
+        assert.equal(stages.filter(x => x.position === i).length, 1);
+      }
+    });
+  });
+
   describe('no changes necessary', () => {
     const stages = [
       { position: 0, id: 1 },

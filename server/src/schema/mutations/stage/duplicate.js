@@ -31,7 +31,7 @@ module.exports = (injections) => {
     // create the stage model
     await configWriter(MODEL_DB.STAGES, newStage);
 
-    // shift stages around to keep it zero-based
+    // shift stages around to keep everything zero-based
     const stages = await configDocumentReader(MODEL_DB.STAGES);
     const relevant = stages.filter(x => x.containerId === stage.containerId);
     positionalShift(relevant, newStage.id);

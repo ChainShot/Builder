@@ -1,11 +1,12 @@
 const stageProjectProps = require('./projectProps');
+const positionalShift = require('./positionalShift');
 const path = require('path');
 
 module.exports = (injections) => {
   const destroyCodeFile = require('../codeFile/destroy')(injections);
   const {
     config: { MODEL_DB },
-    ioHelpers: { configWriter, configRemove, configResolver, fileRemove },
+    ioHelpers: { configWriter, configRemove, configResolver, configDocumentReader, fileRemove },
     projectHelpers: { findStageFilePath },
   } = injections;
 
@@ -44,6 +45,14 @@ module.exports = (injections) => {
     await destroyProjectFiles(stage);
     await unlinkCodeFiles(stage);
     await configRemove(MODEL_DB.STAGES, id);
+
+    // shift stages around to keep everything zero-based
+    const stages = await configDocumentReader(MODEL_DB.STAGES);
+    const relevant = stages.filter(x => x.containerId === stage.containerId);
+    positionalShift(relevant);
+    for(let i = 0; i < relevant.length; i++) {
+      await configWriter(MODEL_DB.STAGES, relevant[i]);
+    }
   }
 
   return destroyStage;

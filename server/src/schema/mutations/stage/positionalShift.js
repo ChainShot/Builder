@@ -4,11 +4,18 @@ function positionalShift(stages, stubbornStageId) {
   // first, is there an open spot in front of the stubborn stage?
   const stubborn = stages.find(x => x.id === stubbornStageId);
   let inFront = false;
-  for(let i = 0; i < stubborn.position; i++) {
-    const existing = stages.find(x => x.position === i);
-    if(!existing) {
-      inFront = true;
+  if(stubbornStageId) {
+    for(let i = 0; i < stubborn.position; i++) {
+      const existing = stages.find(x => x.position === i);
+      if(!existing) {
+        inFront = true;
+      }
     }
+  }
+  else {
+    // no stubborn id
+    // we're just filling positions as needed 
+    inFront = true;
   }
 
   if(inFront) {
