@@ -29,7 +29,7 @@ module.exports = (injections) => {
     await copyProjectFiles(stage, newStage);
 
     // create the code file and solution models
-    for(let i = 0; i < newStage.codeFileIds.length; i++) {
+    for(let i = 0; i < (newStage.codeFileIds || []).length; i++) {
       const codeFileId = newStage.codeFileIds[i];
       const codeFile = await configResolver(MODEL_DB.CODE_FILES, codeFileId);
       if(codeFile.hasProgress) {
