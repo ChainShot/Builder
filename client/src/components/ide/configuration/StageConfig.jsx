@@ -41,9 +41,21 @@ mutation modifyStage(${args}) {
 }
 `
 
+const validators = {
+  position: (x) => (x >= 0)
+}
+
+const validate = (props) => {
+  return Object.keys(props).reduce((errors, prop) => {
+    if(validators.hasOwnProperty(prop) && !validators[prop](props[prop])) return errors.concat(prop);
+    return errors;
+  }, []);
+}
+
 class StageConfig extends Component {
   constructor(props) {
     super(props);
+    props.onValidate(({ stage }) => validate(stage));
     props.onSave(({ stage }) => apiMutation(mutation, stage));
   }
   destroyStage = () => {
@@ -61,9 +73,12 @@ class StageConfig extends Component {
     });
   }
   render() {
-    const { update, stage } = this.props;
+    const { update, stage, saveState: { errors } } = this.props;
     const { title, position, type } = stage;
-    const updateStage = (state) => update({ stage: state })
+    const updateStage = (state) => update({ stage: state });
+    if(errors) {
+      debugger;
+    }
     return (
       <form className="config" ref="container">
         <label>

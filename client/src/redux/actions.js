@@ -1,6 +1,8 @@
 import {
   START_SAVE,
   COMPLETE_SAVE,
+  REGISTER_VALID_SAVE_STATE,
+  REGISTER_INVALID_SAVE_STATE,
   REGISTER_CHANGES,
   UNREGISTER_CHANGES,
   TOGGLE_AUTOSAVE,
@@ -14,6 +16,11 @@ export const startSave = () => ({ type: START_SAVE });
 export const completeSave = (changes) => ({
   type: COMPLETE_SAVE,
   payload: { changes }
+});
+export const registerValidState = () => ({ type: REGISTER_VALID_SAVE_STATE });
+export const registerInvalidState = (errors) => ({
+  type: REGISTER_INVALID_SAVE_STATE ,
+  payload: { errors }
 });
 export const registerChanges = () => ({ type: REGISTER_CHANGES });
 export const unregisterChanges = () => ({ type: UNREGISTER_CHANGES });

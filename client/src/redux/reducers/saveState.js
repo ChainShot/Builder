@@ -1,6 +1,8 @@
 import {
   START_SAVE,
   COMPLETE_SAVE,
+  REGISTER_VALID_SAVE_STATE,
+  REGISTER_INVALID_SAVE_STATE,
   REGISTER_CHANGES,
   UNREGISTER_CHANGES,
   TOGGLE_AUTOSAVE
@@ -10,6 +12,7 @@ const initialState = {
   saving: false,
   changes: false,
   autosave: true,
+  errors: null,
 }
 
 export default function(state = initialState, action) {
@@ -25,6 +28,17 @@ export default function(state = initialState, action) {
         ...state,
         changes,
         saving: false,
+      }
+    case REGISTER_VALID_SAVE_STATE:
+      return {
+        ...state,
+        errors: null,
+      }
+    case REGISTER_INVALID_SAVE_STATE:
+      const { errors } = action.payload;
+      return {
+        ...state,
+        errors,
       }
     case UNREGISTER_CHANGES:
       return {
