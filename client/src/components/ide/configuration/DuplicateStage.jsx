@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Dialog from '../../Dialog';
-import axios from 'axios';
 import { close } from '../../../utils/dialog';
 import apiMutation from '../../../utils/api/mutation';
 
