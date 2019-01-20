@@ -2,6 +2,7 @@ const cfProjectProps = require('./projectProps');
 
 module.exports = (injections) => {
   const createSolution = require('../solution/create')(injections);
+  const assertNoDuplicates = require('./assertNoDuplicates')(injections);
   const {
     config: { LOOKUP_KEY, MODEL_DB },
     ioHelpers: { configWriter, configRemove, rename, exists, fileWriter, fileResolver, configResolver, configDocumentReader },
@@ -40,7 +41,10 @@ module.exports = (injections) => {
       }
     },
     executablePath: async (codeFile) => {
+      await assertNoDuplicates(codeFile);
+
       if(codeFile.hasProgress) {
+        // ensure that solutions are moved to the new path
         const { codeStageIds } = codeFile;
         for(let i = 0; i < codeStageIds.length; i++) {
           const codeStageId = codeStageIds[i];
