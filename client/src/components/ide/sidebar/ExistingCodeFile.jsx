@@ -46,7 +46,7 @@ class ExistingCodeFile extends Component {
       codeFileId: id,
       codeStageIds: codeStageIds.concat(stage.id),
       stageId: stage.id,
-      codeFileIds: codeFileIds.concat(id),
+      codeFileIds: (codeFileIds || []).concat(id),
     };
     apiMutation(mutation, variables).then(() => {
       close();
