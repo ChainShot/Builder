@@ -14,7 +14,7 @@ class StyledInput extends Component {
     onChange(...args);
   }
   render() {
-    const { label, hint, value, field, type, onChange, errors } = this.props;
+    const { label, hint, value, field, type, errors } = this.props;
     const { touched } = this.state;
     const classes = ['styled'];
     if(touched) classes.push('touched');
