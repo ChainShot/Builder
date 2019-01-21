@@ -9,7 +9,7 @@ const COMPILE_REGEX = /\w*(\.sol|\.v\.py)$/;
 
 class CompileCode extends Component {
   shortcut = (evt) => {
-    if((evt.ctrlKey || evt.metaKey) && (evt.keyCode === 222)) {
+    if((evt.ctrlKey || evt.metaKey) && (evt.keyCode === 222) && !(evt.shiftKey || evt.altKey)) {
       this.props.startCompilation();
       evt.preventDefault();
     }

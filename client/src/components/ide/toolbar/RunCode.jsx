@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 class RunCode extends Component {
   shortcut = (evt) => {
-    if((evt.ctrlKey || evt.metaKey) && (evt.keyCode === 13)) {
+    if((evt.ctrlKey || evt.metaKey) && (evt.keyCode === 13) && !(evt.shiftKey || evt.altKey)) {
       this.props.startCodeExecution();
       evt.preventDefault();
     }

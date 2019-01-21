@@ -5,7 +5,7 @@ import './Save.scss';
 
 class Save extends Component {
   shortcut = (evt) => {
-    if((evt.ctrlKey || evt.metaKey) && (evt.keyCode === 83)) {
+    if((evt.ctrlKey || evt.metaKey) && (evt.keyCode === 83) && !(evt.shiftKey || evt.altKey)) {
       this.props.startSave();
       evt.preventDefault();
     }
