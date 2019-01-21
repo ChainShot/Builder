@@ -1,8 +1,9 @@
 const fs = require('fs-extra');
-const directoryRename = require('./directoryRename');
-const fileRename = require('./fileRename');
 
 module.exports = (transaction) => {
+  const directoryRename = require('./directoryRename')(transaction);
+  const fileRename = require('./fileRename')(transaction);
+
   const rename = async (previousPath, newPath) => {
     if(await fs.exists(previousPath)) {
       const stats = await fs.stat(previousPath);

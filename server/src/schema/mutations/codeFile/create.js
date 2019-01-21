@@ -3,7 +3,7 @@ const cfProjectProps = require('./projectProps');
 
 module.exports = (injections) => {
   const createSolution = require('../solution/create')(injections);
-  const assertNoDuplicates = require('./assertNoDuplicates')(injections);
+  const validate = require('./validate')(injections);
   const {
     config: { LOOKUP_KEY, MODEL_DB },
     ioHelpers: { configWriter, fileWriter, configResolver },
@@ -49,8 +49,8 @@ module.exports = (injections) => {
   }
 
   async function createCodeFile(props) {
+    await validate(props);
     props.id = ObjectID().toString();
-    await assertNoDuplicates(props);
     await createStages(props);
     await createProjectFiles(props);
     return await createDocument(props);
