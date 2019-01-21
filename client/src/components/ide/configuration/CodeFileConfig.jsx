@@ -4,7 +4,7 @@ import confirm from '../../../utils/confirm';
 import './CodeFileConfig.scss';
 import StyledSwitch from '../../forms/StyledSwitch';
 import StyledSelect from '../../forms/StyledSelect';
-import Help from '../../Help';
+import StyledInput from '../../forms/StyledInput';
 import SVG from '../../SVG';
 
 const NAME_HINT = 'Identifies this file to the user';
@@ -57,9 +57,22 @@ mutation deleteCodeFile($id: String) {
 }
 `
 
+const validators = {
+  name: (x) => !!x,
+  executablePath: (x) => !!x,
+}
+
+const validate = (props) => {
+  return Object.keys(props).reduce((errors, prop) => {
+    if(validators.hasOwnProperty(prop) && !validators[prop](props[prop])) return errors.concat(prop);
+    return errors;
+  }, []);
+}
+
 class CodeFileConfig extends Component {
   constructor(props) {
     super(props);
+    props.onValidate(({codeFile}) => validate(codeFile));
     this.props.onSave(({codeFile}) => apiMutation(mutation, codeFile));
   }
   destroy = () => {
@@ -74,31 +87,38 @@ class CodeFileConfig extends Component {
   render() {
     const {
       update,
+      saveState: { errors },
       codeFile: { name, mode, executablePath, fileLocation, readOnly, hasProgress, executable, testFixture, visible }
     } = this.props;
     const updateCodeFile = (state) => update({ codeFile: state })
     return (
       <form className="config" ref="container">
-        <label>
-          <Help hint={NAME_HINT}> Name </Help>
-          <input
-            type="text" className="styled" value={name}
-            onChange={({ target: { value }}) => updateCodeFile({ name: value })}/>
-        </label>
+        <StyledInput
+          label="name"
+          hint={NAME_HINT}
+          type="text"
+          errors={errors}
+          field="name"
+          value={name}
+          onChange={({ target: { value }}) => updateCodeFile({ name: value })} />
 
-        <label>
-          <Help hint={EXECUTION_PATH_HINT}> Execution Path </Help>
-          <input
-            type="text" className="styled" value={executablePath}
-            onChange={({ target: { value }}) => updateCodeFile({ executablePath: value })}/>
-        </label>
+        <StyledInput
+          label="Execution Path"
+          hint={EXECUTION_PATH_HINT}
+          type="text"
+          errors={errors}
+          field="executablePath"
+          value={executablePath}
+          onChange={({ target: { value }}) => updateCodeFile({ executablePath: value })} />
 
-        <label>
-          <Help hint={FILE_LOCATION_HINT}> File Location </Help>
-          <input
-            type="text" className="styled" value={fileLocation}
-            onChange={({ target: { value }}) => updateCodeFile({ fileLocation: value })}/>
-        </label>
+        <StyledInput
+          label="File Location"
+          hint={FILE_LOCATION_HINT}
+          type="text"
+          errors={errors}
+          field="fileLocation"
+          value={fileLocation}
+          onChange={({ target: { value }}) => updateCodeFile({ fileLocation: value })} /> 
 
         <StyledSelect
           label="Editor Mode"

@@ -8,12 +8,12 @@ import UiStageConfig from './UiStageConfig';
 import DownloadStageConfig from './DownloadStageConfig';
 import VideoStageConfig from './VideoStageConfig';
 import StyledSelect from '../../forms/StyledSelect';
+import StyledInput from '../../forms/StyledInput';
 import {STAGE_TYPE_OPTIONS} from '../../../config';
 import confirm from '../../../utils/confirm';
 import * as dialog from '../../../utils/dialog';
 import SVG from '../../SVG';
 import './ContainerConfig.scss';
-import Help from '../../Help';
 
 const TITLE_HINT = 'Short name displayed to the user';
 const POSITION_HINT = 'The order of this stage relative to other stages';
@@ -41,9 +41,22 @@ mutation modifyStage(${args}) {
 }
 `
 
+const validators = {
+  title: (x) => !!x,
+  position: (x) => (x >= 0),
+}
+
+const validate = (props) => {
+  return Object.keys(props).reduce((errors, prop) => {
+    if(validators.hasOwnProperty(prop) && !validators[prop](props[prop])) return errors.concat(prop);
+    return errors;
+  }, []);
+}
+
 class StageConfig extends Component {
   constructor(props) {
     super(props);
+    props.onValidate(({ stage }) => validate(stage));
     props.onSave(({ stage }) => apiMutation(mutation, stage));
   }
   destroyStage = () => {
@@ -61,22 +74,28 @@ class StageConfig extends Component {
     });
   }
   render() {
-    const { update, stage } = this.props;
+    const { update, stage, saveState: { errors } } = this.props;
     const { title, position, type } = stage;
-    const updateStage = (state) => update({ stage: state })
+    const updateStage = (state) => update({ stage: state });
     return (
       <form className="config" ref="container">
-        <label>
-          <Help hint={TITLE_HINT}> Title </Help>
-          <input type="text" className="styled" value={title}
-            onChange={({ target: { value }}) => updateStage({ title: value })}/>
-        </label>
+        <StyledInput
+          label="Title"
+          type="text"
+          value={title}
+          errors={errors}
+          field="title"
+          hint={TITLE_HINT}
+          onChange={({ target: { value }}) => updateStage({ title: value })}/>
 
-        <label>
-          <Help hint={POSITION_HINT}> Position </Help>
-          <input type="number" className="styled" value={position}
-            onChange={({ target: { value }}) => updateStage({ position: +value })}/>
-        </label>
+        <StyledInput
+          label="Position"
+          type="number"
+          field="position"
+          errors={errors}
+          value={position}
+          hint={POSITION_HINT}
+          onChange={({ target: { value }}) => updateStage({ position: +value })} />
 
         <StyledSelect
           label="Type"

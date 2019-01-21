@@ -28,24 +28,50 @@ const templates = [
     { label: 'Web3 JS Stage', value: 'web3' },
 ]
 
+const validators = {
+  template: (x) => !!x,
+}
+
+const validate = (props) => {
+  return Object.keys(props).reduce((errors, prop) => {
+    if(validators.hasOwnProperty(prop) && !validators[prop](props[prop])) return errors.concat(prop);
+    return errors;
+  }, []);
+}
+
 class NewStageTemplate extends Component {
   state = {
     template: "",
-    title: ""
+    errors: [],
   }
   onSubmit = (evt) => {
-    evt.preventDefault();
+    evt && evt.preventDefault();
+    const errors = this.allErrors();
+    if(errors.length > 0) return;
+    
     const { containerId, title, position } = this.props;
     const { template } = this.state;
     apiMutation(mutation, { title, containerId, template, position }).then(() => {
       close();
     });
   }
+  validate() {
+    const { template } = this.state;
+    const errors = validate({ template });
+    this.setState({ errors });
+  }
+  componentDidMount() {
+    this.validate();
+  }
   handleChange(prop, value) {
-    this.setState({ [prop]: value });
+    this.setState({ [prop]: value }, this.validate);
+  }
+  allErrors() {
+    return this.state.errors.concat(this.props.errors);
   }
   render() {
     const { template } = this.state;
+    const errors = this.allErrors();
     return (
       <div className="new-stage-template">
         <StyledSelect
@@ -54,13 +80,28 @@ class NewStageTemplate extends Component {
           value={template}
           options={templates} />
 
-        <div className="actions">
-          <div className="submit" onClick={this.onSubmit}>
-            Add Stage Template
-          </div>
-        </div>
+        <Actions
+          onSubmit={this.onSubmit}
+          errors={errors} />
       </div>
     );
+  }
+}
+
+class Actions extends Component {
+  render() {
+    const { onSubmit, errors } = this.props;
+    const submitClasses = ['btn btn-primary'];
+    if(errors.length > 0) {
+      submitClasses.push('disabled')
+    }
+    return (
+      <div className="actions">
+        <div className={submitClasses.join(' ')} onClick={onSubmit}>
+          Add Stage Template
+        </div>
+      </div>
+    )
   }
 }
 
