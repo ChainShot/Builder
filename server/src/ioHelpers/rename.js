@@ -1,15 +1,18 @@
 const fs = require('fs-extra');
-const path = require('path');
 
 module.exports = (transaction) => {
-  const rename = async (previousPath, newPath) => {
-    if(fs.exists(previousPath)) {
-      await fs.ensureDir(path.dirname(newPath));
-      await fs.move(previousPath, newPath, { overwrite: true });
+  const directoryRename = require('./directoryRename')(transaction);
+  const fileRename = require('./fileRename')(transaction);
 
-      transaction.add(async () => {
-        await fs.move(newPath, previousPath, { overwrite: true });
-      });
+  const rename = async (previousPath, newPath) => {
+    if(await fs.exists(previousPath)) {
+      const stats = await fs.stat(previousPath);
+      if(stats.isDirectory()) {
+        return directoryRename(previousPath, newPath);
+      }
+      else {
+        return fileRename(previousPath, newPath);
+      }
     }
     else {
       throw new Error(`Attempted to rename ${previousPath} to ${newPath}, however the former path does not exist!`)

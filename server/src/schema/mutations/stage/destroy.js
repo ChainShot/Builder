@@ -1,6 +1,4 @@
-const stageProjectProps = require('./projectProps');
 const positionalShift = require('./positionalShift');
-const path = require('path');
 
 module.exports = (injections) => {
   const {
