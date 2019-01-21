@@ -13,7 +13,6 @@ module.exports = (injections) => {
         const codeFileId = stage.codeFileIds[j];
         if(codeFileId !== codeFile.id) {
           const otherCodeFile = await configResolver(MODEL_DB.CODE_FILES, codeFileId);
-          console.log('comparing', otherCodeFile.executablePath);
           if(otherCodeFile.executablePath === codeFile.executablePath) {
             throw new Error(`Two Code Files with the same executable path: ${codeFile.executablePath}`);
           }
