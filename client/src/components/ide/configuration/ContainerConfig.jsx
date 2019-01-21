@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import StyledSwitch from '../../forms/StyledSwitch';
 import StyledSelect from '../../forms/StyledSelect';
+import StyledInput from '../../forms/StyledInput';
 import apiMutation from '../../../utils/api/mutation';
 import confirm from '../../../utils/confirm';
 import destroySC from '../../../mutations/stageContainer/destroy';
 import destroySCG from '../../../mutations/stageContainerGroup/destroy';
 import SVG from '../../SVG';
-import Help from '../../Help';
 import './ContainerConfig.scss';
 
 const TITLE_HINT = 'Short name displayed to the user';
@@ -67,9 +67,30 @@ const ripUpdates = (variables, doc) => {
   }, {});
 }
 
+const stageContainerValidators = {
+  version: (x) => !!x,
+}
+
+const stageContainerGroupValidators = {
+  title: (x) => !!x,
+}
+
+const validate = (props, validators) => {
+  return Object.keys(props).reduce((errors, prop) => {
+    if(validators.hasOwnProperty(prop) && !validators[prop](props[prop])) return errors.concat(prop);
+    return errors;
+  }, []);
+}
+
 class ContainerConfig extends Component {
   constructor(props) {
     super(props);
+    props.onValidate(({ stageContainer }) => {
+      const { stageContainerGroup } = stageContainer;
+      const scErrors = validate(stageContainer, stageContainerValidators);
+      const scgErrors = validate(stageContainerGroup, stageContainerGroupValidators);
+      return scErrors.concat(scgErrors);
+    });
     props.onSave(({ stageContainer }) => {
       const containerUpdates = ripUpdates(containerVariables, stageContainer);
       const { stageContainerGroup } = stageContainer;
@@ -95,7 +116,7 @@ class ContainerConfig extends Component {
     });
   }
   render() {
-    const { stageContainer, update } = this.props;
+    const { stageContainer, update, saveState: { errors } } = this.props;
     const { type, version,
       stageContainerGroup: {
         description, estimatedTime, thumbnailUrl, title, productionReady
@@ -104,35 +125,50 @@ class ContainerConfig extends Component {
     const updateStageContainerGroup = (state) => update({ stageContainer: { stageContainerGroup: state } })
     return (
       <form className="config">
-        <label>
-          <Help hint={TITLE_HINT}> Title </Help>
-          <input type="text" className="styled" value={title}
-            onChange={({ target: { value }}) => updateStageContainerGroup({ title: value })}/>
-        </label>
+        <StyledInput
+          hint={TITLE_HINT}
+          label="Title"
+          type="text"
+          value={title}
+          errors={errors}
+          field="title"
+          onChange={({ target: { value }}) => updateStageContainerGroup({ title: value })} />
 
-        <label>
-          <Help hint={DESCRIPTION_HINT}> Description </Help>
-          <textarea type="text" className="styled" value={description}
-            onChange={({ target: { value }}) => updateStageContainerGroup({ description: value })}/>
-        </label>
+        <StyledInput
+          hint={DESCRIPTION_HINT}
+          label="Description"
+          type="text"
+          value={description}
+          errors={errors}
+          field="description"
+          onChange={({ target: { value }}) => updateStageContainerGroup({ description: value })} />
 
-        <label>
-          <Help hint={VERSION_HINT}> Version </Help>
-          <input type="text" className="styled" value={version}
-            onChange={({ target: { value }}) => updateStageContainer({ version: value })}/>
-        </label>
+        <StyledInput
+          hint={VERSION_HINT}
+          label="Version"
+          type="text"
+          value={version}
+          errors={errors}
+          field="version"
+          onChange={({ target: { value }}) => updateStageContainer({ version: value })} />
 
-        <label>
-          <Help hint={ESTIMATED_TIME_HINT}> Estimated Time in Minutes </Help>
-          <input type="number" className="styled" value={estimatedTime}
-            onChange={({ target: { value }}) => updateStageContainerGroup({ estimatedTime: +value })}/>
-        </label>
+        <StyledInput
+          hint={ESTIMATED_TIME_HINT}
+          label="Estimated Time in Minutes"
+          type="number"
+          value={estimatedTime}
+          errors={errors}
+          field="estimatedTime"
+          onChange={({ target: { value }}) => updateStageContainerGroup({ estimatedTime: +value })} />
 
-        <label>
-          <Help hint={THUMBNAIL_HINT}> Thumbnail URL </Help>
-          <input type="text" className="styled" value={thumbnailUrl}
-            onChange={({ target: { value }}) => updateStageContainerGroup({ thumbnailUrl: value })}/>
-        </label>
+        <StyledInput
+          hint={THUMBNAIL_HINT}
+          label="Thumbnail URL"
+          type="text"
+          value={thumbnailUrl}
+          errors={errors}
+          field="thumbnailUrl"
+          onChange={({ target: { value }}) => updateStageContainerGroup({ thumbnailUrl: value })} />
 
         <StyledSelect
           label="Type"

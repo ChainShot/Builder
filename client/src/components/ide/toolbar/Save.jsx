@@ -17,13 +17,18 @@ class Save extends Component {
     document.removeEventListener('keydown', this.shortcut)
   }
   render() {
-    const { startSave, saveState: { saving, changes } } = this.props;
+    const { startSave, saveState: { saving, changes, errors } } = this.props;
     const classes = ['save'];
     const shortcut = isMacLike() ? 'CMD + S' : 'CTRL + S';
+    let hint = `Save Changes (${shortcut})`;
     if(saving) classes.push('saving');
     if(changes) classes.push('has-changes');
+    if(errors) {
+      hint = "Cannot save invalid state"
+      classes.push('has-errors');
+    }
     return (
-      <div className={classes.join(' ')} onClick={startSave} data-rh={`Save Changes (${shortcut})` }>
+      <div className={classes.join(' ')} onClick={startSave} data-rh={hint}>
         <SVG name="save" />
       </div>
     )

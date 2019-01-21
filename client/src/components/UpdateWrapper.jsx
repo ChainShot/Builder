@@ -73,14 +73,17 @@ class UpdateWrapper extends Component {
   }
 
   async saveState() {
-    try {
-      this.setState({ originalState: this.state.currentState });
-      this.props.unregisterChanges();
-      await this.state.savePromise(this.state.currentState);
-    }
-    catch(ex) {
-      // do nothing: mutations automatically display errors
-      // allow the user to attempt to fix their current state and retry
+    const { saveState: { errors }} = this.props;
+    if(!errors) {
+      try {
+        this.setState({ originalState: this.state.currentState });
+        this.props.unregisterChanges();
+        await this.state.savePromise(this.state.currentState);
+      }
+      catch(ex) {
+        // do nothing: mutations automatically display errors
+        // allow the user to attempt to fix their current state and retry
+      }
     }
     const changes = !deeplyEqualObjects(this.state.originalState, this.state.currentState);
     this.props.completeSave(changes);
@@ -119,7 +122,7 @@ class UpdateWrapper extends Component {
 
   render() {
     const { child, saveState } = this.props;
-    const { changes, autosave } = saveState;
+    const { changes, autosave, errors } = saveState;
     const { currentState } = this.state;
     const ChildComponent = child;
     return (
@@ -130,7 +133,7 @@ class UpdateWrapper extends Component {
                     onSave={(...args) => this.onSave(...args)}
                     update={(...args) => this.update(...args)} />
           <Prompt
-            when={changes && !autosave}
+            when={changes && (errors || !autosave)}
             message="Unsaved Changes. Discard them?" />
         </React.Fragment>
     )

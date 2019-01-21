@@ -19,7 +19,7 @@ export const completeSave = (changes) => ({
 });
 export const registerValidState = () => ({ type: REGISTER_VALID_SAVE_STATE });
 export const registerInvalidState = (errors) => ({
-  type: REGISTER_INVALID_SAVE_STATE ,
+  type: REGISTER_INVALID_SAVE_STATE,
   payload: { errors }
 });
 export const registerChanges = () => ({ type: REGISTER_CHANGES });

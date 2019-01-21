@@ -8,5 +8,11 @@ ul.toolbar li.save-toolbar {
         cursor: pointer;
       }
     }
+    &.has-errors {
+      color: $danger;
+      &:hover {
+        cursor: default;
+      }
+    }
   }
 }

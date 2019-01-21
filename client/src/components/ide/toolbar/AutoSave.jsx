@@ -16,8 +16,8 @@ class AutoSave extends Component {
     }
   }
   componentDidUpdate() {
-    const { saveState: { autosave, changes } } = this.props;
-    if(autosave && changes) {
+    const { saveState: { autosave, changes, errors } } = this.props;
+    if(autosave && changes && !errors) {
       this.debouncedSave();
     }
   }
