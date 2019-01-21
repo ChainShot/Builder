@@ -2,6 +2,7 @@ const cfProjectProps = require('./projectProps');
 
 module.exports = (injections) => {
   const createSolution = require('../solution/create')(injections);
+  const validate = require('./validate')(injections);
   const {
     config: { LOOKUP_KEY, MODEL_DB },
     ioHelpers: { configWriter, configRemove, rename, exists, fileWriter, fileResolver, configResolver, configDocumentReader },
@@ -41,6 +42,7 @@ module.exports = (injections) => {
     },
     executablePath: async (codeFile) => {
       if(codeFile.hasProgress) {
+        // ensure that solutions are moved to the new path
         const { codeStageIds } = codeFile;
         for(let i = 0; i < codeStageIds.length; i++) {
           const codeStageId = codeStageIds[i];
@@ -101,6 +103,9 @@ module.exports = (injections) => {
   async function modifyCodeFile(props) {
     const codeFile = await configResolver(MODEL_DB.CODE_FILES, props.id);
     const merged = { ...codeFile, ...props };
+
+    // validate after we have all the info (existing & new)
+    await validate(merged);
 
     const newPaths = await findCodeFilePaths(merged);
     const previousPaths = await findCodeFilePaths(codeFile);
