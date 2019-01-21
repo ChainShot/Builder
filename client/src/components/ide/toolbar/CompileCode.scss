@@ -4,7 +4,7 @@ ul.toolbar li.code-toolbar {
   .compile-code {
     &.running {
       color: $disabled;
-      SVG {
+      svg {
         color: $disabled;
       }
     }
