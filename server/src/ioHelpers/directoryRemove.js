@@ -1,4 +1,5 @@
 const { build, write } = require('./directoryMemory');
+const fs = require('fs-extra');
 
 module.exports = (transaction) => {
   const directoryRemove = async (dirPath) => {

@@ -15,7 +15,7 @@ async function build(dirPath, memory = {}) {
     const folder = folders[i];
     const folderPath = path.join(dirPath, folder);
     memory[folder] = {};
-    await buildMemory(folderPath, memory[folder]);
+    await build(folderPath, memory[folder]);
   }
   return memory;
 }
@@ -30,7 +30,7 @@ async function write(dirPath, memory) {
     const value = memory[key];
     if(typeof value === 'object') {
       const folderPath = path.join(dirPath, key);
-      await writeMemory(folderPath, value);
+      await write(folderPath, value);
     }
     if(typeof value === 'string') {
       const filePath = path.join(dirPath, key);

@@ -1,5 +1,4 @@
 const fs = require('fs-extra');
-const path = require('path');
 
 module.exports = (transaction) => {
   const fileRename = async (previousPath, newPath) => {

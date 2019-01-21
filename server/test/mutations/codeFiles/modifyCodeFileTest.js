@@ -19,12 +19,17 @@ const {
 
 const modifyCodeFile = mutationWrapper(require('../../../src/schema/mutations/codeFile/modify'));
 
+const existingStage = {
+  id: 3,
+  codeFileIds: [1],
+}
+
 const existingCodeFile = {
   id: 1,
   initialCode: LOOKUP_KEY,
   hasProgress: true,
   executablePath: "contracts/thing.sol",
-  codeStageIds: [3],
+  codeStageIds: [existingStage.id],
 }
 
 const existingSolution = {
@@ -35,6 +40,7 @@ const existingSolution = {
 
 mockSuite('Mutations::CodeFiles::Modify::Properties', () => {
   before(async () => {
+    mockConfigDocument(MODEL_DB.STAGES, existingStage);
     mockConfigDocument(MODEL_DB.CODE_FILES, existingCodeFile);
     mockConfigDocument(MODEL_DB.SOLUTIONS, existingSolution);
     await modifyCodeFile(modifyProps);
@@ -66,18 +72,23 @@ mockSuite('Mutations::CodeFiles::Modify::Properties', () => {
 });
 
 mockSuite("Mutations::CodeFiles::Modify::CodeStageId", () => {
-  const newStageId = 5;
+  const newStage = {
+    id: 5,
+    codeFileIds: [1],
+  }
   before(async () => {
+    mockConfigDocument(MODEL_DB.STAGES, existingStage);
+    mockConfigDocument(MODEL_DB.STAGES, newStage);
     mockConfigDocument(MODEL_DB.CODE_FILES, existingCodeFile);
     mockConfigDocument(MODEL_DB.SOLUTIONS, existingSolution);
     await modifyCodeFile({
       id: existingCodeFile.id,
-      codeStageIds: existingCodeFile.codeStageIds.concat(newStageId),
+      codeStageIds: existingCodeFile.codeStageIds.concat(newStage.id),
     });
   });
 
   it('should create a solution', async () => {
-    const newSolution = writtenModels[MODEL_DB.SOLUTIONS].find(x => x.stageId === newStageId);
+    const newSolution = writtenModels[MODEL_DB.SOLUTIONS].find(x => x.stageId === newStage.id);
     assert(newSolution);
   });
 })

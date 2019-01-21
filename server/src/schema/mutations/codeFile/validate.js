@@ -1,9 +1,5 @@
 module.exports = (injections) => {
   const assertNoDuplicates = require('./assertNoDuplicates')(injections);
-  const {
-    config: { MODEL_DB },
-    ioHelpers: { configResolver },
-  } = injections;
 
   async function validate(codeFile) {
     if(codeFile.hasOwnProperty('executablePath')) {
