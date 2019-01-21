@@ -17,6 +17,17 @@ mutation modifyCodeFile($codeFileId: String, $codeStageIds: [String], $stageId: 
 }
 `
 
+const validators = {
+  codeFile: (x) => !!x,
+}
+
+const validate = (props) => {
+  return Object.keys(props).reduce((errors, prop) => {
+    if(validators.hasOwnProperty(prop) && !validators[prop](props[prop])) return errors.concat(prop);
+    return errors;
+  }, []);
+}
+
 class ExistingCodeFile extends Component {
   constructor(props) {
     super(props);
@@ -35,12 +46,19 @@ class ExistingCodeFile extends Component {
       label: codeFile.name,
       value: codeFile
     }))
-    this.state = { codeFile: null, options }
+    this.state = {
+      codeFile: null,
+      errors: [],
+      options,
+    }
   }
-  onSubmit() {
+  onSubmit = (evt) => {
+    evt && evt.preventDefault();
+    const { codeFile, errors } = this.state;
+    if(errors.length > 0) return;
+
     const { stage } = this.props;
     const { codeFileIds } = stage;
-    const { codeFile } = this.state;
     const { codeStageIds, id } = codeFile;
     const variables = {
       codeFileId: id,
@@ -52,23 +70,46 @@ class ExistingCodeFile extends Component {
       close();
     });
   }
+  validate() {
+    const { codeFile } = this.state;
+    const errors = validate({ codeFile });
+    this.setState({ errors });
+  }
+  componentDidMount() {
+    this.validate();
+  }
   handleChange(prop, value) {
-    this.setState({ [prop]: value });
+    this.setState({ [prop]: value }, this.validate);
   }
   render() {
-    const { codeFile, options } = this.state;
+    const { codeFile, options, errors } = this.state;
     return (
-      <div className="existing-code-file">
+      <form className="existing-code-file" onSubmit={this.onSubmit}>
         <StyledSelect
           label="Existing Code File"
           onChange={(val) => this.handleChange("codeFile", val)}
           value={codeFile}
           options={options} />
 
-        <div className="actions">
-          <div className="submit" onClick={() => this.onSubmit()}>
-            Add Existing Code File
-          </div>
+        <Actions
+          onSubmit={this.onSubmit}
+          errors={errors} />
+      </form>
+    )
+  }
+}
+
+class Actions extends Component {
+  render() {
+    const { onSubmit, errors } = this.props;
+    const submitClasses = ['btn btn-primary'];
+    if(errors.length > 0) {
+      submitClasses.push('disabled')
+    }
+    return (
+      <div className="actions">
+        <div className={submitClasses.join(' ')} onClick={onSubmit}>
+          Add Existing Code File
         </div>
       </div>
     )

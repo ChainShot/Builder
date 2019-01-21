@@ -25,24 +25,52 @@ mutation createStage(${args}) {
 }
 `;
 
+const validators = {
+  type: (x) => !!x,
+  language: (x) => !!x,
+}
+
+const validate = (props) => {
+  return Object.keys(props).reduce((errors, prop) => {
+    if(validators.hasOwnProperty(prop) && !validators[prop](props[prop])) return errors.concat(prop);
+    return errors;
+  }, []);
+}
+
 class NewStage extends Component {
   state = {
     type: null,
     language: null,
+    errors: [],
   }
   onSubmit = (evt) => {
-    evt.preventDefault();
+    evt && evt.preventDefault();
+    const errors = this.allErrors();
+    if(errors.length > 0) return;
+    
     const { containerId, title, position } = this.props;
     const { type, language } = this.state;
     apiMutation(mutation, { position, title, containerId, type, language }).then(() => {
       close();
     });
   }
-  handleChange(prop, val) {
-    this.setState({[prop]: val});
+  validate() {
+    const { type, language } = this.state;
+    const errors = validate({ type, language });
+    this.setState({ errors });
+  }
+  componentDidMount() {
+    this.validate();
+  }
+  handleChange(prop, value) {
+    this.setState({ [prop]: value }, this.validate);
+  }
+  allErrors() {
+    return this.state.errors.concat(this.props.errors);
   }
   render() {
     const { type, language } = this.state;
+    const errors = this.allErrors();
     return (
       <form onSubmit={this.onSubmit}>
         <StyledSelect
@@ -57,13 +85,28 @@ class NewStage extends Component {
           value={language}
           options={STAGE_LANGUAGE_OPTIONS} />
 
-        <div className="actions">
-          <div className="submit" onClick={this.onSubmit}>
-            Add New Stage
-          </div>
-        </div>
+        <Actions
+          onSubmit={this.onSubmit}
+          errors={errors} />
       </form>
     );
+  }
+}
+
+class Actions extends Component {
+  render() {
+    const { onSubmit, errors } = this.props;
+    const submitClasses = ['btn btn-primary'];
+    if(errors.length > 0) {
+      submitClasses.push('disabled')
+    }
+    return (
+      <div className="actions">
+        <div className={submitClasses.join(' ')} onClick={onSubmit}>
+          Add New Stage
+        </div>
+      </div>
+    )
   }
 }
 

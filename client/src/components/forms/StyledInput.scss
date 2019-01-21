@@ -22,7 +22,7 @@ input[type="text"], input[type="number"] {
     &[disabled] {
       background-color: $bg-main;
     }
-    &.has-error {
+    &.touched.has-error {
       box-shadow: 0;
       box-shadow: 0 0 0 1px $danger;
       border: 1px solid $danger;

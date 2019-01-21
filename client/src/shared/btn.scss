@@ -10,10 +10,6 @@
     width: auto;
     margin-right: 10px;
   }
-  &.disabled {
-    color: $disabled;
-    border: 1px solid $disabled;
-  }
   &:hover {
     cursor: pointer;
   }
@@ -29,6 +25,14 @@
     &:hover {
       cursor: pointer;
       border-color: $brand-active;
+    }
+  }
+  &.disabled {
+    color: $disabled;
+    border: 1px solid $disabled;
+    &:hover {
+      cursor: default;
+      border: 1px solid $disabled;
     }
   }
 }
