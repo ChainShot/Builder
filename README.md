@@ -23,6 +23,10 @@ chainshot-builder init
 This will spin up the IDE and get you started. To learn more about editing and committing
 to your new content repository check out the [Building New Content Docs](https://chainshotbuilder.readthedocs.io/en/latest/building_new_content.html#start-editing).
 
+**Note:** You'll want to have the **latest** version of Node installed to ensure
+builder compatibility. For switching between versions easily, we suggest you check
+out the [n](https://www.npmjs.com/package/n) package.
+
 ### App Preview
 
 ![Builder Preview](preview.png)
