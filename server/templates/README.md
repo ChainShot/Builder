@@ -17,6 +17,10 @@ chainshot-builder run
 Any modifications made in the IDE will be reflected in the file system immediately and can be
 committed up to your repository.
 
+**Note:** You'll want to have the **latest** version of Node installed to ensure
+builder compatibility. For switching between versions easily, we suggest you check
+out the [n](https://www.npmjs.com/package/n) package.
+
 ## Content Structure
 
 Content Repositories contain two folders, [projects and config](https://chainshotbuilder.readthedocs.io/en/latest/content.html#structure), which are used to track modifications to content and open up collaboration between many content creators.
