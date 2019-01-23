@@ -31,7 +31,7 @@ module.exports = {
     args: {
       id: { type: GraphQLString },
     },
-    resolve: async (_, { id }) => txWrapper(destroyCodeFile)(id),
+    resolve: (_, { id }) => txWrapper(destroyCodeFile)(id),
   },
   createCodeFile: {
     type: CodeFileType,

@@ -14,9 +14,11 @@ query findStageContainerGroup($title: String) {
 
 const stageContainerLookup = async (fileName) => {
   const [groupTitle, version] = fileName.split('/');
-  const { data } = await graphql(schema, findContainer, null, null, { title: groupTitle });
-  const { id } = data.stageContainerGroup.stageContainers.filter(x => x.version == version)[0];
-  return { modelType: 'stageContainer', id };
+  const { data: { stageContainerGroup } } = await graphql(schema, findContainer, null, null, { title: groupTitle });
+  if(!stageContainerGroup) return null;
+  const sc = stageContainerGroup.stageContainers.filter(x => x.version == version)[0];
+  if(!sc) return null;
+  return { modelType: 'stageContainer', id: sc.id };
 }
 
 module.exports = stageContainerLookup;

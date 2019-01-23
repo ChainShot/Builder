@@ -7,9 +7,6 @@ async function configUpdate(filePath) {
   const id = file.split('.')[0];
 
   if(modelDB === MODEL_DB.STAGE_CONTAINERS) {
-    // for now no socket updates to deleted stage containers
-    const exists = await fs.exists(filePath);
-    if(!exists) return null;
     return { modelType: 'stageContainer', id }
   }
   if(modelDB === MODEL_DB.STAGES) {
