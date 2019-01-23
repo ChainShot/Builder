@@ -121,7 +121,8 @@ mockSuite('Mutations::Stages::CreateTemplate', () => {
     assert.equal(writtenModels.stages.length, 1);
   });
 
-  it('should have copied a directory', () => {
-    assert.equal(copied[0].newPath, STAGE_PROJECT_PATH);
+  it('should have copied the stage project directory', () => {
+    const index = copied.map(x => x.newPath).indexOf(STAGE_PROJECT_PATH);
+    assert(index >= 0);
   });
 })

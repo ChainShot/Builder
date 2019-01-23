@@ -6,7 +6,7 @@ module.exports = (injections) => {
   const validate = require('./validate')(injections);
   const {
     config: { LOOKUP_KEY, MODEL_DB },
-    ioHelpers: { configWriter, configRemove, fileRemove, rename, exists, fileWriter, fileResolver, configResolver, configDocumentReader },
+    ioHelpers: { configWriter, configRemove, copy, fileRemove, rename, exists, fileWriter, fileResolver, configResolver, configDocumentReader },
     projectHelpers: { findCodeFilePath, findCodeFilePaths, findSolutionPath },
   } = injections;
 
@@ -41,7 +41,7 @@ module.exports = (injections) => {
 
         if(currentCodeFile.hasProgress) {
           // create a solution if the code file has progress
-          await createSolution(addedStageId, codeFile.id);
+          await createSolution(addedStageId, currentCodeFile.id);
         }
       }
     },
