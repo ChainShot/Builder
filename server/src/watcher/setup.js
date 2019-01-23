@@ -5,7 +5,7 @@ const slash = require('slash');
 const fs = require('fs-extra');
 const {Gaze} = require('gaze');
 const configGaze = new Gaze('**/*', { cwd: CONFIG_DIR });
-const projectGaze = new Gaze('**/*', { cwd: CONFIG_DIR });
+const projectGaze = new Gaze('**/*', { cwd: PROJECTS_DIR });
 
 function getClients(io) {
   return new Promise((resolve, reject) => {
