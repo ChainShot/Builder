@@ -44,7 +44,9 @@ const setup = (io) => {
       // broadcast changes if anyones listening
       try {
         const message = await projectUpdate(posixFileName);
-        io.sockets.emit('update', message);
+        if(message) {
+          io.sockets.emit('update', message);
+        }
       }
       catch(ex) {
         console.log(`Unable to lookup file association for '${name}'`, ex);
