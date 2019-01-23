@@ -2,7 +2,6 @@ const { ObjectID } = require('mongodb');
 const positionalShift = require('./positionalShift');
 
 module.exports = (injections) => {
-  const createSolution = require('../solution/create')(injections);
   const {
     ioHelpers: { configWriter, configResolver, copy, configDocumentReader },
     projectHelpers: { findStageFilePath },
@@ -13,6 +12,15 @@ module.exports = (injections) => {
     const oldBasePath = await findStageFilePath(oldStage);
     const newBasePath = await findStageFilePath(newStage);
     await copy(oldBasePath, newBasePath);
+  }
+
+  async function createNewSolution(stageId, codeFileId) {
+    await configWriter(MODEL_DB.SOLUTIONS, {
+      id: ObjectID().toString(),
+      stageId,
+      codeFileId,
+      code: LOOKUP_KEY,
+    });
   }
 
   async function duplicateStage(props) {
@@ -28,35 +36,31 @@ module.exports = (injections) => {
     // including codefile/solution project files
     await copyProjectFiles(stage, newStage);
 
+    // now we just need to create the config models
     if(props.createNew) {
       // create the code file and solution models
       for(let i = 0; i < (newStage.codeFileIds || []).length; i++) {
         const codeFileId = newStage.codeFileIds[i];
         const codeFile = await configResolver(MODEL_DB.CODE_FILES, codeFileId);
+
+        const oldId = codeFile.id;
+        // create a new code file
+        codeFile.id = ObjectID().toString();
+        // link the code file to the new stage
+        codeFile.codeStageIds = [newStage.id];
+        // link the new stage to the code file by
+        // replacing the old code file id on the new stage
+        const idx = newStage.codeFileIds.indexOf(oldId);
+        newStage.codeFileIds[idx] = codeFile.id;
+
         if(codeFile.hasProgress) {
-          // link to the previous code file
-          codeFile.codeStageIds.push(newStage.id);
-          // create a new solution
-          await configWriter(MODEL_DB.SOLUTIONS, {
-            id: ObjectID().toString(),
-            stageId: newStage.id,
-            codeFileId,
-            code: LOOKUP_KEY,
-          });
+          await createNewSolution(newStage.id, codeFile.id);
         }
-        else {
-          const oldId = codeFile.id;
-          // create a new code file
-          codeFile.id = ObjectID().toString();
-          codeFile.codeStageIds = [newStage.id];
-          // replace the old code file id on the new stage
-          const idx = newStage.codeFileIds.indexOf(oldId);
-          newStage.codeFileIds[idx] = codeFile.id;
-        }
+
         await configWriter(MODEL_DB.CODE_FILES, codeFile);
       }
     }
-    
+
     // create the stage model
     await configWriter(MODEL_DB.STAGES, newStage);
 
@@ -69,7 +73,7 @@ module.exports = (injections) => {
         await configWriter(MODEL_DB.CODE_FILES, codeFile);
 
         if(codeFile.hasProgress) {
-          await createSolution(newStage.id, codeFile.id);
+          await createNewSolution(newStage.id, codeFileId);
         }
       }
     }
