@@ -32,7 +32,7 @@ module.exports = (injections) => {
         // we've added a code stage, let's make sure to add project files
         // and a solution if necessary
         const addedStageId = curIds.find(x => prevIds.indexOf(x) === -1);
-        const otherStageId = curIds.find(x => prevIds.indexOf(x) === 1);
+        const otherStageId = curIds.find(x => prevIds.indexOf(x) > -1);
         const filePath = await findCodeFilePath(addedStageId, currentCodeFile);
         const otherFilePath = await findCodeFilePath(otherStageId, currentCodeFile);
 
