@@ -31,6 +31,7 @@ module.exports = (injections) => {
     await destroyStages(stageContainer);
     await destroyProjectFiles(stageContainer);
     await configRemove(MODEL_DB.STAGE_CONTAINERS, id);
+    return id;
   }
 
   return destroyStageContainer;

@@ -1,46 +1,51 @@
 const cfProjectProps = require('./projectProps');
 
 module.exports = (injections) => {
+  const destroySolution = require('../solution/destroy')(injections);
   const createSolution = require('../solution/create')(injections);
   const validate = require('./validate')(injections);
   const {
     config: { LOOKUP_KEY, MODEL_DB },
-    ioHelpers: { configWriter, configRemove, rename, exists, fileWriter, fileResolver, configResolver, configDocumentReader },
-    projectHelpers: { findCodeFilePaths, findSolutionPath },
+    ioHelpers: { configWriter, configRemove, copy, fileRemove, rename, exists, fileWriter, fileResolver, configResolver, configDocumentReader },
+    projectHelpers: { findCodeFilePath, findCodeFilePaths, findSolutionPath },
   } = injections;
 
   const onChange = {
     // codeStageIds is modified when adding an existing code file to a new stage
-    codeStageIds: async(codeFile) => {
-      // we need to check that this code file has project files written for each stage
-      const filePaths = await findCodeFilePaths(codeFile);
-      let contents;
-      for(let i = 0; i < filePaths.length; i++) {
-        const filePath = filePaths[i];
-        const doesExist = await exists(filePath);
-        if(doesExist) {
-          contents = await fileResolver(filePath);
+    codeStageIds: async (previousCodeFile, currentCodeFile) => {
+      const prevIds = previousCodeFile.codeStageIds;
+      const curIds = currentCodeFile.codeStageIds;
+      if(prevIds.length > curIds.length) {
+        // we've dropped a code stage, let's make sure to cleanup project files
+        const removedStageId = prevIds.find(x => curIds.indexOf(x) === -1);
+        const filePath = await findCodeFilePath(removedStageId, currentCodeFile);
+
+        await fileRemove(filePath);
+
+        if(currentCodeFile.hasProgress) {
+          const solutions = await configDocumentReader(MODEL_DB.SOLUTIONS);
+          const solution = solutions.find(x => x.stageId === removedStageId && x.codeFileId === currentCodeFile.id);
+          await destroySolution(solution.id);
         }
       }
-      for(let i = 0; i < filePaths.length; i++) {
-        const filePath = filePaths[i];
-        const doesExist = await exists(filePath);
-        if(!doesExist) {
-          await fileWriter(filePath, contents);
-        }
-      }
-      // and then create a solution if the code file has progress
-      if(codeFile.hasProgress) {
-        for(let i = 0; i < codeFile.codeStageIds.length; i++) {
-          const codeStageId = codeFile.codeStageIds[i];
-          const solution = await findSolution(codeFile.id, codeStageId);
-          if(!solution) {
-            await createSolution(codeStageId, codeFile.id);
-          }
+      else {
+        // we've added a code stage, let's make sure to add project files
+        // and a solution if necessary
+        const addedStageId = curIds.find(x => prevIds.indexOf(x) === -1);
+        const otherStageId = curIds.find(x => prevIds.indexOf(x) > -1);
+        const filePath = await findCodeFilePath(addedStageId, currentCodeFile);
+        const otherFilePath = await findCodeFilePath(otherStageId, currentCodeFile);
+
+        // copy the contents of a pre-existing code file into this one
+        await copy(otherFilePath, filePath);
+
+        if(currentCodeFile.hasProgress) {
+          // create a solution if the code file has progress
+          await createSolution(addedStageId, currentCodeFile.id);
         }
       }
     },
-    executablePath: async (codeFile) => {
+    executablePath: async (_, codeFile) => {
       if(codeFile.hasProgress) {
         // ensure that solutions are moved to the new path
         const { codeStageIds } = codeFile;
@@ -63,7 +68,7 @@ module.exports = (injections) => {
         }
       }
     },
-    hasProgress: async (codeFile) => {
+    hasProgress: async (_, codeFile) => {
       if(codeFile.hasProgress) {
         const { codeStageIds } = codeFile;
         for(let i = 0; i < codeStageIds.length; i++) {
@@ -91,11 +96,16 @@ module.exports = (injections) => {
   }
 
   async function rewritePaths(previousPaths, newPaths) {
-    for(let i = 0; i < previousPaths.length; i++) {
-      const newPath = newPaths[i];
-      const previousPath = previousPaths[i];
-      if(previousPath !== newPath) {
+    if(previousPaths.length === newPaths.length) {
+      // only overwrite if the paths length are equal
+      // we can freely move x => y1, y => x1, etc...
+      // until all new paths are filled and old paths removed
+      for(let i = 0; i < previousPaths.length; i++) {
+        const newPath = newPaths[i];
+        const previousPath = previousPaths[i];
+        if(previousPath !== newPath) {
           await rename(previousPath, newPath);
+        }
       }
     }
   }
@@ -116,7 +126,7 @@ module.exports = (injections) => {
       const key = keys[i];
       if(codeFile[key] !== merged[key]) {
         if(onChange[key]) {
-          await onChange[key](merged);
+          await onChange[key](codeFile, merged);
         }
         if(cfProjectProps[key]) {
           await Promise.all(newPaths.map(async (path) => {

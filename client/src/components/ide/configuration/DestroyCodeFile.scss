@@ -1,0 +1,16 @@
+@import '../../../shared/variables';
+
+.destroy-code-file {
+  p {
+    background-color: lighten($bg-dark, 4);
+    padding: 20px;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+
+  label {
+    font-size: 1em;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+}

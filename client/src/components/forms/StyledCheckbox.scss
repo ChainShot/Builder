@@ -1,0 +1,40 @@
+@import '../../shared/variables';
+
+.checkbox.styled {
+  display: flex;
+  align-items: center;
+  outline: 0;
+
+  .box {
+    padding: 5px 5px 2px 5px;
+    margin-right: 10px;
+    border: 1px solid $border-color;
+    background-color: $bg-darkest;
+    transition: border .25s;
+
+    svg {
+      transition: color .25s;
+      height: 18px;
+      color: lighten($bg-darkest, 4);
+    }
+  }
+
+  &:hover, &:focus {
+    .box {
+      border: 1px solid $brand-active;
+      svg {
+        color: lighten($bg-dark, 5);
+      }
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.checked {
+    .box svg {
+      color: $brand-active;
+    }
+  }
+}

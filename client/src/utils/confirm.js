@@ -3,7 +3,6 @@ import * as dialog from './dialog';
 
 const closeHandler = (resolve, reject) => (success) => {
   if(success) resolve();
-  else reject();
 }
 
 const confirm = (message = "") => {

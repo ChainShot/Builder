@@ -37,6 +37,7 @@ module.exports = (injections) => {
     await removeProjectFiles(codeFile);
     await removeSolutions(codeFile);
     await configRemove(MODEL_DB.CODE_FILES, id);
+    return id;
   }
 
   return destroyCodeFile;
