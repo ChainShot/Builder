@@ -7,15 +7,11 @@ const socket = io(API_URL);
 const subscriptions = [];
 
 socket.on('update', (_) => {
-  if(!_) return;
   subscriptions.forEach(({ query, id, modelType, fn, subId }) => {
-    if(_.modelType === modelType && _.id === id) {
-      // id unique to this modelType and subscription
-      const subcriptionModelTypeId = `${modelType}-${subId}`;
-      debounce(subcriptionModelTypeId, () => {
-        apiQuery(query, {id}).then(fn);
-      });
-    }
+    // id unique to this modelType and subscription
+    debounce(subId, () => {
+      apiQuery(query, {id}).then(fn);
+    });
   })
 });
 
