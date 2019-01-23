@@ -21,7 +21,7 @@
 
   &:hover, &:focus {
     .box {
-      border: 1px solid $brand-active;
+      border: 1px solid $border-highlight;
       svg {
         color: lighten($bg-dark, 5);
       }
