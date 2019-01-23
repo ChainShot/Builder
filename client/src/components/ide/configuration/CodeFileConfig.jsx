@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import apiMutation from '../../../utils/api/mutation';
-import confirm from '../../../utils/confirm';
+import * as dialog from '../../../utils/dialog';
 import './CodeFileConfig.scss';
+import DestroyCodeFile from './DestroyCodeFile';
 import StyledSwitch from '../../forms/StyledSwitch';
 import StyledSelect from '../../forms/StyledSelect';
 import StyledInput from '../../forms/StyledInput';
@@ -49,14 +50,6 @@ mutation modifyCodeFile(${args}) {
 }
 `
 
-const deleteMutation = `
-mutation deleteCodeFile($id: String) {
-  deleteCodeFile(id: $id) {
-    id
-  }
-}
-`
-
 const validators = {
   name: (x) => !!x,
   executablePath: (x) => !!x,
@@ -76,12 +69,10 @@ class CodeFileConfig extends Component {
     this.props.onSave(({codeFile}) => apiMutation(mutation, codeFile));
   }
   destroy = () => {
-    const { id } = this.props.codeFile;
-    confirm("Are you sure you want to delete this Code File?").then(() => {
-      apiMutation(deleteMutation, { id }).then(() => {
-        const { match: { url } } = this.props;
-        this.props.history.push(url.split('/').slice(0, -3).join('/'));
-      });
+    const { stage, codeFile } = this.props;
+    dialog.open(DestroyCodeFile, { stage, codeFile }).then(() => {
+      const { match: { url } } = this.props;
+      this.props.history.push(url.split('/').slice(0, -3).join('/'));
     });
   }
   render() {
@@ -118,7 +109,7 @@ class CodeFileConfig extends Component {
           errors={errors}
           field="fileLocation"
           value={fileLocation}
-          onChange={({ target: { value }}) => updateCodeFile({ fileLocation: value })} /> 
+          onChange={({ target: { value }}) => updateCodeFile({ fileLocation: value })} />
 
         <StyledSelect
           label="Editor Mode"
