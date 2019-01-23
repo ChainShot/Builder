@@ -1,9 +1,11 @@
 const { CONFIG_DIR, PROJECTS_DIR } = require('../config');
-const watch = require('node-watch');
 const configUpdate = require('./configUpdate');
 const projectUpdate = require('./projectUpdate');
 const slash = require('slash');
 const fs = require('fs-extra');
+const {Gaze} = require('gaze');
+const configGaze = new Gaze('**/*', { cwd: CONFIG_DIR });
+const projectGaze = new Gaze('**/*', { cwd: CONFIG_DIR });
 
 function getClients(io) {
   return new Promise((resolve, reject) => {
@@ -15,7 +17,7 @@ function getClients(io) {
 }
 
 const setup = (io) => {
-  watch(CONFIG_DIR, { recursive: true }, async (evt, name) => {
+  configGaze.on('all', async (evt, name) => {
     const exists = await fs.exists(name);
     // can't look up data for a file that no longer exists
     if(!exists) return;
@@ -35,7 +37,7 @@ const setup = (io) => {
     }
   });
 
-  watch(PROJECTS_DIR, { recursive: true }, async (evt, name) => {
+  projectGaze.on('all', async (evt, name) => {
     // convert to forward slash here so we can use it with abandon
     const posixFileName = slash(name);
 
