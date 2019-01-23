@@ -19,6 +19,7 @@ module.exports = (injections) => {
     await destroyStageContainers(stageContainerGroup);
     await configRemove(MODEL_DB.STAGE_CONTAINER_GROUPS, id);
     await directoryRemove(path.join(PROJECTS_DIR, stageContainerGroup.title));
+    return id;
   }
 
   return destroyStageContainerGroup;

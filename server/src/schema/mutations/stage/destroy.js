@@ -56,6 +56,7 @@ module.exports = (injections) => {
     for(let i = 0; i < relevant.length; i++) {
       await configWriter(MODEL_DB.STAGES, relevant[i]);
     }
+    return id;
   }
 
   return destroyStage;

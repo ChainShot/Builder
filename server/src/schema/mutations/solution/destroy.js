@@ -12,6 +12,7 @@ module.exports = ({
     const solution = await configResolver(MODEL_DB.SOLUTIONS, id);
     await removeProjectFiles(solution);
     await configRemove(MODEL_DB.SOLUTIONS, id);
+    return id;
   }
 
   return destroySolution;
