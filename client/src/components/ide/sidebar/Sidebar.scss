@@ -2,7 +2,7 @@
 @import 'SidebarList';
 
 .stage-container-sidebar {
-  overflow-y: scroll;
+  overflow-y: auto;
   background-color: $bg-container;
   width: $sidebar-width;
   min-width: $sidebar-width;
