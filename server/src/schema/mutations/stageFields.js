@@ -9,6 +9,7 @@ const {
   GraphQLString,
   GraphQLInputObjectType,
   GraphQLInt,
+  GraphQLBoolean,
 } = require('graphql');
 
 const ProjectSkeletonInputType = new GraphQLInputObjectType({
@@ -47,6 +48,11 @@ const creationArgs = {
   template: { type: GraphQLString },
 }
 
+const duplicateArgs = {
+  ...stageArgs,
+  createNew: { type: GraphQLBoolean },
+}
+
 module.exports = {
   destroyStage: {
     type: StageType,
@@ -62,7 +68,7 @@ module.exports = {
   },
   duplicateStage: {
     type: StageType,
-    args: stageArgs,
+    args: duplicateArgs,
     resolve: (_, props) => txWrapper(duplicateStage)(props),
   },
   modifyStage: {

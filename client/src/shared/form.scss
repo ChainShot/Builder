@@ -23,7 +23,7 @@ form {
       background-color: $bg-darkest;
       transition: border .25s;
       &:hover {
-        border: 1px solid #999;
+        border: 1px solid $border-highlight;
       }
       &:focus {
         outline-width: 0;
