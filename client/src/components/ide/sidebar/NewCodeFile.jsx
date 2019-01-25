@@ -6,7 +6,7 @@ import StyledInput from '../../forms/StyledInput';
 
 const mutation = `
 mutation createCodeFile($name: String, $testFixture: Boolean, $executablePath: String, $stageContainerId: String, $codeStageIds: [String]) {
-  createCodeFile(name: $name, testFixture: $testFixture, executablePath: $executablePath, stageContainerId: $stageContainerId, codeStageIds: $codeStageIds) {
+  createCodeFile(name: $name, executable: true, visible: true, testFixture: $testFixture, executablePath: $executablePath, stageContainerId: $stageContainerId, codeStageIds: $codeStageIds) {
     id
     name
     executablePath

@@ -20,16 +20,18 @@ class Output extends Component {
     const { stage, code, codeFile } = this.props;
     const { runIdx } = this.state;
 
-    const files = stage.codeFiles.map(({ id, initialCode, executablePath, hasProgress }) => {
-      if(id === codeFile.id) {
-        return { contents: code, path: executablePath }
-      }
-      if(hasProgress) {
-        const solution = stage.solutions.find(x => x.codeFileId === id);
-        return { contents: solution.code, path: executablePath }
-      }
-      return { contents: initialCode, path: executablePath }
-    });
+    const files = stage.codeFiles
+      .filter(x => x.executable)
+      .map(({ id, initialCode, executablePath, hasProgress }) => {
+        if(id === codeFile.id) {
+          return { contents: code, path: executablePath }
+        }
+        if(hasProgress) {
+          const solution = stage.solutions.find(x => x.codeFileId === id);
+          return { contents: solution.code, path: executablePath }
+        }
+        return { contents: initialCode, path: executablePath }
+      })
 
     const { languageVersion, language, testFramework } = stage;
     let response;
@@ -39,7 +41,7 @@ class Output extends Component {
         languageVersion,
         language,
         testFramework,
-      });  
+      });
     }
     catch(ex) {
       dialog.open(Error, { message: "Oof. Failed to Run Your Code just now. \nPlease try again soon." });
