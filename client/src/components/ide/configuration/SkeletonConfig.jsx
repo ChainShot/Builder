@@ -88,51 +88,53 @@ class SkeletonConfig extends Component {
   render() {
     const { title, description, thumbnailUrl, zipName, ghRepoId, ghNodeId } = this.getSkeleton();
     return (
-      <form className="config skeleton">
-        <label>
-          <Help hint={TITLE_HINT}> Title </Help>
-          <input type="text" className="styled" value={title}
-            onChange={({ target: { value }}) => this.updateSkeleton({ title: value })}/>
-        </label>
+      <div className="skeleton-config">
+        <form className="config">
+          <label>
+            <Help hint={TITLE_HINT}> Title </Help>
+            <input type="text" className="styled" value={title}
+              onChange={({ target: { value }}) => this.updateSkeleton({ title: value })}/>
+          </label>
 
-        <label>
-          <Help hint={DESCRIPTION_HINT}> Description </Help>
-          <input type="text" className="styled" value={description}
-            onChange={({ target: { value }}) => this.updateSkeleton({ description: value })}/>
-        </label>
+          <label>
+            <Help hint={DESCRIPTION_HINT}> Description </Help>
+            <input type="text" className="styled" value={description}
+              onChange={({ target: { value }}) => this.updateSkeleton({ description: value })}/>
+          </label>
 
-        <label>
-          <Help hint={THUMBNAIL_HINT}> Thumbnail URL </Help>
-          <input type="text" className="styled" value={thumbnailUrl}
-            onChange={({ target: { value }}) => this.updateSkeleton({ thumbnailUrl: value })}/>
-        </label>
+          <label>
+            <Help hint={THUMBNAIL_HINT}> Thumbnail URL </Help>
+            <input type="text" className="styled" value={thumbnailUrl}
+              onChange={({ target: { value }}) => this.updateSkeleton({ thumbnailUrl: value })}/>
+          </label>
 
-        <label>
-          <Help hint={ZIP_HINT}> Zip Name </Help>
-          <input type="text" className="styled" value={zipName}
-            onChange={({ target: { value }}) => this.updateSkeleton({ zipName: value })}/>
-        </label>
+          <label>
+            <Help hint={ZIP_HINT}> Zip Name </Help>
+            <input type="text" className="styled" value={zipName}
+              onChange={({ target: { value }}) => this.updateSkeleton({ zipName: value })}/>
+          </label>
 
-        <div className="btn btn-primary" onClick={this.updateGithub}>
-          <SVG name="octocat" />
-          Update Github Repo
-        </div>
+          <div className="btn btn-primary" onClick={this.updateGithub}>
+            <SVG name="octocat" />
+            Update Github Repo
+          </div>
 
-        <label>
-          <Help hint={GITHUB_REPO_HINT}> Github Repo ID </Help>
-          <input type="text" disabled className="styled" value={ghRepoId}/>
-        </label>
+          <label>
+            <Help hint={GITHUB_REPO_HINT}> Github Repo ID </Help>
+            <input type="text" disabled className="styled" value={ghRepoId}/>
+          </label>
 
-        <label>
-          <Help hint={GITHUB_NODE_HINT}> Github Node ID </Help>
-          <input type="text" disabled className="styled" value={ghNodeId}/>
-        </label>
+          <label>
+            <Help hint={GITHUB_NODE_HINT}> Github Node ID </Help>
+            <input type="text" disabled className="styled" value={ghNodeId}/>
+          </label>
 
-        <div className="btn btn-primary" onClick={this.destroySkeleton}>
-          <SVG name="trash" />
-          Destroy Skeleton
-        </div>
-      </form>
+          <div className="btn btn-primary" onClick={this.destroySkeleton}>
+            <SVG name="trash" />
+            Destroy Skeleton
+          </div>
+        </form>
+      </div>
     )
   }
 }

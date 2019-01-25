@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Stage.scss';
+import './configuration/Config.scss';
 import CodeFile from './codeFile/CodeFile';
 import Details from './markdown/Details';
 import Task from './markdown/Task';
