@@ -10,6 +10,7 @@ import {
   COMPLETE_CODE_EXECUTION,
   START_COMPILATION,
   COMPLETE_COMPILATION,
+  SET_CODE_FILE_PANE,
 } from "./actionTypes";
 
 export const startSave = () => ({ type: START_SAVE });
@@ -36,4 +37,9 @@ export const startCompilation = () => ({ type: START_COMPILATION });
 export const completeCompilation = (output) => ({
   type: COMPLETE_COMPILATION,
   payload: { output }
+});
+
+export const setCodeFilePane = (pane, stage) => ({
+  type: SET_CODE_FILE_PANE,
+  payload: { pane, stage }
 });

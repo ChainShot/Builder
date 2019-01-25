@@ -3,6 +3,17 @@ import { close } from '../utils/dialog';
 import './Dialog.scss';
 
 class Dialog extends Component {
+  shortcut = (evt) => {
+    if(evt.keyCode === 27) {
+      this.closeMe();
+    }
+  }
+  componentDidMount() {
+    document.addEventListener('keydown', this.shortcut)
+  }
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.shortcut)
+  }
   closeMe() {
     const { onClose } = this.props;
     if(onClose) {
