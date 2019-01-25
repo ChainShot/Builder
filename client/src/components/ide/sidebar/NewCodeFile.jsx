@@ -4,9 +4,17 @@ import apiMutation from '../../../utils/api/mutation';
 import StyledSwitch from '../../forms/StyledSwitch';
 import StyledInput from '../../forms/StyledInput';
 
+const EXTENSIONS_TO_MODE = {
+  js: 'javascript',
+  json: 'json',
+  sol: 'sol',
+  py: 'python',
+}
+
 const variables = [
   ['name', 'String'],
   ['stageContainerId', 'String'],
+  ['mode', 'String'],
   ['codeStageIds', '[String]'],
   ['executablePath', 'String'],
   ['executable', 'Boolean'],
@@ -58,12 +66,18 @@ class NewCodeFile extends Component {
     else if(language === 'solidity' || language === 'vyper') {
       executablePath = `contracts/${name}`;
     }
+    const [extension] = name.split('.').slice(-1);
+    let mode = "";
+    if(EXTENSIONS_TO_MODE[extension]) {
+      mode = EXTENSIONS_TO_MODE[extension];
+    }
     const variables = {
       name,
       stageContainerId: stageContainer.id,
       codeStageIds: [stage.id],
       testFixture,
       executablePath,
+      mode,
       executable: true,
       visible: true,
       readOnly: testFixture,
