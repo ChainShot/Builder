@@ -4,15 +4,26 @@ import apiMutation from '../../../utils/api/mutation';
 import StyledSwitch from '../../forms/StyledSwitch';
 import StyledInput from '../../forms/StyledInput';
 
+const variables = [
+  ['name', 'String'],
+  ['stageContainerId', 'String'],
+  ['codeStageIds', '[String]'],
+  ['executablePath', 'String'],
+  ['executable', 'Boolean'],
+  ['visible', 'Boolean'],
+  ['testFixture', 'Boolean'],
+  ['readOnly', 'Boolean'],
+  ['hasProgress', 'Boolean'],
+]
+
+const args = variables.map(([prop, type]) => `$${prop}: ${type}`).join(', ');
+const mapping = variables.map(([prop, type]) => `${prop}: $${prop}`).join(', ');
+const returns = variables.map(([prop]) => `${prop}`).join('\n    ');
+
 const mutation = `
-mutation createCodeFile($name: String, $testFixture: Boolean, $executablePath: String, $stageContainerId: String, $codeStageIds: [String]) {
-  createCodeFile(name: $name, executable: true, visible: true, testFixture: $testFixture, executablePath: $executablePath, stageContainerId: $stageContainerId, codeStageIds: $codeStageIds) {
-    id
-    name
-    executablePath
-    stageContainerId
-    testFixture
-    codeStageIds
+mutation createCodeFile(${args}) {
+  createCodeFile(${mapping}) {
+    ${returns}
   }
 }
 `;
@@ -52,7 +63,11 @@ class NewCodeFile extends Component {
       stageContainerId: stageContainer.id,
       codeStageIds: [stage.id],
       testFixture,
-      executablePath
+      executablePath,
+      executable: true,
+      visible: true,
+      readOnly: testFixture,
+      hasProgress: !testFixture,
     }
     apiMutation(mutation, variables).then(() => {
       close();
