@@ -9,16 +9,11 @@ import { completeCodeExecution, startCodeExecution } from '../../../../redux/act
 import { connect } from 'react-redux';
 
 class Output extends Component {
-  state = {
-    runIdx: 0,
-  }
   cancelRun = () => {
-    this.setState({ runIdx: this.state.runIdx + 1 });
     this.props.completeCodeExecution(null);
   }
   runCode = async () => {
-    const { stage, code, codeFile } = this.props;
-    const { runIdx } = this.state;
+    const { stage, code, codeFile, executionState: { runIdx } } = this.props;
 
     const files = stage.codeFiles
       .filter(x => x.executable)
@@ -48,7 +43,8 @@ class Output extends Component {
       this.props.completeCodeExecution();
       return;
     }
-    if(this.state.runIdx === runIdx) {
+    // if the run idx hasnt changed since this run started, display it
+    if(this.props.executionState.runIdx === runIdx) {
       this.props.completeCodeExecution(response.data);
     }
   }
