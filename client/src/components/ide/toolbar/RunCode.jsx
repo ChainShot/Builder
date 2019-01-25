@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './RunCode.scss';
 import SVG from '../../SVG';
-import { startCodeExecution } from '../../../redux/actions';
+import { startCodeExecution, completeCodeExecution } from '../../../redux/actions';
 import isMacLike from '../../../utils/isMacLike';
 import { connect } from 'react-redux';
 
@@ -9,6 +9,10 @@ class RunCode extends Component {
   shortcut = (evt) => {
     if((evt.ctrlKey || evt.metaKey) && (evt.keyCode === 13) && !(evt.shiftKey || evt.altKey)) {
       this.props.startCodeExecution();
+      evt.preventDefault();
+    }
+    if((evt.ctrlKey || evt.metaKey) && (evt.keyCode === 27) && !(evt.shiftKey || evt.altKey)) {
+      this.props.completeCodeExecution();
       evt.preventDefault();
     }
   }
@@ -32,7 +36,7 @@ class RunCode extends Component {
 }
 
 const mapStateToProps = ({ executionState }) => ({ executionState });
-const mapDispatchToProps = { startCodeExecution }
+const mapDispatchToProps = { startCodeExecution, completeCodeExecution }
 
 export default connect(
   mapStateToProps,

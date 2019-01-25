@@ -6,6 +6,7 @@ import {
 const initialState = {
   running: false,
   output: null,
+  runIdx: 0,
 }
 
 export default function(state = initialState, action) {
@@ -20,6 +21,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         running: false,
+        runIdx: state.runIdx + 1,
         output,
       }
     default:
