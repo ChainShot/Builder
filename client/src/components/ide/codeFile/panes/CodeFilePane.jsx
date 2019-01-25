@@ -5,12 +5,12 @@ import Compilation from './Compilation';
 const OUTPUT_TAB = 'output';
 const COMPILATION_TAB = 'compilation';
 
-class CodeFileToolbarPane extends Component {
+class CodeFilePane extends Component {
   render() {
     const { pane, stage, codeFile, changePane, code } = this.props;
     return (
       <React.Fragment>
-        <Output stage={stage} 
+        <Output stage={stage}
                 code={code}
                 codeFile={codeFile}
                 shouldShow={pane === OUTPUT_TAB}
@@ -25,4 +25,4 @@ class CodeFileToolbarPane extends Component {
   }
 }
 
-export default CodeFileToolbarPane;
+export default CodeFilePane;
