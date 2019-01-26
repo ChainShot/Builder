@@ -9,7 +9,7 @@ class BadgeTypeToolbar extends Component {
       <React.Fragment>
         <SaveToolbar />
         <li className="docs">
-          <a href={`${READ_THE_DOCS}/model_types.html#code-files`} target="_blank" rel="noopener noreferrer">
+          <a href={`${READ_THE_DOCS}/model_types.html#badge-types`} target="_blank" rel="noopener noreferrer">
             <SVG name="book" />
             <div> Badge Docs </div>
           </a>
