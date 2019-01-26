@@ -31,6 +31,7 @@ const returns = variables.map(([prop]) => `${prop}`).join('\n    ');
 const mutation = `
 mutation createCodeFile(${args}) {
   createCodeFile(${mapping}) {
+    id
     ${returns}
   }
 }
@@ -83,8 +84,8 @@ class NewCodeFile extends Component {
       readOnly: testFixture,
       hasProgress: !testFixture,
     }
-    apiMutation(mutation, variables).then(() => {
-      close();
+    apiMutation(mutation, variables).then(({ id }) => {
+      close(id);
     });
   }
   validate() {
