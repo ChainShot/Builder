@@ -46,7 +46,7 @@ class StageNav extends Component {
     if(match) classes.push('active');
     return (
       <li className="caret">
-        <a className={classes.join(' ')} onClick={this.toggle}> {title} </a>
+        <a href="#0" className={classes.join(' ')} onClick={this.toggle}> {title} </a>
         <Route path={path} children={() => (isOpen && <CodeFilesNav {...this.props} basename={path} />)} />
       </li>
     )
