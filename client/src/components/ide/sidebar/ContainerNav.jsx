@@ -17,7 +17,7 @@ class ContainerNav extends Component {
   }
   render() {
     const { stageContainer, location, basename, sidebarState: { containerOpen } } = this.props;
-    const { stageContainerGroup: { title }, version } = stageContainer;
+    const { stageContainerGroup: { title } } = stageContainer;
     const classes = ['directory'];
     if(containerOpen) classes.push('open');
     const matchBasename = matchPath(location.pathname, { path: basename });

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import StyledSwitch from '../../forms/StyledSwitch';
-import StyledSelect from '../../forms/StyledSelect';
 import StyledInput from '../../forms/StyledInput';
 import apiMutation from '../../../utils/api/mutation';
 import confirm from '../../../utils/confirm';
@@ -62,8 +60,7 @@ class BadgeConfig extends Component {
     });
   }
   render() {
-    const { badgeType, update, saveState: { errors } } = this.props;
-    const {
+    const { update, saveState: { errors },
       badgeType: {
         description, name, thumbnailUrl, badgeLimit
       } } = this.props;
