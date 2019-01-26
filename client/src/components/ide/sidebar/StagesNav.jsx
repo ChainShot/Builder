@@ -12,7 +12,6 @@ class StagesNav extends Component {
   render() {
     const { stageContainer: { id, stages }} = this.props;
     const sortedStages = stages.sort((a,b) => a.position - b.position);
-    console.log(this.props);
     return (
       <ul className="stages-nav">
         { sortedStages.map(stage => <StageNav key={stage.id} stage={stage} {...this.props} /> ) }
