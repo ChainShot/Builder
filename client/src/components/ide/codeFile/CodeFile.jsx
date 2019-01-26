@@ -43,8 +43,8 @@ class CodeFile extends Component {
   render() {
     const { stage, match: { url, params: { codeFileId } } } = this.props;
     const codeFile = this.getCodeFile();
-    const { initialCode, mode } = codeFile;
     if(!codeFile) return null;
+    const { initialCode, mode } = codeFile;
     return (
       <div className="code-file">
         <PropsRoute path={`${url}/`} exact key={codeFileId} component={UpdateWrapper}

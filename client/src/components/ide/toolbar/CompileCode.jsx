@@ -22,7 +22,7 @@ class CompileCode extends Component {
   }
   render() {
     const { codeFile, startCompilation, compilationState: { compiling } } = this.props;
-    if(!COMPILE_REGEX.test(codeFile.name)) return null;
+    if(!codeFile || !COMPILE_REGEX.test(codeFile.name)) return null;
     const shortcut = isMacLike() ? 'CMD + \'' : 'CTRL + \'';
     const classes = ['compile-code'];
     if(compiling) classes.push('running');

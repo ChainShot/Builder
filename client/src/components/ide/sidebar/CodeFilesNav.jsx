@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink, Route } from 'react-router-dom';
+import { NavLink, Route, withRouter } from 'react-router-dom';
 import CodeFileOptionsNav from './CodeFileOptionsNav';
 import './CodeFilesNav.scss';
 import * as dialog from '../../../utils/dialog';
@@ -23,13 +23,19 @@ class CodeFilesNav extends Component {
       )
     }
   }
-  renderAddCodeFile() {
+  addCodeFile = () => {
     const { stage, stageContainer } = this.props;
-    const { type } = stage;
+    dialog.open(AddCodeFile, { stage, stageContainer }).then((id) => {
+      const { basename } = this.props;
+      this.props.history.push(`${basename}/file/${id}`);
+    });
+  }
+  renderAddCodeFile() {
+    const { stage: { type } } = this.props;
     if(type === 'CodeStage') {
       return (
         <li>
-          <div className="action" onClick={() => dialog.open(AddCodeFile, { stage, stageContainer })}>
+          <div className="action" onClick={this.addCodeFile}>
             <SVG name="file-plus"/>
             <span>add code file…</span>
           </div>
@@ -123,4 +129,4 @@ class CodeFileNav extends Component {
   }
 }
 
-export default CodeFilesNav;
+export default withRouter(CodeFilesNav);
