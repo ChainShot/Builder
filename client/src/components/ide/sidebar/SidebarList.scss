@@ -21,7 +21,6 @@
 
     &:hover {
       cursor: pointer;
-      color: lighten($brand-active, 20);
     }
 
     span {
@@ -50,17 +49,21 @@
     &::before {
       content: '';
       display: block;
-      @include caret-right(5px, white);
+      @include caret-right(5px);
       margin-right: 12px;
     }
+    &.active::before {
+      @include caret-right(5px, $brand-active);
+    }
 
-    &:hover {
+    &.open {
       &::before {
-        @include caret-right(5px, lighten($brand-active, 20));
+        @include caret-down(5px);
+        margin-right: 7px;
       }
     }
 
-    &.active {
+    &.open.active {
       &::before {
         @include caret-down(5px, $brand-active);
         margin-right: 7px;

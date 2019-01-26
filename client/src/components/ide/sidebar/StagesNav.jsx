@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { NavLink, Route } from 'react-router-dom';
+import { Route, matchPath } from 'react-router-dom';
 import CodeFilesNav from './CodeFilesNav';
 import * as dialog from '../../../utils/dialog';
+import { openSidebarStage, closeSidebarStage } from '../../../redux/actions';
 import AddStage from './AddStage';
 import SVG from '../../SVG';
 import './StagesNav.scss';
+import { connect } from 'react-redux';
 
 class StagesNav extends Component {
   render() {
@@ -25,16 +27,37 @@ class StagesNav extends Component {
 }
 
 class StageNav extends Component {
+  toggle = () => {
+    const { stage: { id }, sidebarState: { stagesOpen }} = this.props;
+    if(stagesOpen.indexOf(id) >= 0) {
+      this.props.closeSidebarStage(id);
+    }
+    else {
+      this.props.openSidebarStage(id);
+    }
+  }
   render() {
-    const { basename, stage: { id, title }} = this.props;
+    const { basename, location, stage: { id, title }, sidebarState: { stagesOpen }} = this.props;
     const path = `${basename}/stage/${id}`;
+    const isOpen = stagesOpen.indexOf(id) >= 0;
+    const classes = [];
+    if(isOpen) classes.push('open');
+    const match = matchPath(location.pathname, { path });
+    if(match) classes.push('active');
     return (
       <li className="caret">
-        <NavLink to={path}> {title} </NavLink>
-        <Route path={path} children={({ match }) => (match && <CodeFilesNav {...this.props} basename={path} />)} />
+        <a href="#0" className={classes.join(' ')} onClick={this.toggle}> {title} </a>
+        <Route path={path} children={() => (isOpen && <CodeFilesNav {...this.props} basename={path} />)} />
       </li>
     )
   }
 }
 
-export default StagesNav;
+
+const mapStateToProps = ({ sidebarState }) => ({ sidebarState });
+const mapDispatchToProps = { openSidebarStage, closeSidebarStage }
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(StagesNav);
