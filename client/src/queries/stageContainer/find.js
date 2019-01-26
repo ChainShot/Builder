@@ -13,6 +13,13 @@ query findStageContainer($id: String) {
       thumbnailUrl
       estimatedTime
       title
+      badgeTypes {
+        id
+        badgeLimit
+        description
+        name
+        thumbnailUrl
+      }
   	}
     stages {
       id

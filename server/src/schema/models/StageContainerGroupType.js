@@ -6,7 +6,7 @@ const {
   GraphQLInt,
 } = require('graphql');
 const { MODEL_DB } = require('../../config');
-const { configDocumentReader } = require('../../ioHelpers').dethunked;
+const { configDocumentReader, configResolver } = require('../../ioHelpers').dethunked;
 
 const StageContainerGroupType = new GraphQLObjectType({
   name: 'StageContainerGroup',
@@ -18,6 +18,13 @@ const StageContainerGroupType = new GraphQLObjectType({
     productionReady: { type: GraphQLBoolean },
     thumbnailUrl: { type: GraphQLString },
     estimatedTime: { type: GraphQLInt },
+    badgeTypes: {
+      type: new GraphQLList(require('./BadgeType')),
+      resolve: async ({ badgeTypeIds }) => {
+        const ids = (badgeTypeIds || []);
+        return Promise.all(ids.map(id => configResolver(MODEL_DB.BADGE_TYPES, id)));
+      }
+    },
     stageContainers: {
       type: new GraphQLList(require('./StageContainerType')),
       resolve: async ({ id }) => {

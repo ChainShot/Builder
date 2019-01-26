@@ -55,7 +55,7 @@ class AddSkeleton extends Component {
           </label>
 
           <div className="actions">
-            <div className="submit" onClick={() => this.onSubmit()}>
+            <div className="btn btn-primary" onClick={() => this.onSubmit()}>
               Add Project Skeleton
             </div>
           </div>

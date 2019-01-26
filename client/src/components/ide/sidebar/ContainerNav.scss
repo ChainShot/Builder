@@ -1,0 +1,14 @@
+@import '../../../shared/variables';
+@import 'SidebarList';
+
+.container-nav {
+  @extend %sidebar-list;
+  user-select: none;
+
+  > li {
+    @extend %sidebar-list-item;
+    &.caret {
+      @extend %caret-list-item;
+    }
+  }
+}
