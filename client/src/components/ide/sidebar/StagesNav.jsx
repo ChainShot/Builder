@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, matchPath } from 'react-router-dom';
+import { matchPath } from 'react-router-dom';
 import CodeFilesNav from './CodeFilesNav';
 import * as dialog from '../../../utils/dialog';
 import { openSidebarStage, closeSidebarStage } from '../../../redux/actions';
@@ -40,14 +40,14 @@ class StageNav extends Component {
     const { basename, location, stage: { id, title }, sidebarState: { stagesOpen }} = this.props;
     const path = `${basename}/stage/${id}`;
     const isOpen = stagesOpen.indexOf(id) >= 0;
-    const classes = [];
+    const classes = ['directory'];
     if(isOpen) classes.push('open');
     const match = matchPath(location.pathname, { path });
     if(match) classes.push('active');
     return (
       <li className="caret">
-        <a href="#0" className={classes.join(' ')} onClick={this.toggle}> {title} </a>
-        <Route path={path} children={() => (isOpen && <CodeFilesNav {...this.props} basename={path} />)} />
+        <div className={classes.join(' ')} onClick={this.toggle}> {title} </div>
+        { isOpen && <CodeFilesNav {...this.props} basename={path} /> }
       </li>
     )
   }

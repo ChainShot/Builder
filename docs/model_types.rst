@@ -74,7 +74,7 @@ id                      Mongo ID identifier
 title                   Short Name
 type                    See :ref:`stage_types`
 completionMessage       A message shown to the user after completion
-position                Integer value for the stage position in the container (zero-indexed)        
+position                Integer value for the stage position in the container (zero-indexed)
 task                    Markdown file describing the users task in this stage
 details                 Markdown file containing additional context information for the user
 ======================  ====================================================================
@@ -129,3 +129,28 @@ codeFileId              Which of the :ref:`code_files` this belongs to
 stageId                 Which :ref:`code_stage` this belongs to
 code                    The actual solution code
 ======================  ====================================================================
+
+
+.. _badge_types:
+
+Badge Types
+===========
+
+Badges are a great way to reward users for completing your content! The BadgeType
+model defines the badge classification.
+
+Each user who completes your content will be rewarded with an instance of that
+badgeType as long as the `badgeLimit` hasn't been reached.
+
+Fields
+------
+
+====================  ====================================================
+Field                 Description
+====================  ====================================================
+id                    Mongo ID identifier
+name                  Short Name
+description           How did the user earn this badge?
+badgeLimit            The number of badges of this type to be distributed
+thumbnailUrl          A URL for the image of this badge
+====================  ====================================================

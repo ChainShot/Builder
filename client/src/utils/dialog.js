@@ -8,9 +8,13 @@ const open = (Component = Dialog, props = {}) => {
   return new Promise((resolve) => resolveFn = resolve);
 }
 
+const cancel = () => {
+  ReactDOM.unmountComponentAtNode(document.getElementById('dialog'));
+}
+
 const close = (...params) => {
   ReactDOM.unmountComponentAtNode(document.getElementById('dialog'));
   resolveFn(...params);
 }
 
-export { open, close };
+export { open, close, cancel };

@@ -14,7 +14,7 @@
   flex-direction: column;
   min-height: 30px;
 
-  > a, > .action {
+  > a, > .action, > .directory {
     padding: 15px 20px 8px;
     display: flex;
     align-items: center;
@@ -45,7 +45,7 @@
 }
 
 %caret-list-item {
-  > a {
+  > a, .directory {
     &::before {
       content: '';
       display: block;

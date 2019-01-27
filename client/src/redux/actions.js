@@ -13,6 +13,8 @@ import {
   SET_CODE_FILE_PANE,
   CLOSE_SIDEBAR_STAGE,
   OPEN_SIDEBAR_STAGE,
+  CLOSE_SIDEBAR_CONTAINER,
+  OPEN_SIDEBAR_CONTAINER,
 } from "./actionTypes";
 
 export const startSave = () => ({ type: START_SAVE });
@@ -54,3 +56,6 @@ export const closeSidebarStage = (stageId) => ({
   type: CLOSE_SIDEBAR_STAGE,
   payload: { stageId }
 });
+
+export const openSidebarContainer = () => ({ type: OPEN_SIDEBAR_CONTAINER });
+export const closeSidebarContainer = () => ({ type: CLOSE_SIDEBAR_CONTAINER });

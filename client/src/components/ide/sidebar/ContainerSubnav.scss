@@ -1,0 +1,15 @@
+@import '../../../shared/variables';
+@import 'SidebarList';
+
+.container-nav .sub-nav {
+  @extend %sidebar-list;
+  margin-left: 35px;
+
+  > li {
+    @extend %sidebar-list-item;
+
+    > a, > .action {
+      padding: 4px 10px;
+    }
+  }
+}
