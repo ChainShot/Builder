@@ -8,6 +8,7 @@ const TEST_FRAMEWORK_HINT = 'The framework used for test assertions';
 
 const languageVersionOptions = [
   { label: 'Solidity v0.4.19', value: '0.4.19' },
+  { label: 'Solidity v0.5.0', value: '0.5.0' },
   { label: 'Vyper v0.1', value: '0.1.0b3' },
   { label: 'Node 10.x', value: '10.x' },
   { label: 'Node 10.x w/ Babel', value: '10.x/babel' },
