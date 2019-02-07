@@ -3,11 +3,16 @@ import './CodeFilePanes.scss';
 import CodeFilePane from './CodeFilePane';
 import CompilationTab from './CompilationTab';
 import OutputTab from './OutputTab';
+import { setCodeFilePane } from '../../../../redux/actions';
 import { connect } from 'react-redux';
 
 class CodeFilePanes extends Component {
-  state = {
-    pane: null,
+  componentWillMount() {
+    const { codeFilePaneState: { pane, stage } } = this.props;
+    if(pane && stage !== this.props.stage) {
+      // the pane was open on another stage, let's close it before rendering
+      this.changePane(null);
+    }
   }
   componentDidUpdate(prevProps) {
     const { executionState: { running }} = this.props;
@@ -20,15 +25,20 @@ class CodeFilePanes extends Component {
     }
   }
   changePane = (pane) => {
-    this.setState({ pane });
+    const { stage } = this.props;
+    this.props.setCodeFilePane(pane, stage);
+    // resize event for the monaco display
     window.requestAnimationFrame(() => window.dispatchEvent(new CustomEvent('resize')));
   }
   classes(pane) {
-    return this.state.pane === pane ? 'active' : '';
+    const { codeFilePaneState } = this.props;
+    if(codeFilePaneState.pane === pane) {
+      return 'active';
+    }
+    return '';
   }
   render() {
-    const { pane } = this.state;
-    const { stage, codeFile, code } = this.props;
+    const { stage, codeFile, code, codeFilePaneState: { pane } } = this.props;
     return (
       <div className="code-file-toolbar">
         <CodeFilePane code={code} changePane={this.changePane} pane={pane} stage={stage} codeFile={codeFile} />
@@ -41,8 +51,12 @@ class CodeFilePanes extends Component {
   }
 }
 
-const mapStateToProps = ({ executionState, compilationState }) => ({ executionState, compilationState });
+const mapStateToProps = ({ executionState, compilationState, codeFilePaneState }) =>
+  ({ executionState, compilationState, codeFilePaneState });
+
+const mapDispatchToProps = { setCodeFilePane }
 
 export default connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(CodeFilePanes);

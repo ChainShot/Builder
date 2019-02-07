@@ -13,7 +13,7 @@ import {STAGE_TYPE_OPTIONS} from '../../../config';
 import confirm from '../../../utils/confirm';
 import * as dialog from '../../../utils/dialog';
 import SVG from '../../SVG';
-import './ContainerConfig.scss';
+import './StageConfig.scss';
 
 const TITLE_HINT = 'Short name displayed to the user';
 const POSITION_HINT = 'The order of this stage relative to other stages';
@@ -78,58 +78,60 @@ class StageConfig extends Component {
     const { title, position, type } = stage;
     const updateStage = (state) => update({ stage: state });
     return (
-      <form className="config" ref="container">
-        <StyledInput
-          label="Title"
-          type="text"
-          value={title}
-          errors={errors}
-          field="title"
-          hint={TITLE_HINT}
-          onChange={({ target: { value }}) => updateStage({ title: value })}/>
+      <div className="stage-config">
+        <form className="config" ref="container">
+          <StyledInput
+            label="Title"
+            type="text"
+            value={title}
+            errors={errors}
+            field="title"
+            hint={TITLE_HINT}
+            onChange={({ target: { value }}) => updateStage({ title: value })}/>
 
-        <StyledInput
-          label="Position"
-          type="number"
-          field="position"
-          errors={errors}
-          value={position}
-          hint={POSITION_HINT}
-          onChange={({ target: { value }}) => updateStage({ position: +value })} />
+          <StyledInput
+            label="Position"
+            type="number"
+            field="position"
+            errors={errors}
+            value={position}
+            hint={POSITION_HINT}
+            onChange={({ target: { value }}) => updateStage({ position: +value })} />
 
-        <StyledSelect
-          label="Type"
-          hint={TYPE_HINT}
-          onChange={(type) => updateStage({ type })}
-          value={type}
-          options={STAGE_TYPE_OPTIONS} />
+          <StyledSelect
+            label="Type"
+            hint={TYPE_HINT}
+            onChange={(type) => updateStage({ type })}
+            value={type}
+            options={STAGE_TYPE_OPTIONS} />
 
-        <CodeStageConfig
-          stage={stage}
-          onChange={updateStage} />
+          <CodeStageConfig
+            stage={stage}
+            onChange={updateStage} />
 
-        <UiStageConfig
-          stage={stage}
-          onChange={updateStage} />
+          <UiStageConfig
+            stage={stage}
+            onChange={updateStage} />
 
-        <DownloadStageConfig
-          stage={stage}
-          onChange={updateStage} />
+          <DownloadStageConfig
+            stage={stage}
+            onChange={updateStage} />
 
-        <VideoStageConfig
-          stage={stage}
-          onChange={updateStage} />
+          <VideoStageConfig
+            stage={stage}
+            onChange={updateStage} />
 
-        <div className="btn btn-primary" onClick={this.duplicateStage}>
-          <SVG name="clone" />
-          Duplicate stage
-        </div>
+          <div className="btn btn-primary" onClick={this.duplicateStage}>
+            <SVG name="clone" />
+            Duplicate stage
+          </div>
 
-        <div className="btn btn-primary" onClick={this.destroyStage}>
-          <SVG name="trash" />
-          Destroy stage
-        </div>
-      </form>
+          <div className="btn btn-primary" onClick={this.destroyStage}>
+            <SVG name="trash" />
+            Destroy stage
+          </div>
+        </form>
+      </div>
     )
   }
 }

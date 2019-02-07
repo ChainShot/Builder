@@ -1,18 +1,7 @@
 @import '../../../shared/variables';
 
-.config {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  padding: 25px 55px;
-  max-width: 550px;
-
-  .btn {
-    margin-top: 10px;
-    font-size: 1.1em;
-  }
-
-  input, textarea {
-    width: 100%;
-  }
+.container-config {
+  height: 100%;
+  overflow-y: auto;
+  width: calc(100vw - #{$sidebar-width});
 }

@@ -9,27 +9,24 @@ import { completeCodeExecution, startCodeExecution } from '../../../../redux/act
 import { connect } from 'react-redux';
 
 class Output extends Component {
-  state = {
-    runIdx: 0,
-  }
   cancelRun = () => {
-    this.setState({ runIdx: this.state.runIdx + 1 });
     this.props.completeCodeExecution(null);
   }
   runCode = async () => {
-    const { stage, code, codeFile } = this.props;
-    const { runIdx } = this.state;
+    const { stage, code, codeFile, executionState: { runIdx } } = this.props;
 
-    const files = stage.codeFiles.map(({ id, initialCode, executablePath, hasProgress }) => {
-      if(id === codeFile.id) {
-        return { contents: code, path: executablePath }
-      }
-      if(hasProgress) {
-        const solution = stage.solutions.find(x => x.codeFileId === id);
-        return { contents: solution.code, path: executablePath }
-      }
-      return { contents: initialCode, path: executablePath }
-    });
+    const files = stage.codeFiles
+      .filter(x => x.executable)
+      .map(({ id, initialCode, executablePath, hasProgress }) => {
+        if(id === codeFile.id) {
+          return { contents: code, path: executablePath }
+        }
+        if(hasProgress) {
+          const solution = stage.solutions.find(x => x.codeFileId === id);
+          return { contents: solution.code, path: executablePath }
+        }
+        return { contents: initialCode, path: executablePath }
+      })
 
     const { languageVersion, language, testFramework } = stage;
     let response;
@@ -39,14 +36,15 @@ class Output extends Component {
         languageVersion,
         language,
         testFramework,
-      });  
+      });
     }
     catch(ex) {
       dialog.open(Error, { message: "Oof. Failed to Run Your Code just now. \nPlease try again soon." });
       this.props.completeCodeExecution();
       return;
     }
-    if(this.state.runIdx === runIdx) {
+    // if the run idx hasnt changed since this run started, display it
+    if(this.props.executionState.runIdx === runIdx) {
       this.props.completeCodeExecution(response.data);
     }
   }

@@ -1,14 +1,25 @@
 import React, { Component } from 'react';
-import { close } from '../utils/dialog';
+import { cancel } from '../utils/dialog';
 import './Dialog.scss';
 
 class Dialog extends Component {
-  closeMe() {
+  shortcut = (evt) => {
+    if(evt.keyCode === 27) {
+      this.cancelMe();
+    }
+  }
+  componentDidMount() {
+    document.addEventListener('keydown', this.shortcut)
+  }
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.shortcut)
+  }
+  cancelMe() {
     const { onClose } = this.props;
     if(onClose) {
       onClose();
     }
-    close();
+    cancel();
   }
   render() {
     const { title, className } = this.props;
@@ -18,13 +29,13 @@ class Dialog extends Component {
         <div className={classes}>
           <div className="heading">
             <div className="title">{ title || 'Dialog' }</div>
-            <div className="close" onClick={() => this.closeMe()}></div>
+            <div className="close" onClick={() => this.cancelMe()}></div>
           </div>
           <div className="content">
             { this.props.children }
           </div>
         </div>
-        <div className="overlay" onClick={() => this.closeMe()} />
+        <div className="overlay" onClick={() => this.cancelMe()} />
       </React.Fragment>
     );
   }

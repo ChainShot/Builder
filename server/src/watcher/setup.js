@@ -1,8 +1,5 @@
 const { CONTENT_DIR } = require('../config');
 const watch = require('node-watch');
-const configUpdate = require('./configUpdate');
-const projectUpdate = require('./projectUpdate');
-const slash = require('slash');
 const fs = require('fs-extra');
 
 function getClients(io) {

@@ -1,21 +1,9 @@
-const {
-  codeFileFields,
-  stageContainerFields,
-  stageFields,
-  solutionFields,
-  stageContainerGroupFields
-} = require('./mutations');
+const fields = require('./mutations');
 const { GraphQLObjectType } = require('graphql');
 
 const MutationType = new GraphQLObjectType({
   name: 'Mutation',
-  fields: {
-    ...codeFileFields,
-    ...stageContainerFields,
-    ...stageFields,
-    ...stageContainerGroupFields,
-    ...solutionFields,
-  }
+  fields
 })
 
 module.exports = MutationType;

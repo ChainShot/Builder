@@ -124,75 +124,77 @@ class ContainerConfig extends Component {
     const updateStageContainer = (state) => update({ stageContainer: state })
     const updateStageContainerGroup = (state) => update({ stageContainer: { stageContainerGroup: state } })
     return (
-      <form className="config">
-        <StyledInput
-          hint={TITLE_HINT}
-          label="Title"
-          type="text"
-          value={title}
-          errors={errors}
-          field="title"
-          onChange={({ target: { value }}) => updateStageContainerGroup({ title: value })} />
+      <div className="container-config">
+        <form className="config">
+          <StyledInput
+            hint={TITLE_HINT}
+            label="Title"
+            type="text"
+            value={title}
+            errors={errors}
+            field="title"
+            onChange={({ target: { value }}) => updateStageContainerGroup({ title: value })} />
 
-        <StyledInput
-          hint={DESCRIPTION_HINT}
-          label="Description"
-          type="text"
-          value={description}
-          errors={errors}
-          field="description"
-          onChange={({ target: { value }}) => updateStageContainerGroup({ description: value })} />
+          <StyledInput
+            hint={DESCRIPTION_HINT}
+            label="Description"
+            type="text"
+            value={description}
+            errors={errors}
+            field="description"
+            onChange={({ target: { value }}) => updateStageContainerGroup({ description: value })} />
 
-        <StyledInput
-          hint={VERSION_HINT}
-          label="Version"
-          type="text"
-          value={version}
-          errors={errors}
-          field="version"
-          onChange={({ target: { value }}) => updateStageContainer({ version: value })} />
+          <StyledInput
+            hint={VERSION_HINT}
+            label="Version"
+            type="text"
+            value={version}
+            errors={errors}
+            field="version"
+            onChange={({ target: { value }}) => updateStageContainer({ version: value })} />
 
-        <StyledInput
-          hint={ESTIMATED_TIME_HINT}
-          label="Estimated Time in Minutes"
-          type="number"
-          value={estimatedTime}
-          errors={errors}
-          field="estimatedTime"
-          onChange={({ target: { value }}) => updateStageContainerGroup({ estimatedTime: +value })} />
+          <StyledInput
+            hint={ESTIMATED_TIME_HINT}
+            label="Estimated Time in Minutes"
+            type="number"
+            value={estimatedTime}
+            errors={errors}
+            field="estimatedTime"
+            onChange={({ target: { value }}) => updateStageContainerGroup({ estimatedTime: +value })} />
 
-        <StyledInput
-          hint={THUMBNAIL_HINT}
-          label="Thumbnail URL"
-          type="text"
-          value={thumbnailUrl}
-          errors={errors}
-          field="thumbnailUrl"
-          onChange={({ target: { value }}) => updateStageContainerGroup({ thumbnailUrl: value })} />
+          <StyledInput
+            hint={THUMBNAIL_HINT}
+            label="Thumbnail URL"
+            type="text"
+            value={thumbnailUrl}
+            errors={errors}
+            field="thumbnailUrl"
+            onChange={({ target: { value }}) => updateStageContainerGroup({ thumbnailUrl: value })} />
 
-        <StyledSelect
-          label="Type"
-          hint={TYPE_HINT}
-          onChange={(type) => updateStageContainer({ type })}
-          value={type}
-          options={typeOptions} />
+          <StyledSelect
+            label="Type"
+            hint={TYPE_HINT}
+            onChange={(type) => updateStageContainer({ type })}
+            value={type}
+            options={typeOptions} />
 
-        <StyledSwitch
-          label="Production Ready?"
-          hint={PRODUCTION_READY_HINT}
-          onChange={(productionReady) => updateStageContainerGroup({ productionReady })}
-          checked={!!productionReady} />
+          <StyledSwitch
+            label="Production Ready?"
+            hint={PRODUCTION_READY_HINT}
+            onChange={(productionReady) => updateStageContainerGroup({ productionReady })}
+            checked={!!productionReady} />
 
-        <div className="btn btn-primary" onClick={this.destroyContainer}>
-          <SVG name="trash" />
-          Destroy this Version (v. { version })
-        </div>
+          <div className="btn btn-primary" onClick={this.destroyContainer}>
+            <SVG name="trash" />
+            Destroy this Version (v. { version })
+          </div>
 
-        <div className="btn btn-primary" onClick={this.destroyGroup}>
-          <SVG name="trash" />
-          Destroy { title }
-        </div>
-      </form>
+          <div className="btn btn-primary" onClick={this.destroyGroup}>
+            <SVG name="trash" />
+            Destroy { title }
+          </div>
+        </form>
+      </div>
     )
   }
 }

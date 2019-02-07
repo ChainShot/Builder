@@ -8,6 +8,7 @@ import Intro from './markdown/Intro';
 import PropsRoute from '../PropsRoute';
 import Toolbar from './toolbar/Toolbar';
 import ContainerConfig from './configuration/ContainerConfig';
+import BadgeType from './BadgeType';
 import UpdateWrapper from '../UpdateWrapper';
 
 class StageContainer extends Component {
@@ -38,6 +39,7 @@ class StageContainer extends Component {
           <Sidebar stageContainer={stageContainer} basename={url}/>
           <PropsRoute path="/content/:containerId/" exact component={UpdateWrapper} child={ContainerConfig} stageContainer={stageContainer}/>
           <PropsRoute path="/content/:containerId/intro" component={Intro} stageContainer={stageContainer}/>
+          <PropsRoute path="/content/:containerId/badge/:badgeTypeId" component={BadgeType} stageContainer={stageContainer}/>
           <PropsRoute path="/content/:containerId/stage/:stageId" component={Stage} stageContainer={stageContainer}/>
         </div>
       </div>

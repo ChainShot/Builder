@@ -1,4 +1,4 @@
-@mixin caret-up($size, $color) {
+@mixin caret-up($size, $color: white) {
   width: 0;
   height: 0;
   border-left: $size solid transparent;
@@ -6,7 +6,7 @@
   border-bottom: $size solid $color;
 }
 
-@mixin caret-down($size, $color) {
+@mixin caret-down($size, $color: white) {
   width: 0;
   height: 0;
   border-left: $size solid transparent;
@@ -14,7 +14,7 @@
   border-top: $size solid $color;
 }
 
-@mixin caret-right($size, $color) {
+@mixin caret-right($size, $color: white) {
   width: 0;
   height: 0;
   border-top: $size solid transparent;
@@ -22,7 +22,7 @@
   border-left: $size solid $color;
 }
 
-@mixin caret-left($size, $color) {
+@mixin caret-left($size, $color: white) {
   width: 0;
   height: 0;
   border-top: $size solid transparent;

@@ -36,7 +36,6 @@ module.exports = (injections) => {
     const numStages = props.codeStageIds ? props.codeStageIds.length : 0;
     const codeFileId = props.id;
     for(let i = 0; i < numStages; i++) {
-      // TODO: should hook into stage/modify.js here
       const stageId = props.codeStageIds[i];
       const stage = await configResolver(MODEL_DB.STAGES, stageId);
       stage.codeFileIds = (stage.codeFileIds || []).concat(codeFileId);
@@ -51,9 +50,10 @@ module.exports = (injections) => {
   async function createCodeFile(props) {
     await validate(props);
     props.id = ObjectID().toString();
+    const doc = await createDocument(props);
     await createStages(props);
     await createProjectFiles(props);
-    return await createDocument(props);
+    return doc;
   }
 
   return createCodeFile;

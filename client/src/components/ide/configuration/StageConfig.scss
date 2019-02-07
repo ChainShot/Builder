@@ -1,0 +1,7 @@
+@import '../../../shared/variables';
+
+.stage-config {
+  height: 100%;
+  overflow-y: auto;
+  width: calc(100vw - #{$sidebar-width});
+}

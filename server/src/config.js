@@ -18,6 +18,7 @@ const MODEL_DB = {
   STAGE_CONTAINERS: 'stageContainers',
   STAGES: 'stages',
   SOLUTIONS: 'solutions',
+  BADGE_TYPES: 'badgeTypes',
 }
 
 module.exports = {

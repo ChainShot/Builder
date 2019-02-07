@@ -2,18 +2,10 @@
 @import 'SidebarList';
 
 .stage-container-sidebar {
-  overflow-y: scroll;
+  overflow-y: auto;
   background-color: $bg-container;
   width: $sidebar-width;
   min-width: $sidebar-width;
-
-  ul.top-options {
-    @extend %sidebar-list;
-
-    > li {
-      @extend %sidebar-list-item;
-    }
-  }
 
   label {
     $darker: darken($bg-container, 2);
