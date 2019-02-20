@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 
 const renderMergedProps = (component, ...rest) => {
   const finalProps = Object.assign({}, ...rest);
+  finalProps.key = finalProps.key || finalProps.path;
   return (
     React.createElement(component, finalProps)
   );
