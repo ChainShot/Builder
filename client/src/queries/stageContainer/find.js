@@ -33,6 +33,7 @@ query findStageContainer($id: String) {
       position
       languageVersion
       testFramework
+      youtubeId
       abiValidations
       projectSkeletons {
         id

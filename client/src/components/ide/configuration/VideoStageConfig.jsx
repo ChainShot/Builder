@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
 import './VideoStageConfig.scss';
+import StyledInput from '../../forms/StyledInput';
+
+const YOUTUBE_HINT = 'YouTube video IDs can be found in the URL (i.e. ?v=ID)';
 
 class VideoStageConfig extends Component {
   render() {
-    const { type } = this.props.stage;
+    const { onChange,
+      stage: { type, youtubeId }
+    } = this.props;
     if(type !== 'VideoStage') return null;
     return (
       <React.Fragment>
-        <div className="video-warning">
-          Video Stages are not currently editable
-          through the Builder UI.
-        </div>
+        <StyledInput
+          label="YouTube Video ID"
+          type="text"
+          value={youtubeId}
+          field="youtubeId"
+          hint={YOUTUBE_HINT}
+          onChange={({ target: { value }}) => onChange({ youtubeId: value })}/>
       </React.Fragment>
     )
   }

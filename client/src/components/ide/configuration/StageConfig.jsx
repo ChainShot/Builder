@@ -27,6 +27,7 @@ const variables = [
   ['position', 'Int'],
   ['languageVersion', 'String'],
   ['testFramework', 'String'],
+  ['youtubeId', 'String'],
 ]
 
 const args = variables.map(([prop, type]) => `$${prop}: ${type}`).join(', ');
