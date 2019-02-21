@@ -6,7 +6,7 @@ import htmlParser from 'react-markdown/plugins/html-parser';
 import './MarkdownEdit.scss';
 import UpdateWrapper from '../../UpdateWrapper';
 
-const WHITE_LIST = ['www.youtube.com'];
+const WHITE_LIST = ['www.youtube.com', 'www.youtube-nocookie.com'];
 
 function whitelisted(src) {
   const originHostname = new URL(src).hostname;
