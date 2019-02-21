@@ -56,17 +56,12 @@ Video Stage
 A stage that renders with an embedded video that can teach concepts that require
 more of a visual or audio perspective.
 
-.. note::
-    This type is not editable through the Builder UI as it is currently under development.
-    In the future, videos can be recorded from within the Builder UI.
-
 Fields
 ------
 ======================  ====================================================================
 Field                   Description
 ======================  ====================================================================
-contentId               Video content ID
-duration                Video time in milliseconds 
+youtubeId               YouTube ID for the video (found on the URL, i.e. ?v=ID)
 ======================  ====================================================================
 
 .. _ui_stage:

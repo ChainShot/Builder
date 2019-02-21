@@ -36,6 +36,7 @@ const stageArgs = {
   completionMessage: { type: GraphQLString },
   testFramework: { type: GraphQLString },
   languageVersion: { type: GraphQLString },
+  youtubeId: { type: GraphQLString },
   title: { type: GraphQLString },
   abiValidations: { type: GraphQLString },
   task: { type: GraphQLString },
