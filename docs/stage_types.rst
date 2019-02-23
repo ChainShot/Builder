@@ -64,25 +64,24 @@ Field                   Description
 youtubeId               YouTube ID for the video (found on the URL, i.e. ?v=ID)
 ======================  ====================================================================
 
-.. _ui_stage:
+.. _iframe_stage:
 
-UI Stage
-========
+IFrame Stage
+============
 
-A flexible stage that can be rendered with particular React elements. Generally
-this stage is used to teach particular concepts that aren't covered with the other
-stage types.
+A Stage that which will embed an IFrame that can point at another site. This is
+used for stages that want to show some kind of visualization or other UI that
+cannot be created from the other Stage Types.
 
 .. note::
-    This type is not editable through the Builder UI as it is currently under development.
-    In the future, this stage type may be split out into several more specific stage
-    types.
+  Currently the site needs to be whitelisted before it can be rendered.
+  In the future this may change to a UI that clearly shows the user is
+  working on another site.
 
 Fields
 ------
 ======================  ====================================================================
 Field                   Description
 ======================  ====================================================================
-componentName           The specific component that this stage will render as
-configuration           A loose JSON object that configures the component
+src                     The URL to render in the IFrame
 ======================  ====================================================================
