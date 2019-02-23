@@ -21,6 +21,7 @@ const StageType = new GraphQLObjectType({
     testFramework: { type: GraphQLString },
     languageVersion: { type: GraphQLString },
     youtubeId: { type: GraphQLString },
+    src: { type: GraphQLString },
     projectSkeletons: { type: GraphQLList(require('./ProjectSkeletonType')) },
     codeFileIds: { type: GraphQLList(GraphQLString) },
     solutions: {

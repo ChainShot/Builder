@@ -9,7 +9,7 @@ const SLACK_INVITE = process.env.REACT_APP_SLACK_INVITE || 'https://join.slack.c
 const STAGE_TYPE_OPTIONS = [
   { label: 'Code Stage', value: 'CodeStage' },
   { label: 'Download Stage', value: 'DownloadStage' },
-  { label: 'UI Stage', value: 'UiStage' },
+  { label: 'IFrame Stage', value: 'IFrameStage' },
   { label: 'Video Stage', value: 'VideoStage' },
 ]
 

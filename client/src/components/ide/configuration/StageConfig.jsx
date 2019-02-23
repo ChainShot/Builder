@@ -4,7 +4,7 @@ import apiMutation from '../../../utils/api/mutation';
 import destroyStage from '../../../mutations/stage/destroy';
 import DuplicateStage from './DuplicateStage';
 import CodeStageConfig from './CodeStageConfig';
-import UiStageConfig from './UiStageConfig';
+import IFrameStageConfig from './IFrameStageConfig';
 import DownloadStageConfig from './DownloadStageConfig';
 import VideoStageConfig from './VideoStageConfig';
 import StyledSelect from '../../forms/StyledSelect';
@@ -28,6 +28,7 @@ const variables = [
   ['languageVersion', 'String'],
   ['testFramework', 'String'],
   ['youtubeId', 'String'],
+  ['src', 'String'],
 ]
 
 const args = variables.map(([prop, type]) => `$${prop}: ${type}`).join(', ');
@@ -110,7 +111,7 @@ class StageConfig extends Component {
             stage={stage}
             onChange={updateStage} />
 
-          <UiStageConfig
+          <IFrameStageConfig
             stage={stage}
             onChange={updateStage} />
 
