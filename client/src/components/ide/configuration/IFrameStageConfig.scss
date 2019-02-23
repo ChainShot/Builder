@@ -1,0 +1,11 @@
+@import '../../../shared/variables';
+
+.note {
+  background-color: lighten($bg-dark, 4);
+  padding: 20px;
+  font-style: italic;
+
+  a {
+    text-decoration: underline;
+  }
+}

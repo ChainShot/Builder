@@ -34,6 +34,7 @@ query findStageContainer($id: String) {
       languageVersion
       testFramework
       youtubeId
+      src
       abiValidations
       projectSkeletons {
         id
