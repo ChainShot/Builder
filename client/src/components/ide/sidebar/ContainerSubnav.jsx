@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
-import SVG from '../../SVG';
+import SVG from 'components/SVG';
 import './ContainerSubnav.scss';
-import AddBadge from './AddBadge';
-import * as dialog from '../../../utils/dialog';
+import AddBadge from './dialogs/badge/AddBadge';
+import * as dialog from 'utils/dialog';
 
 class ContainerSubnav extends Component {
   addBadge = () => {

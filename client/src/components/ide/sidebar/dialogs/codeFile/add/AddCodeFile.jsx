@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Dialog from '../../Dialog';
+import Dialog from 'components/Dialog';
 import './AddCodeFile.scss';
-import PaneSwitch from '../../forms/PaneSwitch';
+import PaneSwitch from 'components/forms/PaneSwitch';
 import NewCodeFile from './NewCodeFile';
 import ExistingCodeFile from './ExistingCodeFile';
 

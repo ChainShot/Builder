@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { close } from '../../../utils/dialog';
-import apiMutation from '../../../utils/api/mutation';
-import StyledSelect from '../../forms/StyledSelect';
+import { close } from 'utils/dialog';
+import apiMutation from 'utils/api/mutation';
+import StyledSelect from 'components/forms/StyledSelect';
 import './ExistingCodeFile.scss';
 
 const mutation = `

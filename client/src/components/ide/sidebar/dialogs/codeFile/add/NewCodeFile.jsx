@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { close } from '../../../utils/dialog';
-import apiMutation from '../../../utils/api/mutation';
-import StyledSwitch from '../../forms/StyledSwitch';
-import StyledInput from '../../forms/StyledInput';
+import { close } from 'utils/dialog';
+import apiMutation from 'utils/api/mutation';
+import StyledSwitch from 'components/forms/StyledSwitch';
+import StyledInput from 'components/forms/StyledInput';
 
 const EXTENSIONS_TO_MODE = {
   js: 'javascript',

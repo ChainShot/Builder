@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Dialog from '../../Dialog';
-import PaneSwitch from '../../forms/PaneSwitch';
-import StyledInput from '../../forms/StyledInput';
+import Dialog from 'components/Dialog';
+import PaneSwitch from 'components/forms/PaneSwitch';
+import StyledInput from 'components/forms/StyledInput';
 import './AddStage.scss';
 import NewStageTemplate from './NewStageTemplate';
 import NewStage from './NewStage';

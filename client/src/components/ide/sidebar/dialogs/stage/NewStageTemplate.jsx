@@ -1,33 +1,35 @@
 import React, { Component } from 'react';
-import { close } from '../../../utils/dialog';
-import { STAGE_LANGUAGE_OPTIONS, STAGE_TYPE_OPTIONS } from '../../../config';
-import StyledSelect from '../../forms/StyledSelect';
-import apiMutation from '../../../utils/api/mutation';
+import { close } from 'utils/dialog';
+import apiMutation from 'utils/api/mutation';
+import StyledSelect from 'components/forms/StyledSelect';
+import './NewStageTemplate.scss';
 
 const variables = [
   ['title', 'String'],
   ['containerId', 'String'],
-  ['type', 'String'],
+  ['template', 'String'],
   ['position', 'Int'],
-  ['language', 'String'],
 ]
 
 const args = variables.map(([prop, type]) => `$${prop}: ${type}`).join(', ');
 const mapping = variables.map(([prop, type]) => `${prop}: $${prop}`).join(', ');
-const returns = variables.map(([prop]) => `${prop}`).join('\n    ');
 
 const mutation = `
 mutation createStage(${args}) {
-  createStage(${mapping}, details: "", task: "", abiValidations: "", completionMessage: "") {
+  createStage(${mapping}, details: "", task: "", abiValidations: "",  completionMessage: "") {
     id
-    ${returns}
   }
 }
 `;
 
+const templates = [
+    { label: 'Solidity Stage', value: 'solidity' },
+    { label: 'Vyper Stage', value: 'vyper' },
+    { label: 'Web3 JS Stage', value: 'web3' },
+]
+
 const validators = {
-  type: (x) => !!x,
-  language: (x) => !!x,
+  template: (x) => !!x,
 }
 
 const validate = (props) => {
@@ -37,26 +39,25 @@ const validate = (props) => {
   }, []);
 }
 
-class NewStage extends Component {
+class NewStageTemplate extends Component {
   state = {
-    type: null,
-    language: null,
+    template: "",
     errors: [],
   }
   onSubmit = (evt) => {
     evt && evt.preventDefault();
     const errors = this.allErrors();
     if(errors.length > 0) return;
-    
+
     const { containerId, title, position } = this.props;
-    const { type, language } = this.state;
-    apiMutation(mutation, { position, title, containerId, type, language }).then(() => {
+    const { template } = this.state;
+    apiMutation(mutation, { title, containerId, template, position }).then(() => {
       close();
     });
   }
   validate() {
-    const { type, language } = this.state;
-    const errors = validate({ type, language });
+    const { template } = this.state;
+    const errors = validate({ template });
     this.setState({ errors });
   }
   componentDidMount() {
@@ -69,26 +70,20 @@ class NewStage extends Component {
     return this.state.errors.concat(this.props.errors);
   }
   render() {
-    const { type, language } = this.state;
+    const { template } = this.state;
     const errors = this.allErrors();
     return (
-      <form onSubmit={this.onSubmit}>
+      <div className="new-stage-template">
         <StyledSelect
-          label="Type"
-          onChange={(val) => this.handleChange("type", val)}
-          value={type}
-          options={STAGE_TYPE_OPTIONS} />
-
-        <StyledSelect
-          label="Language"
-          onChange={(val) => this.handleChange("language", val)}
-          value={language}
-          options={STAGE_LANGUAGE_OPTIONS} />
+          label="Stage Template"
+          onChange={(val) => this.handleChange("template", val)}
+          value={template}
+          options={templates} />
 
         <Actions
           onSubmit={this.onSubmit}
           errors={errors} />
-      </form>
+      </div>
     );
   }
 }
@@ -103,11 +98,11 @@ class Actions extends Component {
     return (
       <div className="actions">
         <div className={submitClasses.join(' ')} onClick={onSubmit}>
-          Add New Stage
+          Add Stage Template
         </div>
       </div>
     )
   }
 }
 
-export default NewStage;
+export default NewStageTemplate;

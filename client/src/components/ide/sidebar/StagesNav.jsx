@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { matchPath } from 'react-router-dom';
 import CodeFilesNav from './CodeFilesNav';
-import * as dialog from '../../../utils/dialog';
-import { openSidebarStage, closeSidebarStage } from '../../../redux/actions';
-import AddStage from './AddStage';
-import SVG from '../../SVG';
+import * as dialog from 'utils/dialog';
+import { openSidebarStage, closeSidebarStage } from 'redux/actions';
+import AddStage from './dialogs/stage/AddStage';
+import SVG from 'components/SVG';
 import './StagesNav.scss';
 import { connect } from 'react-redux';
 

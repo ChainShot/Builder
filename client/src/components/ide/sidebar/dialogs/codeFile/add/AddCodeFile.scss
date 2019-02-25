@@ -1,13 +1,9 @@
-@import '../../../shared/variables';
+@import '../../../../../../shared/variables';
 
-.add-stage {
+.add-codefile {
   .actions {
     display: flex;
     margin-top: 20px;
-  }
-
-  .shared {
-    padding: 15px 30px;
   }
 
   .content {
@@ -19,5 +15,9 @@
       border-right: none;
       border-bottom: none;
     }
+  }
+
+  .content-body {
+    margin-top: 20px;
   }
 }

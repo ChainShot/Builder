@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { NavLink, Route, withRouter } from 'react-router-dom';
 import CodeFileOptionsNav from './CodeFileOptionsNav';
 import './CodeFilesNav.scss';
-import * as dialog from '../../../utils/dialog';
-import AddCodeFile from './AddCodeFile';
-import AddSkeleton from './AddSkeleton';
+import * as dialog from 'utils/dialog';
+import AddCodeFile from './dialogs/codeFile/add/AddCodeFile';
+import AddSkeleton from './dialogs/skeleton/AddSkeleton';
+import ImportCodeFiles from './dialogs/codeFile/import/ImportCodeFiles';
 import SVG from '../../SVG';
 
 const VALIDATION_LANGUAGES = ['vyper', 'solidity'];
@@ -30,16 +31,31 @@ class CodeFilesNav extends Component {
       this.props.history.push(`${basename}/file/${id}`);
     });
   }
+  importCodeFiles = () => {
+    const { stage, stageContainer } = this.props;
+    dialog.open(ImportCodeFiles, { stage, stageContainer }).then((id) => {
+      const { basename } = this.props;
+      this.props.history.push(`${basename}/file/${id}`);
+    });
+  }
   renderAddCodeFile() {
     const { stage: { type } } = this.props;
     if(type === 'CodeStage') {
       return (
-        <li>
-          <div className="action" onClick={this.addCodeFile}>
-            <SVG name="file-plus"/>
-            <span>add code file…</span>
-          </div>
-        </li>
+        <React.Fragment>
+          <li>
+            <div className="action" onClick={this.addCodeFile}>
+              <SVG name="file-plus"/>
+              <span>add code file…</span>
+            </div>
+          </li>
+          <li>
+            <div className="action" onClick={this.importCodeFiles}>
+              <SVG name="file-plus"/>
+              <span>import code files…</span>
+            </div>
+          </li>
+        </React.Fragment>
       )
     }
   }

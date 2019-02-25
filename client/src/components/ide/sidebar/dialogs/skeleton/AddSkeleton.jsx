@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Dialog from '../../Dialog';
+import Dialog from 'components/Dialog';
 import './AddSkeleton.scss';
-import { close } from '../../../utils/dialog';
-import apiMutation from '../../../utils/api/mutation';
+import { close } from 'utils/dialog';
+import apiMutation from 'utils/api/mutation';
 
 const mutation = `
 mutation modifyStage($id: String, $projectSkeletons: [ProjectSkeletonInput]) {
