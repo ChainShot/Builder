@@ -10,9 +10,9 @@ class FilesViewer extends Component {
         <div className="files-viewer">
           <label> Importing Files ({files.length})</label>
           <div className="pane">
-            {files.map(({ name }) => (
+            {files.map(({ name, relativePath }) => (
               <div key={name}>
-                { path.join(basePath, name) }
+                { path.join(basePath, relativePath, name) }
               </div>
             ))}
           </div>

@@ -19,6 +19,7 @@ const EXTENSIONS_TO_MODE = {
 const variables = [
   ['name', 'String'],
   ['stageContainerId', 'String'],
+  ['initialCode', 'String'],
   ['mode', 'String'],
   ['codeStageIds', '[String]'],
   ['executablePath', 'String'],
@@ -51,9 +52,10 @@ class ImportCodeFiles extends Component {
   }
   onSubmit = async () => {
     const { files, basePath } = this.state;
-    await Promise.all(files.map(({ name, contents }) => {
+    for(let i = 0 ; i < files.length; i++) {
+      const { name, relativePath, content } = files[i];
       const { stage, stageContainer } = this.props;
-      const executablePath = path.join(basePath, name);
+      const executablePath = path.join(basePath, relativePath, name);
       const [extension] = name.split('.').slice(-1);
       let mode = "";
       if(EXTENSIONS_TO_MODE[extension]) {
@@ -65,15 +67,15 @@ class ImportCodeFiles extends Component {
         codeStageIds: [stage.id],
         executablePath,
         mode,
-        initialCode: contents,
+        initialCode: content,
         executable: true,
         visible: true,
         readOnly: true,
         hasProgress: false,
         testFixture: false,
       }
-      return apiMutation(mutation, variables);
-    }));
+      await apiMutation(mutation, variables);
+    }
     close();
   }
   updateFiles = (files) => {

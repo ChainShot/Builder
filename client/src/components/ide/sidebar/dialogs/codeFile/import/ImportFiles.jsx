@@ -15,6 +15,7 @@ class ImportFiles extends Component {
         reader.onload = readerEvent => {
           const content = readerEvent.target.result;
           resolve({
+            relativePath: "",
             name: file.name,
             content
           });
