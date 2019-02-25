@@ -4,17 +4,15 @@ import './FilesViewer.scss';
 
 class FilesViewer extends Component {
   render() {
-    const { files, executablePath } = this.props;
+    const { files, basePath } = this.props;
     if(files && files.length > 0) {
-      console.log({ executablePath })
-      debugger;
       return (
         <div className="files-viewer">
-          <label> Importing Files </label>
+          <label> Importing Files ({files.length})</label>
           <div className="pane">
             {files.map(({ name }) => (
               <div key={name}>
-                { path.join(executablePath, name) }
+                { path.join(basePath, name) }
               </div>
             ))}
           </div>

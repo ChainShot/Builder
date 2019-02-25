@@ -24,7 +24,7 @@ class ImportFiles extends Component {
     this.props.updateFiles(files);
   }
   render() {
-    const { executablePath, files } = this.props;
+    const { basePath, files } = this.props;
     return (
       <div className="import-files">
         <div className="import-action" onClick={this.clickFileInput}>
@@ -41,7 +41,7 @@ class ImportFiles extends Component {
 
         <FilesViewer
           files={files}
-          executablePath={executablePath}/>
+          basePath={basePath}/>
       </div>
     )
   }

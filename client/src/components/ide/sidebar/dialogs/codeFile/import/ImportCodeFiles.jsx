@@ -4,17 +4,77 @@ import ImportFiles from './ImportFiles';
 import ImportFolders from './ImportFolders';
 import StyledInput from 'components/forms/StyledInput';
 import Dialog from 'components/Dialog';
+import apiMutation from 'utils/api/mutation';
 import './ImportCodeFiles.scss';
+import { close } from 'utils/dialog';
+import path from 'path-posix';
 
-const EXECUTABLE_PATH_HINT = "The base path that your code files will be imported to.";
+const EXTENSIONS_TO_MODE = {
+  js: 'javascript',
+  json: 'json',
+  sol: 'sol',
+  py: 'python',
+}
+
+const variables = [
+  ['name', 'String'],
+  ['stageContainerId', 'String'],
+  ['mode', 'String'],
+  ['codeStageIds', '[String]'],
+  ['executablePath', 'String'],
+  ['executable', 'Boolean'],
+  ['visible', 'Boolean'],
+  ['testFixture', 'Boolean'],
+  ['readOnly', 'Boolean'],
+  ['hasProgress', 'Boolean'],
+]
+
+const args = variables.map(([prop, type]) => `$${prop}: ${type}`).join(', ');
+const mapping = variables.map(([prop, type]) => `${prop}: $${prop}`).join(', ');
+const returns = variables.map(([prop]) => `${prop}`).join('\n    ');
+
+const mutation = `
+mutation createCodeFile(${args}) {
+  createCodeFile(${mapping}) {
+    id
+    ${returns}
+  }
+}
+`;
+
+const BASE_PATH_HINT = "The base path that your code files will be imported to.";
 
 class ImportCodeFiles extends Component {
   state = {
-    executablePath: "",
+    basePath: "",
     files: [],
   }
-  onSubmit = () => {
-
+  onSubmit = async () => {
+    const { files, basePath } = this.state;
+    await Promise.all(files.map(({ name, contents }) => {
+      const { stage, stageContainer } = this.props;
+      const executablePath = path.join(basePath, name);
+      const [extension] = name.split('.').slice(-1);
+      let mode = "";
+      if(EXTENSIONS_TO_MODE[extension]) {
+        mode = EXTENSIONS_TO_MODE[extension];
+      }
+      const variables = {
+        name,
+        stageContainerId: stageContainer.id,
+        codeStageIds: [stage.id],
+        executablePath,
+        mode,
+        initialCode: contents,
+        executable: true,
+        visible: true,
+        readOnly: true,
+        hasProgress: false,
+        testFixture: false,
+      }
+      return apiMutation(mutation, variables);
+    }));
+    close();
   }
   updateFiles = (files) => {
     this.setState({ files })
@@ -23,25 +83,25 @@ class ImportCodeFiles extends Component {
     this.setState({ [prop]: value });
   }
   render() {
-    const { executablePath, files } = this.state;
+    const { basePath, files } = this.state;
     return (
       <Dialog title="Import Code Files" className="import-code-files">
         <StyledInput
           label="Base File Path"
           type="text"
-          value={executablePath}
-          hint={EXECUTABLE_PATH_HINT}
-          onChange={({ target }) => this.handleChange('executablePath', target.value)}/>
+          value={basePath}
+          hint={BASE_PATH_HINT}
+          onChange={({ target }) => this.handleChange('basePath', target.value)}/>
 
         <PaneSwitch
           labels={['Files', 'Folders']}>
           <ImportFiles
             files={files}
-            executablePath={executablePath}
+            basePath={basePath}
             updateFiles={this.updateFiles}/>
           <ImportFolders
             files={files}
-            executablePath={executablePath}
+            basePath={basePath}
             updateFiles={this.updateFiles}/>
         </PaneSwitch>
 

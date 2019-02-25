@@ -4,8 +4,10 @@
   position: absolute;
   top: 10%;
   left: 50%;
+  max-height: 80%;
+  overflow-y: auto;
   min-width: $min-dialog-width;
-  width: 30%;
+  width: 22%;
   max-width: $max-dialog-width;
   transform: translateX(-50%);
   z-index: 101;
