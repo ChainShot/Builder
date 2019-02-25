@@ -51,7 +51,7 @@ class CodeFilesNav extends Component {
           </li>
           <li>
             <div className="action" onClick={this.importCodeFiles}>
-              <SVG name="file-plus"/>
+              <SVG name="import-file"/>
               <span>import code files…</span>
             </div>
           </li>
