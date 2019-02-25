@@ -16,6 +16,7 @@
 }
 
 .compilation-errors {
+  overflow-y: auto;
   margin: 20px;
   > p {
     margin: 0;

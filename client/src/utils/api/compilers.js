@@ -23,8 +23,8 @@ const filterWarnings = list => list.filter(isWarning);
 const filterErrors = list => list.filter(x => !isWarning(x));
 
 const solc = {
-  compile: (code, fileName) => {
-    return solcApi.post('', {code, fileName}).then(({data}) => {
+  compile: (sources, languageVersion) => {
+    return solcApi.post('', {sources, languageVersion}).then(({data}) => {
         return {
             ...data,
             errors: filterErrors(data.errors),

@@ -12,16 +12,32 @@ class Compilation extends Component {
     auto: true,
   }
   compile = async () => {
-    const { stage, codeFile, code } = this.props;
-    const { language } = stage;
+    const { stage, code, codeFile } = this.props;
+    const { language, languageVersion, codeFiles, solutions } = stage;
 
-    let compiler;
-    if(language === 'solidity') compiler = compilers.solc;
-    else if(language === 'vyper') compiler = compilers.vyper;
+    if(language === 'solidity') {
+      const sources = codeFiles
+        .reduce((obj, { id, name, executable, initialCode, hasProgress, executablePath }) => {
+          if(executable && executablePath.indexOf('contracts/') >= 0) {
+            if(id === codeFile.id) {
+              obj[name] = code;
+            }
+            else if (hasProgress) {
+              const solution = solutions.find(x => x.codeFileId === id);
+              obj[name] = solution.code;
+            }
+            else {
+              obj[name] = initialCode;
+            }
+          }
+          return obj;
+        }, {});
+      const output = await compilers.solc.compile(sources, languageVersion);
+      this.props.completeCompilation(output);
+    }
 
-    if(compiler) {
-      const { name } = codeFile;
-      const output = await compiler.compile(code, name);
+    if(language === 'vyper') {
+      const output = await compilers.vyper.compile(code);
       this.props.completeCompilation(output);
     }
   }
