@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import SVG from 'components/SVG';
 import './ImportFolders.scss';
 import FilesViewer from './FilesViewer';
-import path from 'path-posix';
 
 function isCodeFile(name) {
   return  /\.(py|js|sol)$/.test(name);
