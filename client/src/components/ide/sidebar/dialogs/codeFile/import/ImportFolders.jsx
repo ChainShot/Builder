@@ -5,7 +5,7 @@ import FilesViewer from './FilesViewer';
 import path from 'path-posix';
 
 function isCodeFile(name) {
-  return /[\.py|\.js|\.sol]$/.test(name);
+  return  /\.(py|js|sol)$/.test(name);
 }
 
 class ImportFolders extends Component {
