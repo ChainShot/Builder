@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import path from 'path-posix';
+import './FilesViewer.scss';
 
 class FilesViewer extends Component {
   render() {

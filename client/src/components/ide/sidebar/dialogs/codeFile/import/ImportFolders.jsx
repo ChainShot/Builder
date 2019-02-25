@@ -22,7 +22,7 @@ class ImportFolders extends Component {
           reader.onload = readerEvent => {
             const content = readerEvent.target.result;
             resolve({
-              name: path.resolve(file.webkitRelativePath, file.name),
+              name: path.join(file.webkitRelativePath, file.name),
               content
             });
           }

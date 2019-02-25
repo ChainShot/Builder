@@ -4,6 +4,7 @@ import ImportFiles from './ImportFiles';
 import ImportFolders from './ImportFolders';
 import StyledInput from 'components/forms/StyledInput';
 import Dialog from 'components/Dialog';
+import './ImportCodeFiles.scss';
 
 const EXECUTABLE_PATH_HINT = "The base path that your code files will be imported to.";
 

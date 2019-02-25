@@ -1,0 +1,13 @@
+@import '../../../../../../shared/variables';
+
+.import-code-files {
+  .files-viewer {
+    margin: 10px 0;
+    .pane {
+      background-color: $bg-darkest;
+      padding: 10px;
+      border: 1px solid $border-color;
+      overflow-x: auto;
+    }
+  }
+}
