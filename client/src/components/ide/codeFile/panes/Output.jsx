@@ -39,7 +39,13 @@ class Output extends Component {
       });
     }
     catch(ex) {
-      dialog.open(Error, { message: "Oof. Failed to Run Your Code just now. \nPlease try again soon." });
+      const { response } = ex;
+      if(response && response.status >= 400 && response.status < 500) {
+        dialog.open(Error, { message: response.data });
+      }
+      else {
+        dialog.open(Error, { message: "Oof. Failed to Run Your Code just now. \nPlease try again soon." });
+      }
       this.props.completeCodeExecution();
       return;
     }
