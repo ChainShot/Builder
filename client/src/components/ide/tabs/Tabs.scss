@@ -2,5 +2,9 @@
 
 .ide-tabs {
   display: flex;
-  border: 1px solid $bg-darker;
+  background-color: $bg-container;
+  .rest {
+    flex-grow: 1;
+    border-bottom: 1px solid $bg-darker;
+  }
 }

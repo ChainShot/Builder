@@ -13,6 +13,7 @@ import {
   SET_CODE_FILE_PANE,
   OPEN_CODE_FILE,
   CLOSE_CODE_FILE,
+  SET_ACTIVE_TAB,
   OPEN_TAB,
   CLOSE_TAB,
   OPEN_FOLDER,
@@ -76,7 +77,11 @@ export const openTab = (stageId, type, id) => ({
   type: OPEN_TAB,
   payload: { stageId, type, id }
 });
-export const closeTab = (stageId, type, id) => ({
+export const setActiveTab = (idx) => ({
+  type: SET_ACTIVE_TAB,
+  payload: { idx }
+});
+export const closeTab = ({stageId, type, id}) => ({
   type: CLOSE_TAB,
   payload: { stageId, type, id }
 });

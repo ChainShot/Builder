@@ -4,6 +4,8 @@ import findContainer from '../../queries/stageContainer/find';
 import Sidebar from './sidebar/Sidebar';
 import Stage from './Stage';
 import './StageContainer.scss';
+import Tabs from './tabs/Tabs';
+import Editor from './Editor';
 import Intro from './markdown/Intro';
 import PropsRoute from '../PropsRoute';
 import Toolbar from './toolbar/Toolbar';
@@ -32,15 +34,19 @@ class StageContainer extends Component {
     const { stageContainer } = this.state;
     if(!stageContainer) return null;
     const { match: { url } } = this.props;
+    // <Toolbar stageContainer={stageContainer} />
+    // <PropsRoute path="/content/:containerId/" exact component={UpdateWrapper} child={ContainerConfig} stageContainer={stageContainer}/>
+    // <PropsRoute path="/content/:containerId/intro" component={Intro} stageContainer={stageContainer}/>
+    // <PropsRoute path="/content/:containerId/badge/:badgeTypeId" component={BadgeType} stageContainer={stageContainer}/>
+    // <PropsRoute path="/content/:containerId/stage/:stageId" component={Stage} stageContainer={stageContainer}/>
     return (
       <div className="stage-container">
-        <Toolbar stageContainer={stageContainer} />
         <div className="main-content">
           <Sidebar stageContainer={stageContainer} basename={url}/>
-          <PropsRoute path="/content/:containerId/" exact component={UpdateWrapper} child={ContainerConfig} stageContainer={stageContainer}/>
-          <PropsRoute path="/content/:containerId/intro" component={Intro} stageContainer={stageContainer}/>
-          <PropsRoute path="/content/:containerId/badge/:badgeTypeId" component={BadgeType} stageContainer={stageContainer}/>
-          <PropsRoute path="/content/:containerId/stage/:stageId" component={Stage} stageContainer={stageContainer}/>
+          <div className="ide-content">
+            <Tabs stageContainer={stageContainer} />
+            <Editor stageContainer={stageContainer} />
+          </div>
         </div>
       </div>
     )

@@ -14,6 +14,7 @@ export const COMPLETE_COMPILATION = "COMPLETE_COMPILATION";
 
 export const SET_CODE_FILE_PANE = "SET_CODE_FILE_PANE";
 
+export const SET_ACTIVE_TAB = "SET_ACTIVE_TAB";
 export const OPEN_TAB = "OPEN_TAB";
 export const CLOSE_TAB = "CLOSE_TAB";
 
