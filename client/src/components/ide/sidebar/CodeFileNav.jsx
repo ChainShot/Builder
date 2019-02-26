@@ -25,7 +25,7 @@ class CodeFileNav extends Component {
             <SVG name="codefile"/>
             <span>{ codeFile.name }</span>
           </div>
-          <CodeFileOptionsNav {...this.props} codeFile={codeFile} />
+          <CodeFileOptionsNav stage={stage} codeFile={codeFile} />
         </li>
       )
     }
