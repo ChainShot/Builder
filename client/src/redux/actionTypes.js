@@ -14,6 +14,11 @@ export const COMPLETE_COMPILATION = "COMPLETE_COMPILATION";
 
 export const SET_CODE_FILE_PANE = "SET_CODE_FILE_PANE";
 
+export const OPEN_TAB = "OPEN_TAB";
+export const CLOSE_TAB = "CLOSE_TAB";
+
+export const OPEN_CODE_FILE = "OPEN_CODE_FILE";
+export const CLOSE_CODE_FILE = "CLOSE_CODE_FILE";
 export const OPEN_FOLDER = "OPEN_FOLDER";
 export const CLOSE_FOLDER = "CLOSE_FOLDER";
 export const OPEN_SIDEBAR_STAGE = "OPEN_SIDEBAR_STAGE";

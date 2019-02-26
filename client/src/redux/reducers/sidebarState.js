@@ -1,6 +1,8 @@
 import {
   OPEN_FOLDER,
   CLOSE_FOLDER,
+  OPEN_CODE_FILE,
+  CLOSE_CODE_FILE,
   OPEN_SIDEBAR_STAGE,
   CLOSE_SIDEBAR_STAGE,
   OPEN_SIDEBAR_CONTAINER,
@@ -10,11 +12,30 @@ import {
 const initialState = {
   stagesOpen: [],
   foldersOpen: [],
+  codeFilesOpen: [],
   containerOpen: false,
 }
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case OPEN_CODE_FILE: {
+      const { id, stageId } = action.payload;
+      return {
+        ...state,
+        codeFilesOpen: state.codeFilesOpen.concat({ id, stageId })
+      }
+    }
+    case CLOSE_CODE_FILE: {
+      const { id, stageId } = action.payload;
+      const idx = state.codeFilesOpen.findIndex(x => x.id === id && x.stageId === stageId);
+      return {
+        ...state,
+        codeFilesOpen: [
+          ...state.codeFilesOpen.slice(0, idx),
+          ...state.codeFilesOpen.slice(idx+1),
+        ]
+      }
+    }
     case OPEN_FOLDER: {
       const { folderPath, stageId } = action.payload;
       return {

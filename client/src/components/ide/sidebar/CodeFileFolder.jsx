@@ -43,7 +43,6 @@ class CodeFileFolder extends Component {
   }
 }
 
-
 const mapStateToProps = ({ sidebarState }) => ({ sidebarState });
 
 const mapDispatchToProps = { openFolder, closeFolder }

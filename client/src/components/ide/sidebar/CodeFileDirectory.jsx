@@ -37,7 +37,7 @@ class CodeFileDirectory extends Component {
           <CodeFileFolder key={folder} stage={stage} codeFiles={codeFiles} path={folder} />
         ))}
         {files.map((file) => (
-          <CodeFileNav key={file.id} basename={""} codeFile={file} />
+          <CodeFileNav key={file.id} stage={stage} codeFile={file} />
         ))}
       </div>
     )

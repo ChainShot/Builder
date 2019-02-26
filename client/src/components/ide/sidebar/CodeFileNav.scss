@@ -1,10 +1,13 @@
 .code-file-nav {
-  > a {
+  > .code-file-main {
     display: flex;
     padding: 4px 10px;
+    &:hover {
+      cursor: pointer;
+    }
     svg {
       height: 20px;
       margin-right: 8px;
-    }  
+    }
   }
 }
