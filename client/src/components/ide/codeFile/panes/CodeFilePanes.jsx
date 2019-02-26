@@ -3,7 +3,7 @@ import './CodeFilePanes.scss';
 import CodeFilePane from './CodeFilePane';
 import CompilationTab from './CompilationTab';
 import OutputTab from './OutputTab';
-import { setCodeFilePane } from '../../../../redux/actions';
+import { setCodeFilePane } from 'redux/actions';
 import { connect } from 'react-redux';
 
 class CodeFilePanes extends Component {

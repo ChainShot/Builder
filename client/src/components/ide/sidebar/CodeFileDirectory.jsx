@@ -9,7 +9,7 @@ function beginsWith(str, substr) {
 
 class CodeFileDirectory extends Component {
   render() {
-    const { codeFiles, path } = this.props;
+    const { codeFiles, path, stage } = this.props;
 
     const folders = codeFiles
       .filter(x => beginsWith(x.executablePath, path || ""))
@@ -34,7 +34,7 @@ class CodeFileDirectory extends Component {
     return (
       <div className="code-file-directory">
         {folders.map((folder) => (
-          <CodeFileFolder key={folder} codeFiles={codeFiles} path={folder} />
+          <CodeFileFolder key={folder} stage={stage} codeFiles={codeFiles} path={folder} />
         ))}
         {files.map((file) => (
           <CodeFileNav key={file.id} basename={""} codeFile={file} />

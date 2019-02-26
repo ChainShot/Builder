@@ -11,6 +11,8 @@ import {
   START_COMPILATION,
   COMPLETE_COMPILATION,
   SET_CODE_FILE_PANE,
+  OPEN_FOLDER,
+  CLOSE_FOLDER,
   CLOSE_SIDEBAR_STAGE,
   OPEN_SIDEBAR_STAGE,
   CLOSE_SIDEBAR_CONTAINER,
@@ -55,6 +57,15 @@ export const openSidebarStage = (stageId) => ({
 export const closeSidebarStage = (stageId) => ({
   type: CLOSE_SIDEBAR_STAGE,
   payload: { stageId }
+});
+
+export const openFolder = (stageId, folderPath) => ({
+  type: OPEN_FOLDER,
+  payload: { stageId, folderPath }
+});
+export const closeFolder = (stageId, folderPath) => ({
+  type: CLOSE_FOLDER,
+  payload: { stageId, folderPath }
 });
 
 export const openSidebarContainer = () => ({ type: OPEN_SIDEBAR_CONTAINER });

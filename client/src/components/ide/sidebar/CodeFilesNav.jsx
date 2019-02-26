@@ -6,11 +6,11 @@ import SVG from 'components/SVG';
 
 class CodeFilesNav extends Component {
   render() {
-    const { codeFiles } = this.props;
+    const { codeFiles, stage, stageContainer } = this.props;
     return (
       <React.Fragment>
-        <CodeFileDirectory codeFiles={codeFiles} {...this.props} />
-        <CodeFilesNavActions {...this.props}/>
+        <CodeFileDirectory codeFiles={codeFiles} stage={stage}/>
+        <CodeFilesNavActions stage={stage} stageContainer={stageContainer}/>
       </React.Fragment>
     )
   }
