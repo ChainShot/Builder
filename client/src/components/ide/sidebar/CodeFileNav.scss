@@ -1,0 +1,10 @@
+.code-file-nav {
+  > a {
+    display: flex;
+    padding: 4px 10px;
+    svg {
+      height: 20px;
+      margin-right: 8px;
+    }  
+  }
+}

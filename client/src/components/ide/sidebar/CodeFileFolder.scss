@@ -1,0 +1,15 @@
+.code-file-folder {
+  display: flex;
+  flex-direction: column;
+  .folder {
+    display: flex;
+    padding: 4px 10px;
+    svg {
+      height: 20px;
+      margin-right: 8px;
+    }
+  }
+  .contents {
+    margin-left: 12px;
+  }
+}

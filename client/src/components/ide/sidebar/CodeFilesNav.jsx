@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import CodeFileNav from './CodeFileNav';
 import CodeFilesNavActions from './CodeFilesNavActions';
+import CodeFileDirectory from './CodeFileDirectory';
+import SVG from 'components/SVG';
 
 class CodeFilesNav extends Component {
   render() {
     const { codeFiles } = this.props;
     return (
       <React.Fragment>
-        {(codeFiles || []).map(cf => (
-          <CodeFileNav key={cf.id} codeFile={cf} {...this.props} />
-        ))}
+        <CodeFileDirectory codeFiles={codeFiles} {...this.props} />
         <CodeFilesNavActions {...this.props}/>
       </React.Fragment>
     )
