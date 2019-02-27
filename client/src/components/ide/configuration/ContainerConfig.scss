@@ -3,5 +3,5 @@
 .container-config {
   height: 100%;
   overflow-y: auto;
-  width: calc(100vw - #{$sidebar-width});
+  flex-grow: 1;
 }
