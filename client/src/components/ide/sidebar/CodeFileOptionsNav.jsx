@@ -5,14 +5,7 @@ import './CodeFileOptionsNav.scss';
 import { IDE_TAB_TYPES } from 'config';
 import { connect } from 'react-redux';
 import { openTab } from 'redux/actions';
-
-function equalObjects(a,b) {
-  if(!a || !b) return false;
-  if(Object.keys(a).length !== Object.keys(b).length) return false;
-  return Object.keys(a).reduce((bool, key) => {
-    return bool && a[key] === b[key];
-  }, true);
-}
+import equalObjects from 'utils/equalObjects';
 
 class CodeFileOptionsNav extends Component {
   openTab = ({ stageId, type, id }) => {
@@ -35,19 +28,15 @@ class CodeFileOptionsNav extends Component {
     return (
       <ul className="code-file-options-nav">
         <SolutionNav
-          tabAttributes={solutionAttrs}
-          openTab={this.openTab}
+          openTab={() => this.openTab(solutionAttrs)}
           isActive={equalObjects(activeTab, solutionAttrs)}
           codeFile={codeFile} />
         <InitialCodeNav
-          tabAttributes={initialCodeAttrs}
           isActive={equalObjects(activeTab, initialCodeAttrs)}
-          openTab={this.openTab} />
+          openTab={() => this.openTab(initialCodeAttrs)} />
         <ConfigurationNav
-          tabAttributes={configAttrs}
           isActive={equalObjects(activeTab, configAttrs)}
-          activeTab={activeTab}
-          openTab={this.openTab} />
+          openTab={() => this.openTab(configAttrs)} />
       </ul>
     )
   }
@@ -55,14 +44,14 @@ class CodeFileOptionsNav extends Component {
 
 class SolutionNav extends Component {
   render() {
-    const { codeFile, openTab, tabAttributes, isActive } = this.props;
+    const { codeFile, openTab, isActive } = this.props;
     const classes = ['tab-opener'];
     if(isActive) classes.push('active');
     if(codeFile.hasProgress) {
       return (
         <li>
           <div className={classes.join(' ')}
-            onClick={() => openTab(tabAttributes)}
+            onClick={openTab}
             exact data-rh="Your Solution" data-rh-at="right">
             <SVG name="codefile"/>
             <span>solution</span>
@@ -76,13 +65,13 @@ class SolutionNav extends Component {
 
 class InitialCodeNav extends Component {
   render() {
-    const { openTab, tabAttributes, isActive } = this.props;
+    const { openTab, isActive } = this.props;
     const classes = ['tab-opener'];
     if(isActive) classes.push('active');
     return (
       <li>
         <div className={classes.join(' ')}
-          onClick={() => openTab(tabAttributes)}
+          onClick={openTab}
           exact data-rh="User's Initial Code" data-rh-at="right">
           <SVG name="codefile"/>
           <span>initial code</span>
@@ -94,13 +83,13 @@ class InitialCodeNav extends Component {
 
 class ConfigurationNav extends Component {
   render() {
-    const { openTab, tabAttributes, isActive } = this.props;
+    const { openTab, isActive } = this.props;
     const classes = ['tab-opener'];
     if(isActive) classes.push('active');
     return (
       <li>
         <div className={classes.join(' ')}
-          onClick={() => openTab(tabAttributes)}>
+          onClick={openTab}>
           <SVG name="wrench"/>
           <span>configuration</span>
         </div>
@@ -110,7 +99,6 @@ class ConfigurationNav extends Component {
 }
 
 const mapStateToProps = ({ ideState }) => ({ ideState })
-
 const mapDispatchToProps = { openTab }
 
 export default connect(
