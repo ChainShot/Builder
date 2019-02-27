@@ -15,14 +15,14 @@ class ContainerSubnav extends Component {
       this.props.history.push(`${basename}/badge/${id}`);
     });
   }
-  openIntroTab = () => {
-    this.props.openTab(null, IDE_TAB_TYPES.STAGE_CONTAINER_INTRO);
+  openTab = (type) => {
+    this.props.openTab(null, type);
   }
   render() {
     const { basename, stageContainer: { stageContainerGroup: { badgeTypes } } } = this.props;
     return (
       <ul className="sub-nav">
-        <li className="configuration">
+        <li className="configuration" onClick={() => this.openTab(IDE_TAB_TYPES.STAGE_CONTAINER_CONFIG)}>
           <div className="action">
             <SVG name="wrench"/>
             <span>configuration</span>
@@ -30,7 +30,7 @@ class ContainerSubnav extends Component {
         </li>
 
         <li className="intro">
-          <div className="action" onClick={this.openIntroTab}>
+          <div className="action" onClick={() => this.openTab(IDE_TAB_TYPES.STAGE_CONTAINER_INTRO)}>
             <SVG name="file"/>
             <span>intro.md</span>
           </div>

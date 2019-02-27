@@ -28,6 +28,7 @@ function toEnum(arr) {
 
 const IDE_TAB_TYPES = toEnum([
   'STAGE_CONTAINER_INTRO',
+  'STAGE_CONTAINER_CONFIG',
   'BADGE_CONFIG',
   'STAGE_CONFIG',
   'STAGE_TASK',

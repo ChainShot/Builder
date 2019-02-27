@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import UpdateWrapper from 'components/UpdateWrapper';
 import CodeFileConfig from './configuration/CodeFileConfig';
 import StageConfig from './configuration/StageConfig';
+import ContainerConfig from './configuration/ContainerConfig';
 import CodeFileSolution from './codeFile/CodeFileSolution';
 import CodeFile from './codeFile/CodeFile';
 import Intro from './markdown/Intro';
@@ -19,8 +20,17 @@ class EditorPane extends Component {
       case IDE_TAB_TYPES.STAGE_CONTAINER_INTRO: {
         return <Intro stageContainer={stageContainer} />
       }
+      case IDE_TAB_TYPES.STAGE_CONTAINER_CONFIG: {
+        const uniqueKey = `container-config`;
+        return (
+          <UpdateWrapper
+            key={uniqueKey}
+            debounceKey={uniqueKey}
+            child={ContainerConfig}
+            stageContainer={stageContainer} />
+        )
+      }
       case IDE_TAB_TYPES.STAGE_CONFIG: {
-        const codeFile = stage.codeFiles.find(x => x.id === activeTab.id);
         const uniqueKey = `${stage.id}-config`;
         return (
           <UpdateWrapper
