@@ -36,7 +36,7 @@ class Sidebar extends Component {
     window.dispatchEvent(new Event('resize'));
   }
   render() {
-    const { stageContainer, basename, location: {pathname} } = this.props;
+    const { stageContainer } = this.props;
     const { stages } = stageContainer;
     const defaultSize = getSidebarSize() || DEFAULT_SIZE;
     return (
@@ -46,10 +46,7 @@ class Sidebar extends Component {
           onResizeStop={this.onResizeStop}
           minWidth={MIN_WIDTH}
           maxWidth={MAX_WIDTH}>
-          <ContainerNav
-              key={pathname} // force re-render on route change
-              basename={basename}
-              stageContainer={stageContainer}/>
+          <ContainerNav stageContainer={stageContainer}/>
           <div className="stages">
             <label>{stages.length} Stage{s(stages.length)}</label>
             <StagesNav {...this.props} />

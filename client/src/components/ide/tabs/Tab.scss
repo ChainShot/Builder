@@ -13,11 +13,12 @@
   max-width: 350px;
   min-width: 200px;
   color: darken($light-font, 20);
+  transition: color .25s;
 
   &.active {
     background-color: $bg-dark;
     border-bottom: 1px solid transparent;
-    color: white;
+    color: $brand-active;
     &.config-tab {
       background-color: $bg-main;
     }
