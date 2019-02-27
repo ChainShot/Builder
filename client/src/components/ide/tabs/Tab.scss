@@ -15,6 +15,13 @@
   color: darken($light-font, 20);
   transition: color .25s;
 
+  > div {
+    padding: 0 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
   &.active {
     background-color: $bg-dark;
     border-bottom: 1px solid transparent;
