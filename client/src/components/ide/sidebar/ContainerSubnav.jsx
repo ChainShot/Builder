@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
 import SVG from 'components/SVG';
 import './ContainerSubnav.scss';
 import AddBadge from './dialogs/badge/AddBadge';
 import * as dialog from 'utils/dialog';
+import { openTab } from 'redux/actions';
+import { connect } from 'react-redux';
+import { IDE_TAB_TYPES } from 'config';
 
 class ContainerSubnav extends Component {
   addBadge = () => {
@@ -13,22 +15,25 @@ class ContainerSubnav extends Component {
       this.props.history.push(`${basename}/badge/${id}`);
     });
   }
+  openIntroTab = () => {
+    this.props.openTab(null, IDE_TAB_TYPES.STAGE_CONTAINER_INTRO);
+  }
   render() {
     const { basename, stageContainer: { stageContainerGroup: { badgeTypes } } } = this.props;
     return (
       <ul className="sub-nav">
         <li className="configuration">
-          <NavLink to={`${basename}`} exact>
+          <div className="action">
             <SVG name="wrench"/>
             <span>configuration</span>
-          </NavLink>
+          </div>
         </li>
 
         <li className="intro">
-          <NavLink to={`${basename}/intro`}>
+          <div className="action" onClick={this.openIntroTab}>
             <SVG name="file"/>
             <span>intro.md</span>
-          </NavLink>
+          </div>
         </li>
 
         { (badgeTypes || []).map(bt => <BadgeTypeNav key={bt.id} badgeType={bt} {...this.props} />) }
@@ -49,13 +54,19 @@ class BadgeTypeNav extends Component {
     const { basename, badgeType: { name, id } } = this.props;
     return (
       <li>
-        <NavLink to={`${basename}/badge/${id}`}>
+        <div className="action">
           <SVG name="badge"/>
           <span>{ name }</span>
-        </NavLink>
+        </div>
       </li>
     )
   }
 }
 
-export default withRouter(ContainerSubnav);
+const mapStateToProps = ({ ideState }) => ({ ideState })
+const mapDispatchToProps = { openTab }
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ContainerSubnav);

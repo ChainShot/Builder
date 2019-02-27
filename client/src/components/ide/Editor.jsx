@@ -5,6 +5,7 @@ import UpdateWrapper from 'components/UpdateWrapper';
 import CodeFileConfig from './configuration/CodeFileConfig';
 import CodeFileSolution from './codeFile/CodeFileSolution';
 import CodeFile from './codeFile/CodeFile';
+import Intro from './markdown/Intro';
 import './Editor.scss';
 
 class Editor extends Component {
@@ -25,6 +26,12 @@ class EditorPane extends Component {
     const { stageContainer, activeTab } = this.props;
     const stage = stageContainer.stages.find(x => x.id === activeTab.stageId);
     switch (activeTab.type) {
+      case IDE_TAB_TYPES.STAGE_CONTAINER_INTRO: {
+        debugger;
+        return (
+          <Intro stageContainer={stageContainer} />
+        )
+      }
       case IDE_TAB_TYPES.CODE_FILE_CONFIG: {
         const codeFile = stage.codeFiles.find(x => x.id === activeTab.id);
         const uniqueKey = `${codeFile.id}-config`;

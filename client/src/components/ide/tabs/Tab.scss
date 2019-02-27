@@ -36,12 +36,12 @@
     top: 50%;
     transition: opacity .25s, background-color .25s;
     transform: translateY(-50%);
-    padding: 0 7px;
+    padding: 0 5px;
     border-radius: 5px;
     background-color: transparent;
     svg {
       margin-top:5px;
-      height: 20px;
+      height: 16px;
       width: auto;
     }
     &:hover {
