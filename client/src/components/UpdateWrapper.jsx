@@ -41,15 +41,19 @@ function deeplyEqualObjects(a, b) {
 }
 
 class UpdateWrapper extends Component {
-  constructor(props) {
-    super(props);
-    const { child, savePromise, validateFn, ...rest } = props;
+  setInitialState() {
+    const { child, savePromise, validateFn, ...rest } = this.props;
     this.state = {
       savePromise,
       validateFn,
       originalState: { ...rest },
       currentState: { ...rest },
     }
+  }
+
+  constructor(props) {
+    super(props);
+    this.setInitialState();
   }
 
   onSave(savePromise) {
@@ -89,6 +93,10 @@ class UpdateWrapper extends Component {
     const { saveState: { saving }} = this.props;
     if(saving && !prevProps.saveState.saving) {
       this.saveState();
+    }
+    if(this.props.key !== prevProps.key) {
+      this.saveState();
+      this.setInitialState();
     }
   }
 

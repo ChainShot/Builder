@@ -25,7 +25,13 @@ class EditorPane extends Component {
     switch (activeTab.type) {
       case IDE_TAB_TYPES.CODE_FILE_CONFIG: {
         const codeFile = stage.codeFiles.find(x => x.id === activeTab.id);
-        return <UpdateWrapper child={CodeFileConfig} codeFile={codeFile} stage={stage} />
+        return (
+          <UpdateWrapper
+            key={codeFile.id}
+            child={CodeFileConfig}
+            codeFile={codeFile}
+            stage={stage} />
+        )
       }
       case IDE_TAB_TYPES.CODE_FILE_SOLUTION: {
         const codeFile = stage.codeFiles.find(x => x.id === activeTab.id);

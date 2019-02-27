@@ -5,8 +5,9 @@
   position: relative;
   border: 1px solid $bg-darker;
   border-left: none;
+  border-top: none;
   justify-content: center;
-  padding: 5px 0;
+  padding: 6px 0;
   flex-grow: 1;
   max-width: 350px;
   min-width: 200px;
@@ -29,14 +30,19 @@
     position: absolute;
     right: 5px;
     top: 50%;
-    transition: opacity .25s;
+    transition: opacity .25s, background-color .25s;
     transform: translateY(-50%);
+    padding: 0 7px;
+    border-radius: 5px;
+    background-color: transparent;
     svg {
       margin-top:5px;
       height: 20px;
       width: auto;
     }
     &:hover {
+      background-color: $brand-active;
+      color: black;
       cursor: pointer;
     }
   }
