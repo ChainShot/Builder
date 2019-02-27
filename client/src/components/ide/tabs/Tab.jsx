@@ -35,7 +35,19 @@ class Tab extends Component {
     let display;
     switch (type) {
       case IDE_TAB_TYPES.STAGE_CONTAINER_INTRO: {
-        display = `Introduction`;
+        display = `intro.md`;
+        break;
+      }
+      case IDE_TAB_TYPES.STAGE_DETAILS: {
+        display = `details.md`;
+        break;
+      }
+      case IDE_TAB_TYPES.STAGE_TASK: {
+        display = `task.md`;
+        break;
+      }
+      case IDE_TAB_TYPES.STAGE_COMPLETION: {
+        display = `completion.md`;
         break;
       }
       case IDE_TAB_TYPES.CODE_FILE_CONFIG: {

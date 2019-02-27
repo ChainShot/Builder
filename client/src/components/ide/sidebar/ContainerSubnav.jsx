@@ -63,10 +63,9 @@ class BadgeTypeNav extends Component {
   }
 }
 
-const mapStateToProps = ({ ideState }) => ({ ideState })
 const mapDispatchToProps = { openTab }
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps,
 )(ContainerSubnav);

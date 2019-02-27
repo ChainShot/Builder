@@ -1,40 +1,46 @@
 import React, { Component } from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
 import './CodeFilesNav.scss';
 import SkeletonsNav from './SkeletonsNav';
 import CodeFilesNav from './CodeFilesNav';
 import ValidationsNav from './ValidationsNav';
-import SVG from '../../SVG';
+import SVG from 'components/SVG';
+import { openTab } from 'redux/actions';
+import { connect } from 'react-redux';
+import { IDE_TAB_TYPES } from 'config';
 
 class StageNav extends Component {
+  openTab(type) {
+    const { stage } = this.props;
+    this.props.openTab(stage.id, type);
+  }
   render() {
-    const { basename, stage } = this.props;
+    const { stage } = this.props;
     const { codeFiles, projectSkeletons } = stage;
     return (
       <ul className="code-files-nav">
         <li>
-          <NavLink to={`${basename}`} exact>
+          <div className="action" onClick={() => this.openTab(IDE_TAB_TYPES.STAGE_CONFIG)}>
             <SVG name="wrench"/>
             <span>configuration</span>
-          </NavLink>
+          </div>
         </li>
         <li>
-          <NavLink to={`${basename}/details`}>
+          <div className="action" onClick={() => this.openTab(IDE_TAB_TYPES.STAGE_DETAILS)}>
             <SVG name="file"/>
             <span>details.md</span>
-          </NavLink>
+          </div>
         </li>
         <li>
-          <NavLink to={`${basename}/task`}>
+          <div className="action" onClick={() => this.openTab(IDE_TAB_TYPES.STAGE_TASK)}>
             <SVG name="file"/>
             <span>task.md</span>
-          </NavLink>
+          </div>
         </li>
         <li>
-          <NavLink to={`${basename}/completion`}>
+          <div className="action" onClick={() => this.openTab(IDE_TAB_TYPES.STAGE_COMPLETION)}>
             <SVG name="file"/>
             <span>completion.md</span>
-          </NavLink>
+          </div>
         </li>
         <ValidationsNav {...this.props} />
         <SkeletonsNav projectSkeletons={projectSkeletons} {...this.props} />
@@ -44,4 +50,10 @@ class StageNav extends Component {
   }
 }
 
-export default withRouter(StageNav);
+
+const mapDispatchToProps = { openTab }
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(StageNav);
