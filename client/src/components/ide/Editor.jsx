@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { IDE_TAB_TYPES } from 'config';
 import UpdateWrapper from 'components/UpdateWrapper';
 import CodeFileConfig from './configuration/CodeFileConfig';
+import StageConfig from './configuration/StageConfig';
 import CodeFileSolution from './codeFile/CodeFileSolution';
 import CodeFile from './codeFile/CodeFile';
 import Intro from './markdown/Intro';
@@ -31,6 +32,17 @@ class EditorPane extends Component {
     switch (activeTab.type) {
       case IDE_TAB_TYPES.STAGE_CONTAINER_INTRO: {
         return <Intro stageContainer={stageContainer} />
+      }
+      case IDE_TAB_TYPES.STAGE_CONFIG: {
+        const codeFile = stage.codeFiles.find(x => x.id === activeTab.id);
+        const uniqueKey = `${stage.id}-config`;
+        return (
+          <UpdateWrapper
+            key={uniqueKey}
+            debounceKey={uniqueKey}
+            child={StageConfig}
+            stage={stage} />
+        )
       }
       case IDE_TAB_TYPES.STAGE_DETAILS: {
         return <Details stage={stage} />

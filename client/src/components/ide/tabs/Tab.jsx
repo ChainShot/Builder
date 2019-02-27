@@ -38,6 +38,11 @@ class Tab extends Component {
         display = `intro.md`;
         break;
       }
+      case IDE_TAB_TYPES.STAGE_CONFIG: {
+        display = `${stage.title} Configuration`;
+        classes.push('config-tab');
+        break;
+      }
       case IDE_TAB_TYPES.STAGE_DETAILS: {
         display = `details.md`;
         break;
