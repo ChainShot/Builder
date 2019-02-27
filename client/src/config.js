@@ -19,18 +19,26 @@ const STAGE_LANGUAGE_OPTIONS = [
   { label: 'Vyper', value: 'vyper' },
 ]
 
-const IDE_TAB_TYPES = {
-  STAGE_CONTAINER_INTRO: 0,
-  BADGE_CONFIG: 1,
-  STAGE_CONFIG: 2,
-  STAGE_TASK: 3,
-  STAGE_DETAILS: 4,
-  STAGE_COMPLETION: 5,
-  CODE_FILE_CONFIG: 6,
-  CODE_FILE_INITIAL_CODE: 7,
-  CODE_FILE_SOLUTION: 8,
-  SKELETON_CONFIG: 9,
+function toEnum(arr) {
+  return arr.reduce((obj, key, idx) => {
+    obj[key] = idx;
+    return obj;
+  }, {});
 }
+
+const IDE_TAB_TYPES = toEnum([
+  'STAGE_CONTAINER_INTRO',
+  'BADGE_CONFIG',
+  'STAGE_CONFIG',
+  'STAGE_TASK',
+  'STAGE_DETAILS',
+  'STAGE_COMPLETION',
+  'STAGE_VALIDATIONS',
+  'CODE_FILE_CONFIG',
+  'CODE_FILE_INITIAL_CODE',
+  'CODE_FILE_SOLUTION',
+  'SKELETON_CONFIG',
+]);
 
 export {
   API_URL,
