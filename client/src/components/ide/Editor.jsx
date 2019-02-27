@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { IDE_TAB_TYPES } from 'config';
 import UpdateWrapper from 'components/UpdateWrapper';
 import CodeFileConfig from './configuration/CodeFileConfig';
+import CodeFileSolution from './codeFile/CodeFileSolution';
+import CodeFile from './codeFile/CodeFile';
 import './Editor.scss';
 
 class Editor extends Component {
@@ -25,10 +27,11 @@ class EditorPane extends Component {
     switch (activeTab.type) {
       case IDE_TAB_TYPES.CODE_FILE_CONFIG: {
         const codeFile = stage.codeFiles.find(x => x.id === activeTab.id);
+        const uniqueKey = `${codeFile.id}-config`;
         return (
           <UpdateWrapper
-            key={codeFile.id}
-            debounceKey={codeFile.id}
+            key={uniqueKey}
+            debounceKey={uniqueKey}
             child={CodeFileConfig}
             codeFile={codeFile}
             stage={stage} />
@@ -37,17 +40,13 @@ class EditorPane extends Component {
       case IDE_TAB_TYPES.CODE_FILE_SOLUTION: {
         const codeFile = stage.codeFiles.find(x => x.id === activeTab.id);
         return (
-          <div className="ide-tab">
-            Code File Solution
-          </div>
+          <CodeFileSolution stage={stage} codeFile={codeFile} />
         )
       }
       case IDE_TAB_TYPES.CODE_FILE_INITIAL_CODE: {
         const codeFile = stage.codeFiles.find(x => x.id === activeTab.id);
         return (
-          <div className="ide-tab">
-            Code File Initial Code
-          </div>
+          <CodeFile stage={stage} codeFile={codeFile} />
         )
       }
     }

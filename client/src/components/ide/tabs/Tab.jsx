@@ -36,6 +36,7 @@ class Tab extends Component {
     switch (type) {
       case IDE_TAB_TYPES.CODE_FILE_CONFIG: {
         const codeFile = stage.codeFiles.find(x => x.id === id);
+        classes.push('config-tab');
         display = `${codeFile.name} Configuration`;
         break;
       }

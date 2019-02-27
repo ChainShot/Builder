@@ -7,13 +7,17 @@
   border-left: none;
   border-top: none;
   justify-content: center;
-  padding: 6px 0;
+  padding: 8px 0;
+  font-size: .9em;
   flex-grow: 1;
   max-width: 350px;
   min-width: 200px;
 
   &.active {
-    background-color: $bg-main;
+    &.config-tab {
+      background-color: $bg-main;
+    }
+    background-color: $bg-dark;
     border-bottom: 1px solid transparent;
     &:hover {
       cursor: default;
