@@ -11,7 +11,6 @@ import {
 const initialState = {
   saving: false,
   changes: false,
-  autosave: true,
   errors: null,
 }
 
@@ -49,11 +48,6 @@ export default function(state = initialState, action) {
       return {
         ...state,
         changes: true,
-      }
-    case TOGGLE_AUTOSAVE:
-      return {
-        ...state,
-        autosave: !state.autosave
       }
     default:
       return state

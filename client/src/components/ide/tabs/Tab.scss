@@ -5,7 +5,11 @@
   position: relative;
   border: 1px solid $bg-darker;
   border-left: none;
-  padding: 5px 20px;
+  justify-content: center;
+  padding: 5px 0;
+  flex-grow: 1;
+  max-width: 350px;
+  min-width: 200px;
 
   &.active {
     background-color: $bg-main;

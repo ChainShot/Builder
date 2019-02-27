@@ -11,7 +11,7 @@ class SaveToolbar extends Component {
     return (
       <li className="save-toolbar">
         <label> save </label>
-        <AutoSave toggleAutosave={toggleAutosave} startSave={startSave} saveState={saveState}/>
+        <AutoSave startSave={startSave} saveState={saveState}/>
         <Save startSave={startSave} saveState={saveState}/>
       </li>
     )
@@ -19,7 +19,7 @@ class SaveToolbar extends Component {
 }
 
 const mapStateToProps = ({ saveState }) => ({ saveState });
-const mapDispatchToProps = { startSave, toggleAutosave }
+const mapDispatchToProps = { startSave }
 
 export default connect(
   mapStateToProps,

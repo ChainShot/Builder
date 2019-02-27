@@ -37,14 +37,17 @@ class Tab extends Component {
       case IDE_TAB_TYPES.CODE_FILE_CONFIG: {
         const codeFile = stage.codeFiles.find(x => x.id === id);
         display = `${codeFile.name} Configuration`;
+        break;
       }
       case IDE_TAB_TYPES.CODE_FILE_SOLUTION: {
         const codeFile = stage.codeFiles.find(x => x.id === id);
         display = `${codeFile.name} Solution`;
+        break;
       }
       case IDE_TAB_TYPES.CODE_FILE_INITIAL_CODE: {
         const codeFile = stage.codeFiles.find(x => x.id === id);
         display = `${codeFile.name} Initial Code`;
+        break;
       }
     }
     return (

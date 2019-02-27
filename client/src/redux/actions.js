@@ -36,7 +36,6 @@ export const registerInvalidState = (errors) => ({
 });
 export const registerChanges = () => ({ type: REGISTER_CHANGES });
 export const unregisterChanges = () => ({ type: UNREGISTER_CHANGES });
-export const toggleAutosave = () => ({ type: TOGGLE_AUTOSAVE });
 
 export const startCodeExecution = () => ({ type: START_CODE_EXECUTION });
 export const completeCodeExecution = (output) => ({

@@ -6,7 +6,6 @@ import {
   registerValidState,
   registerInvalidState } from '../redux/actions';
 import { connect } from 'react-redux';
-import { Prompt } from 'react-router-dom';
 
 function deepMerge(props, dest) {
   const merged = Array.isArray(props) ? [ ...dest ] : { ...dest };
@@ -62,12 +61,9 @@ class UpdateWrapper extends Component {
   }
 
   componentWillUnmount() {
-    const { saveState: { autosave, changes }} = this.props;
-    if(autosave && changes) {
+    const { saveState: { changes }} = this.props;
+    if(changes) {
       this.saveState();
-    }
-    else {
-      this.props.unregisterChanges();
     }
     this.props.registerValidState();
   }
@@ -122,7 +118,7 @@ class UpdateWrapper extends Component {
 
   render() {
     const { child, saveState } = this.props;
-    const { changes, autosave, errors } = saveState;
+    const { changes, errors } = saveState;
     const { currentState } = this.state;
     const ChildComponent = child;
     return (
@@ -132,9 +128,6 @@ class UpdateWrapper extends Component {
                     onValidate={(...args) => this.onValidate(...args)}
                     onSave={(...args) => this.onSave(...args)}
                     update={(...args) => this.update(...args)} />
-          <Prompt
-            when={changes && (errors || !autosave)}
-            message="Unsaved Changes. Discard them?" />
         </React.Fragment>
     )
   }
