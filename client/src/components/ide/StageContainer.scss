@@ -7,17 +7,26 @@
   flex-direction: column;
 
   .main-content {
-    width: 100%;
     height: 100%;
     overflow: hidden;
     flex-grow: 1;
     display: flex;
+    position: relative;
 
-    .ide-content {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
+    .ide-content-container {
+      flex-grow: 1;
+      position: relative;
+      // position absolute keeps this from squishing the sidebar
+      // when content overflows (i.e. too many tabs)
+      .ide-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
 }

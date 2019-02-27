@@ -34,9 +34,11 @@ class StageContainer extends Component {
       <div className="stage-container">
         <div className="main-content">
           <Sidebar stageContainer={stageContainer}/>
-          <div className="ide-content">
-            <Tabs stageContainer={stageContainer} />
-            <Editor stageContainer={stageContainer} />
+          <div className="ide-content-container">
+            <div className="ide-content">
+              <Tabs stageContainer={stageContainer} />
+              <Editor stageContainer={stageContainer} />
+            </div>
           </div>
         </div>
       </div>
