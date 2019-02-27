@@ -20,6 +20,13 @@ export default function(state = initialState, action) {
     }
     case OPEN_TAB: {
       const { type, id, stageId } = action.payload;
+      const idx = state.tabsOpen.findIndex(x => x.type === type && x.id === id && x.stageId === stageId);
+      if(idx >= 0) {
+        return {
+          ...state,
+          activeTabIdx: idx,
+        }
+      }
       return {
         ...state,
         tabsOpen: state.tabsOpen.concat({ type, id, stageId }),
