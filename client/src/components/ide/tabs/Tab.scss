@@ -16,6 +16,7 @@
   transition: color .25s;
 
   > div {
+    user-select: none;
     padding: 0 10px;
     text-overflow: ellipsis;
     overflow: hidden;

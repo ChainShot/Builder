@@ -36,12 +36,14 @@ export default function(state = initialState, action) {
     case CLOSE_TAB: {
       const { type, id, stageId } = action.payload;
       const idx = state.tabsOpen.findIndex(x => x.type === type && x.id === id && x.stageId === stageId);
+      const activeTabIdx = ((idx+1) === state.tabsOpen.length) ? idx-1 : state.activeTabIdx;
       return {
         ...state,
         tabsOpen: [
           ...state.tabsOpen.slice(0, idx),
           ...state.tabsOpen.slice(idx+1),
-        ]
+        ],
+        activeTabIdx,
       }
     }
     default:
