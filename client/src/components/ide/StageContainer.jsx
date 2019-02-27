@@ -8,7 +8,6 @@ import Tabs from './tabs/Tabs';
 import Editor from './Editor';
 import Intro from './markdown/Intro';
 import PropsRoute from '../PropsRoute';
-import Toolbar from './toolbar/Toolbar';
 import ContainerConfig from './configuration/ContainerConfig';
 import BadgeType from './BadgeType';
 import UpdateWrapper from '../UpdateWrapper';
@@ -34,7 +33,6 @@ class StageContainer extends Component {
     const { stageContainer } = this.state;
     if(!stageContainer) return null;
     const { match: { url } } = this.props;
-    // <Toolbar stageContainer={stageContainer} />
     // <PropsRoute path="/content/:containerId/" exact component={UpdateWrapper} child={ContainerConfig} stageContainer={stageContainer}/>
     // <PropsRoute path="/content/:containerId/intro" component={Intro} stageContainer={stageContainer}/>
     // <PropsRoute path="/content/:containerId/badge/:badgeTypeId" component={BadgeType} stageContainer={stageContainer}/>
