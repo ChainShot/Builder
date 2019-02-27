@@ -29,9 +29,9 @@ export const completeCompilation = (output) => ({
   payload: { output }
 });
 
-export const setCodeFilePane = (pane, stage) => ({
+export const setCodeFilePane = (pane, stageId) => ({
   type: SET_CODE_FILE_PANE,
-  payload: { pane, stage }
+  payload: { pane, stageId }
 });
 
 export const openSidebarStage = (stageId) => ({

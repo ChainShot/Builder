@@ -26,7 +26,7 @@ class CodeFilePanes extends Component {
   }
   changePane = (pane) => {
     const { stage } = this.props;
-    this.props.setCodeFilePane(pane, stage);
+    this.props.setCodeFilePane(pane, stage.id);
     // resize event for the monaco display
     window.requestAnimationFrame(() => window.dispatchEvent(new CustomEvent('resize')));
   }
@@ -38,7 +38,8 @@ class CodeFilePanes extends Component {
     return '';
   }
   render() {
-    const { stage, codeFile, code, codeFilePaneState: { pane } } = this.props;
+    const { stage, codeFile, code, codeFilePaneState: { stages } } = this.props;
+    const pane = stages[stage.id];
     return (
       <div className="code-file-toolbar">
         <CodeFilePane code={code} changePane={this.changePane} pane={pane} stage={stage} codeFile={codeFile} />
