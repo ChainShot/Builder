@@ -15,8 +15,8 @@ class ContainerSubnav extends Component {
       this.props.history.push(`${basename}/badge/${id}`);
     });
   }
-  openTab = (type) => {
-    this.props.openTab(null, type);
+  openTab = (type, id) => {
+    this.props.openTab(null, type, id);
   }
   render() {
     const { basename, stageContainer: { stageContainerGroup: { badgeTypes } } } = this.props;
@@ -36,7 +36,12 @@ class ContainerSubnav extends Component {
           </div>
         </li>
 
-        { (badgeTypes || []).map(bt => <BadgeTypeNav key={bt.id} badgeType={bt} {...this.props} />) }
+        {(badgeTypes || []).map(bt => (
+          <BadgeTypeNav
+            key={bt.id}
+            badgeType={bt} {...this.props}
+            openTab={this.openTab} />)
+        )}
 
         <li>
           <div className="action" onClick={this.addBadge}>
@@ -51,10 +56,10 @@ class ContainerSubnav extends Component {
 
 class BadgeTypeNav extends Component {
   render() {
-    const { basename, badgeType: { name, id } } = this.props;
+    const { badgeType: { name, id }, openTab } = this.props;
     return (
       <li>
-        <div className="action">
+        <div className="action" onClick={() => openTab(IDE_TAB_TYPES.BADGE_CONFIG, id)}>
           <SVG name="badge"/>
           <span>{ name }</span>
         </div>

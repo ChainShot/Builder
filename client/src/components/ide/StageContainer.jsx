@@ -9,7 +9,6 @@ import Editor from './Editor';
 import Intro from './markdown/Intro';
 import PropsRoute from '../PropsRoute';
 import ContainerConfig from './configuration/ContainerConfig';
-import BadgeType from './BadgeType';
 import UpdateWrapper from '../UpdateWrapper';
 
 class StageContainer extends Component {

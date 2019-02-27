@@ -3,6 +3,7 @@ import UpdateWrapper from 'components/UpdateWrapper';
 import CodeFileConfig from './configuration/CodeFileConfig';
 import StageConfig from './configuration/StageConfig';
 import ContainerConfig from './configuration/ContainerConfig';
+import BadgeTypeConfig from './configuration/BadgeTypeConfig';
 import CodeFileSolution from './codeFile/CodeFileSolution';
 import CodeFile from './codeFile/CodeFile';
 import Intro from './markdown/Intro';
@@ -28,6 +29,17 @@ class EditorPane extends Component {
             debounceKey={uniqueKey}
             child={ContainerConfig}
             stageContainer={stageContainer} />
+        )
+      }
+      case IDE_TAB_TYPES.BADGE_CONFIG: {
+        const uniqueKey = `badgeType-${activeTab.id}-config`;
+        const badgeType = stageContainer.stageContainerGroup.badgeTypes.find(x => x.id === activeTab.id);
+        return (
+          <UpdateWrapper
+            key={uniqueKey}
+            debounceKey={uniqueKey}
+            child={BadgeTypeConfig}
+            badgeType={badgeType} />
         )
       }
       case IDE_TAB_TYPES.STAGE_CONFIG: {

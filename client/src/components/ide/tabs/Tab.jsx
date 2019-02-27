@@ -26,6 +26,12 @@ class Tab extends Component {
         display = `intro.md`;
         break;
       }
+      case IDE_TAB_TYPES.BADGE_CONFIG: {
+        const badgeType = stageContainer.stageContainerGroup.badgeTypes.find(x => x.id === id);
+        classes.push('config-tab');
+        display = `${badgeType.name} Configuration`;
+        break;
+      }
       case IDE_TAB_TYPES.STAGE_CONTAINER_CONFIG: {
         display = `${stageContainer.stageContainerGroup.title} Configuration`;
         classes.push('config-tab');
