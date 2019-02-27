@@ -19,6 +19,7 @@ class CodeFile extends Component {
       <UpdateWrapper
         key={uniqueKey}
         debounceKey={uniqueKey}
+        code={initialCode}
         child={CodeFileEditor}
         savePromise={({ code }) => this.updateCode(code)}
         onUpdate={(code) => this.updateCode(code)}
