@@ -6,6 +6,7 @@ import {
   registerValidState,
   registerInvalidState } from '../redux/actions';
 import { connect } from 'react-redux';
+import debounce from 'utils/debounce';
 
 function deepMerge(props, dest) {
   const merged = Array.isArray(props) ? [ ...dest ] : { ...dest };
@@ -40,6 +41,8 @@ function deeplyEqualObjects(a, b) {
   return true;
 }
 
+const DEBOUNCE_INTERVAL = 1000;
+
 class UpdateWrapper extends Component {
   setInitialState() {
     const { child, savePromise, validateFn, ...rest } = this.props;
@@ -53,6 +56,10 @@ class UpdateWrapper extends Component {
 
   constructor(props) {
     super(props);
+    this.debouncedSave = debounce((key) => {
+      if(!key) throw new Error("Must provide key on debounce");
+      this.saveState(key);
+    }, DEBOUNCE_INTERVAL);
     this.setInitialState();
   }
 
@@ -72,7 +79,13 @@ class UpdateWrapper extends Component {
     this.props.registerValidState();
   }
 
-  async saveState() {
+  async saveState(debounceKey) {
+    if(debounceKey && debounceKey !== this.props.debounceKey) {
+      // for debounced saves check to make sure the key hasnt changed
+      // if it has don't save
+      return;
+    }
+
     const { saveState: { errors }} = this.props;
     if(!errors) {
       try {
@@ -94,10 +107,6 @@ class UpdateWrapper extends Component {
     if(saving && !prevProps.saveState.saving) {
       this.saveState();
     }
-    if(this.props.key !== prevProps.key) {
-      this.saveState();
-      this.setInitialState();
-    }
   }
 
   update(state) {
@@ -117,10 +126,7 @@ class UpdateWrapper extends Component {
     }
 
     if(!deeplyEqualObjects(this.state.originalState, newState)) {
-      this.props.registerChanges();
-    }
-    else {
-      this.props.unregisterChanges();
+      this.debouncedSave(this.props.debounceKey);
     }
   }
 

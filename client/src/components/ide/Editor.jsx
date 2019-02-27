@@ -28,6 +28,7 @@ class EditorPane extends Component {
         return (
           <UpdateWrapper
             key={codeFile.id}
+            debounceKey={codeFile.id}
             child={CodeFileConfig}
             codeFile={codeFile}
             stage={stage} />
