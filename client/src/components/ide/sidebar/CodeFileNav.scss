@@ -1,7 +1,11 @@
+@import '../../../shared/caret';
+@import '../../../shared/variables';
+
 .code-file-nav {
   > .code-file-main {
     display: flex;
     padding: 4px 10px;
+    align-items: center;
     &:hover {
       cursor: pointer;
     }
@@ -9,6 +13,16 @@
       width: 12px;
       height: auto;
       margin-right: 8px;
+    }
+    &::before {
+      content: '';
+      display: block;
+      @include caret-right(5px);
+      margin-right: 12px;
+    }
+    &.open::before {
+      @include caret-down(5px);
+      margin-right: 7px;
     }
   }
 }

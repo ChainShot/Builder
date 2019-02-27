@@ -12,6 +12,7 @@
   flex-grow: 1;
   max-width: 350px;
   min-width: 200px;
+  color: darken($light-font, 20);
 
   &.active {
     background-color: $bg-dark;

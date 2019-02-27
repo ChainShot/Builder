@@ -21,8 +21,7 @@ class CodeFileNav extends Component {
     if(opened) {
       return (
         <li className="code-file-nav">
-          <div className="code-file-main" onClick={this.closeCodeFile}>
-            <SVG name="codefile"/>
+          <div className="code-file-main open" onClick={this.closeCodeFile}>
             <span>{ codeFile.name }</span>
           </div>
           <CodeFileOptionsNav stage={stage} codeFile={codeFile} />
@@ -32,7 +31,6 @@ class CodeFileNav extends Component {
     return (
       <li className="code-file-nav">
         <div className="code-file-main" onClick={this.openCodeFile}>
-          <SVG name="codefile"/>
           <span>{ codeFile.name }</span>
         </div>
       </li>
