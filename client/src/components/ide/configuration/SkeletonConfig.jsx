@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import apiMutation from '../../../utils/api/mutation';
-import confirm from '../../../utils/confirm';
-import * as dialog from '../../../utils/dialog';
+import apiMutation from 'utils/api/mutation';
+import confirm from 'utils/confirm';
+import * as dialog from 'utils/dialog';
 import UpdateGithub from './UpdateGithub';
-import SVG from '../../SVG';
+import SVG from 'components/SVG';
 import axios from 'axios';
-import { withRouter } from 'react-router-dom';
+import { IDE_TAB_TYPES } from 'config';
 import './SkeletonConfig.scss';
-import Help from '../../Help';
+import Help from 'components/Help';
+import { connect } from 'react-redux';
+import { closeTab } from 'redux/actions';
 
 const TITLE_HINT = 'Short name displayed to the user';
 const DESCRIPTION_HINT = 'Description of this application';
@@ -39,17 +41,21 @@ class SkeletonConfig extends Component {
     props.onSave(({ stage }) => apiMutation(mutation, stage))
   }
   destroySkeleton = () => {
-    const { match: { url, params: { skeletonId }} } = this.props;
+    const { skeletonId } = this.props;
     confirm("Are you sure you want to delete this skeleton?").then(() => {
       const { stage } = this.props;
       const newStage = { ...stage }
       newStage.projectSkeletons = newStage.projectSkeletons.filter(x => x.id !== skeletonId);
       apiMutation(mutation, newStage);
-      this.props.history.push(url.split('/').slice(0, -2).join('/'));
+      this.props.closeTab({
+        stageId: stage.id,
+        type: IDE_TAB_TYPES.SKELETON_CONFIG,
+        id: skeletonId
+      })
     });
   }
   getSkeleton() {
-    const { match: { params: { skeletonId }}, stage } = this.props;
+    const { skeletonId, stage } = this.props;
     return stage.projectSkeletons.find(x => x.id === skeletonId);
   }
   updateGithub = async () => {
@@ -72,7 +78,7 @@ class SkeletonConfig extends Component {
     });
   }
   updateSkeleton = (state) => {
-    const { update, stage, match: { params: { skeletonId }} } = this.props;
+    const { update, stage, skeletonId } = this.props;
     const idx = stage.projectSkeletons.findIndex(x => x.id === skeletonId);
     update({
       stage: {
@@ -139,4 +145,9 @@ class SkeletonConfig extends Component {
   }
 }
 
-export default withRouter(SkeletonConfig);
+const mapDispatchToProps = { closeTab }
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(SkeletonConfig);

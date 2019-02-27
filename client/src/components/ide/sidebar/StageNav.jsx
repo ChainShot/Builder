@@ -43,7 +43,7 @@ class StageNav extends Component {
           </div>
         </li>
         <ValidationsNav {...this.props} />
-        <SkeletonsNav projectSkeletons={projectSkeletons} {...this.props} />
+        <SkeletonsNav projectSkeletons={projectSkeletons} stage={stage} />
         <CodeFilesNav codeFiles={codeFiles} {...this.props} />
       </ul>
     )

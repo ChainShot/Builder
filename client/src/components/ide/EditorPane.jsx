@@ -4,6 +4,7 @@ import CodeFileConfig from './configuration/CodeFileConfig';
 import StageConfig from './configuration/StageConfig';
 import ContainerConfig from './configuration/ContainerConfig';
 import BadgeTypeConfig from './configuration/BadgeTypeConfig';
+import SkeletonConfig from './configuration/SkeletonConfig';
 import CodeFileSolution from './codeFile/CodeFileSolution';
 import CodeFile from './codeFile/CodeFile';
 import Intro from './markdown/Intro';
@@ -93,6 +94,18 @@ class EditorPane extends Component {
         const codeFile = stage.codeFiles.find(x => x.id === activeTab.id);
         return (
           <CodeFile stage={stage} codeFile={codeFile} />
+        )
+      }
+      case IDE_TAB_TYPES.SKELETON_CONFIG: {
+        const skeleton = stage.projectSkeletons.find(x => x.id === activeTab.id);
+        const uniqueKey = `${stage.id}-skeleton-${activeTab.id}`
+        return (
+          <UpdateWrapper
+            key={uniqueKey}
+            debounceKey={uniqueKey}
+            child={SkeletonConfig}
+            skeletonId={skeleton.id}
+            stage={stage} />
         )
       }
     }

@@ -26,6 +26,12 @@ class Tab extends Component {
         display = `intro.md`;
         break;
       }
+      case IDE_TAB_TYPES.SKELETON_CONFIG: {
+        const projectSkeletons = stage.projectSkeletons.find(x => x.id === id);
+        classes.push('config-tab');
+        display = `${projectSkeletons.title} Configuration`;
+        break;
+      }
       case IDE_TAB_TYPES.BADGE_CONFIG: {
         const badgeType = stageContainer.stageContainerGroup.badgeTypes.find(x => x.id === id);
         classes.push('config-tab');
