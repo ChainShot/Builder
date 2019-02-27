@@ -8,6 +8,7 @@ import Intro from './markdown/Intro';
 import Details from './markdown/Details';
 import Task from './markdown/Task';
 import Completion from './markdown/Completion';
+import Validations from './Validations';
 import { IDE_TAB_TYPES } from 'config';
 
 class EditorPane extends Component {
@@ -37,6 +38,16 @@ class EditorPane extends Component {
       }
       case IDE_TAB_TYPES.STAGE_COMPLETION: {
         return <Completion stage={stage} />
+      }
+      case IDE_TAB_TYPES.STAGE_VALIDATIONS: {
+        const uniqueKey = `${stage.id}-validations`;
+        return (
+          <UpdateWrapper
+            key={uniqueKey}
+            debounceKey={uniqueKey}
+            child={Validations}
+            stage={stage} />
+        )
       }
       case IDE_TAB_TYPES.CODE_FILE_CONFIG: {
         const codeFile = stage.codeFiles.find(x => x.id === activeTab.id);

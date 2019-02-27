@@ -3,18 +3,6 @@ import './Tab.scss';
 import { IDE_TAB_TYPES } from 'config';
 import SVG from 'components/SVG';
 
-/*
-  STAGE_CONTAINER_INTRO: 0,
-  BADGE_CONFIG: 1,
-  STAGE_CONFIG: 2,
-  STAGE_TASK: 3,
-  STAGE_DETAILS: 4,
-  CODE_FILE_CONFIG: 5,
-  CODE_FILE_INITIAL_CODE: 6,
-  CODE_FILE_SOLUTION: 7,
-  SKELETON_CONFIG: 8,
-*/
-
 class Tab extends Component {
   setActive = () => {
     const { isActive } = this.props;
@@ -53,6 +41,10 @@ class Tab extends Component {
       }
       case IDE_TAB_TYPES.STAGE_COMPLETION: {
         display = `completion.md`;
+        break;
+      }
+      case IDE_TAB_TYPES.STAGE_VALIDATIONS: {
+        display = `validations.md`;
         break;
       }
       case IDE_TAB_TYPES.CODE_FILE_CONFIG: {
