@@ -116,7 +116,7 @@ class ContainerConfig extends Component {
     });
   }
   render() {
-    const { stageContainer, update, saveState: { errors } } = this.props;
+    const { stageContainer, update, errors } = this.props;
     const { type, version,
       stageContainerGroup: {
         description, estimatedTime, thumbnailUrl, title, productionReady

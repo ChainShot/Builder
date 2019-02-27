@@ -60,7 +60,7 @@ class BadgeConfig extends Component {
     });
   }
   render() {
-    const { update, saveState: { errors },
+    const { update, errors,
       badgeType: {
         description, name, thumbnailUrl, badgeLimit
       } } = this.props;

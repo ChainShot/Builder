@@ -76,7 +76,7 @@ class StageConfig extends Component {
     });
   }
   render() {
-    const { update, stage, saveState: { errors } } = this.props;
+    const { update, stage, errors } = this.props;
     const { title, position, type } = stage;
     const updateStage = (state) => update({ stage: state });
     return (

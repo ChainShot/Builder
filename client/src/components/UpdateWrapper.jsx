@@ -1,45 +1,7 @@
 import React, { Component } from 'react';
-import {
-  completeSave,
-  registerChanges,
-  unregisterChanges,
-  registerValidState,
-  registerInvalidState } from '../redux/actions';
-import { connect } from 'react-redux';
 import debounce from 'utils/debounce';
-
-function deepMerge(props, dest) {
-  const merged = Array.isArray(props) ? [ ...dest ] : { ...dest };
-  const keys = Object.keys(props);
-  for(let i = 0; i < keys.length; i++) {
-    const key = keys[i];
-    if(props[key] && typeof props[key] === 'object') {
-      merged[key] = deepMerge(props[key], dest[key]);
-    }
-    else {
-      merged[key] = props[key];
-    }
-  }
-  return merged;
-}
-
-function deeplyEqualObjects(a, b) {
-  const aKeys = Object.keys(a);
-  const bKeys = Object.keys(b);
-  if(aKeys.length !== bKeys.length) return false;
-  for(let i = 0; i < aKeys.length; i++) {
-    const key = aKeys[i];
-    if(a[key] && typeof a[key] === 'object') {
-      if(!deeplyEqualObjects(a[key], b[key])) {
-        return false;
-      }
-    }
-    else if(a[key] !== b[key]) {
-      return false;
-    }
-  }
-  return true;
-}
+import deeplyEqualObjects from 'utils/deeplyEqualObjects';
+import deepMerge from 'utils/deepMerge';
 
 const DEBOUNCE_INTERVAL = 1000;
 
@@ -49,6 +11,8 @@ class UpdateWrapper extends Component {
     this.state = {
       savePromise,
       validateFn,
+      errors: [],
+      hasChanges: false,
       originalState: { ...rest },
       currentState: { ...rest },
     }
@@ -72,11 +36,10 @@ class UpdateWrapper extends Component {
   }
 
   componentWillUnmount() {
-    const { saveState: { changes }} = this.props;
-    if(changes) {
+    const { hasChanges } = this.state;
+    if(hasChanges) {
       this.saveState();
     }
-    this.props.registerValidState();
   }
 
   async saveState(debounceKey) {
@@ -86,11 +49,13 @@ class UpdateWrapper extends Component {
       return;
     }
 
-    const { saveState: { errors }} = this.props;
-    if(!errors) {
+    const { errors } = this.state;
+    if(errors.length === 0) {
       try {
-        this.setState({ originalState: this.state.currentState });
-        this.props.unregisterChanges();
+        this.setState({
+          originalState: this.state.currentState,
+          hasChanges: false,
+        });
         await this.state.savePromise(this.state.currentState);
       }
       catch(ex) {
@@ -98,15 +63,8 @@ class UpdateWrapper extends Component {
         // allow the user to attempt to fix their current state and retry
       }
     }
-    const changes = !deeplyEqualObjects(this.state.originalState, this.state.currentState);
-    this.props.completeSave(changes);
-  }
-
-  async componentDidUpdate(prevProps) {
-    const { saveState: { saving }} = this.props;
-    if(saving && !prevProps.saveState.saving) {
-      this.saveState();
-    }
+    const hasChanges = !deeplyEqualObjects(this.state.originalState, this.state.currentState);
+    this.setState({ hasChanges })
   }
 
   update(state) {
@@ -114,15 +72,9 @@ class UpdateWrapper extends Component {
 
     this.setState({ currentState: newState });
 
-    const { saveState: { valid }} = this.props;
     if(this.state.validateFn) {
       const errors = this.state.validateFn(newState) || [];
-      if(errors.length > 0) {
-        this.props.registerInvalidState(errors);
-      }
-      else if(!valid) {
-        this.props.registerValidState();
-      }
+      this.setState({ errors });
     }
 
     if(!deeplyEqualObjects(this.state.originalState, newState)) {
@@ -131,14 +83,13 @@ class UpdateWrapper extends Component {
   }
 
   render() {
-    const { child, saveState } = this.props;
-    const { changes, errors } = saveState;
-    const { currentState } = this.state;
+    const { child } = this.props;
+    const { currentState, errors } = this.state;
     const ChildComponent = child;
     return (
         <React.Fragment>
           <ChildComponent {...currentState}
-                    saveState={saveState}
+                    errors={errors}
                     onValidate={(...args) => this.onValidate(...args)}
                     onSave={(...args) => this.onSave(...args)}
                     update={(...args) => this.update(...args)} />
@@ -147,16 +98,4 @@ class UpdateWrapper extends Component {
   }
 }
 
-const mapStateToProps = ({ saveState }) => ({ saveState });
-const mapDispatchToProps = {
-  completeSave,
-  registerValidState,
-  registerInvalidState,
-  registerChanges,
-  unregisterChanges,
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(UpdateWrapper);
+export default UpdateWrapper;

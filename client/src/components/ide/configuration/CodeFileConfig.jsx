@@ -77,8 +77,7 @@ class CodeFileConfig extends Component {
   }
   render() {
     const {
-      update,
-      saveState: { errors },
+      update, errors,
       codeFile: { name, mode, executablePath, fileLocation, readOnly, hasProgress, executable, testFixture, visible }
     } = this.props;
     const updateCodeFile = (state) => update({ codeFile: state })
