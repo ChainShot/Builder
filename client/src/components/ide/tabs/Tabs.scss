@@ -3,10 +3,17 @@
 .ide-tabs {
   display: flex;
   background-color: $bg-container;
-  overflow-x: auto;
+  overflow-x: scroll;
 
   .rest {
     flex-grow: 1;
     border-bottom: 1px solid $bg-darker;
+  }
+
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+  &::-webkit-scrollbar { /* WebKit */
+    width: 0px;
+    height: 0px;
   }
 }
