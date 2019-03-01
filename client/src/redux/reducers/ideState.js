@@ -3,6 +3,7 @@ import {
   CLOSE_TAB,
   SET_ACTIVE_TAB,
   CLOSE_OTHER_TABS,
+  CLOSE_TABS_TO_THE_RIGHT,
 } from '../actionTypes';
 
 const initialState = {
@@ -12,6 +13,15 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case CLOSE_TABS_TO_THE_RIGHT: {
+      const { type, id, stageId } = action.payload;
+      const idx = state.tabsOpen.findIndex(x => x.type === type && x.id === id && x.stageId === stageId);
+      return {
+        ...state,
+        tabsOpen: state.tabsOpen.slice(0, idx+1),
+        activeTabIdx: state.activeTabIdx > idx ? idx : state.activeTabIdx,
+      }
+    }
     case CLOSE_OTHER_TABS: {
       const { type, id, stageId } = action.payload;
       const tab = state.tabsOpen.find(x => x.type === type && x.id === id && x.stageId === stageId);

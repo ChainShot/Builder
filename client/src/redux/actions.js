@@ -10,6 +10,7 @@ import {
   OPEN_TAB,
   CLOSE_TAB,
   CLOSE_OTHER_TABS,
+  CLOSE_TABS_TO_THE_RIGHT,
   OPEN_FOLDER,
   CLOSE_FOLDER,
   CLOSE_SIDEBAR_STAGE,
@@ -70,6 +71,10 @@ export const closeTab = ({stageId, type, id}) => ({
 });
 export const closeOtherTabs = ({stageId, type, id}) => ({
   type: CLOSE_OTHER_TABS,
+  payload: { stageId, type, id }
+});
+export const closeTabsToTheRight = ({stageId, type, id}) => ({
+  type: CLOSE_TABS_TO_THE_RIGHT,
   payload: { stageId, type, id }
 });
 

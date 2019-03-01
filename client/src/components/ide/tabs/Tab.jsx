@@ -15,18 +15,12 @@ class Tab extends Component {
   closeTab = () => {
     this.props.closeTab();
   }
-  closeOtherTabs = () => {
-    this.props.closeOtherTabs();
-  }
   contextmenu = (evt) => {
     evt.preventDefault();
-    ContextMenu.open(TabContextMenu, {
-      x: evt.clientX,
-      y: evt.clientY,
-    }, {
-      closeOtherTabs: this.closeOtherTabs,
-      closeTabsToTheRight: this.closeTabsToTheRight,
-    });
+    const { closeOtherTabs, closeTabsToTheRight } = this.props;
+    ContextMenu.open(TabContextMenu,
+      { x: evt.clientX, y: evt.clientY },
+      { closeTabsToTheRight, closeOtherTabs });
     return false;
   }
   componentDidMount() {

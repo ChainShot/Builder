@@ -10,6 +10,7 @@ export const SET_ACTIVE_TAB = "SET_ACTIVE_TAB";
 export const OPEN_TAB = "OPEN_TAB";
 export const CLOSE_TAB = "CLOSE_TAB";
 export const CLOSE_OTHER_TABS = "CLOSE_OTHER_TABS";
+export const CLOSE_TABS_TO_THE_RIGHT = "CLOSE_TABS_TO_THE_RIGHT";
 
 export const OPEN_CODE_FILE = "OPEN_CODE_FILE";
 export const CLOSE_CODE_FILE = "CLOSE_CODE_FILE";

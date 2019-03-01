@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { closeTab, setActiveTab, closeOtherTabs } from 'redux/actions';
+import { closeTab, setActiveTab, closeOtherTabs, closeTabsToTheRight } from 'redux/actions';
 import './Tabs.scss';
 import Tab from './Tab';
 
@@ -14,6 +14,9 @@ class Tabs extends Component {
   closeOtherTabs = (tab) => {
     this.props.closeOtherTabs(tab);
   }
+  closeTabsToTheRight = (tab) => {
+    this.props.closeTabsToTheRight(tab);
+  }
   render() {
     const { ideState: { tabsOpen, activeTabIdx }, stageContainer } = this.props;
     if(tabsOpen.length > 0) {
@@ -25,6 +28,7 @@ class Tabs extends Component {
                 isActive={idx === activeTabIdx}
                 key={JSON.stringify(tab)}
                 tabsOpen={tabsOpen}
+                closeTabsToTheRight={() => this.closeTabsToTheRight(tab)}
                 closeOtherTabs={() => this.closeOtherTabs(tab)}
                 closeTab={() => this.closeTab(tab)}
                 setActive={() => this.setActive(idx)}
@@ -41,7 +45,7 @@ class Tabs extends Component {
 
 const mapStateToProps = ({ ideState }) => ({ ideState });
 
-const mapDispatchToProps = { closeOtherTabs, closeTab, setActiveTab }
+const mapDispatchToProps = { closeOtherTabs, closeTab, setActiveTab, closeTabsToTheRight }
 
 export default connect(
   mapStateToProps,
