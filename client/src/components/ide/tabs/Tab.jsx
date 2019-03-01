@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './Tab.scss';
 import { IDE_TAB_TYPES } from 'config';
 import SVG from 'components/SVG';
-import { connect } from 'react-redux';
+import TabContextMenu from './TabContextMenu';
+import * as ContextMenu from 'utils/contextMenu';
 
 class Tab extends Component {
   setActive = () => {
@@ -14,8 +15,28 @@ class Tab extends Component {
   closeTab = () => {
     this.props.closeTab();
   }
+  closeOtherTabs = () => {
+    this.props.closeOtherTabs();
+  }
+  contextmenu = (evt) => {
+    evt.preventDefault();
+    ContextMenu.open(TabContextMenu, {
+      x: evt.clientX,
+      y: evt.clientY,
+    }, {
+      closeOtherTabs: this.closeOtherTabs,
+      closeTabsToTheRight: this.closeTabsToTheRight,
+    });
+    return false;
+  }
+  componentDidMount() {
+    this.refs.tab.addEventListener('contextmenu', this.contextmenu, false);
+  }
+  componentWillUnmount() {
+    this.refs.tab.removeEventListener('contextmenu', this.contextmenu);
+  }
   render() {
-    const { tab: { stageId, type, id }, ideState: { tabsOpen }, stageContainer, isActive } = this.props;
+    const { tab: { stageId, type, id }, tabsOpen, stageContainer, isActive } = this.props;
     const stage = stageContainer.stages.find(x => x.id === stageId);
     const classes = ['ide-tab'];
     if(isActive) {
@@ -101,16 +122,12 @@ class Tab extends Component {
       tabName = `${stage.title} - ${tabName}`
     }
     return (
-      <div className={classes.join(' ')} onClick={this.setActive}>
-        <div> {tabName} </div>
+      <div className={classes.join(' ')} onClick={this.setActive} ref="tab">
+        <div className="name"> {tabName} </div>
         <SVG name="times" className="close" onClick={this.closeTab}/>
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ ideState }) => ({ ideState })
-
-export default connect(
-  mapStateToProps
-)(Tab);
+export default Tab;

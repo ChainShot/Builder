@@ -1,7 +1,8 @@
 import {
-  SET_ACTIVE_TAB,
   OPEN_TAB,
   CLOSE_TAB,
+  SET_ACTIVE_TAB,
+  CLOSE_OTHER_TABS,
 } from '../actionTypes';
 
 const initialState = {
@@ -11,6 +12,15 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case CLOSE_OTHER_TABS: {
+      const { type, id, stageId } = action.payload;
+      const tab = state.tabsOpen.find(x => x.type === type && x.id === id && x.stageId === stageId);
+      return {
+        ...state,
+        tabsOpen: [tab],
+        activeTabIdx: 0,
+      }
+    }
     case SET_ACTIVE_TAB: {
       const { idx } = action.payload;
       return {

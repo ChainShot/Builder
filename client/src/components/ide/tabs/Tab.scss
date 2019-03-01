@@ -15,7 +15,7 @@
   color: darken($light-font, 20);
   transition: color .25s;
 
-  > div {
+  > .name {
     user-select: none;
     padding: 0 10px;
     text-overflow: ellipsis;

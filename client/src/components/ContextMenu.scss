@@ -1,0 +1,20 @@
+@import '../shared/variables';
+
+.context-menu {
+  z-index: 10;
+  position: absolute;
+  background-color: $bg-dark;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+  .options {
+    > div {
+      padding: 5px 10px;
+      margin: 5px 0;
+      &:hover {
+        cursor: pointer;
+        background-color: lighten($bg-dark, 10);
+      }
+    }
+  }
+}

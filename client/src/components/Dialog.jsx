@@ -35,7 +35,7 @@ class Dialog extends Component {
             { this.props.children }
           </div>
         </div>
-        <div className="overlay" onClick={() => this.cancelMe()} />
+        <div className="dialog-overlay" onClick={() => this.cancelMe()} />
       </React.Fragment>
     );
   }
