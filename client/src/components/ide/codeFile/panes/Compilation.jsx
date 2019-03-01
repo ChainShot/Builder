@@ -33,16 +33,18 @@ class Compilation extends Component {
           return obj;
         }, {});
       const output = await compilers.solc.compile(sources, languageVersion);
-      this.props.completeCompilation(output);
+      this.props.completeCompilation(output, stage.id);
     }
 
     if(language === 'vyper') {
       const output = await compilers.vyper.compile(code);
-      this.props.completeCompilation(output);
+      this.props.completeCompilation(output, stage.id);
     }
   }
   startCompilation = () => {
-    this.props.startCompilation();
+    const { stage } = this.props;
+    this.props.startCompilation(stage.id);
+    this.compile();
   }
   toggleAuto = () => {
     this.setState({ auto: !this.state.auto })
@@ -53,14 +55,15 @@ class Compilation extends Component {
     if(this.state.auto && code !== prevProps.code) {
       this.debouncedCompile();
     }
-    const { compilationState: { compiling }} = this.props;
-    if(!prevProps.compilationState.compiling && compiling) {
-      this.compile();
-    }
+  }
+  getCompilationState() {
+    const { stage } = this.props;
+    return this.props.compilationState.stages[stage.id] || this.props.compilationState.default;
   }
   render() {
     const { auto } = this.state;
-    const { hide, shouldShow, compilationState: { output, compiling } } = this.props;
+    const { hide, shouldShow } = this.props;
+    const { output, compiling } = this.getCompilationState();
     if(!shouldShow) return null;
     return (
       <div className="compilation">

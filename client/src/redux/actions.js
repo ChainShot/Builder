@@ -28,10 +28,13 @@ export const completeCodeExecution = (output, stageId) => ({
   payload: { output, stageId }
 });
 
-export const startCompilation = () => ({ type: START_COMPILATION });
-export const completeCompilation = (output) => ({
+export const startCompilation = (stageId) => ({
+  type: START_COMPILATION,
+  payload: { stageId }
+});
+export const completeCompilation = (output, stageId) => ({
   type: COMPLETE_COMPILATION,
-  payload: { output }
+  payload: { output, stageId }
 });
 
 export const setCodeFilePane = (pane, stageId) => ({
