@@ -5,15 +5,21 @@ import * as dialog from '../../../../utils/dialog';
 import Error from '../../../dialogs/Error';
 import OutputDisplay from './OutputDisplay';
 import OutputToolbar from './OutputToolbar';
-import { completeCodeExecution, startCodeExecution } from '../../../../redux/actions';
+import { completeCodeExecution, startCodeExecution } from 'redux/actions';
 import { connect } from 'react-redux';
 
 class Output extends Component {
   cancelRun = () => {
-    this.props.completeCodeExecution(null);
+    const { stage } = this.props;
+    this.props.completeCodeExecution(null, stage.id);
+  }
+  getExecutionState() {
+    const { stage, executionState } = this.props;
+    return executionState.stages[stage.id] || executionState.default;
   }
   runCode = async () => {
-    const { stage, code, codeFile, executionState: { runIdx } } = this.props;
+    const { stage, code, codeFile } = this.props;
+    const { runIdx } = this.getExecutionState();
 
     const files = stage.codeFiles
       .filter(x => x.executable)
@@ -46,25 +52,22 @@ class Output extends Component {
       else {
         dialog.open(Error, { message: "Oof. Failed to Run Your Code just now. \nPlease try again soon." });
       }
-      this.props.completeCodeExecution();
+      this.props.completeCodeExecution(null, stage.id);
       return;
     }
     // if the run idx hasnt changed since this run started, display it
-    if(this.props.executionState.runIdx === runIdx) {
-      this.props.completeCodeExecution(response.data);
+    if(this.getExecutionState().runIdx === runIdx) {
+      this.props.completeCodeExecution(response.data, stage.id);
     }
   }
   startRun = () => {
-    this.props.startCodeExecution();
-  }
-  componentDidUpdate(prevProps) {
-    const { executionState: { running }} = this.props;
-    if(!prevProps.executionState.running && running) {
-      this.runCode();
-    }
+    const { stage } = this.props;
+    this.props.startCodeExecution(stage.id);
+    this.runCode();
   }
   render() {
-    const { hide, shouldShow, executionState: { output, running } } = this.props;
+    const { hide, shouldShow } = this.props;
+    const { output, running } = this.getExecutionState();
     if(!shouldShow) return null;
     return (
       <div className="output">

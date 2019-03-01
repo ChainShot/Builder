@@ -17,10 +17,13 @@ import {
   OPEN_SIDEBAR_CONTAINER,
 } from "./actionTypes";
 
-export const startCodeExecution = () => ({ type: START_CODE_EXECUTION });
-export const completeCodeExecution = (output) => ({
+export const startCodeExecution = (stageId) => ({
+  type: START_CODE_EXECUTION,
+  payload: { stageId }
+});
+export const completeCodeExecution = (output, stageId) => ({
   type: COMPLETE_CODE_EXECUTION,
-  payload: { output }
+  payload: { output, stageId }
 });
 
 export const startCompilation = () => ({ type: START_COMPILATION });
