@@ -6,16 +6,16 @@ import deepMerge from 'utils/deepMerge';
 const DEBOUNCE_INTERVAL = 1000;
 
 class UpdateWrapper extends Component {
-  setInitialState() {
+  initialState() {
     const { child, savePromise, validateFn, ...rest } = this.props;
-    this.setState({
+    return {
       savePromise,
       validateFn,
       errors: [],
       hasChanges: false,
       originalState: { ...rest },
       currentState: { ...rest },
-    });
+    }
   }
 
   constructor(props) {
@@ -24,7 +24,7 @@ class UpdateWrapper extends Component {
       if(!key) throw new Error("Must provide key on debounce");
       this.saveState(key);
     }, DEBOUNCE_INTERVAL);
-    this.setInitialState();
+    this.state = this.initialState();
   }
 
   onSave(savePromise) {
