@@ -35,14 +35,14 @@ class Compilation extends Component {
         .reduce((obj, { id, name, executable, initialCode, hasProgress, executablePath }) => {
           if(executable && executablePath.indexOf('contracts/') >= 0) {
             if(id === codeFile.id) {
-              obj[executablePath] = code;
+              obj[executablePath] = { content: code };
             }
             else if (hasProgress) {
               const solution = solutions.find(x => x.codeFileId === id);
-              obj[executablePath] = solution.code;
+              obj[executablePath] = { content: code };
             }
             else {
-              obj[executablePath] = initialCode;
+              obj[executablePath] = { content: code };
             }
           }
           return obj;

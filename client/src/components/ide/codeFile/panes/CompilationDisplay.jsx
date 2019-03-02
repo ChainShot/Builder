@@ -10,9 +10,9 @@ class CompilationDisplay extends Component {
       const warnings = output.warnings || [];
       if(errors.length + warnings.length === 0) {
         return (
-          <div className="compilation-message"> 
+          <div className="compilation-message">
             <SVG name="check" />
-            Compilation Successful. No errors. 
+            Compilation Successful. No errors.
           </div>
         )
       }
@@ -23,8 +23,8 @@ class CompilationDisplay extends Component {
                     {
                         (errors || []).map((error) => {
                             return (
-                                <li className="error" key={error}>
-                                    <pre>{error}</pre>
+                                <li className="error" key={error.message}>
+                                    <pre>{error.formattedMessage}</pre>
                                 </li>
                             );
                         })

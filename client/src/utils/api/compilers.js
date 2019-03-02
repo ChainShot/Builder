@@ -18,9 +18,9 @@ const vyperApi = axios.create({
     baseURL: VPYER_COMPILER_URL
 })
 
-const isWarning = error => error.indexOf('Warning:') > -1;
-const filterWarnings = list => list.filter(isWarning);
-const filterErrors = list => list.filter(x => !isWarning(x));
+const isError = error => error.severity === 'error';
+const filterWarnings = list => list.filter(x => !isError(x));
+const filterErrors = list => list.filter(x => isError(x));
 
 const solc = {
   compile: (sources, languageVersion) => {
