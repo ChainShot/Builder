@@ -5,6 +5,7 @@ import CompilationTab from './CompilationTab';
 import OutputTab from './OutputTab';
 import { setCodeFilePane } from 'redux/actions';
 import { connect } from 'react-redux';
+import { CODE_FILE_PANES } from 'config';
 
 class CodeFilePanes extends Component {
   componentWillMount() {
@@ -17,11 +18,11 @@ class CodeFilePanes extends Component {
   componentDidUpdate(prevProps) {
     const { executionState: { running }} = this.props;
     if(!prevProps.executionState.running && running) {
-      this.changePane('output');
+      this.changePane(CODE_FILE_PANES.OUTPUT_TAB);
     }
     const { compilationState: { compiling }} = this.props;
     if(!prevProps.compilationState.compiling && compiling) {
-      this.changePane('compilation');
+      this.changePane(CODE_FILE_PANES.COMPILATION_TAB);
     }
   }
   changePane = (pane) => {

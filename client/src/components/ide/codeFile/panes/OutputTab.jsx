@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import SVG from '../../../SVG';
-const TAB_NAME = 'output';
+import { CODE_FILE_PANES } from 'config';
+
+const TAB_NAME = CODE_FILE_PANES.OUTPUT_TAB;
 
 class OutputTab extends Component {
   render() {
@@ -11,8 +13,8 @@ class OutputTab extends Component {
     return (
       <li className={classes.join(' ')}
           onClick={() => changePane(isActive ? '' : TAB_NAME)}>
-        <SVG name="play"/>
-        <div>Output</div>
+        <SVG name="braces"/>
+        <div>Test Output</div>
       </li>
     )
   }

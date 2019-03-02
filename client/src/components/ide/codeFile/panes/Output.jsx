@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import './Output.scss';
-import runner from '../../../../utils/api/runner';
-import * as dialog from '../../../../utils/dialog';
-import Error from '../../../dialogs/Error';
+import runner from 'utils/api/runner';
+import * as dialog from 'utils/dialog';
+import Error from 'components/dialogs/Error';
 import OutputDisplay from './OutputDisplay';
 import OutputToolbar from './OutputToolbar';
 import { completeCodeExecution, startCodeExecution, setCodeFilePane } from 'redux/actions';
 import { connect } from 'react-redux';
+import { CODE_FILE_PANES } from 'config';
 
 class Output extends Component {
   shortcut = (evt) => {
@@ -38,7 +39,7 @@ class Output extends Component {
     const { stage, code, codeFile } = this.props;
     const { runIdx } = this.getExecutionState();
     this.props.startCodeExecution(stage.id);
-    this.props.setCodeFilePane('output', stage.id);
+    this.props.setCodeFilePane(CODE_FILE_PANES.OUTPUT_TAB, stage.id);
 
     const files = stage.codeFiles
       .filter(x => x.executable)

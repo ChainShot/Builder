@@ -26,6 +26,11 @@ function toEnum(arr) {
   }, {});
 }
 
+const CODE_FILE_PANES = {
+  OUTPUT_TAB: 0,
+  COMPILATION_TAB: 1,
+}
+
 const IDE_TAB_TYPES = toEnum([
   'STAGE_CONTAINER_INTRO',
   'STAGE_CONTAINER_CONFIG',
@@ -52,4 +57,5 @@ export {
   PUBLIC_URL,
   READ_THE_DOCS,
   IDE_TAB_TYPES,
+  CODE_FILE_PANES,
 }

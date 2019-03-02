@@ -4,16 +4,31 @@ import * as compilers from '../../../../utils/api/compilers';
 import debounce from '../../../../utils/debounce';
 import CompilationDisplay from './CompilationDisplay';
 import CompilationToolbar from './CompilationToolbar';
-import { completeCompilation, startCompilation } from '../../../../redux/actions';
+import { completeCompilation, startCompilation, setCodeFilePane } from '../../../../redux/actions';
 import { connect } from 'react-redux';
+import { CODE_FILE_PANES } from 'config';
 
 class Compilation extends Component {
   state = {
     auto: true,
   }
+  shortcut = (evt) => {
+    if((evt.ctrlKey || evt.metaKey) && (evt.keyCode === 222) && !(evt.shiftKey || evt.altKey)) {
+      this.compile();
+      evt.preventDefault();
+    }
+  }
+  componentDidMount() {
+    document.addEventListener('keydown', this.shortcut)
+  }
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.shortcut)
+  }
   compile = async () => {
     const { stage, code, codeFile } = this.props;
     const { language, languageVersion, codeFiles, solutions } = stage;
+    this.props.startCompilation(stage.id);
+    this.props.setCodeFilePane(CODE_FILE_PANES.COMPILATION_TAB, stage.id);
 
     if(language === 'solidity') {
       const sources = codeFiles
@@ -41,11 +56,6 @@ class Compilation extends Component {
       this.props.completeCompilation(output, stage.id);
     }
   }
-  startCompilation = () => {
-    const { stage } = this.props;
-    this.props.startCompilation(stage.id);
-    this.compile();
-  }
   toggleAuto = () => {
     this.setState({ auto: !this.state.auto })
   }
@@ -67,15 +77,15 @@ class Compilation extends Component {
     if(!shouldShow) return null;
     return (
       <div className="compilation">
-        <CompilationToolbar compile={this.startCompilation} hide={hide} compiling={compiling} auto={auto} toggleAuto={this.toggleAuto}/>
-        <CompilationDisplay compile={this.startCompilation} output={output} toggleAuto={this.toggleAuto}/>
+        <CompilationToolbar compile={this.compile} hide={hide} compiling={compiling} auto={auto} toggleAuto={this.toggleAuto}/>
+        <CompilationDisplay compile={this.compile} output={output} toggleAuto={this.toggleAuto}/>
       </div>
     )
   }
 }
 
 const mapStateToProps = ({ compilationState }) => ({ compilationState });
-const mapDispatchToProps = { completeCompilation, startCompilation }
+const mapDispatchToProps = { completeCompilation, startCompilation, setCodeFilePane }
 
 export default connect(
   mapStateToProps,
