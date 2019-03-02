@@ -5,10 +5,27 @@ import * as dialog from '../../../../utils/dialog';
 import Error from '../../../dialogs/Error';
 import OutputDisplay from './OutputDisplay';
 import OutputToolbar from './OutputToolbar';
-import { completeCodeExecution, startCodeExecution } from 'redux/actions';
+import { completeCodeExecution, startCodeExecution, setCodeFilePane } from 'redux/actions';
 import { connect } from 'react-redux';
 
 class Output extends Component {
+  shortcut = (evt) => {
+    if((evt.ctrlKey || evt.metaKey) && (evt.keyCode === 13) && !(evt.shiftKey || evt.altKey)) {
+      this.runCode();
+      evt.preventDefault();
+    }
+    if((evt.ctrlKey || evt.metaKey) && (evt.keyCode === 27) && !(evt.shiftKey || evt.altKey)) {
+      const { stage } = this.props;
+      this.props.completeCodeExecution(null, stage.id);
+      evt.preventDefault();
+    }
+  }
+  componentDidMount() {
+    document.addEventListener('keydown', this.shortcut);
+  }
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.shortcut);
+  }
   cancelRun = () => {
     const { stage } = this.props;
     this.props.completeCodeExecution(null, stage.id);
@@ -20,6 +37,8 @@ class Output extends Component {
   runCode = async () => {
     const { stage, code, codeFile } = this.props;
     const { runIdx } = this.getExecutionState();
+    this.props.startCodeExecution(stage.id);
+    this.props.setCodeFilePane('output', stage.id);
 
     const files = stage.codeFiles
       .filter(x => x.executable)
@@ -60,18 +79,13 @@ class Output extends Component {
       this.props.completeCodeExecution(response.data, stage.id);
     }
   }
-  startRun = () => {
-    const { stage } = this.props;
-    this.props.startCodeExecution(stage.id);
-    this.runCode();
-  }
   render() {
     const { hide, shouldShow } = this.props;
     const { output, running } = this.getExecutionState();
     if(!shouldShow) return null;
     return (
       <div className="output">
-        <OutputToolbar hide={hide} runCode={this.startRun} cancelRun={this.cancelRun} running={running} />
+        <OutputToolbar hide={hide} runCode={this.runCode} cancelRun={this.cancelRun} running={running} />
         <OutputDisplay output={output} running={running} runCode={this.startRun} cancelRun={this.cancelRun} />
       </div>
     )
@@ -79,7 +93,7 @@ class Output extends Component {
 }
 
 const mapStateToProps = ({ executionState }) => ({ executionState });
-const mapDispatchToProps = { completeCodeExecution, startCodeExecution }
+const mapDispatchToProps = { completeCodeExecution, startCodeExecution, setCodeFilePane }
 
 export default connect(
   mapStateToProps,
