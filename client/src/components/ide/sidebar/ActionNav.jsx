@@ -9,7 +9,7 @@ class ActionNav extends Component {
     this.props.openTab(stageId, type, id);
   }
   render() {
-    const { stage, attrs, ideState: { tabsOpen, activeTabIdx } } = this.props;
+    const { attrs, ideState: { tabsOpen, activeTabIdx } } = this.props;
     const activeTab = tabsOpen[activeTabIdx];
     const classes = ['action'];
     if(equalObjects(activeTab, attrs)) classes.push('active');

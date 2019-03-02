@@ -110,6 +110,8 @@ class Tab extends Component {
         display = `${codeFile.name} Initial Code`;
         break;
       }
+      default:
+        return null;
     }
     let tabName = display;
     if(isCrossStage && stageSpecific) {

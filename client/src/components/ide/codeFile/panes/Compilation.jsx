@@ -39,10 +39,10 @@ class Compilation extends Component {
             }
             else if (hasProgress) {
               const solution = solutions.find(x => x.codeFileId === id);
-              obj[executablePath] = { content: code };
+              obj[executablePath] = { content: solution.code };
             }
             else {
-              obj[executablePath] = { content: code };
+              obj[executablePath] = { content: initialCode };
             }
           }
           return obj;

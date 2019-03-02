@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink, Route } from 'react-router-dom';
-import SVG from 'components/SVG';
 import CodeFileOptionsNav from './CodeFileOptionsNav';
 import "./CodeFileNav.scss";
 import { connect } from 'react-redux';

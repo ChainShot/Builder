@@ -24,7 +24,6 @@ const parseHtml = htmlParser({
 class MarkdownEdit extends Component {
   render() {
     const { mutation, id, markdownProp, markdown } = this.props;
-    const uniqueKey = this.props.id;
     return <UpdateWrapper
               mutation={mutation}
               id={id} key={id} debounceKey={id}

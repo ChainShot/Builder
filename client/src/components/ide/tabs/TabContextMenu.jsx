@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ContextMenu from 'components/ContextMenu';
 import { close } from 'utils/contextMenu';
 
 class TabContextMenu extends Component {

@@ -108,8 +108,9 @@ class EditorPane extends Component {
             stage={stage} />
         )
       }
+      default:
+        return null;
     }
-    return null;
   }
 }
 

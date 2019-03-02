@@ -29,6 +29,7 @@ class CodeFileDirectory extends Component {
         const parts = codeFile.executablePath.split("/").filter(x => x).slice(pathPartsLength);
         return (parts.length === 1);
       }
+      return false;
     });
 
     return (

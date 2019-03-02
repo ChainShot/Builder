@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import SVG from '../../SVG';
 import './CodeFileOptionsNav.scss';
 import { IDE_TAB_TYPES } from 'config';

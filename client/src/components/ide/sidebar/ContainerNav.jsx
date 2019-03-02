@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { matchPath, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import ContainerSubnav from './ContainerSubnav'
 import { openSidebarContainer, closeSidebarContainer } from '../../../redux/actions';
 import './ContainerNav.scss';

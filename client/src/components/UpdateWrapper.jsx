@@ -8,14 +8,14 @@ const DEBOUNCE_INTERVAL = 1000;
 class UpdateWrapper extends Component {
   setInitialState() {
     const { child, savePromise, validateFn, ...rest } = this.props;
-    this.state = {
+    this.setState({
       savePromise,
       validateFn,
       errors: [],
       hasChanges: false,
       originalState: { ...rest },
       currentState: { ...rest },
-    }
+    });
   }
 
   constructor(props) {

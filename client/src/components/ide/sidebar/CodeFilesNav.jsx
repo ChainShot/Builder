@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import CodeFileNav from './CodeFileNav';
 import CodeFilesNavActions from './CodeFilesNavActions';
 import CodeFileDirectory from './CodeFileDirectory';
-import SVG from 'components/SVG';
 
 class CodeFilesNav extends Component {
   render() {

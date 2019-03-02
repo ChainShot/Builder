@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import apiMutation from '../../../utils/api/mutation';
 import modifyCodeFile from '../../../mutations/codeFile/modify';
-import modifySolution from '../../../mutations/solution/modify';
 import UpdateWrapper from '../../UpdateWrapper';
-import CodeFileConfig from '../configuration/CodeFileConfig';
 import CodeFileEditor from './CodeFileEditor';
 
 class CodeFile extends Component {

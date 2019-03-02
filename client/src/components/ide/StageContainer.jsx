@@ -6,9 +6,6 @@ import './configuration/Config.scss';
 import './StageContainer.scss';
 import Tabs from './tabs/Tabs';
 import Editor from './Editor';
-import Intro from './markdown/Intro';
-import ContainerConfig from './configuration/ContainerConfig';
-import UpdateWrapper from '../UpdateWrapper';
 
 class StageContainer extends Component {
   state = {
