@@ -3,31 +3,32 @@ import { close } from 'utils/dialog';
 import { STAGE_LANGUAGE_OPTIONS, STAGE_TYPE_OPTIONS } from 'config';
 import StyledSelect from 'components/forms/StyledSelect';
 import apiMutation from 'utils/api/mutation';
+import allFields from 'fragments/stageContainer/allFields';
 
 const variables = [
   ['title', 'String'],
   ['containerId', 'String'],
   ['type', 'String'],
   ['position', 'Int'],
-  ['language', 'String'],
 ]
 
 const args = variables.map(([prop, type]) => `$${prop}: ${type}`).join(', ');
 const mapping = variables.map(([prop, type]) => `${prop}: $${prop}`).join(', ');
-const returns = variables.map(([prop]) => `${prop}`).join('\n    ');
 
 const mutation = `
+${allFields}
 mutation createStage(${args}) {
   createStage(${mapping}, details: "", task: "", abiValidations: "", completionMessage: "") {
     id
-    ${returns}
+    stageContainer {
+      ...allFields
+    }
   }
 }
 `;
 
 const validators = {
   type: (x) => !!x,
-  language: (x) => !!x,
 }
 
 const validate = (props) => {
@@ -50,8 +51,8 @@ class NewStage extends Component {
 
     const { containerId, title, position } = this.props;
     const { type, language } = this.state;
-    apiMutation(mutation, { position, title, containerId, type, language }).then(() => {
-      close();
+    apiMutation(mutation, { position, title, containerId, type, language }, true).then(({ id }) => {
+      close(id);
     });
   }
   validate() {
@@ -78,12 +79,6 @@ class NewStage extends Component {
           onChange={(val) => this.handleChange("type", val)}
           value={type}
           options={STAGE_TYPE_OPTIONS} />
-
-        <StyledSelect
-          label="Language"
-          onChange={(val) => this.handleChange("language", val)}
-          value={language}
-          options={STAGE_LANGUAGE_OPTIONS} />
 
         <Actions
           onSubmit={this.onSubmit}
