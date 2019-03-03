@@ -3,6 +3,7 @@ import { close } from 'utils/dialog';
 import apiMutation from 'utils/api/mutation';
 import StyledSelect from 'components/forms/StyledSelect';
 import './NewStageTemplate.scss';
+import allFields from 'fragments/stageContainer/allFields';
 
 const variables = [
   ['title', 'String'],
@@ -15,9 +16,13 @@ const args = variables.map(([prop, type]) => `$${prop}: ${type}`).join(', ');
 const mapping = variables.map(([prop, type]) => `${prop}: $${prop}`).join(', ');
 
 const mutation = `
+${allFields}
 mutation createStage(${args}) {
   createStage(${mapping}, details: "", task: "", abiValidations: "",  completionMessage: "") {
     id
+    stageContainer {
+      ...allFields
+    }
   }
 }
 `;
@@ -51,8 +56,8 @@ class NewStageTemplate extends Component {
 
     const { containerId, title, position } = this.props;
     const { template } = this.state;
-    apiMutation(mutation, { title, containerId, template, position }).then(() => {
-      close();
+    apiMutation(mutation, { title, containerId, template, position }, true).then(({ id }) => {
+      close(id);
     });
   }
   validate() {
