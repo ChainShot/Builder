@@ -14,8 +14,9 @@ import * as dialog from '../../../utils/dialog';
 import SVG from '../../SVG';
 import './StageConfig.scss';
 import allFields from 'fragments/stageContainer/allFields';
-import { closeTabs } from 'redux/actions';
+import { closeTabs, openSidebarStage, openTab } from 'redux/actions';
 import { connect } from 'react-redux';
+import { IDE_TAB_TYPES } from 'config';
 
 const TITLE_HINT = 'Short name displayed to the user';
 const POSITION_HINT = 'The order of this stage relative to other stages';
@@ -73,11 +74,10 @@ class StageConfig extends Component {
     });
   }
   duplicateStage = () => {
-    const { match: { url }, stage } = this.props;
+    const { stage } = this.props;
     dialog.open(DuplicateStage, stage).then((id) => {
-      if(id) {
-        this.props.history.push(url.split('/').slice(0, -1).concat(id).join('/'));
-      }
+      this.props.openSidebarStage(id);
+      this.props.openTab(id, IDE_TAB_TYPES.STAGE_CONFIG);
     });
   }
   render() {
@@ -143,7 +143,7 @@ class StageConfig extends Component {
   }
 }
 
-const mapDispatchToProps = { closeTabs }
+const mapDispatchToProps = { closeTabs, openSidebarStage, openTab }
 
 export default connect(
   null,

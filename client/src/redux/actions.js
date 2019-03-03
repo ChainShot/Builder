@@ -67,7 +67,7 @@ export const closeCodeFile = (stageId, id) => ({
   payload: { stageId, id }
 });
 
-export const openTab = (stageId, type, id) => ({
+export const openTab = (stageId, type = null, id = null) => ({
   type: OPEN_TAB,
   payload: { stageId, type, id }
 });
