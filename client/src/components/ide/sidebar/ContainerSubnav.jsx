@@ -5,12 +5,14 @@ import AddBadge from './dialogs/badge/AddBadge';
 import * as dialog from 'utils/dialog';
 import { IDE_TAB_TYPES } from 'config';
 import ActionNav from './ActionNav';
+import { connect } from 'react-redux';
+import { openTab } from 'redux/actions';
 
 class ContainerSubnav extends Component {
   addBadge = () => {
     const { stageContainer: { stageContainerGroup } } = this.props;
     dialog.open(AddBadge, { stageContainerGroupId: stageContainerGroup.id }).then((id) => {
-      // TODO: open badge tab
+      this.props.openTab(null, IDE_TAB_TYPES.BADGE_CONFIG, id);
     });
   }
   attributesFor(type) {
@@ -62,4 +64,9 @@ class BadgeTypeNav extends Component {
   }
 }
 
-export default ContainerSubnav;
+const mapDispatchToProps = { openTab }
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(ContainerSubnav);

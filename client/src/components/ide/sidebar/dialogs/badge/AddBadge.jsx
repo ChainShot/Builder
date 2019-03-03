@@ -3,11 +3,16 @@ import Dialog from 'components/Dialog';
 import './AddBadge.scss';
 import { close } from 'utils/dialog';
 import apiMutation from 'utils/api/mutation';
+import allFields from 'fragments/stageContainer/allFields';
 
 const mutation = `
+${allFields}
 mutation createBadgeType($name: String, $stageContainerGroupId: String) {
   createBadgeType(name: $name, stageContainerGroupId: $stageContainerGroupId, badgeLimit: 0) {
     id
+    stageContainer {
+      ...allFields
+    }
   }
 }
 `;
@@ -20,7 +25,7 @@ class AddBadge extends Component {
     evt && evt.preventDefault();
     const { name } = this.state;
     const { stageContainerGroupId } = this.props;
-    apiMutation(mutation, { name, stageContainerGroupId }).then((id) => {
+    apiMutation(mutation, { name, stageContainerGroupId }, true).then(({ id }) => {
       close(id);
     });
   }

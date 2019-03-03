@@ -33,7 +33,7 @@ const apiMutation = (query, variables, reloadStageContainer = false) => {
         store.dispatch(setStageContainer(stageContainer));
       }
       else {
-        console.warning('Query should have set stageContainer, however none was returned', {
+        console.warn('Query should have set stageContainer, however none was returned', {
           query, variables
         });
       }
