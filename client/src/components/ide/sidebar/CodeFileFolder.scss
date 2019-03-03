@@ -1,0 +1,19 @@
+.code-file-folder {
+  display: flex;
+  flex-direction: column;
+  .folder {
+    display: flex;
+    padding: 4px 10px;
+    svg {
+      height: 16px;
+      width: auto;
+      margin-right: 8px;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .contents {
+    margin-left: 12px;
+  }
+}

@@ -1,0 +1,26 @@
+@import '../../../../../../shared/variables';
+
+.import-folders {
+  display: flex;
+  flex-direction: column;
+
+  .import-action {
+    padding: 7px 17px;
+    align-items: center;
+    margin: 10px 0;
+    text-align: center;
+    font-size: 14px;
+    display: flex;
+    border: 1px solid $border-color;
+
+    svg {
+      height: 20px;
+      margin-right: 10px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      border: 1px solid $brand-active;
+    }
+  }
+}

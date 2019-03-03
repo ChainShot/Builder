@@ -1,6 +1,6 @@
 const API_URL = process.env.REACT_APP_API_URL || `http://localhost:${window.location.port}/`;
 const RUNNER_URL = process.env.REACT_APP_RUNNER_URL || 'https://chainshot-relayer.herokuapp.com/run/';
-const SOLC_COMPILER_URL = process.env.REACT_APP_SOLC_COMPILER_URL || 'https://www.chainshot.com/server/solc';
+const SOLC_COMPILER_URL = process.env.REACT_APP_SOLC_COMPILER_URL || 'https://chainshot-relayer.herokuapp.com/solc/';
 const VPYER_COMPILER_URL = process.env.REACT_APP_VPYER_COMPILER_URL || 'https://vyper-compiler.herokuapp.com/compile/';
 const PUBLIC_URL = process.env.REACT_APP_PUBLIC_URL || '/';
 const READ_THE_DOCS = process.env.REACT_APP_READ_THE_DOCS || 'https://chainshotbuilder.readthedocs.io/en/latest';
@@ -19,6 +19,33 @@ const STAGE_LANGUAGE_OPTIONS = [
   { label: 'Vyper', value: 'vyper' },
 ]
 
+function toEnum(arr) {
+  return arr.reduce((obj, key, idx) => {
+    obj[key] = idx;
+    return obj;
+  }, {});
+}
+
+const CODE_FILE_PANES = {
+  OUTPUT_TAB: 0,
+  COMPILATION_TAB: 1,
+}
+
+const IDE_TAB_TYPES = toEnum([
+  'STAGE_CONTAINER_INTRO',
+  'STAGE_CONTAINER_CONFIG',
+  'BADGE_CONFIG',
+  'STAGE_CONFIG',
+  'STAGE_TASK',
+  'STAGE_DETAILS',
+  'STAGE_COMPLETION',
+  'STAGE_VALIDATIONS',
+  'CODE_FILE_CONFIG',
+  'CODE_FILE_INITIAL_CODE',
+  'CODE_FILE_SOLUTION',
+  'SKELETON_CONFIG',
+]);
+
 export {
   API_URL,
   RUNNER_URL,
@@ -29,4 +56,6 @@ export {
   SOLC_COMPILER_URL,
   PUBLIC_URL,
   READ_THE_DOCS,
+  IDE_TAB_TYPES,
+  CODE_FILE_PANES,
 }

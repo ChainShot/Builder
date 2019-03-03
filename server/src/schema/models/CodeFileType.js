@@ -23,6 +23,12 @@ const CodeFileType = new GraphQLObjectType({
     testFixture: { type: GraphQLBoolean },
     visible: { type: GraphQLBoolean },
     codeStageIds: { type: new GraphQLList(GraphQLString) },
+    stageContainer: {
+      type: require('./StageContainerType'),
+      resolve: function({ stageContainerId }) {
+        return configResolver(MODEL_DB.STAGE_CONTAINERS, stageContainerId);
+      }
+    },
     codeStages: {
       type: new GraphQLList(require('./StageType')),
       resolve: function({ codeStageIds }) {

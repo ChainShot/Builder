@@ -1,37 +1,44 @@
 import React, { Component } from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
-import SVG from '../../SVG';
+import SVG from 'components/SVG';
 import './ContainerSubnav.scss';
-import AddBadge from './AddBadge';
-import * as dialog from '../../../utils/dialog';
+import AddBadge from './dialogs/badge/AddBadge';
+import * as dialog from 'utils/dialog';
+import { IDE_TAB_TYPES } from 'config';
+import ActionNav from './ActionNav';
+import { connect } from 'react-redux';
+import { openTab } from 'redux/actions';
 
 class ContainerSubnav extends Component {
   addBadge = () => {
     const { stageContainer: { stageContainerGroup } } = this.props;
     dialog.open(AddBadge, { stageContainerGroupId: stageContainerGroup.id }).then((id) => {
-      const { basename } = this.props;
-      this.props.history.push(`${basename}/badge/${id}`);
+      this.props.openTab(null, IDE_TAB_TYPES.BADGE_CONFIG, id);
     });
   }
+  attributesFor(type) {
+    return { stageId: null, id: null, type }
+  }
   render() {
-    const { basename, stageContainer: { stageContainerGroup: { badgeTypes } } } = this.props;
+    const { stageContainer: { stageContainerGroup: { badgeTypes } } } = this.props;
+    const configurationAttrs = this.attributesFor(IDE_TAB_TYPES.STAGE_CONTAINER_CONFIG);
+    const introAttrs = this.attributesFor(IDE_TAB_TYPES.STAGE_CONTAINER_INTRO);
     return (
       <ul className="sub-nav">
-        <li className="configuration">
-          <NavLink to={`${basename}`} exact>
-            <SVG name="wrench"/>
-            <span>configuration</span>
-          </NavLink>
-        </li>
+        <ActionNav attrs={configurationAttrs}>
+          <SVG name="wrench"/>
+          <span>configuration</span>
+        </ActionNav>
 
-        <li className="intro">
-          <NavLink to={`${basename}/intro`}>
-            <SVG name="file"/>
-            <span>intro.md</span>
-          </NavLink>
-        </li>
+        <ActionNav attrs={introAttrs}>
+          <SVG name="file"/>
+          <span>intro.md</span>
+        </ActionNav>
 
-        { (badgeTypes || []).map(bt => <BadgeTypeNav key={bt.id} badgeType={bt} {...this.props} />) }
+        {(badgeTypes || []).map(bt => (
+          <BadgeTypeNav
+            key={bt.id}
+            badgeType={bt} />)
+        )}
 
         <li>
           <div className="action" onClick={this.addBadge}>
@@ -46,16 +53,20 @@ class ContainerSubnav extends Component {
 
 class BadgeTypeNav extends Component {
   render() {
-    const { basename, badgeType: { name, id } } = this.props;
+    const { badgeType: { name, id } } = this.props;
+    const attrs = { stageId: null, type: IDE_TAB_TYPES.BADGE_CONFIG, id }
     return (
-      <li>
-        <NavLink to={`${basename}/badge/${id}`}>
-          <SVG name="badge"/>
-          <span>{ name }</span>
-        </NavLink>
-      </li>
+      <ActionNav attrs={attrs}>
+        <SVG name="badge"/>
+        <span>{ name }</span>
+      </ActionNav>
     )
   }
 }
 
-export default withRouter(ContainerSubnav);
+const mapDispatchToProps = { openTab }
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(ContainerSubnav);

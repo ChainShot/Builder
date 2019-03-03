@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import SVG from '../../../SVG';
+import { CODE_FILE_PANES } from 'config';
+
+const TAB_NAME = CODE_FILE_PANES.COMPILATION_TAB;
 const COMPILE_REGEX = /\w*(\.sol|\.v\.py)$/;
-const TAB_NAME = 'compilation';
 
 class CompilationTab extends Component {
   render() {

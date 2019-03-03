@@ -1,19 +1,45 @@
 import React, {Component} from 'react';
 import './Output.scss';
-import runner from '../../../../utils/api/runner';
-import * as dialog from '../../../../utils/dialog';
-import Error from '../../../dialogs/Error';
+import runner from 'utils/api/runner';
+import * as dialog from 'utils/dialog';
+import Error from 'components/dialogs/Error';
 import OutputDisplay from './OutputDisplay';
 import OutputToolbar from './OutputToolbar';
-import { completeCodeExecution, startCodeExecution } from '../../../../redux/actions';
+import { completeCodeExecution, startCodeExecution, setCodeFilePane } from 'redux/actions';
 import { connect } from 'react-redux';
+import { CODE_FILE_PANES } from 'config';
 
 class Output extends Component {
+  shortcut = (evt) => {
+    if((evt.ctrlKey || evt.metaKey) && (evt.keyCode === 13) && !(evt.shiftKey || evt.altKey)) {
+      this.runCode();
+      evt.preventDefault();
+    }
+    if((evt.ctrlKey || evt.metaKey) && (evt.keyCode === 27) && !(evt.shiftKey || evt.altKey)) {
+      const { stage } = this.props;
+      this.props.completeCodeExecution(null, stage.id);
+      evt.preventDefault();
+    }
+  }
+  componentDidMount() {
+    document.addEventListener('keydown', this.shortcut);
+  }
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.shortcut);
+  }
   cancelRun = () => {
-    this.props.completeCodeExecution(null);
+    const { stage } = this.props;
+    this.props.completeCodeExecution(null, stage.id);
+  }
+  getExecutionState() {
+    const { stage, executionState } = this.props;
+    return executionState.stages[stage.id] || executionState.default;
   }
   runCode = async () => {
-    const { stage, code, codeFile, executionState: { runIdx } } = this.props;
+    const { stage, code, codeFile } = this.props;
+    const { runIdx } = this.getExecutionState();
+    this.props.startCodeExecution(stage.id);
+    this.props.setCodeFilePane(CODE_FILE_PANES.OUTPUT_TAB, stage.id);
 
     const files = stage.codeFiles
       .filter(x => x.executable)
@@ -46,29 +72,21 @@ class Output extends Component {
       else {
         dialog.open(Error, { message: "Oof. Failed to Run Your Code just now. \nPlease try again soon." });
       }
-      this.props.completeCodeExecution();
+      this.props.completeCodeExecution(null, stage.id);
       return;
     }
     // if the run idx hasnt changed since this run started, display it
-    if(this.props.executionState.runIdx === runIdx) {
-      this.props.completeCodeExecution(response.data);
-    }
-  }
-  startRun = () => {
-    this.props.startCodeExecution();
-  }
-  componentDidUpdate(prevProps) {
-    const { executionState: { running }} = this.props;
-    if(!prevProps.executionState.running && running) {
-      this.runCode();
+    if(this.getExecutionState().runIdx === runIdx) {
+      this.props.completeCodeExecution(response.data, stage.id);
     }
   }
   render() {
-    const { hide, shouldShow, executionState: { output, running } } = this.props;
+    const { hide, shouldShow } = this.props;
+    const { output, running } = this.getExecutionState();
     if(!shouldShow) return null;
     return (
       <div className="output">
-        <OutputToolbar hide={hide} runCode={this.startRun} cancelRun={this.cancelRun} running={running} />
+        <OutputToolbar hide={hide} runCode={this.runCode} cancelRun={this.cancelRun} running={running} />
         <OutputDisplay output={output} running={running} runCode={this.startRun} cancelRun={this.cancelRun} />
       </div>
     )
@@ -76,7 +94,7 @@ class Output extends Component {
 }
 
 const mapStateToProps = ({ executionState }) => ({ executionState });
-const mapDispatchToProps = { completeCodeExecution, startCodeExecution }
+const mapDispatchToProps = { completeCodeExecution, startCodeExecution, setCodeFilePane }
 
 export default connect(
   mapStateToProps,

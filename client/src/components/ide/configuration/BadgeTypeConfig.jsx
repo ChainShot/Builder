@@ -5,6 +5,8 @@ import confirm from '../../../utils/confirm';
 import destroyBadge from '../../../mutations/badgeType/destroy';
 import SVG from '../../SVG';
 import './BadgeTypeConfig.scss';
+import { connect } from 'react-redux';
+import { closeTabs } from 'redux/actions';
 
 const NAME_HINT = 'Short name displayed to the user';
 const DESCRIPTION_HINT = 'Description of this Contents purpose';
@@ -13,7 +15,6 @@ const THUMBNAIL_HINT = 'You give us a web URL of an image, we\'ll show it the us
 
 const toArgs = (v) => v.map(([prop, type]) => `$${prop}: ${type}`).join(', ');
 const toMapping = (v) => v.map(([prop, type]) => `${prop}: $${prop}`).join(', ');
-const toReturns = (v) => v.map(([prop]) => `${prop}`).join('\n    ');
 
 const variables = [
   ['id', 'String'],
@@ -26,7 +27,7 @@ const variables = [
 const mutation = `
 mutation modifyBadgeType(${toArgs(variables)}) {
   modifyBadgeType(${toMapping(variables)}) {
-    ${toReturns(variables)}
+    id
   }
 }
 `
@@ -56,11 +57,13 @@ class BadgeConfig extends Component {
   destroyBadge = async () => {
     confirm("Are you sure you want to delete this badge?").then(() => {
       const { id } = this.props.badgeType;
-      apiMutation(destroyBadge, { id });
+      apiMutation(destroyBadge, { id }).then(({ id }) => {
+        this.props.closeTabs({ id });
+      });
     });
   }
   render() {
-    const { update, saveState: { errors },
+    const { update, errors,
       badgeType: {
         description, name, thumbnailUrl, badgeLimit
       } } = this.props;
@@ -114,4 +117,9 @@ class BadgeConfig extends Component {
   }
 }
 
-export default BadgeConfig;
+const mapDispatchToProps = { closeTabs }
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(BadgeConfig);

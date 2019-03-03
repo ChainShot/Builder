@@ -23,7 +23,13 @@ const parseHtml = htmlParser({
 
 class MarkdownEdit extends Component {
   render() {
-    return <UpdateWrapper {...this.props} child={MarkdownEditChild} />
+    const { mutation, id, markdownProp, markdown } = this.props;
+    return <UpdateWrapper
+              mutation={mutation}
+              id={id} key={id} debounceKey={id}
+              markdownProp={markdownProp}
+              markdown={markdown}
+              child={MarkdownEditChild} />
   }
 }
 

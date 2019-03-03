@@ -4,8 +4,8 @@
 .stage-container-sidebar {
   overflow-y: auto;
   background-color: $bg-container;
-  width: $sidebar-width;
-  min-width: $sidebar-width;
+  border-right: 1px solid $bg-darker;
+  font-size: .92em;
 
   label {
     $darker: darken($bg-container, 2);

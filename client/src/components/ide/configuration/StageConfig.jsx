@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import apiMutation from '../../../utils/api/mutation';
 import destroyStage from '../../../mutations/stage/destroy';
 import DuplicateStage from './DuplicateStage';
@@ -14,6 +13,10 @@ import confirm from '../../../utils/confirm';
 import * as dialog from '../../../utils/dialog';
 import SVG from '../../SVG';
 import './StageConfig.scss';
+import allFields from 'fragments/stageContainer/allFields';
+import { closeTabs, openSidebarStage, openTab } from 'redux/actions';
+import { connect } from 'react-redux';
+import { IDE_TAB_TYPES } from 'config';
 
 const TITLE_HINT = 'Short name displayed to the user';
 const POSITION_HINT = 'The order of this stage relative to other stages';
@@ -33,12 +36,14 @@ const variables = [
 
 const args = variables.map(([prop, type]) => `$${prop}: ${type}`).join(', ');
 const mapping = variables.map(([prop, type]) => `${prop}: $${prop}`).join(', ');
-const returns = variables.map(([prop]) => `${prop}`).join('\n    ');
 
 const mutation = `
+${allFields}
 mutation modifyStage(${args}) {
   modifyStage(${mapping}) {
-    ${returns}
+    stageContainer {
+      ...allFields
+    }
   }
 }
 `
@@ -59,24 +64,24 @@ class StageConfig extends Component {
   constructor(props) {
     super(props);
     props.onValidate(({ stage }) => validate(stage));
-    props.onSave(({ stage }) => apiMutation(mutation, stage));
+    props.onSave(({ stage }) => apiMutation(mutation, stage, true));
   }
   destroyStage = () => {
     confirm("Are you sure you want to delete this stage?").then(() => {
       const { id } = this.props.stage;
+      this.props.closeTabs({ stageId: id });
       apiMutation(destroyStage, { id });
     });
   }
   duplicateStage = () => {
-    const { match: { url }, stage } = this.props;
+    const { stage } = this.props;
     dialog.open(DuplicateStage, stage).then((id) => {
-      if(id) {
-        this.props.history.push(url.split('/').slice(0, -1).concat(id).join('/'));
-      }
+      this.props.openSidebarStage(id);
+      this.props.openTab(id, IDE_TAB_TYPES.STAGE_CONFIG);
     });
   }
   render() {
-    const { update, stage, saveState: { errors } } = this.props;
+    const { update, stage, errors } = this.props;
     const { title, position, type } = stage;
     const updateStage = (state) => update({ stage: state });
     return (
@@ -138,4 +143,9 @@ class StageConfig extends Component {
   }
 }
 
-export default withRouter(StageConfig);
+const mapDispatchToProps = { closeTabs, openSidebarStage, openTab }
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(StageConfig);

@@ -24,6 +24,12 @@ const StageType = new GraphQLObjectType({
     src: { type: GraphQLString },
     projectSkeletons: { type: GraphQLList(require('./ProjectSkeletonType')) },
     codeFileIds: { type: GraphQLList(GraphQLString) },
+    stageContainer: {
+      type: require('./StageContainerType'),
+      resolve: function({ containerId }) {
+        return configResolver(MODEL_DB.STAGE_CONTAINERS, containerId);
+      }
+    },
     solutions: {
       type: new GraphQLList(require('./SolutionType')),
       resolve: async (props) => {

@@ -3,25 +3,46 @@ import {
   COMPLETE_COMPILATION
 } from '../actionTypes';
 
-const initialState = {
+const initialStageState = {
   compiling: false,
   output: null,
 }
 
+const initialState = {
+  stages: {},
+  default: initialStageState,
+}
+
 export default function(state = initialState, action) {
   switch (action.type) {
-    case START_COMPILATION:
+    case START_COMPILATION: {
+      const { stageId } = action.payload;
+      const existingValues = state.stages[stageId] || state.default;
       return {
         ...state,
-        compiling: true,
+        stages: {
+          ...state.stages,
+          [stageId]: {
+            ...existingValues,
+            compiling: true,
+          }
+        }
       }
-    case COMPLETE_COMPILATION:
-      const { output } = action.payload;
+    }
+    case COMPLETE_COMPILATION: {
+      const { output, stageId } = action.payload;
       return {
         ...state,
-        compiling: false,
-        output,
+        stages: {
+          ...state.stages,
+          [stageId]: {
+            ...state.stages[stageId],
+            compiling: false,
+            output,
+          }
+        }
       }
+    }
     default:
       return state
   }

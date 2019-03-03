@@ -4,12 +4,14 @@
   position: absolute;
   top: 10%;
   left: 50%;
-  max-width: 50%;
+  max-height: 80%;
+  min-width: $min-dialog-width;
+  width: 22%;
+  max-width: $max-dialog-width;
   transform: translateX(-50%);
   z-index: 101;
   background-color: $bg-dark;
   border: 1px solid $border-color;
-  min-width: 350px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 
   .heading {
@@ -43,7 +45,7 @@
   }
 }
 
-.overlay {
+.dialog-overlay {
   position: absolute;
   left: 0;
   right: 0;

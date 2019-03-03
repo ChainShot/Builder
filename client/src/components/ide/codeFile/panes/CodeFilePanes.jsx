@@ -3,8 +3,9 @@ import './CodeFilePanes.scss';
 import CodeFilePane from './CodeFilePane';
 import CompilationTab from './CompilationTab';
 import OutputTab from './OutputTab';
-import { setCodeFilePane } from '../../../../redux/actions';
+import { setCodeFilePane } from 'redux/actions';
 import { connect } from 'react-redux';
+import { CODE_FILE_PANES } from 'config';
 
 class CodeFilePanes extends Component {
   componentWillMount() {
@@ -17,16 +18,16 @@ class CodeFilePanes extends Component {
   componentDidUpdate(prevProps) {
     const { executionState: { running }} = this.props;
     if(!prevProps.executionState.running && running) {
-      this.changePane('output');
+      this.changePane(CODE_FILE_PANES.OUTPUT_TAB);
     }
     const { compilationState: { compiling }} = this.props;
     if(!prevProps.compilationState.compiling && compiling) {
-      this.changePane('compilation');
+      this.changePane(CODE_FILE_PANES.COMPILATION_TAB);
     }
   }
   changePane = (pane) => {
     const { stage } = this.props;
-    this.props.setCodeFilePane(pane, stage);
+    this.props.setCodeFilePane(pane, stage.id);
     // resize event for the monaco display
     window.requestAnimationFrame(() => window.dispatchEvent(new CustomEvent('resize')));
   }
@@ -38,7 +39,8 @@ class CodeFilePanes extends Component {
     return '';
   }
   render() {
-    const { stage, codeFile, code, codeFilePaneState: { pane } } = this.props;
+    const { stage, codeFile, code, codeFilePaneState: { stages } } = this.props;
+    const pane = stages[stage.id];
     return (
       <div className="code-file-toolbar">
         <CodeFilePane code={code} changePane={this.changePane} pane={pane} stage={stage} codeFile={codeFile} />

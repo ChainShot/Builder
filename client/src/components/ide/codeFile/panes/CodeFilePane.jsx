@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Output from './Output';
 import Compilation from './Compilation';
-
-const OUTPUT_TAB = 'output';
-const COMPILATION_TAB = 'compilation';
+import { CODE_FILE_PANES } from 'config';
 
 class CodeFilePane extends Component {
   render() {
@@ -13,12 +11,12 @@ class CodeFilePane extends Component {
         <Output stage={stage}
                 code={code}
                 codeFile={codeFile}
-                shouldShow={pane === OUTPUT_TAB}
+                shouldShow={pane === CODE_FILE_PANES.OUTPUT_TAB}
                 hide={changePane}/>
         <Compilation stage={stage}
                 code={code}
                 codeFile={codeFile}
-                shouldShow={pane === COMPILATION_TAB}
+                shouldShow={pane === CODE_FILE_PANES.COMPILATION_TAB}
                 hide={changePane}/>
       </React.Fragment>
     )

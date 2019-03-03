@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import StyledSwitch from '../../forms/StyledSwitch';
-import StyledSelect from '../../forms/StyledSelect';
-import StyledInput from '../../forms/StyledInput';
-import apiMutation from '../../../utils/api/mutation';
-import confirm from '../../../utils/confirm';
-import destroySC from '../../../mutations/stageContainer/destroy';
-import destroySCG from '../../../mutations/stageContainerGroup/destroy';
-import SVG from '../../SVG';
+import StyledSwitch from 'components/forms/StyledSwitch';
+import StyledSelect from 'components/forms/StyledSelect';
+import StyledInput from 'components/forms/StyledInput';
+import apiMutation from 'utils/api/mutation';
+import confirm from 'utils/confirm';
+import destroySC from 'mutations/stageContainer/destroy';
+import destroySCG from 'mutations/stageContainerGroup/destroy';
+import { withRouter } from 'react-router-dom'
+import SVG from 'components/SVG';
 import './ContainerConfig.scss';
 
 const TITLE_HINT = 'Short name displayed to the user';
@@ -104,19 +105,19 @@ class ContainerConfig extends Component {
   destroyContainer = async () => {
     confirm("Are you sure you want to delete this version?").then(() => {
       const { id } = this.props.stageContainer;
-      apiMutation(destroySC, { id });
       this.props.history.push(`/`);
+      apiMutation(destroySC, { id });
     });
   }
   destroyGroup = async () => {
     confirm("Are you sure you want to delete this group?").then(() => {
       const { id } = this.props.stageContainer.stageContainerGroup;
-      apiMutation(destroySCG, { id });
       this.props.history.push(`/`);
+      apiMutation(destroySCG, { id });
     });
   }
   render() {
-    const { stageContainer, update, saveState: { errors } } = this.props;
+    const { stageContainer, update, errors } = this.props;
     const { type, version,
       stageContainerGroup: {
         description, estimatedTime, thumbnailUrl, title, productionReady
@@ -199,4 +200,4 @@ class ContainerConfig extends Component {
   }
 }
 
-export default ContainerConfig;
+export default withRouter(ContainerConfig);

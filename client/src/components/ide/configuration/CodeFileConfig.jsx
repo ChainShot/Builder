@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import apiMutation from '../../../utils/api/mutation';
-import * as dialog from '../../../utils/dialog';
+import apiMutation from 'utils/api/mutation';
+import * as dialog from 'utils/dialog';
 import './CodeFileConfig.scss';
 import DestroyCodeFile from './DestroyCodeFile';
-import StyledSwitch from '../../forms/StyledSwitch';
-import StyledSelect from '../../forms/StyledSelect';
-import StyledInput from '../../forms/StyledInput';
-import SVG from '../../SVG';
+import StyledSwitch from 'components/forms/StyledSwitch';
+import StyledSelect from 'components/forms/StyledSelect';
+import StyledInput from 'components/forms/StyledInput';
+import SVG from 'components/SVG';
+import { closeTabs } from 'redux/actions';
+import { connect } from 'react-redux';
+import allFields from 'fragments/stageContainer/allFields';
 
 const NAME_HINT = 'Identifies this file to the user';
 const EXECUTION_PATH_HINT = 'Determines where this code runs';
@@ -40,12 +43,15 @@ const variables = [
 
 const args = variables.map(([prop, type]) => `$${prop}: ${type}`).join(', ');
 const mapping = variables.map(([prop, type]) => `${prop}: $${prop}`).join(', ');
-const returns = variables.map(([prop]) => `${prop}`).join('\n    ');
 
 const mutation = `
+${allFields}
 mutation modifyCodeFile(${args}) {
   modifyCodeFile(${mapping}) {
-    ${returns}
+    id
+    stageContainer {
+      ...allFields
+    }
   }
 }
 `
@@ -66,19 +72,27 @@ class CodeFileConfig extends Component {
   constructor(props) {
     super(props);
     props.onValidate(({codeFile}) => validate(codeFile));
-    this.props.onSave(({codeFile}) => apiMutation(mutation, codeFile));
+    this.props.onSave(({codeFile}) => apiMutation(mutation, codeFile, true));
   }
   destroy = () => {
     const { stage, codeFile } = this.props;
-    dialog.open(DestroyCodeFile, { stage, codeFile }).then(() => {
-      const { match: { url } } = this.props;
-      this.props.history.push(url.split('/').slice(0, -3).join('/'));
+    dialog.open(DestroyCodeFile, { stage, codeFile }).then(({ removeAll }) => {
+      if(removeAll) {
+        this.props.closeTabs({
+          id: codeFile.id,
+        });
+      }
+      else {
+        this.props.closeTabs({
+          stageId: stage.id,
+          id: codeFile.id,
+        });
+      }
     });
   }
   render() {
     const {
-      update,
-      saveState: { errors },
+      update, errors,
       codeFile: { name, mode, executablePath, fileLocation, readOnly, hasProgress, executable, testFixture, visible }
     } = this.props;
     const updateCodeFile = (state) => update({ codeFile: state })
@@ -157,4 +171,9 @@ class CodeFileConfig extends Component {
   }
 }
 
-export default CodeFileConfig;
+const mapDispatchToProps = { closeTabs }
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(CodeFileConfig);

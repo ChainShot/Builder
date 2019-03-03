@@ -3,17 +3,18 @@ import {
 } from '../actionTypes';
 
 const initialState = {
-  pane: null,
-  stage: null,
+  stages: {}
 }
 
 export default function(state = initialState, action) {
   switch (action.type) {
     case SET_CODE_FILE_PANE:
-      const { pane, stage } = action.payload;
+      const { pane, stageId } = action.payload;
       return {
-        pane,
-        stage,
+        stages: {
+          ...state.stages,
+          [stageId]: pane,
+        }
       }
     default:
       return state

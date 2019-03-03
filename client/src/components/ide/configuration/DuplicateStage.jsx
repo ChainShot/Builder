@@ -4,6 +4,7 @@ import { close } from '../../../utils/dialog';
 import apiMutation from '../../../utils/api/mutation';
 import StyledCheckbox from '../../forms/StyledCheckbox';
 import StyledInput from '../../forms/StyledInput';
+import allFields from 'fragments/stageContainer/allFields';
 
 const variables = [
   ['id', 'String'],
@@ -16,9 +17,13 @@ const args = variables.map(([prop, type]) => `$${prop}: ${type}`).join(', ');
 const mapping = variables.map(([prop, type]) => `${prop}: $${prop}`).join(', ');
 
 const mutation = `
+${allFields}
 mutation duplicateStage(${args}) {
   duplicateStage(${mapping}) {
     id
+    stageContainer {
+      ...allFields
+    }
   }
 }
 `;
@@ -54,7 +59,7 @@ class DuplicateStage extends Component {
     const { title, position, createNew, errors } = this.state;
     if(errors.length > 0) return;
     const { id } = this.props;
-    apiMutation(mutation, { id, title, position, createNew }).then(({ id }) => {
+    apiMutation(mutation, { id, title, position, createNew }, true).then(({ id }) => {
       close(id);
     });
   }
