@@ -10,6 +10,7 @@ import {
   SET_ACTIVE_TAB,
   OPEN_TAB,
   CLOSE_TAB,
+  CLOSE_TABS,
   CLOSE_OTHER_TABS,
   CLOSE_TABS_TO_THE_RIGHT,
   OPEN_FOLDER,
@@ -76,6 +77,10 @@ export const setActiveTab = (idx) => ({
 });
 export const closeTab = ({stageId, type, id}) => ({
   type: CLOSE_TAB,
+  payload: { stageId, type, id }
+});
+export const closeTabs = ({stageId, type, id}) => ({
+  type: CLOSE_TABS,
   payload: { stageId, type, id }
 });
 export const closeOtherTabs = ({stageId, type, id}) => ({

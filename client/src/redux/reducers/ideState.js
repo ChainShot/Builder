@@ -1,6 +1,7 @@
 import {
   OPEN_TAB,
   CLOSE_TAB,
+  CLOSE_TABS,
   SET_ACTIVE_TAB,
   CLOSE_OTHER_TABS,
   CLOSE_TABS_TO_THE_RIGHT,
@@ -51,6 +52,25 @@ export default function(state = initialState, action) {
         ...state,
         tabsOpen: state.tabsOpen.concat({ type, id, stageId }),
         activeTabIdx: state.tabsOpen.length,
+      }
+    }
+    case CLOSE_TABS: {
+      const definedProps = ['type', 'id', 'stageId'].filter((k) => action.payload[k]);
+      // filter any tabs out that match all the defined props
+      const remainingTabs = state.tabsOpen.filter(x => {
+        for(let i = 0; i < definedProps.length; i++) {
+          const prop = definedProps[i];
+          if(x[prop] !== action.payload[prop]) {
+            return true;
+          }
+        }
+        return false;
+      });
+      const totalTabs = remainingTabs.length;
+      return {
+        ...state,
+        tabsOpen: remainingTabs,
+        activeTabIdx: state.activeTabIdx >= totalTabs ? (totalTabs - 1) : state.activeTabIdx,
       }
     }
     case CLOSE_TAB: {

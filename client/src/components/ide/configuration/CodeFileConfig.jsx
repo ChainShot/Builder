@@ -7,6 +7,9 @@ import StyledSwitch from 'components/forms/StyledSwitch';
 import StyledSelect from 'components/forms/StyledSelect';
 import StyledInput from 'components/forms/StyledInput';
 import SVG from 'components/SVG';
+import { closeTabs } from 'redux/actions';
+import { connect } from 'react-redux';
+import { IDE_TAB_TYPES } from 'config';
 import allFields from 'fragments/stageContainer/allFields';
 
 const NAME_HINT = 'Identifies this file to the user';
@@ -71,13 +74,15 @@ class CodeFileConfig extends Component {
   constructor(props) {
     super(props);
     props.onValidate(({codeFile}) => validate(codeFile));
-    this.props.onSave(({codeFile}) => apiMutation(mutation, codeFile));
+    this.props.onSave(({codeFile}) => apiMutation(mutation, codeFile, true));
   }
   destroy = () => {
     const { stage, codeFile } = this.props;
     dialog.open(DestroyCodeFile, { stage, codeFile }).then(() => {
-      const { match: { url } } = this.props;
-      this.props.history.push(url.split('/').slice(0, -3).join('/'));
+      this.props.closeTabs({
+        stageId: stage.id,
+        id: codeFile.id,
+      });
     });
   }
   render() {
@@ -161,4 +166,9 @@ class CodeFileConfig extends Component {
   }
 }
 
-export default CodeFileConfig;
+const mapDispatchToProps = { closeTabs }
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(CodeFileConfig);
