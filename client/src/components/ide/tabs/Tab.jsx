@@ -12,8 +12,9 @@ class Tab extends Component {
       this.props.setActive();
     }
   }
-  closeTab = () => {
+  closeTab = (evt) => {
     this.props.closeTab();
+    evt.stopPropagation();
   }
   contextmenu = (evt) => {
     evt.preventDefault();
