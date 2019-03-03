@@ -23,7 +23,7 @@ class EditorPane extends Component {
         return <Intro stageContainer={stageContainer} />
       }
       case IDE_TAB_TYPES.STAGE_CONTAINER_CONFIG: {
-        const uniqueKey = `container-config`;
+        const uniqueKey = `container-${stageContainer.id}-config`;
         return (
           <UpdateWrapper
             key={uniqueKey}
