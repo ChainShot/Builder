@@ -30,10 +30,10 @@ class CompilationDisplay extends Component {
                         })
                     }
                     {
-                        (warnings || []).map((warnings) => {
+                        (warnings || []).map((warning) => {
                             return (
-                                <li className="warning" key={warnings}>
-                                    <pre>{warnings}</pre>
+                                <li className="warning" key={warning.message}>
+                                    <pre>{warning.formattedMessage}</pre>
                                 </li>
                             );
                         })
