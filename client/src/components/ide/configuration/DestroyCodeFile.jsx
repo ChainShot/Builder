@@ -46,7 +46,7 @@ class DestroyCodeFile extends Component {
       apiMutation(deleteMutation, {
         id: codeFile.id,
       }).then(({ id }) => {
-        close(id);
+        close({ removeAll });
       });
     }
     else {
@@ -56,7 +56,7 @@ class DestroyCodeFile extends Component {
         codeStageId: stage.id,
         codeFileIds: filteredCodeFiles,
       }).then(({ id }) => {
-        close(id);
+        close({ removeAll });
       });
     }
   }

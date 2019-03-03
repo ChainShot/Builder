@@ -76,11 +76,18 @@ class CodeFileConfig extends Component {
   }
   destroy = () => {
     const { stage, codeFile } = this.props;
-    dialog.open(DestroyCodeFile, { stage, codeFile }).then(() => {
-      this.props.closeTabs({
-        stageId: stage.id,
-        id: codeFile.id,
-      });
+    dialog.open(DestroyCodeFile, { stage, codeFile }).then(({ removeAll }) => {
+      if(removeAll) {
+        this.props.closeTabs({
+          id: codeFile.id,
+        });
+      }
+      else {
+        this.props.closeTabs({
+          stageId: stage.id,
+          id: codeFile.id,
+        });
+      }
     });
   }
   render() {
