@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { close } from 'utils/dialog';
-import { STAGE_LANGUAGE_OPTIONS, STAGE_TYPE_OPTIONS } from 'config';
+import { STAGE_TYPE_OPTIONS } from 'config';
 import StyledSelect from 'components/forms/StyledSelect';
 import apiMutation from 'utils/api/mutation';
 import allFields from 'fragments/stageContainer/allFields';
@@ -70,7 +70,7 @@ class NewStage extends Component {
     return this.state.errors.concat(this.props.errors);
   }
   render() {
-    const { type, language } = this.state;
+    const { type } = this.state;
     const errors = this.allErrors();
     return (
       <form onSubmit={this.onSubmit}>

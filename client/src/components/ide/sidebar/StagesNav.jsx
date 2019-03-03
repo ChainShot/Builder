@@ -10,7 +10,7 @@ import { IDE_TAB_TYPES } from 'config';
 
 class StagesNav extends Component {
   addStageDialog = () => {
-    const { openSidebarStage, openTab, stageContainer: { id, stages }} = this.props;
+    const { stageContainer: { id, stages }} = this.props;
     dialog.open(AddStage, { containerId: id, position: stages.length }).then((id) => {
       this.props.openSidebarStage(id);
       this.props.openTab(id, IDE_TAB_TYPES.STAGE_CONFIG);
@@ -41,7 +41,7 @@ class StagesNav extends Component {
 }
 
 const mapStateToProps = ({ sidebarState }) => ({ sidebarState });
-const mapDispatchToProps = { openSidebarStage, closeSidebarStage, openSidebarStage, openTab }
+const mapDispatchToProps = { openSidebarStage, closeSidebarStage, openTab }
 
 export default connect(
   mapStateToProps,
