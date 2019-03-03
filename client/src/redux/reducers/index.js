@@ -3,6 +3,7 @@ import executionState from "./executionState";
 import compilationState from "./compilationState";
 import codeFilePaneState from './codeFilePaneState';
 import sidebarState from './sidebarState';
+import contentState from './contentState';
 import ideState from './ideState';
 
 export default combineReducers({
@@ -10,5 +11,6 @@ export default combineReducers({
   compilationState,
   codeFilePaneState,
   sidebarState,
+  contentState,
   ideState,
 });

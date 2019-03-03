@@ -2,14 +2,17 @@ import * as dialog from 'utils/dialog';
 import AddCodeFile from './dialogs/codeFile/add/AddCodeFile';
 import ImportCodeFiles from './dialogs/codeFile/import/ImportCodeFiles';
 import React, { Component } from 'react';
+import { openTab, openCodeFile } from 'redux/actions';
+import { connect } from 'react-redux';
+import { IDE_TAB_TYPES } from 'config';
 import SVG from 'components/SVG';
 
 class CodeFileNavActions extends Component {
   addCodeFile = () => {
     const { stage, stageContainer } = this.props;
     dialog.open(AddCodeFile, { stage, stageContainer }).then((id) => {
-      const { basename } = this.props;
-      this.props.history.push(`${basename}/file/${id}`);
+      this.props.openTab(stage.id, IDE_TAB_TYPES.CODE_FILE_CONFIG, id);
+      this.props.openCodeFile(stage.id, id);
     });
   }
   importCodeFiles = () => {
@@ -40,4 +43,9 @@ class CodeFileNavActions extends Component {
   }
 }
 
-export default CodeFileNavActions;
+const mapDispatchToProps = { openTab, openCodeFile }
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(CodeFileNavActions);

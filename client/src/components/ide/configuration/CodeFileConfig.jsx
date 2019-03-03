@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import apiMutation from '../../../utils/api/mutation';
-import * as dialog from '../../../utils/dialog';
+import apiMutation from 'utils/api/mutation';
+import * as dialog from 'utils/dialog';
 import './CodeFileConfig.scss';
 import DestroyCodeFile from './DestroyCodeFile';
-import StyledSwitch from '../../forms/StyledSwitch';
-import StyledSelect from '../../forms/StyledSelect';
-import StyledInput from '../../forms/StyledInput';
-import SVG from '../../SVG';
+import StyledSwitch from 'components/forms/StyledSwitch';
+import StyledSelect from 'components/forms/StyledSelect';
+import StyledInput from 'components/forms/StyledInput';
+import SVG from 'components/SVG';
+import allFields from 'fragments/stageContainer/allFields';
 
 const NAME_HINT = 'Identifies this file to the user';
 const EXECUTION_PATH_HINT = 'Determines where this code runs';
@@ -43,9 +44,13 @@ const mapping = variables.map(([prop, type]) => `${prop}: $${prop}`).join(', ');
 const returns = variables.map(([prop]) => `${prop}`).join('\n    ');
 
 const mutation = `
+${allFields}
 mutation modifyCodeFile(${args}) {
   modifyCodeFile(${mapping}) {
-    ${returns}
+    id
+    stageContainer {
+      ...allFields
+    }
   }
 }
 `

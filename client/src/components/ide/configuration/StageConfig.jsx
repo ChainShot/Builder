@@ -14,6 +14,7 @@ import confirm from '../../../utils/confirm';
 import * as dialog from '../../../utils/dialog';
 import SVG from '../../SVG';
 import './StageConfig.scss';
+import allFields from 'fragments/stageContainer/allFields';
 
 const TITLE_HINT = 'Short name displayed to the user';
 const POSITION_HINT = 'The order of this stage relative to other stages';
@@ -33,12 +34,14 @@ const variables = [
 
 const args = variables.map(([prop, type]) => `$${prop}: ${type}`).join(', ');
 const mapping = variables.map(([prop, type]) => `${prop}: $${prop}`).join(', ');
-const returns = variables.map(([prop]) => `${prop}`).join('\n    ');
 
 const mutation = `
+${allFields}
 mutation modifyStage(${args}) {
   modifyStage(${mapping}) {
-    ${returns}
+    stageContainer {
+      ...allFields
+    }
   }
 }
 `
@@ -59,7 +62,7 @@ class StageConfig extends Component {
   constructor(props) {
     super(props);
     props.onValidate(({ stage }) => validate(stage));
-    props.onSave(({ stage }) => apiMutation(mutation, stage));
+    props.onSave(({ stage }) => apiMutation(mutation, stage, true));
   }
   destroyStage = () => {
     confirm("Are you sure you want to delete this stage?").then(() => {

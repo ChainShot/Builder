@@ -3,6 +3,7 @@ import { close } from 'utils/dialog';
 import apiMutation from 'utils/api/mutation';
 import StyledSwitch from 'components/forms/StyledSwitch';
 import StyledInput from 'components/forms/StyledInput';
+import allFields from 'fragments/stageContainer/allFields';
 
 const EXTENSIONS_TO_MODE = {
   js: 'javascript',
@@ -26,13 +27,15 @@ const variables = [
 
 const args = variables.map(([prop, type]) => `$${prop}: ${type}`).join(', ');
 const mapping = variables.map(([prop, type]) => `${prop}: $${prop}`).join(', ');
-const returns = variables.map(([prop]) => `${prop}`).join('\n    ');
 
 const mutation = `
+${allFields}
 mutation createCodeFile(${args}) {
   createCodeFile(${mapping}) {
     id
-    ${returns}
+    stageContainer {
+      ...allFields
+    }
   }
 }
 `;
@@ -84,7 +87,7 @@ class NewCodeFile extends Component {
       readOnly: testFixture,
       hasProgress: !testFixture,
     }
-    apiMutation(mutation, variables).then(({ id }) => {
+    apiMutation(mutation, variables, true).then(({ id }) => {
       close(id);
     });
   }

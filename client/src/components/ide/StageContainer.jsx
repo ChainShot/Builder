@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { subscribe, unsubscribe } from '../../utils/api/subscription';
-import findContainer from '../../queries/stageContainer/find';
+import { subscribe, unsubscribe } from 'utils/api/subscription';
+import findContainer from 'queries/stageContainer/find';
+import { setStageContainer } from 'redux/actions';
+import { connect } from 'react-redux';
 import Sidebar from './sidebar/Sidebar';
 import './configuration/Config.scss';
 import './StageContainer.scss';
@@ -8,13 +10,10 @@ import Tabs from './tabs/Tabs';
 import Editor from './Editor';
 
 class StageContainer extends Component {
-  state = {
-    stageContainer: null
-  }
   componentDidMount() {
     const { containerId } = this.props.match.params;
     const subscriptionIdx = subscribe(findContainer, containerId, 'stageContainer', ({ stageContainer }) => {
-      this.setState({ stageContainer });
+      this.props.setStageContainer(stageContainer)
     });
     this.setState({ subscriptionIdx });
   }
@@ -25,7 +24,7 @@ class StageContainer extends Component {
     }
   }
   render() {
-    const { stageContainer } = this.state;
+    const { contentState: { stageContainer }} = this.props;
     if(!stageContainer) return null;
     return (
       <div className="stage-container">
@@ -43,4 +42,10 @@ class StageContainer extends Component {
   }
 }
 
-export default StageContainer;
+const mapStateToProps = ({ contentState }) => ({ contentState })
+const mapDispatchToProps = { setStageContainer }
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(StageContainer);

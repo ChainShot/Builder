@@ -1,8 +1,11 @@
 import api from './';
 import Error from '../../components/dialogs/Error';
 import * as dialog from '../dialog';
+import {subscriptions} from './subscription';
+import {setStageContainer} from 'redux/actions';
+import store from 'redux/store';
 
-const apiMutation = (query, variables) => {
+const apiMutation = (query, variables, setContainer = false) => {
   return api.post("graphql", {query, variables}).then(({ data: { errors, data } }) => {
     if(errors) {
       const messages = errors.map(x => x.message);
@@ -12,8 +15,24 @@ const apiMutation = (query, variables) => {
       return Promise.reject(errors);
     }
     const keys = Object.keys(data);
-    // for single mutations simply return the data
-    if(keys.length === 1) return data[keys[0]];
+
+    if(keys.length === 1) {
+      const mutationReturns = data[keys[0]];
+      if(setContainer) {
+        const { stageContainer } = mutationReturns;
+        if(stageContainer) {
+          store.dispatch(setStageContainer(stageContainer));
+        }
+        else {
+          console.warning('Query should have set stageContainer, however none was returned', {
+            query, variables
+          });
+        }
+      }
+      // for single mutations simply return the data
+      return mutationReturns;
+    }
+
     // for multiple mutations return all of them with function names as keys
     return data;
   });

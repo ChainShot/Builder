@@ -1,4 +1,5 @@
 import {
+  SET_STAGE_CONTAINER,
   START_CODE_EXECUTION,
   COMPLETE_CODE_EXECUTION,
   START_COMPILATION,
@@ -18,6 +19,11 @@ import {
   CLOSE_SIDEBAR_CONTAINER,
   OPEN_SIDEBAR_CONTAINER,
 } from "./actionTypes";
+
+export const setStageContainer = (stageContainer) => ({
+  type: SET_STAGE_CONTAINER,
+  payload: { stageContainer }
+});
 
 export const startCodeExecution = (stageId) => ({
   type: START_CODE_EXECUTION,
