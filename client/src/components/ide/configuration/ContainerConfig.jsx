@@ -105,15 +105,15 @@ class ContainerConfig extends Component {
   destroyContainer = async () => {
     confirm("Are you sure you want to delete this version?").then(() => {
       const { id } = this.props.stageContainer;
-      apiMutation(destroySC, { id });
       this.props.history.push(`/`);
+      apiMutation(destroySC, { id });
     });
   }
   destroyGroup = async () => {
     confirm("Are you sure you want to delete this group?").then(() => {
       const { id } = this.props.stageContainer.stageContainerGroup;
-      apiMutation(destroySCG, { id });
       this.props.history.push(`/`);
+      apiMutation(destroySCG, { id });
     });
   }
   render() {
