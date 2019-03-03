@@ -19,7 +19,7 @@ class StageContainer extends Component {
   }
   componentWillUnmount() {
     const { subscriptionIdx } = this.state;
-    if(subscriptionIdx) {
+    if(subscriptionIdx !== undefined) {
       unsubscribe(subscriptionIdx);
     }
   }
