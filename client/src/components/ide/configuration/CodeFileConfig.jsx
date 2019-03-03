@@ -9,7 +9,6 @@ import StyledInput from 'components/forms/StyledInput';
 import SVG from 'components/SVG';
 import { closeTabs } from 'redux/actions';
 import { connect } from 'react-redux';
-import { IDE_TAB_TYPES } from 'config';
 import allFields from 'fragments/stageContainer/allFields';
 
 const NAME_HINT = 'Identifies this file to the user';
@@ -44,7 +43,6 @@ const variables = [
 
 const args = variables.map(([prop, type]) => `$${prop}: ${type}`).join(', ');
 const mapping = variables.map(([prop, type]) => `${prop}: $${prop}`).join(', ');
-const returns = variables.map(([prop]) => `${prop}`).join('\n    ');
 
 const mutation = `
 ${allFields}

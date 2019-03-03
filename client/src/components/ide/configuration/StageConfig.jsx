@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import apiMutation from '../../../utils/api/mutation';
 import destroyStage from '../../../mutations/stage/destroy';
 import DuplicateStage from './DuplicateStage';
@@ -15,6 +14,8 @@ import * as dialog from '../../../utils/dialog';
 import SVG from '../../SVG';
 import './StageConfig.scss';
 import allFields from 'fragments/stageContainer/allFields';
+import { closeTabs } from 'redux/actions';
+import { connect } from 'react-redux';
 
 const TITLE_HINT = 'Short name displayed to the user';
 const POSITION_HINT = 'The order of this stage relative to other stages';
@@ -67,6 +68,7 @@ class StageConfig extends Component {
   destroyStage = () => {
     confirm("Are you sure you want to delete this stage?").then(() => {
       const { id } = this.props.stage;
+      this.props.closeTabs({ stageId: id });
       apiMutation(destroyStage, { id });
     });
   }
@@ -141,4 +143,9 @@ class StageConfig extends Component {
   }
 }
 
-export default withRouter(StageConfig);
+const mapDispatchToProps = { closeTabs }
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(StageConfig);

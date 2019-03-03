@@ -1,7 +1,6 @@
 import api from './';
 import Error from '../../components/dialogs/Error';
 import * as dialog from '../dialog';
-import {subscriptions} from './subscription';
 import {setStageContainer} from 'redux/actions';
 import store from 'redux/store';
 
