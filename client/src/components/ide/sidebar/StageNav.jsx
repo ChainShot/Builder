@@ -13,7 +13,7 @@ class StageNav extends Component {
     return { stageId: stage.id, type, id: null }
   }
   render() {
-    const { stage } = this.props;
+    const { stage, stageContainer } = this.props;
     const { codeFiles, projectSkeletons } = stage;
     const configurationAttrs = this.attributesFor(IDE_TAB_TYPES.STAGE_CONFIG);
     const detailsAttrs = this.attributesFor(IDE_TAB_TYPES.STAGE_DETAILS);
@@ -39,7 +39,7 @@ class StageNav extends Component {
         </ActionNav>
         <ValidationsNav {...this.props} />
         <SkeletonsNav projectSkeletons={projectSkeletons} stage={stage} />
-        <CodeFilesNav codeFiles={codeFiles} {...this.props} />
+        <CodeFilesNav codeFiles={codeFiles} stageContainer={stageContainer} stage={stage} />
       </ul>
     )
   }

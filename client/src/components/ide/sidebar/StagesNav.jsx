@@ -17,12 +17,13 @@ class StagesNav extends Component {
     });
   }
   render() {
-    const { sidebarState, openSidebarStage, closeSidebarStage, stageContainer: { stages }} = this.props;
+    const { stageContainer, sidebarState, openSidebarStage, closeSidebarStage, stageContainer: { stages }} = this.props;
     const sortedStages = stages.sort((a,b) => a.position - b.position);
     return (
       <ul className="stages-nav">
         {sortedStages.map(stage => (
           <StageCaret
+            stageContainer={stageContainer}
             key={stage.id}
             stage={stage}
             openSidebarStage={openSidebarStage}

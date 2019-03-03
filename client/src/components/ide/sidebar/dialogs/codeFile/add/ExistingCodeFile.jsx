@@ -3,8 +3,10 @@ import { close } from 'utils/dialog';
 import apiMutation from 'utils/api/mutation';
 import StyledSelect from 'components/forms/StyledSelect';
 import './ExistingCodeFile.scss';
+import allFields from 'fragments/stageContainer/allFields';
 
 const mutation = `
+${allFields}
 mutation modifyCodeFile($codeFileId: String, $codeStageIds: [String], $stageId: String, $codeFileIds: [String]) {
   modifyCodeFile(id: $codeFileId, codeStageIds: $codeStageIds) {
     id
@@ -12,7 +14,9 @@ mutation modifyCodeFile($codeFileId: String, $codeStageIds: [String], $stageId: 
   }
   modifyStage(id: $stageId, codeFileIds: $codeFileIds) {
     id
-    codeFileIds
+    stageContainer {
+      ...allFields
+    }
   }
 }
 `
@@ -66,7 +70,7 @@ class ExistingCodeFile extends Component {
       stageId: stage.id,
       codeFileIds: (codeFileIds || []).concat(id),
     };
-    apiMutation(mutation, variables).then(({ modifyCodeFile: { id }}) => {
+    apiMutation(mutation, variables, 'modifyStage.stageContainer').then(({ modifyCodeFile: { id }}) => {
       close(id);
     });
   }

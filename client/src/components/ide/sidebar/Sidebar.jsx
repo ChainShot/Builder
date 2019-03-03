@@ -49,7 +49,7 @@ class Sidebar extends Component {
           <ContainerNav stageContainer={stageContainer}/>
           <div className="stages">
             <label>{stages.length} Stage{s(stages.length)}</label>
-            <StagesNav {...this.props} />
+            <StagesNav stageContainer={stageContainer} />
           </div>
         </Resizable>
     )

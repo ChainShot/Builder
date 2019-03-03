@@ -12,7 +12,7 @@ class StageCaret extends Component {
     }
   }
   render() {
-    const { stage, sidebarState: { stagesOpen }} = this.props;
+    const { stage, stageContainer, sidebarState: { stagesOpen }} = this.props;
     const { id, title } = stage;
     const isOpen = stagesOpen.indexOf(id) >= 0;
     const classes = ['directory'];
@@ -20,7 +20,7 @@ class StageCaret extends Component {
     return (
       <li className="caret">
         <div className={classes.join(' ')} onClick={this.toggle}> {title} </div>
-        { isOpen && <StageNav stage={stage} /> }
+        { isOpen && <StageNav stage={stage} stageContainer={stageContainer}/> }
       </li>
     )
   }

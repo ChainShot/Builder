@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { IDE_TAB_TYPES } from 'config';
 import SVG from 'components/SVG';
 
-class CodeFileNavActions extends Component {
+class CodeFilesNavActions extends Component {
   addCodeFile = () => {
     const { stage, stageContainer } = this.props;
     dialog.open(AddCodeFile, { stage, stageContainer }).then((id) => {
@@ -48,4 +48,4 @@ const mapDispatchToProps = { openTab, openCodeFile }
 export default connect(
   null,
   mapDispatchToProps,
-)(CodeFileNavActions);
+)(CodeFilesNavActions);
