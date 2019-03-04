@@ -23,8 +23,8 @@ class CompilationDisplay extends Component {
                     {
                         (errors || []).map((error) => {
                             return (
-                                <li className="error" key={error.message}>
-                                    <pre>{error.formattedMessage}</pre>
+                                <li className="error" key={error}>
+                                    <pre>{error}</pre>
                                 </li>
                             );
                         })
@@ -32,8 +32,8 @@ class CompilationDisplay extends Component {
                     {
                         (warnings || []).map((warning) => {
                             return (
-                                <li className="warning" key={warning.message}>
-                                    <pre>{warning.formattedMessage}</pre>
+                                <li className="warning" key={warning}>
+                                    <pre>{warning}</pre>
                                 </li>
                             );
                         })
