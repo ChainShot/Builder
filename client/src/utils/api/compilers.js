@@ -27,8 +27,8 @@ const solc = {
     return solcApi.post('', {sources, languageVersion}).then(({data}) => {
         return {
             ...data,
-            errors: filterErrors(data.errors),
-            warnings: filterWarnings(data.errors),
+            errors: filterErrors(data.errors).map(x => x.formattedMessage),
+            warnings: filterWarnings(data.errors).map(x => x.formattedMessage),
         }
     });
   }
