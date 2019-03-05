@@ -1,10 +1,8 @@
 @import '../../../shared/variables';
 
 .markdown-edit {
-  flex-grow: 1;
   display: flex;
   overflow: hidden;
-  position: relative;
 
   .code-editor {
     width: 50%;
