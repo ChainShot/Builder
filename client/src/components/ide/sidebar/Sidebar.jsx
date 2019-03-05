@@ -44,6 +44,7 @@ class Sidebar extends Component {
           defaultSize={defaultSize}
           enable={DIRECTIONS}
           onResizeStop={this.onResizeStop}
+          handleStyles={{ right: { right: '0' } }}
           minWidth={MIN_WIDTH}
           maxWidth={MAX_WIDTH}>
           <ContainerNav stageContainer={stageContainer}/>
