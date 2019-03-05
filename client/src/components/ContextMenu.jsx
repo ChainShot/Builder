@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import './ContextMenu.scss';
 import { cancel } from 'utils/contextMenu';
 
+// use mousedown instead of click because firefox will trigger a click
+// upon mouseup of the contextmenu event which is used to open this menu
+const CLICK_EVENT = 'mousedown';
+const KEY_EVENT = 'keydown';
+
 class ContextMenu extends Component {
   shortcut = (evt) => {
     if(evt.keyCode === 27) {
@@ -9,12 +14,12 @@ class ContextMenu extends Component {
     }
   }
   componentDidMount() {
-    document.addEventListener('keydown', this.shortcut);
-    document.addEventListener('click', this.cancelOnOuter);
+    document.addEventListener(KEY_EVENT, this.shortcut);
+    document.addEventListener(CLICK_EVENT, this.cancelOnOuter);
   }
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.shortcut);
-    document.removeEventListener('click', this.cancelOnOuter);
+    document.removeEventListener(KEY_EVENT, this.shortcut);
+    document.removeEventListener(CLICK_EVENT, this.cancelOnOuter);
   }
   cancelOnOuter = (evt) => {
     if(!this.refs.menu.contains(evt.target)) {
