@@ -22,6 +22,12 @@ const defaultMonacoOptions = {
 
 monaco.editor.defineTheme('chainshot', theme);
 
+// disable the built-in JS library
+monaco.languages.typescript.javascriptDefaults.setCompilerOptions({
+  noLib: true,
+  allowNonTsExtensions: true
+});
+
 class CodeEditor extends Component {
   componentDidMount() {
     const {code, mode} = this.props;
