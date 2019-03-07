@@ -61,8 +61,8 @@ class Compilation extends Component {
   }
   debouncedCompile = debounce(this.compile, 500)
   componentDidUpdate(prevProps) {
-    const { code } = this.props;
-    if(this.state.auto && code !== prevProps.code) {
+    const { code, shouldShow } = this.props;
+    if(shouldShow && this.state.auto && code !== prevProps.code) {
       this.debouncedCompile();
     }
   }
