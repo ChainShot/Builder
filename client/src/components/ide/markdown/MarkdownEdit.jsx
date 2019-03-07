@@ -40,9 +40,13 @@ class MarkdownEditChild extends Component {
   }
   render() {
     const { markdown, update } = this.props;
+    const editorOptions = { quickSuggestions: false }
     return (
       <div className="markdown-edit">
-        <CodeEditor mode="markdown" code={markdown} onUpdate={(markdown) => update({ markdown })} />
+        <CodeEditor mode="markdown"
+          code={markdown}
+          editorOptions={editorOptions}
+          onUpdate={(markdown) => update({ markdown })} />
         <div className="display">
           <ReactMarkdown source={markdown}
                 escapeHtml={false}

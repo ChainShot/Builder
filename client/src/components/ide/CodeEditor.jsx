@@ -16,17 +16,24 @@ const defaultMonacoOptions = {
     folding: true,
     glyphMargin: false,
     fixedOverflowWidgets: true,
-    parameterHints: false,
+    contextmenu: false,
     theme: "chainshot",
 }
 
 monaco.editor.defineTheme('chainshot', theme);
 
+// disable the built-in JS library
+monaco.languages.typescript.javascriptDefaults.setCompilerOptions({
+  noLib: true,
+  allowNonTsExtensions: true
+});
+
 class CodeEditor extends Component {
   componentDidMount() {
-    const {code, mode} = this.props;
+    const {code, mode, editorOptions} = this.props;
     const editor = monaco.editor.create(this.refs.container, {
       ...defaultMonacoOptions,
+      ...editorOptions,
       value: code,
       language: mode,
     });
