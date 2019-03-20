@@ -88,7 +88,7 @@ class Tab extends Component {
         break;
       }
       case IDE_TAB_TYPES.STAGE_VALIDATIONS: {
-        display = `validations.md`;
+        display = `validations.json`;
         stageSpecific = true;
         break;
       }
