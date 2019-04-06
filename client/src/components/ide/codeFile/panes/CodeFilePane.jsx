@@ -6,8 +6,8 @@ import Resizable from 're-resizable';
 import "./CodeFilePane.scss";
 
 const LOCALSTORAGE_PANE = 'ui-settings:code-file-pane';
-const DEFAULT_SIZE = { width: '100%', height: 300 }
-const MIN_HEIGHT = 200;
+const DEFAULT_SIZE = { width: '100%', height: 250 }
+const MIN_HEIGHT = 150;
 const MAX_HEIGHT = 600;
 const DIRECTIONS = { top:true, right:false, bottom:false, left:false, topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }
 
