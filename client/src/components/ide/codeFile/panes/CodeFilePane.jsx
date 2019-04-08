@@ -55,7 +55,7 @@ class CodeFilePane extends Component {
     window.requestAnimationFrame(() => window.dispatchEvent(new CustomEvent('resize')));
   }
   render() {
-    const { pane, stage, codeFile, changePane, code } = this.props;
+    const { pane, stage, codeFile, code } = this.props;
     const { size } = this.state;
     let minHeight = MIN_HEIGHT;
     let height = size.height;
