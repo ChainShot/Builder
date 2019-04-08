@@ -32,7 +32,6 @@ class CodeFilePane extends Component {
   constructor(props) {
     super(props);
     const defaultSize = getPaneSize() || DEFAULT_SIZE;
-    console.log({ defaultSize })
     this.state = {
       size: defaultSize
     }
