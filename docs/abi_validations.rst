@@ -42,7 +42,7 @@ Field                   Description
 ======================  ====================================================================
 id                      Mongo ID identifier
 name                    The name of the exposed property
-type                    The type of the exposed property
+interface_type          The type of the exposed property
 task_display            The task to show to the user, for them to satisfy this validation
 constant                Is this a constant function?
 payable                 Is this a payable function?
