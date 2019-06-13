@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import apiQuery from '../../utils/api/query';
 import findSCG from '../../queries/stageContainerGroup/find';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import SelectLayout from './SelectLayout';
 import apiMutation from '../../utils/api/mutation';
 import createSC from '../../mutations/stageContainer/create';
+import { connect } from 'react-redux';
+import { resetIDE } from 'redux/actions';
 import './Versions.scss';
 
 class Versions extends Component {
@@ -16,6 +18,12 @@ class Versions extends Component {
     apiQuery(findSCG, { id }).then(({ stageContainerGroup }) => {
       this.setState({ stageContainerGroup });
     });
+  }
+  navigateToVersion = (id) => {
+    // ensure the IDE state is empty
+    this.props.resetIDE();
+    // navigate to this content loaded in the IDE 
+    this.props.history.push(`/content/${id}`);
   }
   createVersion = () => {
     const { stageContainerGroup: { id } } = this.state;
@@ -37,11 +45,11 @@ class Versions extends Component {
         </p>
         <div className="versions">
           {stageContainers.map(({ version, id }) => (
-            <Link key={id} to={`/content/${id}`}>
+            <div key={id} onClick={() => this.navigateToVersion(id)}>
               <div className="version">
                 Select { version }
               </div>
-            </Link>
+            </div>
           ))}
           <div className="version" onClick={this.createVersion}>
             Create a new Version
@@ -52,4 +60,9 @@ class Versions extends Component {
   }
 }
 
-export default withRouter(Versions);
+const mapDispatchToProps = { resetIDE }
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(withRouter(Versions));

@@ -1,4 +1,5 @@
 import {
+  RESET_IDE,
   SET_STAGE_CONTAINER,
   START_CODE_EXECUTION,
   COMPLETE_CODE_EXECUTION,
@@ -20,6 +21,8 @@ import {
   CLOSE_SIDEBAR_CONTAINER,
   OPEN_SIDEBAR_CONTAINER,
 } from "./actionTypes";
+
+export const resetIDE = () => ({ type: RESET_IDE });
 
 export const setStageContainer = (stageContainer) => ({
   type: SET_STAGE_CONTAINER,

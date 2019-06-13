@@ -4,7 +4,7 @@ const {
     MONGO_ID_REGEX,
     LOOKUP_KEY,
     MODEL_DB,
-    STAGE_CONTAINER_PROJECT_PATH,
+    STAGE_CONTAINER_GROUP_PROJECT_PATH,
   },
   testData: {
     writtenModelsLookup,
@@ -43,9 +43,11 @@ mockSuite('Mutations::StageContainerGroups::Modify', () => {
 
   describe('renamed directory', () => {
     it('should have renamed the stageContainer directory', () => {
-      const oldPath = path.join(STAGE_CONTAINER_PROJECT_PATH, existingStageContainerGroup.title);
-      const newPath = path.join(STAGE_CONTAINER_PROJECT_PATH, newTitle);
-      assert.equal(renamed[path])
+      const previousPath = path.join(STAGE_CONTAINER_GROUP_PROJECT_PATH, existingStageContainerGroup.title);
+      const newPath = path.join(STAGE_CONTAINER_GROUP_PROJECT_PATH, newTitle);
+      const renamedEntry = renamed.find(x => x.previousPath === previousPath);
+      assert(renamedEntry);
+      assert.equal(renamedEntry.newPath, newPath);
     });
   });
 });

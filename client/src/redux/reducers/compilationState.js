@@ -1,4 +1,5 @@
 import {
+  RESET_IDE,
   START_COMPILATION,
   COMPLETE_COMPILATION
 } from '../actionTypes';
@@ -15,6 +16,9 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case RESET_IDE: {
+      return initialState;
+    }
     case START_COMPILATION: {
       const { stageId } = action.payload;
       const existingValues = state.stages[stageId] || state.default;

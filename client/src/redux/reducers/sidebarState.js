@@ -1,4 +1,5 @@
 import {
+  RESET_IDE,
   OPEN_FOLDER,
   CLOSE_FOLDER,
   OPEN_CODE_FILE,
@@ -18,6 +19,9 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case RESET_IDE: {
+      return initialState;
+    }
     case OPEN_CODE_FILE: {
       const { id, stageId } = action.payload;
       return {
