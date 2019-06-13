@@ -1,4 +1,5 @@
 import {
+  RESET_IDE,
   SET_STAGE_CONTAINER,
 } from '../actionTypes';
 
@@ -8,6 +9,9 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case RESET_IDE: {
+      return initialState;
+    }
     case SET_STAGE_CONTAINER:
       const { stageContainer } = action.payload;
       return { stageContainer }

@@ -1,4 +1,5 @@
 import {
+  RESET_IDE,
   OPEN_TAB,
   CLOSE_TAB,
   CLOSE_TABS,
@@ -14,6 +15,9 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case RESET_IDE: {
+      return initialState;
+    }
     case CLOSE_TABS_TO_THE_RIGHT: {
       const { type, id, stageId } = action.payload;
       const idx = state.tabsOpen.findIndex(x => x.type === type && x.id === id && x.stageId === stageId);
