@@ -64,9 +64,11 @@ mockSuite('Mutations::CodeFiles::Modify::Properties', () => {
     });
 
     it('should have renamed the solution project files', () => {
-      const oldPath = path.join(SOLUTION_PROJECT_PATH, existingCodeFile.executablePath);
+      const previousPath = path.join(SOLUTION_PROJECT_PATH, existingCodeFile.executablePath);
       const newPath = path.join(SOLUTION_PROJECT_PATH, modifyProps.executablePath);
-      assert.equal(renamed[path])
+      const renamedEntry = renamed.find(x => x.previousPath === previousPath);
+      assert(renamedEntry);
+      assert.equal(renamedEntry.newPath, newPath);
     });
   });
 });
