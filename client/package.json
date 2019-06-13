@@ -33,7 +33,7 @@
     "mini-css-extract-plugin": "0.4.3",
     "monaco-editor": "^0.15.6",
     "monaco-editor-webpack-plugin": "^1.7.0",
-    "node-sass": "^4.10.0",
+    "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "path-posix": "^1.0.0",
     "pnp-webpack-plugin": "1.1.0",
