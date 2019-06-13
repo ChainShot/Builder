@@ -20,7 +20,9 @@ class Versions extends Component {
     });
   }
   navigateToVersion = (id) => {
+    // ensure the IDE state is empty
     this.props.resetIDE();
+    // navigate to this content loaded in the IDE 
     this.props.history.push(`/content/${id}`);
   }
   createVersion = () => {
