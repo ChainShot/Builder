@@ -92,10 +92,12 @@ class CodeFileConfig extends Component {
   }
   render() {
     const {
-      update, errors,
+      update, errors, stageContainer,
       codeFile: { name, mode, executablePath, fileLocation, readOnly, hasProgress, executable, testFixture, visible }
     } = this.props;
-    const updateCodeFile = (state) => update({ codeFile: state })
+    const updateCodeFile = (state) => update({ codeFile: state });
+    const isBuildingBlock = (stageContainer.type === 'BuildingBlock');
+    console.log({ stageContainer })
     return (
       <form className="config" ref="container">
         <StyledInput
@@ -116,14 +118,14 @@ class CodeFileConfig extends Component {
           value={executablePath}
           onChange={({ target: { value }}) => updateCodeFile({ executablePath: value })} />
 
-        <StyledInput
+        { isBuildingBlock && <StyledInput
           label="File Location"
           hint={FILE_LOCATION_HINT}
           type="text"
           errors={errors}
           field="fileLocation"
           value={fileLocation}
-          onChange={({ target: { value }}) => updateCodeFile({ fileLocation: value })} />
+          onChange={({ target: { value }}) => updateCodeFile({ fileLocation: value })} /> }
 
         <StyledSelect
           label="Editor Mode"

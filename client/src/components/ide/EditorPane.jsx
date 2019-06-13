@@ -81,7 +81,8 @@ class EditorPane extends Component {
             debounceKey={uniqueKey}
             child={CodeFileConfig}
             codeFile={codeFile}
-            stage={stage} />
+            stage={stage}
+            stageContainer={stageContainer}/>
         )
       }
       case IDE_TAB_TYPES.CODE_FILE_SOLUTION: {
