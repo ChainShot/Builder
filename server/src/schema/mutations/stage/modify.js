@@ -2,6 +2,7 @@ const { ObjectID } = require('mongodb');
 const stageProjectProps = require('./projectProps');
 const positionalShift = require('./positionalShift');
 const path = require('path');
+const fs = require('fs-extra');
 
 module.exports = ({
   ioHelpers: { configWriter, fileWriter, configDocumentReader, configResolver, rename },
@@ -26,7 +27,10 @@ module.exports = ({
     const previousBasePath = await findStageFilePath(stage);
 
     if(newBasePath !== previousBasePath) {
-      await rename(previousBasePath, newBasePath)
+      if(await fs.exists(newBasePath)) {
+        throw new Error(`Cannot overwrite stage with the same name!`);
+      }
+      await rename(previousBasePath, newBasePath);
     }
 
     const keys = Object.keys(props);
