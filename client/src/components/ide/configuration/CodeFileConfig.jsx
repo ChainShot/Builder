@@ -97,7 +97,6 @@ class CodeFileConfig extends Component {
     } = this.props;
     const updateCodeFile = (state) => update({ codeFile: state });
     const isBuildingBlock = (stageContainer.type === 'BuildingBlock');
-    console.log({ stageContainer })
     return (
       <form className="config" ref="container">
         <StyledInput
