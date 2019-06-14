@@ -48,7 +48,7 @@ class CodeFilePane extends Component {
     // resize event for the monaco display
     window.requestAnimationFrame(() => window.dispatchEvent(new CustomEvent('resize')));
   }
-  hide() {
+  hide = () => {
     const { changePane } = this.props;
     changePane();
     // resize event for the monaco display
@@ -65,7 +65,7 @@ class CodeFilePane extends Component {
       minHeight = 0;
     }
     return (
-      <Resizable 
+      <Resizable
         className='code-file-pane'
         size={{ height, width }}
         enable={DIRECTIONS}
