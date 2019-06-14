@@ -6,9 +6,13 @@ const ANCHOR_ID = 'context-menu-anchor';
 const ANCHOR_EL = document.getElementById(ANCHOR_ID);
 
 let resolveFn;
-const open = (Component, { x, y }, componentProps = {}) => {
+const open = (Component, evt, componentProps = {}) => {
+  const { clientX, clientY } = evt;
+  // if the context menu is opened passed halfway across the viewport, show it from the other side
+  // a negative x will tell the ContextMenu to render from the right instead of left
+  const x = (clientX < window.innerWidth/2) ? clientX : (clientX - window.innerWidth);
   const Menu = (
-    <ContextMenu x={x} y={y}>
+    <ContextMenu x={x} y={clientY}>
       <Component {...componentProps}/>
     </ContextMenu>
   )

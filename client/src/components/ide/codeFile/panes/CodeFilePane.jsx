@@ -41,7 +41,6 @@ class CodeFilePane extends Component {
     const newHeight = height + delta.height;
     // don't store height values when hidden (below min height)
     if(newHeight >= MIN_HEIGHT) {
-      console.log('setting', newHeight)
       setPaneSize(newHeight);
       this.setState({ size: { width, height: newHeight }});
     }

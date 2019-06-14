@@ -28,7 +28,13 @@ class ContextMenu extends Component {
   }
   render() {
     const { x, y } = this.props;
-    const style = { top: y, left: x }
+    const style = { top: y }
+    if(x > 0) {
+      style.left = x;
+    }
+    else {
+      style.right = Math.abs(x);
+    }
     return (
       <div className="context-menu" style={style} ref="menu">
         { this.props.children }
