@@ -1,25 +1,16 @@
 import React, { Component } from 'react';
-import CodeEditor from '../CodeEditor';
 import ReactMarkdown from 'react-markdown';
-import apiMutation from '../../../utils/api/mutation';
+import apiMutation from 'utils/api/mutation';
 import htmlParser from 'react-markdown/plugins/html-parser';
+import UpdateWrapper from 'components/UpdateWrapper';
+import CodeEditor from 'components/ide/CodeEditor';
+import emojiProcessing from './processing/emojiProcessing';
 import './MarkdownEdit.scss';
-import UpdateWrapper from '../../UpdateWrapper';
-
-const WHITE_LIST = ['www.youtube.com', 'www.youtube-nocookie.com'];
-
-function whitelisted(src) {
-  const originHostname = new URL(src).hostname;
-  return WHITE_LIST.indexOf(originHostname) >= 0;
-}
-
-function whiteListedFrame(node) {
-  return node.type === 'tag' && node.name === "iframe" && whitelisted(node.attribs.src);
-}
 
 const parseHtml = htmlParser({
-  isValidNode: node => whiteListedFrame(node)
-})
+  isValidNode: node => node.type !== 'script',
+  processingInstructions: [emojiProcessing],
+});
 
 class MarkdownEdit extends Component {
   render() {
