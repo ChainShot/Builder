@@ -1,5 +1,5 @@
 import React from 'react';
-import MarkdownEdit from './MarkdownEdit';
+import MarkdownEdit from './edit/MarkdownEdit';
 
 const mutation = `
 mutation modifyStageContainer($id: String, $intro: String) {
