@@ -13,7 +13,7 @@ function getClients(io) {
   });
 }
 
-function watchDir(dir) {
+function watchDirUpdate(dir) {
   watch(dir, { recursive: true }, async () => {
     const clients = await getClients(io);
     if(clients.length > 0) {
@@ -25,7 +25,7 @@ function watchDir(dir) {
 const setup = (io) => {
   CONTENT_FOLDERS.forEach((folderName) => {
     const fullDir = path.join(CONTENT_DIR, folderName);
-    watchDir(fullDir);
+    watchDirUpdate(fullDir, io);
   });
 }
 
