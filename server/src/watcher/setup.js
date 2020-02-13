@@ -1,8 +1,8 @@
-const { CONTENT_DIR } = require('../config');
+const { PROJECTS_DIR, CONFIG_DIR } = require('../config');
 const watch = require('node-watch');
 const fs = require('fs-extra');
 
-const CONTENT_FOLDERS = ['projects', 'config'];
+const CONTENT_FOLDERS = [PROJECTS_DIR, CONFIG_DIR];
 
 function getClients(io) {
   return new Promise((resolve, reject) => {
@@ -13,19 +13,14 @@ function getClients(io) {
   });
 }
 
-function watchDirUpdate(dir) {
-  watch(dir, { recursive: true }, async () => {
-    const clients = await getClients(io);
-    if(clients.length > 0) {
-      io.sockets.emit('update');
-    }
-  });
-}
-
 const setup = (io) => {
-  CONTENT_FOLDERS.forEach((folderName) => {
-    const fullDir = path.join(CONTENT_DIR, folderName);
-    watchDirUpdate(fullDir, io);
+  CONTENT_FOLDERS.forEach((dir) => {
+    watch(dir, { recursive: true }, async () => {
+      const clients = await getClients(io);
+      if(clients.length > 0) {
+        io.sockets.emit('update');
+      }
+    });
   });
 }
 
