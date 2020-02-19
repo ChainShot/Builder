@@ -1,0 +1,20 @@
+{
+  "type": "CodeStage",
+  "containerId": "5e4dc706664edc7e959d246b",
+  "completionMessage": "$$LOOKUP",
+  "title": "JS Challenge",
+  "abiValidations": "$$LOOKUP",
+  "task": "$$LOOKUP",
+  "details": "$$LOOKUP",
+  "position": 0,
+  "id": "5e4dc753664edc7e959d246c",
+  "language": "javascript",
+  "testFramework": "mocha_bdd",
+  "languageVersion": "10.x/babel",
+  "youtubeId": null,
+  "src": null,
+  "codeFileIds": [
+    "5e4dc78f664edc7e959d246d",
+    "5e4dc7e5664edc7e959d246f"
+  ]
+}
