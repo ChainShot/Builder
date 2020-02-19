@@ -1,0 +1,16 @@
+{
+  "executablePath": "index.js",
+  "name": "index.js",
+  "executable": true,
+  "hasProgress": true,
+  "mode": "javascript",
+  "readOnly": false,
+  "testFixture": false,
+  "visible": true,
+  "stageContainerId": "5e4dc706664edc7e959d246b",
+  "codeStageIds": [
+    "5e4dc753664edc7e959d246c"
+  ],
+  "id": "5e4dc78f664edc7e959d246d",
+  "initialCode": "$$LOOKUP"
+}
