@@ -1,15 +1,14 @@
 const Contract = artifacts.require('Contract');
 contract('Contract', function (accounts) {
     let contract;
-    const sender = accounts[0];
-    beforeEach(async () => {
+    before(async () => {
         contract = await Contract.new({
-            from: sender
+            from: accounts[0]
         });
     });
 
-    it('should set the beneficiary address', async () => {
-        const beneficiary = await contract.beneficiary.call();
-        assert.equal(beneficiary, sender);
+    it('should create variable a: true', async () => {
+        const a = await contract.a.call();
+        assert.equal(a, true);
     });
 });

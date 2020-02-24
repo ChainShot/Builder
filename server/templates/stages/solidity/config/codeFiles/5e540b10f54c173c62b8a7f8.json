@@ -2,11 +2,11 @@
   "executablePath": "contracts/contract.sol",
   "name": "contract.sol",
   "testFixture": false,
-  "stageContainerId": "5c1711c471bd490ed52bf8a8",
+  "stageContainerId": "5e540b00f54c173c62b8a7f5",
   "codeStageIds": [
-    "5c1808fcd5266c05977cbc72"
+    "5e540b10f54c173c62b8a7f6"
   ],
-  "id": "5c23fbea72cbc406ac7e976b",
+  "id": "5e540b10f54c173c62b8a7f8",
   "initialCode": "$$LOOKUP",
   "mode": "sol",
   "visible": true,
