@@ -1,10 +1,8 @@
 const Contract = artifacts.require('Contract');
-contract('Contract', function (accounts) {
+contract('Contract', function ([owner]) {
     let contract;
     before(async () => {
-        contract = await Contract.new({
-            from: accounts[0]
-        });
+        contract = await Contract.new({ from: owner });
     });
 
     it('should create variable a: true', async () => {
