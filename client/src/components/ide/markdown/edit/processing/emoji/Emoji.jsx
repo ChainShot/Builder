@@ -4,8 +4,8 @@ import info from './info';
 import './Emoji.scss';
 
 // sheet & info available here - https://github.com/iamcal/emoji-data
-const SHEET_ROWS = 53;
-const SHEET_COLUMNS = 53;
+const SHEET_ROWS = 57;
+const SHEET_COLUMNS = 57;
 
 const Emoji = ({ shortName }) => {
     const emojiInfo = info.find(x => x.short_name === shortName);
@@ -28,8 +28,9 @@ const Emoji = ({ shortName }) => {
         const multiplyX = 100 / (SHEET_COLUMNS - 1);
         const multiplyY = 100 / (SHEET_ROWS - 1);
         const backgroundPosition = `${multiplyX * sheet_x}% ${multiplyY * sheet_y}%`;
+        const backgroundSize = `${SHEET_ROWS * 100}% ${SHEET_COLUMNS * 100}%`;
         return (
-            <div className="emoji" style={{ backgroundPosition }}/>
+            <div className="emoji" style={{ backgroundPosition, backgroundSize }}/>
         );
     }
 }
