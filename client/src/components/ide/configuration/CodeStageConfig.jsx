@@ -10,6 +10,7 @@ const languageVersionOptions = [
   { label: 'Solidity v0.4.19', value: '0.4.19' },
   { label: 'Solidity v0.5.0', value: '0.5.0' },
   { label: 'Solidity v0.6.2', value: '0.6.2' },
+  { label: 'Solidity v0.7.5', value: '0.7.5' },
   { label: 'Vyper v0.1', value: '0.1.0b3' },
   { label: 'Node 10.x', value: '10.x' },
   { label: 'Node 10.x w/ Babel', value: '10.x/babel' },
