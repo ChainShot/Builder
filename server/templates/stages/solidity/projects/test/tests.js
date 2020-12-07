@@ -1,8 +1,10 @@
-const Contract = artifacts.require('Contract');
-contract('Contract', function ([owner]) {
+const { assert } = require("chai");
+describe('Contract', function () {
     let contract;
-    before(async () => {
-        contract = await Contract.new({ from: owner });
+    beforeEach(async () => {
+        const Contract = await ethers.getContractFactory("Contract");
+        contract = await Contract.deploy();
+        await contract.deployed();
     });
 
     it('should create variable a: true', async () => {
