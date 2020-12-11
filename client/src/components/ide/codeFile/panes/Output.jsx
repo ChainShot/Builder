@@ -54,14 +54,16 @@ class Output extends Component {
         return { contents: initialCode, path: executablePath }
       })
 
-    const { languageVersion, language, testFramework } = stage;
+    const { id, languageVersion, language, testFramework, forkBlockNumber } = stage;
     let response;
     try {
       response = await runner.post('', {
+        stageId: id,
         files,
         languageVersion,
         language,
         testFramework,
+        forkBlockNumber,
       });
     }
     catch(ex) {

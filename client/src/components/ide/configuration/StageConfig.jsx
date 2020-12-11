@@ -29,6 +29,7 @@ const variables = [
   ['type', 'String'],
   ['position', 'Int'],
   ['languageVersion', 'String'],
+  ['forkBlockNumber', 'Int'],
   ['testFramework', 'String'],
   ['youtubeId', 'String'],
   ['src', 'String'],

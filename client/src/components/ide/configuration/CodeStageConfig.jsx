@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import StyledSelect from '../../forms/StyledSelect';
+import StyledInput from '../../forms/StyledInput';
 import {STAGE_LANGUAGE_OPTIONS} from '../../../config';
 
 const LANGUAGE_HINT = 'The execution environment language';
 const LANGUAGE_VERSION_HINT = 'The programming language build';
 const TEST_FRAMEWORK_HINT = 'The framework used for test assertions';
+const FORK_MAINNET_BLOCK_HINT = 'The block from which to fork the mainnet Ethereum blockchain';
 
 const languageVersionOptions = [
   { label: 'Solidity v0.4.19', value: '0.4.19' },
@@ -28,7 +30,7 @@ const frameworkOptions = [
 class CodeStageConfig extends Component {
   render() {
     const { onChange,
-      stage: { type, language, languageVersion, testFramework }
+      stage: { type, language, languageVersion, testFramework, forkBlockNumber }
     } = this.props;
     if(type !== 'CodeStage') return null;
     return (
@@ -46,6 +48,14 @@ class CodeStageConfig extends Component {
           onChange={(languageVersion) => onChange({ languageVersion })}
           value={languageVersion}
           options={languageVersionOptions} />
+
+        <StyledInput
+          label="Fork Mainnet Block"
+          type="number"
+          field="forkBlockNumber"
+          value={forkBlockNumber}
+          hint={FORK_MAINNET_BLOCK_HINT}
+          onChange={({ target: { value }}) => onChange({ forkBlockNumber: +value })} />
 
         <StyledSelect
           label="Test Framework"
