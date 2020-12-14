@@ -59,10 +59,10 @@
     "sass-loader": "7.1.0",
     "socket.io-client": "^2.1.1",
     "style-loader": "0.23.0",
-    "terser-webpack-plugin": "1.1.0",
+    "terser-webpack-plugin": "^5.0.3",
     "uniqid": "^5.0.3",
     "url-loader": "1.1.1",
-    "webpack": "4.19.1",
+    "webpack": "^5.10.1",
     "webpack-dev-server": ">=3.1.11",
     "webpack-manifest-plugin": "2.0.4",
     "workbox-webpack-plugin": "3.6.3"
