@@ -50,9 +50,7 @@ class CodeEditor extends Component {
     	keybindingContext: null,
     	contextMenuGroupId: 'navigation',
     	contextMenuOrder: 1.5,
-    	run: function(ed) {
-        // handled by keybindings
-    	}
+    	run: () => this.props.runCode()
     });
 
     window.addEventListener("resize", this.updateDimensions.bind(this));

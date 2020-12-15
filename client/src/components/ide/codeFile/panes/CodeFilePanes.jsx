@@ -43,7 +43,11 @@ class CodeFilePanes extends Component {
     const pane = stages[stage.id];
     return (
       <div className="code-file-toolbar">
-        <CodeFilePane code={code} changePane={this.changePane} pane={pane} stage={stage} codeFile={codeFile} />
+        <CodeFilePane
+          code={code}
+          runCode={this.props.runCode}
+          changePane={this.changePane}
+          pane={pane} stage={stage} codeFile={codeFile} />
         <ul className="actions">
           <CompilationTab changePane={this.changePane} pane={pane} codeFile={codeFile} />
           <OutputTab changePane={this.changePane} pane={pane} codeFile={codeFile} />
