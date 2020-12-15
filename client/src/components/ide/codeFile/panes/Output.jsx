@@ -4,7 +4,6 @@ import OutputDisplay from './OutputDisplay';
 import OutputToolbar from './OutputToolbar';
 import { completeCodeExecution } from 'redux/actions';
 import { connect } from 'react-redux';
-import { CODE_FILE_PANES } from 'config';
 
 class Output extends Component {
   shortcut = (evt) => {
