@@ -31,6 +31,7 @@ fragment allFields on StageContainer {
     language
     position
     languageVersion
+    forkBlockNumber
     testFramework
     youtubeId
     src

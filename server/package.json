@@ -21,14 +21,11 @@
     "graphiql": "^0.13.0",
     "graphql": "^14.0.2",
     "mocha": "^5.2.0",
-    "mongodb": "^3.1.10",
+    "mongodb": "^3.6.3",
     "node-watch": "^0.6.0",
     "route-parser": "0.0.5",
     "sanitize-filename": "^1.6.1",
     "slash": "^2.0.0",
     "socket.io": "^2.1.1"
-  },
-  "devDependencies": {
-    "gulp-nodemon": "^2.4.2"
   }
 }

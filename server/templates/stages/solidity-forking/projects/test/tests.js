@@ -7,8 +7,8 @@ describe('Contract', function () {
         await contract.deployed();
     });
 
-    it('should create variable a: true', async () => {
-        const a = await contract.a.call();
-        assert.equal(a, true);
+    it('should get the dai name', async () => {
+        const name = await contract.getName();
+        assert.equal(name, "Dai Stablecoin");
     });
 });

@@ -28,10 +28,11 @@ mutation createStage(${args}) {
 `;
 
 const templates = [
-    { label: 'Node JS Stage', value: 'node-10-babel' },
-    { label: 'Solidity Stage', value: 'solidity' },
-    { label: 'Vyper Stage', value: 'vyper' },
-    { label: 'Web3 JS Stage', value: 'web3' },
+    { label: 'Node JS', value: 'node-10-babel' },
+    { label: 'Solidity', value: 'solidity' },
+    { label: 'Solidity Forking', value: 'solidity-forking' },
+    // { label: 'Vyper Stage', value: 'vyper' },
+    // { label: 'Web3 JS Stage', value: 'web3' },
 ]
 
 const validators = {

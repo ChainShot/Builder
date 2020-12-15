@@ -11,9 +11,11 @@
   "testFramework": "truffle_with_mocha",
   "codeFileIds": [
     "5e540b10f54c173c62b8a7f7",
-    "5e540b10f54c173c62b8a7f8"
+    "5e540b10f54c173c62b8a7f8",
+    "5e540b10f54c173c62b8e7ab"
   ],
   "position": 0,
   "youtubeId": null,
-  "src": null
+  "src": null,
+  "forkBlockNumber": 11395144
 }

@@ -73,6 +73,7 @@ class CodeFilePane extends Component {
         maxHeight={MAX_HEIGHT}>
         <Output stage={stage}
                 code={code}
+                runCode={this.props.runCode}
                 codeFile={codeFile}
                 shouldShow={pane === CODE_FILE_PANES.OUTPUT_TAB}
                 hide={this.hide}/>
