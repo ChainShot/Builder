@@ -1,5 +1,5 @@
 import api from './';
-import Error from '../../components/dialogs/Error';
+import ErrorDialog from '../../components/dialogs/ErrorDialog';
 import * as dialog from '../dialog';
 import {setStageContainer} from 'redux/actions';
 import store from 'redux/store';
@@ -16,7 +16,7 @@ const apiMutation = (query, variables, reloadStageContainer = false) => {
       const messages = errors.map(x => x.message);
       const errorMessage = messages.length > 4 ? (messages.slice(0,4).join("\n") + '...') : messages.join("\n");
       const message = `Failed to make request:\n\n${errorMessage}`;
-      dialog.open(Error, { message });
+      dialog.open(ErrorDialog, { message });
       return Promise.reject(errors);
     }
 

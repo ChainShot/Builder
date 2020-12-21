@@ -3,6 +3,7 @@ import CodeEditor from '../CodeEditor';
 import CodeFilePanes from './panes/CodeFilePanes';
 import runner from 'utils/api/runner';
 import * as dialog from 'utils/dialog';
+import ErrorDialog from 'components/dialogs/ErrorDialog';
 import { startCodeExecution, setCodeFilePane, completeCodeExecution } from 'redux/actions';
 import { connect } from 'react-redux';
 import { CODE_FILE_PANES } from 'config';
@@ -47,10 +48,10 @@ class CodeFileEditor extends Component {
       catch(ex) {
         const { response } = ex;
         if(response && response.status >= 400 && response.status < 500) {
-          dialog.open(Error, { message: response.data });
+          dialog.open(ErrorDialog, { message: response.data });
         }
         else {
-          dialog.open(Error, { message: "Oof. Failed to Run Your Code just now. \nPlease try again soon." });
+          dialog.open(ErrorDialog, { message: "Oof. Failed to Run Your Code just now. \nPlease try again soon." });
         }
         this.props.completeCodeExecution(null, stage.id);
         return;

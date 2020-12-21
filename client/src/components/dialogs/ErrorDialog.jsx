@@ -3,11 +3,11 @@ import Dialog from '../Dialog';
 import SVG from '../../components/SVG';
 import { close } from '../../utils/dialog';
 import { SLACK_INVITE } from '../../config';
-import './Error.scss';
+import './ErrorDialog.scss';
 
 const DEFAULT_MESSAGE = 'Oof. An unexpected error occurred. Just now.';
 
-class Error extends Component {
+class ErrorDialog extends Component {
   slack = () => {
     window.open(SLACK_INVITE, "_blank");
     close();
@@ -38,4 +38,4 @@ class Error extends Component {
   }
 }
 
-export default Error;
+export default ErrorDialog;
