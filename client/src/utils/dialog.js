@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 let resolveFn;
 const open = (Component = Dialog, props = {}) => {
-  ReactDOM.render(<Component {...props} />, document.getElementById('dialog'));
+  ReactDOM.render(<Component {...props}/>, document.getElementById('dialog'));
   return new Promise((resolve) => resolveFn = resolve);
 }
 
