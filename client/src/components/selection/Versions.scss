@@ -20,6 +20,36 @@
       color: $light-font;
     }
 
+    .title {
+      font-weight: bold;
+      font-size: 1.25em;
+      text-align: center;
+    }
+
+    .actions {
+      display: flex;
+      .btn {
+        border: 1px solid $border-color;
+        margin: 20px 15px;
+
+        &:hover {
+          cursor: pointer;
+          border: 1px solid $brand-active;
+        }
+      }
+    }
+  }
+
+  .new-version {
+    background-color: $bg-container;
+    max-width: 400px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid $border-color;
+    display: flex;
+    align-items: center;
+    font-size: 1.25em;
+
     &:hover {
       cursor: pointer;
       border: 1px solid $brand-active;
