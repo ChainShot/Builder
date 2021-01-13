@@ -1,12 +1,14 @@
 const { ObjectID } = require('mongodb');
-const stageContainerProjectProps = require('./projectProps');
-const path = require('path');
+const createProjectFilesExport = require('./createProjectFiles');
 
-module.exports = ({
-  ioHelpers: { configWriter, configResolver, fileWriter },
-  projectHelpers: { findStageContainerFilePath },
-  config: { MODEL_DB },
-}) => {
+module.exports = (injections) => {
+  const {
+    ioHelpers: { configWriter, configResolver },
+    config: { MODEL_DB },
+  } = injections;
+
+  const createProjectFiles = createProjectFilesExport(injections);
+
   async function createDocument({ containerType, id }) {
     return await configWriter(MODEL_DB.STAGE_CONTAINERS, {
       id: ObjectID().toString(),
@@ -14,17 +16,6 @@ module.exports = ({
       stageContainerGroupId: id,
       version: 'TBD',
     });
-  }
-
-  async function createProjectFiles(stageContainer) {
-    const basePath = await findStageContainerFilePath(stageContainer);
-    const keys = Object.keys(stageContainerProjectProps);
-    for(let i = 0; i < keys.length; i++) {
-        const key = keys[i];
-        const filename = stageContainerProjectProps[key];
-        const contents = stageContainer[key] || "";
-        await fileWriter(path.join(basePath, filename), contents);
-    }
   }
 
   async function createStageContainer(stageContainerGroupId) {

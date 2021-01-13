@@ -8,6 +8,9 @@ query findStageContainerGroup($id: String) {
     stageContainers {
       id
       version
+      stageContainerGroupId
+      type
+      intro
     }
 	}
 }
