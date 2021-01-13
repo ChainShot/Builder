@@ -11,6 +11,25 @@ import { connect } from 'react-redux';
 import { resetIDE } from 'redux/actions';
 import './Versions.scss';
 
+const variables = [
+  ['id', 'String'],
+  ['version', 'String'],
+  ['stageContainerGroupId', 'String'],
+  ['type', 'String'],
+  ['intro', 'String'],
+]
+
+const args = variables.map(([prop, type]) => `$${prop}: ${type}`).join(', ');
+const mapping = variables.map(([prop, type]) => `${prop}: $${prop}`).join(', ');
+
+const duplicateStageContainer = `
+mutation duplicateStageContainer(${args}) {
+  duplicateStageContainer(${mapping}) {
+    id
+  }
+}
+`;
+
 class Versions extends Component {
   state = {
     stageContainerGroup: null
@@ -26,6 +45,19 @@ class Versions extends Component {
     this.props.resetIDE();
     // navigate to this content loaded in the IDE
     this.props.history.push(`/content/${id}`);
+  }
+  duplicate = (id) => {
+    // version, stageContainerGroupId, type, intro
+    const { stageContainerGroup } = this.state;
+    const stageContainer = stageContainerGroup.stageContainers.find(x => x.id === id);
+    const version = `${stageContainer.version} (Copy)`;
+    const { stageContainerGroupId, type, intro } = stageContainer;
+    apiMutation(duplicateStageContainer, { id, version, stageContainerGroupId, type, intro }).then(({ id }) => {
+      // ensure the IDE state is empty
+      this.props.resetIDE();
+      // navigate to this content loaded in the IDE
+      this.props.history.push(`/content/${id}`);
+    });
   }
   destroy = (id) => {
     confirm("Are you sure you want to delete this stage container?").then(() => {
@@ -57,7 +89,7 @@ class Versions extends Component {
                 <div className="title"> { version } </div>
                 <div className="actions">
                   <div className="btn" onClick={() => this.navigateToVersion(id)}> Edit </div>
-                  <div className="btn"> Duplicate </div>
+                  <div className="btn" onClick={() => this.duplicate(id)}> Duplicate </div>
                   <div className="btn" onClick={() => this.destroy(id)}> Destroy </div>
                 </div>
               </div>

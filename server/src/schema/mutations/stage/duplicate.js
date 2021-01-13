@@ -23,10 +23,12 @@ module.exports = (injections) => {
     });
   }
 
-  async function duplicateStage(props) {
+  async function duplicateStage(props, newStageContainerId) {
     const stage = await configResolver(MODEL_DB.STAGES, props.id);
+    const containerId = newStageContainerId || stage.stageContainerId;
     const newStage = {
       ...stage,
+      containerId,
       id: ObjectID().toString(),
       title: props.title,
       position: props.position,
@@ -80,7 +82,7 @@ module.exports = (injections) => {
 
     // shift stages around to keep everything zero-based
     const stages = await configDocumentReader(MODEL_DB.STAGES);
-    const relevant = stages.filter(x => x.containerId === stage.containerId);
+    const relevant = stages.filter(x => x.containerId === newStage.containerId);
     positionalShift(relevant, newStage.id);
     for(let i = 0; i < relevant.length; i++) {
       await configWriter(MODEL_DB.STAGES, relevant[i]);
