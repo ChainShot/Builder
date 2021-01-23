@@ -35,7 +35,10 @@ module.exports = (injections) => {
         ...relevantStages[i],
         createNew: true
       }
-      await duplicateStage(stage, newStageContainer.id);
+      await duplicateStage(stage, {
+        newStageContainerId: newStageContainer.id,
+        shiftPositions: false
+      });
     }
 
     return newStageContainer;
