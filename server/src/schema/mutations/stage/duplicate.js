@@ -50,6 +50,8 @@ module.exports = (injections) => {
         codeFile.id = ObjectID().toString();
         // link the code file to the new stage
         codeFile.codeStageIds = [newStage.id];
+        // ensure this is the new stageContainerId if duplicated
+        codeFile.stageContainerId = containerId;
         // link the new stage to the code file by
         // replacing the old code file id on the new stage
         const idx = newStage.codeFileIds.indexOf(oldId);
