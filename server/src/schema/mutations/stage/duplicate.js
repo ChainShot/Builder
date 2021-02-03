@@ -25,7 +25,7 @@ module.exports = (injections) => {
 
   async function duplicateStage(props, { newStageContainerId, shiftPositions = true } = {}) {
     const stage = await configResolver(MODEL_DB.STAGES, props.id);
-    const containerId = newStageContainerId || stage.stageContainerId;
+    const containerId = newStageContainerId || stage.containerId;
     const newStage = {
       ...stage,
       containerId,
