@@ -31,11 +31,7 @@ module.exports = (injections) => {
     const stages = await configDocumentReader(MODEL_DB.STAGES);
     const relevantStages = stages.filter(x => x.containerId === props.id);
     for(let i = 0; i < relevantStages.length; i++) {
-      const stage = {
-        ...relevantStages[i],
-        createNew: true
-      }
-      await duplicateStage(stage, {
+      await duplicateStage(relevantStages[i], {
         newStageContainerId: newStageContainer.id,
         shiftPositions: false
       });
