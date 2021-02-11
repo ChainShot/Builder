@@ -30,6 +30,8 @@ module.exports = (injections) => {
       ...stage,
       containerId,
       id: ObjectID().toString(),
+      codeFileIds: props.codeFileIds,
+      validatedFileId: props.validatedFileId,
       title: props.title,
       position: props.position,
     }
