@@ -30,10 +30,14 @@ module.exports = (injections) => {
       ...stage,
       containerId,
       id: ObjectID().toString(),
-      codeFileIds: props.codeFileIds,
-      validatedFileId: props.validatedFileId,
       title: props.title,
       position: props.position,
+    }
+    if(props.codeFileIds) {
+      newStage.codeFileIds = props.codeFileIds;
+    }
+    if(props.validatedFileId) {
+      newStage.validatedFileId = props.validatedFileId;
     }
 
     // copy all the project files forward
