@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- node
+- 14
 before_script: ( cd server && npm i )
 script: (cd server && npm run test) && (cd client && npm i eslint && npm run lint)
 before_deploy: ( cd build && npm i && node ./ )
