@@ -8,10 +8,7 @@ const READ_THE_DOCS = process.env.REACT_APP_READ_THE_DOCS || 'https://chainshotb
 const SLACK_INVITE = process.env.REACT_APP_SLACK_INVITE || 'https://join.slack.com/t/chainshotnodes/shared_invite/enQtMzU3ODc5NTM3MTI3LTFlZTY1YzcwM2QzYWI0ODY2ZDczMmYzOTVlYWQwZjkyZDFlYzUxZWM4NDNlNjk3N2EyNGMwOGQ0ZTVkZjQyNjE';
 
 const STAGE_TYPE_OPTIONS = [
-  { label: 'Code Stage', value: 'CodeStage' },
-  { label: 'Download Stage', value: 'DownloadStage' },
-  { label: 'IFrame Stage', value: 'IFrameStage' },
-  { label: 'Video Stage', value: 'VideoStage' },
+  { label: 'Code Stage', value: 'CodeStage' }
 ]
 
 const STAGE_LANGUAGE_OPTIONS = [

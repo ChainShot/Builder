@@ -9,22 +9,15 @@ const TEST_FRAMEWORK_HINT = 'The framework used for test assertions';
 const FORK_MAINNET_BLOCK_HINT = 'The block from which to fork the mainnet Ethereum blockchain';
 
 const languageVersionOptions = [
-  { label: 'Solidity v0.4.19', value: '0.4.19' },
-  { label: 'Solidity v0.5.0', value: '0.5.0' },
   { label: 'Solidity v0.6.2', value: '0.6.2' },
   { label: 'Solidity v0.7.5', value: '0.7.5' },
-  { label: 'Vyper v0.1', value: '0.1.0b3' },
   { label: 'Node 10.x', value: '10.x' },
   { label: 'Node 10.x w/ Babel', value: '10.x/babel' },
-  { label: 'Node 8.x', value: '8.x' },
-  { label: 'Node 8.x w/ Babel', value: '8.x/babel' },
-  { label: 'Node 6.x', value: '6.x' },
-  { label: 'Node 6.x w/ Babel', value: '6.x/babel' },
 ]
 
 const frameworkOptions = [
-  { label: 'Mocha', value: 'mocha_bdd' },
-  { label: 'Truffle With Mocha', value: 'truffle_with_mocha' },
+  { label: 'JavaScript Mocha', value: 'mocha_bdd' },
+  { label: 'Hardhat Solidity', value: 'truffle_with_mocha' },
 ]
 
 class CodeStageConfig extends Component {
