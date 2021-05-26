@@ -9,8 +9,10 @@ const TEST_FRAMEWORK_HINT = 'The framework used for test assertions';
 const FORK_MAINNET_BLOCK_HINT = 'The block from which to fork the mainnet Ethereum blockchain';
 
 const languageVersionOptions = [
-  { label: 'Solidity v0.6.2', value: '0.6.2' },
+  { label: 'Solidity v0.6.2 (DEPRECATED)', value: '0.6.2' },
+  { label: 'Solidity v0.6.12', value: '0.6.12' },
   { label: 'Solidity v0.7.5', value: '0.7.5' },
+  { label: 'Solidity v0.8.4', value: '0.8.4' },
   { label: 'Node 10.x', value: '10.x' },
   { label: 'Node 10.x w/ Babel', value: '10.x/babel' },
 ]
