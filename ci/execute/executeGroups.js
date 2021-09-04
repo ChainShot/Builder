@@ -1,6 +1,14 @@
 const executeStages = require("./executeStages");
 const { EXECUTION_RESULTS } = require('../config');
 
+function sendProcessMessage(msg) {
+  // process.send not defined outside of child processes
+  // this is used for the Builder CLI
+  if(process.send) {
+    process.send(msg);
+  }
+}
+
 function executeGroups(groups) {
   const stageContainers = groups.reduce((arr, group) => {
     const containers = group.stageContainers.map((x) => ({ ...x, stageContainerGroup: group }))
@@ -22,11 +30,22 @@ function executeGroups(groups) {
 
     console.log(`${title} ${version} results:`);
     executedResults.forEach((result, i) => {
+      const stage = stageContainer.stages[i];
       if(result === EXECUTION_RESULTS.SUCCESS) {
-        console.log(`✔️ ${stageContainer.stages[i].title} passed!`)
+        console.log(`✔️ ${stage.title} passed!`);
+        sendProcessMessage({ type: "RESULT", data: {
+          success: true,
+          version: `${title} ${version}`,
+          stage: stage.title
+        }});
       }
       else {
-        console.log(`✘ ${stageContainer.stages[i].title} failed!`)
+        console.log(`✘ ${stage.title} failed!`);
+        sendProcessMessage({ type: "RESULT", data: {
+          success: false,
+          version: `${title} ${version}`,
+          stage: stage.title
+        }});
       }
     });
   });

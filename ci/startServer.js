@@ -7,6 +7,8 @@ function startServer() {
     const npmChild = childProcess.exec("npm i", { cwd: serverPath });
     npmChild.on("exit", () => {
       const child = childProcess.fork('src/index', [], {
+        CONTENT_PATH: process.env.contentPath,
+        CONTENT_REPO_NAME: process.env.contentRepoName,
         cwd: serverPath,
         detached: true,
         silent: false,

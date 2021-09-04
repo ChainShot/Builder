@@ -33,15 +33,15 @@ async function testAll() {
     if(eventType === "uncaughtException") {
       console.log(eventType, ...args);
     }
-    cleanup();
+    cleanup(eventType === "exit");
   });
 });
 
-function cleanUpServer() {
+function cleanUpServer(success) {
   if(serverProcess) {
     serverProcess.kill();
   }
-  process.exit(1);
+  process.exit(success ? 0 : 1);
 }
 
 testAll();
