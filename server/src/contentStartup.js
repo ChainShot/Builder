@@ -2,7 +2,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const {CONTENT_DIR, CONFIG_DIR, TEMPLATES_DIR, PROJECTS_DIR, MODEL_DB} = require('./config');
 
-// setups the content directory
+// sets up the content directory
 // if this content initialization, also add readme
 async function contentStartup(initialization) {
   await fs.ensureDir(CONTENT_DIR);
