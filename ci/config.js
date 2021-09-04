@@ -11,13 +11,16 @@ const LANGUAGE_VERSIONS = {
   javascript: ['10.x', '10.x/babel']
 }
 
-const GRAPH_API = process.env.GRAPH_API || "http://localhost:3040/graphql";
+const BUILDER_PORT = process.env.BUILDER_PORT || 3040;
+
+const GRAPH_API = process.env.GRAPH_API || `http://localhost:${BUILDER_PORT}/graphql`;
 
 const RUN_URL = process.env.RUN_URL || "https://relayer-staging.chainshot.com/run/";
 
 module.exports = {
   LANGUAGE_VERSIONS,
   EXECUTION_RESULTS,
+  BUILDER_PORT,
   GRAPH_API,
   RUN_URL,
 }
