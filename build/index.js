@@ -14,10 +14,15 @@ async function build() {
   const serverPath = `${base}/server`;
   await setupServer(serverPath);
 
+  console.log("Setting up CI Build...");
+  const ciPath = `${base}/ci`;
+  await setupServer(ciPath);
+
   console.log("Creating Zip...");
   const output = new AdmZip();
   output.addLocalFolder(`${clientPath}/build`, 'client/build');
   output.addLocalFolder(`${serverPath}`, 'server');
+  output.addLocalFolder(`${ciPath}`, 'ci');
   const versionContent = JSON.stringify({
     version: process.env.TRAVIS_TAG
   }, null, 2);
