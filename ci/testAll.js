@@ -4,10 +4,10 @@ const getStageContainerGroupIds = require('./query/getStageContainerGroupIds');
 const executeGroups = require('./execute/executeGroups');
 
 const BATCH_AMOUNT = 1;
-let controller;
+let serverProcess;
 
 async function testAll() {
-  controller = await startServer();
+  serverProcess = await startServer();
 
   try {
     const groupIds = await getStageContainerGroupIds();
@@ -20,20 +20,26 @@ async function testAll() {
   }
   catch(ex) {
     console.log(ex);
-    controller.abort();
+    serverProcess.kill();
     process.exit(1);
   }
 
-  controller.abort();
+  serverProcess.kill();
 }
 
 [`exit`, `SIGINT`, `SIGUSR1`, `SIGUSR2`, `uncaughtException`, `SIGTERM`].forEach((eventType) => {
-  process.on(eventType, cleanUpServer.bind(null, eventType));
+  const cleanup = cleanUpServer.bind(null, eventType);
+  process.on(eventType, (...args) => {
+    if(eventType === "uncaughtException") {
+      console.log(eventType, ...args);
+    }
+    cleanup();
+  });
 });
 
 function cleanUpServer() {
-  if(controller) {
-    controller.abort();
+  if(serverProcess) {
+    serverProcess.kill();
   }
   process.exit(1);
 }
