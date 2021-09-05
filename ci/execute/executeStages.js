@@ -1,4 +1,4 @@
-const { LANGUAGE_VERSIONS, EXECUTION_RESULTS } = require('../config');
+const { EXECUTION_RESULTS } = require('../config');
 const executeStage = require("./executeStage");
 
 async function timeout(seconds) {
@@ -13,9 +13,6 @@ async function executeStages(stages) {
 
     await timeout(i * 500);
 
-    if((LANGUAGE_VERSIONS[language] || []).indexOf(languageVersion) < 0) {
-      return EXECUTION_RESULTS.NONE;
-    }
     try {
       const { data: { result: { completed }} } = await executeStage(stage);
       return completed ? EXECUTION_RESULTS.SUCCESS : EXECUTION_RESULTS.FAILED;
