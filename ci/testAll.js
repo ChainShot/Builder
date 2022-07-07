@@ -3,17 +3,17 @@ const getStageContainerGroups = require('./query/getStageContainerGroups');
 const getStageContainerGroupIds = require('./query/getStageContainerGroupIds');
 const executeGroups = require('./execute/executeGroups');
 
-const BATCH_AMOUNT = 1;
+const BATCH_AMOUNT = 10000;
 let serverProcess;
 
 async function testAll() {
   serverProcess = await startServer();
 
   try {
-    const groupIds = await getStageContainerGroupIds();
+    let groupIds = await getStageContainerGroupIds();
 
     for(let i = 0; i < groupIds.length; i+=BATCH_AMOUNT) {
-      const groups = await getStageContainerGroups(groupIds.slice(i, i + BATCH_AMOUNT));
+      const groups = await getStageContainerGroups(groupIds);
 
       await executeGroups(groups);
     }

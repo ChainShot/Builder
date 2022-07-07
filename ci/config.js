@@ -8,7 +8,7 @@ const EXECUTION_RESULTS = {
 
 const LANGUAGE_VERSIONS = {
   solidity: ['0.6.12', '0.7.5', '0.8.4'],
-  javascript: ['10.x', '10.x/babel']
+  javascript: ['10.x', '10.x/babel', '8.x/babel', '6.x/babel']
 }
 
 const BUILDER_PORT = process.env.BUILDER_PORT || 3040;

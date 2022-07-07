@@ -29,34 +29,29 @@ async function executeGroups(groups) {
       continue;
     }
 
-    console.log(`Running ${title} ${version}...`);
-    const isForking = stages.some(x => x.forkBlockNumber);
-    const batchSize = isForking ? 2 : 5;
-
-    let results = [];
-    for(let j = 0; j < stages.length; j += batchSize) {
-      results = results.concat(await executeStages(stages.slice(j, j + batchSize)));
-    }
-
-    results.forEach((result, i) => {
-      const stage = stageContainer.stages[i];
-      if(result === EXECUTION_RESULTS.SUCCESS) {
-        console.log(`✔️ ${stage.title} passed!`);
-        sendProcessMessage({ type: "RESULT", data: {
-          success: true,
-          version: `${title} ${version}`,
-          stage: stage.title
-        }});
-      }
-      else if(result === EXECUTION_RESULTS.FAILED) {
-        console.log(`✘ ${stage.title} failed!`);
-        sendProcessMessage({ type: "RESULT", data: {
-          success: false,
-          version: `${title} ${version}`,
-          stage: stage.title
-        }});
-      }
+    executeStages(stages).then((results) => {
+      console.log(`Results for ${title} ${version}...`);
+      results.forEach((result, i) => {
+        const stage = stageContainer.stages[i];
+        if(result === EXECUTION_RESULTS.SUCCESS) {
+          console.log(`✔️ ${stage.title} passed!`);
+          sendProcessMessage({ type: "RESULT", data: {
+            success: true,
+            version: `${title} ${version}`,
+            stage: stage.title
+          }});
+        }
+        else if(result === EXECUTION_RESULTS.FAILED) {
+          console.log(`✘ ${stage.title} failed!`);
+          sendProcessMessage({ type: "RESULT", data: {
+            success: false,
+            version: `${title} ${version}`,
+            stage: stage.title
+          }});
+        }
+      });
     });
+
   }
 }
 
