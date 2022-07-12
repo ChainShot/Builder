@@ -14,7 +14,8 @@ async function executeGroups(groups) {
     const containers = group.stageContainers.map((x) => ({ ...x, stageContainerGroup: group }))
     return arr.concat(containers);
   }, []);
-
+  
+  const promises = [];
   for(let i = 0; i < stageContainers.length; i++) {
     const stageContainer = stageContainers[i];
 
@@ -29,7 +30,8 @@ async function executeGroups(groups) {
       continue;
     }
 
-    executeStages(stages).then((results) => {
+    const promise = executeStages(stages);
+    promise.then((results) => {
       console.log(`Results for ${title} ${version}...`);
       results.forEach((result, i) => {
         const stage = stageContainer.stages[i];
@@ -51,8 +53,9 @@ async function executeGroups(groups) {
         }
       });
     });
-
+    promises.push(promise);
   }
+  Promise.all(promises).then(() => process.exit(0));
 }
 
 module.exports = executeGroups;
