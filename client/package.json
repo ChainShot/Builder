@@ -5,7 +5,7 @@
   "dependencies": {
     "@babel/core": "7.1.0",
     "@svgr/webpack": "2.4.1",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-loader": "8.0.4",
@@ -33,7 +33,7 @@
     "mini-css-extract-plugin": "0.4.3",
     "monaco-editor": "0.21.2",
     "monaco-editor-webpack-plugin": "2.0.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "path-posix": "^1.0.0",
     "pnp-webpack-plugin": "1.1.0",
