@@ -25,7 +25,5 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           artifacts: "build/build.zip"
-          bodyFile: "body.md"
-          token: ${{ secrets.YOUR_GITHUB_TOKEN }}
 
       
