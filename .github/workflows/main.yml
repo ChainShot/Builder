@@ -1,0 +1,31 @@
+name: Releases
+
+on: 
+  push:
+    tags:
+    - '*'
+    
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3.4.1
+        with:
+          node-version: 16
+      - name: Build Deployment
+        run: | 
+          cd build 
+          npm i 
+          node ./
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/build.zip"
+          bodyFile: "body.md"
+          token: ${{ secrets.YOUR_GITHUB_TOKEN }}
+
+      
