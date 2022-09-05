@@ -51,7 +51,7 @@ class SolutionNav extends Component {
         <li>
           <div className={classes.join(' ')}
             onClick={openTab}
-            exact data-rh="Your Solution" data-rh-at="right">
+            exact="true" data-rh="Your Solution" data-rh-at="right">
             <SVG name="codefile"/>
             <span>solution</span>
           </div>
@@ -71,7 +71,7 @@ class InitialCodeNav extends Component {
       <li>
         <div className={classes.join(' ')}
           onClick={openTab}
-          exact data-rh="User's Initial Code" data-rh-at="right">
+          exact="true" data-rh="User's Initial Code" data-rh-at="right">
           <SVG name="codefile"/>
           <span>initial code</span>
         </div>
