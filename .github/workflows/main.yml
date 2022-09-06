@@ -24,6 +24,7 @@ jobs:
           node ./
       - uses: ncipollo/release-action@v1
         with:
+          allowUpdates: true
           artifacts: "build/build.zip"
 
       
