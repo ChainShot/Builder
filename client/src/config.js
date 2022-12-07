@@ -1,5 +1,5 @@
 const API_URL = process.env.REACT_APP_API_URL || `http://localhost:${window.location.port}/`;
-const RUNNER_URL = process.env.REACT_APP_RUNNER_URL || 'https://chainshot-relayer.herokuapp.com/run/';
+const RUNNER_URL = process.env.REACT_APP_RUNNER_URL || 'https://alchemyu-relayer-staging.herokuapp.com/run/';
 const RUNNER_SERVER_KEY = process.env.REACT_APP_RUNNER_SERVER_KEY;
 const SOLC_COMPILER_URL = process.env.REACT_APP_SOLC_COMPILER_URL || 'https://chainshot-relayer.herokuapp.com/solc/';
 const VPYER_COMPILER_URL = process.env.REACT_APP_VPYER_COMPILER_URL || 'https://vyper-compiler.herokuapp.com/compile/';
